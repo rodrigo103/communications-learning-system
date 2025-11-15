@@ -1,0 +1,80 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb
+
+# Anki (archivos grandes que no deben versionarse)
+outputs/anki/*.apkg
+outputs/anki/media/
+
+# PDFs generados (pueden regenerarse)
+outputs/derivations/*.pdf
+outputs/solutions/*.pdf
+
+# Simulaciones grandes
+outputs/simulations/*.mp4
+outputs/simulations/*.gif
+
+# Logs (opcional, algunos proyectos sí los versionan)
+*.log
+
+# Configuración local (API keys, etc.)
+.env
+.env.local
+config/local_*.yaml
+
+# Archivos temporales
+*.tmp
+*.bak
+.~*
+
+# OS files
+Thumbs.db
+Desktop.ini
+
+# Datos sensibles (NO versionar)
+secrets/
+credentials/
+*.key
+*.pem

@@ -1,0 +1,590 @@
+"""
+Session Coordinator - Orquestador principal del sistema
+
+Responsabilidades:
+- Gestionar inicio/fin de sesiones
+- Mantener estado global del aprendizaje
+- Delegar tareas a agentes especializados
+- Generar recomendaciones personalizadas
+- Trackear progreso por unidad/concepto
+"""
+
+import json
+from pathlib import Path
+from datetime import datetime, timedelta
+from typing import Dict, List, Optional, Any
+import logging
+
+# Setup logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+
+class SessionCoordinator:
+    """
+    Orquestador principal del sistema de aprendizaje.
+    
+    Gestiona:
+    - Estado global (learning_state.json)
+    - Historial de sesiones (session_history.jsonl)
+    - Perfiles de usuario (user_profiles.json)
+    - Contexto actual (current_focus.json)
+    """
+    
+    def __init__(self, base_path: Path = None):
+        """
+        Inicializar coordinator
+        
+        Args:
+            base_path: Ruta base del proyecto (default: directorio actual)
+        """
+        self.base_path = base_path or Path.cwd()
+        self.state_dir = self.base_path / "state"
+        self.progress_dir = self.base_path / "progress"
+        self.sessions_dir = self.base_path / "sessions"
+        
+        # Ensure directories exist
+        self.state_dir.mkdir(exist_ok=True)
+        self.progress_dir.mkdir(exist_ok=True)
+        self.sessions_dir.mkdir(exist_ok=True)
+        
+        # File paths
+        self.learning_state_path = self.state_dir / "learning_state.json"
+        self.user_profiles_path = self.state_dir / "user_profiles.json"
+        self.session_history_path = self.state_dir / "session_history.jsonl"
+        self.current_focus_path = self.state_dir / "current_focus.json"
+        
+        # Current session state
+        self.current_user = None
+        self.session_start_time = None
+        self.session_data = {}
+    
+    # ========================================================================
+    # STATE LOADING / SAVING
+    # ========================================================================
+    
+    def load_learning_state(self) -> Dict:
+        """
+        Cargar estado global del aprendizaje
+        
+        Returns:
+            Dict con el estado completo
+        """
+        if not self.learning_state_path.exists():
+            logger.warning("learning_state.json not found, creating default")
+            return self._create_default_learning_state()
+        
+        try:
+            with open(self.learning_state_path, 'r', encoding='utf-8') as f:
+                state = json.load(f)
+            logger.info("✓ learning_state.json loaded")
+            return state
+        except Exception as e:
+            logger.error(f"Error loading learning_state.json: {e}")
+            raise
+    
+    def save_learning_state(self, state: Dict) -> None:
+        """
+        Guardar estado global del aprendizaje
+        
+        Args:
+            state: Diccionario con el estado completo
+        """
+        try:
+            # Update metadata
+            state['metadata']['last_updated'] = datetime.now().isoformat()
+            
+            with open(self.learning_state_path, 'w', encoding='utf-8') as f:
+                json.dump(state, f, indent=2, ensure_ascii=False)
+            
+            logger.info("✓ learning_state.json saved")
+        except Exception as e:
+            logger.error(f"Error saving learning_state.json: {e}")
+            raise
+    
+    def _create_default_learning_state(self) -> Dict:
+        """
+        Crear estado inicial por defecto
+        
+        Returns:
+            Dict con estructura inicial
+        """
+        # TODO: Load from schema file or define here
+        default_state = {
+            "metadata": {
+                "created_at": datetime.now().isoformat(),
+                "last_updated": datetime.now().isoformat(),
+                "primary_user": None,
+                "collaborators": [],
+                "exam_date": "2025-04-24",
+                "system_version": "1.0.0"
+            },
+            "progress_summary": {
+                "overall_completion": 0.0,
+                "units_completed": [],
+                "units_in_progress": [],
+                "units_pending": list(range(1, 11))
+            },
+            # ... rest of structure
+        }
+        
+        self.save_learning_state(default_state)
+        return default_state
+    
+    def load_user_profiles(self) -> Dict:
+        """Cargar perfiles de usuarios"""
+        if not self.user_profiles_path.exists():
+            return {}
+        
+        with open(self.user_profiles_path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    
+    def save_user_profiles(self, profiles: Dict) -> None:
+        """Guardar perfiles de usuarios"""
+        with open(self.user_profiles_path, 'w', encoding='utf-8') as f:
+            json.dump(profiles, f, indent=2, ensure_ascii=False)
+    
+    # ========================================================================
+    # SESSION MANAGEMENT
+    # ========================================================================
+    
+    def start_session(self, user: str) -> Dict:
+        """
+        Iniciar una nueva sesión de estudio
+        
+        Args:
+            user: Nombre del usuario
+        
+        Returns:
+            Dict con contexto de la sesión
+        """
+        logger.info(f"Starting session for user: {user}")
+        
+        # Load state
+        state = self.load_learning_state()
+        profiles = self.load_user_profiles()
+        
+        # Get or create user profile
+        if user not in profiles:
+            profiles[user] = self._create_user_profile(user)
+            self.save_user_profiles(profiles)
+        
+        # Store session info
+        self.current_user = user
+        self.session_start_time = datetime.now()
+        self.session_data = {
+            'user': user,
+            'start_time': self.session_start_time.isoformat(),
+            'actions': []
+        }
+        
+        # Build context for user
+        context = self.build_context_from_files(state, profiles[user])
+        
+        # Update current focus
+        self._update_current_focus(user, "session_started")
+        
+        return context
+    
+    def end_session(self, summary: str = None) -> Dict:
+        """
+        Finalizar sesión actual y guardar todo el estado
+        
+        Args:
+            summary: Resumen opcional de la sesión
+        
+        Returns:
+            Dict con reporte de la sesión
+        """
+        if not self.current_user:
+            raise ValueError("No active session to end")
+        
+        logger.info(f"Ending session for user: {self.current_user}")
+        
+        # Calculate duration
+        duration = datetime.now() - self.session_start_time
+        
+        # Build session report
+        self.session_data['end_time'] = datetime.now().isoformat()
+        self.session_data['duration_minutes'] = duration.total_seconds() / 60
+        self.session_data['summary'] = summary
+        
+        # Save session log
+        log_path = self._save_session_log()
+        
+        # Append to session history
+        self._append_to_session_history(self.session_data)
+        
+        # Update learning state with session data
+        state = self.load_learning_state()
+        state = self._update_state_from_session(state, self.session_data)
+        self.save_learning_state(state)
+        
+        # Build report
+        report = {
+            'duration': self._format_duration(duration),
+            'completed': self.session_data.get('completed_tasks', []),
+            'updates': self.session_data.get('progress_updates', []),
+            'next_focus': self._generate_next_focus(state),
+            'log_path': str(log_path)
+        }
+        
+        # Clear current session
+        self.current_user = None
+        self.session_start_time = None
+        self.session_data = {}
+        
+        return report
+    
+    def _save_session_log(self) -> Path:
+        """
+        Guardar log detallado de la sesión en Markdown
+        
+        Returns:
+            Path al archivo creado
+        """
+        # Create sessions subdirectory by month
+        month_dir = self.sessions_dir / datetime.now().strftime("%Y-%m")
+        month_dir.mkdir(exist_ok=True)
+        
+        # Generate filename
+        timestamp = datetime.now().strftime("%Y-%m-%d")
+        filename = f"{timestamp}_{self.current_user}_session.md"
+        filepath = month_dir / filename
+        
+        # Generate markdown content
+        content = self._generate_session_markdown()
+        
+        with open(filepath, 'w', encoding='utf-8') as f:
+            f.write(content)
+        
+        logger.info(f"✓ Session log saved: {filepath}")
+        return filepath
+    
+    def _generate_session_markdown(self) -> str:
+        """
+        Generar contenido Markdown para el log de sesión
+        
+        Returns:
+            String con el contenido en Markdown
+        """
+        duration = datetime.now() - self.session_start_time
+        
+        md = f"""# Session Log: {self.session_data.get('topic', 'Study Session')}
+
+**User:** {self.current_user}  
+**Date:** {self.session_start_time.strftime('%Y-%m-%d')}  
+**Duration:** {self._format_duration(duration)}  
+**Unit:** {self.session_data.get('unit', 'N/A')}
+
+## Objective
+
+{self.session_data.get('objective', 'General study session')}
+
+## Work Completed
+
+{self._format_completed_work()}
+
+## Insights Gained
+
+{self._format_insights()}
+
+## Generated Artifacts
+
+{self._format_artifacts()}
+
+## Questions for Next Session
+
+{self._format_open_questions()}
+
+## Handoff Notes for Collaborators
+
+{self._format_handoff_notes()}
+
+## State Updates
+
+```json
+{json.dumps(self.session_data.get('state_updates', {}), indent=2)}
+```
+"""
+        return md
+    
+    def _append_to_session_history(self, session_data: Dict) -> None:
+        """
+        Añadir sesión al historial (formato JSONL)
+        
+        Args:
+            session_data: Datos de la sesión
+        """
+        with open(self.session_history_path, 'a', encoding='utf-8') as f:
+            f.write(json.dumps(session_data, ensure_ascii=False) + '\n')
+    
+    # ========================================================================
+    # CONTEXT BUILDING
+    # ========================================================================
+    
+    def build_context_from_files(self, state: Dict, user_profile: Dict) -> Dict:
+        """
+        Construir contexto completo desde archivos (NO desde conversaciones)
+        
+        Esta es la clave de la colaboración multi-usuario:
+        TODO el contexto viene de archivos en el repo, no de memory de Claude.
+        
+        Args:
+            state: Estado global del aprendizaje
+            user_profile: Perfil del usuario
+        
+        Returns:
+            Dict con contexto completo para la sesión
+        """
+        context = {
+            'user': user_profile,
+            'progress': state['progress_summary']['overall_completion'],
+            'active_unit': state['current_context']['active_unit'],
+            'last_topic': state['current_context']['last_concept_studied'],
+            'recommendations': self._generate_recommendations(state, user_profile),
+            'recent_activity': self._load_recent_sessions(n=3),
+            'weak_concepts': self._identify_weak_concepts(state),
+            'anki_status': self._get_anki_summary(),
+        }
+        
+        return context
+    
+    def _load_recent_sessions(self, n: int = 3) -> List[Dict]:
+        """
+        Cargar las últimas N sesiones (de cualquier usuario)
+        
+        Args:
+            n: Número de sesiones a cargar
+        
+        Returns:
+            Lista de sesiones recientes
+        """
+        if not self.session_history_path.exists():
+            return []
+        
+        sessions = []
+        with open(self.session_history_path, 'r', encoding='utf-8') as f:
+            for line in f:
+                sessions.append(json.loads(line))
+        
+        # Return last n sessions
+        return sessions[-n:] if len(sessions) > n else sessions
+    
+    def _generate_recommendations(self, state: Dict, user_profile: Dict) -> List[str]:
+        """
+        Generar recomendaciones personalizadas
+        
+        Args:
+            state: Estado global
+            user_profile: Perfil del usuario
+        
+        Returns:
+            Lista de recomendaciones
+        """
+        recommendations = []
+        
+        # TODO: Implement smart recommendation logic
+        # - Based on current progress
+        # - Based on weak concepts
+        # - Based on exam date proximity
+        # - Based on learning velocity
+        
+        recommendations.append("Continue with current unit")
+        recommendations.append("Review Anki cards")
+        
+        return recommendations
+    
+    # ========================================================================
+    # PROGRESS TRACKING
+    # ========================================================================
+    
+    def get_progress(self, detailed: bool = False, unit: int = None) -> Dict:
+        """
+        Obtener progreso actual
+        
+        Args:
+            detailed: Si incluir información detallada
+            unit: Si especificado, solo mostrar ese unit
+        
+        Returns:
+            Dict con información de progreso
+        """
+        state = self.load_learning_state()
+        
+        progress_data = {
+            'overall': state['progress_summary']['overall_completion'],
+            'concepts_mastered': state['progress_summary']['concepts_mastered'],
+            'total_concepts': state['progress_summary']['total_concepts'],
+            'problems_solved': state['progress_summary']['problems_solved'],
+            'study_hours': state['learning_velocity']['last_7_days']['hours_studied'],
+            'units': []
+        }
+        
+        # Add unit information
+        for unit_num, unit_data in state['units'].items():
+            if unit and int(unit_num) != unit:
+                continue
+            
+            progress_data['units'].append({
+                'number': int(unit_num),
+                'name': unit_data['name'],
+                'status': unit_data['status'],
+                'progress': unit_data['progress'],
+                'complete': unit_data['status'] == 'completed',
+                'in_progress': unit_data['status'] == 'in_progress'
+            })
+        
+        if detailed:
+            # Add Anki stats
+            progress_data['anki'] = self._get_anki_summary()
+        
+        return progress_data
+    
+    def _get_anki_summary(self) -> Dict:
+        """
+        Obtener resumen de stats de Anki
+        
+        Returns:
+            Dict con stats de Anki
+        """
+        # TODO: Integrate with AnkiFactory
+        return {
+            'total': 0,
+            'new': 0,
+            'learning': 0,
+            'young': 0,
+            'mature': 0
+        }
+    
+    def _identify_weak_concepts(self, state: Dict) -> List[str]:
+        """
+        Identificar conceptos débiles
+        
+        Args:
+            state: Estado global
+        
+        Returns:
+            Lista de conceptos débiles
+        """
+        # TODO: Implement based on:
+        # - Anki success rate
+        # - Problem solving success
+        # - Review frequency
+        return []
+    
+    # ========================================================================
+    # UTILITIES
+    # ========================================================================
+    
+    def _create_user_profile(self, username: str) -> Dict:
+        """
+        Crear perfil inicial para nuevo usuario
+        
+        Args:
+            username: Nombre del usuario
+        
+        Returns:
+            Dict con perfil inicial
+        """
+        return {
+            'username': username,
+            'created_at': datetime.now().isoformat(),
+            'role': 'primary' if not self.load_user_profiles() else 'collaborator',
+            'learning_style': 'balanced',
+            'stats': {
+                'total_sessions': 0,
+                'total_hours': 0.0,
+                'concepts_mastered': 0
+            }
+        }
+    
+    def _format_duration(self, duration: timedelta) -> str:
+        """Format duration as human-readable string"""
+        hours = int(duration.total_seconds() // 3600)
+        minutes = int((duration.total_seconds() % 3600) // 60)
+        return f"{hours}h {minutes}m"
+    
+    def _format_completed_work(self) -> str:
+        """Format completed work for session log"""
+        # TODO: Implement
+        return "- Work completed\n"
+    
+    def _format_insights(self) -> str:
+        """Format insights for session log"""
+        # TODO: Implement
+        return "- Key insights\n"
+    
+    def _format_artifacts(self) -> str:
+        """Format generated artifacts for session log"""
+        # TODO: Implement
+        return "- Generated artifacts\n"
+    
+    def _format_open_questions(self) -> str:
+        """Format open questions for session log"""
+        # TODO: Implement
+        return "- Open questions\n"
+    
+    def _format_handoff_notes(self) -> str:
+        """Format handoff notes for collaborators"""
+        # TODO: Implement
+        return "- Handoff notes\n"
+    
+    def _update_state_from_session(self, state: Dict, session_data: Dict) -> Dict:
+        """Update learning state based on session data"""
+        # TODO: Implement
+        return state
+    
+    def _generate_next_focus(self, state: Dict) -> str:
+        """Generate next recommended focus"""
+        # TODO: Implement
+        return "Continue current work"
+    
+    def _update_current_focus(self, user: str, status: str) -> None:
+        """Update current focus file"""
+        focus = {
+            'user': user,
+            'status': status,
+            'timestamp': datetime.now().isoformat()
+        }
+        
+        with open(self.current_focus_path, 'w', encoding='utf-8') as f:
+            json.dump(focus, f, indent=2)
+    
+    # ========================================================================
+    # SYNC & COLLABORATION
+    # ========================================================================
+    
+    def sync_state(self) -> Dict:
+        """
+        Sincronizar estado con repositorio
+        
+        Returns:
+            Dict con resultado de sincronización
+        """
+        # TODO: Implement
+        # - Check for conflicts
+        # - Merge changes
+        # - Report updates from collaborators
+        
+        return {
+            'conflicts': [],
+            'updates': []
+        }
+
+
+# ============================================================================
+# MAIN (para testing)
+# ============================================================================
+
+if __name__ == '__main__':
+    # Quick test
+    coordinator = SessionCoordinator()
+    
+    # Test start session
+    context = coordinator.start_session("rodrigo")
+    print("Session started:", context)
+    
+    # Test end session
+    report = coordinator.end_session("Initial test session")
+    print("Session ended:", report)
