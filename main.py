@@ -21,7 +21,7 @@ from agents.coordinator import SessionCoordinator
 
 # Import other agents as implemented
 from agents.derivation_engine import DerivationEngine
-# from agents.problem_solver import ProblemSolver
+from agents.problem_solver import ProblemSolver
 # from agents.concept_mapper import ConceptMapper
 # from agents.anki_factory import AnkiFactory
 # from agents.signal_simulator import SignalSimulator
@@ -282,19 +282,71 @@ def derive(formula: str, level: str, pdf: bool, anki: bool):
 
 @cli.command()
 @click.argument('problem_file', type=click.Path(exists=True))
-def solve(problem_file: str):
+@click.option('--pdf', is_flag=True, help='Generate PDF output')
+@click.option('--anki', is_flag=True, help='Generate Anki deck')
+def solve(problem_file: str, pdf: bool, anki: bool):
     """Resolver un ejercicio tipo examen"""
-    click.echo(f"\n📝 Solving: {problem_file}")
-    
-    # TODO: Implement ProblemSolver
-    click.echo("\n⚠️  ProblemSolver not yet implemented")
-    click.echo("This will:")
-    click.echo("  - Parse problem statement")
-    click.echo("  - Identify problem type")
-    click.echo("  - Solve step-by-step")
-    click.echo("  - Validate dimensions")
-    click.echo("  - Generate PDF solution")
-    click.echo("  - Create Anki cards")
+    click.echo(f"\n📝 Solving: {problem_file}\n")
+
+    try:
+        # Initialize solver
+        solver = ProblemSolver()
+
+        # Solve problem
+        solution = solver.solve_problem(Path(problem_file))
+
+        # Display solution
+        click.echo("=" * 70)
+        click.echo(f"📘 {solution['problem']['title']}")
+        click.echo("=" * 70)
+
+        # Show given data
+        click.echo("\n📊 Given Data:")
+        for var, data in solution['problem']['given'].items():
+            click.echo(f"   {var} = {data['original']} {data.get('unit', '')}")
+
+        # Show solution for each part
+        for part in solution['parts']:
+            click.echo("\n" + "=" * 70)
+            click.echo(f"📍 {part['question']}")
+            click.echo("=" * 70)
+
+            # Show steps
+            for step in part['steps']:
+                click.echo(f"\n   Step {step['number']}: {step['description']}")
+                click.echo(f"   Formula: {step['formula']}")
+                click.echo(f"   {step['calculation']}")
+
+            # Show answer
+            click.echo(f"\n   ✅ Answer: {part['answer']}")
+            if part.get('validation'):
+                click.echo(f"   ✓ {part['validation']}")
+
+        # Save solution
+        json_path = solver.save_solution(solution)
+        click.echo(f"\n💾 Solution saved: {json_path}")
+
+        # Generate PDF if requested
+        if pdf:
+            click.echo("\n📄 Generating PDF...")
+            pdf_path = solver.generate_pdf(solution)
+            click.echo(f"✓ PDF generated: {pdf_path}")
+
+        # Generate Anki deck if requested
+        if anki:
+            click.echo("\n🎴 Generating Anki deck...")
+            anki_path = solver.export_to_anki_deck(solution)
+            cards = solver.create_anki_cards(solution)
+            click.echo(f"✓ Anki deck created: {anki_path}")
+            click.echo(f"   Cards: {len(cards)}")
+
+        click.echo("\n💡 Tip: Use --pdf to generate PDF, --anki to create Anki cards")
+
+    except Exception as e:
+        click.echo(f"\n❌ Error solving problem: {e}", err=True)
+        import traceback
+        traceback.print_exc()
+        sys.exit(1)
 
 
 # ============================================================================
