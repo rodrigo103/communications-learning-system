@@ -1,0 +1,29 @@
+Ejercicio 3: Ruido [2.5 puntos]
+Examen Final - 24/04/2025
+
+Un amplificador de bajo ruido (LNA) tiene las siguientes especificaciones:
+
+Datos:
+- Ganancia: G = 50 dB
+- Ancho de banda: BW = 20 kHz
+- Potencia de ruido a la salida: P_n_out = 72×10^-12 W
+- Densidad espectral de potencia de ruido a la entrada: η_in = 12×10^-21 W/Hz
+- Temperatura de referencia: T_0 = 290 K
+
+Se pide:
+
+a) Calcular la figura de ruido F del amplificador (en dB y lineal).
+
+b) Calcular la temperatura de ruido equivalente T_e del amplificador.
+
+c) Si este amplificador se conecta en cascada con un segundo amplificador idéntico,
+   calcular la figura de ruido total del sistema F_total.
+
+d) Calcular la temperatura de ruido total del sistema en cascada T_total.
+
+e) ¿Cuál sería el SNR a la salida si la señal de entrada tiene una potencia de
+   S_in = 10^-15 W?
+
+Constantes:
+- k = 1.38×10^-23 J/K (Constante de Boltzmann)
+- T_0 = 290 K (Temperatura de referencia)

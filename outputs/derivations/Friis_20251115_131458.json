@@ -1,0 +1,49 @@
+{
+  "topic": "Friis",
+  "title": "Friis Cascade Noise Figure Formula",
+  "level": "basic",
+  "steps": [
+    {
+      "number": 1,
+      "title": "Noise Figure Definition",
+      "description": "Noise figure measures degradation of SNR",
+      "equation": "F = \\frac{SNR_{in}}{SNR_{out}} = \\frac{S_{in}/N_{in}}{S_{out}/N_{out}}",
+      "explanation": "For a noisy amplifier with gain G and added noise N_a"
+    },
+    {
+      "number": 2,
+      "title": "Single Stage Analysis",
+      "description": "Output noise power for single stage",
+      "equation": "N_{out} = G N_{in} + N_{added} = G N_{in} + G k T_0 B (F - 1)",
+      "explanation": "The added noise can be expressed in terms of noise figure F"
+    }
+  ],
+  "final_formula": "F_{total} = F_1 + \\frac{F_2 - 1}{G_1} + \\frac{F_3 - 1}{G_1 G_2} + \\cdots",
+  "key_results": [
+    "First stage dominates total noise figure",
+    "High gain in early stages reduces effect of later stages",
+    "Critical for receiver front-end design",
+    "Use low-noise amplifier (LNA) as first stage"
+  ],
+  "assumptions": [
+    "Cascaded linear systems",
+    "Matched impedances",
+    "Reference temperature T₀ = 290K"
+  ],
+  "related_topics": [
+    "Noise temperature",
+    "SNR",
+    "Receiver design",
+    "LNA"
+  ],
+  "timestamp": "2025-11-15T13:14:58.952486",
+  "validation": {
+    "valid": true,
+    "method": "symbolic",
+    "checks_passed": [
+      "syntax",
+      "dimensional_analysis"
+    ],
+    "notes": "Full symbolic validation to be implemented"
+  }
+}

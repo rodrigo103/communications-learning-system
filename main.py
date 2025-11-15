@@ -19,8 +19,8 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from agents.coordinator import SessionCoordinator
 
-# TODO: Import other agents as implemented
-# from agents.derivation_engine import DerivationEngine
+# Import other agents as implemented
+from agents.derivation_engine import DerivationEngine
 # from agents.problem_solver import ProblemSolver
 # from agents.concept_mapper import ConceptMapper
 # from agents.anki_factory import AnkiFactory
@@ -190,21 +190,90 @@ def sync():
 
 @cli.command()
 @click.argument('formula')
-@click.option('--level', '-l', type=click.Choice(['basic', 'complete', 'expert']), 
+@click.option('--level', '-l', type=click.Choice(['basic', 'complete', 'expert']),
               default='complete', help='Derivation detail level')
-def derive(formula: str, level: str):
+@click.option('--pdf', is_flag=True, help='Generate PDF output')
+@click.option('--anki', is_flag=True, help='Generate Anki deck')
+def derive(formula: str, level: str, pdf: bool, anki: bool):
     """Derivar una fórmula desde primeros principios"""
     click.echo(f"\n🧮 Deriving: {formula}")
-    click.echo(f"Detail level: {level}")
-    
-    # TODO: Implement DerivationEngine
-    click.echo("\n⚠️  DerivationEngine not yet implemented")
-    click.echo("This will generate a complete mathematical derivation with:")
-    click.echo("  - Step-by-step explanation")
-    click.echo("  - LaTeX formatting")
-    click.echo("  - SymPy validation")
-    click.echo("  - PDF output")
-    click.echo("  - Automatic Anki cards")
+    click.echo(f"Detail level: {level}\n")
+
+    try:
+        # Initialize engine
+        engine = DerivationEngine()
+
+        # Generate derivation
+        derivation = engine.derive_formula(formula, level=level)
+
+        # Display derivation
+        click.echo("=" * 70)
+        click.echo(f"📘 {derivation['title']}")
+        click.echo("=" * 70)
+
+        # Show steps
+        for step in derivation['steps']:
+            click.echo(f"\n📍 Step {step['number']}: {step['title']}")
+            click.echo(f"   {step['description']}")
+            if step.get('equation'):
+                click.echo(f"\n   {step['equation']}\n")
+            click.echo(f"   💡 {step['explanation']}")
+
+        # Final formula
+        click.echo("\n" + "=" * 70)
+        click.echo("📌 Final Result:")
+        click.echo(f"   {derivation.get('final_formula', 'N/A')}")
+        click.echo("=" * 70)
+
+        # Key results
+        if derivation.get('key_results'):
+            click.echo("\n✨ Key Results:")
+            for result in derivation['key_results']:
+                click.echo(f"   • {result}")
+
+        # Assumptions
+        if derivation.get('assumptions'):
+            click.echo("\n⚙️  Assumptions:")
+            for assumption in derivation['assumptions']:
+                click.echo(f"   • {assumption}")
+
+        # Related topics
+        if derivation.get('related_topics'):
+            click.echo("\n🔗 Related Topics:")
+            click.echo(f"   {', '.join(derivation['related_topics'])}")
+
+        # Save derivation
+        json_path = engine.save_derivation(derivation)
+        click.echo(f"\n💾 Derivation saved: {json_path}")
+
+        # Generate PDF if requested
+        if pdf:
+            click.echo("\n📄 Generating PDF...")
+            pdf_path = engine.generate_pdf(derivation)
+            click.echo(f"✓ PDF generated: {pdf_path}")
+
+        # Generate Anki deck if requested
+        if anki:
+            click.echo("\n🎴 Generating Anki deck...")
+            anki_path = engine.export_to_anki_deck(derivation)
+            click.echo(f"✓ Anki deck created: {anki_path}")
+            click.echo(f"   Cards: {len(engine.create_anki_cards(derivation))}")
+
+        # Validation
+        if derivation.get('validation'):
+            validation = derivation['validation']
+            if validation.get('valid'):
+                click.echo(f"\n✅ Validation: {validation.get('method', 'unknown')}")
+            else:
+                click.echo(f"\n⚠️  Validation failed: {validation.get('error', 'unknown')}")
+
+        click.echo("\n💡 Tip: Use --pdf to generate PDF, --anki to create Anki cards")
+
+    except Exception as e:
+        click.echo(f"\n❌ Error during derivation: {e}", err=True)
+        import traceback
+        traceback.print_exc()
+        sys.exit(1)
 
 
 # ============================================================================

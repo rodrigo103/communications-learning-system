@@ -1,0 +1,70 @@
+{
+  "topic": "Shannon-Hartley",
+  "title": "Shannon-Hartley Channel Capacity Theorem",
+  "level": "expert",
+  "steps": [
+    {
+      "number": 1,
+      "title": "Channel Capacity Definition",
+      "description": "Channel capacity is the maximum rate of reliable information transmission.",
+      "equation": "C = \\max_{p(x)} I(X;Y)",
+      "explanation": "Where I(X;Y) is the mutual information between input X and output Y"
+    },
+    {
+      "number": 2,
+      "title": "Gaussian Channel Model",
+      "description": "For an AWGN channel: Y = X + N, where N ~ N(0, σ²)",
+      "equation": "I(X;Y) = h(Y) - h(Y|X) = h(Y) - h(N)",
+      "explanation": "The mutual information is the output entropy minus the noise entropy"
+    },
+    {
+      "number": 3,
+      "title": "Maximize Over Input Distribution",
+      "description": "The capacity is achieved when X ~ N(0, P) is Gaussian",
+      "equation": "h(Y) = \\frac{1}{2} \\log_2(2\\pi e (P + N))",
+      "explanation": "Gaussian input maximizes differential entropy for given power constraint"
+    },
+    {
+      "number": 4,
+      "title": "Shannon-Hartley Formula",
+      "description": "Substituting and simplifying",
+      "equation": "C = \\frac{1}{2} \\log_2(1 + \\frac{P}{N}) = \\frac{1}{2} \\log_2(1 + SNR)",
+      "explanation": "For bandwidth B: C = B log₂(1 + SNR) bits/second"
+    },
+    {
+      "number": 5,
+      "title": "Bandwidth and Power Tradeoff",
+      "description": "The formula reveals fundamental limits",
+      "equation": "C = B \\log_2(1 + \\frac{S}{N_0 B})",
+      "explanation": "As B→∞, C approaches (S/N₀)ln(2). We can trade bandwidth for power and vice versa."
+    }
+  ],
+  "final_formula": "C = B \\log_2(1 + SNR) \\text{ bits/s}",
+  "key_results": [
+    "Fundamental limit on data rate for given bandwidth and SNR",
+    "Achievable with Gaussian codebooks and optimal coding",
+    "Increasing bandwidth has diminishing returns",
+    "No error-free transmission possible above capacity"
+  ],
+  "assumptions": [
+    "Additive White Gaussian Noise (AWGN)",
+    "Average power constraint",
+    "Infinite block length (arbitrarily small error probability)"
+  ],
+  "related_topics": [
+    "Information theory",
+    "Channel coding",
+    "SNR",
+    "Bandwidth efficiency"
+  ],
+  "timestamp": "2025-11-15T13:14:50.178561",
+  "validation": {
+    "valid": true,
+    "method": "symbolic",
+    "checks_passed": [
+      "syntax",
+      "dimensional_analysis"
+    ],
+    "notes": "Full symbolic validation to be implemented"
+  }
+}

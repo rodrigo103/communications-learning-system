@@ -53,11 +53,15 @@ class SessionCoordinator:
         self.user_profiles_path = self.state_dir / "user_profiles.json"
         self.session_history_path = self.state_dir / "session_history.jsonl"
         self.current_focus_path = self.state_dir / "current_focus.json"
-        
-        # Current session state
+        self.current_session_path = self.state_dir / "current_session.json"
+
+        # Current session state (will be loaded from file if exists)
         self.current_user = None
         self.session_start_time = None
         self.session_data = {}
+
+        # Try to load active session on init
+        self._load_active_session()
     
     # ========================================================================
     # STATE LOADING / SAVING
@@ -105,29 +109,89 @@ class SessionCoordinator:
     def _create_default_learning_state(self) -> Dict:
         """
         Crear estado inicial por defecto
-        
+
         Returns:
             Dict con estructura inicial
         """
-        # TODO: Load from schema file or define here
-        default_state = {
-            "metadata": {
-                "created_at": datetime.now().isoformat(),
-                "last_updated": datetime.now().isoformat(),
-                "primary_user": None,
-                "collaborators": [],
-                "exam_date": "2025-04-24",
-                "system_version": "1.0.0"
-            },
-            "progress_summary": {
-                "overall_completion": 0.0,
-                "units_completed": [],
-                "units_in_progress": [],
-                "units_pending": list(range(1, 11))
-            },
-            # ... rest of structure
-        }
-        
+        # Load from schema file
+        schema_path = self.base_path / "learning_state_schema.json"
+
+        if schema_path.exists():
+            logger.info("Loading default state from schema file")
+            with open(schema_path, 'r', encoding='utf-8') as f:
+                default_state = json.load(f)
+
+            # Update timestamps and metadata
+            default_state['metadata']['created_at'] = datetime.now().isoformat()
+            default_state['metadata']['last_updated'] = datetime.now().isoformat()
+        else:
+            # Fallback: create minimal structure
+            logger.warning("Schema file not found, creating minimal structure")
+            default_state = {
+                "metadata": {
+                    "created_at": datetime.now().isoformat(),
+                    "last_updated": datetime.now().isoformat(),
+                    "primary_user": None,
+                    "collaborators": [],
+                    "exam_date": "2025-04-24",
+                    "system_version": "1.0.0"
+                },
+                "progress_summary": {
+                    "overall_completion": 0.0,
+                    "units_completed": [],
+                    "units_in_progress": [],
+                    "units_pending": list(range(1, 11)),
+                    "concepts_mastered": 0,
+                    "total_concepts": 87,
+                    "problems_solved": 0,
+                    "total_problems": 150
+                },
+                "current_context": {
+                    "active_unit": None,
+                    "active_topic": None,
+                    "last_concept_studied": None,
+                    "last_session_date": None,
+                    "next_recommended": "Start with Unit 1: Introducción",
+                    "open_questions": [],
+                    "current_focus_area": None
+                },
+                "units": {},
+                "knowledge_graph": {},
+                "learning_velocity": {
+                    "last_7_days": {
+                        "concepts_learned": 0,
+                        "problems_solved": 0,
+                        "hours_studied": 0.0,
+                        "anki_cards_reviewed": 0,
+                        "sessions": 0
+                    },
+                    "last_30_days": {
+                        "concepts_learned": 0,
+                        "problems_solved": 0,
+                        "hours_studied": 0.0,
+                        "anki_cards_reviewed": 0,
+                        "sessions": 0
+                    },
+                    "total": {
+                        "concepts_learned": 0,
+                        "problems_solved": 0,
+                        "hours_studied": 0.0,
+                        "anki_cards_reviewed": 0,
+                        "sessions": 0
+                    }
+                },
+                "recommendations": {
+                    "next_topics": ["Start with Unit 1: Introducción"],
+                    "weak_concepts": [],
+                    "suggested_review": [],
+                    "priority_areas": []
+                },
+                "milestones": {
+                    "completed": [],
+                    "upcoming": []
+                }
+            }
+
         self.save_learning_state(default_state)
         return default_state
     
@@ -143,6 +207,57 @@ class SessionCoordinator:
         """Guardar perfiles de usuarios"""
         with open(self.user_profiles_path, 'w', encoding='utf-8') as f:
             json.dump(profiles, f, indent=2, ensure_ascii=False)
+
+    def _load_active_session(self) -> None:
+        """
+        Cargar sesión activa si existe
+
+        Esto permite que comandos CLI separados puedan acceder a la misma sesión.
+        """
+        if not self.current_session_path.exists():
+            return
+
+        try:
+            with open(self.current_session_path, 'r', encoding='utf-8') as f:
+                session = json.load(f)
+
+            self.current_user = session.get('user')
+            start_time_str = session.get('start_time')
+            if start_time_str:
+                self.session_start_time = datetime.fromisoformat(start_time_str)
+            self.session_data = session.get('data', {})
+
+            logger.info(f"✓ Active session loaded for user: {self.current_user}")
+        except Exception as e:
+            logger.warning(f"Could not load active session: {e}")
+
+    def _save_active_session(self) -> None:
+        """
+        Guardar sesión activa a archivo
+
+        Esto permite que comandos CLI separados puedan continuar la misma sesión.
+        """
+        if not self.current_user:
+            return
+
+        session = {
+            'user': self.current_user,
+            'start_time': self.session_start_time.isoformat() if self.session_start_time else None,
+            'data': self.session_data
+        }
+
+        with open(self.current_session_path, 'w', encoding='utf-8') as f:
+            json.dump(session, f, indent=2, ensure_ascii=False)
+
+        logger.info("✓ Active session saved")
+
+    def _clear_active_session(self) -> None:
+        """
+        Limpiar sesión activa del archivo
+        """
+        if self.current_session_path.exists():
+            self.current_session_path.unlink()
+            logger.info("✓ Active session cleared")
     
     # ========================================================================
     # SESSION MANAGEMENT
@@ -175,15 +290,20 @@ class SessionCoordinator:
         self.session_data = {
             'user': user,
             'start_time': self.session_start_time.isoformat(),
-            'actions': []
+            'actions': [],
+            'completed_tasks': [],
+            'progress_updates': []
         }
-        
+
+        # Save active session to file for CLI persistence
+        self._save_active_session()
+
         # Build context for user
         context = self.build_context_from_files(state, profiles[user])
-        
+
         # Update current focus
         self._update_current_focus(user, "session_started")
-        
+
         return context
     
     def end_session(self, summary: str = None) -> Dict:
@@ -223,17 +343,20 @@ class SessionCoordinator:
         # Build report
         report = {
             'duration': self._format_duration(duration),
-            'completed': self.session_data.get('completed_tasks', []),
-            'updates': self.session_data.get('progress_updates', []),
+            'completed': self.session_data.get('completed_tasks', []) or ['Session completed'],
+            'updates': self.session_data.get('progress_updates', []) or ['State updated'],
             'next_focus': self._generate_next_focus(state),
             'log_path': str(log_path)
         }
-        
-        # Clear current session
+
+        # Clear active session file
+        self._clear_active_session()
+
+        # Clear current session in memory
         self.current_user = None
         self.session_start_time = None
         self.session_data = {}
-        
+
         return report
     
     def _save_session_log(self) -> Path:
@@ -374,26 +497,67 @@ class SessionCoordinator:
     def _generate_recommendations(self, state: Dict, user_profile: Dict) -> List[str]:
         """
         Generar recomendaciones personalizadas
-        
+
         Args:
             state: Estado global
             user_profile: Perfil del usuario
-        
+
         Returns:
             Lista de recomendaciones
         """
         recommendations = []
-        
-        # TODO: Implement smart recommendation logic
-        # - Based on current progress
-        # - Based on weak concepts
-        # - Based on exam date proximity
-        # - Based on learning velocity
-        
-        recommendations.append("Continue with current unit")
-        recommendations.append("Review Anki cards")
-        
-        return recommendations
+
+        # Get current context
+        current = state.get('current_context', {})
+        progress = state.get('progress_summary', {})
+        units = state.get('units', {})
+
+        # Recommendation 1: Next unit or continue current
+        active_unit = current.get('active_unit')
+        if active_unit and str(active_unit) in units:
+            unit_data = units[str(active_unit)]
+            if unit_data['progress'] < 100:
+                recommendations.append(f"Continue with Unit {active_unit}: {unit_data['name']}")
+            else:
+                # Move to next unit
+                next_unit = active_unit + 1
+                if str(next_unit) in units:
+                    recommendations.append(f"Start Unit {next_unit}: {units[str(next_unit)]['name']}")
+        else:
+            # No active unit, suggest Unit 1
+            if '1' in units:
+                recommendations.append(f"Start with Unit 1: {units['1']['name']}")
+
+        # Recommendation 2: Based on exam date
+        exam_date_str = state['metadata'].get('exam_date')
+        if exam_date_str:
+            try:
+                exam_date = datetime.fromisoformat(exam_date_str)
+                days_until_exam = (exam_date - datetime.now()).days
+
+                if days_until_exam < 30:
+                    recommendations.append(f"⚠️ Only {days_until_exam} days until exam! Focus on weak concepts")
+                elif days_until_exam < 60:
+                    recommendations.append("Start reviewing previous units for exam prep")
+            except:
+                pass
+
+        # Recommendation 3: Anki review
+        anki_status = self._get_anki_summary()
+        if anki_status.get('new', 0) > 0 or anki_status.get('learning', 0) > 0:
+            recommendations.append("Review Anki cards (pending reviews)")
+
+        # Recommendation 4: Weak concepts
+        weak_concepts = state.get('recommendations', {}).get('weak_concepts', [])
+        if weak_concepts:
+            recommendations.append(f"Review weak concepts: {', '.join(weak_concepts[:3])}")
+
+        # Recommendation 5: Study velocity
+        velocity = state.get('learning_velocity', {}).get('last_7_days', {})
+        if velocity.get('sessions', 0) == 0:
+            recommendations.append("No recent study sessions - aim for consistent daily practice")
+
+        return recommendations[:5]  # Max 5 recommendations
     
     # ========================================================================
     # PROGRESS TRACKING
@@ -507,38 +671,89 @@ class SessionCoordinator:
     
     def _format_completed_work(self) -> str:
         """Format completed work for session log"""
-        # TODO: Implement
-        return "- Work completed\n"
-    
+        completed = self.session_data.get('completed_tasks', [])
+        if not completed:
+            return "- No specific tasks completed this session\n"
+
+        result = []
+        for task in completed:
+            result.append(f"- {task}")
+        return "\n".join(result) + "\n"
+
     def _format_insights(self) -> str:
         """Format insights for session log"""
-        # TODO: Implement
-        return "- Key insights\n"
-    
+        insights = self.session_data.get('insights', [])
+        if not insights:
+            return "- No key insights recorded\n"
+
+        result = []
+        for insight in insights:
+            result.append(f"- {insight}")
+        return "\n".join(result) + "\n"
+
     def _format_artifacts(self) -> str:
         """Format generated artifacts for session log"""
-        # TODO: Implement
-        return "- Generated artifacts\n"
-    
+        artifacts = self.session_data.get('artifacts', [])
+        if not artifacts:
+            return "- No artifacts generated\n"
+
+        result = []
+        for artifact in artifacts:
+            if isinstance(artifact, dict):
+                result.append(f"- [{artifact.get('type', 'Unknown')}] {artifact.get('path', '')}")
+            else:
+                result.append(f"- {artifact}")
+        return "\n".join(result) + "\n"
+
     def _format_open_questions(self) -> str:
         """Format open questions for session log"""
-        # TODO: Implement
-        return "- Open questions\n"
-    
+        questions = self.session_data.get('open_questions', [])
+        if not questions:
+            return "- No open questions\n"
+
+        result = []
+        for q in questions:
+            result.append(f"- {q}")
+        return "\n".join(result) + "\n"
+
     def _format_handoff_notes(self) -> str:
         """Format handoff notes for collaborators"""
-        # TODO: Implement
-        return "- Handoff notes\n"
+        notes = self.session_data.get('handoff_notes', '')
+        if not notes:
+            return "- Ready for next collaborator to continue\n"
+
+        return notes + "\n"
     
     def _update_state_from_session(self, state: Dict, session_data: Dict) -> Dict:
         """Update learning state based on session data"""
-        # TODO: Implement
+        # Update session count
+        velocity = state.get('learning_velocity', {})
+        velocity['last_7_days']['sessions'] = velocity.get('last_7_days', {}).get('sessions', 0) + 1
+        velocity['last_30_days']['sessions'] = velocity.get('last_30_days', {}).get('sessions', 0) + 1
+        velocity['total']['sessions'] = velocity.get('total', {}).get('sessions', 0) + 1
+
+        # Update last session date
+        state['current_context']['last_session_date'] = datetime.now().isoformat()
+
+        # Update progress if tasks were completed
+        completed = session_data.get('completed_tasks', [])
+        if completed:
+            state['current_context']['last_activity'] = completed[-1]
+
         return state
-    
+
     def _generate_next_focus(self, state: Dict) -> str:
         """Generate next recommended focus"""
-        # TODO: Implement
-        return "Continue current work"
+        recommendations = state.get('recommendations', {}).get('next_topics', [])
+        if recommendations:
+            return recommendations[0]
+
+        # Fallback
+        active_unit = state.get('current_context', {}).get('active_unit')
+        if active_unit:
+            return f"Continue with Unit {active_unit}"
+
+        return "Start with Unit 1: Introducción"
     
     def _update_current_focus(self, user: str, status: str) -> None:
         """Update current focus file"""

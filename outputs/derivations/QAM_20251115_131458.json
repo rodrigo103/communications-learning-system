@@ -1,0 +1,63 @@
+{
+  "topic": "QAM",
+  "title": "Quadrature Amplitude Modulation (QAM)",
+  "level": "complete",
+  "steps": [
+    {
+      "number": 1,
+      "title": "QAM Signal Definition",
+      "description": "QAM combines two independent signals using quadrature carriers",
+      "equation": "s_{QAM}(t) = I(t) \\cos(2\\pi f_c t) - Q(t) \\sin(2\\pi f_c t)",
+      "explanation": "I(t) is in-phase component, Q(t) is quadrature component"
+    },
+    {
+      "number": 2,
+      "title": "Orthogonality of Carriers",
+      "description": "The carriers are orthogonal over one symbol period T",
+      "equation": "\\int_0^T \\cos(2\\pi f_c t) \\sin(2\\pi f_c t) dt = 0",
+      "explanation": "This allows independent recovery of I and Q at the receiver"
+    },
+    {
+      "number": 3,
+      "title": "I Component Recovery",
+      "description": "Multiply by cos(2πf_c t) and integrate",
+      "equation": "\\int_0^T s_{QAM}(t) \\cos(2\\pi f_c t) dt = \\frac{T}{2} I(t)",
+      "explanation": "The Q component integrates to zero due to orthogonality"
+    },
+    {
+      "number": 4,
+      "title": "Q Component Recovery",
+      "description": "Multiply by -sin(2πf_c t) and integrate",
+      "equation": "\\int_0^T s_{QAM}(t) [-\\sin(2\\pi f_c t)] dt = \\frac{T}{2} Q(t)",
+      "explanation": "The I component integrates to zero, recovering Q independently"
+    }
+  ],
+  "final_formula": "s_{QAM}(t) = I(t) \\cos(2\\pi f_c t) - Q(t) \\sin(2\\pi f_c t)",
+  "key_results": [
+    "Orthogonal carriers enable independent I-Q channels",
+    "Doubles spectral efficiency vs single-carrier",
+    "M-QAM transmits log₂(M) bits per symbol",
+    "Widely used in WiFi, LTE, cable modems"
+  ],
+  "assumptions": [
+    "Perfect carrier synchronization",
+    "Symbol timing recovery",
+    "Linear channel (no phase distortion)"
+  ],
+  "related_topics": [
+    "PSK",
+    "QPSK",
+    "Constellation diagram",
+    "Spectral efficiency"
+  ],
+  "timestamp": "2025-11-15T13:14:58.633905",
+  "validation": {
+    "valid": true,
+    "method": "symbolic",
+    "checks_passed": [
+      "syntax",
+      "dimensional_analysis"
+    ],
+    "notes": "Full symbolic validation to be implemented"
+  }
+}

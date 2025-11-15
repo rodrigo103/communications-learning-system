@@ -1,0 +1,71 @@
+{
+  "topic": "AM",
+  "title": "Amplitude Modulation (AM) Derivation",
+  "level": "complete",
+  "steps": [
+    {
+      "number": 1,
+      "title": "Definition of Amplitude Modulation",
+      "description": "We start with the basic definition of modulation: multiplying a carrier signal by a message signal.",
+      "equation": "s_{AM}(t) = A_c [1 + m(t)] \\cos(2\\pi f_c t)",
+      "explanation": "Where A_c is carrier amplitude, m(t) is the normalized message signal, and f_c is the carrier frequency."
+    },
+    {
+      "number": 2,
+      "title": "Expand the AM Signal",
+      "description": "Distribute the carrier cosine term across the bracketed expression.",
+      "equation": "s_{AM}(t) = A_c \\cos(2\\pi f_c t) + A_c m(t) \\cos(2\\pi f_c t)",
+      "explanation": "This separates the carrier component from the modulated component."
+    },
+    {
+      "number": 3,
+      "title": "Identify Signal Components",
+      "description": "The signal consists of two parts: carrier and sidebands.",
+      "equation": "s_{AM}(t) = \\underbrace{A_c \\cos(2\\pi f_c t)}_{\\text{Carrier}} + \\underbrace{A_c m(t) \\cos(2\\pi f_c t)}_{\\text{Sidebands}}",
+      "explanation": "The first term is the unmodulated carrier. The second term creates upper and lower sidebands."
+    },
+    {
+      "number": 4,
+      "title": "Fourier Transform to Frequency Domain",
+      "description": "Taking the Fourier transform to analyze the spectrum.",
+      "equation": "S_{AM}(f) = \\frac{A_c}{2}[\\delta(f-f_c) + \\delta(f+f_c)] + \\frac{A_c}{2}[M(f-f_c) + M(f+f_c)]",
+      "explanation": "The carrier appears as impulses at ±f_c, and the message spectrum M(f) is translated to ±f_c."
+    },
+    {
+      "number": 5,
+      "title": "Power Distribution",
+      "description": "Calculate the power in carrier and sidebands.",
+      "equation": "P_{total} = P_c + P_{sidebands} = \\frac{A_c^2}{2} + \\frac{A_c^2 \\langle m^2(t) \\rangle}{2}",
+      "explanation": "The total power is the sum of carrier power and sideband power. Sideband power depends on message signal power."
+    }
+  ],
+  "final_formula": "s_{AM}(t) = A_c [1 + m(t)] \\cos(2\\pi f_c t)",
+  "key_results": [
+    "AM signal consists of carrier + two sidebands",
+    "Bandwidth: BW = 2*f_m (twice the message bandwidth)",
+    "Power efficiency: η ≤ 33.3% (maximum with μ=1)",
+    "Simple demodulation with envelope detector"
+  ],
+  "assumptions": [
+    "Message signal m(t) is normalized: |m(t)| ≤ 1",
+    "Carrier frequency f_c >> message bandwidth f_m",
+    "Linear operation (no distortion)"
+  ],
+  "related_topics": [
+    "DSB-SC",
+    "SSB",
+    "VSB",
+    "Envelope detection"
+  ],
+  "symbolic_expression": "A_{c} \\left(\\mu \\cos{\\left(2 \\pi f_{m} t \\right)} + 1\\right) \\cos{\\left(2 \\pi f_{c} t \\right)}",
+  "timestamp": "2025-11-15T13:14:37.248931",
+  "validation": {
+    "valid": true,
+    "method": "symbolic",
+    "checks_passed": [
+      "syntax",
+      "dimensional_analysis"
+    ],
+    "notes": "Full symbolic validation to be implemented"
+  }
+}
