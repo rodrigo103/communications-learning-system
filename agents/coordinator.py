@@ -535,12 +535,14 @@ class SessionCoordinator:
                 exam_date = datetime.fromisoformat(exam_date_str)
                 days_until_exam = (exam_date - datetime.now()).days
 
-                if days_until_exam < 30:
+                if days_until_exam < 0:
+                    recommendations.append("⚠️ Exam date has passed - update in settings")
+                elif days_until_exam < 30:
                     recommendations.append(f"⚠️ Only {days_until_exam} days until exam! Focus on weak concepts")
                 elif days_until_exam < 60:
                     recommendations.append("Start reviewing previous units for exam prep")
-            except:
-                pass
+            except (ValueError, TypeError) as e:
+                logger.warning(f"Could not parse exam date '{exam_date_str}': {e}")
 
         # Recommendation 3: Anki review
         anki_status = self._get_anki_summary()

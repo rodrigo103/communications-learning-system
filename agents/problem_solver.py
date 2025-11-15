@@ -38,6 +38,34 @@ class ProblemSolver:
     PDFs y tarjetas Anki automáticamente.
     """
 
+    # Unit conversion dictionary
+    UNIT_CONVERSIONS = {
+        # Frequency
+        'kHz': ('Hz', 1e3),
+        'MHz': ('Hz', 1e6),
+        'GHz': ('Hz', 1e9),
+        # Power
+        'mW': ('W', 1e-3),
+        'μW': ('W', 1e-6),
+        'uW': ('W', 1e-6),  # Alternative spelling
+        'nW': ('W', 1e-9),
+        'pW': ('W', 1e-12),
+        'dBm': ('W', None),  # Special case: 10^((P_dBm - 30)/10)
+        # Time
+        'ms': ('s', 1e-3),
+        'μs': ('s', 1e-6),
+        'us': ('s', 1e-6),  # Alternative spelling
+        'ns': ('s', 1e-9),
+        'ps': ('s', 1e-12),
+        # Distance
+        'km': ('m', 1e3),
+        'cm': ('m', 1e-2),
+        'mm': ('m', 1e-3),
+        'μm': ('m', 1e-6),
+        'um': ('m', 1e-6),  # Alternative spelling
+        'nm': ('m', 1e-9),
+    }
+
     def __init__(self, base_path: Path = None):
         """
         Inicializar ProblemSolver
@@ -221,24 +249,24 @@ class ProblemSolver:
                     value = float(match[1])
                     unit = match[2].strip() if len(match) > 2 and match[2] else ''
 
-                    # Handle units that imply conversion (kHz, MHz, etc)
-                    if unit == 'kHz':
-                        value = value * 1000
-                        unit = 'Hz'
-                    elif unit == 'MHz':
-                        value = value * 1e6
-                        unit = 'Hz'
-                    elif unit == 'GHz':
-                        value = value * 1e9
-                        unit = 'Hz'
+                    # Apply unit conversions if applicable
+                    if unit in self.UNIT_CONVERSIONS:
+                        base_unit, multiplier = self.UNIT_CONVERSIONS[unit]
+                        if multiplier is not None:
+                            value = value * multiplier
+                            unit = base_unit
+                        elif unit == 'dBm':
+                            # Special case: dBm to Watts
+                            value = 10 ** ((value - 30) / 10)
+                            unit = 'W'
 
                     variables[var_name] = {
                         'value': value,
                         'unit': unit,
                         'original': match[1]
                     }
-                except:
-                    pass
+                except (ValueError, TypeError) as e:
+                    logger.debug(f"Could not parse variable {var_name}: {e}")
 
         return variables
 

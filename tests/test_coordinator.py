@@ -58,7 +58,7 @@ def test_create_default_learning_state(coordinator):
     assert 'learning_velocity' in state
 
     # Check metadata
-    assert state['metadata']['exam_date'] == "2025-04-24"
+    assert state['metadata']['exam_date'] == "2025-12-15"
     assert state['metadata']['system_version'] == "1.0.0"
 
     # Check units (should have 10 units)
