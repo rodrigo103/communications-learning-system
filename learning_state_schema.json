@@ -1,0 +1,188 @@
+{
+  "_comment": "Estado global del aprendizaje - Fuente de verdad del sistema",
+  "_version": "1.0",
+  
+  "metadata": {
+    "created_at": "2025-11-15T00:00:00Z",
+    "last_updated": "2025-11-15T00:00:00Z",
+    "primary_user": "rodrigo",
+    "collaborators": [],
+    "exam_date": "2025-04-24",
+    "days_remaining": 160,
+    "system_version": "1.0.0"
+  },
+  
+  "progress_summary": {
+    "overall_completion": 0.0,
+    "units_completed": [],
+    "units_in_progress": [],
+    "units_pending": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    "concepts_mastered": 0,
+    "total_concepts": 87,
+    "problems_solved": 0,
+    "total_problems": 150
+  },
+  
+  "current_context": {
+    "active_unit": null,
+    "active_topic": null,
+    "last_concept_studied": null,
+    "last_session_date": null,
+    "next_recommended": "Start with Unit 1: Introducción",
+    "open_questions": [],
+    "current_focus_area": null
+  },
+  
+  "units": {
+    "1": {
+      "name": "Introducción",
+      "status": "pending",
+      "progress": 0.0,
+      "concepts": ["espectro", "organismos_normalizacion"],
+      "concepts_mastered": 0,
+      "last_studied": null
+    },
+    "2": {
+      "name": "Análisis de Señales",
+      "status": "pending",
+      "progress": 0.0,
+      "concepts": ["fourier_series", "fourier_transform", "spectral_density", "parseval", "convolution", "hilbert_transform"],
+      "concepts_mastered": 0,
+      "last_studied": null
+    },
+    "3": {
+      "name": "Modulación Lineal",
+      "status": "pending",
+      "progress": 0.0,
+      "concepts": ["am", "dsb", "ssb", "vsb", "modulators", "detectors"],
+      "concepts_mastered": 0,
+      "last_studied": null
+    },
+    "4": {
+      "name": "Modulación Exponencial",
+      "status": "pending",
+      "progress": 0.0,
+      "concepts": ["fm", "pm", "bessel_functions", "carson_rule", "stereo_fm"],
+      "concepts_mastered": 0,
+      "last_studied": null
+    },
+    "5": {
+      "name": "Modulación de Pulsos",
+      "status": "pending",
+      "progress": 0.0,
+      "concepts": ["sampling_theorem", "pam", "pwm", "ppm", "pcm", "quantization", "delta_modulation"],
+      "concepts_mastered": 0,
+      "last_studied": null
+    },
+    "6": {
+      "name": "Modulación Digital",
+      "status": "pending",
+      "progress": 0.0,
+      "concepts": ["ask", "fsk", "psk", "qam", "constellation", "ber", "probability_error"],
+      "concepts_mastered": 0,
+      "last_studied": null
+    },
+    "7": {
+      "name": "Ruido",
+      "status": "pending",
+      "progress": 0.0,
+      "concepts": ["noise_figure", "noise_temperature", "friis_formula", "snr", "cascaded_systems", "white_noise"],
+      "concepts_mastered": 0,
+      "last_studied": null
+    },
+    "8": {
+      "name": "Intercomparación de Sistemas",
+      "status": "pending",
+      "progress": 0.0,
+      "concepts": ["snr_baseband", "snr_am", "snr_fm", "threshold_effect", "emphasis"],
+      "concepts_mastered": 0,
+      "last_studied": null
+    },
+    "9": {
+      "name": "Teoría de la Información",
+      "status": "pending",
+      "progress": 0.0,
+      "concepts": ["entropy", "channel_capacity", "shannon_hartley", "coding", "redundancy"],
+      "concepts_mastered": 0,
+      "last_studied": null
+    },
+    "10": {
+      "name": "Temas Avanzados",
+      "status": "pending",
+      "progress": 0.0,
+      "concepts": ["spread_spectrum", "cdma", "ofdm", "orthogonality"],
+      "concepts_mastered": 0,
+      "last_studied": null
+    }
+  },
+  
+  "knowledge_graph": {
+    "_comment": "Cada concepto tiene: status, confidence, dependencies, etc.",
+    "_example": {
+      "concept_id": {
+        "status": "new|learning|mastered",
+        "confidence": 0.0,
+        "last_reviewed": null,
+        "times_reviewed": 0,
+        "dependencies_met": false,
+        "related_concepts": [],
+        "anki_cards": [],
+        "problems_solved": []
+      }
+    }
+  },
+  
+  "learning_velocity": {
+    "last_7_days": {
+      "concepts_learned": 0,
+      "problems_solved": 0,
+      "hours_studied": 0.0,
+      "anki_cards_reviewed": 0,
+      "sessions": 0
+    },
+    "last_30_days": {
+      "concepts_learned": 0,
+      "problems_solved": 0,
+      "hours_studied": 0.0,
+      "anki_cards_reviewed": 0,
+      "sessions": 0
+    },
+    "total": {
+      "concepts_learned": 0,
+      "problems_solved": 0,
+      "hours_studied": 0.0,
+      "anki_cards_reviewed": 0,
+      "sessions": 0
+    }
+  },
+  
+  "recommendations": {
+    "next_topics": [
+      "Start with Unit 1: Introducción to get familiar with course structure"
+    ],
+    "weak_concepts": [],
+    "suggested_review": [],
+    "priority_areas": []
+  },
+  
+  "milestones": {
+    "completed": [],
+    "upcoming": [
+      {
+        "name": "Complete Unit 1",
+        "target_date": null,
+        "progress": 0.0
+      },
+      {
+        "name": "Master Fourier Analysis",
+        "target_date": null,
+        "progress": 0.0
+      },
+      {
+        "name": "50% Overall Progress",
+        "target_date": null,
+        "progress": 0.0
+      }
+    ]
+  }
+}
