@@ -3,11 +3,11 @@
   "_version": "1.0",
   "metadata": {
     "created_at": "2025-11-15T13:04:34.575257",
-    "last_updated": "2025-11-15T13:20:46.933048",
+    "last_updated": "2025-11-15T13:50:04.325717",
     "primary_user": "rodrigo",
     "collaborators": [],
-    "exam_date": "2025-04-24",
-    "days_remaining": 160,
+    "exam_date": "2025-12-15",
+    "days_remaining": 30,
     "system_version": "1.0.0"
   },
   "progress_summary": {
@@ -35,7 +35,7 @@
     "active_unit": null,
     "active_topic": null,
     "last_concept_studied": null,
-    "last_session_date": "2025-11-15T13:20:46.933045",
+    "last_session_date": "2025-11-15T13:50:04.325714",
     "next_recommended": "Start with Unit 1: Introducción",
     "open_questions": [],
     "current_focus_area": null
@@ -206,21 +206,21 @@
       "problems_solved": 0,
       "hours_studied": 0.0,
       "anki_cards_reviewed": 0,
-      "sessions": 1
+      "sessions": 2
     },
     "last_30_days": {
       "concepts_learned": 0,
       "problems_solved": 0,
       "hours_studied": 0.0,
       "anki_cards_reviewed": 0,
-      "sessions": 1
+      "sessions": 2
     },
     "total": {
       "concepts_learned": 0,
       "problems_solved": 0,
       "hours_studied": 0.0,
       "anki_cards_reviewed": 0,
-      "sessions": 1
+      "sessions": 2
     }
   },
   "recommendations": {
