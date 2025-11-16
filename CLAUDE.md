@@ -84,10 +84,6 @@ To optimize token usage and improve coordination between sub agents, this system
 - Use for: Visualizing hierarchical information, concept relationships, study organization
 - Outputs: Mind maps in `outputs/mindmaps/` + summary in `.doc/claude/reports/mindmap_summaries/`
 
-**comms-formula-deriver** - Advanced formula derivations with deep theoretical insight
-- Use for: Complex derivations requiring rigorous mathematical treatment
-- Outputs: Full derivations in `outputs/derivations/` + summary in `.doc/claude/reports/derivation_summaries/`
-
 ### Token Optimization Strategy
 
 By using file-based context:

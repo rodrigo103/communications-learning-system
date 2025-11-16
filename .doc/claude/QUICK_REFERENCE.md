@@ -106,7 +106,7 @@ Please read the full [work] for details.
 
 ### Summary Report Template
 
-**For derivations (formula-deriver, comms-formula-deriver):**
+**For derivations (formula-deriver):**
 ```markdown
 # [Advanced] Derivation Summary: [Topic]
 
@@ -199,7 +199,7 @@ Please read the full [work] for details.
 ```
 1. Read/update current_session_context.md
 2. Add: "Working on [topic] theory"
-3. Invoke formula-deriver or comms-formula-deriver
+3. Invoke formula-deriver
 4. Wait for completion message
 5. Read summary from .doc/claude/reports/derivation_summaries/
 6. Update context: "Completed [topic] derivation"

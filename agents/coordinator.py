@@ -3,10 +3,12 @@ Session Coordinator - Simplified for Subagent-First Architecture
 
 This module handles ONLY state management and session tracking.
 All actual work (derivations, problem solving, progress analysis) is done by Claude Code subagents:
-- formula-deriver / comms-formula-deriver: For derivations
+- formula-deriver: For derivations
 - exercise-solver: For problem solving
 - progress-analyzer: For progress analysis
 - study-session-manager: For session orchestration
+- anki-explainer: For flashcard explanations
+- mindmap-generator: For visual concept maps
 
 Responsabilidades:
 - Gestionar inicio/fin de sesiones

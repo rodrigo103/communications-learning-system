@@ -147,8 +147,9 @@ Each agent file in `.claude/agents/` now has "Context Management" section:
 - formula-deriver.md
 - exercise-solver.md
 - progress-analyzer.md
-- comms-formula-deriver.md
 - study-session-manager.md
+- anki-explainer.md
+- mindmap-generator.md
 
 ## 🧪 Testing
 

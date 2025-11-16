@@ -42,6 +42,7 @@ An AI-powered learning system using **Claude Code subagents** to help you:
 | ✅ **exercise-solver** | 🟢 Green | Solve exam-style problems | Opus |
 | 📊 **progress-analyzer** | 🟡 Amber | Progress tracking & recommendations | Sonnet |
 | 🎯 **study-session-manager** | 🟠 Orange | Session coordination | Sonnet |
+| 📚 **anki-explainer** | 🔵 Blue | Detailed explanations for flashcards | Sonnet |
 | 🗺️ **mindmap-generator** | 🔵 Cyan | Visual mind maps for concept organization | Sonnet |
 
 **Key Feature**: Subagents adapt automatically - no need to choose complexity level!
@@ -64,6 +65,10 @@ Simply ask Claude naturally:
 "Check my progress"
 → Invokes progress-analyzer subagent
 → Generates progress report
+
+"Can you explain my Anki flashcards on FM modulation?"
+→ Invokes anki-explainer subagent
+→ Generates detailed explanations
 
 "Can you create a mind map of Unit 7 concepts?"
 → Invokes mindmap-generator subagent
@@ -237,6 +242,7 @@ When you see colored indicators in outputs:
 - ✅ 🟢 Green = Problem solved
 - 📊 🟡 Amber = Progress data
 - 🎯 🟠 Orange = Session info
+- 📚 🔵 Blue = Flashcard explanation
 - 🗺️ 🔵 Cyan = Mind map visualization
 
 See `.claude/SUBAGENT_REFERENCE.md` for complete color guide.

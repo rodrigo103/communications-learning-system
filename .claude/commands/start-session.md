@@ -131,7 +131,7 @@ Would you like to:
 ## Integration with Subagents
 
 After starting a session:
-- Use **formula-deriver** or **comms-formula-deriver** for derivations
+- Use **formula-deriver** for derivations
 - Use **exercise-solver** for problem solving
 - Use **progress-analyzer** for progress checks
 - Session activities are tracked automatically

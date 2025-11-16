@@ -78,11 +78,6 @@ All sub agents now have **Context Management** sections that instruct them to:
 - Saves full report AND brief summary
 - Returns quick status with file locations
 
-**comms-formula-deriver**:
-- Reads context to adjust mathematical rigor appropriately
-- Creates advanced derivation summary with mathematical techniques
-- Returns brief message (critical for this agent - derivations are very long!)
-
 **study-session-manager**:
 - Creates session context file at start
 - Archives session context at end
@@ -208,8 +203,9 @@ User: "Derive AM formula"
 - ✅ `.claude/agents/formula-deriver.md` - Added context management
 - ✅ `.claude/agents/exercise-solver.md` - Added context management
 - ✅ `.claude/agents/progress-analyzer.md` - Added context management
-- ✅ `.claude/agents/comms-formula-deriver.md` - Added context management
 - ✅ `.claude/agents/study-session-manager.md` - Enhanced with context file management
+- ✅ `.claude/agents/anki-explainer.md` - Added context management
+- ✅ `.claude/agents/mindmap-generator.md` - Added context management
 
 ### Backward Compatibility:
 - All agents still work without context files (they check if file exists)
