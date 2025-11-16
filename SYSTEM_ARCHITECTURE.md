@@ -83,35 +83,39 @@ This learning system uses a **subagent-first architecture** where Claude Code su
 
 ### 1. Claude Code Subagents
 
-Located in `.claude/agents/`, these are markdown files that define specialized AI agents:
+Located in `.claude/agents/`, these are markdown files that define specialized AI agents. Each has a unique color/emoji for visual identification:
 
-#### **formula-deriver.md**
+#### 📘 **formula-deriver** (🔵 Blue)
 - Model: Sonnet (fast, cost-effective)
 - Purpose: Basic formula derivations
 - Output: Markdown files with step-by-step derivations
 - Example: `outputs/derivations/AM_derivation.md`
 
-#### **comms-formula-deriver.md**
+#### 🎓 **comms-formula-deriver** (🟣 Purple)
 - Model: Opus (advanced, thorough)
 - Purpose: Complex communications systems derivations
 - Output: Rigorous mathematical treatments
 - Example: `outputs/derivations/parsevals_theorem_comprehensive.md`
 
-#### **exercise-solver.md**
+#### ✅ **exercise-solver** (🟢 Green)
 - Model: Opus (problem-solving focus)
 - Purpose: Solve exam-style problems
 - Output: Complete solutions with validation
 - Example: `outputs/solutions/noise_problem_20251115.md`
 
-#### **progress-analyzer.md**
+#### 📊 **progress-analyzer** (🟡 Amber)
 - Model: Sonnet (analytical)
 - Purpose: Analyze learning progress and identify weak areas
 - Output: Progress reports and recommendations
 
-#### **study-session-manager.md**
+#### 🎯 **study-session-manager** (🟠 Orange)
 - Model: Sonnet (orchestration)
 - Purpose: Manage study sessions, load context, generate handoffs
 - Output: Session state updates
+
+**Color Legend**: 📘🔵 Basic | 🎓🟣 Advanced | ✅🟢 Solving | 📊🟡 Analysis | 🎯🟠 Coordination
+
+See `.claude/SUBAGENT_REFERENCE.md` for detailed color scheme documentation.
 
 ### 2. File-Based State System
 

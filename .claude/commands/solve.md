@@ -8,7 +8,7 @@ Invokes the **exercise-solver subagent** to solve a communications systems probl
 
 ## Subagent Used
 
-- **exercise-solver** (Opus): Expert problem solver for communications systems exercises
+- ✅ **exercise-solver** (Opus, 🟢 Green): Expert problem solver for communications systems exercises
 
 ## Your Task
 

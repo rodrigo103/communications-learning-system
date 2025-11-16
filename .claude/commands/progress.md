@@ -8,7 +8,7 @@ Invokes the **progress-analyzer subagent** to analyze learning progress and prov
 
 ## Subagent Used
 
-- **progress-analyzer** (Sonnet): Expert in analyzing learning progress, identifying weak areas, and providing study recommendations
+- 📊 **progress-analyzer** (Sonnet, 🟡 Amber): Expert in analyzing learning progress, identifying weak areas, and providing study recommendations
 
 ## Your Task
 

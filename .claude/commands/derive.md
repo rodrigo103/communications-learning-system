@@ -8,8 +8,8 @@ Invokes the appropriate formula derivation subagent to derive the requested form
 
 ## Subagents Used
 
-- **formula-deriver** (Sonnet): For basic/standard derivations
-- **comms-formula-deriver** (Opus): For complex communications systems derivations
+- 📘 **formula-deriver** (Sonnet, 🔵 Blue): For basic/standard derivations
+- 🎓 **comms-formula-deriver** (Opus, 🟣 Purple): For complex communications systems derivations
 
 ## Your Task
 
