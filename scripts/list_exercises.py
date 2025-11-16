@@ -8,17 +8,18 @@ Shows all exercise files in the docs/ directory
 from pathlib import Path
 
 def main():
-    docs_dir = Path(__file__).parent.parent / "docs"
+    exercises_dir = Path(__file__).parent.parent / "exercises"
 
     # Find all .txt files that look like exercises
     exercises = []
-    for file in docs_dir.glob("**/*.txt"):
-        # Skip non-exercise files
-        if 'ejercicio' in file.name.lower() or 'exercise' in file.name.lower():
-            exercises.append(file)
+    if exercises_dir.exists():
+        for file in exercises_dir.glob("**/*.txt"):
+            # Skip non-exercise files
+            if 'ejercicio' in file.name.lower() or 'exercise' in file.name.lower():
+                exercises.append(file)
 
     if not exercises:
-        print("\n❌ No exercises found in docs/")
+        print("\n❌ No exercises found in exercises/")
         print("💡 Create exercise files with problems to solve\n")
         return
 
@@ -43,7 +44,7 @@ def main():
     print("="*60)
     print("💡 To solve an exercise:")
     print("   /solve [filename]")
-    print("\n   Example: /solve docs/ejercicio_ruido.txt")
+    print("\n   Example: /solve exercises/ejercicio_ruido.txt")
     print("="*60 + "\n")
 
 if __name__ == "__main__":

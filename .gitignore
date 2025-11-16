@@ -44,25 +44,16 @@ htmlcov/
 .ipynb_checkpoints/
 *.ipynb
 
-# Anki (archivos grandes que no deben versionarse)
-outputs/anki/*.apkg
-outputs/anki/media/
-
 # PDFs generados (pueden regenerarse)
 outputs/derivations/*.pdf
 outputs/solutions/*.pdf
 
-# Simulaciones grandes
-outputs/simulations/*.mp4
-outputs/simulations/*.gif
-
-# Logs (opcional, algunos proyectos sí los versionan)
+# Logs
 *.log
 
 # Configuración local (API keys, etc.)
 .env
 .env.local
-config/local_*.yaml
 
 # Archivos temporales
 *.tmp
