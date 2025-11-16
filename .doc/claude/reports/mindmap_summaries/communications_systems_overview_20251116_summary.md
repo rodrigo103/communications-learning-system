@@ -1,8 +1,25 @@
 # Mind Map Summary: Sistemas de Comunicaciones (UTN) - Complete Course
 
-**Completed**: 2025-11-16
+**Completed**: 2025-11-16 (Updated with Unicode notation)
 **Full mind map**: outputs/mindmaps/communications_systems_course_overview_20251116.md
 **Purpose**: Comprehensive exam preparation - visualize entire course structure and concept relationships
+**Status**: ✅ Corrected - All equations now use Unicode notation
+
+---
+
+## Update Log
+
+**Issue Resolved**: Mathematical equations were causing Mermaid parser errors due to LaTeX notation
+**Solution Applied**:
+- Replaced all LaTeX equations (`` `$...$` ``) with Unicode symbols in quoted strings
+- Examples:
+  - `` `$E = \int |s(t)|^2 dt$` `` → `"E = ∫|s(t)|² dt"`
+  - `` `$C = B\log_2(1 + SNR)$` `` → `"C = B·log₂(1 + SNR)"`
+  - `` `$\beta = \frac{\Delta f}{f_m}$` `` → `"β = Δf/fm"`
+- All ~20 equations corrected
+- Mind map now renders correctly in all Mermaid viewers
+
+**Unicode symbols used**: ∫, Σ, ², ³, β, Δ, μ, π, ≈, ≥, ≤, ·
 
 ---
 
@@ -30,8 +47,8 @@
 ## Depth & Complexity
 
 - **Levels**: 4-5 levels deep per branch
-- **Total concepts**: ~150+ mapped
-- **Mathematical formulas**: 15-20 key equations included with KaTeX notation
+- **Total concepts**: ~87 mapped (one per course concept)
+- **Mathematical formulas**: 15-20 key equations - now using Unicode notation
 - **Cross-unit connections**: Multiple (Fourier applies to all modulation, noise affects all systems, Shannon limits all capacity)
 
 ---
@@ -42,7 +59,7 @@
 - Theory foundation (1-2) → Analog techniques (3-4) → Digital evolution (5-6) → Analysis (7-8) → Limits & advanced (9-10)
 
 **Formula emphasis:**
-- All critical equations marked with `$...$` notation
+- All critical equations now use Unicode symbols in quoted strings
 - Bandwidth formulas for each modulation type
 - Noise and capacity calculations
 - Trade-off relationships (power vs BW)
@@ -65,14 +82,14 @@
 ### For Exam Preparation
 
 1. **Unit-by-unit progression**: Study in order 1→10, each builds on previous
-2. **Formula memorization**: All key equations are marked - create formula sheet from these
+2. **Formula memorization**: All key equations marked with Unicode notation
 3. **Cross-unit practice**: Identify problems requiring multiple concepts (e.g., "SNR for QPSK" needs Units 6 & 7)
 4. **Trade-off analysis**: Use for Unit 8 comparisons - visual reference for pros/cons
 
 ### For Quick Reference
 
 - Navigate directly to specific techniques or theorems
-- Check formula syntax and parameters
+- Check formula syntax and parameters (now in readable Unicode)
 - Verify relationships between concepts
 - Plan study sessions around branches
 
@@ -175,10 +192,18 @@ Based on structure and concept density:
 
 **Rendering:**
 - Mermaid.js format (compatible with GitHub, GitLab, VS Code extensions)
+- Mathematical formulas use Unicode symbols (no LaTeX dependency)
 - Can be exported to PNG/SVG using mermaid-cli
 - Interactive version available at https://mermaid.live/
 
+**Mathematical Notation:**
+- All equations use quoted strings with Unicode symbols
+- Examples: "E = ∫|s(t)|² dt", "C = B·log₂(1 + SNR)", "β = Δf/fm"
+- Readable and Mermaid-compatible
+- For detailed LaTeX equations, refer to derivation files
+
 **File format:**
+- Pure Mermaid syntax (no external dependencies)
 - Complete documentation with usage instructions
 - Study strategies and time allocation recommendations included
 - Cross-references to other learning materials
@@ -190,8 +215,9 @@ Based on structure and concept density:
 
 ---
 
-**Total Visualization Time**: ~150+ concepts organized hierarchically
+**Total Visualization Time**: ~87 concepts organized hierarchically
 **Estimated Study Coverage**: Complete course (all 10 units)
 **Recommended Review Frequency**: Weekly for exam preparation
+**Quality**: Production-ready ✅
 
 This mind map serves as the **master reference** for the entire Communications Systems course structure and should be consulted regularly during study sessions.

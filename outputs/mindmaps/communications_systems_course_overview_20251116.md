@@ -28,7 +28,7 @@
 - **Depth**: 4-5 levels - Balances comprehensiveness with readability
 - **Breadth**: 10 main branches (course units) with sub-branches for topics
 - **Special features**:
-  - Mathematical formulas using KaTeX notation
+  - Mathematical formulas using Unicode notation in quoted strings
   - Hierarchical organization showing topic progression
   - Grouped by modulation families and analysis techniques
   - Cross-unit relationships indicated through logical grouping
@@ -80,7 +80,7 @@ mindmap
       Análisis Espectral
         Densidad Espectral de Potencia
         Teorema de Parseval
-          `$E = \int |s(t)|^2 dt = \int |S(f)|^2 df$`
+          ("E = ∫|s(t)|² dt = ∫|S(f)|² df")
         Ancho de Banda
           3 dB BW
           Nulo a Nulo
@@ -92,12 +92,13 @@ mindmap
     Unidad 3: Modulación Lineal
       AM: Amplitude Modulation
         AM Estándar
-          `$s(t) = A_c[1 + m(t)]cos(2\pi f_c t)$`
+          ("s(t) = Ac[1 + m(t)]·cos(2πfct)")
           Índice de Modulación m
           Eficiencia de Potencia
         Espectro AM
           Portadora + 2 Bandas Laterales
-          Ancho de Banda `$BW = 2f_m$`
+          Ancho de Banda
+            ("BW = 2fm")
         Ventajas/Desventajas
           Simple de Implementar
           Baja Eficiencia Espectral
@@ -109,7 +110,8 @@ mindmap
       SSB: Single Sideband
         Transmisión de 1 Banda
         Filtro de Hilbert
-        Ancho de Banda `$BW = f_m$`
+        Ancho de Banda
+          ("BW = fm")
         Máxima Eficiencia Espectral
       VSB: Vestigial Sideband
         Compromiso SSB-DSB
@@ -123,20 +125,22 @@ mindmap
     Unidad 4: Modulación Exponencial
       FM: Frequency Modulation
         Desviación de Frecuencia
-          `$\Delta f = k_f m(t)$`
+          ("Δf = kf·m(t)")
         Índice de Modulación
-          `$\beta = \frac{\Delta f}{f_m}$`
+          ("β = Δf/fm")
         Banda Estrecha vs Banda Ancha
-          NBFM: `$\beta < 0.5$`
-          WBFM: `$\beta > 1$`
+          NBFM
+            ("β < 0.5")
+          WBFM
+            ("β > 1")
         Regla de Carson
-          `$BW \approx 2(\Delta f + f_m)$`
+          ("BW ≈ 2(Δf + fm)")
         Espectro FM
           Múltiples Bandas Laterales
           Funciones de Bessel
       PM: Phase Modulation
         Desviación de Fase
-          `$\Delta\phi = k_p m(t)$`
+          ("Δφ = kp·m(t)")
         Relación FM-PM
         Aplicaciones Digitales
       Pre-énfasis y De-énfasis
@@ -150,7 +154,7 @@ mindmap
     Unidad 5: Modulación de Pulsos
       Teorema de Muestreo
         Nyquist-Shannon
-          `$f_s \geq 2f_{max}$`
+          ("fs ≥ 2fmax")
         Aliasing
         Filtro Anti-Aliasing
         Reconstrucción con sinc
@@ -171,9 +175,10 @@ mindmap
           Binaria Natural
           Gray Code
         Tasa de Bits
-          `$R_b = n \cdot f_s$` bits/s
+          ("Rb = n·fs")
+          Unidades: bits/s
         SQNR: Signal-to-Quantization-Noise Ratio
-          `$SQNR \approx 6n + 1.76$` dB
+          ("SQNR ≈ 6n + 1.76 dB")
       DPCM y Delta Modulation
         Codificación Diferencial
         Predicción de Muestras
@@ -182,9 +187,10 @@ mindmap
       Conceptos Básicos
         Símbolos vs Bits
         Tasa de Símbolos vs Tasa de Bits
-          `$R_b = R_s \cdot \log_2(M)$`
+          ("Rb = Rs·log₂(M)")
         Eficiencia Espectral
-          `$\eta = \frac{R_b}{BW}$` bits/s/Hz
+          ("η = Rb/BW")
+          Unidades: bits/s/Hz
         Constelaciones de Señales
       ASK: Amplitude Shift Keying
         OOK: On-Off Keying
@@ -220,33 +226,35 @@ mindmap
     Unidad 7: Ruido en Sistemas
       Fuentes de Ruido
         Ruido Térmico
-          `$P_n = kTB$` (Boltzmann)
-          k = 1.38×10⁻²³ J/K
+          ("Pn = kTB")
+          Boltzmann
+          ("k = 1.38×10⁻²³ J/K")
         Ruido Shot
         Ruido Flicker: 1/f
         Ruido de Intermodulación
       Temperatura de Ruido
-        Temperatura Equivalente `$T_e$`
+        Temperatura Equivalente
+          ("Te")
         Temperatura del Sistema
       Figura de Ruido (NF)
         Definición
-          `$NF = \frac{SNR_{in}}{SNR_{out}}$` (ratio)
-          `$NF_{dB} = 10\log_{10}(NF)$`
+          ("F = SNRin/SNRout")
+          ("NF(dB) = 10·log₁₀(F)")
         Factor de Ruido F
         Medición de Degradación
       Fórmula de Friis
         Cascada de Etapas
-          `$F_{total} = F_1 + \frac{F_2-1}{G_1} + \frac{F_3-1}{G_1G_2} + ...$`
+          ("Ftotal = F1 + (F2-1)/G1 + (F3-1)/(G1·G2) + ...")
         Primera Etapa Crítica
         LNA: Low Noise Amplifier
       Relación Señal a Ruido (SNR)
-        `$SNR = \frac{P_{signal}}{P_{noise}}$`
+        ("SNR = Psignal/Pnoise")
         SNR en dB
         Impacto en BER
       Eb/N0: Energy per Bit to Noise
         Métrica Fundamental Digital
         Relación con BER
-        `$\frac{E_b}{N_0} = \frac{SNR \cdot BW}{R_b}$`
+        ("Eb/N0 = (SNR·BW)/Rb")
 
     Unidad 8: Intercomparación de Sistemas
       Criterios de Comparación
@@ -277,12 +285,14 @@ mindmap
     Unidad 9: Teoría de la Información
       Conceptos Fundamentales
         Información y Entropía
-          `$H(X) = -\sum p_i \log_2(p_i)$` bits
+          ("H(X) = -Σ pi·log₂(pi)")
+          Unidades: bits
         Información Mutua
         Capacidad de Canal
       Teorema de Shannon-Hartley
         Capacidad con Ruido
-          `$C = B\log_2(1 + SNR)$` bits/s
+          ("C = B·log₂(1 + SNR)")
+          Unidades: bits/s
         Límite Teórico
         Implicaciones Prácticas
       Codificación de Fuente
@@ -361,7 +371,7 @@ mindmap
 - **Friis Formula** (Unit 7) critically important for cascaded system design
 
 **Formula mastery:**
-- All key formulas are marked with `$...$` notation
+- All key formulas use Unicode notation in quoted strings
 - Memorize relationships: BW formulas, SNR calculations, capacity limits
 - Understand derivations from first principles
 
@@ -489,7 +499,7 @@ This mind map complements:
 ## Concept Density Analysis
 
 **Total concepts mapped**: ~150+
-**Critical formulas**: 15-20 (marked with `$...$`)
+**Critical formulas**: 15-20 (using Unicode notation)
 **Cross-unit connections**: Multiple (Fourier → all modulation, Noise → all systems, Shannon → capacity limits)
 
 **High-priority areas** (exam focus):
