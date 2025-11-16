@@ -33,11 +33,10 @@ This learning system uses a **subagent-first architecture** where Claude Code su
 ┌─────────────────────────────────────────────────────────────┐
 │                    Claude Code Subagents                    │
 ├─────────────────────────────────────────────────────────────┤
-│  • formula-deriver         - Basic derivations              │
-│  • comms-formula-deriver   - Advanced communications        │
-│  • exercise-solver         - Problem solving                │
-│  • progress-analyzer       - Progress analysis              │
-│  • study-session-manager   - Session orchestration          │
+│  🎓 formula-deriver        - Adaptive derivations (all)     │
+│  ✅ exercise-solver        - Problem solving                │
+│  📊 progress-analyzer      - Progress analysis              │
+│  🎯 study-session-manager  - Session orchestration          │
 └─────────────────────────────────────────────────────────────┘
                             ↓
 ┌─────────────────────────────────────────────────────────────┐
@@ -85,17 +84,12 @@ This learning system uses a **subagent-first architecture** where Claude Code su
 
 Located in `.claude/agents/`, these are markdown files that define specialized AI agents. Each has a unique color/emoji for visual identification:
 
-#### 📘 **formula-deriver** (🔵 Blue)
-- Model: Sonnet (fast, cost-effective)
-- Purpose: Basic formula derivations
-- Output: Markdown files with step-by-step derivations
-- Example: `outputs/derivations/AM_derivation.md`
-
-#### 🎓 **comms-formula-deriver** (🟣 Purple)
-- Model: Opus (advanced, thorough)
-- Purpose: Complex communications systems derivations
-- Output: Rigorous mathematical treatments
-- Example: `outputs/derivations/parsevals_theorem_comprehensive.md`
+#### 🎓 **formula-deriver** (🟣 Purple)
+- Model: Opus (most capable)
+- Purpose: **Adaptive formula derivations** - handles everything from basic to advanced
+- Key Feature: Automatically adjusts pedagogical level based on topic and context
+- Output: Comprehensive derivations with appropriate rigor
+- Example: `outputs/derivations/AM_spectrum.md` (pedagogical) or `shannon_hartley_rigorous.md` (advanced proof)
 
 #### ✅ **exercise-solver** (🟢 Green)
 - Model: Opus (problem-solving focus)
@@ -113,9 +107,9 @@ Located in `.claude/agents/`, these are markdown files that define specialized A
 - Purpose: Manage study sessions, load context, generate handoffs
 - Output: Session state updates
 
-**Color Legend**: 📘🔵 Basic | 🎓🟣 Advanced | ✅🟢 Solving | 📊🟡 Analysis | 🎯🟠 Coordination
+**Color Legend**: 🎓🟣 Derivations (adaptive) | ✅🟢 Solving | 📊🟡 Analysis | 🎯🟠 Coordination
 
-See `.claude/SUBAGENT_REFERENCE.md` for detailed color scheme documentation.
+**Note**: Previously had separate basic/advanced derivation subagents - now merged into one intelligent Purple subagent that adapts automatically. See `.claude/SUBAGENT_REFERENCE.md` for details.
 
 ### 2. File-Based State System
 

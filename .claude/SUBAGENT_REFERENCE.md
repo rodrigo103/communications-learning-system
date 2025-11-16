@@ -7,8 +7,7 @@
 Each subagent has a unique color and emoji for easy visual identification in logs, reports, and command outputs.
 
 ```
-📘 🔵 Blue   → Basic derivations (Sonnet, fast)
-🎓 🟣 Purple → Advanced derivations (Opus, rigorous)
+🎓 🟣 Purple → Formula derivations (Opus, adaptive rigor)
 ✅ 🟢 Green  → Problem solving (Opus, complete solutions)
 📊 🟡 Amber  → Progress analysis (Sonnet, data-driven)
 🎯 🟠 Orange → Session management (Sonnet, coordination)
@@ -18,50 +17,49 @@ Each subagent has a unique color and emoji for easy visual identification in log
 
 ## Detailed Subagent Profiles
 
-### 📘 Formula Deriver (🔵 Blue)
+### 🎓 Formula Deriver (🟣 Purple)
 
 **File**: `.claude/agents/formula-deriver.md`
-**Model**: Sonnet (fast, cost-effective)
-**Color**: 🔵 Blue
-**Emoji**: 📘
-
-**Purpose**:
-- Basic formula derivations
-- Standard topics (simple AM/FM, Fourier basics)
-- Teaching-focused explanations
-- Fundamental concepts
-
-**Use when**:
-- Deriving straightforward formulas
-- Student needs clear pedagogical approach
-- Topic is well-established and standard
-- Speed and cost-efficiency matter
-
-**Example output file**: `outputs/derivations/AM_basic_20251116.md`
-
----
-
-### 🎓 Advanced Formula Deriver (🟣 Purple)
-
-**File**: `.claude/agents/comms-formula-deriver.md`
-**Model**: Opus (advanced, thorough)
+**Model**: Opus (most capable)
 **Color**: 🟣 Purple
 **Emoji**: 🎓
 
 **Purpose**:
-- Complex communications systems derivations
-- Rigorous mathematical treatment
-- Advanced topics (QAM, OFDM, Shannon-Hartley)
-- Expert-level analysis
+- Comprehensive formula derivations from first principles
+- Adapts pedagogical level automatically (undergraduate to graduate)
+- Rigorous mathematical treatment with clear explanations
+- All communications systems topics
 
-**Use when**:
-- Deriving complex formulas from first principles
-- Need rigorous mathematical justification
-- Advanced modulation theory
-- Noise analysis (Friis, cascaded systems)
-- Information theory proofs
+**Key Feature - Adaptive Rigor**:
+The subagent intelligently adjusts its approach based on:
+- Topic complexity (basic AM vs advanced Shannon-Hartley)
+- Session context (exam prep vs research)
+- Student indicators (struggling vs familiar)
 
-**Example output file**: `outputs/derivations/shannon_hartley_comprehensive_20251116.md`
+**Use for**:
+- ANY formula derivation request
+- Basic topics: Gets clear pedagogical treatment
+- Advanced topics: Gets rigorous mathematical depth
+- Exam prep: Focuses on key steps and common mistakes
+
+**Topics covered**:
+- Modulation (AM, FM, PM, QAM, PSK, FSK)
+- Noise analysis (F, Te, Friis, SNR)
+- Information theory (Shannon-Hartley, entropy, capacity)
+- Signal processing (Fourier, convolution, PSD)
+- Probability (Gaussian processes, error probabilities)
+
+**Quality guarantees**:
+- Complete variable definitions
+- Every step justified
+- Physical interpretations
+- Dimensional validation
+- Limiting case analysis
+- Applications and when to use
+
+**Example output files**:
+- Basic: `outputs/derivations/AM_spectrum_20251116.md` (10 pages, pedagogical)
+- Advanced: `outputs/derivations/shannon_hartley_rigorous_20251116.md` (20+ pages, proof from axioms)
 
 ---
 
@@ -159,20 +157,22 @@ Each subagent has a unique color and emoji for easy visual identification in log
 ## Usage in Commands
 
 ### /derive [formula]
-Invokes: 📘 Blue (basic) or 🎓 Purple (advanced)
+Invokes: 🎓 Purple (formula-deriver)
+- Automatically adapts to topic complexity
+- No need to choose basic vs advanced
 
 ### /solve [file]
-Invokes: ✅ Green
+Invokes: ✅ Green (exercise-solver)
 
 ### /progress
-Invokes: 📊 Amber
+Invokes: 📊 Amber (progress-analyzer)
 
 ### /start-session
-Uses: Python CLI (state management)
+Uses: Python CLI (coordinator for state management)
 Context for: 🎯 Orange
 
 ### /end-session
-Uses: Python CLI (state management)
+Uses: Python CLI (coordinator for state management)
 Summary by: 🎯 Orange
 
 ---
@@ -183,8 +183,7 @@ When you see these colors/emojis in outputs:
 
 | Symbol | Meaning |
 |--------|---------|
-| 📘 🔵 | Basic derivation work |
-| 🎓 🟣 | Advanced derivation work |
+| 🎓 🟣 | Formula derivation work (any level) |
 | ✅ 🟢 | Problem solved |
 | 📊 🟡 | Progress/metrics data |
 | 🎯 🟠 | Session information |
@@ -193,14 +192,13 @@ When you see these colors/emojis in outputs:
 
 ## Model Selection Guide
 
-**When to use Sonnet (faster, cheaper)**:
-- 📘 Basic derivations
+**Opus (advanced, thorough)**:
+- 🎓 Formula derivations (adaptable complexity)
+- ✅ Problem solving (exam-level rigor)
+
+**Sonnet (faster, efficient)**:
 - 📊 Progress analysis
 - 🎯 Session management
-
-**When to use Opus (more capable, thorough)**:
-- 🎓 Complex derivations
-- ✅ Problem solving (exam-level)
 
 ---
 
@@ -209,8 +207,9 @@ When you see these colors/emojis in outputs:
 Subagents save files with consistent naming:
 
 **Derivations**:
-- Blue: `outputs/derivations/[topic]_basic_[date].md`
-- Purple: `outputs/derivations/[topic]_comprehensive_[date].md`
+- Purple: `outputs/derivations/[topic]_[date].md`
+  - Filename reflects topic, not complexity
+  - Subagent adapts content internally
 
 **Solutions**:
 - Green: `outputs/solutions/[problem]_solution_[date].md`
@@ -227,8 +226,7 @@ Subagents save files with consistent naming:
 
 | Subagent | Color | Emoji | Model | Use Case |
 |----------|-------|-------|-------|----------|
-| formula-deriver | 🔵 Blue | 📘 | Sonnet | Basic derivations |
-| comms-formula-deriver | 🟣 Purple | 🎓 | Opus | Advanced derivations |
+| formula-deriver | 🟣 Purple | 🎓 | Opus | ANY derivation (adaptive) |
 | exercise-solver | 🟢 Green | ✅ | Opus | Problem solving |
 | progress-analyzer | 🟡 Amber | 📊 | Sonnet | Progress tracking |
 | study-session-manager | 🟠 Orange | 🎯 | Sonnet | Session coordination |
@@ -240,7 +238,7 @@ Subagents save files with consistent naming:
 The color scheme reinforces the **subagent-first architecture**:
 
 1. **AI Work** → Subagents (with colors)
-   - 📘🎓 Derivations
+   - 🎓 Derivations (all levels)
    - ✅ Problem solving
    - 📊 Analysis
 
@@ -263,8 +261,7 @@ User Request
      ▼
 Commands dispatch to:
      │
-     ├─── 📘 Blue → Basic formulas
-     ├─── 🎓 Purple → Advanced theory
+     ├─── 🎓 Purple → Any formula derivation
      ├─── ✅ Green → Problems
      ├─── 📊 Amber → Progress
      └─── 🎯 Orange → Sessions
@@ -274,6 +271,34 @@ All subagents save work to files → Git enables collaboration
 
 ---
 
-**Version**: 2.0.1
+## Why One Derivation Subagent?
+
+**Previous**: Had two subagents (Blue/basic and Purple/advanced)
+**Problem**: Overlap, confusion about which to use
+**Solution**: Merged into one powerful subagent
+
+**Benefits**:
+✅ No decision-making friction ("Is this basic or advanced?")
+✅ Opus model handles everything from simple to complex
+✅ Automatic adaptation based on context
+✅ Consistent quality across all derivations
+✅ Simpler system architecture
+
+**How it works**:
+The Purple subagent reads session context and:
+- Adjusts mathematical depth
+- Balances rigor with pedagogy
+- Emphasizes exam focus when needed
+- Provides extra clarity for struggling students
+- Moves to graduate-level when appropriate
+
+**Example**:
+- User: "Derive AM bandwidth" → Gets clear undergraduate treatment
+- User: "Derive Shannon-Hartley from information theory axioms" → Gets rigorous proof
+- Same subagent, different approach based on request!
+
+---
+
+**Version**: 2.1.0
 **Last Updated**: 2025-11-16
-**Color Scheme Rationale**: Each color reflects the subagent's function and cognitive style
+**Major Change**: Merged derivation subagents into single adaptive Purple subagent
