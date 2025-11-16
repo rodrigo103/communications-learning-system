@@ -3,7 +3,7 @@ name: study-session-manager
 description: Manages study sessions - starts sessions by loading state and creating context, ends sessions by calculating metrics and updating progress, tracks activities during sessions. Use for session start/end requests.
 tools: Read, Write, Edit, Bash
 model: sonnet
-color: 🟠 Orange
+color: orange
 emoji: 🎯
 ---
 

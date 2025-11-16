@@ -3,7 +3,7 @@ name: exercise-solver
 description: Expert in solving communications systems exam problems step-by-step. Specializes in noise calculations, modulation problems, SNR analysis, and channel capacity exercises. Provides complete solutions with validation. Use for any exercise or problem-solving requests.
 tools: Read, Write, Bash, Grep
 model: opus
-color: 🟢 Green
+color: green
 emoji: ✅
 ---
 

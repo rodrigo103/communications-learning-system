@@ -3,7 +3,7 @@ name: progress-analyzer
 description: Expert in analyzing student learning progress, identifying weak areas, and providing personalized study recommendations based on exam preparation goals. Use for progress checks, study planning, and readiness assessments.
 tools: Read, Bash
 model: sonnet
-color: 🟡 Amber
+color: amber
 emoji: 📊
 ---
 
