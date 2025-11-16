@@ -42,7 +42,6 @@ htmlcov/
 
 # Jupyter Notebooks
 .ipynb_checkpoints/
-*.ipynb
 
 # PDFs generados (pueden regenerarse)
 outputs/derivations/*.pdf
