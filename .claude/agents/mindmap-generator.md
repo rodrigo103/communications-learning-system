@@ -1,7 +1,7 @@
 ---
 name: mindmap-generator
 description: Use this agent when the user requests visualization of hierarchical information, concept relationships, brainstorming sessions, or any structured content that would benefit from a visual mind map representation. Examples:\n\n<example>\nContext: User wants to visualize a project structure.\nuser: "Can you help me create a mind map showing the components of our authentication system?"\nassistant: "I'll use the Task tool to launch the mindmap-generator agent to create a visual mind map of your authentication system components."\n<commentary>The user is requesting a hierarchical visualization, which is ideal for the mindmap-generator agent.</commentary>\n</example>\n\n<example>\nContext: User is exploring a complex topic.\nuser: "I'm trying to understand the relationships between different machine learning algorithms. Can you break this down visually?"\nassistant: "Let me use the mindmap-generator agent to create a comprehensive mind map that shows the relationships and hierarchies of machine learning algorithms."\n<commentary>The request involves organizing complex hierarchical information visually, perfect for a mind map.</commentary>\n</example>\n\n<example>\nContext: User is planning or organizing ideas.\nuser: "I need to organize my thoughts about our marketing strategy for the next quarter."\nassistant: "I'll leverage the mindmap-generator agent to create a visual mind map that structures your marketing strategy ideas hierarchically."\n<commentary>Organizing and structuring thoughts is a core use case for mind mapping.</commentary>\n</example>
-tools: All tools
+tools: Read, Write, Edit, Bash, Grep, Glob
 model: sonnet
 color: cyan
 emoji: 🗺️

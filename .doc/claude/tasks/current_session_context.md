@@ -1,7 +1,7 @@
 # Current Session Context
 
 ## Session Goal
-Create a comprehensive mind map visualizing all topics and important concepts covered in the Communications Systems course (UTN).
+Fix Mermaid parsing error in the communications systems course mind map - equations are not rendering correctly.
 
 ## Source Materials
 - **ProgramaSistemasDeComunicaciones.md**: Official course syllabus with 10 units
@@ -28,15 +28,33 @@ Create a comprehensive mind map visualizing all topics and important concepts co
 - Evolution from analog to digital
 - Theoretical foundations (Fourier, Shannon) connecting multiple units
 
-## Output Requirements
-- Create visual mind map showing hierarchical structure
-- Group related concepts across units
-- Highlight fundamental theorems and formulas
-- Show progression from basic to advanced topics
-- Include key applications and examples
+## Current Issue
+Mind map was created but has Mermaid parsing error:
+```
+MermaidDetailedError: Parse error on line 35:
+...    `$E = \int |s(t)|^2 dt = \int |S(f)|
+-----------------------^
+Expecting 'SPACELINE', 'NL', 'EOF', got 'NODE_ID'
+```
 
-## Exam Preparation Focus
-- Course is for UTN (Universidad Tecnológica Nacional)
-- Emphasis on both theoretical understanding and practical applications
-- Target exam date: 2025-12-15
-- Need to visualize relationships for better retention
+**Problem**: Mathematical formulas with backticks and LaTeX notation are causing parsing errors in Mermaid mindmap syntax.
+
+**File location**: outputs/mindmaps/communications_systems_course_overview_20251116.md
+
+**Lines with equations** (from grep search):
+- Line 83: Parseval theorem equation
+- Line 95: AM signal equation
+- Line 100, 112: Bandwidth formulas
+- Line 126-139: FM/PM equations
+- Line 153-176: Sampling and PCM equations
+- Line 185-187: Digital modulation formulas
+- Line 223-239: Noise formulas
+
+## Task
+Fix the Mermaid mindmap so equations render correctly. Research proper Mermaid syntax for including mathematical formulas in mindmap nodes. All ~20 equations need to be fixed while preserving their mathematical meaning.
+
+## Requirements
+- Equations must display correctly in Mermaid
+- Preserve mathematical accuracy
+- Test that the fixed version parses without errors
+- Keep all other content unchanged
