@@ -17,7 +17,35 @@ Invoked when user says: "Start session", "Begin studying", etc.
 1. **Check for existing session**: Read `state/current_session.json`
    - If exists: Error - session already active
 2. **Load learning state**: Read `state/learning_state.json`
-3. **Create session file**: Write to `state/current_session.json`:
+3. **Create session context file**: Write to `.doc/claude/tasks/current_session_context.md`:
+   ```markdown
+   # Current Session Context
+
+   **User**: [username]
+   **Started**: [timestamp]
+   **Exam Date**: 2025-12-15
+   **Days Remaining**: [X]
+
+   ## Current Focus
+   [Based on learning state, what should be the focus]
+
+   ## Recent Work
+   - Overall progress: [X]%
+   - Last active unit: [Unit Y]
+   - Concepts mastered: [X]/87
+   - Problems solved: [X]/150
+
+   ## Session Goals
+   [Recommendations for this session]
+
+   ## Weak Areas to Address
+   [From learning state]
+
+   ## Activities This Session
+   [Will be updated as session progresses]
+   ```
+
+4. **Create session file**: Write to `state/current_session.json`:
    ```json
    {
      "user": "username",
@@ -147,8 +175,10 @@ Invoked when user says: "End session", "Finish studying", "Save progress", etc.
    ```json
    {"date":"ISO","user":"name","duration_hours":X,"activities":[...],"progress_delta":X}
    ```
-6. **Clean up**: Delete `state/current_session.json`
-7. **Present summary**
+6. **Archive session context**: Move `.doc/claude/tasks/current_session_context.md` to `.doc/claude/reports/session_contexts/context_[DATE].md`
+   - This preserves session context for historical reference
+7. **Clean up**: Delete `state/current_session.json`
+8. **Present summary**
 
 **Output Format:**
 ```
