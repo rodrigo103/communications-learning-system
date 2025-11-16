@@ -1,0 +1,311 @@
+# Carta 33: Ruido Blanco - El Modelo Fundamental del Ruido en Comunicaciones
+
+> **Unidad 7**: Ruido
+
+---
+
+## 🎯 Pregunta
+
+¿Defina ruido blanco y explique por qué es un modelo útil en comunicaciones?
+
+---
+
+## 📝 Respuesta Breve (de la carta original)
+
+**Ruido blanco** es ruido aleatorio con densidad espectral de potencia constante para todas las frecuencias.
+
+**Características**:
+- DEP: $N_0$ (W/Hz) constante
+- Potencia infinita (en ancho de banda infinito)
+- Proceso estacionario, gaussiano
+- Autocorrelación: función delta $R_n(\tau) = (N_0/2)\delta(\tau)$
+
+**Por qué es útil**:
+1. **Modelo simplificado**: aproxima bien el ruido térmico
+2. **Análisis matemático simple**: independencia espectral
+3. **Peor caso razonable**: conservador pero realista
+4. **Banda limitada**: en sistemas reales se filtra a BW finito
+
+**Realidad**: ruido "blanco filtrado" con potencia $N = N_0 \cdot BW$
+
+---
+
+## 📖 Explicación Detallada
+
+### 🔍 Introducción y Contexto
+
+El **ruido blanco** es uno de los conceptos más fundamentales en sistemas de comunicaciones, comparable en importancia a conceptos como la transformada de Fourier o el teorema del muestreo. Su nombre proviene de una analogía con la luz blanca, que contiene todas las frecuencias del espectro visible con igual intensidad.
+
+**¿Por qué es importante este concepto?** El ruido está presente en todo sistema de comunicaciones real. Desde el sutil silbido térmico en un receptor de radio hasta las interferencias complejas en sistemas satelitales, el ruido determina los límites fundamentales de lo que podemos comunicar. El modelo de ruido blanco proporciona la abstracción matemática perfecta para analizar estos fenómenos.
+
+**¿Dónde se aplica?** El ruido blanco aparece en:
+- **Receptores de radio y TV**: como el "estático" o "nieve"
+- **Comunicaciones satelitales**: limitando la sensibilidad del receptor
+- **Enlaces de fibra óptica**: en detectores y amplificadores
+- **Sistemas celulares**: determinando cobertura y capacidad
+- **WiFi y Bluetooth**: afectando alcance y velocidad
+
+**Historia**: El concepto fue formalizado en los trabajos pioneros de Norbert Wiener en la década de 1920, quien desarrolló la teoría matemática de procesos estocásticos. Claude Shannon lo adoptó como modelo fundamental en su teoría de la información (1948), estableciéndolo como estándar en el análisis de sistemas de comunicación.
+
+### 📐 Fundamentos Teóricos
+
+#### Conceptos Prerequisitos
+- **Densidad Espectral de Potencia (DEP)**: distribución de potencia en frecuencia
+- **Procesos estocásticos**: señales aleatorias con propiedades estadísticas
+- **Función de autocorrelación**: medida de similitud de una señal consigo misma
+- **Delta de Dirac**: función impulso idealizada
+
+#### Desarrollo Paso a Paso
+
+**Paso 1: Definición Espectral**
+
+El ruido blanco se define por su densidad espectral de potencia:
+
+$$S_n(f) = \frac{N_0}{2} \text{ para todo } f$$
+
+donde $N_0$ es la densidad espectral de potencia unilateral en watts/Hz. El factor 1/2 aparece porque consideramos frecuencias positivas y negativas.
+
+**Paso 2: Propiedades Temporales**
+
+La función de autocorrelación se obtiene como la transformada inversa de Fourier de la DEP:
+
+$$R_n(\tau) = \mathcal{F}^{-1}\{S_n(f)\} = \frac{N_0}{2}\delta(\tau)$$
+
+Esta función delta implica que:
+- El ruido en instantes diferentes es completamente decorrelacionado
+- No hay "memoria" entre muestras sucesivas
+- Cada muestra es independiente de todas las demás
+
+**Paso 3: Características Estadísticas**
+
+El ruido blanco gaussiano (el caso más común) tiene:
+- **Media**: $\mu = 0$ (valor esperado cero)
+- **Varianza**: $\sigma^2 = \infty$ (en banda infinita)
+- **Distribución**: Gaussiana para cada muestra temporal
+
+#### Derivación Matemática
+
+**Partiendo de la definición de potencia:**
+
+La potencia total del ruido blanco sería:
+
+$$P_{total} = \int_{-\infty}^{\infty} S_n(f) df = \int_{-\infty}^{\infty} \frac{N_0}{2} df = \infty$$
+
+**Problema aparente:** ¡Potencia infinita!
+
+**Solución práctica:** En sistemas reales, el ruido siempre es filtrado:
+
+$$P_{real} = \int_{-B/2}^{B/2} \frac{N_0}{2} df = N_0 \cdot B$$
+
+donde B es el ancho de banda del sistema.
+
+**Relación con temperatura:**
+
+El ruido térmico (Johnson-Nyquist) tiene:
+
+$$N_0 = 4kT$$
+
+donde:
+- $k = 1.38 \times 10^{-23}$ J/K (constante de Boltzmann)
+- $T$ = temperatura absoluta en Kelvin
+
+### 🔬 Intuición y Analogías
+
+**Analogía principal:**
+Imagina el ruido blanco como una "lluvia de fotones" completamente aleatoria. Cada "gota" (muestra) cae independientemente, sin relación con las anteriores o posteriores. La intensidad de la lluvia (densidad espectral) es constante en todo momento y lugar (frecuencia).
+
+**Intuición física:**
+El ruido térmico surge del movimiento aleatorio de electrones en conductores. A temperatura ambiente, billones de electrones se mueven caóticamente, generando fluctuaciones de voltaje microscópicas. La suma de todas estas contribuciones aleatorias produce ruido blanco.
+
+**Visualización:**
+- En el dominio del tiempo: señal completamente aleatoria, como el trazo de un sismógrafo durante un temblor
+- En el dominio de la frecuencia: espectro plano, como una línea horizontal
+- En osciloscopio: patrón cambiante e impredecible, "grass" o césped
+
+### 💡 Ejemplos Prácticos
+
+#### Ejemplo 1: Cálculo de Potencia de Ruido en Receptor FM
+
+**Situación:** Un receptor FM con ancho de banda de 200 kHz opera a temperatura ambiente (290 K).
+
+**Datos:**
+| Parámetro | Valor | Unidades |
+|-----------|-------|----------|
+| Ancho de banda (B) | 200 | kHz |
+| Temperatura (T) | 290 | K |
+| Constante de Boltzmann (k) | 1.38×10⁻²³ | J/K |
+
+**Solución paso a paso:**
+
+1. **Densidad espectral de ruido térmico:**
+   $$N_0 = 4kT = 4 \times 1.38 \times 10^{-23} \times 290$$
+   $$N_0 = 1.60 \times 10^{-20} \text{ W/Hz}$$
+
+2. **Potencia de ruido en el ancho de banda:**
+   $$N = N_0 \times B = 1.60 \times 10^{-20} \times 200 \times 10^3$$
+   $$N = 3.2 \times 10^{-15} \text{ W}$$
+
+3. **En dBm:**
+   $$N_{dBm} = 10\log_{10}\left(\frac{3.2 \times 10^{-15}}{10^{-3}}\right)$$
+   $$\boxed{N_{dBm} = -115 \text{ dBm}}$$
+
+**Interpretación:** Este es el "piso de ruido" fundamental del receptor. Cualquier señal debe estar por encima de este nivel para ser detectada.
+
+---
+
+#### Ejemplo 2: Sistema WiFi 802.11n
+
+**Contexto:** Router WiFi operando en 2.4 GHz con canal de 20 MHz
+
+**Análisis del ruido:**
+- Ancho de banda: B = 20 MHz
+- Temperatura efectiva del sistema: ~400 K (incluye figura de ruido del receptor)
+- $N_0 = 4kT = 5.52 \times 10^{-21}$ W/Hz
+
+**Potencia de ruido:**
+$$N = N_0 \times B = 5.52 \times 10^{-21} \times 20 \times 10^6 = 1.1 \times 10^{-13} \text{ W}$$
+
+En dBm: **-100 dBm**
+
+**Implicación práctica:** Para una señal WiFi típica de -70 dBm, tenemos SNR = 30 dB, permitiendo velocidades de hasta 150 Mbps con 64-QAM.
+
+---
+
+#### Ejemplo 3: Límites Fundamentales - Caso Extremo
+
+**¿Qué pasa cuando...?**
+
+**Si N₀ → 0 (temperatura absoluta cero):**
+- No hay ruido térmico
+- Límite cuántico domina (ruido shot)
+- Imposible en práctica (3° ley termodinámica)
+
+**Si B → ∞ (ancho de banda infinito):**
+- Potencia de ruido → ∞
+- Físicamente imposible
+- Siempre existe filtrado natural
+
+**Caso especial - Ruido banda angosta:**
+Si filtramos ruido blanco a banda angosta:
+- Envolvente: distribución de Rayleigh
+- Fase: distribución uniforme
+- Se comporta como señal cuasi-sinusoidal con amplitud y fase aleatorias
+
+### 🔗 Conexiones con Otros Conceptos
+
+#### Conceptos Relacionados (del mismo curso)
+- **Temperatura de ruido** (Carta 34): Forma alternativa de expresar N₀
+- **Figura de ruido** (Carta 35): Mide cuánto ruido agrega un dispositivo
+- **Fórmula de Friis** (Carta 36): Cómo se acumula el ruido en cascada
+- **Ruido de banda angosta** (Carta 37): Ruido blanco filtrado
+- **Teorema de Shannon-Hartley** (Carta 45): Límite fundamental con ruido blanco
+
+#### Dependencias (lo que necesitas saber primero)
+1. **Densidad espectral de potencia** → Para entender la caracterización espectral
+2. **Procesos aleatorios** → Base estadística del modelo
+3. **Transformada de Fourier** → Relación tiempo-frecuencia
+
+#### Aplicaciones Posteriores (dónde usarás esto)
+1. **Cálculo de SNR**: Base para todos los análisis de desempeño
+2. **Diseño de receptores**: Determina sensibilidad mínima
+3. **Link budget**: Cálculo de alcance de comunicaciones
+4. **BER vs Eb/N₀**: Curvas fundamentales de desempeño
+
+### 🎓 Perspectiva de Examen
+
+#### Lo que el profesor busca que entiendas
+- La diferencia entre ruido blanco teórico (banda infinita) y práctico (banda limitada)
+- Por qué la autocorrelación es una delta (decorrelación completa)
+- Cómo calcular potencia de ruido dado N₀ y ancho de banda
+- La conexión con temperatura física (ruido térmico)
+
+#### Tipos de problemas típicos
+1. **Cálculo de potencia de ruido**: Dado T y B, encontrar N en watts y dBm
+   - Estrategia: Usar $N = kTB$ (para sistemas a temperatura T)
+
+2. **Análisis de cascada**: Múltiples etapas con diferentes temperaturas de ruido
+   - Estrategia: Aplicar fórmula de Friis considerando ganancia
+
+### ⚠️ Errores Comunes y Trampas
+
+❌ **Error #1: Olvidar que N₀ es densidad espectral unilateral**
+- Por qué ocurre: Confusión con definiciones bilateral/unilateral
+- Cómo evitarlo: Recordar que $N = N_0 \times B$ (no $N_0 \times B/2$)
+- Ejemplo de error: Calcular mal la potencia de ruido por factor de 2
+
+❌ **Error #2: Usar temperatura en Celsius en lugar de Kelvin**
+- Por qué ocurre: Costumbre de usar °C
+- Cómo evitarlo: SIEMPRE convertir a Kelvin (T_K = T_C + 273.15)
+
+❌ **Error #3: Confundir ruido blanco con ruido gaussiano**
+- Distinción importante:
+  - Blanco → propiedad espectral (todas las frecuencias)
+  - Gaussiano → propiedad estadística (distribución normal)
+  - Puede ser blanco pero no gaussiano, o gaussiano pero no blanco
+
+### ✅ Puntos Clave para Recordar
+
+#### Fórmulas Esenciales
+```
+N₀ = 4kT                    [Densidad espectral de ruido térmico]
+N = N₀ × B                   [Potencia de ruido en banda B]
+N_dBm = -174 + 10log₁₀(B)   [A temperatura ambiente, B en Hz]
+```
+
+#### Conceptos Fundamentales
+- ✓ **Ruido blanco = DEP constante**: Todas las frecuencias contribuyen igual
+- ✓ **Decorrelación temporal completa**: R(τ) = δ(τ)
+- ✓ **Siempre filtrado en práctica**: Banda limitada en sistemas reales
+- ✓ **Modelo pesimista pero útil**: Simplifica análisis manteniendo validez
+
+#### Reglas Mnemotécnicas
+- 🧠 **"kTB"**: Recuerda "Kate Beckinsale" para kTB (potencia = kT × Bandwidth)
+- 🧠 **"-174 dBm/Hz"**: Piso de ruido a temperatura ambiente (memorizar)
+
+#### Valores Típicos (para referencias rápidas)
+| Parámetro | Valor Típico | Aplicación |
+|-----------|--------------|------------|
+| N₀ @ 290K | -174 dBm/Hz | Sistemas terrestres |
+| N₀ @ 50K | -183 dBm/Hz | LNA criogénico |
+| Piso de ruido WiFi (20 MHz) | -101 dBm | 802.11 típico |
+| Piso de ruido GPS (2 MHz) | -111 dBm | Receptor GPS |
+| Piso de ruido celular (180 kHz) | -121 dBm | GSM |
+
+### 📚 Para Profundizar
+
+#### Recursos Recomendados
+- **Libros de texto**:
+  - Haykin, "Communication Systems", Cap. 5.1-5.3
+  - Carlson, "Communication Systems", Cap. 8
+- **Papers clásicos**:
+  - Johnson (1928) "Thermal Agitation of Electricity in Conductors"
+  - Nyquist (1928) "Thermal Agitation of Electric Charge"
+- **Simulaciones**:
+  - GNU Radio: Generador de ruido AWGN
+  - MATLAB: función `awgn()`, `randn()`
+
+#### Temas Relacionados para Explorar
+1. **Ruido de cuantización**: En sistemas digitales
+2. **Ruido shot (Schottky)**: En dispositivos semiconductores
+3. **Ruido flicker (1/f)**: En bajas frecuencias
+4. **Ruido cuántico**: Límite fundamental en óptica
+
+#### Preguntas para Reflexionar
+- ¿Por qué no existe verdadero ruido blanco en la naturaleza?
+- ¿Qué pasaría si pudiéramos eliminar completamente el ruido térmico?
+- ¿Cómo afecta el ruido blanco a diferentes tipos de modulación?
+- ¿Por qué el modelo de ruido blanco gaussiano es tan ubicuo en comunicaciones?
+
+---
+
+## 🏷️ Metadatos de la Carta
+
+**Dificultad**: ⭐⭐⭐ (3/5 estrellas)
+**Tiempo de estudio sugerido**: 30 minutos
+**Prerequisitos críticos**: Densidad espectral de potencia, procesos aleatorios
+**Tags**: `#ruido` `#ruido-blanco` `#AWGN` `#densidad-espectral` `#fundamentos`
+
+---
+
+*Generado el: 2024-11-16*
+*Última revisión: 2024-11-16*
