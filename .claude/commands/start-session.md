@@ -1,61 +1,151 @@
 # Start Study Session
 
-You are helping the user start a new study session for their Communications Systems course.
+**Architecture**: This command uses the **Python coordinator** for state management.
+
+## What This Command Does
+
+Starts a new study session by invoking the Python coordinator to handle state management and session initialization.
+
+## Components Used
+
+- **Python CLI**: `python main.py start-session --user [username]`
+- **SessionCoordinator**: Handles session lifecycle and state persistence
 
 ## Your Task
 
-1. **Read the current learning state**: `state/learning_state.json`
-2. **Check for active session**: `state/current_session.json`
-3. **Ask for username** if not provided in the prompt
-4. **Create session file** with:
-   - Username
-   - Start timestamp
-   - Current context from learning_state
+1. **Check if user provided username** in the prompt
+2. **Invoke Python CLI** to start the session
+3. **Show the session context** returned by the coordinator
+4. **Explain what the user can do now**
 
-5. **Show session summary**:
-   - Overall progress %
-   - Current focus unit/topic
-   - Days until exam (2025-12-15)
-   - Top 3 recommendations
+## Command Format
 
-6. **Save session state** to `state/current_session.json`:
-   ```json
-   {
-     "user": "username",
-     "start_time": "ISO timestamp",
-     "initial_progress": {...},
-     "activities": []
-   }
-   ```
-
-## Output Format
-
-Present a clean summary:
 ```
-✓ Session started for: [username]
-⏰ Started at: [time]
-📅 Exam in: [X] days
+/start-session [username]
+```
+
+If username not provided, ask for it.
+
+## Implementation
+
+When user runs `/start-session [username]`:
+
+```bash
+# Execute Python CLI command
+python main.py start-session --user [username]
+```
+
+The Python coordinator will:
+- Load current learning state
+- Create or load user profile
+- Initialize session tracking
+- Save session to state/current_session.json
+- Return session context with recommendations
+
+## After Session Starts
+
+Show the user:
+1. Session confirmation
+2. Current progress summary (from coordinator output)
+3. Days until exam
+4. Top recommendations
+5. Available commands for learning work
+
+Then explain:
+```
+✨ Session started! Now you can:
+
+**Learning Work** (using subagents):
+- Ask me to derive formulas: "Can you derive Shannon-Hartley?"
+- Ask me to solve problems: "Can you solve this exercise?"
+- Use slash commands: /derive [formula] or /solve [file]
+
+**Track Progress**:
+- /progress - Check your learning progress
+- /end-session - Finish and save your work
+
+**How it works:**
+- I'll use specialized subagents for derivations and problems
+- All work is saved to files (outputs/ directory)
+- Your progress is tracked in learning_state.json
+- Sessions are logged for collaboration via git
+```
+
+## Example Usage
+
+```
+User: /start-session rodrigo
+
+You: Starting your study session...
+
+[Execute: python main.py start-session --user rodrigo]
+
+[Show coordinator output]
+
+✓ Session started for: rodrigo
+⏰ Started at: 2025-11-16 10:30:00
+📅 Exam in: 29 days
 
 📊 Current Status:
-• Overall progress: X%
-• Active unit: Unit Y - [Name]
-• Concepts mastered: X/87
-• Problems solved: X
+• Overall progress: 8%
+• Active unit: Unit 7 (Noise)
+• Concepts mastered: 7/87
+• Problems solved: 1
 
-💡 Recommendations:
-1. [Recommendation based on progress]
-2. [Focus area]
-3. [Suggested next topic]
+💡 Top Recommendations:
+1. Complete Unit 7 (Noise Temperature, SNR)
+2. Start Unit 9 (Shannon-Hartley - critical gap!)
+3. Daily problem practice (need 3-5 problems/day)
 
-✨ Ready! Use these commands:
-• /derive [formula] - Get step-by-step derivation
-• /solve [file] - Solve an exercise
-• /progress - Check your progress
-• /end-session - Finish and save
+✨ Ready to study! What would you like to work on?
+- Derive a formula
+- Solve a problem
+- Check your progress
 ```
 
-## Important
+## If Session Already Active
 
-- Update `state/current_session.json` with session data
-- This file will be used by other commands to track activities
-- Be encouraging and supportive in your tone
+If there's already an active session:
+
+```
+⚠️ Active session detected!
+
+Current session:
+- User: rodrigo
+- Started: 2 hours ago
+- Activities: 3 items
+
+Would you like to:
+1. Continue this session
+2. End current and start new one
+```
+
+## Important Notes
+
+- **Use Python CLI** - Don't manually manipulate state files
+- The coordinator handles all state persistence
+- Session data is saved to state/current_session.json
+- This enables session continuity across CLI invocations
+- The Python code is simple and reliable for state management
+
+## Integration with Subagents
+
+After starting a session:
+- Use **formula-deriver** or **comms-formula-deriver** for derivations
+- Use **exercise-solver** for problem solving
+- Use **progress-analyzer** for progress checks
+- Session activities are tracked automatically
+
+## Error Handling
+
+If the Python CLI fails:
+```
+❌ Error starting session: [error message]
+
+This might be because:
+- Python dependencies not installed (pip install -r requirements.txt)
+- State directory doesn't exist
+- Permission issues
+
+Try running: python main.py info
+```

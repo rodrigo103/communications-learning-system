@@ -1,152 +1,170 @@
 # Solve Exercise - Communications Systems
 
-You are an expert tutor helping the user solve a communications systems problem step-by-step.
+**Architecture**: This command uses the **subagent-first** approach.
+
+## What This Command Does
+
+Invokes the **exercise-solver subagent** to solve a communications systems problem step-by-step.
+
+## Subagent Used
+
+- **exercise-solver** (Opus): Expert problem solver for communications systems exercises
 
 ## Your Task
 
-1. **Read the exercise file** provided by the user
-2. **Analyze the problem**: Identify type, given data, what's asked
-3. **Solve step-by-step** with clear justification
-4. **Validate the solution**: Check units, sanity, limits
-5. **Save the solution** to files
+1. **Locate the exercise file** (or help user describe the problem)
+2. **Invoke exercise-solver subagent** using the Task tool
+3. **Pass the problem**: Either file path or problem description
+4. **Return results**: Show solution summary and file paths
 
-## Solution Structure
+## Command Format
 
-```markdown
-# [Exercise Title] - Solution
-
-## Problem Statement
-
-[Restate the problem clearly]
-
-## Given Data
-
-| Variable | Value | Unit | Notes |
-|----------|-------|------|-------|
-| G | 50 | dB | Amplifier gain |
-| BW | 20 | kHz | Bandwidth |
-| ... | ... | ... | ... |
-
-## Problem Analysis
-
-**Type:** [Noise / Modulation / Capacity / etc.]
-
-**Key concepts:**
-- [Concept 1]
-- [Concept 2]
-
-**Relevant formulas:**
-- [Formula 1]
-- [Formula 2]
-
----
-
-## Solution
-
-### Part (a): [Question]
-
-**Step 1: [Action]**
-
-Formula:
-$$
-[Equation]
-$$
-
-Calculation:
-$$
-[Substitution with values]
-$$
-
-Result:
-$$
-[Answer with units]
-$$
-
-**Explanation:** [Why this makes sense]
-
----
-
-### Part (b): [Question]
-
-[Same structure...]
-
----
-
-## Final Answers Summary
-
-a) [Answer]
-b) [Answer]
-c) [Answer]
-
-## Validation
-
-- **Dimensional analysis**: ✓ All units correct
-- **Sanity check**: [Does magnitude make sense?]
-- **Special cases**: [Check limits if applicable]
-
-## Key Learnings
-
-• [Insight 1]
-• [Insight 2]
-• [Common pitfalls to avoid]
-
-## Related Practice
-
-Try these similar problems:
-- [Suggestion 1]
-- [Suggestion 2]
+```
+/solve [exercise_file]
 ```
 
-## After Solving
+**Examples:**
+- `/solve docs/ejercicio_ruido.txt`
+- `/solve exercises/unit7_problem3.md`
+- `/solve` (then describe problem interactively)
 
-1. **Save solution**: `outputs/solutions/[FILENAME]_solution_[DATE].md`
-2. **Update session**: Add to activities in `state/current_session.json`
-3. **Update learning state**:
-   - Increment problems_solved
-   - Mark concepts as practiced
-4. **Ask if user wants**:
+## Implementation
+
+When user runs `/solve [file]`:
+
+```
+Use Task tool:
+  subagent_type: "exercise-solver"
+  model: "opus"
+  prompt: "Solve the communications systems problem in [file].
+
+    The problem should be solved with:
+    - Clear identification of given data and what's asked
+    - Step-by-step solution with justification
+    - All calculations showing units
+    - Dimensional validation
+    - Final answer summary
+    - Key insights and learnings
+
+    Save output to:
+    - outputs/solutions/[problem_name]_[date].md
+    - .doc/claude/reports/solution_summaries/[problem_name]_summary.md
+
+    Update learning state to reflect:
+    - Problem solved
+    - Concepts practiced
+    - Session activity"
+```
+
+## If No File Provided
+
+If user just types `/solve` without a file:
+
+```
+You: What problem would you like to solve? You can either:
+1. Provide a file path to an exercise
+2. Describe the problem directly
+3. Tell me the unit and topic (I'll suggest relevant problems)
+
+Example problems available:
+- docs/ejercicio_ruido.txt (Unit 7: Noise figure and temperature)
+- [List other available problems if any]
+```
+
+## After Subagent Completes
+
+1. Read the summary file
+2. Show user:
+   - Problem type identified
+   - Key steps taken
+   - Final answers
+   - File paths
+3. Ask if they want:
    - Clarification on any step
-   - Alternative solution methods
-   - Related problems to practice
-   - Anki cards from this problem
+   - Alternative solution method
+   - Similar problems to practice
+   - Explanation of related concepts
 
-## Problem Types to Handle
+## Example Usage
+
+```
+User: /solve docs/ejercicio_ruido.txt
+
+You: I'll use the exercise-solver subagent to solve this problem.
+
+[Invoke Task tool with exercise-solver]
+
+[After completion]
+✓ Problem solved!
+
+Type: Noise figure and temperature calculations
+Unit: 7 (Noise)
+
+Key Results:
+a) Noise figure F = 3 (4.77 dB)
+b) Noise temperature Te = 580 K
+c) Output SNR = 30 dB
+d) F remains 3 (independent of input noise density)
+e) For thermal noise: η_in = 1.16×10^-20 W/Hz
+
+Files created:
+- outputs/solutions/ejercicio_ruido_20251116.md
+- .doc/claude/reports/solution_summaries/ejercicio_ruido_summary.md
+
+Would you like me to:
+1. Explain any calculation step in detail
+2. Show you similar problems to practice
+3. Generate Anki cards from this problem
+```
+
+## Problem Types Handled
+
+The exercise-solver subagent can handle:
 
 **Noise Problems:**
 - Noise figure calculations
-- Noise temperature
+- Noise temperature conversions
 - Friis cascade formula
 - SNR computations
+- Cascaded system analysis
 
 **Modulation Problems:**
+- AM/FM/PM analysis
 - Bandwidth calculations
 - Power efficiency
 - Modulation index
 - Spectrum analysis
 
+**Digital Modulation:**
+- QAM, PSK, FSK, ASK
+- Bit error rate (BER)
+- Constellation diagrams
+- Symbol vs bit rate
+
 **Information Theory:**
+- Shannon-Hartley theorem
 - Channel capacity
 - Data rate limits
 - Coding gain
 
 **System Design:**
-- Link budgets
+- Link budget analysis
 - System comparisons
 - Trade-off analysis
 
-## Important
+## Important Notes
 
-- Show ALL calculation steps
-- Always include units
-- Validate dimensions
-- Check if answer is reasonable
-- Reference formulas by name when applicable
-- Use the constants from the problem or standard values (k=1.38e-23, T0=290K, etc.)
+- **Always use the subagent** - Don't solve problems yourself
+- The subagent will show ALL calculation steps with units
+- Solutions are validated dimensionally
+- Subagent saves complete solutions to files
+- Learning state should be updated after solving
 
-## Tone
+## Validation Features
 
-- Encouraging and supportive
-- Explain reasoning, not just mechanics
-- Point out common mistakes
-- Celebrate correct intuition
-- Build problem-solving confidence
+The exercise-solver subagent automatically:
+- ✓ Checks dimensional consistency
+- ✓ Validates units throughout
+- ✓ Verifies answers make physical sense
+- ✓ Identifies common mistakes
+- ✓ Provides key insights and learnings

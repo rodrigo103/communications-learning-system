@@ -1,113 +1,109 @@
 # Derive Formula - Communications Systems
 
-You are an expert tutor in Communications Systems helping the user understand a formula through rigorous mathematical derivation.
+**Architecture**: This command uses the **subagent-first** approach.
+
+## What This Command Does
+
+Invokes the appropriate formula derivation subagent to derive the requested formula from first principles.
+
+## Subagents Used
+
+- **formula-deriver** (Sonnet): For basic/standard derivations
+- **comms-formula-deriver** (Opus): For complex communications systems derivations
 
 ## Your Task
 
-Derive the requested formula **from first principles** with:
+1. **Determine complexity**: Is this a basic or advanced communications topic?
+2. **Invoke appropriate subagent** using the Task tool
+3. **Pass context**: Formula name, any specific requirements from user
+4. **Return results**: Show the derivation summary and file paths
 
-1. **Starting Point**: Clear definitions and assumptions
-2. **Step-by-Step Derivation**: Each mathematical step with justification
-3. **Key Results**: Important conclusions and insights
-4. **Practical Implications**: What this means for real systems
-5. **Related Topics**: Connected concepts to explore
+## Decision Logic
 
-## Available Topics
+**Use comms-formula-deriver (Opus) for:**
+- Advanced modulation theory (QAM, OFDM)
+- Noise analysis (Friis, cascaded systems)
+- Information theory (Shannon-Hartley)
+- Complex signal processing
+- Topics requiring rigorous mathematical treatment
 
-Based on the course program (see `docs/programa_materia.md`):
+**Use formula-deriver (Sonnet) for:**
+- Basic modulation (simple AM, FM)
+- Standard Fourier analysis
+- Basic probability/statistics
+- Straightforward derivations
 
-**Modulation:**
-- AM (Amplitude Modulation)
-- FM (Frequency Modulation) / Carson's Rule
-- PM (Phase Modulation)
-- DSB-SC, SSB, VSB
-- QAM (Quadrature Amplitude Modulation)
-- PSK, FSK, ASK
+## Command Format
 
-**Noise:**
-- Noise figure (F)
-- Noise temperature (Te)
-- Friis cascade formula
-- SNR calculations
-
-**Information Theory:**
-- Shannon-Hartley theorem
-- Channel capacity
-- Nyquist rate
-
-**Signal Analysis:**
-- Fourier Transform properties
-- Power spectral density
-- Autocorrelation
-
-## Derivation Structure
-
-```markdown
-# [Formula Name] - Complete Derivation
-
-## Starting Point
-[Clear definitions and what we're deriving]
-
-## Assumptions
-• [List all assumptions]
-
-## Step-by-Step Derivation
-
-### Step 1: [Title]
-**Equation:**
 ```
-[LaTeX/Math notation]
+/derive [formula_name]
 ```
 
-**Explanation:**
-[Why this step, what it means]
+**Examples:**
+- `/derive Shannon-Hartley theorem`
+- `/derive Friis cascade formula`
+- `/derive AM modulation spectrum`
+- `/derive Carson's rule`
 
-### Step 2: [Title]
-...
+## Implementation
 
-## Final Result
+When user runs `/derive [formula]`:
 
-**Formula:**
 ```
-[Final equation]
-```
+Use Task tool:
+  subagent_type: "comms-formula-deriver" (or "formula-deriver" if basic)
+  model: "opus" (or "sonnet" if basic)
+  prompt: "Derive [formula] from first principles. Include:
+    - Clear starting point and assumptions
+    - Step-by-step mathematical derivation
+    - Key results and insights
+    - Practical implications
+    - Related concepts
 
-**Where:**
-- [Variable definitions]
-
-## Key Insights
-• [Physical interpretation]
-• [Practical implications]
-• [Common applications]
-
-## Validation
-[Dimensional analysis, special cases, sanity checks]
-
-## Related Concepts
-[Links to other topics]
+    Save output to outputs/derivations/[formula]_[date].md
+    Create summary in .doc/claude/reports/derivation_summaries/"
 ```
 
-## After Derivation
+## After Subagent Completes
 
-1. **Save to file**: `outputs/derivations/[TOPIC]_[DATE].md`
-2. **Update session**: Add to `state/current_session.json` activities
-3. **Ask if user wants**:
+1. Read the summary file
+2. Show user key results
+3. Provide file paths
+4. Ask if they want:
    - More detail on any step
    - Examples/applications
    - Related derivations
-   - Anki flashcards generated
+
+## Example Usage
+
+```
+User: /derive Friis cascade formula
+
+You: I'll use the comms-formula-deriver subagent to derive
+     the Friis cascade formula for you.
+
+[Invoke Task tool with comms-formula-deriver]
+
+[After completion]
+✓ Derivation complete!
+
+Key Result:
+F_total = F₁ + (F₂-1)/G₁ + (F₃-1)/(G₁G₂) + ...
+
+Files created:
+- outputs/derivations/friis_cascade_20251116.md
+- .doc/claude/reports/derivation_summaries/friis_cascade_summary.md
+
+Would you like me to:
+1. Explain any specific step in detail
+2. Show numerical examples
+3. Derive special cases (lossy components, etc.)
+```
 
 ## Important Notes
 
-- Use LaTeX math notation: `$...$` inline, `$$...$$` for blocks
-- Include diagrams/sketches when helpful (describe in text or use mermaid)
-- Reference specific equations from the course if relevant
-- Be pedagogically sound: build understanding, don't just show algebra
-- Validate results: check dimensions, limits, special cases
-
-## Tone
-
-- Patient and thorough
-- Explain WHY, not just WHAT
-- Use physical intuition alongside math
-- Encourage questions
+- **Always use subagents** - Don't do derivations yourself
+- Choose the right subagent (Opus for complex, Sonnet for basic)
+- Provide clear, specific prompts to subagents
+- Return concise summaries to user, with file paths for details
+- The subagent will save full derivations to files
