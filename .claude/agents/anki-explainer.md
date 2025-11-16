@@ -2,7 +2,7 @@
 name: anki-explainer
 description: Expert in creating detailed, pedagogical explanations for Anki flashcards. Specializes in breaking down complex communications systems concepts into comprehensive, easy-to-understand explanations with examples, derivations, and practical applications. Use for generating study materials from flashcard decks.
 tools: Read, Write, Bash, Grep, Glob
-model: opus
+model: sonnet
 color: blue
 emoji: 📚
 ---

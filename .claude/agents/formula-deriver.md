@@ -2,7 +2,7 @@
 name: formula-deriver
 description: Expert in deriving communications systems formulas from first principles. Adapts pedagogical level from undergraduate basics to graduate-level rigor. Specializes in modulation theory, noise analysis, information theory, and signal processing. Creates comprehensive mathematical derivations with clear explanations. Use for any formula derivation, proof, or mathematical explanation request.
 tools: Read, Write, Edit, Bash, Grep, Glob
-model: opus
+model: sonnet
 color: purple
 emoji: 🎓
 ---
