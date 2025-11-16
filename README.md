@@ -1,7 +1,7 @@
 # 🎓 Communications Learning System - Subagent-First Architecture
 
 > **Intelligent study system for Communications Systems exam preparation (UTN)**
-> Uses Claude Code subagents for derivations, problem-solving, and progress tracking
+> Uses Claude Code subagents for derivations, problem-solving, progress tracking, and visualization
 
 ## 🚀 Quick Start
 
@@ -30,6 +30,7 @@ An AI-powered learning system using **Claude Code subagents** to help you:
 - 🎓 **Derive formulas** from first principles (any level: basic to rigorous)
 - ✅ **Solve problems** step-by-step with validation
 - 📊 **Track progress** with data-driven recommendations
+- 🗺️ **Visualize concepts** with interactive mind maps
 - 🎯 **Prepare for exams** with focused study plans
 - 🤝 **Collaborate** via Git-based state management
 
@@ -41,6 +42,7 @@ An AI-powered learning system using **Claude Code subagents** to help you:
 | ✅ **exercise-solver** | 🟢 Green | Solve exam-style problems | Opus |
 | 📊 **progress-analyzer** | 🟡 Amber | Progress tracking & recommendations | Sonnet |
 | 🎯 **study-session-manager** | 🟠 Orange | Session coordination | Sonnet |
+| 🗺️ **mindmap-generator** | 🔵 Cyan | Visual mind maps for concept organization | Sonnet |
 
 **Key Feature**: Subagents adapt automatically - no need to choose complexity level!
 
@@ -62,6 +64,10 @@ Simply ask Claude naturally:
 "Check my progress"
 → Invokes progress-analyzer subagent
 → Generates progress report
+
+"Can you create a mind map of Unit 7 concepts?"
+→ Invokes mindmap-generator subagent
+→ Saves to outputs/mindmaps/
 ```
 
 ### Slash Commands (Alternative)
@@ -97,7 +103,7 @@ git push
 ```
 communications-learning-system/
 ├── .claude/
-│   ├── agents/              # Subagent definitions (4 files)
+│   ├── agents/              # Subagent definitions (6 files)
 │   ├── commands/            # Slash commands
 │   └── SUBAGENT_REFERENCE.md  # Color scheme guide
 ├── agents/
@@ -107,7 +113,8 @@ communications-learning-system/
 │   └── session_history.jsonl
 ├── outputs/
 │   ├── derivations/         # Formula derivations
-│   └── solutions/           # Problem solutions
+│   ├── solutions/           # Problem solutions
+│   └── mindmaps/            # Visual concept maps
 ├── sessions/                # Session logs ⭐
 │   └── YYYY-MM/
 ├── .doc/claude/             # Subagent working files
@@ -230,6 +237,7 @@ When you see colored indicators in outputs:
 - ✅ 🟢 Green = Problem solved
 - 📊 🟡 Amber = Progress data
 - 🎯 🟠 Orange = Session info
+- 🗺️ 🔵 Cyan = Mind map visualization
 
 See `.claude/SUBAGENT_REFERENCE.md` for complete color guide.
 

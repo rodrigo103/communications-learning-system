@@ -21,6 +21,7 @@ See @README.md for detailed project overview and @package.json for available npm
 - `progress-analyzer` - Learning analytics
 - `study-session-manager` - Session lifecycle management
 - `anki-explainer` - Flashcard explanations
+- `mindmap-generator` - Visual mind maps for hierarchical information
 
 ## Context Management Strategy
 
@@ -74,6 +75,14 @@ To optimize token usage and improve coordination between sub agents, this system
 **study-session-manager** - Manages session start/end, tracks activities
 - Use for: Starting sessions, ending sessions, activity tracking
 - Outputs: Session logs and state updates
+
+**anki-explainer** - Creates detailed pedagogical explanations for Anki flashcards
+- Use for: Breaking down flashcard concepts, generating study materials
+- Outputs: Comprehensive explanations with examples and applications
+
+**mindmap-generator** - Creates visual mind maps using Mermaid.js
+- Use for: Visualizing hierarchical information, concept relationships, study organization
+- Outputs: Mind maps in `outputs/mindmaps/` + summary in `.doc/claude/reports/mindmap_summaries/`
 
 **comms-formula-deriver** - Advanced formula derivations with deep theoretical insight
 - Use for: Complex derivations requiring rigorous mathematical treatment
