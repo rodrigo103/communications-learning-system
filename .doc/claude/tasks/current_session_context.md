@@ -1,76 +1,80 @@
 # Current Session Context
 
+**Date**: 2025-11-16
+**Activity**: Creating comprehensive mindmap visualization
+**Unit Focus**: Unit 6 - Modulación Digital (Digital Modulation)
+
 ## Session Goal
-Fix Mermaid parsing error in the communications systems course mind map - equations are not rendering correctly.
+Create a very detailed mindmap of all concepts in Unit 6 (Digital Modulation) to support exam preparation.
 
-## Source Materials
-- **ProgramaSistemasDeComunicaciones.md**: Official course syllabus with 10 units
-- **Mazo_Anki_Sistemas_Comunicaciones.md**: 60 flashcards covering key concepts from all units
+## Learning Goals
+- Visualize the complete hierarchy of Unit 6 concepts
+- Organize digital modulation techniques (ASK, FSK, PSK, QAM and their variants)
+- Show relationships between modulation schemes, parameters, and performance metrics
+- Include key formulas, constellation diagrams, advantages/disadvantages, and applications
+- Cover theoretical foundations (Nyquist, matched filters, bit error rates)
 
-## Course Structure Overview
+## Context
+Student is preparing for Communications Systems exam (UTN) on 2025-12-15 (29 days remaining).
 
-### 10 Main Units:
-1. **Introducción** - Communication systems basics, spectrum management
-2. **Análisis de Señales** - Fourier, Parseval, sampling, Hilbert transform
-3. **Modulación Lineal** - AM, DSB, SSB, VSB, superheterodyne receivers
-4. **Modulación Exponencial** - FM, PM, Carson's rule, pre-emphasis
-5. **Modulación de Pulsos** - PAM, PWM, PPM, PCM, companding, TDM
-6. **Modulación Digital** - ASK, FSK, PSK, QAM, constellations, BER
-7. **Ruido** - White noise, noise figure, Friis formula, SNR analysis
-8. **Intercomparación de Sistemas** - Comparison metrics, efficiency trade-offs
-9. **Teoría de la Información** - Entropy, Shannon-Hartley, channel capacity, coding
-10. **Spread Spectrum y OFDM** - DSSS, FHSS, CDMA, OFDM principles
+**Unit 6 Topics** (from course syllabus):
+- Digital modulation fundamentals
+- ASK (Amplitude Shift Keying)
+- FSK (Frequency Shift Keying) - binary and M-ary
+- PSK (Phase Shift Keying) - BPSK, QPSK, 8PSK, 16PSK
+- QAM (Quadrature Amplitude Modulation) - 16QAM, 64QAM, 256QAM
+- Constellation diagrams and signal space
+- Bit error rate (BER) analysis
+- Bandwidth efficiency and spectral efficiency
+- Power efficiency
+- Nyquist criterion and ISI (Inter-Symbol Interference)
+- Pulse shaping filters (raised cosine, root raised cosine)
+- Matched filter detection
+- Gray coding
+- Comparison of modulation schemes
+- Practical applications (WiFi, cellular, satellite)
 
-## Key Themes to Visualize
-- Hierarchy of units and subtopics
-- Relationships between modulation techniques
-- Trade-offs (bandwidth vs power, spectral vs power efficiency)
-- Evolution from analog to digital
-- Theoretical foundations (Fourier, Shannon) connecting multiple units
+## Desired Mindmap Structure
+**Level 1**: Unit 6 - Modulación Digital
+**Level 2**: Major categories (Fundamentals, Modulation Types, Performance Metrics, Practical Aspects)
+**Level 3**: Specific techniques and concepts
+**Level 4**: Details, formulas, variants, applications
 
-## Current Issue
-Mind map was created but has Mermaid parsing error:
-```
-MermaidDetailedError: Parse error on line 35:
-...    `$E = \int |s(t)|^2 dt = \int |S(f)|
------------------------^
-Expecting 'SPACELINE', 'NL', 'EOF', got 'NODE_ID'
-```
+## Technical Requirements
+- Use Mermaid mindmap syntax
+- Use Unicode symbols for mathematical notation (∫, Σ, ², ³, ≥, ≈, Δ, β, φ, π, ·, ₁, ₂, ₀)
+- Format equations as `("formula")` with parentheses
+- Ensure all nodes are properly quoted
+- Create comprehensive coverage - go deep into each subtopic
 
-**Problem**: Mathematical formulas with backticks and LaTeX notation are causing parsing errors in Mermaid mindmap syntax.
+## Completed Work
 
-**File location**: outputs/mindmaps/communications_systems_course_overview_20251116.md
+### Mind Map Created: Unit 6 - Modulación Digital
+**Date**: 2025-11-16
+**Output**: `/Users/rodrigovidela/DOCUMENTOS_MIOS/communications-learning-system/outputs/mindmaps/unit_6_digital_modulation_detailed_20251116.md`
+**Summary**: `/Users/rodrigovidela/DOCUMENTOS_MIOS/communications-learning-system/.doc/claude/reports/mindmap_summaries/unit_6_digital_modulation_20251116_summary.md`
 
-**Lines with equations** (from grep search):
-- Line 83: Parseval theorem equation
-- Line 95: AM signal equation
-- Line 100, 112: Bandwidth formulas
-- Line 126-139: FM/PM equations
-- Line 153-176: Sampling and PCM equations
-- Line 185-187: Digital modulation formulas
-- Line 223-239: Noise formulas
+**Coverage**:
+- 6 main branches: Theoretical Foundations, Modulation Techniques, Performance Analysis, Pulse Shaping & ISI, Implementation, Applications
+- 5 levels of depth with ~250+ nodes
+- All major modulation types: ASK (OOK, M-ASK), FSK (BFSK, MFSK, MSK, GMSK, CPFSK), PSK (BPSK, QPSK, OQPSK, π/4-QPSK, 8PSK, 16PSK, DPSK), QAM (16/64/256/1024-QAM)
+- 40+ key formulas in Unicode notation (BER, bandwidth efficiency, raised cosine, etc.)
+- Complete application mapping (WiFi, LTE, 5G, satellite, cable)
+- Theoretical foundations (signal space, constellations, Nyquist, matched filters)
+- Performance comparisons (power vs bandwidth efficiency trade-offs)
 
-## Task - ✅ COMPLETED
-Fix the Mermaid mindmap so equations render correctly using plain text math notation.
+**Structure highlights**:
+- Comprehensive BER formulas for all modulation types
+- Raised cosine filter details with roll-off factor α
+- Constellation descriptions for all QAM/PSK variants
+- I-Q modulation architecture
+- Adaptive modulation concepts
 
-**CONFIRMED**: Mermaid mindmaps do NOT support LaTeX/KaTeX notation. The correct approach is to use parentheses-wrapped quoted strings with Unicode mathematical symbols.
-
-**Solution Applied**: Replaced all LaTeX equations (`` `$...$` ``) with parentheses-wrapped Unicode notation:
-- Format: `("formula")` NOT just `"formula"`
-- Used Unicode symbols: ∫, Σ, ², ³, ≥, ≈, Δ, β, φ, π, ·, ₁, ₂, ₀
-- Separated descriptive text from pure mathematical expressions
-- All 25 equations successfully converted
-
-## Requirements - ✅ ALL MET
-- ✅ Use parentheses-wrapped quoted strings with Unicode symbols
-- ✅ All equations parse without errors
-- ✅ Mathematical accuracy preserved
-- ✅ Equations are readable
-- ✅ All 25 equations fixed in the file
-
-## Verification
-Ran grep command confirming all equations properly formatted:
-```bash
-grep -n '(".*")' outputs/mindmaps/communications_systems_course_overview_20251116.md
-```
-Result: 25 equations found on lines 83, 95, 101, 114, 128, 130, 133, 135, 137, 143, 157, 178, 181, 190, 192, 229, 231, 237, 241, 242, 247, 251, 257, 288, 294
+## Next Steps
+- Review the full mind map file to ensure all topics covered
+- Use as study reference for Unit 6 exam preparation
+- Identify concepts needing deeper understanding
+- Request follow-up derivations using formula-deriver (e.g., derive QPSK BER)
+- Solve practice problems using exercise-solver
+- Create Anki flashcards for key formulas
+- Integrate with Unit 7 (Noise) and Unit 9 (Information Theory) concepts
