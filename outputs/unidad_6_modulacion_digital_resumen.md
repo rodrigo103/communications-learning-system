@@ -656,4 +656,117 @@ $$d = \sqrt{(I_1-I_2)^2 + (Q_1-Q_2)^2}$$
 
 ---
 
+## Preguntas Frecuentes
+
+### ¿Por qué no se habla de 4-QAM?
+
+**Respuesta corta**: Porque 4-QAM es **matemáticamente equivalente a QPSK**.
+
+**Respuesta detallada**:
+
+#### Equivalencia Matemática
+
+Consideremos el diseño óptimo de una constelación con M = 4 símbolos:
+
+**Objetivo**: Maximizar la distancia mínima $d_{min}$ para energía promedio fija $E_s$
+
+**Análisis geométrico**:
+1. Con 4 puntos, la configuración óptima que maximiza $d_{min}$ es colocarlos en las esquinas de un cuadrado
+2. Para energía promedio unitaria:
+   $$E_s = \frac{1}{4}\sum_{k=1}^{4}(I_k^2 + Q_k^2) = 1$$
+3. Con simetría: puntos en $(\pm a, \pm a)$
+4. Resolviendo: $a = 1/\sqrt{2}$
+
+**Resultado**: ¡Esta es exactamente la constelación QPSK!
+
+#### Representaciones Equivalentes
+
+**Como 4-QAM** (perspectiva de amplitud y fase):
+$$s_k(t) = A_I \cos(2\pi f_c t) - A_Q \sin(2\pi f_c t)$$
+donde $(A_I, A_Q) \in \{(\pm a, \pm a)\}$
+
+**Como QPSK** (perspectiva de fase):
+$$s_k(t) = A\cos(2\pi f_c t + \phi_k)$$
+donde $\phi_k \in \{\pi/4, 3\pi/4, 5\pi/4, 7\pi/4\}$
+
+Usando identidades trigonométricas:
+$$A\cos(2\pi f_c t + \phi_k) = A\cos(\phi_k)\cos(2\pi f_c t) - A\sin(\phi_k)\sin(2\pi f_c t)$$
+
+Para $\phi_1 = \pi/4$:
+$$\cos(\pi/4) = \sin(\pi/4) = \frac{1}{\sqrt{2}}$$
+
+Entonces:
+$$s_1(t) = \frac{A}{\sqrt{2}}\cos(2\pi f_c t) - \frac{A}{\sqrt{2}}\sin(2\pi f_c t)$$
+
+**¡Son idénticas!** Solo cambia la perspectiva de análisis.
+
+#### Visualización de la Constelación
+
+```
+        Q
+        |
+  01 •  |  • 00      (Visto como QPSK: 4 fases)
+        |
+  ------+------ I
+        |
+  11 •  |  • 10      (Visto como 4-QAM: 4 combinaciones I-Q)
+        |
+```
+
+Los 4 puntos están en las mismas posiciones independientemente de cómo los describamos.
+
+#### Desempeño Idéntico
+
+Ambas modulaciones tienen:
+- **Bits por símbolo**: 2
+- **Distancia mínima**: $d_{min} = \sqrt{2} \cdot a$
+- **BER**: $P_e = Q(\sqrt{2E_b/N_0})$
+- **Eficiencia espectral**: $\eta = 2$ bits/s/Hz (ideal)
+- **Ancho de banda**: Mismo $B = R_s(1+\alpha)/2$
+
+#### ¿Por qué la nomenclatura?
+
+**Convención histórica**:
+- **PSK** se usa cuando los puntos están en un **círculo** (amplitud constante)
+- **QAM** se usa cuando los puntos están en una **grilla rectangular** (amplitud variable)
+
+Para M = 4:
+- Los 4 puntos pueden verse como un círculo (QPSK)
+- O como una grilla 2×2 (4-QAM)
+- Son lo mismo, pero **QPSK** es el nombre estándar
+
+**A partir de M = 16**:
+- Ya no hay ambigüedad: 16-QAM es una grilla 4×4
+- 16-PSK sería 16 puntos en un círculo (menos eficiente, rara vez usado)
+- La distinción PSK vs QAM se vuelve significativa
+
+#### Casos Similares
+
+Este no es el único caso de "doble nombre":
+
+1. **BPSK = 2-ASK (antipodal)**
+   - Ambos tienen 2 símbolos en el eje I
+   - BPSK enfatiza la fase ($0$ y $\pi$)
+   - 2-ASK antipodal enfatiza la amplitud ($+A$ y $-A$)
+
+2. **8-PSK vs 8-QAM**
+   - Aquí SÍ son diferentes:
+   - 8-PSK: 8 puntos en círculo (amplitud constante)
+   - 8-QAM: Puede ser rectangular (pero rara)
+
+#### Conclusión
+
+**No se habla de 4-QAM porque**:
+1. Es idéntico a QPSK en todos los aspectos prácticos
+2. La nomenclatura **QPSK** es la estándar y universalmente aceptada
+3. El término **QAM** se reserva típicamente para $M \geq 16$ donde la constelación rectangular es claramente distinta de M-PSK
+4. Usar "4-QAM" sería técnicamente correcto pero confuso e innecesario
+
+**Regla práctica**:
+- M = 2, 4, 8: Usa nomenclatura PSK (o FSK/ASK según corresponda)
+- M ≥ 16: Usa QAM para constelaciones rectangulares
+- Si ves "4-QAM" en algún texto, entiende que es simplemente otro nombre para QPSK
+
+---
+
 **Fin del Resumen de la Unidad 6**
