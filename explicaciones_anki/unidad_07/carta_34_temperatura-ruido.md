@@ -71,6 +71,50 @@ donde:
 La potencia disponible (adaptación de impedancias):
 $$N_{térmico} = kTB$$
 
+**Relación entre ambas fórmulas:**
+
+Ambas ecuaciones describen el mismo fenómeno físico (ruido térmico), pero desde perspectivas diferentes:
+
+- **$v_n^2 = 4kTRB$**: Describe la **tensión de ruido** (voltaje RMS al cuadrado) en los terminales de una resistencia R
+- **$N_{térmico} = kTB$**: Describe la **potencia disponible** que se puede transferir a una carga adaptada
+
+**Derivación de la conexión:**
+
+Partimos de un circuito equivalente: resistencia R (fuente de ruido) conectada a una carga $R_L$.
+
+1. **Modelo de Thévenin**: La resistencia R genera una fuente de voltaje de ruido $v_n$ con impedancia interna R.
+
+2. **Potencia transferida a la carga**:
+   $$P = \frac{v_n^2 \cdot R_L}{(R + R_L)^2}$$
+
+3. **Condición de adaptación** (máxima transferencia de potencia):
+   Para $R_L = R$ (carga adaptada):
+   $$P_{max} = \frac{v_n^2 \cdot R}{(R + R)^2} = \frac{v_n^2}{4R}$$
+
+4. **Sustituyendo** $v_n^2 = 4kTRB$:
+   $$P_{max} = \frac{4kTRB}{4R} = kTB$$
+
+**Interpretación física:**
+
+- El factor **4** en $v_n^2 = 4kTRB$ refleja que el voltaje se mide en **circuito abierto** (toda la resistencia)
+- Al conectar una carga adaptada, solo **1/4** de la potencia potencial se transfiere efectivamente
+- El resultado $N_{térmico} = kTB$ es **independiente de R**: la potencia disponible depende solo de T y B, no de la resistencia específica
+- Esta independencia de R es fundamental: permite definir la potencia de ruido térmico de forma universal
+
+**Caso práctico - Cálculo numérico:**
+
+Para T = 290 K, B = 1 MHz, R = 50 Ω:
+
+| Magnitud | Valor | Unidades |
+|----------|-------|----------|
+| $v_n^2$ | $4 \times 1.38 \times 10^{-23} \times 290 \times 50 \times 10^6$ | V² |
+| $v_n$ | 0.896 | μV |
+| $P_{disponible}$ | $1.38 \times 10^{-23} \times 290 \times 10^6$ | W |
+| $N_{térmico}$ | 4.0 × 10⁻¹⁵ | W |
+| $N_{térmico}$ | -114 | dBm |
+
+**Verificación**: $P = v_n^2/(4R) = (0.896 \times 10^{-6})^2/(4 \times 50) = 4.0 \times 10^{-15}$ W ✓
+
 **Paso 2: Concepto de Temperatura Equivalente**
 
 Cualquier dispositivo que agregue ruido puede caracterizarse por una temperatura equivalente $T_e$ tal que:
