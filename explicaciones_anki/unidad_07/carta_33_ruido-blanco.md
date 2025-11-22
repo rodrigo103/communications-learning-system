@@ -15,10 +15,10 @@
 **Ruido blanco** es ruido aleatorio con densidad espectral de potencia constante para todas las frecuencias.
 
 **Características**:
-- DEP: $N_0$ (W/Hz) constante
+- DEP: $N_0 = kT$ (W/Hz) constante (convención unilateral)
 - Potencia infinita (en ancho de banda infinito)
 - Proceso estacionario, gaussiano
-- Autocorrelación: función delta $R_n(\tau) = (N_0/2)\delta(\tau)$
+- Autocorrelación: función delta $R_n(\tau) = N_0\delta(\tau)$
 
 **Por qué es útil**:
 1. **Modelo simplificado**: aproxima bien el ruido térmico
@@ -26,7 +26,9 @@
 3. **Peor caso razonable**: conservador pero realista
 4. **Banda limitada**: en sistemas reales se filtra a BW finito
 
-**Realidad**: ruido "blanco filtrado" con potencia $N = N_0 \cdot BW$
+**Realidad**: ruido "blanco filtrado" con potencia $N = N_0 \cdot B = kTB$
+
+**Nota**: Algunos textos usan $N_0 = 4kT$ (convención bilateral antigua). Usamos $N_0 = kT$ (convención unilateral moderna, más simple).
 
 ---
 
@@ -61,15 +63,23 @@ El **ruido blanco** es uno de los conceptos más fundamentales en sistemas de co
 
 El ruido blanco se define por su densidad espectral de potencia:
 
-$$S_n(f) = \frac{N_0}{2} \text{ para todo } f$$
+**Representación bilateral** (frecuencias positivas y negativas):
+$$S_n(f) = \frac{N_0}{2} = \frac{kT}{2} \text{ para } -\infty < f < \infty$$
 
-donde $N_0$ es la densidad espectral de potencia unilateral en watts/Hz. El factor 1/2 aparece porque consideramos frecuencias positivas y negativas.
+**Representación unilateral** (solo frecuencias positivas, convención moderna):
+$$S_n(f) = N_0 = kT \text{ para } f > 0$$
+
+En este curso usaremos la **convención unilateral** por simplicidad: $N_0 = kT$ [W/Hz].
 
 **Paso 2: Propiedades Temporales**
 
 La función de autocorrelación se obtiene como la transformada inversa de Fourier de la DEP:
 
-$$R_n(\tau) = \mathcal{F}^{-1}\{S_n(f)\} = \frac{N_0}{2}\delta(\tau)$$
+**Para representación bilateral**:
+$$R_n(\tau) = \mathcal{F}^{-1}\{S_n(f)\} = \mathcal{F}^{-1}\{\frac{kT}{2}\} = \frac{kT}{2}\delta(\tau)$$
+
+**Para representación unilateral** (equivalente en potencia):
+$$R_n(\tau) = N_0\delta(\tau) = kT\delta(\tau)$$
 
 Esta función delta implica que:
 - El ruido en instantes diferentes es completamente decorrelacionado
@@ -87,27 +97,34 @@ El ruido blanco gaussiano (el caso más común) tiene:
 
 **Partiendo de la definición de potencia:**
 
-La potencia total del ruido blanco sería:
+**Representación bilateral**: La potencia total del ruido blanco sería:
 
-$$P_{total} = \int_{-\infty}^{\infty} S_n(f) df = \int_{-\infty}^{\infty} \frac{N_0}{2} df = \infty$$
+$$P_{total} = \int_{-\infty}^{\infty} \frac{kT}{2} df = \infty$$
 
 **Problema aparente:** ¡Potencia infinita!
 
-**Solución práctica:** En sistemas reales, el ruido siempre es filtrado:
+**Solución práctica:** En sistemas reales, el ruido siempre es filtrado.
 
-$$P_{real} = \int_{-B/2}^{B/2} \frac{N_0}{2} df = N_0 \cdot B$$
+**Representación unilateral** (solo frecuencias positivas):
+
+$$P_{real} = \int_{0}^{B} N_0 df = \int_{0}^{B} kT \, df = kTB$$
 
 donde B es el ancho de banda del sistema.
 
+**Clave**: Usando la convención unilateral ($N_0 = kT$), la fórmula de potencia es directa: $N = N_0 B = kTB$
+
 **Relación con temperatura:**
 
-El ruido térmico (Johnson-Nyquist) tiene:
+El ruido térmico (Johnson-Nyquist) tiene densidad espectral de potencia disponible:
 
-$$N_0 = 4kT$$
+$$N_0 = kT$$
 
 donde:
 - $k = 1.38 \times 10^{-23}$ J/K (constante de Boltzmann)
 - $T$ = temperatura absoluta en Kelvin
+- Esta es la convención **unilateral moderna** (solo frecuencias positivas)
+
+**Nota histórica**: La fórmula original de Nyquist para voltaje de ruido es $\overline{v_n^2} = 4kTRB$. El factor 4 aparece en voltaje, pero la potencia disponible (con carga adaptada) es $P = \frac{\overline{v_n^2}}{4R} = kTB$, sin el factor 4.
 
 ### 🔬 Intuición y Analogías
 
@@ -137,17 +154,19 @@ El ruido térmico surge del movimiento aleatorio de electrones en conductores. A
 
 **Solución paso a paso:**
 
-1. **Densidad espectral de ruido térmico:**
-   $$N_0 = 4kT = 4 \times 1.38 \times 10^{-23} \times 290$$
-   $$N_0 = 1.60 \times 10^{-20} \text{ W/Hz}$$
+1. **Densidad espectral de ruido térmico (convención unilateral):**
+   $$N_0 = kT = 1.38 \times 10^{-23} \times 290$$
+   $$N_0 = 4.0 \times 10^{-21} \text{ W/Hz}$$
+
+   En dBm/Hz: $N_0 = 10\log_{10}(4.0 \times 10^{-21}/10^{-3}) = -174$ dBm/Hz
 
 2. **Potencia de ruido en el ancho de banda:**
-   $$N = N_0 \times B = 1.60 \times 10^{-20} \times 200 \times 10^3$$
-   $$N = 3.2 \times 10^{-15} \text{ W}$$
+   $$N = N_0 \times B = 4.0 \times 10^{-21} \times 200 \times 10^3$$
+   $$N = 8.0 \times 10^{-16} \text{ W}$$
 
 3. **En dBm:**
-   $$N_{dBm} = 10\log_{10}\left(\frac{3.2 \times 10^{-15}}{10^{-3}}\right)$$
-   $$\boxed{N_{dBm} = -115 \text{ dBm}}$$
+   $$N_{dBm} = 10\log_{10}\left(\frac{8.0 \times 10^{-16}}{10^{-3}}\right)$$
+   $$\boxed{N_{dBm} = -121 \text{ dBm}}$$
 
 **Interpretación:** Este es el "piso de ruido" fundamental del receptor. Cualquier señal debe estar por encima de este nivel para ser detectada.
 
@@ -160,7 +179,7 @@ El ruido térmico surge del movimiento aleatorio de electrones en conductores. A
 **Análisis del ruido:**
 - Ancho de banda: B = 20 MHz
 - Temperatura efectiva del sistema: ~400 K (incluye figura de ruido del receptor)
-- $N_0 = 4kT = 5.52 \times 10^{-21}$ W/Hz
+- $N_0 = kT = 1.38 \times 10^{-23} \times 400 = 5.52 \times 10^{-21}$ W/Hz
 
 **Potencia de ruido:**
 $$N = N_0 \times B = 5.52 \times 10^{-21} \times 20 \times 10^6 = 1.1 \times 10^{-13} \text{ W}$$
@@ -228,10 +247,11 @@ Si filtramos ruido blanco a banda angosta:
 
 ### ⚠️ Errores Comunes y Trampas
 
-❌ **Error #1: Olvidar que N₀ es densidad espectral unilateral**
-- Por qué ocurre: Confusión con definiciones bilateral/unilateral
-- Cómo evitarlo: Recordar que $N = N_0 \times B$ (no $N_0 \times B/2$)
-- Ejemplo de error: Calcular mal la potencia de ruido por factor de 2
+❌ **Error #1: Confundir N₀ = kT (potencia) con la fórmula de voltaje 4kTRB**
+- Por qué ocurre: Textos antiguos usan $N_0 = 4kT$ (convención bilateral)
+- Cómo evitarlo: Usar la convención moderna **unilateral**: $N_0 = kT$ [W/Hz]
+- Explicación: El factor 4 aparece en voltaje ($\overline{v_n^2} = 4kTRB$), pero la potencia disponible es $N = kTB$
+- Ver archivo `aclaracion_densidad_espectral_ruido.md` para detalles completos
 
 ❌ **Error #2: Usar temperatura en Celsius en lugar de Kelvin**
 - Por qué ocurre: Costumbre de usar °C
@@ -247,10 +267,13 @@ Si filtramos ruido blanco a banda angosta:
 
 #### Fórmulas Esenciales
 ```
-N₀ = 4kT                    [Densidad espectral de ruido térmico]
-N = N₀ × B                   [Potencia de ruido en banda B]
-N_dBm = -174 + 10log₁₀(B)   [A temperatura ambiente, B en Hz]
+N₀ = kT                      [Densidad espectral unilateral, W/Hz]
+N = N₀ × B = kTB             [Potencia de ruido en banda B]
+N₀ = -174 dBm/Hz             [A temperatura ambiente T=290K]
+N_dBm = -174 + 10log₁₀(B)    [Potencia total, B en Hz]
 ```
+
+**Nota histórica**: La fórmula de voltaje de Nyquist es $\overline{v_n^2} = 4kTRB$, pero la potencia disponible es $N = kTB$ (sin el factor 4).
 
 #### Conceptos Fundamentales
 - ✓ **Ruido blanco = DEP constante**: Todas las frecuencias contribuyen igual
@@ -308,4 +331,4 @@ N_dBm = -174 + 10log₁₀(B)   [A temperatura ambiente, B en Hz]
 ---
 
 *Generado el: 2024-11-16*
-*Última revisión: 2024-11-16*
+*Última revisión: 2025-11-22 - Actualizado a convención unilateral moderna (N₀ = kT)*
