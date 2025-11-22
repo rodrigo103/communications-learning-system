@@ -133,20 +133,31 @@ Imagina la DEP como un **ecualizador gráfico** en un sistema de audio:
 
 **Solución paso a paso:**
 
-1. **Densidad espectral de ruido térmico:**
-   $$N_0 = 4kTR = 4 \times 1.38×10^{-23} \times 290 \times 50$$
-   $$N_0 = 8.0×10^{-19} \text{ W/Hz}$$
+1. **Densidad espectral de potencia disponible del ruido térmico:**
 
-2. **Función de autocorrelación (ruido blanco):**
-   $$R_n(\tau) = \frac{N_0}{2}\delta(\tau)$$
+   **Convención unilateral** (solo frecuencias positivas, más simple):
+   $$N_0 = kT = 1.38×10^{-23} \times 290$$
+   $$N_0 = 4.0×10^{-21} \text{ W/Hz} = -174 \text{ dBm/Hz}$$
+
+   **Nota**: La potencia disponible es independiente de R (vale para carga adaptada).
+
+2. **Función de autocorrelación (ruido blanco, convención unilateral):**
+   $$R_n(\tau) = N_0\delta(\tau) = kT\delta(\tau)$$
+
+   Esto indica correlación cero para $\tau \neq 0$ (ruido completamente aleatorio).
 
 3. **Verificación Wiener-Khinchin:**
-   $$S_n(f) = \mathcal{F}\{\frac{N_0}{2}\delta(\tau)\} = \frac{N_0}{2} = 4.0×10^{-19} \text{ W/Hz}$$
+   $$S_n(f) = \mathcal{F}\{N_0\delta(\tau)\} = N_0 = 4.0×10^{-21} \text{ W/Hz}$$
 
-4. **Potencia total en el ancho de banda:**
-   $$P_{ruido} = \int_{-B/2}^{B/2} S_n(f) df = N_0 \times B = 8.0×10^{-13} \text{ W}$$
+   La DEP es constante para todas las frecuencias (espectro "blanco").
 
-**Interpretación:** El ruido blanco tiene DEP constante (plana) y autocorrelación delta, indicando completa aleatoriedad.
+4. **Potencia total en el ancho de banda (B = 1 MHz):**
+   $$P_{ruido} = \int_{0}^{B} S_n(f) df = N_0 \times B$$
+   $$P_{ruido} = 4.0×10^{-21} \times 10^6 = 4.0×10^{-15} \text{ W} = -114 \text{ dBm}$$
+
+**Nota histórica**: El voltaje de ruido se expresa como $\overline{v_n^2} = 4kTRB$ (con factor 4), pero la **potencia disponible** es $P = kTB$ (sin factor 4). Ver Unidad 7 para detalles.
+
+**Interpretación:** El ruido blanco tiene DEP constante (plana) y autocorrelación delta, indicando completa aleatoriedad temporal.
 
 ---
 
@@ -251,7 +262,8 @@ La DEP muestra lóbulos principales centrados en ±f_c con forma sinc².
 Wiener-Khinchin: S_x(f) = F{R_x(τ)}
 Potencia total: P = R_x(0) = ∫S_x(f)df
 Filtro LTI: S_y(f) = |H(f)|²S_x(f)
-Ruido blanco: S_n(f) = N₀/2 (constante)
+Ruido blanco: S_n(f) = N₀ = kT (convención unilateral, f > 0)
+               S_n(f) = N₀/2 = kT/2 (convención bilateral, ±f)
 ```
 
 #### Conceptos Fundamentales
@@ -268,7 +280,7 @@ Ruido blanco: S_n(f) = N₀/2 (constante)
 #### Valores Típicos
 | Señal | DEP característica | Aplicación |
 |-------|-------------------|------------|
-| Ruido térmico | N₀/2 = kT (plana) | Todos los receptores |
+| Ruido térmico | N₀ = kT = -174 dBm/Hz @ 290K (unilateral) | Todos los receptores |
 | Ruido 1/f | K/f | Dispositivos semiconductores |
 | OFDM | Rectangular en banda | WiFi, LTE |
 | Spread spectrum | Plana en banda ancha | GPS, CDMA |
@@ -309,4 +321,4 @@ Ruido blanco: S_n(f) = N₀/2 (constante)
 ---
 
 *Generado el: 2024-11-16*
-*Última revisión: 2024-11-16*
+*Última revisión: 2025-11-22 - Corregido ejemplo de ruido térmico (N₀=kT, no 4kTR)*
