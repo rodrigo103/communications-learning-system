@@ -228,7 +228,10 @@ Para una SNR mínima requerida de 10 dB y ruido térmico de -174 dBm/Hz:
 
 #### Tipos de problemas típicos
 1. **Conversión entre F, NF y Te**: Dados unos, calcular los otros
-   - Estrategia: Memorizar las tres fórmulas de conversión
+   - Estrategia: Memorizar las tres fórmulas de conversión:
+     1. **F ↔ NF**: $NF = 10\log_{10}(F)$ y $F = 10^{NF/10}$
+     2. **F ↔ Te**: $F = 1 + \frac{T_e}{T_0}$ y $T_e = T_0(F - 1)$
+     3. **NF ↔ Te**: Combinando las dos anteriores con $T_0 = 290$ K
 
 2. **Comparación de dispositivos**: Seleccionar el mejor para una aplicación
    - Estrategia: Considerar NF, ganancia, costo y consumo
