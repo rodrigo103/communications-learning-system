@@ -1,0 +1,5 @@
+EJERCICIO Nro. 3: 
+Se tiene un receptor de FM con un filtro de FI con un ancho de banda de 200 Khz y un filtro de salida pasabajos ideal con f_c = 15Khz que recibe una señal modulada por un tono con las siguientes características: f_m = 5 KHz y Delta_f = 75KHz. La relación potencia media de señal a potencia media de ruido en la entrada del amplificador de FI es de 40 dB. Se pregunta:
+a) Cuál es la S/N luego del filtro de salida si F_FI = 1 
+b) Cuál es la S/N luego del filtro de salida si Te_FI = 72,50 K ? 
+c) Cuál será el índice de modulación necesario para mejorar en 6 dB la S/N calculada en "a)". 
