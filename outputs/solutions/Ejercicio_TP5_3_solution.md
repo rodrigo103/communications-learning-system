@@ -35,7 +35,13 @@ c) What modulation index is necessary to improve the S/N calculated in "a)" by 6
 
 **Calculated Parameters:**
 - β = Δf/f_m = 75/5 = 15 (modulation index)
-- W/B_T = f_m/B_FI = 5/200 = 0.025 (critical ratio!)
+- B_T (Carson) = 2(Δf + f_m) = 2(75 + 5) = 160 kHz (transmission bandwidth)
+- W/B_T = f_m/B_T = 5/160 = 0.03125 (critical ratio!)
+
+**Note on B_T vs B_FI:**
+- B_T = 160 kHz is the signal bandwidth (Carson's Rule)
+- B_FI = 200 kHz is the IF filter bandwidth (given, slightly wider)
+- We use B_T from Carson for the Haykin formula (theoretically correct)
 
 ---
 
@@ -89,43 +95,49 @@ $$(S/N)_R = 40 \text{ dB} = 10^{40/10} = 10,000 \text{ (linear)}$$
 
 $$\beta = \frac{\Delta f}{f_m} = \frac{75 \text{ kHz}}{5 \text{ kHz}} = 15$$
 
-**Step 3: Calculate the W/B_T factor**
+**Step 3: Calculate B_T using Carson's Rule**
 
-$$\frac{W}{B_T} = \frac{f_m}{B_{FI}} = \frac{5 \text{ kHz}}{200 \text{ kHz}} = 0.025$$
+$$B_T = 2(\Delta f + f_m) = 2(75 + 5) = 160 \text{ kHz}$$
+
+**Note:** The IF filter (200 kHz) is wider than Carson's bandwidth (160 kHz) to accommodate filter roll-off. For the Haykin formula, we use the theoretical B_T from Carson.
+
+**Step 4: Calculate the W/B_T factor**
+
+$$\frac{W}{B_T} = \frac{f_m}{B_T} = \frac{5 \text{ kHz}}{160 \text{ kHz}} = 0.03125$$
 
 **Validation of W/B_T < 1:**
 - For wideband FM, this ratio MUST be much less than 1 ✓
 - This factor represents the bandwidth compression that enables FM's processing gain
 
-**Step 4: Apply Haykin formula**
+**Step 5: Apply Haykin formula**
 
 $$\left(\frac{S}{N}\right)_{D} = 3\beta^2 \left(\frac{W}{B_T}\right) \left(\frac{S}{N}\right)_R$$
 
 Substitution:
-$$\left(\frac{S}{N}\right)_{D} = 3 \times (15)^2 \times (0.025) \times 10,000$$
+$$\left(\frac{S}{N}\right)_{D} = 3 \times (15)^2 \times (0.03125) \times 10,000$$
 
 Calculation:
-$$\left(\frac{S}{N}\right)_{D} = 3 \times 225 \times 0.025 \times 10,000$$
-$$\left(\frac{S}{N}\right)_{D} = 675 \times 0.025 \times 10,000$$
-$$\left(\frac{S}{N}\right)_{D} = 16.875 \times 10,000$$
-$$\left(\frac{S}{N}\right)_{D} = 168,750$$
+$$\left(\frac{S}{N}\right)_{D} = 3 \times 225 \times 0.03125 \times 10,000$$
+$$\left(\frac{S}{N}\right)_{D} = 675 \times 0.03125 \times 10,000$$
+$$\left(\frac{S}{N}\right)_{D} = 21.09375 \times 10,000$$
+$$\left(\frac{S}{N}\right)_{D} = 210,937.5$$
 
 **Convert to dB:**
-$$\left(\frac{S}{N}\right)_{D,dB} = 10 \log_{10}(168,750) = 10 \times 5.227 = 52.27 \text{ dB}$$
+$$\left(\frac{S}{N}\right)_{D,dB} = 10 \log_{10}(210,937.5) = 10 \times 5.324 = 53.24 \text{ dB}$$
 
 Result:
-$$\boxed{(S/N)_D = 168,750 \text{ (linear)} = 52.3 \text{ dB}}$$
+$$\boxed{(S/N)_D = 210,938 \text{ (linear)} = 53.2 \text{ dB}}$$
 
 **Validation:**
 - Dimensions: Dimensionless ratio ✓
-- FM processing gain: 52.3 - 40 = 12.3 dB ✓
+- FM processing gain: 53.2 - 40 = 13.2 dB ✓
 - Sanity check: Wideband FM with β = 15 should give moderate gain ✓
 - Physical meaning: FM exchanges bandwidth for SNR improvement
 
-**Explanation:** The FM demodulation process provides a **12.3 dB processing gain** (also called "quieting effect"). This gain comes from the wideband nature of FM - we use 200 kHz bandwidth to transmit a 5 kHz signal, and FM demodulation converts this bandwidth expansion into SNR improvement.
+**Explanation:** The FM demodulation process provides a **13.2 dB processing gain** (also called "quieting effect"). This gain comes from the wideband nature of FM - we use 160 kHz bandwidth (Carson) to transmit a 5 kHz signal, and FM demodulation converts this bandwidth expansion into SNR improvement.
 
 **FM Processing Gain Factor:**
-$$G_{FM} = 3\beta^2 \left(\frac{W}{B_T}\right) = 3 \times 225 \times 0.025 = 16.875 = 12.3 \text{ dB}$$
+$$G_{FM} = 3\beta^2 \left(\frac{W}{B_T}\right) = 3 \times 225 \times 0.03125 = 21.09 = 13.2 \text{ dB}$$
 
 ---
 
@@ -158,33 +170,35 @@ $$(S/N)_{R,degraded,dB} = 40 - 0.97 = 39.03 \text{ dB}$$
 
 **Step 3: Apply Haykin FM formula with degraded SNR**
 
+Using B_T = 160 kHz from Carson's Rule (same as part a):
+
 $$\left(\frac{S}{N}\right)_{D} = 3\beta^2 \left(\frac{W}{B_T}\right) \left(\frac{S}{N}\right)_{R,degraded}$$
 
 Substitution:
-$$\left(\frac{S}{N}\right)_{D} = 3 \times (15)^2 \times (0.025) \times 8,000$$
+$$\left(\frac{S}{N}\right)_{D} = 3 \times (15)^2 \times (0.03125) \times 8,000$$
 
 Calculation:
-$$\left(\frac{S}{N}\right)_{D} = 3 \times 225 \times 0.025 \times 8,000$$
-$$\left(\frac{S}{N}\right)_{D} = 16.875 \times 8,000$$
-$$\left(\frac{S}{N}\right)_{D} = 135,000$$
+$$\left(\frac{S}{N}\right)_{D} = 3 \times 225 \times 0.03125 \times 8,000$$
+$$\left(\frac{S}{N}\right)_{D} = 21.09375 \times 8,000$$
+$$\left(\frac{S}{N}\right)_{D} = 168,750$$
 
 **Convert to dB:**
-$$\left(\frac{S}{N}\right)_{D,dB} = 10 \log_{10}(135,000) = 51.30 \text{ dB}$$
+$$\left(\frac{S}{N}\right)_{D,dB} = 10 \log_{10}(168,750) = 52.27 \text{ dB}$$
 
 Result:
-$$\boxed{(S/N)_D = 135,000 \text{ (linear)} = 51.3 \text{ dB}}$$
+$$\boxed{(S/N)_D = 168,750 \text{ (linear)} = 52.3 \text{ dB}}$$
 
 **Validation:**
 - Dimensions: Dimensionless ratio ✓
-- Degradation: 52.3 - 51.3 = 1.0 dB ≈ F_dB = 0.97 dB ✓
+- Degradation: 53.2 - 52.3 = 0.9 dB ≈ F_dB = 0.97 dB ✓
 - Sanity check: Noise figure causes ~1 dB loss in output SNR ✓
 
 **Explanation:** The IF amplifier's noise temperature of 72.50 K corresponds to a noise figure of 1.25 (0.97 dB). This added noise degrades the input SNR by the same amount, which then propagates through the FM demodulator. The output SNR is reduced by approximately 1 dB compared to the noiseless case.
 
 **Comparison:**
-- Part (a): 52.3 dB (F = 1, noiseless)
-- Part (b): 51.3 dB (F = 1.25, Te = 72.5 K)
-- Degradation: 1.0 dB (due to IF amplifier noise)
+- Part (a): 53.2 dB (F = 1, noiseless)
+- Part (b): 52.3 dB (F = 1.25, Te = 72.5 K)
+- Degradation: 0.9 dB ≈ 1 dB (due to IF amplifier noise)
 
 ---
 
@@ -197,19 +211,19 @@ $$\boxed{(S/N)_D = 135,000 \text{ (linear)} = 51.3 \text{ dB}}$$
 **Step 1: Determine target output SNR**
 
 Starting SNR from part (a):
-$$(S/N)_{D,a} = 52.3 \text{ dB}$$
+$$(S/N)_{D,a} = 53.2 \text{ dB} = 210,938 \text{ (linear)}$$
 
 Target SNR (6 dB higher):
-$$(S/N)_{D,target} = 52.3 + 6 = 58.3 \text{ dB}$$
+$$(S/N)_{D,target} = 53.2 + 6 = 59.2 \text{ dB}$$
 
 In linear:
-$$(S/N)_{D,target} = 10^{58.3/10} = 675,934$$
+$$(S/N)_{D,target} = 10^{59.2/10} = 831,764$$
 
 Alternatively (easier approach):
 $$\frac{(S/N)_{D,target}}{(S/N)_{D,a}} = 10^{6/10} = 10^{0.6} = 3.981 \approx 4$$
 
 So:
-$$(S/N)_{D,target} = 4 \times 168,750 = 675,000$$
+$$(S/N)_{D,target} = 4 \times 210,938 = 843,752$$
 
 **Step 2: Analyze the β² relationship**
 
@@ -317,9 +331,9 @@ $$\Delta(S/N) = 10\log_{10}(1.283) = 1.08 \text{ dB}$$
 
 | Part | Answer | Units | Notes |
 |------|--------|-------|-------|
-| (a) | 168,750 = 52.3 dB | - | F = 1 (noiseless) |
-| (b) | 135,000 = 51.3 dB | - | Te = 72.5 K, F = 1.25 |
-| (c) | β = 57.2, Δf = 286 kHz | - | Requires 582 kHz BW (impractical!) |
+| (a) | **210,938 = 53.2 dB** | - | F = 1 (noiseless), B_T = 160 kHz (Carson) |
+| (b) | **168,750 = 52.3 dB** | - | Te = 72.5 K, F = 1.25 |
+| (c) | **β = 57.2, Δf = 286 kHz** | - | Requires 582 kHz BW (impractical!) |
 
 ---
 
@@ -328,9 +342,10 @@ $$\Delta(S/N) = 10\log_{10}(1.283) = 1.08 \text{ dB}$$
 ✓ **Dimensional Analysis**: All SNR values are dimensionless ratios
 
 ✓ **Sanity Checks**:
-- FM processing gain: 12.3 dB (reasonable for β = 15)
-- Noise figure impact: 1 dB degradation (matches F = 0.97 dB)
+- FM processing gain: 13.2 dB (reasonable for β = 15)
+- Noise figure impact: ~1 dB degradation (matches F = 0.97 dB)
 - β relationship: Quadratic scaling verified
+- Carson's Rule: B_T = 160 kHz used consistently
 
 ✓ **Special Cases**:
 - If β → 0: (S/N)_D → (S/N)_R (no FM gain) ✓
@@ -351,7 +366,7 @@ $$\Delta(S/N) = 10\log_{10}(1.283) = 1.08 \text{ dB}$$
 
 • **FM Processing Gain**: FM demodulation provides SNR improvement by trading bandwidth for noise performance. The gain is proportional to β² but inversely proportional to the bandwidth expansion ratio (B_T/W).
 
-• **W/B_T Factor**: This critical factor (0.025 in this problem) represents the bandwidth compression. In wideband FM, we transmit a wideband signal (200 kHz) to carry a narrowband message (5 kHz), and FM demodulation converts this bandwidth excess into SNR gain.
+• **W/B_T Factor**: This critical factor (0.03125 in this problem, using Carson's B_T = 160 kHz) represents the bandwidth compression. In wideband FM, we transmit a wideband signal (160 kHz) to carry a narrowband message (5 kHz), and FM demodulation converts this bandwidth excess into SNR gain.
 
 • **Noise Figure Impact**: Added noise at the receiver (from the IF amplifier) degrades the input SNR, which then propagates through the system. A noise figure of 1.25 (1 dB) causes a 1 dB reduction in output SNR.
 
