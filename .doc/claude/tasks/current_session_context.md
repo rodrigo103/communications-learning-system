@@ -1,184 +1,92 @@
 # Current Session Context
 
 **Date**: 2025-12-09
-**Activity**: FM receiver problem CORRECTED - Exercise TP5_3
-**Unit Focus**: Unit 4 - Modulación Exponencial (FM)
+**Activity**: Emergency Progress Assessment - 9 Days to Exam
+**Critical Question**: Can the student pass the exam?
 
-## Session Goal
-✓ CORRECTED: Re-solved Exercise TP5_3 using the CORRECT Haykin formula with W/B_T factor (not inverted)
+## Exam Context
+- **Exam Date**: 2025-12-18 (18 de diciembre)
+- **Days Remaining**: 9 days
+- **Critical Constraint**: Cannot study every day
 
-## Learning Goals - ACHIEVED
-✓ Correct application of Haykin FM SNR formula: 3β²(W/B_T)(S/N)_R
-✓ Understand critical importance of W/B_T < 1 (not B_T/W > 1)
-✓ Validate results against physical intuition
-✓ Recognize when theoretical results exceed practical constraints
-✓ Master dimensional analysis to catch formula errors
+## Student Request
+Student is asking for honest assessment of whether they can pass the Communications Systems exam given:
+1. Current progress level
+2. Time remaining (9 days)
+3. Inability to study every single day
 
-## Context
-Student is preparing for Communications Systems exam (UTN) on **2025-12-15** (6 days remaining).
-Currently working on FM modulation problems with emphasis on noise performance.
+## Analysis Needed
+1. Current progress vs. required progress
+2. Critical topics covered vs. missing
+3. Realistic study plan for 9 days (with rest days)
+4. Honest probability assessment
+5. Emergency triage strategy
 
-## Critical Correction Applied
+## Context for Analysis
+- Last state update: November 15, 2025 (24+ days ago!)
+- State file shows 0% progress (likely not updated)
+- BUT: Context file shows significant work on FM (Unit 4) and Noise (Unit 7)
+- Session history shows minimal activity tracking
+- Need to infer actual progress from outputs/ directory
 
-**MAJOR ERROR FIXED:**
-Previous solution (2025-12-06) used **incorrect formula** with inverted bandwidth ratio:
-- WRONG: (3/2)β²(B_FI/f_m) → gave factor of 40 → 81.3 dB output SNR
-- CORRECT: 3β²(W/B_T) where W/B_T = 0.025 → 52.3 dB output SNR
-- Error magnitude: **29 dB difference!**
+## Work Identified So Far
 
-This is a **critical exam mistake** that must be avoided.
+### Derivations Completed (9 files):
+1. AM modulation (3 versions)
+2. FM Carson's Rule
+3. FM Narrowband
+4. Friis Cascade (2 versions)
+5. QAM comprehensive
+6. Shannon-Hartley comprehensive
+7. Parseval's theorem
 
-## Completed Work
+### Solutions Completed (2 files):
+1. Exercise TP5_3 (FM receiver SNR) - CORRECTED version
+2. Noise problem (complete)
 
-### Problem Re-Solved: Exercise TP5_3 - FM Receiver SNR Analysis (CORRECTED)
-**Date**: 2025-12-09
-**Type**: FM Receiver with Noise Figure Effects
-**Difficulty**: Medium-High
+### Recent Work (from context file):
+- **Unit 4 (FM)**: Deep understanding, corrected major formula error
+- **Unit 7 (Noise)**: Good understanding of noise figure, Friis formula
+- **Unit 9 (Information Theory)**: Has Shannon-Hartley derivation
 
-**CORRECTED Results**:
-- Part (a): Output SNR = **52.3 dB** (was 81.3 dB - WRONG)
-- Part (b): Output SNR = **51.3 dB** (was 80.3 dB - WRONG)
-- Part (c): Required β = **57.2** (was 29.93 - WRONG)
+## Critical Finding
+The learning_state.json shows 0% progress but this is CLEARLY WRONG - it hasn't been updated since Nov 15. The actual work shows significant progress in critical areas.
 
-**Key Findings**:
-- FM processing gain: **12.3 dB** (was 41.3 dB - unrealistic!)
-- W/B_T factor: 0.025 (much less than 1, as required for wideband FM)
-- Noise figure causes 1 dB degradation (physically reasonable)
-- Part (c) requires 582 kHz bandwidth (exceeds available 200 kHz filter)
+## Next Steps for Analysis
+1. Manually assess actual progress from outputs
+2. Map completed work to unit structure
+3. Calculate realistic completion percentage
+4. Identify critical gaps
+5. Create emergency 9-day plan
+6. Provide honest pass/fail assessment
 
-**Files Created**:
-- Full solution: `/Users/rodrigovidela/DOCUMENTOS_MIOS/communications-learning-system/outputs/solutions/Ejercicio_TP5_3_solution.md`
-- Summary: `/Users/rodrigovidela/DOCUMENTOS_MIOS/communications-learning-system/.doc/claude/reports/solution_summaries/Ejercicio_TP5_3_20251209_CORRECTED_summary.md`
+## Priority Topics (from course structure)
+**CRITICAL (Must Know):**
+- Unit 3: Modulación Lineal (AM, DSB, SSB)
+- Unit 4: Modulación Exponencial (FM, Carson)
+- Unit 7: Ruido (Noise figure, Friis, SNR)
+- Unit 9: Teoría de la Información (Shannon-Hartley)
 
-## Skills Demonstrated
-1. **Error detection**: Recognized unrealistic result (81 dB output SNR)
-2. **Formula verification**: Confirmed correct Haykin formula structure
-3. **Dimensional analysis**: Verified W/B_T < 1 for wideband FM
-4. **Physical validation**: Checked FM gain against typical values (10-20 dB)
-5. **Practical constraints**: Carson's Rule bandwidth requirements
-6. **Noise figure application**: Proper degradation of input SNR
-7. **Quadratic relationships**: β² effect on output SNR
+**IMPORTANT (Should Know):**
+- Unit 2: Análisis de Señales (Fourier, Parseval)
+- Unit 6: Modulación Digital (QAM, PSK)
+- Unit 8: Intercomparación (System comparisons)
 
-## Key Concepts Reinforced
+**LOWER PRIORITY:**
+- Unit 1: Introducción
+- Unit 5: Modulación de Pulsos
+- Unit 10: Temas Avanzados
 
-**MOST IMPORTANT - MEMORIZE FOR EXAM:**
-$$\left(\frac{S}{N}\right)_{D} = 3\beta^2 \left(\frac{W}{B_T}\right) \left(\frac{S}{N}\right)_R$$
+## Assessment Framework
+With 9 days and inability to study daily, realistic study time:
+- Assume 5-6 effective study days
+- Need ~4-6 hours per day for concentrated work
+- Total available: ~25-35 hours of study time
 
-Where:
-- W/B_T = f_m/B_FI = message BW / transmission BW
-- **MUST be less than 1** for wideband FM
-- Typical values: 0.01 to 0.1
-- This problem: 0.025 ✓
+For 87 concepts:
+- Already covered: ~15-20 concepts (estimated from outputs)
+- Remaining: ~67-72 concepts
+- Need: ~2-3 concepts per hour (aggressive pace)
+- Realistic for critical units only: ~35-40 concepts possible
 
-**Common Error (AVOID ON EXAM):**
-- DO NOT use B_T/W (inverted fraction)
-- DO NOT use (3/2)β²(B_FI/f_m) formula
-- This gives results that are ~30 dB too high!
-
-**Validation checks:**
-- Is W/B_T < 1? (should be yes for wideband FM)
-- Is FM gain reasonable? (typically 10-20 dB, not 40+ dB)
-- Does result pass limiting cases? (β→0 should give no gain)
-
-## Next Steps (Recommendations)
-
-### URGENT - Before Exam (6 days):
-1. **Practice more FM problems** with CORRECT formula (need 3-5 problems)
-2. **Create formula sheet** with correct Haykin equation
-3. **Memorize validation checks** (W/B_T < 1, typical gains)
-4. **Review common mistakes** to avoid on exam
-
-### Immediate Practice:
-1. Solve FM problems with different β values (5, 10, 20)
-2. Practice inverse problems (given SNR, find β)
-3. Multi-stage receivers (Friis formula for cascade noise)
-4. Pre-emphasis/de-emphasis effects
-
-### Related Topics to Study:
-1. **Unit 7 (Noise)**: Friis cascade, system noise analysis
-2. **Unit 9 (Info Theory)**: Shannon-Hartley capacity
-3. **Unit 4 (FM)**: Pre-emphasis/de-emphasis, stereo FM, threshold effect
-4. **Unit 8 (Comparison)**: FM vs AM trade-offs
-
-### Weak Areas to Address:
-- **CRITICAL**: Must internalize CORRECT FM formula to avoid exam disaster
-- Practice validation checks (dimensional analysis, physical reasonableness)
-- Speed up dB ↔ linear conversions (currently 40 dB = 10,000, etc.)
-- Carson's Rule bandwidth calculations
-- Coupled parameter problems (when β changes, B_T changes too)
-
-### Exam Preparation Priority (6 DAYS REMAINING):
-- **CRITICAL**: FM SNR formula (memorize CORRECT version!)
-- **CRITICAL**: Validation checks (catch formula errors)
-- **HIGH**: Noise figure application (F, Te conversions)
-- **HIGH**: Shannon-Hartley theorem (Unit 9 - high exam weight)
-- **MEDIUM**: Carson's Rule, pre-emphasis
-- **MEDIUM**: Friis cascade formula
-
-## Study Status
-- **FM Modulation (Unit 4)**: Good understanding, but must practice with CORRECT formula
-- **Noise (Unit 7)**: Strong understanding of noise figure, need Friis practice
-- **Info Theory (Unit 9)**: Should be next focus (critical for exam)
-- **Days to exam**: **6 days** (exam: 2025-12-15)
-- **Recommended focus**:
-  - Today/Tomorrow: 3-5 more FM problems (build automaticity with correct formula)
-  - Days 3-4: Shannon-Hartley, channel capacity (Unit 9)
-  - Days 5-6: Review, mock exam, weak areas
-
-## Performance Notes
-- **Positive**: Caught error through validation (81 dB was clearly wrong)
-- **Positive**: Understood need for correction and re-derivation
-- **Concern**: Had internalized WRONG formula from previous session
-- **Action needed**: Must practice CORRECT formula until automatic
-- **Exam risk**: Medium-high if wrong formula is used on exam (lose most points)
-
-**Confidence level**: Medium
-- Understands concepts well
-- But needs practice with correct formula to build muscle memory
-- Risk of reverting to wrong formula under exam pressure
-
-**Student is ready for**:
-- More FM SNR problems (with correct formula)
-- Gradually increase complexity (multi-stage, pre-emphasis)
-- Then shift to Information Theory (Unit 9 - high priority)
-
-## Exam Strategy (6 days)
-
-**Daily plan:**
-- **Day 1 (today)**: 3 FM problems with validation checks
-- **Day 2**: 2 FM problems + start Unit 9 (Shannon-Hartley)
-- **Day 3**: Unit 9 intensive (capacity, coding, entropy)
-- **Day 4**: Mixed problems (FM, noise, capacity)
-- **Day 5**: Mock exam (timed, full coverage)
-- **Day 6**: Review weak areas, rest before exam
-
-**Formula sheet priorities:**
-1. FM SNR: 3β²(W/B_T)(S/N)_R with validation checks
-2. Shannon-Hartley: C = B log₂(1 + SNR)
-3. Friis: F_total = F₁ + (F₂-1)/G₁ + ...
-4. Carson's Rule: B_T = 2(Δf + f_m)
-5. Noise figure: F = 1 + Te/T₀
-
-**Time allocation on exam:**
-- FM SNR problems: 10-15 min each
-- Information theory: 15-20 min each
-- Quick validations: 1-2 min per problem
-
-## Key Takeaways for Exam
-
-1. **ALWAYS validate** results against physical intuition
-2. **ALWAYS check** that W/B_T < 1 for wideband FM
-3. **NEVER invert** the bandwidth ratio (it's W/B_T, not B_T/W)
-4. **SHOW validation checks** on exam (can get partial credit)
-5. **Typical FM gain**: 10-20 dB (if you get 40+ dB, something's wrong)
-
-## Motivation
-
-You caught an error that would have cost significant points on the exam. This demonstrates:
-- Good physical intuition (81 dB was suspicious)
-- Willingness to verify and correct
-- Understanding of validation importance
-
-With 6 days remaining and focused practice on the CORRECT formula, you can master this topic and perform well on the exam. The key is building automaticity with the right formula through repetition.
-
-**Keep going! You've got this!** 🎓
+**Conclusion Setup**: Will need to determine if covering critical 35-40 concepts in critical units is enough to pass.
