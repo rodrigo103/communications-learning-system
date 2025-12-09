@@ -1,18 +1,19 @@
-# Ejercicio TP5_3: FM Receiver SNR Analysis - Complete Solution
+# Ejercicio TP5_3: FM Receiver SNR Analysis - Complete Solution (CORRECTED)
 
-**Date**: 2025-12-06
-**Source**: Exercise TP5 #3 - FM Reception with Noise
+**Date**: 2025-12-09
+**Source**: TP5 Exercise 3 - FM Modulation
+**Status**: CORRECTED - Using proper Haykin formula with W/B_T factor
 
 ---
 
 ## Problem Statement
 
-Se tiene un receptor de FM con un filtro de FI con un ancho de banda de 200 kHz y un filtro de salida pasabajos ideal con f_c = 15 kHz que recibe una señal modulada por un tono con las siguientes características: f_m = 5 kHz y Δf = 75 kHz. La relación potencia media de señal a potencia media de ruido en la entrada del amplificador de FI es de 40 dB.
+A FM receiver has an IF filter with bandwidth 200 kHz and an ideal lowpass output filter with f_c = 15 kHz. It receives a signal modulated by a tone with the following characteristics: f_m = 5 kHz and Δf = 75 kHz. The ratio of average signal power to average noise power at the input of the IF amplifier is 40 dB.
 
-**Se pregunta:**
-a) ¿Cuál es la S/N luego del filtro de salida si F_FI = 1?
-b) ¿Cuál es la S/N luego del filtro de salida si Te_FI = 72.50 K?
-c) ¿Cuál será el índice de modulación necesario para mejorar en 6 dB la S/N calculada en "a)"?
+Find:
+a) What is the S/N after the output filter if F_FI = 1?
+b) What is the S/N after the output filter if Te_FI = 72.50 K?
+c) What modulation index is necessary to improve the S/N calculated in "a)" by 6 dB?
 
 ---
 
@@ -20,17 +21,21 @@ c) ¿Cuál será el índice de modulación necesario para mejorar en 6 dB la S/N
 
 | Variable | Value | Unit | Converted (SI) | Notes |
 |----------|-------|------|----------------|-------|
-| B_FI | 200 | kHz | 200,000 Hz | IF filter bandwidth |
-| f_c | 15 | kHz | 15,000 Hz | Output lowpass filter cutoff |
-| f_m | 5 | kHz | 5,000 Hz | Modulating tone frequency |
+| B_FI | 200 | kHz | 200,000 Hz | IF filter bandwidth (= B_T) |
+| f_c | 15 | kHz | 15,000 Hz | Output LPF cutoff frequency |
+| f_m | 5 | kHz | 5,000 Hz | Tone frequency (= W, message BW) |
 | Δf | 75 | kHz | 75,000 Hz | Frequency deviation |
-| (S/N)_in | 40 | dB | 10,000 (linear) | Input SNR at IF amplifier |
-| F_FI (part a) | 1 | - | 1 | Noiseless amplifier |
-| Te_FI (part b) | 72.50 | K | 72.50 K | Equivalent noise temperature |
+| (S/N)_R | 40 | dB | 10,000 (linear) | Input SNR at IF amp |
+| F_FI (a) | 1 | - | 1 | Noise figure = 1 (noiseless) |
+| Te_FI (b) | 72.50 | K | 72.50 K | Equivalent noise temperature |
 
 **Constants:**
-- T₀ = 290 K (Reference temperature for noise figure)
-- k = 1.38 × 10⁻²³ J/K (Boltzmann constant - not needed for this problem)
+- k = 1.38×10^-23 J/K (Boltzmann constant)
+- T_0 = 290 K (Reference temperature for noise figure)
+
+**Calculated Parameters:**
+- β = Δf/f_m = 75/5 = 15 (modulation index)
+- W/B_T = f_m/B_FI = 5/200 = 0.025 (critical ratio!)
 
 ---
 
@@ -39,408 +44,272 @@ c) ¿Cuál será el índice de modulación necesario para mejorar en 6 dB la S/N
 **Type:** FM Receiver - SNR Analysis with Noise Figure Effects
 
 **Key Concepts Involved:**
-- FM modulation index and its relationship to SNR improvement
-- FM demodulation gain (processing gain)
-- Noise figure and equivalent noise temperature relationship
-- SNR degradation through noisy amplifiers
+- FM demodulation SNR gain (processing gain)
+- Noise figure and equivalent noise temperature
+- Modulation index β and its quadratic effect on SNR
+- Carson's Rule bandwidth constraints
 
 **Relevant Formulas:**
 
-1. **FM Modulation Index:**
-   $$\beta = \frac{\Delta f}{f_m}$$
+**1. Haykin FM SNR Formula (CORRECT VERSION):**
+$$\left(\frac{S}{N}\right)_{D} = 3\beta^2 \left(\frac{W}{B_T}\right) \left(\frac{S}{N}\right)_R$$
 
-2. **FM Output SNR (Single Tone Modulation):**
-   $$\left(\frac{S}{N}\right)_{out} = \frac{3}{2} \beta^2 \left(\frac{B_{FI}}{f_m}\right) \left(\frac{S}{N}\right)_{in}$$
+Where:
+- (S/N)_D = output SNR (after demodulator and LPF)
+- (S/N)_R = input SNR at receiver (before demodulator)
+- β = Δf/f_m = modulation index
+- W = message bandwidth (for single tone: W = f_m)
+- B_T = transmission bandwidth (IF filter bandwidth)
+- **IMPORTANT**: The factor W/B_T is ALWAYS < 1 in wideband FM
 
-   This assumes the input SNR is measured at the IF stage BEFORE the noise figure degradation.
+**2. Noise Figure Relationship:**
+$$F = \frac{(S/N)_{in}}{(S/N)_{out}} = 1 + \frac{T_e}{T_0}$$
 
-3. **Noise Figure from Equivalent Temperature:**
-   $$F = 1 + \frac{T_e}{T_0}$$
+Where T_0 = 290 K (reference temperature)
 
-4. **SNR Degradation Due to Noise Figure:**
-   $$\left(\frac{S}{N}\right)_{in,effective} = \frac{1}{F} \left(\frac{S}{N}\right)_{in}$$
-
-5. **dB to Linear Conversion:**
-   $$X_{linear} = 10^{X_{dB}/10}$$
-
-6. **Linear to dB Conversion:**
-   $$X_{dB} = 10 \log_{10}(X_{linear})$$
+**3. Carson's Rule (for bandwidth):**
+$$B_T = 2(\Delta f + f_m) = 2f_m(\beta + 1)$$
 
 ---
 
 ## Solution
 
-### Part (a): Output S/N with F_FI = 1
+### Part (a): Output SNR with F_FI = 1 (Noiseless IF Amplifier)
 
-**What's being asked:** Calculate the output SNR when the IF amplifier is noiseless (F = 1).
+**What's being asked:** Calculate the output SNR when the IF amplifier has no added noise (F = 1).
 
-**Approach:**
-1. Calculate modulation index β
-2. Convert input SNR from dB to linear
-3. Apply FM SNR gain formula
-4. Convert result back to dB
+**Approach:** Apply the Haykin formula directly since F = 1 means the input SNR is not degraded.
 
----
+**Step 1: Verify the given input SNR**
 
-**Step 1: Calculate Modulation Index β**
+With F_FI = 1 (noiseless amplifier):
+$$(S/N)_R = 40 \text{ dB} = 10^{40/10} = 10,000 \text{ (linear)}$$
 
-Formula:
-$$\beta = \frac{\Delta f}{f_m}$$
+**Step 2: Calculate modulation index**
 
-Substitution:
-$$\beta = \frac{75,000 \text{ Hz}}{5,000 \text{ Hz}} = 15$$
+$$\beta = \frac{\Delta f}{f_m} = \frac{75 \text{ kHz}}{5 \text{ kHz}} = 15$$
 
-Result:
-$$\boxed{\beta = 15}$$
+**Step 3: Calculate the W/B_T factor**
 
-**Validation:**
-- Dimensionless ratio ✓
-- β = 15 indicates wideband FM (β > 1) ✓
-- Sanity: Large deviation (75 kHz) vs small message frequency (5 kHz) gives large β ✓
+$$\frac{W}{B_T} = \frac{f_m}{B_{FI}} = \frac{5 \text{ kHz}}{200 \text{ kHz}} = 0.025$$
 
-**Explanation:** The modulation index of 15 is quite high, typical of commercial FM broadcasting. This high β will provide significant SNR improvement at the output.
+**Validation of W/B_T < 1:**
+- For wideband FM, this ratio MUST be much less than 1 ✓
+- This factor represents the bandwidth compression that enables FM's processing gain
 
----
+**Step 4: Apply Haykin formula**
 
-**Step 2: Convert Input SNR from dB to Linear**
-
-Formula:
-$$\left(\frac{S}{N}\right)_{in,linear} = 10^{(S/N)_{in,dB}/10}$$
+$$\left(\frac{S}{N}\right)_{D} = 3\beta^2 \left(\frac{W}{B_T}\right) \left(\frac{S}{N}\right)_R$$
 
 Substitution:
-$$\left(\frac{S}{N}\right)_{in,linear} = 10^{40/10} = 10^4$$
-
-Result:
-$$\boxed{\left(\frac{S}{N}\right)_{in,linear} = 10,000}$$
-
-**Validation:**
-- 40 dB = 10,000:1 ratio ✓
-- This is a strong input signal ✓
-
----
-
-**Step 3: Calculate Output SNR (Linear)**
-
-Formula:
-$$\left(\frac{S}{N}\right)_{out} = \frac{3}{2} \beta^2 \left(\frac{B_{FI}}{f_m}\right) \left(\frac{S}{N}\right)_{in}$$
-
-Since F = 1, there's no noise figure degradation:
-$$\left(\frac{S}{N}\right)_{in,effective} = \left(\frac{S}{N}\right)_{in} = 10,000$$
-
-Substitution:
-$$\left(\frac{S}{N}\right)_{out} = \frac{3}{2} \times (15)^2 \times \left(\frac{200,000}{5,000}\right) \times 10,000$$
-
-Calculation breakdown:
-$$\beta^2 = 15^2 = 225$$
-
-$$\frac{B_{FI}}{f_m} = \frac{200,000}{5,000} = 40$$
-
-$$\frac{3}{2} \times 225 = 337.5$$
-
-$$\left(\frac{S}{N}\right)_{out} = 337.5 \times 40 \times 10,000$$
-
-$$\left(\frac{S}{N}\right)_{out} = 13,500 \times 10,000 = 135,000,000$$
-
-Result:
-$$\boxed{\left(\frac{S}{N}\right)_{out,linear} = 1.35 \times 10^8}$$
-
----
-
-**Step 4: Convert Output SNR to dB**
-
-Formula:
-$$\left(\frac{S}{N}\right)_{out,dB} = 10 \log_{10}\left(\frac{S}{N}\right)_{out,linear}$$
-
-Substitution:
-$$\left(\frac{S}{N}\right)_{out,dB} = 10 \log_{10}(1.35 \times 10^8)$$
+$$\left(\frac{S}{N}\right)_{D} = 3 \times (15)^2 \times (0.025) \times 10,000$$
 
 Calculation:
-$$\log_{10}(1.35 \times 10^8) = \log_{10}(1.35) + \log_{10}(10^8)$$
+$$\left(\frac{S}{N}\right)_{D} = 3 \times 225 \times 0.025 \times 10,000$$
+$$\left(\frac{S}{N}\right)_{D} = 675 \times 0.025 \times 10,000$$
+$$\left(\frac{S}{N}\right)_{D} = 16.875 \times 10,000$$
+$$\left(\frac{S}{N}\right)_{D} = 168,750$$
 
-$$= 0.1303 + 8 = 8.1303$$
-
-$$\left(\frac{S}{N}\right)_{out,dB} = 10 \times 8.1303 = 81.303 \text{ dB}$$
+**Convert to dB:**
+$$\left(\frac{S}{N}\right)_{D,dB} = 10 \log_{10}(168,750) = 10 \times 5.227 = 52.27 \text{ dB}$$
 
 Result:
-$$\boxed{\left(\frac{S}{N}\right)_{out} = 81.3 \text{ dB}}$$
+$$\boxed{(S/N)_D = 168,750 \text{ (linear)} = 52.3 \text{ dB}}$$
 
 **Validation:**
-- Output SNR (81.3 dB) > Input SNR (40 dB) ✓
-- SNR improvement = 81.3 - 40 = 41.3 dB ✓
-- This improvement comes from FM processing gain ✓
-- Dimensions: dB (dimensionless ratio) ✓
+- Dimensions: Dimensionless ratio ✓
+- FM processing gain: 52.3 - 40 = 12.3 dB ✓
+- Sanity check: Wideband FM with β = 15 should give moderate gain ✓
+- Physical meaning: FM exchanges bandwidth for SNR improvement
 
-**Explanation:** The FM receiver provides a massive SNR improvement of 41.3 dB! This is the famous "FM quieting effect" where wideband FM trades bandwidth for improved SNR. The improvement factor of 13,500 comes from:
-- β² factor: 225
-- Bandwidth expansion factor (B_FI/f_m): 40
-- FM constant factor: 3/2
+**Explanation:** The FM demodulation process provides a **12.3 dB processing gain** (also called "quieting effect"). This gain comes from the wideband nature of FM - we use 200 kHz bandwidth to transmit a 5 kHz signal, and FM demodulation converts this bandwidth expansion into SNR improvement.
 
----
-
-### Part (b): Output S/N with Te_FI = 72.50 K
-
-**What's being asked:** Calculate the output SNR when the IF amplifier has an equivalent noise temperature of 72.50 K.
-
-**Approach:**
-1. Calculate noise figure F from equivalent temperature Te
-2. Calculate effective input SNR (degraded by F)
-3. Apply FM SNR gain formula with degraded input
-4. Convert to dB
+**FM Processing Gain Factor:**
+$$G_{FM} = 3\beta^2 \left(\frac{W}{B_T}\right) = 3 \times 225 \times 0.025 = 16.875 = 12.3 \text{ dB}$$
 
 ---
 
-**Step 1: Calculate Noise Figure from Equivalent Temperature**
+### Part (b): Output SNR with Te_FI = 72.50 K
+
+**What's being asked:** Calculate the output SNR when the IF amplifier has equivalent noise temperature of 72.50 K.
+
+**Approach:** First calculate the noise figure F from Te, then find the degraded input SNR, and finally apply the FM formula.
+
+**Step 1: Calculate Noise Figure from Equivalent Noise Temperature**
 
 Formula:
 $$F = 1 + \frac{T_e}{T_0}$$
 
+Where T_0 = 290 K (standard reference temperature)
+
 Substitution:
-$$F = 1 + \frac{72.50 \text{ K}}{290 \text{ K}}$$
-
-Calculation:
-$$\frac{72.50}{290} = 0.25$$
-
-$$F = 1 + 0.25 = 1.25$$
-
-Result:
-$$\boxed{F = 1.25 \text{ (linear)}}$$
+$$F = 1 + \frac{72.50}{290} = 1 + 0.25 = 1.25$$
 
 Convert to dB:
-$$F_{dB} = 10 \log_{10}(1.25) = 10 \times 0.0969 = 0.969 \text{ dB}$$
+$$F_{dB} = 10 \log_{10}(1.25) = 0.97 \text{ dB}$$
 
-$$\boxed{F_{dB} \approx 0.97 \text{ dB}}$$
+**Step 2: Calculate degraded input SNR**
 
-**Validation:**
-- F ≥ 1 always ✓
-- Low noise figure (< 1 dB) indicates good amplifier ✓
-- Sanity: Te = 72.5 K is about 1/4 of T₀, so F should be 1.25 ✓
-
-**Explanation:** A noise figure of 0.97 dB is quite good for an IF amplifier. This represents only a 25% increase in noise power over an ideal noiseless amplifier.
-
----
-
-**Step 2: Calculate Effective Input SNR**
-
-When the amplifier has noise figure F, it degrades the input SNR:
-
-Formula:
-$$\left(\frac{S}{N}\right)_{in,effective} = \frac{1}{F} \left(\frac{S}{N}\right)_{in}$$
-
-Substitution:
-$$\left(\frac{S}{N}\right)_{in,effective} = \frac{1}{1.25} \times 10,000$$
-
-Calculation:
-$$\left(\frac{S}{N}\right)_{in,effective} = 0.8 \times 10,000 = 8,000$$
-
-Result:
-$$\boxed{\left(\frac{S}{N}\right)_{in,effective,linear} = 8,000}$$
+The noise figure degrades the input SNR:
+$$\left(\frac{S}{N}\right)_{R,degraded} = \frac{(S/N)_{R,original}}{F} = \frac{10,000}{1.25} = 8,000$$
 
 In dB:
-$$\left(\frac{S}{N}\right)_{in,effective,dB} = 10 \log_{10}(8,000) = 10 \times 3.903 = 39.03 \text{ dB}$$
+$$(S/N)_{R,degraded,dB} = 40 - 0.97 = 39.03 \text{ dB}$$
 
-$$\boxed{\left(\frac{S}{N}\right)_{in,effective} = 39.0 \text{ dB}}$$
+**Step 3: Apply Haykin FM formula with degraded SNR**
 
-**Validation:**
-- Degradation = 40 - 39.0 = 1.0 dB ≈ F_dB ✓
-- Effective SNR < Original SNR ✓
+$$\left(\frac{S}{N}\right)_{D} = 3\beta^2 \left(\frac{W}{B_T}\right) \left(\frac{S}{N}\right)_{R,degraded}$$
 
-**Explanation:** The noise figure causes a 1 dB reduction in input SNR, from 40 dB to 39 dB.
-
----
-
-**Step 3: Calculate Output SNR with Degraded Input**
-
-Formula:
-$$\left(\frac{S}{N}\right)_{out} = \frac{3}{2} \beta^2 \left(\frac{B_{FI}}{f_m}\right) \left(\frac{S}{N}\right)_{in,effective}$$
-
-Substitution (using same β and bandwidth ratio from part a):
-$$\left(\frac{S}{N}\right)_{out} = \frac{3}{2} \times (15)^2 \times \left(\frac{200,000}{5,000}\right) \times 8,000$$
-
-$$\left(\frac{S}{N}\right)_{out} = 337.5 \times 40 \times 8,000$$
-
-$$\left(\frac{S}{N}\right)_{out} = 13,500 \times 8,000$$
-
-Result:
-$$\boxed{\left(\frac{S}{N}\right)_{out,linear} = 1.08 \times 10^8}$$
-
----
-
-**Step 4: Convert to dB**
-
-Formula:
-$$\left(\frac{S}{N}\right)_{out,dB} = 10 \log_{10}(1.08 \times 10^8)$$
+Substitution:
+$$\left(\frac{S}{N}\right)_{D} = 3 \times (15)^2 \times (0.025) \times 8,000$$
 
 Calculation:
-$$\log_{10}(1.08 \times 10^8) = \log_{10}(1.08) + 8$$
+$$\left(\frac{S}{N}\right)_{D} = 3 \times 225 \times 0.025 \times 8,000$$
+$$\left(\frac{S}{N}\right)_{D} = 16.875 \times 8,000$$
+$$\left(\frac{S}{N}\right)_{D} = 135,000$$
 
-$$= 0.0334 + 8 = 8.0334$$
-
-$$\left(\frac{S}{N}\right)_{out,dB} = 10 \times 8.0334 = 80.334 \text{ dB}$$
+**Convert to dB:**
+$$\left(\frac{S}{N}\right)_{D,dB} = 10 \log_{10}(135,000) = 51.30 \text{ dB}$$
 
 Result:
-$$\boxed{\left(\frac{S}{N}\right)_{out} = 80.3 \text{ dB}}$$
+$$\boxed{(S/N)_D = 135,000 \text{ (linear)} = 51.3 \text{ dB}}$$
 
 **Validation:**
-- Output SNR (80.3 dB) is 1 dB less than part (a) ✓
-- Difference: 81.3 - 80.3 = 1.0 dB = F_dB ✓
-- Still much better than input (39 dB) ✓
+- Dimensions: Dimensionless ratio ✓
+- Degradation: 52.3 - 51.3 = 1.0 dB ≈ F_dB = 0.97 dB ✓
+- Sanity check: Noise figure causes ~1 dB loss in output SNR ✓
 
-**Explanation:** The noise figure causes a 1 dB reduction in output SNR. The FM processing gain is still applied, but to a degraded input signal. The final output is 80.3 dB instead of 81.3 dB.
+**Explanation:** The IF amplifier's noise temperature of 72.50 K corresponds to a noise figure of 1.25 (0.97 dB). This added noise degrades the input SNR by the same amount, which then propagates through the FM demodulator. The output SNR is reduced by approximately 1 dB compared to the noiseless case.
 
 **Comparison:**
-- Part (a) F=1: (S/N)_out = 81.3 dB
-- Part (b) F=1.25: (S/N)_out = 80.3 dB
-- Degradation = 1.0 dB = 10 log₁₀(1.25) ✓
+- Part (a): 52.3 dB (F = 1, noiseless)
+- Part (b): 51.3 dB (F = 1.25, Te = 72.5 K)
+- Degradation: 1.0 dB (due to IF amplifier noise)
 
 ---
 
-### Part (c): New Modulation Index for 6 dB Improvement
+### Part (c): Required β for 6 dB Improvement
 
 **What's being asked:** Find the modulation index β needed to improve the SNR from part (a) by 6 dB.
 
-**Approach:**
-1. Determine target output SNR (81.3 dB + 6 dB)
-2. Use FM SNR formula to solve for β²
-3. Extract β
-4. Calculate required new Δf (keeping f_m constant)
+**Approach:** Use the quadratic relationship between β and SNR. A 6 dB improvement means SNR must double in linear scale. Since SNR ∝ β², we need β_new = β_old × √2.
 
----
+**Step 1: Determine target output SNR**
 
-**Step 1: Determine Target Output SNR**
+Starting SNR from part (a):
+$$(S/N)_{D,a} = 52.3 \text{ dB}$$
 
-Starting from part (a): (S/N)_out,a = 81.3 dB
-
-Target improvement: +6 dB
-
-Formula:
-$$\left(\frac{S}{N}\right)_{out,target,dB} = \left(\frac{S}{N}\right)_{out,a,dB} + 6$$
-
-Result:
-$$\boxed{\left(\frac{S}{N}\right)_{out,target} = 81.3 + 6 = 87.3 \text{ dB}}$$
-
-Convert to linear:
-$$\left(\frac{S}{N}\right)_{out,target,linear} = 10^{87.3/10} = 10^{8.73} = 5.37 \times 10^8$$
-
-$$\boxed{\left(\frac{S}{N}\right)_{out,target,linear} = 5.37 \times 10^8}$$
-
-**Validation:**
-- 6 dB improvement = factor of 10^0.6 ≈ 3.98 ≈ 4 ✓
-- Check: (1.35 × 10⁸) × 4 = 5.4 × 10⁸ ✓
-
----
-
-**Step 2: Set Up Equation to Solve for β_new**
-
-The FM SNR formula is:
-$$\left(\frac{S}{N}\right)_{out} = \frac{3}{2} \beta^2 \left(\frac{B_{FI}}{f_m}\right) \left(\frac{S}{N}\right)_{in}$$
-
-We can write the ratio of target to original:
-$$\frac{\left(\frac{S}{N}\right)_{out,target}}{\left(\frac{S}{N}\right)_{out,a}} = \frac{\beta_{new}^2}{\beta_a^2}$$
-
-This is because all other factors remain constant (B_FI, f_m, (S/N)_in, F=1).
-
-Formula:
-$$\beta_{new}^2 = \beta_a^2 \times \frac{\left(\frac{S}{N}\right)_{out,target}}{\left(\frac{S}{N}\right)_{out,a}}$$
-
----
-
-**Step 3: Calculate β_new²**
-
-In dB, a 6 dB improvement means:
-$$\left(\frac{S}{N}\right)_{out,target,dB} - \left(\frac{S}{N}\right)_{out,a,dB} = 6 \text{ dB}$$
+Target SNR (6 dB higher):
+$$(S/N)_{D,target} = 52.3 + 6 = 58.3 \text{ dB}$$
 
 In linear:
-$$\frac{\left(\frac{S}{N}\right)_{out,target}}{\left(\frac{S}{N}\right)_{out,a}} = 10^{6/10} = 10^{0.6} = 3.981$$
+$$(S/N)_{D,target} = 10^{58.3/10} = 675,934$$
 
-$$\boxed{\text{Required improvement factor} = 3.981}$$
+Alternatively (easier approach):
+$$\frac{(S/N)_{D,target}}{(S/N)_{D,a}} = 10^{6/10} = 10^{0.6} = 3.981 \approx 4$$
 
-Now solve for β_new²:
-$$\beta_{new}^2 = (15)^2 \times 3.981$$
+So:
+$$(S/N)_{D,target} = 4 \times 168,750 = 675,000$$
 
-$$\beta_{new}^2 = 225 \times 3.981 = 895.725$$
+**Step 2: Analyze the β² relationship**
+
+From Haykin formula:
+$$\left(\frac{S}{N}\right)_{D} = 3\beta^2 \left(\frac{W}{B_T}\right) \left(\frac{S}{N}\right)_R$$
+
+**IMPORTANT:** When β changes, B_T also changes (Carson's Rule)!
+
+Carson's Rule:
+$$B_T = 2(\Delta f + f_m) = 2(f_m \beta + f_m) = 2f_m(\beta + 1)$$
+
+Therefore:
+$$\frac{W}{B_T} = \frac{f_m}{2f_m(\beta + 1)} = \frac{1}{2(\beta + 1)}$$
+
+The FM formula becomes:
+$$\left(\frac{S}{N}\right)_{D} = 3\beta^2 \cdot \frac{1}{2(\beta + 1)} \cdot (S/N)_R = \frac{3\beta^2}{2(\beta + 1)} \cdot (S/N)_R$$
+
+**Step 3: Set up equation for required β**
+
+We need:
+$$\frac{(S/N)_{D,new}}{(S/N)_{D,original}} = 4$$
+
+$$\frac{\frac{3\beta_{new}^2}{2(\beta_{new} + 1)}}{\frac{3\beta_{old}^2}{2(\beta_{old} + 1)}} = 4$$
+
+Simplifying:
+$$\frac{\beta_{new}^2}{\beta_{new} + 1} \cdot \frac{\beta_{old} + 1}{\beta_{old}^2} = 4$$
+
+With β_old = 15:
+$$\frac{\beta_{new}^2}{\beta_{new} + 1} \cdot \frac{16}{225} = 4$$
+
+$$\frac{\beta_{new}^2}{\beta_{new} + 1} = 4 \times \frac{225}{16} = \frac{900}{16} = 56.25$$
+
+$$\beta_{new}^2 = 56.25(\beta_{new} + 1)$$
+
+$$\beta_{new}^2 = 56.25\beta_{new} + 56.25$$
+
+$$\beta_{new}^2 - 56.25\beta_{new} - 56.25 = 0$$
+
+**Step 4: Solve quadratic equation**
+
+Using quadratic formula:
+$$\beta_{new} = \frac{56.25 \pm \sqrt{56.25^2 + 4(56.25)}}{2}$$
+
+$$\beta_{new} = \frac{56.25 \pm \sqrt{3164.0625 + 225}}{2}$$
+
+$$\beta_{new} = \frac{56.25 \pm \sqrt{3389.0625}}{2}$$
+
+$$\beta_{new} = \frac{56.25 \pm 58.22}{2}$$
+
+Taking positive root:
+$$\beta_{new} = \frac{56.25 + 58.22}{2} = \frac{114.47}{2} = 57.23$$
 
 Result:
-$$\boxed{\beta_{new}^2 = 895.7}$$
+$$\boxed{\beta_{new} = 57.23}$$
 
----
+**Step 5: Calculate required frequency deviation**
 
-**Step 4: Calculate β_new**
-
-Formula:
-$$\beta_{new} = \sqrt{\beta_{new}^2}$$
-
-Substitution:
-$$\beta_{new} = \sqrt{895.7}$$
-
-Calculation:
-$$\beta_{new} = 29.928$$
+$$\Delta f_{new} = \beta_{new} \times f_m = 57.23 \times 5 \text{ kHz} = 286.2 \text{ kHz}$$
 
 Result:
-$$\boxed{\beta_{new} = 29.93}$$
+$$\boxed{\Delta f_{new} = 286.2 \text{ kHz}}$$
+
+**Step 6: Verify new bandwidth requirement (Carson's Rule)**
+
+$$B_{T,new} = 2(\Delta f_{new} + f_m) = 2(286.2 + 5) = 2 \times 291.2 = 582.4 \text{ kHz}$$
+
+**Critical constraint:**
+$$\boxed{B_{T,new} = 582.4 \text{ kHz} > B_{FI} = 200 \text{ kHz}}$$
+
+**PROBLEM:** The existing 200 kHz IF filter is **insufficient** for this modulation index!
 
 **Validation:**
-- β_new > β_a (29.93 > 15) ✓
-- Ratio: β_new/β_a = 29.93/15 = 1.995 ≈ 2 ✓
-- Check: (β_new/β_a)² = (1.995)² = 3.98 ≈ 4 = 10^0.6 ✓
-- Sanity: Need to double β to get 6 dB (≈4×) improvement ✓
+- Dimensions: β is dimensionless ✓
+- Sanity: β_new = 57.23 is much larger than β_old = 15 ✓
+- Physical constraint: Would require wider IF filter (582 kHz vs 200 kHz available) ⚠
 
-**Explanation:** To achieve a 6 dB (≈4×) improvement in output SNR, we need to increase the modulation index by a factor of 2 (since SNR ∝ β²). The new modulation index is approximately 30.
+**Explanation:** To achieve a 6 dB improvement in output SNR, the modulation index must increase from 15 to approximately 57.2, corresponding to a frequency deviation of 286 kHz. However, this creates a **practical problem**: the required transmission bandwidth (582 kHz by Carson's Rule) exceeds the available IF filter bandwidth (200 kHz).
 
----
+**Alternative Interpretation:**
 
-**Step 5: Calculate Required New Δf**
+If we assume the IF filter bandwidth is **fixed at 200 kHz** and cannot be changed, then we must keep:
+$$B_T = 200 \text{ kHz}$$
 
-The modulation index is defined as:
-$$\beta = \frac{\Delta f}{f_m}$$
-
-Assuming we keep f_m = 5 kHz constant:
-
-Formula:
-$$\Delta f_{new} = \beta_{new} \times f_m$$
-
-Substitution:
-$$\Delta f_{new} = 29.93 \times 5,000 \text{ Hz}$$
-
-Result:
-$$\boxed{\Delta f_{new} = 149,650 \text{ Hz} = 149.65 \text{ kHz}}$$
-
-**Validation:**
-- Δf_new > Δf_a (149.65 kHz > 75 kHz) ✓
-- Ratio: 149.65/75 = 1.995 ≈ 2 ✓
-- Dimensions: Hz ✓
-- Sanity: Need to double frequency deviation to double β ✓
-
-**Explanation:** To achieve the 6 dB improvement, the frequency deviation must be increased from 75 kHz to approximately 150 kHz. This would require:
-1. More powerful transmitter (higher peak deviation)
-2. Wider IF filter bandwidth at the receiver
-3. Trade-off: More bandwidth consumption
-
----
-
-**Alternative Interpretation (If B_FI Must Stay at 200 kHz):**
-
-If the IF filter bandwidth is fixed at 200 kHz, then we need to check if the new signal fits:
-
-Carson's Rule for FM bandwidth:
-$$BW_{FM} = 2(\Delta f + f_m)$$
-
-For β_new = 29.93:
-$$BW_{FM,new} = 2(149.65 + 5) = 2(154.65) = 309.3 \text{ kHz}$$
-
-This exceeds B_FI = 200 kHz! ⚠️
-
-**Implication:** If the IF filter bandwidth is constrained to 200 kHz, achieving a 6 dB improvement by increasing β alone is **not feasible** without also widening the IF filter.
-
-**Practical consideration:** The maximum β achievable with B_FI = 200 kHz and f_m = 5 kHz is:
-$$BW_{FM} = 200 \text{ kHz} = 2(\Delta f_{max} + 5 \text{ kHz})$$
+From Carson's Rule:
+$$200 = 2(\Delta f + 5)$$
+$$100 = \Delta f + 5$$
 $$\Delta f_{max} = 95 \text{ kHz}$$
-$$\beta_{max} = 95/5 = 19$$
+$$\beta_{max} = \frac{95}{5} = 19$$
 
-This would give an improvement of:
-$$\text{Improvement factor} = \left(\frac{19}{15}\right)^2 = 1.604$$
-$$\text{Improvement (dB)} = 10 \log_{10}(1.604) = 2.05 \text{ dB}$$
+This gives maximum possible improvement of:
+$$\frac{(S/N)_{D,\beta=19}}{(S/N)_{D,\beta=15}} = \frac{19^2}{15^2} \times \frac{15+1}{19+1} = \frac{361}{225} \times \frac{16}{20} = 1.604 \times 0.8 = 1.283$$
 
-**Conclusion for part (c):** The theoretical answer is β_new ≈ 30, but practical implementation would require widening the IF filter to at least 310 kHz.
+In dB:
+$$\Delta(S/N) = 10\log_{10}(1.283) = 1.08 \text{ dB}$$
+
+**Conclusion for part (c):**
+- **Theoretical answer**: β = 57.2, Δf = 286 kHz (requires 582 kHz bandwidth)
+- **Practical limit**: β = 19, Δf = 95 kHz (constrained by 200 kHz IF filter)
+- **Achievable improvement with 200 kHz filter**: Only 1.08 dB, not 6 dB
+- **To achieve 6 dB improvement**: Must widen IF filter to ~582 kHz
 
 ---
 
@@ -448,207 +317,108 @@ $$\text{Improvement (dB)} = 10 \log_{10}(1.604) = 2.05 \text{ dB}$$
 
 | Part | Answer | Units | Notes |
 |------|--------|-------|-------|
-| (a) | 81.3 | dB | With noiseless amplifier (F=1) |
-| (b) | 80.3 | dB | With Te_FI = 72.50 K (F=1.25) |
-| (c) | β = 29.93 | - | Requires Δf ≈ 150 kHz |
-| (c) | Δf = 149.65 | kHz | New frequency deviation needed |
-
-**Key Result:**
-- FM provides 41.3 dB of SNR improvement (part a)
-- Noise figure causes 1 dB degradation (part b)
-- Doubling β improves SNR by 6 dB (part c)
+| (a) | 168,750 = 52.3 dB | - | F = 1 (noiseless) |
+| (b) | 135,000 = 51.3 dB | - | Te = 72.5 K, F = 1.25 |
+| (c) | β = 57.2, Δf = 286 kHz | - | Requires 582 kHz BW (impractical!) |
 
 ---
 
 ## Validation Checks
 
-✓ **Dimensional Analysis**:
-- All SNR values are dimensionless (expressed in dB) ✓
-- β is dimensionless ✓
-- Frequency deviations in Hz ✓
+✓ **Dimensional Analysis**: All SNR values are dimensionless ratios
 
 ✓ **Sanity Checks**:
-- Output SNR > Input SNR (FM processing gain) ✓
-- Higher β gives higher output SNR ✓
-- Noise figure degrades SNR ✓
-- 6 dB improvement requires ~2× increase in β ✓
+- FM processing gain: 12.3 dB (reasonable for β = 15)
+- Noise figure impact: 1 dB degradation (matches F = 0.97 dB)
+- β relationship: Quadratic scaling verified
 
 ✓ **Special Cases**:
-- When F = 1, no degradation occurs ✓
-- When β increases, SNR increases quadratically ✓
+- If β → 0: (S/N)_D → (S/N)_R (no FM gain) ✓
+- If F → 1: Part (b) → Part (a) ✓
+
+⚠ **Practical Constraint**:
+- Part (c) requires IF bandwidth beyond available hardware
 
 ✓ **Cross-validation**:
-- Part (b) is 1 dB worse than part (a), matching F_dB ✓
-- Part (c): (β_new/β_a)² = 3.98 ≈ 10^0.6 ✓
-
-✓ **Numerical Consistency**:
-- Linear to dB conversions verified ✓
-- All intermediate calculations checked ✓
+- Noise figure calculation: Te = 72.5 K → F = 1.25 ✓
+- Carson's Rule: Bandwidth requirements consistent
 
 ---
 
 ## Key Learnings
 
-### 1. FM Processing Gain (FM Quieting Effect)
+### Physical Insights
 
-**Physical Insight:** FM receivers provide significant SNR improvement through the demodulation process. The output SNR is improved by a factor of (3/2)β²(B_FI/f_m) compared to the input. This is why FM radio sounds so clean even with moderate signal strengths.
+• **FM Processing Gain**: FM demodulation provides SNR improvement by trading bandwidth for noise performance. The gain is proportional to β² but inversely proportional to the bandwidth expansion ratio (B_T/W).
 
-**Formula:**
-$$\text{FM Gain} = \frac{3}{2} \beta^2 \left(\frac{B_{FI}}{f_m}\right)$$
+• **W/B_T Factor**: This critical factor (0.025 in this problem) represents the bandwidth compression. In wideband FM, we transmit a wideband signal (200 kHz) to carry a narrowband message (5 kHz), and FM demodulation converts this bandwidth excess into SNR gain.
 
-In this problem: Gain = 13,500 = 41.3 dB
+• **Noise Figure Impact**: Added noise at the receiver (from the IF amplifier) degrades the input SNR, which then propagates through the system. A noise figure of 1.25 (1 dB) causes a 1 dB reduction in output SNR.
 
-This gain comes from:
-- **β² term (225)**: Larger frequency deviation spreads the signal power across more bandwidth
-- **B_FI/f_m term (40)**: Wider IF bandwidth captures more of the FM signal
-- **3/2 constant**: Intrinsic to FM demodulation mathematics
+• **Bandwidth-SNR Trade-off**: To improve SNR by 6 dB, we need to increase β by a factor of √4 = 2, but this requires proportionally wider bandwidth (by Carson's Rule). There's no "free lunch" - better SNR demands more spectrum.
 
-### 2. Noise Figure Impact
+### Common Mistakes to Avoid
 
-**Physical Insight:** Any real amplifier adds noise, characterized by noise figure F or equivalent temperature Te. This degrades the input SNR before FM processing gain is applied.
+• **Inverted Fraction**: The most common error is using B_T/W instead of W/B_T. This gives absurdly high SNR values (41 dB gain instead of 12 dB). Always verify that W/B_T < 1 for wideband FM.
 
-**Key Relationship:**
-$$F = 1 + \frac{T_e}{T_0}$$
+• **Ignoring Carson's Rule**: When β changes, B_T also changes! You cannot arbitrarily increase β without checking if the IF filter can accommodate the wider bandwidth.
 
-where T₀ = 290 K is the standard reference temperature.
+• **Forgetting Noise Figure Effect**: The noise figure degrades the input SNR, not the output SNR directly. Apply F to (S/N)_R first, then use the FM formula.
 
-**Important:** The noise figure degrades SNR at the input, but the FM processing gain is still applied. So a 1 dB noise figure causes 1 dB loss at both input AND output.
+• **dB vs Linear Confusion**: Always convert to linear for formula calculations, then convert back to dB for final answers.
 
-### 3. Modulation Index and SNR Relationship
+### Formula Mastery
 
-**Physical Insight:** Since (S/N)_out ∝ β², the output SNR is quadratically related to modulation index.
+**Haykin FM SNR Formula (memorize!):**
+$$\left(\frac{S}{N}\right)_{D} = 3\beta^2 \left(\frac{W}{B_T}\right) \left(\frac{S}{N}\right)_R$$
 
-**Practical Implications:**
-- To double output SNR (+3 dB), increase β by √2 = 1.41
-- To quadruple output SNR (+6 dB), increase β by 2
-- To get 10× SNR (+10 dB), increase β by √10 = 3.16
+Where the factor W/B_T is always less than 1 in wideband FM.
 
-**Trade-off:** Higher β requires:
-- Wider bandwidth (Carson's Rule: BW = 2(Δf + f_m))
-- More transmitter power for larger deviation
-- Better linearity in transmitter
+**Alternative form with Carson's Rule:**
+$$\left(\frac{S}{N}\right)_{D} = \frac{3\beta^2}{2(\beta + 1)} \left(\frac{S}{N}\right)_R$$
 
-### 4. Bandwidth-SNR Trade-off in FM
-
-**Physical Insight:** FM trades bandwidth for SNR improvement. By using more bandwidth than necessary (wideband FM, β > 1), we can achieve superior noise performance.
-
-**Comparison with AM:**
-- AM: BW = 2f_m, no SNR improvement
-- FM: BW = 2(Δf + f_m), SNR improvement ∝ β²
-
-For this problem:
-- Message bandwidth: 5 kHz (single tone)
-- IF bandwidth needed: 200 kHz
-- Bandwidth expansion: 40×
-- SNR improvement: 13,500× (41.3 dB)
-
-This is the fundamental reason FM broadcasting (88-108 MHz) uses 200 kHz channel spacing for 15 kHz audio - the bandwidth expansion provides excellent noise immunity.
-
-### 5. Common Pitfalls to Avoid
-
-**Pitfall 1:** Forgetting to convert dB to linear before calculations
-- Always work in linear for multiplications
-- Convert back to dB for final answer
-
-**Pitfall 2:** Applying noise figure incorrectly
-- F degrades the INPUT SNR: (S/N)_effective = (S/N)_in / F
-- Then apply FM gain to the degraded input
-- NOT: Apply FM gain first, then divide by F
-
-**Pitfall 3:** Confusing β with Δf
-- β is dimensionless: β = Δf/f_m
-- β is what matters for SNR calculations
-- Δf alone doesn't determine performance
-
-**Pitfall 4:** Not checking bandwidth constraints
-- Increasing β requires wider bandwidth
-- Carson's Rule: BW = 2(Δf + f_m) = 2f_m(β + 1)
-- Receiver IF filter must accommodate the FM bandwidth
-
-### 6. Physical Meaning of Results
-
-**Part (a) - 81.3 dB:**
-This is an excellent SNR, corresponding to a power ratio of 135 million to 1. In audio terms, this would be crystal-clear reception with imperceptible noise.
-
-**Part (b) - 80.3 dB:**
-The 1 dB degradation is barely noticeable in practice. A noise figure of ~1 dB is typical of good RF amplifiers (LNA, IF amplifiers).
-
-**Part (c) - β = 30:**
-This is an extremely high modulation index, approaching the limits of commercial FM systems. For reference:
-- FM broadcasting: β ≈ 5 (Δf = 75 kHz, f_m = 15 kHz)
-- NBFM (narrowband): β < 1
-- Wideband FM: β > 1
-
-Achieving β = 30 would require Δf = 150 kHz, which is twice the standard FM broadcast deviation.
+This form explicitly shows the β²/(β+1) relationship.
 
 ---
 
 ## Related Practice
 
-To master FM receiver analysis, try:
+To master FM receiver analysis, practice:
 
-1. **Vary the parameters**: What if f_m = 10 kHz instead? How does this affect β and output SNR?
+1. **Varying β**: Solve similar problems with different modulation indices (β = 5, 10, 20)
+2. **Cascade Analysis**: Add RF amplifier before the mixer (Friis formula for overall noise figure)
+3. **Pre-emphasis/De-emphasis**: Analyze SNR improvement with pre-emphasis filtering
+4. **FM Threshold**: Study behavior when (S/N)_R approaches threshold (~10 dB)
+5. **Comparison Problems**: Compare FM vs AM for same signal and bandwidth
 
-2. **Different noise figures**: Calculate output SNR for F = 3 dB (typical), F = 10 dB (poor amplifier)
-
-3. **Threshold effect**: Research FM threshold - what happens when input SNR drops below ~10 dB?
-
-4. **Narrowband FM**: Solve the same problem with Δf = 5 kHz (β = 1). Compare SNR improvement.
-
-5. **Cascade analysis**: What if there are multiple amplifiers with different noise figures? (Use Friis formula for cascaded F)
-
-6. **Pre-emphasis/de-emphasis**: How do these techniques further improve SNR in FM systems?
-
-7. **Carson's Rule verification**: Calculate exact FM bandwidth using Bessel functions and compare to Carson's approximation
-
-8. **Power allocation**: If total transmitted power is fixed, how should you allocate between carrier and sidebands?
+**Related Topics:**
+- Unit 7: Friis cascade formula for multi-stage noise analysis
+- Unit 9: Shannon-Hartley capacity for FM channels
+- Unit 4: Pre-emphasis, stereo FM, commercial FM broadcasting standards
 
 ---
 
-## Additional Notes
+## Exam Tips
 
-### FM System Design Considerations
+**For FM receiver problems:**
+1. Always write out the Haykin formula first
+2. Calculate β = Δf/f_m immediately
+3. Verify W/B_T < 1 (sanity check)
+4. Apply noise figure to input SNR before FM formula
+5. Check Carson's Rule bandwidth constraints
+6. Show both linear and dB results
 
-This problem illustrates the key FM system design trade-offs:
+**Common exam variations:**
+- Given output SNR, find required β or Δf
+- Given noise figure in dB, convert to linear first
+- Multiple stages (use Friis formula)
+- Compare different modulation schemes
 
-**Advantage of high β (wideband FM):**
-- Excellent noise immunity (41 dB improvement in this case)
-- Superior audio quality
-- Threshold extension (FM quieting)
-
-**Disadvantage of high β:**
-- Large bandwidth requirement (200 kHz vs 10 kHz for AM)
-- More complex transmitter (frequency modulator)
-- More complex receiver (discriminator, PLL)
-- Spectrum efficiency reduced
-
-**When to use FM:**
-- Applications where SNR/quality is paramount
-- Sufficient bandwidth available (VHF/UHF)
-- Fixed installations (broadcasting, point-to-point links)
-
-**When not to use FM:**
-- Bandwidth-limited scenarios
-- Long-distance HF communication
-- Power-limited systems (space communications)
-
-### Historical Context
-
-The spectacular SNR improvement of FM (discovered by Edwin Armstrong in 1933) revolutionized radio broadcasting. Before FM:
-- AM radio: noisy, interference-prone
-- Required high transmitter power for quality
-
-After FM:
-- Clear, noise-free audio with moderate power
-- Static immunity (lightning, ignition noise)
-- Enabled high-fidelity music broadcasting
-
-This problem's 41.3 dB improvement is exactly why FM radio sounds so much better than AM!
+**Time-saving tips:**
+- Memorize key conversions: 10^4 = 40 dB, factor of 2 = 3 dB, factor of 4 = 6 dB
+- Use the factor form: 3β²(W/B_T) as a single "FM gain" factor
+- Carson's Rule shortcut: B_T ≈ 2Δf when β >> 1
 
 ---
 
 **END OF SOLUTION**
-
-*Generated by: Exercise Solver (Green Subagent)*
-*Date: 2025-12-06*
-*Model: Claude Opus 4.5*
