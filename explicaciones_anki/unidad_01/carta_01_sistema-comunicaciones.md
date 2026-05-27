@@ -101,6 +101,10 @@ El transmisor procesa la señal de información para prepararla para la transmis
 Proceso típico en un transmisor:
 $$\text{Información} \rightarrow \text{Codificación} \rightarrow \text{Modulación} \rightarrow \text{Amplificación} \rightarrow \text{Antena/Medio}$$
 
+#### Modulación AM como ejemplo
+
+**Ejemplo matemático**: En AM, el transmisor genera: $$s(t) = [A_c + m(t)]\cos(2\pi f_c t)$$ donde $m(t)$ es la señal moduladora y $f_c$ la frecuencia de portadora.
+
 **3. Canal de Comunicación**
 
 El canal es el medio físico por el cual viaja la señal. Tipos principales:
@@ -114,6 +118,12 @@ Características del canal:
 - **Ruido**: Señales no deseadas que se suman
 - **Ancho de banda**: Rango de frecuencias que puede transmitir
 - **Retardo**: Tiempo que tarda la señal en propagarse
+- **Interferencia**: Otras señales, multitrayecto
+
+La caracterización del canal incluye:
+- **Ancho de banda**: Rango de frecuencias que puede transmitir
+- **Respuesta en frecuencia**: $H(f)$
+- **Capacidad**: Máxima tasa de información (Shannon)
 
 **4. Receptor**
 
@@ -124,6 +134,8 @@ El receptor realiza las operaciones inversas al transmisor:
 - **Decodificación**: Detecta y corrige errores
 - **Conversión de formato**: Digital a analógico si es necesario
 - **Filtrado**: Elimina ruido e interferencias
+
+**Diseño crítico**: El receptor debe optimizar la relación señal-ruido (SNR) mientras mantiene la fidelidad de la señal. El teorema de igualación indica que la máxima SNR se obtiene con un filtro adaptado (matched filter).
 
 **5. Destino**
 
@@ -220,6 +232,28 @@ Imagina gritar a través de un valle. Tu voz (información) necesita ser lo sufi
 
 **Ventaja clave**: Ancho de banda enorme (Tbps posibles) con baja atenuación
 
+#### Ejemplo 4: Enlace de Datos WiFi
+
+| Componente | Implementación Real | Función Específica |
+|------------|-------------------|-------------------|
+| Fuente | Paquetes de datos TCP/IP | Genera información digital |
+| Transmisor | Punto de acceso / Router WiFi | Codificación convolucional, OFDM con QAM, 2.4/5 GHz |
+| Canal | Aire (multitrayecto, desvanecimiento) | Propagación electromagnética no guiada |
+| Receptor | Dispositivo del usuario (laptop, smartphone) | Demodulación OFDM (FFT), ecualización, decodificación Viterbi |
+| Destino | Aplicación final (navegador, app) | Recibe los paquetes de datos |
+| Ruido | Interferencia co-canal, ruido térmico | Degrada la calidad del enlace |
+
+#### Ejemplo 5: Sistema Telefónico Digital (T1/E1)
+
+| Componente | Implementación Real | Función Específica |
+|------------|-------------------|-------------------|
+| Fuente | Voz analógica (300-3400 Hz) | Genera información de audio |
+| Transmisor | Sistema T1/E1 | Muestreo 8000 Hz, cuantificación 8 bits con companding, PCM 64 kbps, TDM 24 canales |
+| Canal | Cable de cobre o fibra óptica | Transporta la señal multiplexada |
+| Receptor | Demultiplexor + decodificador PCM | Demultiplexación, decodificación PCM, expansor, filtro pasa-bajos de reconstrucción |
+| Destino | Auricular telefónico | Reproduce el audio original |
+| Ruido | Ruido de cuantificación, errores de bit | Degrada la calidad de voz |
+
 ### 🔗 Conexiones con Otros Conceptos
 
 #### Conceptos Relacionados
@@ -265,6 +299,14 @@ Imagina gritar a través de un valle. Tu voz (información) necesita ser lo sufi
 - La antena es solo la interfaz final
 - El transmisor incluye todo el procesamiento previo
 
+❌ **Error #4: Olvidar la sincronización**
+- Los receptores coherentes necesitan sincronismo con el transmisor
+- Sin sincronismo, la demodulación falla completamente
+
+❌ **Error #5: No considerar el ancho de banda**
+- Es un recurso limitado y valioso, regulado internacionalmente
+- Cada sistema debe operar dentro de su asignación espectral
+
 ### ✅ Puntos Clave para Recordar
 
 #### Modelo Fundamental
@@ -278,6 +320,11 @@ Fuente → Transmisor → Canal (+Ruido) → Receptor → Destino
 - ✓ **Ruido inevitable**: Siempre presente, debe diseñarse considerándolo
 - ✓ **Procesamiento dual**: Transmisor y receptor realizan operaciones inversas
 
+#### Fórmulas Importantes Relacionadas
+- Capacidad de Shannon: $$C = B\log_2(1 + S/N) \text{ bits/s}$$
+- SNR en dB: $$\text{SNR}_{dB} = 10\log_{10}(S/N)$$
+- Potencia recibida (Friis): $$P_r = P_t G_t G_r \left(\frac{\lambda}{4\pi d}\right)^2$$
+
 #### Regla Mnemotécnica
 🧠 **"FTCRD"**: Fuente-Transmisor-Canal-Receptor-Destino
 🧠 **"Siempre Considera Ruido"**: SCR - recordar incluir efectos no ideales
@@ -288,6 +335,17 @@ Fuente → Transmisor → Canal (+Ruido) → Receptor → Destino
 - **Shannon (1948)**: "A Mathematical Theory of Communication" - paper original
 - **Haykin**: "Communication Systems" Cap. 1
 - **Proakis & Salehi**: "Fundamentals of Communication Systems" Cap. 1
+
+#### Referencias Bibliográficas
+- **Haykin**: "Communication Systems" Cap. 1
+- **Proakis & Salehi**: "Fundamentals of Communication Systems" Cap. 1
+- **Taub & Schilling**: "Principles of Communication Systems"
+
+#### Temas para Estudiar Más
+- Arquitecturas de receptores (superheterodino, conversión directa, SDR)
+- Efectos de propagación (desvanecimiento, multitrayecto, Doppler)
+- Estándares de comunicaciones (IEEE 802.x, 3GPP, ITU)
+- Medidas de calidad (SNR, BER, SINAD, EVM)
 
 #### Preguntas para Reflexionar
 - ¿Por qué Shannon incluyó el ruido como parte fundamental del modelo?

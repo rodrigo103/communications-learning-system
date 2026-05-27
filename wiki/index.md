@@ -126,7 +126,8 @@ Base de conocimiento interconectada para el curso de Sistemas de Comunicaciones.
 ## Resumenes y Mindmaps
 
 - [[resumenes/overview-curso]] — Mapa mental del curso completo
-- [[resumenes/modulacion-digital-unidad6]] — Unidad 6: modulacion digital detallada
+- [[resumenes/modulacion-digital-unidad6]] — Unidad 6: mindmap detallado
+- [[resumenes/resumen-modulacion-digital]] — Unidad 6: resumen completo (772 lineas)
 
 ## Problemas Resueltos
 

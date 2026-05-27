@@ -165,6 +165,22 @@ Donde β es el índice de modulación. Para FM broadcast (β ≈ 5):
 - Subastas de espectro: Miles de millones de dólares
 - Ejemplo: Subasta 5G en USA (2021): $81 mil millones
 
+#### 6. Otras Ventajas Importantes
+
+**a) Implementación práctica:**
+- Circuitos de RF bien desarrollados para bandas específicas
+- Componentes optimizados (filtros, amplificadores)
+- Estándares establecidos
+
+**b) Seguridad y privacidad:**
+- Espectro expandido dificulta interceptación
+- Frecuencias específicas para aplicaciones críticas
+
+**c) Aprovechamiento de características del canal:**
+- Bandas con menor atenuación (ventanas atmosféricas)
+- Propagación ionosférica (HF)
+- Penetración en edificios (frecuencias más bajas)
+
 ### 🔬 Intuición y Analogías
 
 **Analogía principal: Autopistas y carriles**
@@ -264,6 +280,22 @@ $$P_{necesaria} \approx 50 \text{ kW}$$
 - Sin modulación a 1.575 GHz: antenas kilométricas en satélites
 - **Resultado**: GPS imposible
 
+#### Ejemplo 4: Comparación WiFi 2.4 GHz vs 5 GHz
+
+**2.4 GHz:**
+- Mayor alcance (menor atenuación)
+- Mejor penetración en paredes
+- Más congestionado (muchos dispositivos)
+- Menos canales disponibles
+
+**5 GHz:**
+- Menor alcance
+- Más canales disponibles
+- Menos interferencia
+- Mayor capacidad total
+
+Ambos usan OFDM con QAM adaptativo, pero la modulación a diferentes frecuencias portadoras aprovecha características físicas diferentes.
+
 ### 🔗 Conexiones con Otros Conceptos
 
 #### Conceptos Relacionados
@@ -314,6 +346,14 @@ $$P_{necesaria} \approx 50 \text{ kW}$$
 - Atraviesan mal obstáculos
 - Balance necesario según aplicación
 
+❌ **Error #4: Creer que frecuencias bajas son siempre mejores**
+- Tienen ventajas (alcance) pero desventajas críticas (antenas, multiplexación)
+- La elección de frecuencia depende de la aplicación específica
+
+❌ **Error #5: Ignorar aspectos regulatorios**
+- No se puede transmitir en cualquier frecuencia
+- Las bandas están asignadas por organismos como FCC, ITU
+
 ### ✅ Puntos Clave para Recordar
 
 #### Las 5 Razones Fundamentales
@@ -358,6 +398,20 @@ donde c = 3×10⁸ m/s
 - Si pudiéramos cambiar las leyes de la física, ¿qué modificaríamos para no necesitar modulación?
 - ¿Cómo cambiaría el mundo si el espectro fuera ilimitado?
 - ¿Qué nuevas formas de modulación podrían inventarse para 6G?
+
+#### Aplicaciones Modernas
+
+- **5G NR**: Millimeter wave (24-100 GHz)
+- **Satellite communications**: Bandas L, S, C, Ku, Ka
+- **IoT**: Bandas ISM (Industrial, Scientific, Medical)
+- **Radio cognitivo**: Uso dinámico del espectro
+
+#### Historia de las Comunicaciones
+
+- **Edwin Armstrong** y la invención de FM (1933)
+- **Guglielmo Marconi** y primeras comunicaciones transatlánticas
+- Guerra de patentes AM vs. FM
+- Evolución celular: 1G (AMPS) → 5G
 
 ---
 

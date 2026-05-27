@@ -84,10 +84,50 @@ $$E = \int_{-\infty}^{\infty} X^*(f) \cdot X(f) df$$
 **Resultado final:**
 $$\boxed{E = \int_{-\infty}^{\infty} |X(f)|^2 df}$$
 
+**Versión con frecuencia angular** ($\omega = 2\pi f$):
+$$E = \int_{-\infty}^{\infty} |x(t)|^2 dt = \frac{1}{2\pi}\int_{-\infty}^{\infty} |X(\omega)|^2 d\omega$$
+
 **Significado físico de cada término:**
 - $|x(t)|^2$: Potencia instantánea en el instante t
 - $|X(f)|^2$: Densidad espectral de energía en la frecuencia f
 - Las integrales: Suman estas densidades para obtener la energía total
+
+#### Aplicaciones del Teorema
+
+**a) Cálculo de energía en el dominio de frecuencia**
+
+A veces es más fácil calcular energía en frecuencia que en tiempo.
+
+**Ejemplo**: Señal $x(t) = e^{-at}u(t)$ con $a > 0$
+
+Transformada de Fourier:
+$$X(f) = \frac{1}{a + j2\pi f}$$
+
+Magnitud:
+$$|X(f)|^2 = \frac{1}{a^2 + (2\pi f)^2}$$
+
+Energía (usando Parseval):
+$$E = \int_{-\infty}^{\infty} \frac{1}{a^2 + (2\pi f)^2} df = \frac{1}{2\pi} \int_{-\infty}^{\infty} \frac{1}{(a/2\pi)^2 + f^2} df = \frac{1}{2a}$$
+
+Verificación en el tiempo:
+$$E = \int_0^{\infty} e^{-2at} dt = \left[-\frac{e^{-2at}}{2a}\right]_0^{\infty} = \frac{1}{2a}$$ ✓
+
+**b) Diseño de filtros**
+
+Queremos que un filtro preserve cierta fracción de energía:
+$$\eta = \frac{\int_{-\infty}^{\infty} |X(f)|^2 |H(f)|^2 df}{\int_{-\infty}^{\infty} |X(f)|^2 df}$$
+
+donde $H(f)$ es la respuesta en frecuencia del filtro.
+
+**c) Ancho de banda equivalente de ruido**
+
+Definimos el ancho de banda equivalente de ruido:
+$$B_n = \frac{\int_0^{\infty} |H(f)|^2 df}{|H(f_{max})|^2}$$
+
+**d) Relación señal-ruido via Parseval**
+
+Si señal y ruido son independientes:
+$$SNR = \frac{E_{señal}}{E_{ruido}} = \frac{\int |X(f)|^2 df}{\int |N(f)|^2 df}$$
 
 ### 🔬 Intuición y Analogías
 
@@ -162,6 +202,64 @@ El teorema garantiza que ambos cálculos darán el mismo resultado.
   - Frecuencia: Delta en ±f₀ → energía infinita
   - Consistencia mantenida
 
+#### Ejemplo 4: Señal Sinusoidal Modulada por Exponencial
+
+**Señal**:
+$$x(t) = e^{-at}\cos(2\pi f_0 t)u(t), \quad a > 0$$
+
+**Método 1 - Tiempo** (difícil):
+$$E_t = \int_0^{\infty} e^{-2at}\cos^2(2\pi f_0 t) dt$$
+
+Usando $\cos^2(\theta) = (1 + \cos(2\theta))/2$:
+$$E_t = \frac{1}{2}\int_0^{\infty} e^{-2at}dt + \frac{1}{2}\int_0^{\infty} e^{-2at}\cos(4\pi f_0 t) dt$$
+
+Primera integral: $\frac{1}{4a}$
+
+Segunda integral (más compleja): $\frac{a}{2(a^2 + 4\pi^2f_0^2)}$
+
+$$E_t = \frac{1}{4a} + \frac{a}{4(a^2 + 4\pi^2f_0^2)}$$
+
+**Método 2 - Frecuencia** (más sistemático):
+
+Usando propiedades de la transformada:
+$$x(t) = e^{-at}u(t) \cdot \cos(2\pi f_0 t)$$
+
+$$X(f) = \frac{1}{2}\left[\frac{1}{a + j2\pi(f-f_0)} + \frac{1}{a + j2\pi(f+f_0)}\right]$$
+
+Calcular $|X(f)|^2$ e integrar sería laborioso, pero conceptualmente más claro y ambos métodos producen el mismo resultado.
+
+#### Ejemplo 5: Ancho de Banda del 99% de Energía
+
+**Problema**: Determinar el ancho de banda que contiene el 99% de la energía de un pulso rectangular.
+
+**Señal**: Pulso rectangular de amplitud $A$ y duración $T$
+$$|X(f)|^2 = A^2T^2 \text{sinc}^2(\pi fT)$$
+
+**Energía total**:
+$$E_{total} = A^2T$$
+
+**Queremos** $B$ tal que:
+$$\int_{-B}^{B} A^2T^2 \text{sinc}^2(\pi fT) df = 0.99 \cdot A^2T$$
+
+Simplificando:
+$$\int_{-B}^{B} \text{sinc}^2(\pi fT) df = \frac{0.99}{T}$$
+
+Por simetría:
+$$2\int_0^{B} \text{sinc}^2(\pi fT) df = \frac{0.99}{T}$$
+
+Cambio de variable $u = \pi fT$:
+$$\frac{2}{\pi T}\int_0^{\pi BT} \text{sinc}^2(u) du = \frac{0.99}{T}$$
+
+$$\int_0^{\pi BT} \text{sinc}^2(u) du = 0.99 \cdot \frac{\pi}{2}$$
+
+Sabiendo que $\int_0^{\infty} \text{sinc}^2(u) du = \pi/2$:
+
+Resolviendo numéricamente: $\pi BT \approx 2.5\pi$
+
+$$B \approx \frac{2.5}{T}$$
+
+**Interpretación**: Necesitamos aproximadamente 2.5 veces el inverso de la duración del pulso para capturar el 99% de la energía.
+
 ### 🔗 Conexiones con Otros Conceptos
 
 #### Conceptos Relacionados
@@ -206,6 +304,21 @@ El teorema garantiza que ambos cálculos darán el mismo resultado.
 ❌ **Error #3: Unidades incorrectas**
 - Distinción importante: [V²·s] en tiempo, [V²·s] en frecuencia (Hz⁻¹ se cancela)
 
+❌ **Error #4: Olvidar el factor $1/(2\pi)$ en versión con $\omega$**
+- Importante distinguir entre usar $f$ vs $\omega$
+- La fórmula cambia según la variable de integración
+- Siempre verificar: $\int |X(f)|^2 df$ vs $\frac{1}{2\pi}\int |X(\omega)|^2 d\omega$
+
+❌ **Error #5: Límites de integración incorrectos**
+- La integral es de $-\infty$ a $+\infty$ para ambos dominios
+- No confundir con integración solo en frecuencias positivas
+- Si la señal es par, puede integrarse en positivos y multiplicar por 2
+
+❌ **Error #6: Aplicar a señales de potencia infinita**
+- El teorema clásico es para señales de energía finita
+- Para señales de potencia se usa la versión periódica
+- La versión de potencia usa $\frac{1}{T}\int_0^T |x(t)|^2 dt = \sum |c_n|^2$
+
 ### ✅ Puntos Clave para Recordar
 
 #### Fórmulas Esenciales
@@ -238,9 +351,10 @@ Parseval (potencia): (1/T)∫|x(t)|² dt = Σ|Xₙ|²  (para periódicas)
 - **Experimentos**: Analizador de espectro para ver distribución real
 
 #### Temas Relacionados para Explorar
-1. Teorema de Parseval generalizado (producto interno)
-2. Relación con teorema de Plancherel
-3. Extensión a wavelets y otras transformadas
+1. Teorema de Parseval generalizado (producto interno): $\int x(t)y^*(t) dt = \int X(f)Y^*(f) df$
+2. Versión discreta (DFT): $\sum |x[n]|^2 = \frac{1}{N}\sum |X[k]|^2$
+3. Relación con teorema de Plancherel
+4. Extensiones: wavelets, mecánica cuántica, espacios de Hilbert
 
 #### Preguntas para Reflexionar
 - ¿Por qué la conservación de energía es fundamental en comunicaciones?
