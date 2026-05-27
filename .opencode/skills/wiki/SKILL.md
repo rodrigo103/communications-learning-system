@@ -1,6 +1,6 @@
 ---
 name: wiki
-description: "Manage the LLM Wiki for Communications Learning System — ingest, search, lint, status. Wiki lives at .opencode/wiki/ with knowledge about modulations, noise, information theory, and problem-solving patterns."
+description: "Manage the LLM Wiki for Communications Learning System — ingest, search, lint, status. Wiki lives at wiki/ with knowledge about modulations, noise, information theory, and problem-solving patterns."
 license: MIT
 compatibility: opencode
 metadata:
@@ -9,7 +9,7 @@ metadata:
 
 # Wiki Skill
 
-Manage the **LLM Wiki** at `.opencode/wiki/` — a persistent, interlinked markdown knowledge base for the Communications Systems course.
+Manage the **LLM Wiki** at `wiki/` — a persistent, interlinked markdown knowledge base for the Communications Systems course.
 
 ## How the wiki works
 
@@ -34,9 +34,9 @@ Three core operations:
 Processes new content into the wiki.
 
 **What it does:**
-1. If raw files exist in `.opencode/wiki/raw/`, processes them first: reads each, extracts key info, creates/updates wiki pages, **deletes** the processed raw files
+1. If raw files exist in `wiki/raw/`, processes them first: reads each, extracts key info, creates/updates wiki pages, **deletes** the processed raw files
 2. If a topic is specified (`/wiki ingest modulacion`), searches relevant source files and compiles into wiki pages
-3. Updates `.opencode/wiki/index.md` (table of contents) and `.opencode/wiki/log.md` (changelog)
+3. Updates `wiki/index.md` (table of contents) and `wiki/log.md` (changelog)
 
 **When to use:** After study sessions, after resolving non-trivial problems, after dropping files into `raw/`.
 
@@ -45,7 +45,7 @@ Processes new content into the wiki.
 Searches all wiki pages and synthesizes an answer.
 
 **What it does:**
-1. Greps across all `.md` files in `.opencode/wiki/`
+1. Greps across all `.md` files in `wiki/`
 2. Reads matching pages
 3. Synthesizes a concise answer with claim type annotations
 

@@ -30,12 +30,12 @@ python -m pytest tests/ -v
 
 Analizar `git diff --stat` con este criterio:
 
-- Si se tocaron archivos mencionados en páginas del wiki `.opencode/wiki/` (ver `source_file:` en frontmatter), mostrar qué páginas podrían estar desactualizadas.
+- Si se tocaron archivos mencionados en páginas del wiki `wiki/` (ver `source_file:` en frontmatter), mostrar qué páginas podrían estar desactualizadas.
 - Señales de que la wiki necesita update:
   - Archivos originales eliminados/renombrados que son `source_file` de páginas wiki
   - Nuevas derivaciones, soluciones o explicaciones no reflejadas en la wiki
   - Cambios en el programa oficial (ProgramaSistemasDeComunicaciones.md)
-- Preguntar: _"Do these changes affect any wiki pages? Should we update `.opencode/wiki/`?"_
+- Preguntar: _"Do these changes affect any wiki pages? Should we update `wiki/`?"_
 - Si el usuario dice sí, actualizar las páginas correspondientes y agregar entrada en `log.md`.
 
 ### Step 4 — Generar el commit

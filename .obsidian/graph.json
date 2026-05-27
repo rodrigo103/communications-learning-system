@@ -9,47 +9,80 @@
   "colorGroups": [
     {
       "query": "tag:#wiki/introduccion",
-      "color": { "a": 1, "rgb": 5292152 }
+      "color": {
+        "a": 1,
+        "rgb": 5292152
+      }
     },
     {
       "query": "tag:#wiki/herramientas",
-      "color": { "a": 1, "rgb": 10310673 }
+      "color": {
+        "a": 1,
+        "rgb": 10310673
+      }
     },
     {
       "query": "tag:#wiki/modulacion",
-      "color": { "a": 1, "rgb": 13399090 }
+      "color": {
+        "a": 1,
+        "rgb": 13399090
+      }
     },
     {
       "query": "tag:#wiki/ruido",
-      "color": { "a": 1, "rgb": 14720594 }
+      "color": {
+        "a": 1,
+        "rgb": 14720594
+      }
     },
     {
       "query": "tag:#wiki/digital",
-      "color": { "a": 1, "rgb": 5341184 }
+      "color": {
+        "a": 1,
+        "rgb": 5341184
+      }
     },
     {
       "query": "tag:#wiki/informacion",
-      "color": { "a": 1, "rgb": 10854764 }
+      "color": {
+        "a": 1,
+        "rgb": 10854764
+      }
     },
     {
       "query": "tag:#wiki/derivacion",
-      "color": { "a": 1, "rgb": 16744448 }
+      "color": {
+        "a": 1,
+        "rgb": 16744448
+      }
     },
     {
       "query": "tag:#wiki/problema",
-      "color": { "a": 1, "rgb": 16564924 }
+      "color": {
+        "a": 1,
+        "rgb": 16564924
+      }
     },
     {
       "query": "tag:#wiki/resumen",
-      "color": { "a": 1, "rgb": 8224128 }
+      "color": {
+        "a": 1,
+        "rgb": 8224128
+      }
     },
     {
       "query": "tag:#wiki/planificacion",
-      "color": { "a": 1, "rgb": 10145074 }
+      "color": {
+        "a": 1,
+        "rgb": 10145074
+      }
     },
     {
       "query": "tag:#wiki/meta",
-      "color": { "a": 1, "rgb": 9807270 }
+      "color": {
+        "a": 1,
+        "rgb": 9807270
+      }
     }
   ],
   "collapse-display": true,

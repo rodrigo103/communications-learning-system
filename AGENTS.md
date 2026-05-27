@@ -19,7 +19,7 @@ Plataforma de aprendizaje para Sistemas de Comunicaciones (UTN). Ayuda a prepara
 
 # LLM Wiki
 
-El proyecto tiene un wiki persistente en `.opencode/wiki/` que compila y conecta todo el conocimiento del curso.
+El proyecto tiene un wiki persistente en `wiki/` que compila y conecta todo el conocimiento del curso.
 
 ## Cuando leer el wiki — OBLIGATORIO
 
@@ -39,7 +39,7 @@ Categorias cubiertas:
 - Problemas resueltos
 - Planificacion y progreso
 
-Hacer `/wiki search <tema>` o leer directamente en `.opencode/wiki/`.
+Hacer `/wiki search <tema>` o leer directamente en `wiki/`.
 
 ## Cuando escribir al wiki
 
@@ -50,7 +50,7 @@ Despues de finalizar una sesion de estudio, compilar conocimiento al wiki si se 
 - Un mapa mental o resumen integrador
 - Un descubrimiento sobre estrategias de examen
 
-**IMPORTANTE**: Despues de cambios significativos en archivos fuente (`outputs/`, `explicaciones_anki/`), **revisa si las paginas del wiki necesitan actualizarse**. Busca archivos mencionados en el wiki (`grep` de `source_file:` en `.opencode/wiki/`). Si encontras referencias a contenido que cambio, actualiza la pagina y agrega entrada en `log.md`.
+**IMPORTANTE**: Despues de cambios significativos en archivos fuente (`outputs/`, `explicaciones_anki/`), **revisa si las paginas del wiki necesitan actualizarse**. Busca archivos mencionados en el wiki (`grep` de `source_file:` en `wiki/`). Si encontras referencias a contenido que cambio, actualiza la pagina y agrega entrada en `log.md`.
 
 El skill `check-commit` incluye un paso de wiki review antes del commit.
 
@@ -98,7 +98,7 @@ Usar `$$...$$` para ecuaciones en bloque y `$...$` para inline. Encerrar formula
 ## Estructura del wiki
 
 ```
-.opencode/wiki/
+wiki/
 ├── raw/                         # Inbox — drop files aqui
 ├── index.md                     # TOC auto-mantenido
 ├── log.md                       # Changelog cronologico

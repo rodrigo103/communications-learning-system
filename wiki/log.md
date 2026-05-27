@@ -13,7 +13,7 @@ Registro cronologico de todas las actualizaciones al wiki de Sistemas de Comunic
 
 ### Creacion inicial del vault
 
-- **Infraestructura**: Creado `.opencode/wiki/` con config Obsidian, skills (`wiki`, `check-commit`), plugin `wiki-nudge` y `AGENTS.md`.
+- **Infraestructura**: Creado `wiki/` con config Obsidian, skills (`wiki`, `check-commit`), plugin `wiki-nudge` y `AGENTS.md`.
 - **Estructura**: Definidas 14 categorias de conocimiento:
   - `introduccion/` — Fundamentos y modelo de Shannon
   - `herramientas-matematicas/` — Parseval, Fourier, Hilbert, muestreo

@@ -14,7 +14,7 @@ export const WikiNudgePlugin = async ({ project, client, $, directory, worktree 
           level: "info",
           message: "Evaluar si esta sesion genero conocimiento que deba compilarse al wiki de Sistemas de Comunicaciones",
           extra: {
-            prompt: `[wiki-nudge] Evaluate if this conversation generated knowledge worth compiling to the wiki (.opencode/wiki/). Derivations, problem solutions, concept explanations, study patterns, or exam strategies belong in the wiki. Check the 'LLM Wiki' section in AGENTS.md for rules.`,
+            prompt: `[wiki-nudge] Evaluate if this conversation generated knowledge worth compiling to the wiki (wiki/). Derivations, problem solutions, concept explanations, study patterns, or exam strategies belong in the wiki. Check the 'LLM Wiki' section in AGENTS.md for rules.`,
           },
         },
       })
