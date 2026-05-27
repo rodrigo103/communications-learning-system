@@ -18,9 +18,9 @@ Cada símbolo se representa como combinación lineal de bases ortonormales:
 $$s(t) = \sum_n a_n \phi_n(t), \quad \langle \phi_i, \phi_j \rangle = \delta_{ij}$$
 
 ### Constelaciones
-Diagrama I-Q donde cada punto representa un símbolo. La distancia euclidiana entre puntos determina la inmunidad al ruido. [[modulacion-digital/constelaciones]]
+Diagrama I-Q donde cada punto representa un símbolo. La distancia euclidiana entre puntos determina la inmunidad al ruido. [[../modulacion-digital/constelaciones]]
 
-**Codificación Gray:** símbolos adyacentes difieren en 1 bit → minimiza BER por errores de símbolo [source].
+**Codificación Gray:** símbolos adyacentes difieren en 1 bit → minimiza BER por errores de símbolo [source — [[../../outputs/mindmaps/unit_6_digital_modulation_detailed_20251116]]].
 
 ### Criterio de Nyquist
 Condición de ISI cero: pulsos con cruces por cero en $t = nT$. El filtro de coseno realzado (roll-off $\alpha$) cumple esta condición.
@@ -60,7 +60,7 @@ $$s(t) = I(t)\cos(2\pi f_c t) - Q(t)\sin(2\pi f_c t)$$
 | 256-QAM | 16×16 | 8 | 8 |
 | 1024-QAM | 32×32 | 10 | 10 |
 
-Ver [[derivaciones/modulacion-qam]].
+Ver [[../derivaciones/modulacion-qam]].
 
 ## Análisis de desempeño
 
@@ -101,7 +101,7 @@ $$\eta = \frac{R_b}{B} \text{ bits/s/Hz}$$
 ### Relaciones clave
 $$R_b = R_s \cdot \log_2(M), \quad \frac{E_b}{N_0} = \frac{S}{N} \cdot \frac{B}{R_b}$$
 
-[[modulacion-digital/probabilidad-error]]
+[[../modulacion-digital/probabilidad-error]]
 
 ## Filtrado de pulsos e ISI
 
@@ -116,7 +116,7 @@ $$H(f) = \begin{cases} T & |f| \leq \frac{1-\alpha}{2T} \\ \frac{T}{2}[1+\cos(\f
 ### Diagrama de ojo
 Herramienta de visualización: apertura indica margen de ruido, cierre indica ISI.
 
-[[modulacion-digital/codificacion-linea]]
+[[../modulacion-digital/codificacion-linea]]
 
 ## Aplicaciones
 
@@ -135,11 +135,11 @@ Herramienta de visualización: apertura indica margen de ruido, cierre indica IS
 
 ## Ver también
 
-- [[modulacion-digital/ask-fsk-psk]]
-- [[modulacion-digital/constelaciones]]
-- [[modulacion-digital/modulacion-qam]]
-- [[modulacion-digital/probabilidad-error]]
-- [[modulacion-digital/comparacion-digital-analogica]]
-- [[modulacion-digital/codificacion-linea]]
-- [[derivaciones/modulacion-qam]]
-- [[conceptos-integradores/trade-off-bw-potencia]]
+- [[../modulacion-digital/ask-fsk-psk]]
+- [[../modulacion-digital/constelaciones]]
+- [[../modulacion-digital/modulacion-qam]]
+- [[../modulacion-digital/probabilidad-error]]
+- [[../modulacion-digital/comparacion-digital-analogica]]
+- [[../modulacion-digital/codificacion-linea]]
+- [[../derivaciones/modulacion-qam]]
+- [[../conceptos-integradores/trade-off-bw-potencia]]

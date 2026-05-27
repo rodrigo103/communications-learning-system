@@ -10,4 +10,4 @@ curso: Sistemas de Comunicaciones
 
 Pagina de referencia. Ver:
 
-- [[ruido/fuentes-ruido]] — Fuentes de ruido en sistemas de comunicaciones
+- [[../ruido/fuentes-ruido]] — Fuentes de ruido en sistemas de comunicaciones

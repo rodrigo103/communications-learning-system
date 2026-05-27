@@ -10,4 +10,4 @@ curso: Sistemas de Comunicaciones
 
 Pagina de referencia. Ver:
 
-- [[ruido/efecto-umbral]] — Efecto umbral en modulacion angular
+- [[../ruido/efecto-umbral]] — Efecto umbral en modulacion angular

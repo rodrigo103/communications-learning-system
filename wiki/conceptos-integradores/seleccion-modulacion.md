@@ -12,7 +12,7 @@ unidad: 9-10
 
 ## Marco de Decision
 
-La seleccion de un esquema de modulacion es una decision de diseno que balancea recursos escasos y costosos: espectro, potencia y complejidad. Ningun esquema es optimo universalmente; la eleccion depende de las restricciones especificas de cada aplicacion. [source]
+La seleccion de un esquema de modulacion es una decision de diseno que balancea recursos escasos y costosos: espectro, potencia y complejidad. Ningun esquema es optimo universalmente; la eleccion depende de las restricciones especificas de cada aplicacion. [source — [[../../explicaciones_anki/conceptos_integradores/carta_58_eficiencia_espectral_vs_potencia]]]
 
 ## Parametros de Comparacion
 
@@ -78,7 +78,7 @@ $$\boxed{\frac{E_b}{N_0} = SNR \cdot \frac{B}{R_b}}$$
 
 ## Relacion Fundamental de Shannon para Seleccion
 
-El teorema de Shannon establece el limite del trade-off: [source]
+El teorema de Shannon establece el limite del trade-off: [source — [[../../explicaciones_anki/conceptos_integradores/carta_58_eficiencia_espectral_vs_potencia]]]
 
 $$\boxed{\frac{E_b}{N_0} = \frac{2^{\eta} - 1}{\eta}}$$
 
@@ -116,9 +116,9 @@ Esto maximiza el throughput manteniendo BER objetivo, adaptandose a las condicio
 
 ## Ver tambien
 
-- [[conceptos-integradores/comparacion-global-modulaciones]]
-- [[conceptos-integradores/compromisos-diseno]]
-- [[conceptos-integradores/aplicaciones-reales]]
-- [[conceptos-integradores/evolucion-sistemas]]
-- [[teoria-informacion/teorema-shannon-hartley]]
-- [[ruido/intercomparacion-sistemas]]
+- [[../conceptos-integradores/comparacion-global-modulaciones]]
+- [[../conceptos-integradores/compromisos-diseno]]
+- [[../conceptos-integradores/aplicaciones-reales]]
+- [[../conceptos-integradores/evolucion-sistemas]]
+- [[../teoria-informacion/teorema-shannon-hartley]]
+- [[../ruido/intercomparacion-sistemas]]

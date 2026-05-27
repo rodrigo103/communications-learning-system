@@ -8,17 +8,17 @@ unidad: 2
 
 # Teorema de Parseval
 
-> **Last verified:** 2025-11-16 | **Verified by:** [source]
+> **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_02/carta_04_teorema-parseval]]]
 
 ## Enunciado
 
-El Teorema de Parseval establece la conservacion de energia entre los dominios del tiempo y la frecuencia [source]:
+El Teorema de Parseval establece la conservacion de energia entre los dominios del tiempo y la frecuencia [source — [[../../explicaciones_anki/unidad_02/carta_04_teorema-parseval]]]:
 
 $$\boxed{\int_{-\infty}^{\infty} |x(t)|^2 dt = \int_{-\infty}^{\infty} |X(f)|^2 df}$$
 
 ## Interpretacion Fisica
 
-La energia total de una señal en el dominio del tiempo es **exactamente igual** a la energia total en el dominio de la frecuencia [source]. Esto demuestra que la Transformada de Fourier conserva la energia y permite calcular la energia integrando la densidad espectral de energia $|X(f)|^2$.
+La energia total de una señal en el dominio del tiempo es **exactamente igual** a la energia total en el dominio de la frecuencia [source — [[../../explicaciones_anki/unidad_02/carta_04_teorema-parseval]]]. Esto demuestra que la Transformada de Fourier conserva la energia y permite calcular la energia integrando la densidad espectral de energia $|X(f)|^2$.
 
 ## Significado de los Terminos
 
@@ -63,14 +63,14 @@ Ambos calculos coinciden exactamente, confirmando el teorema.
 
 ## Puntos Clave
 
-- ✓ La energia es invariante bajo la Transformada de Fourier [source]
+- ✓ La energia es invariante bajo la Transformada de Fourier [source — [[../../explicaciones_anki/unidad_02/carta_04_teorema-parseval]]]
 - ✓ Se puede calcular energia en el dominio mas conveniente [analysis]
 - ✓ $|X(f)|^2$ tiene significado fisico real como densidad espectral de energia
 - ✓ Para señales periodicas: $\frac{1}{T}\int |x(t)|^2 dt = \sum |X_n|^2$
 
 ## Ver tambien
 
-- [[herramientas-matematicas/densidad-espectral-potencia]]
-- [[herramientas-matematicas/teorema-convolucion]]
-- [[herramientas-matematicas/senales-energia-potencia]]
-- [[derivaciones/teorema-parseval]]
+- [[../herramientas-matematicas/densidad-espectral-potencia]]
+- [[../herramientas-matematicas/teorema-convolucion]]
+- [[../herramientas-matematicas/senales-energia-potencia]]
+- [[../derivaciones/teorema-parseval]]

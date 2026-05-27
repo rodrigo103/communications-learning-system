@@ -31,7 +31,7 @@ En **Frequency Modulation (FM)**, la desviación de frecuencia instantánea es p
 
 $$f_i(t) = f_c + k_f m(t)$$
 
-donde $k_f$ es la sensibilidad de frecuencia [Hz/V] [source].
+donde $k_f$ es la sensibilidad de frecuencia [Hz/V] [source — [[../../outputs/derivations/FM_Carson_parallel_20251115]]].
 
 Integrando para obtener la fase:
 
@@ -69,7 +69,7 @@ Usando la identidad de Jacobi-Anger:
 
 $$s_{FM}(t) = A_c \sum_{n=-\infty}^{\infty} J_n(\beta) \cos[2\pi(f_c + n f_m)t]$$
 
-donde $J_n(\beta)$ son las funciones de Bessel de primera especie [source].
+donde $J_n(\beta)$ son las funciones de Bessel de primera especie [source — [[../../outputs/derivations/FM_Carson_parallel_20251115]]].
 
 El espectro FM contiene **infinitas bandas laterales** (a diferencia de AM que tiene solo 2), pero las amplitudes $J_n(\beta)$ decaen con $n$.
 
@@ -117,8 +117,8 @@ FM intercambia ancho de banda por SNR: $SNR_{FM} \propto \beta^2 \propto BW^2$ [
 
 ## Ver también
 
-- [[modulacion-analogica/ancho-banda-carson]]
-- [[modulacion-analogica/fm-vs-pm]]
-- [[derivaciones/modulacion-fm-banda-angosta]]
-- [[modulacion-analogica/funciones-bessel]]
-- [[ruido/efecto-umbral-fm]]
+- [[../modulacion-analogica/ancho-banda-carson]]
+- [[../modulacion-analogica/fm-vs-pm]]
+- [[../derivaciones/modulacion-fm-banda-angosta]]
+- [[../modulacion-analogica/funciones-bessel]]
+- [[../ruido/efecto-umbral-fm]]

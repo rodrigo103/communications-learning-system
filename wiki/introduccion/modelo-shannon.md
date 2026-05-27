@@ -8,7 +8,7 @@ unidad: 1
 
 # Modelo de Shannon: Componentes del Sistema de Comunicaciones
 
-> **Last verified:** 2025-11-16 | **Verified by:** [source]
+> **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_01/carta_01_sistema-comunicaciones]]]
 
 ## Definicion
 
@@ -27,8 +27,8 @@ El diagrama de bloques del modelo de Shannon es:
 ### 1. Fuente de Informacion
 
 La fuente genera el mensaje original. Caracteristicas:
-- **Naturaleza**: analogica (voz, musica) o digital (datos, texto) [source]
-- **Ancho de banda**: rango de frecuencias que ocupa la informacion (ej: voz 300-3400 Hz) [source]
+- **Naturaleza**: analogica (voz, musica) o digital (datos, texto) [source — [[../../explicaciones_anki/unidad_01/carta_01_sistema-comunicaciones]]]
+- **Ancho de banda**: rango de frecuencias que ocupa la informacion (ej: voz 300-3400 Hz) [source — [[../../explicaciones_anki/unidad_01/carta_01_sistema-comunicaciones]]]
 - **Tasa de informacion**: cantidad de informacion generada por unidad de tiempo
 
 ### 2. Transmisor
@@ -37,8 +37,8 @@ Convierte el mensaje en una señal adecuada para el canal. Funciones:
 
 $$\text{Informacion} \rightarrow \text{Codificacion} \rightarrow \text{Modulacion} \rightarrow \text{Amplificacion} \rightarrow \text{Antena/Medio}$$
 
-- **Conversion de formato**: ADC/DAC [source]
-- **Modulacion**: traslada la informacion a una frecuencia portadora adecuada [source]
+- **Conversion de formato**: ADC/DAC [source — [[../../explicaciones_anki/unidad_01/carta_01_sistema-comunicaciones]]]
+- **Modulacion**: traslada la informacion a una frecuencia portadora adecuada [source — [[../../explicaciones_anki/unidad_01/carta_01_sistema-comunicaciones]]]
 - **Codificacion**: agrega redundancia para proteccion contra errores
 - **Amplificacion**: proporciona potencia suficiente para transmision
 - **Filtrado**: limita el ancho de banda
@@ -47,12 +47,12 @@ $$\text{Informacion} \rightarrow \text{Codificacion} \rightarrow \text{Modulacio
 
 Medio fisico por el cual viaja la señal. Tipos:
 - **Guiados**: cable coaxial, fibra optica, par trenzado
-- **No guiados**: espacio libre (radio) [source]
+- **No guiados**: espacio libre (radio) [source — [[../../explicaciones_anki/unidad_01/carta_01_sistema-comunicaciones]]]
 
 Caracteristicas del canal:
 - **Atenuacion**: perdida de potencia con la distancia
 - **Distorsion**: alteracion de la forma de la señal
-- **Ruido**: señales no deseadas que se suman (ver [[ruido/fuentes-ruido]])
+- **Ruido**: señales no deseadas que se suman (ver [[../ruido/fuentes-ruido]])
 - **Ancho de banda**: rango de frecuencias que puede transmitir
 
 ### 4. Receptor
@@ -69,16 +69,16 @@ Usuario final de la informacion: persona (altavoz, pantalla), computadora, actua
 
 ### 6. Ruido (Elemento Inevitable)
 
-El ruido es inevitable en todo sistema real [source]:
+El ruido es inevitable en todo sistema real [source — [[../../explicaciones_anki/unidad_01/carta_01_sistema-comunicaciones]]]:
 - **Ruido termico**: presente en todos los dispositivos electronicos
 - **Interferencia**: señales de otros sistemas
 - **Distorsion**: no-linealidades del sistema
 
 ## Principios Clave
 
-- **Universalidad**: este modelo aplica a TODOS los sistemas de comunicacion [source]
+- **Universalidad**: este modelo aplica a TODOS los sistemas de comunicacion [source — [[../../explicaciones_anki/unidad_01/carta_01_sistema-comunicaciones]]]
 - **Procesamiento dual**: transmisor y receptor realizan operaciones inversas [analysis]
-- **Ruido inevitable**: siempre presente, debe diseñarse considerandolo [source]
+- **Ruido inevitable**: siempre presente, debe diseñarse considerandolo [source — [[../../explicaciones_anki/unidad_01/carta_01_sistema-comunicaciones]]]
 
 ## Analogia: El Sistema Postal
 
@@ -104,7 +104,7 @@ El ruido es inevitable en todo sistema real [source]:
 
 ## Ver tambien
 
-- [[introduccion/espectro-electromagnetico]]
-- [[introduccion/necesidad-modulacion]]
-- [[ruido/fuentes-ruido]]
-- [[herramientas-matematicas/transformada-hilbert]]
+- [[../introduccion/espectro-electromagnetico]]
+- [[../introduccion/necesidad-modulacion]]
+- [[../ruido/fuentes-ruido]]
+- [[../herramientas-matematicas/transformada-hilbert]]

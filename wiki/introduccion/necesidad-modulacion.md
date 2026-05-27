@@ -8,17 +8,17 @@ unidad: 1
 
 # Necesidad de la Modulacion
 
-> **Last verified:** 2025-11-16 | **Verified by:** [source]
+> **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_01/carta_02_necesidad-modulacion]]]
 
 ## Definicion
 
-La modulacion es la tecnica fundamental que traslada una señal de informacion de baja frecuencia (banda base) a una frecuencia portadora $f_c$ mucho mayor, permitiendo la transmision eficiente a traves del medio de comunicacion. Sin modulacion, las comunicaciones inalambricas modernas serian imposibles [source].
+La modulacion es la tecnica fundamental que traslada una señal de informacion de baja frecuencia (banda base) a una frecuencia portadora $f_c$ mucho mayor, permitiendo la transmision eficiente a traves del medio de comunicacion. Sin modulacion, las comunicaciones inalambricas modernas serian imposibles [source — [[../../explicaciones_anki/unidad_01/carta_02_necesidad-modulacion]]].
 
 ## Las Cinco Razones Fundamentales
 
 ### 1. Adaptacion al Canal de Transmision
 
-Las señales de baja frecuencia no se propagan eficientemente. La modulacion traslada la informacion a frecuencias donde el medio tiene buena propagacion [source]:
+Las señales de baja frecuencia no se propagan eficientemente. La modulacion traslada la informacion a frecuencias donde el medio tiene buena propagacion [source — [[../../explicaciones_anki/unidad_01/carta_02_necesidad-modulacion]]]:
 
 $$s_{modulada}(t) = A_c[1 + m(t)]\cos(2\pi f_c t)$$
 
@@ -26,7 +26,7 @@ donde $f_c \gg f_{max}$ de la moduladora $m(t)$.
 
 ### 2. Tamaño Practico de Antenas
 
-Para radiar eficientemente, la antena debe ser comparable a la longitud de onda [source]:
+Para radiar eficientemente, la antena debe ser comparable a la longitud de onda [source — [[../../explicaciones_anki/unidad_01/carta_02_necesidad-modulacion]]]:
 
 $$\boxed{L_{antena} \approx \frac{\lambda}{4} = \frac{c}{4f}}$$
 
@@ -39,14 +39,14 @@ $$\boxed{L_{antena} \approx \frac{\lambda}{4} = \frac{c}{4f}}$$
 
 ### 3. Multiplexacion: Compartir el Canal
 
-Sin modulacion todas las señales en banda base se mezclarian. Con FDM cada usuario modula a una portadora diferente [source]:
+Sin modulacion todas las señales en banda base se mezclarian. Con FDM cada usuario modula a una portadora diferente [source — [[../../explicaciones_anki/unidad_01/carta_02_necesidad-modulacion]]]:
 
 ```
 |--U1--|  |--U2--|  |--U3--|
 100.0    100.2    100.4   MHz
 ```
 
-Ver [[modulacion-analogica/multiplex-fdm]] para multiplexacion por frecuencia y [[modulacion-pulsos/multiplex-tdm]] para multiplexacion temporal.
+Ver [[../modulacion-analogica/multiplex-fdm]] para multiplexacion por frecuencia y [[../modulacion-pulsos/multiplex-tdm]] para multiplexacion temporal.
 
 ### 4. Inmunidad a Ruido e Interferencias
 
@@ -58,7 +58,7 @@ donde $\beta$ es el indice de modulacion. Para FM broadcast ($\beta \approx 5$):
 
 ### 5. Uso Eficiente del Espectro
 
-El [[introduccion/espectro-electromagnetico]] es un recurso limitado. La modulacion permite asignacion organizada de bandas, reutilizacion de frecuencias y tecnicas avanzadas como OFDM. [source]
+El [[../introduccion/espectro-electromagnetico]] es un recurso limitado. La modulacion permite asignacion organizada de bandas, reutilizacion de frecuencias y tecnicas avanzadas como OFDM. [source — [[../../explicaciones_anki/unidad_01/carta_02_necesidad-modulacion]]]
 
 ## Relacion Frecuencia-Antena
 
@@ -66,7 +66,7 @@ La ecuacion fundamental que relaciona frecuencia y tamaño de antena:
 
 $$\boxed{L_{antena} = \frac{\lambda}{4} = \frac{c}{4f}}$$
 
-donde $c = 3 \times 10^8$ m/s. Sin modulacion a frecuencias altas, las antenas serian impracticamente grandes [source].
+donde $c = 3 \times 10^8$ m/s. Sin modulacion a frecuencias altas, las antenas serian impracticamente grandes [source — [[../../explicaciones_anki/unidad_01/carta_02_necesidad-modulacion]]].
 
 ## Analogia
 
@@ -84,15 +84,15 @@ El espectro electromagnetico como autopista: sin modulacion todos los vehiculos 
 
 ## Puntos Clave
 
-- **Sin modulacion = sin comunicaciones modernas**: es absolutamente esencial [source]
+- **Sin modulacion = sin comunicaciones modernas**: es absolutamente esencial [source — [[../../explicaciones_anki/unidad_01/carta_02_necesidad-modulacion]]]
 - **Frecuencia determina propagacion**: cada banda tiene caracteristicas unicas [analysis]
-- **Espectro = recurso limitado**: como bienes raices electromagneticos [source]
+- **Espectro = recurso limitado**: como bienes raices electromagneticos [source — [[../../explicaciones_anki/unidad_01/carta_02_necesidad-modulacion]]]
 
 ## Ver tambien
 
-- [[introduccion/modelo-shannon]]
-- [[introduccion/espectro-electromagnetico]]
-- [[modulacion-analogica/am-vs-dsb-sc]]
-- [[modulacion-analogica/multiplex-fdm]]
-- [[modulacion-pulsos/multiplex-tdm]]
-- [[modulacion-digital/ask-fsk-psk]]
+- [[../introduccion/modelo-shannon]]
+- [[../introduccion/espectro-electromagnetico]]
+- [[../modulacion-analogica/am-vs-dsb-sc]]
+- [[../modulacion-analogica/multiplex-fdm]]
+- [[../modulacion-pulsos/multiplex-tdm]]
+- [[../modulacion-digital/ask-fsk-psk]]

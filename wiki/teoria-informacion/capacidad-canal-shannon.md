@@ -12,7 +12,7 @@ unidad: 9
 
 ## Definicion
 
-La **capacidad del canal** $C$ es la maxima tasa de transmision a la cual es posible comunicacion libre de errores. Establecida por el teorema de codificacion de canal de Shannon, es un limite fundamental e insuperable en teoria de comunicaciones. [source]
+La **capacidad del canal** $C$ es la maxima tasa de transmision a la cual es posible comunicacion libre de errores. Establecida por el teorema de codificacion de canal de Shannon, es un limite fundamental e insuperable en teoria de comunicaciones. [source — [[../../explicaciones_anki/unidad_09/carta_45_teorema-shannon-hartley]]]
 
 $$\boxed{C = \max_{p(x)} I(X;Y) \quad \text{[bits/s]}}$$
 
@@ -20,7 +20,7 @@ donde $I(X;Y)$ es la informacion mutua entre entrada $X$ y salida $Y$, y la maxi
 
 ## Teorema de Codificacion de Canal de Shannon
 
-Shannon demostro que para un canal con capacidad $C$: [source]
+Shannon demostro que para un canal con capacidad $C$: [source — [[../../explicaciones_anki/unidad_09/carta_45_teorema-shannon-hartley]]]
 
 - Para cualquier tasa $R < C$, existe un codigo que permite transmitir con probabilidad de error $P_e \to 0$ (arbitrariamente pequena).
 - Para cualquier tasa $R > C$, la probabilidad de error esta inevitablemente acotada lejos de cero.
@@ -33,7 +33,7 @@ Para el canal de ruido aditivo gaussiano blanco (AWGN), con ancho de banda $B$ y
 
 $$\boxed{C = B \log_2\left(1 + \frac{S}{N}\right) \quad \text{[bits/s]}}$$
 
-Donde: [source]
+Donde: [source — [[../../explicaciones_anki/unidad_09/carta_45_teorema-shannon-hartley]]]
 - $B$: ancho de banda disponible (Hz)
 - $S/N$: relacion senal a ruido (lineal, no en dB)
 - $C$: capacidad maxima sin errores
@@ -86,9 +86,9 @@ Los sistemas modernos (con Turbo codes, LDPC) operan a 1–3 dB del limite de Sh
 
 ## Ver tambien
 
-- [[teoria-informacion/teorema-shannon-hartley]]
-- [[teoria-informacion/entropia-fuente]]
-- [[ruido/relacion-snr]]
-- [[teoria-informacion/sistema-ideal-comunicaciones]]
-- [[conceptos-integradores/comparacion-global-modulaciones]]
-- [[conceptos-integradores/compromisos-diseno]]
+- [[../teoria-informacion/teorema-shannon-hartley]]
+- [[../teoria-informacion/entropia-fuente]]
+- [[../ruido/relacion-snr]]
+- [[../teoria-informacion/sistema-ideal-comunicaciones]]
+- [[../conceptos-integradores/comparacion-global-modulaciones]]
+- [[../conceptos-integradores/compromisos-diseno]]

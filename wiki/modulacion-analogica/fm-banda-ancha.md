@@ -10,4 +10,4 @@ curso: Sistemas de Comunicaciones
 
 Pagina de referencia. Ver:
 
-- [[modulacion-analogica/ancho-banda-carson]] — Regla de Carson para ancho de banda en FM
+- [[../modulacion-analogica/ancho-banda-carson]] — Regla de Carson para ancho de banda en FM

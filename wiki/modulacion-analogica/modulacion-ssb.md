@@ -8,23 +8,23 @@ unidad: 3
 
 # Modulacion SSB (Banda Lateral Unica / BLU)
 
-> **Last verified:** 2025-11-16 | **Verified by:** [source]
+> **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_03/carta_11_ssb-blu]]]
 
 ## Definicion
 
-SSB (Single Sideband) transmite **solo una banda lateral** (superior o inferior), eliminando la portadora y la banda lateral redundante de DSB [source]. Es la modulacion analogica lineal mas eficiente espectralmente.
+SSB (Single Sideband) transmite **solo una banda lateral** (superior o inferior), eliminando la portadora y la banda lateral redundante de DSB [source — [[../../explicaciones_anki/unidad_03/carta_11_ssb-blu]]]. Es la modulacion analogica lineal mas eficiente espectralmente.
 
 ## Caracteristicas Fundamentales
 
 $$\boxed{BW_{SSB} = f_m}$$
 
-- **Mitad del ancho de banda** que AM o DSB-SC [source]
-- Eficiencia de potencia: **100%** (toda la potencia transmite informacion) [source]
+- **Mitad del ancho de banda** que AM o DSB-SC [source — [[../../explicaciones_anki/unidad_03/carta_11_ssb-blu]]]
+- Eficiencia de potencia: **100%** (toda la potencia transmite informacion) [source — [[../../explicaciones_anki/unidad_03/carta_11_ssb-blu]]]
 - Eficiencia espectral: **maxima** para modulacion analogica [analysis]
 
 ## Generacion: Metodo de Fase (Weaver)
 
-Usando la Transformada de Hilbert $\hat{m}(t)$ de la señal moduladora [source]:
+Usando la Transformada de Hilbert $\hat{m}(t)$ de la señal moduladora [source — [[../../explicaciones_anki/unidad_03/carta_11_ssb-blu]]]:
 
 $$\boxed{s_{SSB}(t) = m(t)\cos(2\pi f_c t) \mp \hat{m}(t)\sin(2\pi f_c t)}$$
 
@@ -50,8 +50,8 @@ No hay simetria hermitiana como en señales reales normales — el espectro es *
 
 ## Ventajas
 
-1. **Ancho de banda minimo**: $BW = f_m$, la mitad que DSB [source]
-2. **Eficiencia de potencia**: similar a DSB-SC, toda potencia en informacion [source]
+1. **Ancho de banda minimo**: $BW = f_m$, la mitad que DSB [source — [[../../explicaciones_anki/unidad_03/carta_11_ssb-blu]]]
+2. **Eficiencia de potencia**: similar a DSB-SC, toda potencia en informacion [source — [[../../explicaciones_anki/unidad_03/carta_11_ssb-blu]]]
 3. **Menor susceptibilidad al desvanecimiento selectivo** [analysis]
 4. **Maximo aprovechamiento del espectro** en bandas congestionadas (HF)
 
@@ -59,7 +59,7 @@ No hay simetria hermitiana como en señales reales normales — el espectro es *
 
 - **Mayor complejidad** en generacion y deteccion
 - Requiere **sincronismo de frecuencia muy preciso** (errores causan distorsion audible)
-- **No puede transmitir DC**: las bajas frecuencias requieren filtros impracticos [source]
+- **No puede transmitir DC**: las bajas frecuencias requieren filtros impracticos [source — [[../../explicaciones_anki/unidad_03/carta_11_ssb-blu]]]
 
 ## Ejemplo: Sistema Multicanal Telefonico
 
@@ -74,7 +74,7 @@ SSB permite **duplicar** la cantidad de canales en el mismo espectro.
 
 ## SNR en SSB
 
-A pesar de usar la mitad del ancho de banda, SSB mantiene el mismo SNR que DSB-SC con deteccion coherente [source]:
+A pesar de usar la mitad del ancho de banda, SSB mantiene el mismo SNR que DSB-SC con deteccion coherente [source — [[../../explicaciones_anki/unidad_03/carta_11_ssb-blu]]]:
 - Menos ancho de banda = menos ruido admitido
 - Mayor densidad espectral de señal
 - Los efectos se **compensan exactamente**
@@ -88,14 +88,14 @@ A pesar de usar la mitad del ancho de banda, SSB mantiene el mismo SNR que DSB-S
 
 ## Puntos Clave
 
-- ✓ $BW_{SSB} = f_m$: mitad del ancho de banda de DSB [source]
-- ✓ Se elimina redundancia espectral sin perdida de informacion [source]
-- ✓ Deteccion coherente absolutamente necesaria [source]
+- ✓ $BW_{SSB} = f_m$: mitad del ancho de banda de DSB [source — [[../../explicaciones_anki/unidad_03/carta_11_ssb-blu]]]
+- ✓ Se elimina redundancia espectral sin perdida de informacion [source — [[../../explicaciones_anki/unidad_03/carta_11_ssb-blu]]]
+- ✓ Deteccion coherente absolutamente necesaria [source — [[../../explicaciones_anki/unidad_03/carta_11_ssb-blu]]]
 - ✓ Estabilidad de frecuencia critica: $< \pm 50$ Hz para voz
 
 ## Ver tambien
 
-- [[modulacion-analogica/am-vs-dsb-sc]]
-- [[herramientas-matematicas/transformada-hilbert]]
-- [[modulacion-analogica/modulacion-vsb]]
-- [[modulacion-analogica/receptor-superheterodino]]
+- [[../modulacion-analogica/am-vs-dsb-sc]]
+- [[../herramientas-matematicas/transformada-hilbert]]
+- [[../modulacion-analogica/modulacion-vsb]]
+- [[../modulacion-analogica/receptor-superheterodino]]

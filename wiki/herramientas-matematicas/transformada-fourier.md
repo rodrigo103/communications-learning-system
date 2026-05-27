@@ -10,5 +10,5 @@ curso: Sistemas de Comunicaciones
 
 Pagina de referencia. Ver:
 
-- [[herramientas-matematicas/teorema-parseval]] — Teorema de Parseval y relacion energia-espectro
-- [[herramientas-matematicas/teorema-convolucion]] — Teorema de convolucion en tiempo y frecuencia
+- [[../herramientas-matematicas/teorema-parseval]] — Teorema de Parseval y relacion energia-espectro
+- [[../herramientas-matematicas/teorema-convolucion]] — Teorema de convolucion en tiempo y frecuencia

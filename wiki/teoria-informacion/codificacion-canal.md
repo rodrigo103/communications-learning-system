@@ -10,4 +10,4 @@ curso: Sistemas de Comunicaciones
 
 Pagina de referencia. Ver:
 
-- [[teoria-informacion/capacidad-canal-shannon]] — Capacidad de canal y teorema de Shannon
+- [[../teoria-informacion/capacidad-canal-shannon]] — Capacidad de canal y teorema de Shannon

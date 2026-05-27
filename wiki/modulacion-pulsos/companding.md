@@ -8,11 +8,11 @@ unidad: 5
 
 # Companding: Compresión y Expansión
 
-> **Last verified:** 2025-11-16 | **Verified by:** [source]
+> **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_05/carta_24_companding-pcm]]]
 
 ## Definición
 
-**Companding** = **Comp**ressing + **Exp**anding. Es una técnica de cuantificación no uniforme que mejora la SNR para señales débiles sin incrementar el número de bits en [[modulacion-pulsos/pcm-cuantificacion]]. [source]
+**Companding** = **Comp**ressing + **Exp**anding. Es una técnica de cuantificación no uniforme que mejora la SNR para señales débiles sin incrementar el número de bits en [[../modulacion-pulsos/pcm-cuantificacion]]. [source — [[../../explicaciones_anki/unidad_05/carta_24_companding-pcm]]]
 
 ### El Problema
 
@@ -30,7 +30,7 @@ Usar pasos de cuantificación variables:
 
 $$\boxed{C_\mu(x) = \text{sgn}(x) \cdot \frac{\ln(1 + \mu|x/V_{max}|)}{\ln(1 + \mu)}}$$
 
-con $\mu = 255$ (estándar). [source]
+con $\mu = 255$ (estándar). [source — [[../../explicaciones_anki/unidad_05/carta_24_companding-pcm]]]
 
 ### A-law (Europa, resto del mundo)
 
@@ -39,7 +39,7 @@ $$C_A(x) = \begin{cases}
 \text{sgn}(x) \cdot \frac{1 + \ln(A|x/V_{max}|)}{1 + \ln(A)} & |x| > \frac{V_{max}}{A}
 \end{cases}$$
 
-con $A = 87.6$ (estándar). [source]
+con $A = 87.6$ (estándar). [source — [[../../explicaciones_anki/unidad_05/carta_24_companding-pcm]]]
 
 **Importante:** μ-law y A-law **no son compatibles** entre sí. Mezclarlos causa distorsión severa. [analysis]
 
@@ -49,7 +49,7 @@ La mejora aproximada en rango dinámico con μ-law:
 
 $$\boxed{\Delta_{DR} \approx 20\log_{10}(\mu) \text{ dB}}$$
 
-Para $\mu = 255$: mejora ≈ 48 dB. [source]
+Para $\mu = 255$: mejora ≈ 48 dB. [source — [[../../explicaciones_anki/unidad_05/carta_24_companding-pcm]]]
 
 ## Proceso Completo
 
@@ -68,6 +68,6 @@ Con 8 bits y rango dinámico de 40 dB:
 
 ## Ver también
 
-- [[modulacion-pulsos/pcm-cuantificacion]] — PCM uniforme como base
-- [[modulacion-digital/ask-fsk-psk]] — Modulaciones digitales que transportan los bits
-- [[modulacion-pulsos/multiplex-tdm]] — Canales con companding en sistemas TDM
+- [[../modulacion-pulsos/pcm-cuantificacion]] — PCM uniforme como base
+- [[../modulacion-digital/ask-fsk-psk]] — Modulaciones digitales que transportan los bits
+- [[../modulacion-pulsos/multiplex-tdm]] — Canales con companding en sistemas TDM

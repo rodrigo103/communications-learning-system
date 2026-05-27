@@ -12,7 +12,7 @@ unidad: 10
 
 ## Principio
 
-**OFDM** divide un canal de banda ancha en $N$ subportadoras ortogonales de banda angosta, transmitiendo datos en paralelo a baja velocidad en cada una. Resuelve elegantemente el problema del multitrayecto sin ecualizadores complejos. [source]
+**OFDM** divide un canal de banda ancha en $N$ subportadoras ortogonales de banda angosta, transmitiendo datos en paralelo a baja velocidad en cada una. Resuelve elegantemente el problema del multitrayecto sin ecualizadores complejos. [source — [[../../explicaciones_anki/unidad_10/carta_53_ofdm-principio]]]
 
 Es la tecnologia de capa fisica dominante en comunicaciones modernas: WiFi (802.11a/g/n/ac/ax), 4G LTE, 5G NR, TV digital (DVB-T), DSL, y radio digital (DAB).
 
@@ -30,7 +30,7 @@ Los espectros de las subportadoras (funciones sinc) se solapan, pero en el pico 
 
 ## Implementacion con FFT/IFFT
 
-La genialidad practica de OFDM: la modulacion de todas las subportadoras se implementa con una sola IFFT/FFT: [source]
+La genialidad practica de OFDM: la modulacion de todas las subportadoras se implementa con una sola IFFT/FFT: [source — [[../../explicaciones_anki/unidad_10/carta_53_ofdm-principio]]]
 
 **Transmision**:
 $$s[n] = \sum_{k=0}^{N-1} X_k \cdot e^{j2\pi kn/N} = \text{IFFT}\{X_k\}$$
@@ -64,7 +64,7 @@ Eficiencia por CP:
 
 $$\eta = \frac{T_s}{T_s + T_g}$$
 
-Para WiFi: $T_s = 3.2 \,\mu\text{s}$, $T_g = 0.8 \,\mu\text{s}$, $\eta = 80\%$. [source]
+Para WiFi: $T_s = 3.2 \,\mu\text{s}$, $T_g = 0.8 \,\mu\text{s}$, $\eta = 80\%$. [source — [[../../explicaciones_anki/unidad_10/carta_53_ofdm-principio]]]
 
 ## Parametros de Diseno
 
@@ -107,9 +107,9 @@ Para WiFi: $T_s = 3.2 \,\mu\text{s}$, $T_g = 0.8 \,\mu\text{s}$, $\eta = 80\%$. 
 
 ## Ver tambien
 
-- [[espectro-expandido/cdma]]
-- [[espectro-expandido/fhss]]
-- [[herramientas-matematicas/teorema-convolucion]]
-- [[modulacion-digital/modulacion-qam]]
-- [[espectro-expandido/aplicaciones-spread-spectrum]]
-- [[conceptos-integradores/evolucion-sistemas]]
+- [[../espectro-expandido/cdma]]
+- [[../espectro-expandido/fhss]]
+- [[../herramientas-matematicas/teorema-convolucion]]
+- [[../modulacion-digital/modulacion-qam]]
+- [[../espectro-expandido/aplicaciones-spread-spectrum]]
+- [[../conceptos-integradores/evolucion-sistemas]]

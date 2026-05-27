@@ -10,4 +10,4 @@ curso: Sistemas de Comunicaciones
 
 Pagina de referencia. Ver:
 
-- [[modulacion-analogica/am-vs-dsb-sc]] — Comparacion AM vs DSB-SC y sus metodos de deteccion
+- [[../modulacion-analogica/am-vs-dsb-sc]] — Comparacion AM vs DSB-SC y sus metodos de deteccion

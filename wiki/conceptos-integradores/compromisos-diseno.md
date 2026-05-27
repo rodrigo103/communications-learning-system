@@ -12,7 +12,7 @@ unidad: 9-10
 
 ## El Triangulo de Diseno
 
-Todo sistema de comunicaciones enfrenta tres compromisos (trade-offs) fundamentales e inevitables, derivados del limite de Shannon: [source]
+Todo sistema de comunicaciones enfrenta tres compromisos (trade-offs) fundamentales e inevitables, derivados del limite de Shannon: [source — [[../../explicaciones_anki/conceptos_integradores/carta_56_tradeoff_bw_potencia_shannon]]]
 
 $$\boxed{C = B \log_2\left(1 + \frac{S}{N}\right)}$$
 
@@ -50,7 +50,7 @@ $$C \approx 1.44 \cdot B \cdot \frac{S}{N}$$
 
 ## 2. Trade-off Eficiencia Espectral — Eficiencia de Potencia
 
-Relacion derivada de Shannon: [source]
+Relacion derivada de Shannon: [source — [[../../explicaciones_anki/conceptos_integradores/carta_56_tradeoff_bw_potencia_shannon]]]
 
 $$\boxed{\frac{E_b}{N_0} = \frac{2^{\eta} - 1}{\eta}, \quad \eta = \frac{R_b}{B}}$$
 
@@ -73,7 +73,7 @@ Esto impone:
 
 $$\boxed{\lim_{\eta \to 0} \frac{E_b}{N_0} = \ln(2) \approx -1.59 \text{ dB}}$$
 
-Ningun sistema, sin importar cuanto ancho de banda use, puede operar por debajo de -1.59 dB de $E_b/N_0$. [source]
+Ningun sistema, sin importar cuanto ancho de banda use, puede operar por debajo de -1.59 dB de $E_b/N_0$. [source — [[../../explicaciones_anki/conceptos_integradores/carta_56_tradeoff_bw_potencia_shannon]]]
 
 ---
 
@@ -99,7 +99,7 @@ Los sistemas practicos operan tipicamente a 1-3 dB del limite de Shannon. [analy
 
 ## 4. Regeneracion Digital vs Amplificacion Analogica
 
-Compromiso fundamental en sistemas de larga distancia: [source]
+Compromiso fundamental en sistemas de larga distancia: [source — [[../../explicaciones_anki/conceptos_integradores/carta_56_tradeoff_bw_potencia_shannon]]]
 
 ### Amplificacion analogica
 
@@ -133,7 +133,7 @@ La regeneracion digital explica por que:
 
 ## 5. Relacion $E_b/N_0$ vs SNR
 
-Conversion fundamental para diseno: [source]
+Conversion fundamental para diseno: [source — [[../../explicaciones_anki/conceptos_integradores/carta_56_tradeoff_bw_potencia_shannon]]]
 
 $$\boxed{\frac{E_b}{N_0} = SNR \cdot \frac{B}{R_b}}$$
 
@@ -165,9 +165,9 @@ Para modulacion M-aria con $B \approx R_s$: $SNR \approx \frac{E_b}{N_0} \cdot \
 
 ## Ver tambien
 
-- [[conceptos-integradores/comparacion-global-modulaciones]]
-- [[conceptos-integradores/seleccion-modulacion]]
-- [[conceptos-integradores/aplicaciones-reales]]
-- [[ruido/intercomparacion-sistemas]]
-- [[teoria-informacion/teorema-shannon-hartley]]
-- [[conceptos-integradores/evolucion-sistemas]]
+- [[../conceptos-integradores/comparacion-global-modulaciones]]
+- [[../conceptos-integradores/seleccion-modulacion]]
+- [[../conceptos-integradores/aplicaciones-reales]]
+- [[../ruido/intercomparacion-sistemas]]
+- [[../teoria-informacion/teorema-shannon-hartley]]
+- [[../conceptos-integradores/evolucion-sistemas]]

@@ -10,4 +10,4 @@ curso: Sistemas de Comunicaciones
 
 Pagina de referencia. Ver:
 
-- [[modulacion-pulsos/pcm-cuantificacion]] — PCM: muestreo, cuantificacion y codificacion
+- [[../modulacion-pulsos/pcm-cuantificacion]] — PCM: muestreo, cuantificacion y codificacion

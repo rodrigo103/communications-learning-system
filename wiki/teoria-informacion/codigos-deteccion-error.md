@@ -12,7 +12,7 @@ unidad: 9
 
 ## Concepto
 
-Los **codigos de canal** agregan redundancia controlada para detectar o corregir errores introducidos durante la transmision. Son la razon por la cual las comunicaciones digitales modernas funcionan de manera confiable en canales ruidosos. [source]
+Los **codigos de canal** agregan redundancia controlada para detectar o corregir errores introducidos durante la transmision. Son la razon por la cual las comunicaciones digitales modernas funcionan de manera confiable en canales ruidosos. [source — [[../../explicaciones_anki/unidad_09/carta_48_codigos_detectores_correctores]]]
 
 ## Clasificacion
 
@@ -35,7 +35,7 @@ Los **codigos de canal** agregan redundancia controlada para detectar o corregir
 
 ## Distancia de Hamming
 
-La **distancia de Hamming** $d_{min}$ entre palabras codigo determina la capacidad del codigo: [source]
+La **distancia de Hamming** $d_{min}$ entre palabras codigo determina la capacidad del codigo: [source — [[../../explicaciones_anki/unidad_09/carta_48_codigos_detectores_correctores]]]
 
 $$\boxed{e_d = d_{min} - 1}$$
 
@@ -61,12 +61,12 @@ Con $d_{min} = 3$: cualquier error de 1 bit deja la palabra recibida mas cerca d
 - Opera sobre simbolos (no bits individuales) en campos finitos (Galois)
 - Extremadamente usado: CD, DVD, Blu-ray, codigos QR, comunicaciones espaciales
 - Puede corregir rafagas de errores (ej.: rayones en CD)
-- RS(255, 223): 223 simbolos de datos, 32 de paridad, corrige hasta 16 simbolos erroneos [source]
+- RS(255, 223): 223 simbolos de datos, 32 de paridad, corrige hasta 16 simbolos erroneos [source — [[../../explicaciones_anki/unidad_09/carta_48_codigos_detectores_correctores]]]
 
 ### Turbo Codes y LDPC
 - **Turbo codes** (1993): revolucionarios, se acercan a $\sim 0.5$ dB del limite de Shannon
 - **LDPC** (Low-Density Parity Check): adoptados en 5G para eMBB, altamente paralelizables
-- **Polar codes**: probadamente optimos, usados en canales de control 5G [source]
+- **Polar codes**: probadamente optimos, usados en canales de control 5G [source — [[../../explicaciones_anki/unidad_09/carta_48_codigos_detectores_correctores]]]
 
 ## Formulas Fundamentales
 
@@ -95,8 +95,8 @@ Con $d_{min} = 3$: cualquier error de 1 bit deja la palabra recibida mas cerca d
 
 ## Ver tambien
 
-- [[teoria-informacion/codigo-compacto]]
-- [[teoria-informacion/entropia-fuente]]
-- [[modulacion-digital/probabilidad-error]]
-- [[teoria-informacion/teorema-shannon-hartley]]
-- [[teoria-informacion/capacidad-canal-shannon]]
+- [[../teoria-informacion/codigo-compacto]]
+- [[../teoria-informacion/entropia-fuente]]
+- [[../modulacion-digital/probabilidad-error]]
+- [[../teoria-informacion/teorema-shannon-hartley]]
+- [[../teoria-informacion/capacidad-canal-shannon]]

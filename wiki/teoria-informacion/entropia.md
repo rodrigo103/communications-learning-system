@@ -10,4 +10,4 @@ curso: Sistemas de Comunicaciones
 
 Pagina de referencia. Ver:
 
-- [[teoria-informacion/entropia-fuente]] — Entropia de fuente de informacion
+- [[../teoria-informacion/entropia-fuente]] — Entropia de fuente de informacion

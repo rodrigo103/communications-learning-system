@@ -8,11 +8,11 @@ unidad: 2
 
 # Teorema de Convolucion
 
-> **Last verified:** 2025-11-16 | **Verified by:** [source]
+> **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_02/carta_07_teorema_convolucion]]]
 
 ## Enunciado
 
-El Teorema de Convolucion establece una dualidad fundamental entre los dominios del tiempo y la frecuencia [source]:
+El Teorema de Convolucion establece una dualidad fundamental entre los dominios del tiempo y la frecuencia [source — [[../../explicaciones_anki/unidad_02/carta_07_teorema_convolucion]]]:
 
 $$\boxed{y(t) = x(t) * h(t) \quad \Leftrightarrow \quad Y(f) = X(f) \cdot H(f)}$$
 
@@ -38,10 +38,10 @@ $$Y(f) = \int_{-\infty}^{\infty} x(\tau) e^{-j2\pi f\tau} d\tau \cdot \int_{-\in
 
 - $Y(f)$: espectro de la señal de salida
 - $X(f)$: espectro de la señal de entrada
-- $H(f)$: **funcion de transferencia** = respuesta en frecuencia del sistema [source]
+- $H(f)$: **funcion de transferencia** = respuesta en frecuencia del sistema [source — [[../../explicaciones_anki/unidad_02/carta_07_teorema_convolucion]]]
 - $h(t)$: **respuesta al impulso** (inversa de Fourier de $H(f)$)
 
-Un sistema LTI queda completamente caracterizado por $h(t)$ o $H(f)$ [source].
+Un sistema LTI queda completamente caracterizado por $h(t)$ o $H(f)$ [source — [[../../explicaciones_anki/unidad_02/carta_07_teorema_convolucion]]].
 
 ## Importancia Practica
 
@@ -68,18 +68,18 @@ Para $h(t) = \delta(t) + 0.5\delta(t - 50\text{ns})$:
 
 $$H(f) = 1 + 0.5e^{-j2\pi f \cdot 50\text{ns}}$$
 
-Algunas frecuencias sufren interferencia destructiva ($|H(f)| \approx 0.5$), otras constructiva ($|H(f)| \approx 1.5$), produciendo **desvanecimiento selectivo en frecuencia** [source].
+Algunas frecuencias sufren interferencia destructiva ($|H(f)| \approx 0.5$), otras constructiva ($|H(f)| \approx 1.5$), produciendo **desvanecimiento selectivo en frecuencia** [source — [[../../explicaciones_anki/unidad_02/carta_07_teorema_convolucion]]].
 
 ## Puntos Clave
 
-- ✓ Convolucion en tiempo = Multiplicacion en frecuencia [source]
+- ✓ Convolucion en tiempo = Multiplicacion en frecuencia [source — [[../../explicaciones_anki/unidad_02/carta_07_teorema_convolucion]]]
 - ✓ La multiplicacion en frecuencia es mas simple que la convolucion
-- ✓ El teorema SOLO aplica para sistemas LTI [source]
+- ✓ El teorema SOLO aplica para sistemas LTI [source — [[../../explicaciones_anki/unidad_02/carta_07_teorema_convolucion]]]
 - ✓ $h(t)$ y $H(f)$ caracterizan completamente un sistema LTI
 
 ## Ver tambien
 
-- [[herramientas-matematicas/teorema-parseval]]
-- [[herramientas-matematicas/transformada-hilbert]]
-- [[herramientas-matematicas/densidad-espectral-potencia]]
-- [[modulacion-analogica/receptor-superheterodino]]
+- [[../herramientas-matematicas/teorema-parseval]]
+- [[../herramientas-matematicas/transformada-hilbert]]
+- [[../herramientas-matematicas/densidad-espectral-potencia]]
+- [[../modulacion-analogica/receptor-superheterodino]]

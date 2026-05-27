@@ -10,4 +10,4 @@ curso: Sistemas de Comunicaciones
 
 Pagina de referencia. Ver:
 
-- [[teoria-informacion/codigos-deteccion-error]] — Codigos de deteccion y correccion de errores
+- [[../teoria-informacion/codigos-deteccion-error]] — Codigos de deteccion y correccion de errores

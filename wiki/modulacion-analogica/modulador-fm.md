@@ -8,13 +8,13 @@ unidad: 4
 
 # Moduladores y Demoduladores FM
 
-> **Last verified:** 2025-11-16 | **Verified by:** [source]
+> **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_04/carta_19_discriminador_frecuencia]]]
 
 ## Moduladores FM
 
 ### 1. VCO (Oscilador Controlado por Voltaje)
 
-El metodo mas directo: la señal moduladora controla la frecuencia de un oscilador [source].
+El metodo mas directo: la señal moduladora controla la frecuencia de un oscilador [source — [[../../explicaciones_anki/unidad_04/carta_19_discriminador_frecuencia]]].
 
 ```
 m(t) → VCO → s_FM(t)
@@ -26,7 +26,7 @@ m(t) → VCO → s_FM(t)
 
 ### 2. Metodo de Armstrong (Indirecto)
 
-Genera NBFM y luego multiplica frecuencia para obtener WBFM [source]:
+Genera NBFM y luego multiplica frecuencia para obtener WBFM [source — [[../../explicaciones_anki/unidad_04/carta_19_discriminador_frecuencia]]]:
 
 ```
 m(t) → Integrador → Modulador PM (NBFM) → Multiplicador ×N → WBFM
@@ -53,7 +53,7 @@ El PLL corrige derivas del VCO manteniendo la modulacion.
 
 ### Principio General
 
-Convierten variaciones de **frecuencia** en variaciones de **amplitud**, luego detectan la envolvente [source]. La respuesta lineal es:
+Convierten variaciones de **frecuencia** en variaciones de **amplitud**, luego detectan la envolvente [source — [[../../explicaciones_anki/unidad_04/carta_19_discriminador_frecuencia]]]. La respuesta lineal es:
 
 $$v_{out}(t) = K_d[f_i(t) - f_c] = K_d \cdot k_f \cdot m(t)$$
 
@@ -61,7 +61,7 @@ donde $K_d$ [V/Hz] es la pendiente del discriminador.
 
 ### 1. Discriminador Foster-Seeley
 
-Usa un transformador con circuito resonante sintonizado [source]:
+Usa un transformador con circuito resonante sintonizado [source — [[../../explicaciones_anki/unidad_04/carta_19_discriminador_frecuencia]]]:
 - La respuesta en las "faldas" de la curva de resonancia es aproximadamente lineal
 - Voltaje de salida proporcional a $\Delta f$
 - **Requiere limitador** previo (sensible a variaciones de amplitud)
@@ -69,7 +69,7 @@ Usa un transformador con circuito resonante sintonizado [source]:
 
 ### 2. Detector de Relacion (Ratio Detector)
 
-Variante del Foster-Seeley con **auto-limitacion** [source]:
+Variante del Foster-Seeley con **auto-limitacion** [source — [[../../explicaciones_anki/unidad_04/carta_19_discriminador_frecuencia]]]:
 - Usa un capacitor grande para estabilizar amplitud total
 - Rechaza automaticamente variaciones de AM
 - **No requiere limitador** (ventaja en receptores economicos)
@@ -77,7 +77,7 @@ Variante del Foster-Seeley con **auto-limitacion** [source]:
 
 ### 3. PLL (Phase-Locked Loop)
 
-El discriminador moderno mas lineal y preciso [source]:
+El discriminador moderno mas lineal y preciso [source — [[../../explicaciones_anki/unidad_04/carta_19_discriminador_frecuencia]]]:
 
 ```
 s_FM(t) → Detector de fase → Filtro → VCO
@@ -101,7 +101,7 @@ Salida demodulada: voltaje de control del VCO
 
 ## Formulas Clave
 
-Salida del discriminador [source]:
+Salida del discriminador [source — [[../../explicaciones_anki/unidad_04/carta_19_discriminador_frecuencia]]]:
 
 $$\boxed{v_{out}(t) = K_d \cdot \Delta f}$$
 
@@ -113,7 +113,7 @@ donde $k_f$ [Hz/V] es la sensibilidad del modulador original.
 
 ## Generacion FM desde PM (y viceversa)
 
-Relacion fundamental [source]:
+Relacion fundamental [source — [[../../explicaciones_anki/unidad_04/carta_19_discriminador_frecuencia]]]:
 
 - **FM desde PM**: integrar $m(t)$ primero, luego aplicar PM
 - **PM desde FM**: derivar $m(t)$ primero, luego aplicar FM
@@ -126,15 +126,15 @@ El discriminador de frecuencia es como un **tobogan con pendiente**: la señal F
 
 ## Puntos Clave
 
-- ✓ Discriminador = conversion Frecuencia → Amplitud [source]
-- ✓ VCO: modulador FM mas directo [source]
-- ✓ Armstrong: NBFM con PM + multiplicacion de frecuencia [source]
-- ✓ PLL: discriminador moderno mas preciso [source]
-- ✓ Relacion integral/derivada permite conversion FM ↔ PM [source]
+- ✓ Discriminador = conversion Frecuencia → Amplitud [source — [[../../explicaciones_anki/unidad_04/carta_19_discriminador_frecuencia]]]
+- ✓ VCO: modulador FM mas directo [source — [[../../explicaciones_anki/unidad_04/carta_19_discriminador_frecuencia]]]
+- ✓ Armstrong: NBFM con PM + multiplicacion de frecuencia [source — [[../../explicaciones_anki/unidad_04/carta_19_discriminador_frecuencia]]]
+- ✓ PLL: discriminador moderno mas preciso [source — [[../../explicaciones_anki/unidad_04/carta_19_discriminador_frecuencia]]]
+- ✓ Relacion integral/derivada permite conversion FM ↔ PM [source — [[../../explicaciones_anki/unidad_04/carta_19_discriminador_frecuencia]]]
 
 ## Ver tambien
 
-- [[modulacion-analogica/fm-vs-pm]]
-- [[modulacion-analogica/ancho-banda-carson]]
-- [[modulacion-analogica/receptor-superheterodino]]
-- [[modulacion-analogica/preenfasis-deenfasis]]
+- [[../modulacion-analogica/fm-vs-pm]]
+- [[../modulacion-analogica/ancho-banda-carson]]
+- [[../modulacion-analogica/receptor-superheterodino]]
+- [[../modulacion-analogica/preenfasis-deenfasis]]

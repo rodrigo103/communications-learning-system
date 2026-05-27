@@ -27,7 +27,7 @@ $$A(t) = A_c + k_a m(t)$$
 
 $$A(t) = A_c[1 + \mu m_n(t)]$$
 
-donde $\mu = \frac{k_a A_m}{A_c}$ es el índice de modulación (típicamente $\mu \leq 1$ para evitar sobremodulación) [source].
+donde $\mu = \frac{k_a A_m}{A_c}$ es el índice de modulación (típicamente $\mu \leq 1$ para evitar sobremodulación) [source — [[../../outputs/derivations/AM_20251115]]].
 
 ### Paso 3: Señal modulada
 
@@ -55,7 +55,7 @@ $$\boxed{s_{AM}(t) = A_c[1 + \mu \cos(2\pi f_m t)] \cos(2\pi f_c t)}$$
 
 $$\boxed{BW_{AM} = 2f_m}$$
 
-AM requiere el doble del ancho de banda del mensaje porque transmite ambas bandas laterales [source].
+AM requiere el doble del ancho de banda del mensaje porque transmite ambas bandas laterales [source — [[../../outputs/derivations/AM_20251115]]].
 
 ### Distribución de potencia
 
@@ -73,7 +73,7 @@ Eficiencia máxima con $\mu = 1$:
 
 $$\boxed{\eta_{max} = \frac{1}{3} = 33.33\%}$$
 
-Esta baja eficiencia es la principal debilidad de AM [analysis]. La portadora consume el 67% de la potencia sin transportar información. Esto motivó el desarrollo de variantes como [[modulacion-analogica/am-vs-dsb-sc|DSB-SC]] (supresión de portadora) y SSB (banda lateral única).
+Esta baja eficiencia es la principal debilidad de AM [analysis]. La portadora consume el 67% de la potencia sin transportar información. Esto motivó el desarrollo de variantes como [[../modulacion-analogica/am-vs-dsb-sc|DSB-SC]] (supresión de portadora) y SSB (banda lateral única).
 
 ### Sobremodulación
 
@@ -92,7 +92,7 @@ Si $\mu > 1$, ocurre **sobremodulación**: la envolvente se vuelve negativa, cau
 
 ## Ver también
 
-- [[modulacion-analogica/am-vs-dsb-sc]]
-- [[modulacion-analogica/indice-modulacion-am]]
-- [[ruido/snr-modulacion-lineal]]
-- [[modulacion-analogica/deteccion-coherente]]
+- [[../modulacion-analogica/am-vs-dsb-sc]]
+- [[../modulacion-analogica/indice-modulacion-am]]
+- [[../ruido/snr-modulacion-lineal]]
+- [[../modulacion-analogica/deteccion-coherente]]

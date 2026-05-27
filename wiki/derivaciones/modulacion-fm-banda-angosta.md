@@ -17,7 +17,7 @@ unidad: 4
 
 $$\boxed{\beta \ll 1}$$
 
-Típicamente $\beta < 0.3$ (criterio estricto). Esto significa que la desviación de frecuencia es mucho menor que la frecuencia del mensaje: $\Delta f \ll f_m$ [source].
+Típicamente $\beta < 0.3$ (criterio estricto). Esto significa que la desviación de frecuencia es mucho menor que la frecuencia del mensaje: $\Delta f \ll f_m$ [source — [[../../outputs/derivations/FM_Narrowband_20251115]]].
 
 ## Punto de partida
 
@@ -96,8 +96,8 @@ $$\boxed{s_{NBFM}(t) = A_c \cos(2\pi f_c t) + \frac{A_c \beta}{2}\cos(2\pi(f_c +
 
 ## Ver también
 
-- [[modulacion-analogica/fm-banda-angosta]]
-- [[modulacion-analogica/fm-vs-pm]]
-- [[derivaciones/modulacion-fm-carson]]
-- [[modulacion-analogica/modulador-armstrong]]
-- [[modulacion-analogica/fm-banda-ancha]]
+- [[../modulacion-analogica/fm-banda-angosta]]
+- [[../modulacion-analogica/fm-vs-pm]]
+- [[../derivaciones/modulacion-fm-carson]]
+- [[../modulacion-analogica/modulador-armstrong]]
+- [[../modulacion-analogica/fm-banda-ancha]]

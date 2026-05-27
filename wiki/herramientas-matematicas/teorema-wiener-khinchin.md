@@ -10,4 +10,4 @@ curso: Sistemas de Comunicaciones
 
 Pagina de referencia. Ver:
 
-- [[herramientas-matematicas/densidad-espectral-potencia]] — Densidad espectral de potencia y correlacion
+- [[../herramientas-matematicas/densidad-espectral-potencia]] — Densidad espectral de potencia y correlacion

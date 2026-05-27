@@ -38,7 +38,7 @@ Calcular: (a) S/N después del filtro de salida si $F_{FI} = 1$, (b) S/N si $T_{
 
 $$\boxed{\left(\frac{S}{N}\right)_D = 3\beta^2 \left(\frac{W}{B_T}\right) \left(\frac{S}{N}\right)_R}$$
 
-donde $W = f_m$ (ancho de banda del mensaje), $B_T$ es el ancho de banda de transmisión (Carson). El factor $W/B_T$ es **siempre < 1** en FM de banda ancha [source].
+donde $W = f_m$ (ancho de banda del mensaje), $B_T$ es el ancho de banda de transmisión (Carson). El factor $W/B_T$ es **siempre < 1** en FM de banda ancha [source — [[../../outputs/solutions/Ejercicio_TP5_3_solution]]].
 
 ## Solución
 
@@ -108,10 +108,10 @@ $$\boxed{\beta_{new} = 57.23, \quad \Delta f_{new} = 286.2 \text{ kHz}}$$
 
 ## Ver también
 
-- [[modulacion-analogica/ancho-banda-carson]]
-- [[modulacion-analogica/fm-banda-ancha]]
-- [[derivaciones/modulacion-fm-carson]]
-- [[ruido/formula-friis]]
-- [[ruido/factor-ruido-temperatura]]
-- [[ruido/relacion-snr]]
-- [[ruido/efecto-umbral-fm]]
+- [[../modulacion-analogica/ancho-banda-carson]]
+- [[../modulacion-analogica/fm-banda-ancha]]
+- [[../derivaciones/modulacion-fm-carson]]
+- [[../ruido/formula-friis]]
+- [[../ruido/factor-ruido-temperatura]]
+- [[../ruido/relacion-snr]]
+- [[../ruido/efecto-umbral-fm]]

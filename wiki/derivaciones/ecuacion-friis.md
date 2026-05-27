@@ -20,7 +20,7 @@ La figura de ruido cuantifica cuánto degrada un dispositivo la SNR:
 $$F = \frac{SNR_{in}}{SNR_{out}} = \frac{N_{out}}{G \cdot N_{in}}$$
 
 - $F = 1$ (0 dB): dispositivo ideal sin ruido añadido
-- $F > 1$: el dispositivo añade ruido, degradando la SNR [source]
+- $F > 1$: el dispositivo añade ruido, degradando la SNR [source — [[../../outputs/derivations/Friis_Cascade_20251115]]]
 
 ### Ruido añadido por una etapa
 
@@ -71,7 +71,7 @@ $$\boxed{F_{total} = F_1 + \sum_{n=2}^{N} \frac{F_n - 1}{\prod_{i=1}^{n-1} G_i}}
 
 $$T_{total} = T_1 + \frac{T_2}{G_1} + \frac{T_3}{G_1 G_2} + \cdots$$
 
-donde $T_e = T_0(F - 1)$ [source].
+donde $T_e = T_0(F - 1)$ [source — [[../../outputs/derivations/Friis_Cascade_20251115]]].
 
 ## Interpretación física
 
@@ -99,9 +99,9 @@ Precaución: La fórmula de Friis usa valores **lineales** (no dB). Convertir si
 
 ## Ver también
 
-- [[ruido/formula-friis]]
-- [[ruido/factor-ruido-temperatura]]
-- [[ruido/relacion-snr]]
-- [[ruido/fuentes-ruido]]
-- [[ruido/ruido-termico]]
-- [[ruido/lna-diseno-receptor]]
+- [[../ruido/formula-friis]]
+- [[../ruido/factor-ruido-temperatura]]
+- [[../ruido/relacion-snr]]
+- [[../ruido/fuentes-ruido]]
+- [[../ruido/ruido-termico]]
+- [[../ruido/lna-diseno-receptor]]

@@ -10,4 +10,4 @@ curso: Sistemas de Comunicaciones
 
 Pagina de referencia. Ver:
 
-- [[introduccion/espectro-electromagnetico]] — Espectro electromagnetico y regulacion de frecuencias
+- [[../introduccion/espectro-electromagnetico]] — Espectro electromagnetico y regulacion de frecuencias

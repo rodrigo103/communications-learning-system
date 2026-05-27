@@ -21,7 +21,7 @@ Equivalentemente:
 
 $$\boxed{C = B \log_2\left(1 + \frac{P}{N_0 B}\right) \text{ bits/s}}$$
 
-donde $C$ es la capacidad del canal, $B$ el ancho de banda, $P$ la potencia promedio de señal, y $N_0$ la densidad espectral de ruido [source].
+donde $C$ es la capacidad del canal, $B$ el ancho de banda, $P$ la potencia promedio de señal, y $N_0$ la densidad espectral de ruido [source — [[../../outputs/derivations/Shannon_Hartley_comprehensive_20251116]]].
 
 ## Modelo del canal
 
@@ -34,7 +34,7 @@ Canal AWGN: $Y(t) = X(t) + N(t)$, donde:
 
 ### Paso 1: Muestreo de Nyquist
 
-Una señal limitada en banda a $B$ Hz se representa con $2B$ muestras/segundo [source]:
+Una señal limitada en banda a $B$ Hz se representa con $2B$ muestras/segundo [source — [[../../outputs/derivations/Shannon_Hartley_comprehensive_20251116]]]:
 
 $$X(t) = \sum_n X[n] \cdot \text{sinc}(2Bt - n)$$
 
@@ -48,7 +48,7 @@ $$C = 2B \cdot \max_{f_X(x)} I(X;Y) \text{ bits/s}$$
 
 $$I(X;Y) = h(Y) - h(Y|X) = h(Y) - h(N)$$
 
-donde $h(\cdot)$ es la entropía diferencial [source].
+donde $h(\cdot)$ es la entropía diferencial [source — [[../../outputs/derivations/Shannon_Hartley_comprehensive_20251116]]].
 
 ### Paso 4: Entropía del ruido gaussiano
 
@@ -58,7 +58,7 @@ $$h(N) = \frac{1}{2}\log_2(2\pi e \sigma_N^2)$$
 
 ### Paso 5: Maximización de entropía
 
-Teorema: entre todas las distribuciones con varianza fija, la gaussiana maximiza la entropía diferencial [source].
+Teorema: entre todas las distribuciones con varianza fija, la gaussiana maximiza la entropía diferencial [source — [[../../outputs/derivations/Shannon_Hartley_comprehensive_20251116]]].
 
 Con $E[Y^2] = P + \sigma_N^2$ y restricción de potencia, $h(Y)$ se maximiza cuando $X$ es gaussiana: $X \sim \mathcal{N}(0, P)$.
 
@@ -88,14 +88,14 @@ Crecimiento logarítmico con potencia.
 ### $B \to \infty$ (ancho de banda infinito)
 $$\lim_{B\to\infty} C = \frac{P}{N_0 \ln 2} \approx 1.44 \frac{P}{N_0}$$
 
-Capacidad finita incluso con ancho de banda infinito [source].
+Capacidad finita incluso con ancho de banda infinito [source — [[../../outputs/derivations/Shannon_Hartley_comprehensive_20251116]]].
 
 ### $B \to 0$ (ancho de banda nulo)
 $$\lim_{B\to 0} C = \frac{P}{N_0 \ln 2}$$
 
 ## Implicaciones fundamentales
 
-1. **Existencia de códigos:** Para $R < C$, existe un código que permite transmisión con error arbitrariamente pequeño [source]
+1. **Existencia de códigos:** Para $R < C$, existe un código que permite transmisión con error arbitrariamente pequeño [source — [[../../outputs/derivations/Shannon_Hartley_comprehensive_20251116]]]
 2. **Trade-off BW-potencia:** Se puede intercambiar ancho de banda por potencia
 3. **Límite de Shannon:** $E_b/N_0 \geq \ln(2) \approx -1.59$ dB es el mínimo absoluto
 4. **Gaussianidad óptima:** La distribución gaussiana de entrada alcanza la capacidad
@@ -108,9 +108,9 @@ $$\lim_{B\to 0} C = \frac{P}{N_0 \ln 2}$$
 
 ## Ver también
 
-- [[teoria-informacion/teorema-shannon-hartley]]
-- [[teoria-informacion/capacidad-canal-shannon]]
-- [[ruido/intercomparacion-sistemas]]
-- [[teoria-informacion/entropia]]
-- [[teoria-informacion/codificacion-canal]]
-- [[conceptos-integradores/trade-off-bw-potencia]]
+- [[../teoria-informacion/teorema-shannon-hartley]]
+- [[../teoria-informacion/capacidad-canal-shannon]]
+- [[../ruido/intercomparacion-sistemas]]
+- [[../teoria-informacion/entropia]]
+- [[../teoria-informacion/codificacion-canal]]
+- [[../conceptos-integradores/trade-off-bw-potencia]]

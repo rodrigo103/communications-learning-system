@@ -10,4 +10,4 @@ curso: Sistemas de Comunicaciones
 
 Pagina de referencia. Ver:
 
-- [[introduccion/modelo-shannon]] — Modelo de Shannon: fuente, transmisor, canal, receptor, destino
+- [[../introduccion/modelo-shannon]] — Modelo de Shannon: fuente, transmisor, canal, receptor, destino

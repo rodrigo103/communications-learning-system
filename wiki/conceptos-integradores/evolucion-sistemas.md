@@ -118,9 +118,9 @@ En 100 anos hemos pasado de $\sim 5\%$ a $\sim 75\%$ del limite teorico. Los ult
 
 ## Ver tambien
 
-- [[introduccion/necesidad-modulacion]]
-- [[modulacion-digital/comparacion-digital-analogica]]
-- [[espectro-expandido/aplicaciones-spread-spectrum]]
-- [[conceptos-integradores/comparacion-global-modulaciones]]
-- [[teoria-informacion/teorema-shannon-hartley]]
-- [[conceptos-integradores/seleccion-modulacion]]
+- [[../introduccion/necesidad-modulacion]]
+- [[../modulacion-digital/comparacion-digital-analogica]]
+- [[../espectro-expandido/aplicaciones-spread-spectrum]]
+- [[../conceptos-integradores/comparacion-global-modulaciones]]
+- [[../teoria-informacion/teorema-shannon-hartley]]
+- [[../conceptos-integradores/seleccion-modulacion]]

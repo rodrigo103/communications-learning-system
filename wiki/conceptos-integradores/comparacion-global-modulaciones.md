@@ -12,7 +12,7 @@ unidad: 9-10
 
 ## Marco de Comparacion
 
-La comparacion entre modulaciones se realiza sobre tres ejes fundamentales derivados del teorema de Shannon y de las metricas de desempeno practicas: [source]
+La comparacion entre modulaciones se realiza sobre tres ejes fundamentales derivados del teorema de Shannon y de las metricas de desempeno practicas: [source — [[../../explicaciones_anki/conceptos_integradores/carta_56_tradeoff_bw_potencia_shannon]]]
 
 $$\boxed{C = B \log_2\left(1 + \frac{S}{N}\right)}$$
 
@@ -78,7 +78,7 @@ En $SNR = 0$ dB ($= 1$ lineal), ambos recursos tienen exactamente la misma efect
 
 ## Eficiencia Espectral vs Eficiencia de Potencia
 
-El trade-off fundamental se expresa mediante la relacion de Shannon: [source]
+El trade-off fundamental se expresa mediante la relacion de Shannon: [source — [[../../explicaciones_anki/conceptos_integradores/carta_56_tradeoff_bw_potencia_shannon]]]
 
 $$\boxed{\frac{E_b}{N_0} = \frac{2^{\eta} - 1}{\eta}, \quad \eta = \frac{R_b}{B}}$$
 
@@ -105,9 +105,9 @@ Esto impone que **alta eficiencia espectral requiere alta $E_b/N_0$** (baja efic
 
 ## Ver tambien
 
-- [[ruido/intercomparacion-sistemas]]
-- [[modulacion-analogica/am-vs-dsb-sc]]
-- [[modulacion-digital/comparacion-digital-analogica]]
-- [[teoria-informacion/teorema-shannon-hartley]]
-- [[conceptos-integradores/seleccion-modulacion]]
-- [[conceptos-integradores/compromisos-diseno]]
+- [[../ruido/intercomparacion-sistemas]]
+- [[../modulacion-analogica/am-vs-dsb-sc]]
+- [[../modulacion-digital/comparacion-digital-analogica]]
+- [[../teoria-informacion/teorema-shannon-hartley]]
+- [[../conceptos-integradores/seleccion-modulacion]]
+- [[../conceptos-integradores/compromisos-diseno]]

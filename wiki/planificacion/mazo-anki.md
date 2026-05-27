@@ -48,16 +48,16 @@ El mazo Anki contiene **60 cartas fundamentales** que cubren las 10 unidades del
 
 Las cartas están alineadas con estas áreas del wiki:
 
-- **Introducción (U1):** [[introduccion/elementos-sistema]], [[introduccion/espectro-electromagnetico]]
-- **Herramientas matemáticas (U2):** [[herramientas-matematicas/teorema-parseval]], [[herramientas-matematicas/transformada-fourier]], [[herramientas-matematicas/transformada-hilbert]]
-- **Modulación analógica (U3-U4):** [[modulacion-analogica/am-vs-dsb-sc]], [[modulacion-analogica/ancho-banda-carson]], [[modulacion-analogica/fm-vs-pm]]
-- **Modulación de pulsos (U5):** [[modulacion-pulsos/pcm]], [[herramientas-matematicas/teorema-muestreo]]
-- **Modulación digital (U6):** [[modulacion-digital/ask-fsk-psk]], [[modulacion-digital/constelaciones]], [[modulacion-digital/probabilidad-error]]
-- **Ruido (U7):** [[ruido/factor-ruido-temperatura]], [[ruido/formula-friis]], [[ruido/ruido-termico]]
-- **Intercomparación (U8):** [[ruido/intercomparacion-sistemas]], [[ruido/efecto-umbral-fm]]
-- **Teoría de la información (U9):** [[teoria-informacion/entropia]], [[teoria-informacion/teorema-shannon-hartley]]
-- **Temas avanzados (U10):** [[espectro-expandido/cdma]], [[espectro-expandido/dsss]], [[espectro-expandido/ofdm]]
-- **Integradores:** [[conceptos-integradores/trade-off-bw-potencia]], [[conceptos-integradores/evolucion-sistemas]]
+- **Introducción (U1):** [[../introduccion/elementos-sistema]], [[../introduccion/espectro-electromagnetico]]
+- **Herramientas matemáticas (U2):** [[../herramientas-matematicas/teorema-parseval]], [[../herramientas-matematicas/transformada-fourier]], [[../herramientas-matematicas/transformada-hilbert]]
+- **Modulación analógica (U3-U4):** [[../modulacion-analogica/am-vs-dsb-sc]], [[../modulacion-analogica/ancho-banda-carson]], [[../modulacion-analogica/fm-vs-pm]]
+- **Modulación de pulsos (U5):** [[../modulacion-pulsos/pcm]], [[../herramientas-matematicas/teorema-muestreo]]
+- **Modulación digital (U6):** [[../modulacion-digital/ask-fsk-psk]], [[../modulacion-digital/constelaciones]], [[../modulacion-digital/probabilidad-error]]
+- **Ruido (U7):** [[../ruido/factor-ruido-temperatura]], [[../ruido/formula-friis]], [[../ruido/ruido-termico]]
+- **Intercomparación (U8):** [[../ruido/intercomparacion-sistemas]], [[../ruido/efecto-umbral-fm]]
+- **Teoría de la información (U9):** [[../teoria-informacion/entropia]], [[../teoria-informacion/teorema-shannon-hartley]]
+- **Temas avanzados (U10):** [[../espectro-expandido/cdma]], [[../espectro-expandido/dsss]], [[../espectro-expandido/ofdm]]
+- **Integradores:** [[../conceptos-integradores/trade-off-bw-potencia]], [[../conceptos-integradores/evolucion-sistemas]]
 
 ## Fórmulas clave incluidas
 
@@ -73,6 +73,6 @@ Las cartas están alineadas con estas áreas del wiki:
 
 ## Ver también
 
-- [[planificacion/programa-oficial]]
-- [[planificacion/progreso-actual]]
-- [[resumenes/overview-curso]]
+- [[../planificacion/programa-oficial]]
+- [[../planificacion/progreso-actual]]
+- [[../resumenes/overview-curso]]

@@ -8,11 +8,11 @@ unidad: 7
 
 # Fuentes de Ruido en Comunicaciones
 
-> **Last verified:** 2025-11-16 | **Verified by:** [source]
+> **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_07/carta_33_ruido-blanco]]]
 
 ## Clasificación de Fuentes de Ruido
 
-El ruido está presente en todo sistema de comunicaciones real y determina los límites fundamentales de lo que se puede comunicar. [source]
+El ruido está presente en todo sistema de comunicaciones real y determina los límites fundamentales de lo que se puede comunicar. [source — [[../../explicaciones_anki/unidad_07/carta_33_ruido-blanco]]]
 
 ### Ruido Térmico (Johnson-Nyquist)
 
@@ -25,7 +25,7 @@ donde:
 - $T$ = temperatura absoluta en Kelvin
 - $B$ = ancho de banda en Hz
 
-A temperatura ambiente (290 K): $N_0 = kT = -174$ dBm/Hz. [source]
+A temperatura ambiente (290 K): $N_0 = kT = -174$ dBm/Hz. [source — [[../../explicaciones_anki/unidad_07/carta_33_ruido-blanco]]]
 
 ### Ruido Shot (Schottky)
 
@@ -61,10 +61,10 @@ $$R_n(\tau) = N_0 \delta(\tau)$$
 | Unilateral (moderna) | $N_0 = kT$ | $N = kTB$ | Este curso |
 | Bilateral (antigua) | $S_n(f) = kT/2$ | $N = kTB$ | Textos históricos |
 
-La potencia disponible es la misma en ambas: $N = kTB$. [source]
+La potencia disponible es la misma en ambas: $N = kTB$. [source — [[../../explicaciones_anki/unidad_07/carta_33_ruido-blanco]]]
 
 ## Ver también
 
-- [[ruido/ruido-blanco-banda-angosta]] — Ruido blanco filtrado: modelo de banda angosta
-- [[ruido/factor-ruido-temperatura]] — Temperatura equivalente de ruido
-- [[ruido/relacion-snr]] — Relación señal-ruido como métrica de calidad
+- [[../ruido/ruido-blanco-banda-angosta]] — Ruido blanco filtrado: modelo de banda angosta
+- [[../ruido/factor-ruido-temperatura]] — Temperatura equivalente de ruido
+- [[../ruido/relacion-snr]] — Relación señal-ruido como métrica de calidad

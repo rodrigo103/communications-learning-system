@@ -16,7 +16,7 @@ La **entropia** $H(X)$ mide la informacion promedio (incertidumbre) de una fuent
 
 $$\boxed{H(X) = -\sum_{i=1}^{n} p_i \log_2(p_i) \quad \text{[bits/simbolo]}}$$
 
-donde $p_i$ es la probabilidad del simbolo $i$. [source]
+donde $p_i$ es la probabilidad del simbolo $i$. [source — [[../../explicaciones_anki/unidad_09/carta_44_entropia-fuente]]]
 
 ### Informacion de un evento unico
 
@@ -31,7 +31,7 @@ Propiedades fundamentales: [analysis]
 
 ### Axiomas de Shannon
 
-Shannon demostro que una medida $H$ de entropia que satisfaga: [source]
+Shannon demostro que una medida $H$ de entropia que satisfaga: [source — [[../../explicaciones_anki/unidad_09/carta_44_entropia-fuente]]]
 1. Continuidad en las probabilidades
 2. Monotonicidad creciente con $n$ para eventos equiprobables
 3. Consistencia bajo particionamiento
@@ -40,7 +40,7 @@ tiene la forma unica $H = -K \sum p_i \log p_i$. Eligiendo $K = 1/\ln(2)$ se obt
 
 ## Propiedades
 
-- **Acotacion**: $\boxed{0 \leq H \leq \log_2(n)}$ [source]
+- **Acotacion**: $\boxed{0 \leq H \leq \log_2(n)}$ [source — [[../../explicaciones_anki/unidad_09/carta_44_entropia-fuente]]]
 - **Entropia maxima**: $H_{max} = \log_2(n)$ cuando todos los simbolos son equiprobables ($p_i = 1/n$)
 - **Entropia minima**: $H = 0$ cuando un simbolo tiene $p = 1$
 - Para $p_i = 0$, se define $0 \log_2(0) = 0$ (consistente con $\lim_{p \to 0} p \log p = 0$)
@@ -57,7 +57,7 @@ $$H(p) = -p\log_2(p) - (1-p)\log_2(1-p)$$
 
 ## Fuentes con y sin Memoria
 
-**Fuente sin memoria**: $H = -\sum_i p_i \log_2 p_i$ — los simbolos son independientes. [source]
+**Fuente sin memoria**: $H = -\sum_i p_i \log_2 p_i$ — los simbolos son independientes. [source — [[../../explicaciones_anki/unidad_09/carta_44_entropia-fuente]]]
 
 **Fuentes con memoria (Markovianas)**: la probabilidad depende del contexto anterior:
 
@@ -93,8 +93,8 @@ La **compresion sin perdida** puede reducir la representacion hasta $H$ bits/sim
 
 ## Ver tambien
 
-- [[teoria-informacion/capacidad-canal-shannon]]
-- [[teoria-informacion/teorema-shannon-hartley]]
-- [[teoria-informacion/codigo-compacto]]
-- [[teoria-informacion/codigos-deteccion-error]]
-- [[teoria-informacion/sistema-ideal-comunicaciones]]
+- [[../teoria-informacion/capacidad-canal-shannon]]
+- [[../teoria-informacion/teorema-shannon-hartley]]
+- [[../teoria-informacion/codigo-compacto]]
+- [[../teoria-informacion/codigos-deteccion-error]]
+- [[../teoria-informacion/sistema-ideal-comunicaciones]]

@@ -8,11 +8,11 @@ unidad: 5
 
 # Multiplexación por División de Tiempo (TDM)
 
-> **Last verified:** 2025-11-16 | **Verified by:** [source]
+> **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_05/carta_26_tdm-sistemas-pcm]]]
 
 ## Principio de TDM
 
-TDM permite que múltiples señales compartan un mismo canal de transmisión asignando **ranuras temporales** (time slots) exclusivas a cada una. A diferencia de [[modulacion-analogica/multiplex-fdm|FDM]] que divide en frecuencia, TDM divide en tiempo. [source]
+TDM permite que múltiples señales compartan un mismo canal de transmisión asignando **ranuras temporales** (time slots) exclusivas a cada una. A diferencia de [[../modulacion-analogica/multiplex-fdm|FDM]] que divide en frecuencia, TDM divide en tiempo. [source — [[../../explicaciones_anki/unidad_05/carta_26_tdm-sistemas-pcm]]]
 
 ### Estructura de Trama
 
@@ -63,6 +63,6 @@ Los sistemas TDM se escalan en jerarquías:
 
 ## Ver también
 
-- [[modulacion-pulsos/pcm-cuantificacion]] — Digitalización PCM que alimenta los canales TDM
-- [[modulacion-analogica/multiplex-fdm]] — Multiplexación en frecuencia como alternativa
-- [[introduccion/espectro-electromagnetico]] — El espectro como recurso compartido
+- [[../modulacion-pulsos/pcm-cuantificacion]] — Digitalización PCM que alimenta los canales TDM
+- [[../modulacion-analogica/multiplex-fdm]] — Multiplexación en frecuencia como alternativa
+- [[../introduccion/espectro-electromagnetico]] — El espectro como recurso compartido

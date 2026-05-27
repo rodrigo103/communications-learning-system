@@ -12,11 +12,11 @@ unidad: 4
 
 ## Principio de Transmision
 
-La radio FM estereo transmite dos canales de audio (izquierdo L y derecho R) dentro del ancho de banda asignado de 200 kHz usando multiplexacion por division de frecuencia (FDM) [source].
+La radio FM estereo transmite dos canales de audio (izquierdo L y derecho R) dentro del ancho de banda asignado de 200 kHz usando multiplexacion por division de frecuencia (FDM) [source — [[../../explicaciones_anki/unidad_04/carta_21_comparacion_fm_pm]]].
 
 ## Señal Multiplex (MPX)
 
-La señal compuesta que modula la portadora FM contiene [source]:
+La señal compuesta que modula la portadora FM contiene [source — [[../../explicaciones_anki/unidad_04/carta_21_comparacion_fm_pm]]]:
 
 | Componente | Frecuencia | Contenido | Funcion |
 |-----------|------------|-----------|---------|
@@ -38,7 +38,7 @@ La señal compuesta que modula la portadora FM contiene [source]:
 
 $$\boxed{s_{MPX}(t) = [L(t) + R(t)] + [L(t) - R(t)]\cos(2\pi \cdot 38\text{k} \cdot t) + A_p\cos(2\pi \cdot 19\text{k} \cdot t)}$$
 
-Donde $A_p$ es la amplitud del piloto (tipicamente 8-10% de la desviacion maxima) [source].
+Donde $A_p$ es la amplitud del piloto (tipicamente 8-10% de la desviacion maxima) [source — [[../../explicaciones_anki/unidad_04/carta_21_comparacion_fm_pm]]].
 
 ## Proceso de Modulacion
 
@@ -51,7 +51,7 @@ Donde $A_p$ es la amplitud del piloto (tipicamente 8-10% de la desviacion maxima
 
 ## Compatibilidad Mono/Estereo
 
-- **Receptor mono**: solo demodula $L+R$ (ignora $L-R$ y piloto) → escucha ambos canales combinados [source]
+- **Receptor mono**: solo demodula $L+R$ (ignora $L-R$ y piloto) → escucha ambos canales combinados [source — [[../../explicaciones_anki/unidad_04/carta_21_comparacion_fm_pm]]]
 - **Receptor estereo**: detecta el piloto → activa decodificador → recupera $L$ y $R$:
 
 $$L = \frac{(L+R) + (L-R)}{2}, \quad R = \frac{(L+R) - (L-R)}{2}$$
@@ -84,24 +84,24 @@ El decodificador estereo:
 
 ## Ventajas
 
-- **Compatibilidad inversa**: receptores mono funcionan sin modificacion [source]
+- **Compatibilidad inversa**: receptores mono funcionan sin modificacion [source — [[../../explicaciones_anki/unidad_04/carta_21_comparacion_fm_pm]]]
 - **Eficiencia espectral**: dos canales de audio en el mismo BW que mono
 - **Calidad**: SNR comparable a mono gracias a preenfasis/deenfasis
 
 ## Relacion con FDM
 
-FM estereo es un ejemplo practico de [[modulacion-analogica/multiplex-fdm]]: multiplexa tres señales ($L+R$, $L-R$, piloto) en frecuencia sobre la misma portadora FM [analysis].
+FM estereo es un ejemplo practico de [[../modulacion-analogica/multiplex-fdm]]: multiplexa tres señales ($L+R$, $L-R$, piloto) en frecuencia sobre la misma portadora FM [analysis].
 
 ## Puntos Clave
 
-- ✓ $L+R$ en banda base para compatibilidad mono [source]
-- ✓ $L-R$ modulado en DSB-SC a 38 kHz (subportadora suprimida) [source]
-- ✓ Piloto de 19 kHz para regenerar subportadora [source]
-- ✓ Preenfasis aplicado a L y R antes de la matriz [source]
+- ✓ $L+R$ en banda base para compatibilidad mono [source — [[../../explicaciones_anki/unidad_04/carta_21_comparacion_fm_pm]]]
+- ✓ $L-R$ modulado en DSB-SC a 38 kHz (subportadora suprimida) [source — [[../../explicaciones_anki/unidad_04/carta_21_comparacion_fm_pm]]]
+- ✓ Piloto de 19 kHz para regenerar subportadora [source — [[../../explicaciones_anki/unidad_04/carta_21_comparacion_fm_pm]]]
+- ✓ Preenfasis aplicado a L y R antes de la matriz [source — [[../../explicaciones_anki/unidad_04/carta_21_comparacion_fm_pm]]]
 
 ## Ver tambien
 
-- [[modulacion-analogica/fm-vs-pm]]
-- [[modulacion-analogica/preenfasis-deenfasis]]
-- [[modulacion-analogica/multiplex-fdm]]
-- [[modulacion-analogica/ancho-banda-carson]]
+- [[../modulacion-analogica/fm-vs-pm]]
+- [[../modulacion-analogica/preenfasis-deenfasis]]
+- [[../modulacion-analogica/multiplex-fdm]]
+- [[../modulacion-analogica/ancho-banda-carson]]

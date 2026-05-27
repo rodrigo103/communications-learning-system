@@ -10,4 +10,4 @@ curso: Sistemas de Comunicaciones
 
 Pagina de referencia. Ver:
 
-- [[ruido/formula-friis]] — Formula de Friis para figura de ruido en cascada
+- [[../ruido/formula-friis]] — Formula de Friis para figura de ruido en cascada

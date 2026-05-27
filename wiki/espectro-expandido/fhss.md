@@ -12,7 +12,7 @@ unidad: 10
 
 ## Principio
 
-**FHSS** (Frequency Hopping Spread Spectrum) expande el espectro cambiando rapidamente la frecuencia de la portadora segun un patron pseudoaleatorio. La senal "salta" entre multiples frecuencias disponibles, usando una sola frecuencia a la vez. [source]
+**FHSS** (Frequency Hopping Spread Spectrum) expande el espectro cambiando rapidamente la frecuencia de la portadora segun un patron pseudoaleatorio. La senal "salta" entre multiples frecuencias disponibles, usando una sola frecuencia a la vez. [source — [[../../explicaciones_anki/unidad_10/carta_51_dsss-vs-fhss]]]
 
 $$s_{FHSS}(t) = d(t) \cdot \cos(2\pi f_i(t) \cdot t)$$
 
@@ -102,7 +102,7 @@ Sin AFH: $P_{col} = 1/79 \approx 1.3\%$. Con AFH: $P_{col} \approx 0$ (idealment
 
 ## Ver tambien
 
-- [[espectro-expandido/cdma]]
-- [[espectro-expandido/dsss]]
-- [[espectro-expandido/ofdm]]
-- [[espectro-expandido/aplicaciones-spread-spectrum]]
+- [[../espectro-expandido/cdma]]
+- [[../espectro-expandido/dsss]]
+- [[../espectro-expandido/ofdm]]
+- [[../espectro-expandido/aplicaciones-spread-spectrum]]

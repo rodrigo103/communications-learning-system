@@ -10,5 +10,5 @@ curso: Sistemas de Comunicaciones
 
 Pagina de referencia. Ver:
 
-- [[modulacion-digital/comparacion-digital-analogica]] — Comparacion entre modulacion digital y analogica
-- [[modulacion-digital/modulacion-qam]] — Modulacion QAM y eficiencia espectral
+- [[../modulacion-digital/comparacion-digital-analogica]] — Comparacion entre modulacion digital y analogica
+- [[../modulacion-digital/modulacion-qam]] — Modulacion QAM y eficiencia espectral

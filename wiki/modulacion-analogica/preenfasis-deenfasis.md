@@ -8,15 +8,15 @@ unidad: 4
 
 # Preenfasis y Deenfasis en FM
 
-> **Last verified:** 2025-11-16 | **Verified by:** [source]
+> **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_04/carta_20_preenfasis_deenfasis]]]
 
 ## Definicion
 
-Preenfasis y deenfasis son tecnicas complementarias de procesamiento que mejoran la relacion señal-ruido (SNR) en FM, especialmente en altas frecuencias [source].
+Preenfasis y deenfasis son tecnicas complementarias de procesamiento que mejoran la relacion señal-ruido (SNR) en FM, especialmente en altas frecuencias [source — [[../../explicaciones_anki/unidad_04/carta_20_preenfasis_deenfasis]]].
 
 ## El Problema: Ruido Triangular en FM
 
-Despues de la demodulacion FM, la DEP del ruido **no es uniforme**: crece con el cuadrado de la frecuencia [source]:
+Despues de la demodulacion FM, la DEP del ruido **no es uniforme**: crece con el cuadrado de la frecuencia [source — [[../../explicaciones_anki/unidad_04/carta_20_preenfasis_deenfasis]]]:
 
 $$S_n(f) = K \cdot f^2$$
 
@@ -27,7 +27,7 @@ $$S_n(f) = K \cdot f^2$$
 
 ### Preenfasis (Transmisor)
 
-Filtro pasa-altos que **amplifica las altas frecuencias** del audio **antes** de modular [source]:
+Filtro pasa-altos que **amplifica las altas frecuencias** del audio **antes** de modular [source — [[../../explicaciones_anki/unidad_04/carta_20_preenfasis_deenfasis]]]:
 
 $$\boxed{H_p(f) = 1 + j\frac{f}{f_1}}$$
 
@@ -35,7 +35,7 @@ $$f_1 = \frac{1}{2\pi\tau}$$
 
 ### Deenfasis (Receptor)
 
-Filtro pasa-bajos que **atenua las altas frecuencias después** de demodular [source]:
+Filtro pasa-bajos que **atenua las altas frecuencias después** de demodular [source — [[../../explicaciones_anki/unidad_04/carta_20_preenfasis_deenfasis]]]:
 
 $$\boxed{H_d(f) = \frac{1}{1 + j\frac{f}{f_1}}}$$
 
@@ -43,7 +43,7 @@ $$\boxed{H_d(f) = \frac{1}{1 + j\frac{f}{f_1}}}$$
 
 $$\boxed{H_p(f) \cdot H_d(f) = 1}$$
 
-La respuesta en frecuencia total es **plana** (el audio se restaura fielmente), pero el ruido de alta frecuencia agregado durante la transmision es atenuado por $H_d(f)$ [source].
+La respuesta en frecuencia total es **plana** (el audio se restaura fielmente), pero el ruido de alta frecuencia agregado durante la transmision es atenuado por $H_d(f)$ [source — [[../../explicaciones_anki/unidad_04/carta_20_preenfasis_deenfasis]]].
 
 ## Estandares
 
@@ -52,11 +52,11 @@ La respuesta en frecuencia total es **plana** (el audio se restaura fielmente), 
 | USA/Japon | 75 $\mu$s | 2.12 kHz | $\approx 13.5$ dB |
 | Europa/Australia | 50 $\mu$s | 3.18 kHz | $\approx 11.3$ dB |
 
-La diferencia historica refleja distintas preferencias de sonido y caracteristicas de audio [source].
+La diferencia historica refleja distintas preferencias de sonido y caracteristicas de audio [source — [[../../explicaciones_anki/unidad_04/carta_20_preenfasis_deenfasis]]].
 
 ## Mejora de SNR
 
-La mejora en SNR con preenfasis/deenfasis es [source]:
+La mejora en SNR con preenfasis/deenfasis es [source — [[../../explicaciones_anki/unidad_04/carta_20_preenfasis_deenfasis]]]:
 
 $$\boxed{\text{Mejora SNR} \approx 13.5 \text{ dB (estandar 75 }\mu\text{s)}}$$
 
@@ -82,15 +82,15 @@ Imagina una fiesta ruidosa: elevas mas la voz en tonos agudos (preenfasis) porqu
 
 ## Puntos Clave
 
-- ✓ El ruido en FM crece con $f^2$ despues del discriminador [source]
-- ✓ Preenfasis/deenfasis mejora SNR sin costo de ancho de banda [source]
-- ✓ Mejora tipica: 10-13 dB en altas frecuencias [source]
-- ✓ $H_p(f) \cdot H_d(f) = 1$: respuesta plana total [source]
-- ✓ USA = 75 $\mu$s, Europa = 50 $\mu$s [source]
+- ✓ El ruido en FM crece con $f^2$ despues del discriminador [source — [[../../explicaciones_anki/unidad_04/carta_20_preenfasis_deenfasis]]]
+- ✓ Preenfasis/deenfasis mejora SNR sin costo de ancho de banda [source — [[../../explicaciones_anki/unidad_04/carta_20_preenfasis_deenfasis]]]
+- ✓ Mejora tipica: 10-13 dB en altas frecuencias [source — [[../../explicaciones_anki/unidad_04/carta_20_preenfasis_deenfasis]]]
+- ✓ $H_p(f) \cdot H_d(f) = 1$: respuesta plana total [source — [[../../explicaciones_anki/unidad_04/carta_20_preenfasis_deenfasis]]]
+- ✓ USA = 75 $\mu$s, Europa = 50 $\mu$s [source — [[../../explicaciones_anki/unidad_04/carta_20_preenfasis_deenfasis]]]
 
 ## Ver tambien
 
-- [[modulacion-analogica/fm-estereo]]
-- [[modulacion-analogica/modulador-fm]]
-- [[ruido/snr-modulacion-exponencial]]
-- [[ruido/efecto-umbral]]
+- [[../modulacion-analogica/fm-estereo]]
+- [[../modulacion-analogica/modulador-fm]]
+- [[../ruido/snr-modulacion-exponencial]]
+- [[../ruido/efecto-umbral]]

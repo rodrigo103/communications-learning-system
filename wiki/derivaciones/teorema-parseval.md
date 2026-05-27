@@ -21,7 +21,7 @@ Alternativamente con frecuencia angular $\omega = 2\pi f$:
 
 $$\int_{-\infty}^{\infty} |x(t)|^2 dt = \frac{1}{2\pi}\int_{-\infty}^{\infty} |X(\omega)|^2 d\omega$$
 
-**Interpretación física:** La energía total de una señal es la misma calculada en el dominio del tiempo o en el dominio de la frecuencia. La transformada de Fourier conserva la energía [source].
+**Interpretación física:** La energía total de una señal es la misma calculada en el dominio del tiempo o en el dominio de la frecuencia. La transformada de Fourier conserva la energía [source — [[../../outputs/derivations/parsevals_theorem_comprehensive]]].
 
 ## Derivación paso a paso
 
@@ -65,7 +65,7 @@ $$\sum_{n=0}^{N-1} |x[n]|^2 = \frac{1}{N}\sum_{k=0}^{N-1} |X[k]|^2$$
 
 ## Densidad espectral de energía
 
-$|X(f)|^2$ se denomina **densidad espectral de energía (ESD)**. Representa la distribución de energía por unidad de frecuencia. $|X(f)|^2 df$ es la energía contenida en la banda $[f, f+df]$ [source].
+$|X(f)|^2$ se denomina **densidad espectral de energía (ESD)**. Representa la distribución de energía por unidad de frecuencia. $|X(f)|^2 df$ es la energía contenida en la banda $[f, f+df]$ [source — [[../../outputs/derivations/parsevals_theorem_comprehensive]]].
 
 ## Aplicaciones en comunicaciones
 
@@ -93,9 +93,9 @@ Ambos resultados derivan de propiedades fundamentales de la transformada de Four
 
 ## Ver también
 
-- [[herramientas-matematicas/teorema-parseval]]
-- [[herramientas-matematicas/densidad-espectral-potencia]]
-- [[herramientas-matematicas/senales-energia-potencia]]
-- [[herramientas-matematicas/serie-fourier]]
-- [[herramientas-matematicas/transformada-fourier]]
-- [[herramientas-matematicas/teorema-wiener-khinchin]]
+- [[../herramientas-matematicas/teorema-parseval]]
+- [[../herramientas-matematicas/densidad-espectral-potencia]]
+- [[../herramientas-matematicas/senales-energia-potencia]]
+- [[../herramientas-matematicas/serie-fourier]]
+- [[../herramientas-matematicas/transformada-fourier]]
+- [[../herramientas-matematicas/teorema-wiener-khinchin]]

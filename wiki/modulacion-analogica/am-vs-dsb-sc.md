@@ -8,13 +8,13 @@ unidad: 3
 
 # AM-DSB-FC vs DSB-SC: Comparacion
 
-> **Last verified:** 2025-11-16 | **Verified by:** [source]
+> **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_03/carta_10_am-dsb-vs-dsbsc]]]
 
 ## Definiciones
 
 ### AM-DSB-FC (AM Convencional)
 
-Contiene portadora mas ambas bandas laterales [source]:
+Contiene portadora mas ambas bandas laterales [source — [[../../explicaciones_anki/unidad_03/carta_10_am-dsb-vs-dsbsc]]]:
 
 $$s_{AM}(t) = A_c[1 + k_a m(t)]\cos(2\pi f_c t)$$
 
@@ -24,7 +24,7 @@ $$s_{AM}(t) = \underbrace{A_c\cos(2\pi f_c t)}_{\text{portadora}} + \underbrace{
 
 ### DSB-SC (Doble Banda con Portadora Suprimida)
 
-Sin termino de portadora independiente [source]:
+Sin termino de portadora independiente [source — [[../../explicaciones_anki/unidad_03/carta_10_am-dsb-vs-dsbsc]]]:
 
 $$s_{DSB-SC}(t) = A_c m(t)\cos(2\pi f_c t)$$
 
@@ -75,24 +75,24 @@ $$\eta = \frac{0.09}{2.09} = 0.043$$
 ## Trade-off Fundamental
 
 AM-DSB-FC: **simplicidad** (deteccion de envolvente) a costa de eficiencia
-DSB-SC: **eficiencia** (100% potencia en informacion) a costa de complejidad (requiere deteccion coherente) [source]
+DSB-SC: **eficiencia** (100% potencia en informacion) a costa de complejidad (requiere deteccion coherente) [source — [[../../explicaciones_anki/unidad_03/carta_10_am-dsb-vs-dsbsc]]]
 
 ## Aplicaciones Tipicas
 
-- **AM-DSB-FC**: radio AM comercial (530-1700 kHz), aviacion, donde receptores economicos importan [source]
+- **AM-DSB-FC**: radio AM comercial (530-1700 kHz), aviacion, donde receptores economicos importan [source — [[../../explicaciones_anki/unidad_03/carta_10_am-dsb-vs-dsbsc]]]
 - **DSB-SC**: enlaces punto a punto, satelites, donde la potencia es escasa y costosa [analysis]
 
 ## Puntos Clave
 
-- ✓ Ambos esquemas tienen el mismo ancho de banda: $BW = 2f_m$ [source]
-- ✓ La portadora no transmite informacion pero facilita demodulacion [source]
-- ✓ Eficiencia maxima de AM: $33.33\%$ (con $m=1$) [source]
-- ✓ DSB-SC requiere sincronizacion de portadora para demodulacion [source]
+- ✓ Ambos esquemas tienen el mismo ancho de banda: $BW = 2f_m$ [source — [[../../explicaciones_anki/unidad_03/carta_10_am-dsb-vs-dsbsc]]]
+- ✓ La portadora no transmite informacion pero facilita demodulacion [source — [[../../explicaciones_anki/unidad_03/carta_10_am-dsb-vs-dsbsc]]]
+- ✓ Eficiencia maxima de AM: $33.33\%$ (con $m=1$) [source — [[../../explicaciones_anki/unidad_03/carta_10_am-dsb-vs-dsbsc]]]
+- ✓ DSB-SC requiere sincronizacion de portadora para demodulacion [source — [[../../explicaciones_anki/unidad_03/carta_10_am-dsb-vs-dsbsc]]]
 
 ## Ver tambien
 
-- [[modulacion-analogica/indice-modulacion-am]]
-- [[modulacion-analogica/modulacion-ssb]]
-- [[modulacion-analogica/modulacion-vsb]]
-- [[derivaciones/modulacion-am]]
-- [[ruido/snr-modulacion-lineal]]
+- [[../modulacion-analogica/indice-modulacion-am]]
+- [[../modulacion-analogica/modulacion-ssb]]
+- [[../modulacion-analogica/modulacion-vsb]]
+- [[../derivaciones/modulacion-am]]
+- [[../ruido/snr-modulacion-lineal]]

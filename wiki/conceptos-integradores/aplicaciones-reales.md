@@ -168,9 +168,9 @@ WiFi 6 introduce OFDMA (acceso multiple en frecuencia) y 1024-QAM, duplicando la
 
 ## Ver tambien
 
-- [[conceptos-integradores/comparacion-global-modulaciones]]
-- [[conceptos-integradores/seleccion-modulacion]]
-- [[conceptos-integradores/compromisos-diseno]]
-- [[conceptos-integradores/evolucion-sistemas]]
-- [[introduccion/espectro-electromagnetico]]
-- [[introduccion/necesidad-modulacion]]
+- [[../conceptos-integradores/comparacion-global-modulaciones]]
+- [[../conceptos-integradores/seleccion-modulacion]]
+- [[../conceptos-integradores/compromisos-diseno]]
+- [[../conceptos-integradores/evolucion-sistemas]]
+- [[../introduccion/espectro-electromagnetico]]
+- [[../introduccion/necesidad-modulacion]]

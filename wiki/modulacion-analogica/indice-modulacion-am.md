@@ -8,11 +8,11 @@ unidad: 3
 
 # Indice de Modulacion en AM
 
-> **Last verified:** 2025-11-16 | **Verified by:** [source]
+> **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_03/carta_13_indice_modulacion_am]]]
 
 ## Definicion
 
-El indice de modulacion $m$ cuantifica la profundidad de la modulacion en AM [source]:
+El indice de modulacion $m$ cuantifica la profundidad de la modulacion en AM [source — [[../../explicaciones_anki/unidad_03/carta_13_indice_modulacion_am]]]:
 
 $$\boxed{m = \frac{A_m}{A_c} = \frac{A_{max} - A_{min}}{A_{max} + A_{min}}}$$
 
@@ -31,7 +31,7 @@ La envolvente varia entre:
 - Maximo: $A_c(1 + m)$
 - Minimo: $A_c(1 - m)$
 
-Para evitar inversion de fase: $A_c(1 - m) \geq 0 \Rightarrow m \leq 1$ [source].
+Para evitar inversion de fase: $A_c(1 - m) \geq 0 \Rightarrow m \leq 1$ [source — [[../../explicaciones_anki/unidad_03/carta_13_indice_modulacion_am]]].
 
 ## Regimenes de Modulacion
 
@@ -43,7 +43,7 @@ Para evitar inversion de fase: $A_c(1 - m) \geq 0 \Rightarrow m \leq 1$ [source]
 
 ## Eficiencia de Potencia
 
-La eficiencia depende del indice de modulacion [source]:
+La eficiencia depende del indice de modulacion [source — [[../../explicaciones_anki/unidad_03/carta_13_indice_modulacion_am]]]:
 
 $$\boxed{\eta = \frac{m^2}{2 + m^2}}$$
 
@@ -90,13 +90,13 @@ El indice de modulacion es como el volumen de tu voz en una conversacion ruidosa
 
 ## Puntos Clave
 
-- ✓ $m$ debe ser $\leq 1$ para evitar distorsion [source]
-- ✓ Eficiencia maxima teorica: $33.33\%$ (con $m = 1$) [source]
-- ✓ $m > 1$ causa distorsion **catastrofica**, no gradual [source]
+- ✓ $m$ debe ser $\leq 1$ para evitar distorsion [source — [[../../explicaciones_anki/unidad_03/carta_13_indice_modulacion_am]]]
+- ✓ Eficiencia maxima teorica: $33.33\%$ (con $m = 1$) [source — [[../../explicaciones_anki/unidad_03/carta_13_indice_modulacion_am]]]
+- ✓ $m > 1$ causa distorsion **catastrofica**, no gradual [source — [[../../explicaciones_anki/unidad_03/carta_13_indice_modulacion_am]]]
 - ✓ $m = 0.99$ → señal limpia; $m = 1.01$ → señal destruida
 
 ## Ver tambien
 
-- [[modulacion-analogica/am-vs-dsb-sc]]
-- [[derivaciones/modulacion-am]]
-- [[ruido/efecto-umbral]]
+- [[../modulacion-analogica/am-vs-dsb-sc]]
+- [[../derivaciones/modulacion-am]]
+- [[../ruido/efecto-umbral]]

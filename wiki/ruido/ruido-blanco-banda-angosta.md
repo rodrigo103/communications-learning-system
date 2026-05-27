@@ -8,15 +8,15 @@ unidad: 7
 
 # Ruido Blanco y Ruido de Banda Angosta
 
-> **Last verified:** 2025-11-16 | **Verified by:** [source]
+> **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_07/carta_33_ruido-blanco]]]
 
 ## Ruido Blanco
 
-El ruido blanco tiene [[herramientas-matematicas/densidad-espectral-potencia|densidad espectral de potencia]] (DEP) constante para todas las frecuencias:
+El ruido blanco tiene [[../herramientas-matematicas/densidad-espectral-potencia|densidad espectral de potencia]] (DEP) constante para todas las frecuencias:
 
 $$\boxed{S_n(f) = \frac{N_0}{2} \quad \text{(bilateral)}, \qquad N_0 = kT \quad \text{(unilateral)}}$$
 
-**Propiedades:** [source]
+**Propiedades:** [source — [[../../explicaciones_anki/unidad_07/carta_33_ruido-blanco]]]
 - Autocorrelación: $R_n(\tau) = N_0 \delta(\tau)$ (decorrelación total)
 - Proceso estacionario, gaussiano (AWGN)
 - Potencia infinita en banda infinita → siempre se filtra en sistemas reales
@@ -29,7 +29,7 @@ A $T = 290$ K: $N_0 = -174$ dBm/Hz.
 
 ## Ruido de Banda Angosta
 
-Cuando el ruido blanco pasa por un filtro pasabanda centrado en $f_c$, con ancho de banda $B \ll f_c$, se obtiene ruido de banda angosta. Su representación matemática es fundamental para analizar el efecto del ruido en receptores. [source]
+Cuando el ruido blanco pasa por un filtro pasabanda centrado en $f_c$, con ancho de banda $B \ll f_c$, se obtiene ruido de banda angosta. Su representación matemática es fundamental para analizar el efecto del ruido en receptores. [source — [[../../explicaciones_anki/unidad_07/carta_33_ruido-blanco]]]
 
 ### Representación I-Q
 
@@ -59,10 +59,10 @@ Esta representación permite analizar:
 - **Receptores FM**: el ruido produce fluctuaciones de fase/frecuencia
 - **Efecto umbral**: cuando la envolvente del ruido supera a la portadora
 
-Ver [[ruido/snr-modulacion-lineal]] y [[ruido/efecto-umbral]] para el análisis detallado. [analysis]
+Ver [[../ruido/snr-modulacion-lineal]] y [[../ruido/efecto-umbral]] para el análisis detallado. [analysis]
 
 ## Ver también
 
-- [[ruido/fuentes-ruido]] — Origen físico del ruido blanco
-- [[herramientas-matematicas/densidad-espectral-potencia]] — DEP como herramienta de análisis
-- [[ruido/factor-ruido-temperatura]] — Cuantificación del ruido agregado
+- [[../ruido/fuentes-ruido]] — Origen físico del ruido blanco
+- [[../herramientas-matematicas/densidad-espectral-potencia]] — DEP como herramienta de análisis
+- [[../ruido/factor-ruido-temperatura]] — Cuantificación del ruido agregado

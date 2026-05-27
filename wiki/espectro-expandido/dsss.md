@@ -12,7 +12,7 @@ unidad: 10
 
 ## Principio
 
-**DSSS** (Direct Sequence Spread Spectrum) expande el espectro multiplicando los datos por una secuencia pseudoaleatoria (PN) de alta velocidad. La senal ocupa un ancho de banda mucho mayor que el de la informacion original. [source]
+**DSSS** (Direct Sequence Spread Spectrum) expande el espectro multiplicando los datos por una secuencia pseudoaleatoria (PN) de alta velocidad. La senal ocupa un ancho de banda mucho mayor que el de la informacion original. [source — [[../../explicaciones_anki/unidad_10/carta_51_dsss-vs-fhss]]]
 
 $$s_{DSSS}(t) = d(t) \cdot c(t) \cdot \cos(2\pi f_c t)$$
 
@@ -92,7 +92,7 @@ DSSS es excelente contra ruido continuo e interferencia de banda angosta. La int
 | Contra jammer parcial | Bueno | Excelente |
 | Complejidad | Mayor (correladores) | Menor (sintetizador) |
 
-Ver [[espectro-expandido/fhss]] para la comparacion detallada.
+Ver [[../espectro-expandido/fhss]] para la comparacion detallada.
 
 ## Errores Comunes
 
@@ -102,9 +102,9 @@ Ver [[espectro-expandido/fhss]] para la comparacion detallada.
 
 ## Ver tambien
 
-- [[espectro-expandido/cdma]]
-- [[espectro-expandido/fhss]]
-- [[espectro-expandido/correlacion-senales]]
-- [[espectro-expandido/ofdm]]
-- [[ruido/ruido-blanco-banda-angosta]]
-- [[espectro-expandido/aplicaciones-spread-spectrum]]
+- [[../espectro-expandido/cdma]]
+- [[../espectro-expandido/fhss]]
+- [[../espectro-expandido/correlacion-senales]]
+- [[../espectro-expandido/ofdm]]
+- [[../ruido/ruido-blanco-banda-angosta]]
+- [[../espectro-expandido/aplicaciones-spread-spectrum]]

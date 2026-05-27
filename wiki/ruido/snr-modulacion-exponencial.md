@@ -8,7 +8,7 @@ unidad: 8
 
 # SNR en Modulaciones Exponenciales (FM y PM)
 
-> **Last verified:** 2025-11-16 | **Verified by:** [source]
+> **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_07/carta_39_efecto_umbral_fm]]]
 
 ## Ganancia de SNR en FM
 
@@ -16,7 +16,7 @@ Sobre el umbral, FM ofrece una ganancia de SNR proporcional al cuadrado del índ
 
 $$\boxed{\left(\frac{S}{N}\right)_{out}^{FM} = 3\beta^2(\beta + 1) \cdot \left(\frac{S}{N}\right)_{in}}$$
 
-Para un tono modulante simple: $SNR_{out} = 3\beta^2 \cdot SNR_{in}$. [source]
+Para un tono modulante simple: $SNR_{out} = 3\beta^2 \cdot SNR_{in}$. [source — [[../../explicaciones_anki/unidad_07/carta_39_efecto_umbral_fm]]]
 
 ### Ejemplo: FM Broadcast
 
@@ -30,7 +30,7 @@ El ruido a la salida del demodulador FM tiene DEP que aumenta con $f^2$:
 
 $$\boxed{S_{n,out}(f) = \frac{2N_0 f^2}{A_c^2} \quad \text{para } |f| < f_m}$$
 
-Esto significa que las frecuencias altas de la señal son más vulnerables al ruido. [source]
+Esto significa que las frecuencias altas de la señal son más vulnerables al ruido. [source — [[../../explicaciones_anki/unidad_07/carta_39_efecto_umbral_fm]]]
 
 ## Pre-énfasis y De-énfasis
 
@@ -43,7 +43,7 @@ La mejora típica en SNR es de:
 
 $$\boxed{\text{Mejora por \'{e}nfasis} \approx 10-13 \text{ dB}}$$
 
-Constantes de tiempo estándar: $\tau = 75$ μs (USA/Japón), $\tau = 50$ μs (Europa). [source]
+Constantes de tiempo estándar: $\tau = 75$ μs (USA/Japón), $\tau = 50$ μs (Europa). [source — [[../../explicaciones_anki/unidad_07/carta_39_efecto_umbral_fm]]]
 
 ### SNR Total con Énfasis
 
@@ -55,8 +55,8 @@ Comparado con AM: ventaja de ~31 dB (factor > 1000). [analysis]
 
 ## Ver también
 
-- [[ruido/relacion-snr]] — Definiciones y métricas fundamentales
-- [[modulacion-analogica/fm-vs-pm]] — Comparación entre FM y PM
-- [[modulacion-analogica/preenfasis-deenfasis]] — Red de énfasis en detalle
-- [[ruido/efecto-umbral]] — Límite donde colapsa la ventaja de FM
-- [[ruido/intercomparacion-sistemas]] — Comparación global de todos los sistemas
+- [[../ruido/relacion-snr]] — Definiciones y métricas fundamentales
+- [[../modulacion-analogica/fm-vs-pm]] — Comparación entre FM y PM
+- [[../modulacion-analogica/preenfasis-deenfasis]] — Red de énfasis en detalle
+- [[../ruido/efecto-umbral]] — Límite donde colapsa la ventaja de FM
+- [[../ruido/intercomparacion-sistemas]] — Comparación global de todos los sistemas

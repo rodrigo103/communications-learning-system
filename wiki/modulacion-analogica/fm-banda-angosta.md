@@ -8,11 +8,11 @@ unidad: 4
 
 # FM de Banda Angosta (NBFM) vs Banda Ancha (WBFM)
 
-> **Last verified:** 2025-11-16 | **Verified by:** [source]
+> **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_04/carta_17_indice_modulacion_fm]]]
 
 ## Indice de Modulacion
 
-El indice de modulacion $\beta$ en FM se define como [source]:
+El indice de modulacion $\beta$ en FM se define como [source — [[../../explicaciones_anki/unidad_04/carta_17_indice_modulacion_fm]]]:
 
 $$\boxed{\beta = \frac{\Delta f}{f_m} = \frac{k_f A_m}{f_m}}$$
 
@@ -22,7 +22,7 @@ donde $\Delta f = k_f A_m$ es la desviacion pico de frecuencia.
 
 ### Aproximacion
 
-Para $\beta \ll 1$, usando aproximaciones de funciones de Bessel de argumento pequeño [source]:
+Para $\beta \ll 1$, usando aproximaciones de funciones de Bessel de argumento pequeño [source — [[../../explicaciones_anki/unidad_04/carta_17_indice_modulacion_fm]]]:
 - $J_0(\beta) \approx 1$
 - $J_1(\beta) \approx \beta/2$
 - $J_n(\beta) \approx 0$ para $n \geq 2$
@@ -44,7 +44,7 @@ $$\boxed{s_{NBFM}(t) \approx A_c\cos(2\pi f_c t) - \frac{A_c\beta}{2}\cos[2\pi(f
 
 ### Espectro Completo
 
-Usando funciones de Bessel [source]:
+Usando funciones de Bessel [source — [[../../explicaciones_anki/unidad_04/carta_17_indice_modulacion_fm]]]:
 
 $$s_{FM}(t) = A_c\sum_{n=-\infty}^{\infty} J_n(\beta)\cos[2\pi(f_c + nf_m)t]$$
 
@@ -86,7 +86,7 @@ Numero de bandas laterales significativas $\approx 5 + 1 = 6$ pares.
 
 $$\boxed{\text{Mayor } \beta \Rightarrow \text{ Mejor SNR pero Mayor BW}}$$
 
-La mejora en SNR es proporcional a $\beta^2$ [source]: WBFM intercambia ancho de banda por calidad de señal.
+La mejora en SNR es proporcional a $\beta^2$ [source — [[../../explicaciones_anki/unidad_04/carta_17_indice_modulacion_fm]]]: WBFM intercambia ancho de banda por calidad de señal.
 
 ## Zona de Transicion
 
@@ -94,13 +94,13 @@ Para $0.5 < \beta < 1$: transicion gradual entre NBFM y WBFM. La aproximacion NB
 
 ## Puntos Clave
 
-- ✓ $\beta$ determina completamente el comportamiento espectral [source]
-- ✓ NBFM: espectro similar a AM ($\approx 3$ componentes) [source]
-- ✓ WBFM: multiples componentes, espectro "peine de frecuencias" [source]
+- ✓ $\beta$ determina completamente el comportamiento espectral [source — [[../../explicaciones_anki/unidad_04/carta_17_indice_modulacion_fm]]]
+- ✓ NBFM: espectro similar a AM ($\approx 3$ componentes) [source — [[../../explicaciones_anki/unidad_04/carta_17_indice_modulacion_fm]]]
+- ✓ WBFM: multiples componentes, espectro "peine de frecuencias" [source — [[../../explicaciones_anki/unidad_04/carta_17_indice_modulacion_fm]]]
 - ✓ El espectro FM teorico es infinito; practico es finito
 
 ## Ver tambien
 
-- [[modulacion-analogica/fm-vs-pm]]
-- [[modulacion-analogica/ancho-banda-carson]]
-- [[derivaciones/modulacion-fm-banda-angosta]]
+- [[../modulacion-analogica/fm-vs-pm]]
+- [[../modulacion-analogica/ancho-banda-carson]]
+- [[../derivaciones/modulacion-fm-banda-angosta]]

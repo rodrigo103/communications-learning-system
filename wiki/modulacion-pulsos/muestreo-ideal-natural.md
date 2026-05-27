@@ -8,11 +8,11 @@ unidad: 5
 
 # Muestreo Ideal, Natural y Modulación PAM
 
-> **Last verified:** 2025-11-16 | **Verified by:** [source]
+> **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_05/carta_22_modulacion-analogica-pulsos]]]
 
 ## Muestreo Ideal vs. Natural
 
-El muestreo es la primera etapa en la digitalización de señales. Partiendo de una señal continua $m(t)$, el muestreo convierte el tiempo continuo en discreto mediante un tren de pulsos periódicos de período $T_s = 1/f_s$, con $f_s \geq 2f_m$ según [[herramientas-matematicas/teorema-muestreo]].
+El muestreo es la primera etapa en la digitalización de señales. Partiendo de una señal continua $m(t)$, el muestreo convierte el tiempo continuo en discreto mediante un tren de pulsos periódicos de período $T_s = 1/f_s$, con $f_s \geq 2f_m$ según [[../herramientas-matematicas/teorema-muestreo]].
 
 ### Muestreo Ideal (Impulsos)
 
@@ -24,7 +24,7 @@ En el dominio frecuencial, el espectro se replica cada $f_s$:
 
 $$X_s(f) = f_s \sum_{k=-\infty}^{\infty} X(f - kf_s)$$
 
-Si $f_s < 2f_{max}$ las réplicas se solapan, produciendo **aliasing**. [source]
+Si $f_s < 2f_{max}$ las réplicas se solapan, produciendo **aliasing**. [source — [[../../explicaciones_anki/unidad_05/carta_22_modulacion-analogica-pulsos]]]
 
 ### Muestreo Natural (PAM Natural)
 
@@ -46,7 +46,7 @@ Esta variante introduce **distorsión de apertura** que requiere ecualización e
 
 ## PAM, PWM y PPM
 
-La **Pulse Amplitude Modulation (PAM)** varía la amplitud de los pulsos proporcionalmente a $m(t)$. Es la base de [[modulacion-pulsos/pcm-cuantificacion]].
+La **Pulse Amplitude Modulation (PAM)** varía la amplitud de los pulsos proporcionalmente a $m(t)$. Es la base de [[../modulacion-pulsos/pcm-cuantificacion]].
 
 - **PWM** (Pulse Width Modulation): varía el ancho del pulso, $\tau(t) = \tau_0[1 + k_{PWM} \cdot m(t)]$
 - **PPM** (Pulse Position Modulation): varía la posición temporal, $\Delta t(n) = k_{PPM} \cdot m(nT_s)$
@@ -59,10 +59,10 @@ El ancho de banda requerido se relaciona con el ancho del pulso:
 
 $$\boxed{BW_{min} = \frac{1}{\tau}}$$
 
-Para telefonía con $f_s = 8$ kHz y ciclo de trabajo del $10\%$: $\tau = 12.5$ μs, $BW_{min} = 80$ kHz. [source]
+Para telefonía con $f_s = 8$ kHz y ciclo de trabajo del $10\%$: $\tau = 12.5$ μs, $BW_{min} = 80$ kHz. [source — [[../../explicaciones_anki/unidad_05/carta_22_modulacion-analogica-pulsos]]]
 
 ## Ver también
 
-- [[herramientas-matematicas/teorema-muestreo]] — Fundamento de la frecuencia de muestreo
-- [[modulacion-pulsos/pcm-cuantificacion]] — PAM como primera etapa del PCM
-- [[modulacion-pulsos/multiplex-tdm]] — Multiplexación temporal de canales PAM
+- [[../herramientas-matematicas/teorema-muestreo]] — Fundamento de la frecuencia de muestreo
+- [[../modulacion-pulsos/pcm-cuantificacion]] — PAM como primera etapa del PCM
+- [[../modulacion-pulsos/multiplex-tdm]] — Multiplexación temporal de canales PAM

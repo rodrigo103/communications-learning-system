@@ -11,10 +11,14 @@
             "id": "61d3847bcb373d98",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "wiki/modulacion-analogica/modulacion-ssb.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "modulacion-ssb"
             }
           }
         ]
@@ -176,7 +180,7 @@
       "bases:Create new base": false
     }
   },
-  "active": "989db74eff979161",
+  "active": "61d3847bcb373d98",
   "lastOpenFiles": [
     "wiki/teoria-informacion/teorema-shannon-hartley.md",
     "wiki/teoria-informacion/sistema-ideal-comunicaciones.md",

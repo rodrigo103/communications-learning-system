@@ -8,7 +8,7 @@ unidad: 7
 
 # Fórmula de Friis para Sistemas en Cascada
 
-> **Last verified:** 2025-11-16 | **Verified by:** [source]
+> **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_07/carta_36_formula-friis]]]
 
 ## Enunciado
 
@@ -18,7 +18,7 @@ $$\boxed{F_{total} = F_1 + \frac{F_2 - 1}{G_1} + \frac{F_3 - 1}{G_1 G_2} + \cdot
 
 donde:
 - $F_i$ = figura de ruido del $i$-ésimo dispositivo (lineal)
-- $G_i$ = ganancia de potencia del $i$-ésimo dispositivo (lineal) [source]
+- $G_i$ = ganancia de potencia del $i$-ésimo dispositivo (lineal) [source — [[../../explicaciones_anki/unidad_07/carta_36_formula-friis]]]
 
 ## Implicaciones de Diseño
 
@@ -56,7 +56,7 @@ $$T_{total} = T_1 + \frac{T_2}{G_1} + \frac{T_3}{G_1 G_2} + \cdots$$
 
 ## Ver también
 
-- [[ruido/factor-ruido-temperatura]] — Figura de ruido y temperatura equivalente
-- [[derivaciones/ecuacion-friis]] — Derivación completa de la fórmula
-- [[ruido/relacion-snr]] — Impacto de $F_{total}$ en la SNR del sistema
-- [[modulacion-analogica/receptor-superheterodino]] — Arquitectura típica donde se aplica Friis
+- [[../ruido/factor-ruido-temperatura]] — Figura de ruido y temperatura equivalente
+- [[../derivaciones/ecuacion-friis]] — Derivación completa de la fórmula
+- [[../ruido/relacion-snr]] — Impacto de $F_{total}$ en la SNR del sistema
+- [[../modulacion-analogica/receptor-superheterodino]] — Arquitectura típica donde se aplica Friis

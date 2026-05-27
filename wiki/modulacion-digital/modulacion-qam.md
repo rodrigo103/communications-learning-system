@@ -8,11 +8,11 @@ unidad: 6
 
 # QAM: Modulación de Amplitud en Cuadratura
 
-> **Last verified:** 2025-11-16 | **Verified by:** [source]
+> **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_06/carta_29_qam]]]
 
 ## Definición
 
-QAM modula independientemente la amplitud de dos portadoras en cuadratura (desfasadas 90°), combinando efectivamente [[modulacion-digital/ask-fsk-psk|ASK y PSK]] en un solo esquema. [source]
+QAM modula independientemente la amplitud de dos portadoras en cuadratura (desfasadas 90°), combinando efectivamente [[../modulacion-digital/ask-fsk-psk|ASK y PSK]] en un solo esquema. [source — [[../../explicaciones_anki/unidad_06/carta_29_qam]]]
 
 ### Señal QAM
 
@@ -28,7 +28,7 @@ Las portadoras $\cos$ y $\sin$ son ortogonales:
 
 $$\int_0^T \cos(2\pi f_c t) \cdot \sin(2\pi f_c t) \, dt = 0$$
 
-Esto permite transmitir dos flujos independientes en el mismo ancho de banda. [source]
+Esto permite transmitir dos flujos independientes en el mismo ancho de banda. [source — [[../../explicaciones_anki/unidad_06/carta_29_qam]]]
 
 ## Eficiencia Espectral
 
@@ -73,7 +73,7 @@ Sistemas como LTE y WiFi 6 ajustan el orden de QAM según la SNR del canal: [ana
 
 ## Ver también
 
-- [[modulacion-digital/constelaciones]] — Representación de constelaciones QAM rectangulares
-- [[modulacion-digital/ask-fsk-psk]] — Modulaciones básicas que QAM combina
-- [[derivaciones/modulacion-qam]] — Derivación matemática completa
-- [[modulacion-analogica/am-vs-dsb-sc]] — Antecedente analógico de modulación en cuadratura
+- [[../modulacion-digital/constelaciones]] — Representación de constelaciones QAM rectangulares
+- [[../modulacion-digital/ask-fsk-psk]] — Modulaciones básicas que QAM combina
+- [[../derivaciones/modulacion-qam]] — Derivación matemática completa
+- [[../modulacion-analogica/am-vs-dsb-sc]] — Antecedente analógico de modulación en cuadratura

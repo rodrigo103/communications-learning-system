@@ -12,7 +12,7 @@ unidad: 10
 
 ## Panorama General
 
-Las tecnicas de espectro expandido y OFDM son la base de practicamente todos los sistemas de comunicacion inalambrica modernos. Esta pagina sintetiza las aplicaciones principales, desde GPS hasta 5G, pasando por WiFi, Bluetooth, y broadcasting digital. [source]
+Las tecnicas de espectro expandido y OFDM son la base de practicamente todos los sistemas de comunicacion inalambrica modernos. Esta pagina sintetiza las aplicaciones principales, desde GPS hasta 5G, pasando por WiFi, Bluetooth, y broadcasting digital. [source — [[../../explicaciones_anki/unidad_10/carta_54_aplicaciones-ofdm]]]
 
 ---
 
@@ -80,7 +80,7 @@ WiFi 6 (802.11ax) introduce OFDMA para acceso multiple, reduciendo latencia en 7
 - mmWave (FR2): 24-52 GHz, canales de 100+ MHz
 - Massive MIMO: 64-256 antenas en estacion base
 - Codigos LDPC (datos) y Polar (control)
-- Servicios: eMBB, URLLC, mMTC [source]
+- Servicios: eMBB, URLLC, mMTC [source — [[../../explicaciones_anki/unidad_10/carta_54_aplicaciones-ofdm]]]
 
 ### TV Digital
 
@@ -119,9 +119,9 @@ WiFi 6 (802.11ax) introduce OFDMA para acceso multiple, reduciendo latencia en 7
 
 ## Ver tambien
 
-- [[espectro-expandido/cdma]]
-- [[espectro-expandido/dsss]]
-- [[espectro-expandido/fhss]]
-- [[espectro-expandido/ofdm]]
-- [[introduccion/espectro-electromagnetico]]
-- [[conceptos-integradores/evolucion-sistemas]]
+- [[../espectro-expandido/cdma]]
+- [[../espectro-expandido/dsss]]
+- [[../espectro-expandido/fhss]]
+- [[../espectro-expandido/ofdm]]
+- [[../introduccion/espectro-electromagnetico]]
+- [[../conceptos-integradores/evolucion-sistemas]]

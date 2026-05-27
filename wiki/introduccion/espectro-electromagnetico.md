@@ -8,11 +8,11 @@ unidad: 1
 
 # Espectro Electromagnetico
 
-> **Last verified:** 2025-11-16 | **Verified by:** [source]
+> **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_01/carta_03_espectro_electromagnetico]]]
 
 ## Definicion
 
-El espectro electromagnetico es el rango completo de todas las frecuencias de ondas electromagneticas, gobernado por la ecuacion fundamental [source]:
+El espectro electromagnetico es el rango completo de todas las frecuencias de ondas electromagneticas, gobernado por la ecuacion fundamental [source — [[../../explicaciones_anki/unidad_01/carta_03_espectro_electromagnetico]]]:
 
 $$\boxed{c = \lambda \cdot f}$$
 
@@ -20,7 +20,7 @@ donde $c = 3 \times 10^8$ m/s, $\lambda$ = longitud de onda, $f$ = frecuencia.
 
 ## El Espectro como Recurso Limitado
 
-El espectro electromagnetico es un **recurso natural limitado y no renovable** [source]. A diferencia de recursos fisicos, no se "gasta" pero si puede "congestionarse" y degradarse por uso inadecuado. La capacidad esta limitada por el teorema de Shannon-Hartley:
+El espectro electromagnetico es un **recurso natural limitado y no renovable** [source — [[../../explicaciones_anki/unidad_01/carta_03_espectro_electromagnetico]]]. A diferencia de recursos fisicos, no se "gasta" pero si puede "congestionarse" y degradarse por uso inadecuado. La capacidad esta limitada por el teorema de Shannon-Hartley:
 
 $$C = B \log_2(1 + S/N)$$
 
@@ -42,14 +42,14 @@ Rango util para comunicaciones: aproximadamente 3 kHz - 300 GHz.
 
 ## Por que es Limitado
 
-**Limitaciones fisicas** [source]:
+**Limitaciones fisicas** [source — [[../../explicaciones_anki/unidad_01/carta_03_espectro_electromagnetico]]]:
 - **Propagacion**: no todas las frecuencias se propagan igual. VLF-LF excelente propagacion pero baja capacidad; SHF-EHF alta capacidad pero alcance limitado
 - **Tecnologia**: generacion y deteccion limitadas; costo aumenta con la frecuencia
 - **Capacidad teorica**: $C = B \log_2(1 + S/N)$ — espectro limitado $\to$ capacidad limitada
 
 ## Competencia por el Espectro
 
-Principales categorias de usuarios [source]:
+Principales categorias de usuarios [source — [[../../explicaciones_anki/unidad_01/carta_03_espectro_electromagnetico]]]:
 1. **Broadcasting**: radio AM/FM, TV
 2. **Telecomunicaciones**: telefonia movil, enlaces de microondas, satelites
 3. **Gobierno y Defensa**: comunicaciones militares, radar
@@ -67,7 +67,7 @@ La UIT-R divide el mundo en 3 regiones:
 - **Region 2**: Americas
 - **Region 3**: Asia-Pacifico
 
-La Conferencia Mundial de Radiocomunicaciones (WRC), cada 3-4 años, actualiza el tratado internacional de asignacion de bandas [source].
+La Conferencia Mundial de Radiocomunicaciones (WRC), cada 3-4 años, actualiza el tratado internacional de asignacion de bandas [source — [[../../explicaciones_anki/unidad_01/carta_03_espectro_electromagnetico]]].
 
 ### Metodos de Asignacion
 
@@ -77,15 +77,15 @@ La Conferencia Mundial de Radiocomunicaciones (WRC), cada 3-4 años, actualiza e
 
 ## Consecuencias del Mal Uso
 
-- **Interferencia co-canal**: $SINR = S/(I + N)$ donde $I$ = interferencia [source]
+- **Interferencia co-canal**: $SINR = S/(I + N)$ donde $I$ = interferencia [source — [[../../explicaciones_anki/unidad_01/carta_03_espectro_electromagnetico]]]
 - **Interferencia de canal adyacente**: filtros imperfectos
 - **Congestion**: degradacion en bandas saturadas
 - **Ineficiencia economica**: espectro subutilizado ("spectrum holes")
 
 ## Estrategias de Uso Eficiente
 
-- **Modulaciones eficientes**: QAM de alto orden (64-QAM, 256-QAM) [source]
-- **Acceso multiple**: FDMA, TDMA, CDMA, OFDMA (ver [[espectro-expandido/cdma]] y [[espectro-expandido/ofdm]])
+- **Modulaciones eficientes**: QAM de alto orden (64-QAM, 256-QAM) [source — [[../../explicaciones_anki/unidad_01/carta_03_espectro_electromagnetico]]]
+- **Acceso multiple**: FDMA, TDMA, CDMA, OFDMA (ver [[../espectro-expandido/cdma]] y [[../espectro-expandido/ofdm]])
 - **Reutilizacion espacial**: celdas en redes celulares, MIMO masivo
 - **Gestion dinamica**: radio cognitivo, carrier aggregation
 - **Compresion**: codificacion de fuente (MP3, H.264, HEVC)
@@ -96,8 +96,8 @@ La Conferencia Mundial de Radiocomunicaciones (WRC), cada 3-4 años, actualiza e
 
 ## Ver tambien
 
-- [[introduccion/modelo-shannon]]
-- [[introduccion/necesidad-modulacion]]
-- [[ruido/fuentes-ruido]]
-- [[espectro-expandido/cdma]]
-- [[espectro-expandido/ofdm]]
+- [[../introduccion/modelo-shannon]]
+- [[../introduccion/necesidad-modulacion]]
+- [[../ruido/fuentes-ruido]]
+- [[../espectro-expandido/cdma]]
+- [[../espectro-expandido/ofdm]]

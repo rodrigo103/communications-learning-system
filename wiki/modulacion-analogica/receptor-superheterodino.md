@@ -8,11 +8,11 @@ unidad: 3
 
 # Receptor Superheterodino
 
-> **Last verified:** 2025-11-16 | **Verified by:** [source]
+> **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_03/carta_12_receptor-superheterodino]]]
 
 ## Principio de Funcionamiento
 
-El receptor superheterodino convierte la señal de RF recibida a una **frecuencia intermedia (FI) fija** mediante un mezclador y oscilador local [source]:
+El receptor superheterodino convierte la señal de RF recibida a una **frecuencia intermedia (FI) fija** mediante un mezclador y oscilador local [source — [[../../explicaciones_anki/unidad_03/carta_12_receptor-superheterodino]]]:
 
 $$\boxed{f_{FI} = |f_{RF} - f_{LO}|}$$
 
@@ -31,7 +31,7 @@ Antes del superheterodino, los receptores TRF (Tuned Radio Frequency) tenian pro
 - Imposible separar estaciones cercanas
 - Dificil mantener ancho de banda constante
 
-La solucion: convertir **todas** las señales a una FI fija donde se optimiza el procesamiento [source].
+La solucion: convertir **todas** las señales a una FI fija donde se optimiza el procesamiento [source — [[../../explicaciones_anki/unidad_03/carta_12_receptor-superheterodino]]].
 
 ## Etapas del Receptor
 
@@ -56,7 +56,7 @@ El filtro FI selecciona la componente diferencia: $f_{FI} = |f_{RF} - f_{LO}|$.
 
 ## Problema de Frecuencia Imagen
 
-Existe una frecuencia no deseada que tambien produce la misma FI [source]:
+Existe una frecuencia no deseada que tambien produce la misma FI [source — [[../../explicaciones_anki/unidad_03/carta_12_receptor-superheterodino]]]:
 
 $$f_{imagen} = f_{LO} \pm f_{FI}$$
 
@@ -68,8 +68,8 @@ La frecuencia imagen debe ser **rechazada por el filtro de RF** antes del mezcla
 
 ## Ventajas del Superheterodino
 
-- **Selectividad constante**: filtros FI optimizados para una sola frecuencia [source]
-- **Alta ganancia**: amplificacion mas eficiente en FI fija [source]
+- **Selectividad constante**: filtros FI optimizados para una sola frecuencia [source — [[../../explicaciones_anki/unidad_03/carta_12_receptor-superheterodino]]]
+- **Alta ganancia**: amplificacion mas eficiente en FI fija [source — [[../../explicaciones_anki/unidad_03/carta_12_receptor-superheterodino]]]
 - **Sintonizacion simple**: solo varia el oscilador local
 - **Rechazo de imagen**: con filtrado RF adecuado
 
@@ -97,14 +97,14 @@ El superheterodino es como un sistema de traduccion universal: en lugar de apren
 
 ## Puntos Clave
 
-- ✓ Convierte TODAS las señales a una FI fija [source]
-- ✓ FI fija permite optimizacion de filtros y amplificadores [source]
-- ✓ La frecuencia imagen debe rechazarse en RF [source]
-- ✓ Arquitectura dominante en receptores desde 1918 hasta hoy [source]
+- ✓ Convierte TODAS las señales a una FI fija [source — [[../../explicaciones_anki/unidad_03/carta_12_receptor-superheterodino]]]
+- ✓ FI fija permite optimizacion de filtros y amplificadores [source — [[../../explicaciones_anki/unidad_03/carta_12_receptor-superheterodino]]]
+- ✓ La frecuencia imagen debe rechazarse en RF [source — [[../../explicaciones_anki/unidad_03/carta_12_receptor-superheterodino]]]
+- ✓ Arquitectura dominante en receptores desde 1918 hasta hoy [source — [[../../explicaciones_anki/unidad_03/carta_12_receptor-superheterodino]]]
 
 ## Ver tambien
 
-- [[modulacion-analogica/am-vs-dsb-sc]]
-- [[modulacion-analogica/modulacion-ssb]]
-- [[modulacion-analogica/fm-estereo]]
-- [[ruido/factor-ruido-temperatura]]
+- [[../modulacion-analogica/am-vs-dsb-sc]]
+- [[../modulacion-analogica/modulacion-ssb]]
+- [[../modulacion-analogica/fm-estereo]]
+- [[../ruido/factor-ruido-temperatura]]

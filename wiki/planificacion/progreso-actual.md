@@ -45,21 +45,21 @@ unidad: null
 Aunque el progreso formal marca 0%, se ha generado material de estudio significativo [gap]:
 
 ### Derivaciones completadas
-- [[derivaciones/modulacion-am|Modulación AM]]
-- [[derivaciones/modulacion-fm-carson|FM y Regla de Carson]]
-- [[derivaciones/modulacion-fm-banda-angosta|FM de Banda Angosta (NBFM)]]
-- [[derivaciones/modulacion-qam|Modulación QAM]]
-- [[derivaciones/teorema-parseval|Teorema de Parseval]]
-- [[derivaciones/teorema-shannon-hartley|Teorema de Shannon-Hartley]]
-- [[derivaciones/ecuacion-friis|Fórmula de Friis para Cascada]]
+- [[../derivaciones/modulacion-am|Modulación AM]]
+- [[../derivaciones/modulacion-fm-carson|FM y Regla de Carson]]
+- [[../derivaciones/modulacion-fm-banda-angosta|FM de Banda Angosta (NBFM)]]
+- [[../derivaciones/modulacion-qam|Modulación QAM]]
+- [[../derivaciones/teorema-parseval|Teorema de Parseval]]
+- [[../derivaciones/teorema-shannon-hartley|Teorema de Shannon-Hartley]]
+- [[../derivaciones/ecuacion-friis|Fórmula de Friis para Cascada]]
 
 ### Problemas resueltos
-- [[problemas/ejercicio-ruido|Ejercicio de Ruido con Amplificador]]
-- [[problemas/tp5-ejercicio-3|TP5 — SNR en Receptor FM]]
+- [[../problemas/ejercicio-ruido|Ejercicio de Ruido con Amplificador]]
+- [[../problemas/tp5-ejercicio-3|TP5 — SNR en Receptor FM]]
 
 ### Mapas mentales
-- [[resumenes/overview-curso|Visión General del Curso]]
-- [[resumenes/modulacion-digital-unidad6|Modulación Digital — Unidad 6]]
+- [[../resumenes/overview-curso|Visión General del Curso]]
+- [[../resumenes/modulacion-digital-unidad6|Modulación Digital — Unidad 6]]
 
 ## Próximos pasos recomendados
 
@@ -80,6 +80,6 @@ Aunque el progreso formal marca 0%, se ha generado material de estudio significa
 
 ## Ver también
 
-- [[planificacion/programa-oficial]]
-- [[planificacion/mazo-anki]]
-- [[resumenes/overview-curso]]
+- [[../planificacion/programa-oficial]]
+- [[../planificacion/mazo-anki]]
+- [[../resumenes/overview-curso]]

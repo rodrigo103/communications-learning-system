@@ -12,7 +12,7 @@ unidad: 10
 
 ## Principio
 
-**CDMA** (Code Division Multiple Access) permite que multiples usuarios compartan simultaneamente la misma banda de frecuencia usando codigos de espectro expandido ortogonales. Revoluciono las comunicaciones moviles en los anos 90 y fue la base de las redes 3G. [source]
+**CDMA** (Code Division Multiple Access) permite que multiples usuarios compartan simultaneamente la misma banda de frecuencia usando codigos de espectro expandido ortogonales. Revoluciono las comunicaciones moviles en los anos 90 y fue la base de las redes 3G. [source — [[../../explicaciones_anki/unidad_10/carta_52_cdma]]]
 
 A diferencia de FDMA (cada usuario en su frecuencia) o TDMA (cada usuario en su intervalo de tiempo), CDMA permite que **todos los usuarios transmitan simultaneamente en la misma frecuencia**, separados unicamente por codigos matematicos.
 
@@ -67,7 +67,7 @@ Solucion: **control de potencia estricto**:
 
 ## Codigos Ortogonales
 
-Los codigos deben tener: [source]
+Los codigos deben tener: [source — [[../../explicaciones_anki/unidad_10/carta_52_cdma]]]
 - **Autocorrelacion alta**: correlaciona bien consigo mismo
 - **Correlacion cruzada baja**: correlaciona mal con otros codigos
 
@@ -105,8 +105,8 @@ Capacidad **flexible** (soft capacity): mas usuarios degradan gradualmente la ca
 
 ## Ver tambien
 
-- [[espectro-expandido/dsss]]
-- [[espectro-expandido/fhss]]
-- [[espectro-expandido/correlacion-senales]]
-- [[espectro-expandido/aplicaciones-spread-spectrum]]
-- [[espectro-expandido/ofdm]]
+- [[../espectro-expandido/dsss]]
+- [[../espectro-expandido/fhss]]
+- [[../espectro-expandido/correlacion-senales]]
+- [[../espectro-expandido/aplicaciones-spread-spectrum]]
+- [[../espectro-expandido/ofdm]]

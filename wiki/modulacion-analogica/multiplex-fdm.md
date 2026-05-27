@@ -8,11 +8,11 @@ unidad: 3
 
 # Multiplexacion por Division de Frecuencia (FDM)
 
-> **Last verified:** 2025-11-16 | **Verified by:** [source]
+> **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_03/carta_14_modulador_balanceado]]]
 
 ## Definicion
 
-FDM (Frequency Division Multiplexing) permite que **multiples señales compartan simultaneamente el mismo medio fisico** modulando cada una a una frecuencia portadora diferente, con bandas de guarda entre ellas [source].
+FDM (Frequency Division Multiplexing) permite que **multiples señales compartan simultaneamente el mismo medio fisico** modulando cada una a una frecuencia portadora diferente, con bandas de guarda entre ellas [source — [[../../explicaciones_anki/unidad_03/carta_14_modulador_balanceado]]].
 
 ## Principio de Operacion
 
@@ -38,7 +38,7 @@ f_{c1}               f_{c2}                  f_{c3}
 
 ## Sistema Telefonico FDM Clasico
 
-Ejemplo: 12 canales de voz SSB (grupo basico) [source]:
+Ejemplo: 12 canales de voz SSB (grupo basico) [source — [[../../explicaciones_anki/unidad_03/carta_14_modulador_balanceado]]]:
 
 - Cada canal de voz: 300-3400 Hz, BW = 4 kHz
 - Modulacion: SSB (banda lateral inferior) con moduladores balanceados
@@ -47,11 +47,11 @@ Ejemplo: 12 canales de voz SSB (grupo basico) [source]:
 - Banda de guarda: minima
 - BW total del grupo: 60-108 kHz = 48 kHz
 
-El modulador balanceado es fundamental en FDM: suprime la portadora de cada canal, evitando que 12 portadoras consuman potencia y causen batidos entre canales [source].
+El modulador balanceado es fundamental en FDM: suprime la portadora de cada canal, evitando que 12 portadoras consuman potencia y causen batidos entre canales [source — [[../../explicaciones_anki/unidad_03/carta_14_modulador_balanceado]]].
 
 ## Ventajas de FDM
 
-- **Uso eficiente del espectro**: multiples usuarios comparten el medio [source]
+- **Uso eficiente del espectro**: multiples usuarios comparten el medio [source — [[../../explicaciones_anki/unidad_03/carta_14_modulador_balanceado]]]
 - **Transmision simultanea**: todos los canales activos al mismo tiempo
 - **Independencia**: cada canal puede usar diferente modulacion y ancho de banda
 - **Simplicidad en recepcion**: filtros pasa-banda separan los canales
@@ -72,27 +72,27 @@ El modulador balanceado es fundamental en FDM: suprime la portadora de cada cana
 | Apto para | Señales analogicas | Señales digitales |
 | Vulnerabilidad | Interferencia frecuencial | Jitter temporal |
 
-Ver [[modulacion-pulsos/multiplex-tdm]] para TDM.
+Ver [[../modulacion-pulsos/multiplex-tdm]] para TDM.
 
 ## Aplicaciones
 
 - **Telefonia analogica**: sistemas de larga distancia historicos (Bell L1, L3, L5)
-- **Radio FM estereo**: L+R en banda base, L-R en subportadora 38 kHz (ver [[modulacion-analogica/fm-estereo]])
+- **Radio FM estereo**: L+R en banda base, L-R en subportadora 38 kHz (ver [[../modulacion-analogica/fm-estereo]])
 - **Cable TV**: multiples canales en diferentes frecuencias
 - **DSL**: DMT (Discrete Multi-Tone) = FDM digital
-- **OFDM**: version digital moderna de FDM (ver [[espectro-expandido/ofdm]])
+- **OFDM**: version digital moderna de FDM (ver [[../espectro-expandido/ofdm]])
 
 ## Puntos Clave
 
-- ✓ FDM comparte el medio modulando a diferentes portadoras [source]
-- ✓ Bandas de guarda necesarias para evitar interferencia [source]
+- ✓ FDM comparte el medio modulando a diferentes portadoras [source — [[../../explicaciones_anki/unidad_03/carta_14_modulador_balanceado]]]
+- ✓ Bandas de guarda necesarias para evitar interferencia [source — [[../../explicaciones_anki/unidad_03/carta_14_modulador_balanceado]]]
 - ✓ Moduladores balanceados suprimen portadoras y evitan batidos [analysis]
 - ✓ OFDM es la evolucion digital de FDM
 
 ## Ver tambien
 
-- [[introduccion/necesidad-modulacion]]
-- [[introduccion/espectro-electromagnetico]]
-- [[modulacion-pulsos/multiplex-tdm]]
-- [[modulacion-analogica/fm-estereo]]
-- [[espectro-expandido/ofdm]]
+- [[../introduccion/necesidad-modulacion]]
+- [[../introduccion/espectro-electromagnetico]]
+- [[../modulacion-pulsos/multiplex-tdm]]
+- [[../modulacion-analogica/fm-estereo]]
+- [[../espectro-expandido/ofdm]]

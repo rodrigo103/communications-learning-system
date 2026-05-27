@@ -8,7 +8,7 @@ unidad: 8
 
 # SNR en Modulaciones Lineales
 
-> **Last verified:** 2025-11-16 | **Verified by:** [source]
+> **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_07/carta_38_ruido-receptor-am]]]
 
 ## AM con Portadora (DSB-FC)
 
@@ -26,11 +26,11 @@ Salida del detector (quitando DC): $y_D(t) = A_c m(t) + x(t)$.
 
 $$\boxed{SNR_{out}^{AM} = \frac{m^2}{2 + m^2} \cdot SNR_{in}}$$
 
-Para $m = 1$ (100% modulación): $SNR_{out} = SNR_{in}/3$ (pérdida de ~4.8 dB). [source]
+Para $m = 1$ (100% modulación): $SNR_{out} = SNR_{in}/3$ (pérdida de ~4.8 dB). [source — [[../../explicaciones_anki/unidad_07/carta_38_ruido-receptor-am]]]
 
 ### Efecto Umbral
 
-Por debajo de $SNR_{in} \approx 10$ dB, la envolvente sigue al ruido y no a la señal — **supresión de la modulación**. La señal se pierde completamente. [source]
+Por debajo de $SNR_{in} \approx 10$ dB, la envolvente sigue al ruido y no a la señal — **supresión de la modulación**. La señal se pierde completamente. [source — [[../../explicaciones_anki/unidad_07/carta_38_ruido-receptor-am]]]
 
 ## DSB-SC (Detección Síncrona)
 
@@ -44,7 +44,7 @@ La detección síncrona no tiene efecto umbral, pero requiere recuperación de p
 
 $$\boxed{SNR_{out}^{SSB} = SNR_{in}}$$
 
-Misma SNR que DSB-SC, pero usando la mitad del ancho de banda. SSB es la modulación lineal más eficiente espectralmente. [source]
+Misma SNR que DSB-SC, pero usando la mitad del ancho de banda. SSB es la modulación lineal más eficiente espectralmente. [source — [[../../explicaciones_anki/unidad_07/carta_38_ruido-receptor-am]]]
 
 ## Comparación de Modulaciones Lineales
 
@@ -58,8 +58,8 @@ Misma SNR que DSB-SC, pero usando la mitad del ancho de banda. SSB es la modulac
 
 ## Ver también
 
-- [[ruido/relacion-snr]] — Definiciones y métricas de SNR
-- [[modulacion-analogica/am-vs-dsb-sc]] — Comparación detallada de variantes AM
-- [[modulacion-analogica/modulacion-ssb]] — Modulación de banda lateral única
-- [[ruido/efecto-umbral]] — Fenómeno del umbral en detalle
-- [[ruido/intercomparacion-sistemas]] — Comparación global con modulaciones exponenciales
+- [[../ruido/relacion-snr]] — Definiciones y métricas de SNR
+- [[../modulacion-analogica/am-vs-dsb-sc]] — Comparación detallada de variantes AM
+- [[../modulacion-analogica/modulacion-ssb]] — Modulación de banda lateral única
+- [[../ruido/efecto-umbral]] — Fenómeno del umbral en detalle
+- [[../ruido/intercomparacion-sistemas]] — Comparación global con modulaciones exponenciales

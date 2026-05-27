@@ -8,7 +8,7 @@ unidad: 6
 
 # Probabilidad de Error de Bit (BER)
 
-> **Last verified:** 2025-11-16 | **Verified by:** [source]
+> **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_06/carta_31_ber_probabilidad_error]]]
 
 ## Definición
 
@@ -16,12 +16,12 @@ El **Bit Error Rate (BER)** es la probabilidad de que un bit transmitido se reci
 
 $$\boxed{BER = \frac{\text{bits erróneos}}{\text{total de bits transmitidos}}}$$
 
-Es la métrica fundamental de calidad en sistemas de comunicación digital. [source]
+Es la métrica fundamental de calidad en sistemas de comunicación digital. [source — [[../../explicaciones_anki/unidad_06/carta_31_ber_probabilidad_error]]]
 
 ## Factores que Afectan el BER
 
 1. **$E_b/N_0$** (energía por bit / densidad de ruido): el factor dominante
-2. **Tipo de modulación**: [[modulacion-digital/ask-fsk-psk|BPSK, FSK, QPSK]], [[modulacion-digital/modulacion-qam|QAM]]
+2. **Tipo de modulación**: [[../modulacion-digital/ask-fsk-psk|BPSK, FSK, QPSK]], [[../modulacion-digital/modulacion-qam|QAM]]
 3. **Tipo de detección**: coherente vs. no coherente
 4. **Características del canal**: desvanecimiento, interferencia, ISI
 5. **Codificación de canal**: códigos correctores reducen el BER efectivo
@@ -59,7 +59,7 @@ Con mapeo Gray: $BER \approx SER / \log_2(M)$. Un error de símbolo típicamente
 
 ## Efecto de la Codificación
 
-La codificación de canal ([[teoria-informacion/codigos-detectores-correctores|códigos correctores]]) puede mejorar el BER en órdenes de magnitud a costa de reducir la tasa efectiva. Ejemplo: código Hamming (7,4) reduce BER de $10^{-3}$ a $~2 \times 10^{-5}$.
+La codificación de canal ([[../teoria-informacion/codigos-detectores-correctores|códigos correctores]]) puede mejorar el BER en órdenes de magnitud a costa de reducir la tasa efectiva. Ejemplo: código Hamming (7,4) reduce BER de $10^{-3}$ a $~2 \times 10^{-5}$.
 
 ## Trade-off Fundamental
 
@@ -67,7 +67,7 @@ Mayor eficiencia espectral requiere mayor $E_b/N_0$ para el mismo BER. Cada dupl
 
 ## Ver también
 
-- [[modulacion-digital/ask-fsk-psk]] — Curvas BER para modulaciones básicas
-- [[modulacion-digital/constelaciones]] — Distancia mínima como determinante del BER
-- [[ruido/relacion-snr]] — Relación SNR y su vínculo con $E_b/N_0$
-- [[ruido/intercomparacion-sistemas]] — Comparación de sistemas vía BER
+- [[../modulacion-digital/ask-fsk-psk]] — Curvas BER para modulaciones básicas
+- [[../modulacion-digital/constelaciones]] — Distancia mínima como determinante del BER
+- [[../ruido/relacion-snr]] — Relación SNR y su vínculo con $E_b/N_0$
+- [[../ruido/intercomparacion-sistemas]] — Comparación de sistemas vía BER

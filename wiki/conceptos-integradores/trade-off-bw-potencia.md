@@ -10,4 +10,4 @@ curso: Sistemas de Comunicaciones
 
 Pagina de referencia. Ver:
 
-- [[conceptos-integradores/compromisos-diseno]] — Compromisos de diseno en sistemas de comunicaciones
+- [[../conceptos-integradores/compromisos-diseno]] — Compromisos de diseno en sistemas de comunicaciones

@@ -8,11 +8,11 @@ unidad: 6
 
 # ASK, FSK y PSK: Modulaciones Digitales Básicas
 
-> **Last verified:** 2025-11-16 | **Verified by:** [source]
+> **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_06/carta_27_comparacion-ask-fsk-psk]]]
 
 ## Principio
 
-Las modulaciones digitales básicas modifican un parámetro de la portadora $s_c(t) = A_c\cos(2\pi f_c t + \phi_c)$ según los bits a transmitir. [source]
+Las modulaciones digitales básicas modifican un parámetro de la portadora $s_c(t) = A_c\cos(2\pi f_c t + \phi_c)$ según los bits a transmitir. [source — [[../../explicaciones_anki/unidad_06/carta_27_comparacion-ask-fsk-psk]]]
 
 ### ASK (Amplitude Shift Keying)
 
@@ -20,7 +20,7 @@ Varía la amplitud:
 
 $$s_{ASK}(t) = A(t)\cos(2\pi f_c t), \quad A(t) = \begin{cases} A_1 & \text{bit } 1 \\ A_0 & \text{bit } 0 \end{cases}$$
 
-En OOK (On-Off Keying): $A_0 = 0$, $A_1 = A_c$. [source]
+En OOK (On-Off Keying): $A_0 = 0$, $A_1 = A_c$. [source — [[../../explicaciones_anki/unidad_06/carta_27_comparacion-ask-fsk-psk]]]
 
 ### FSK (Frequency Shift Keying)
 
@@ -34,7 +34,7 @@ Varía la fase:
 
 $$s_{PSK}(t) = A_c\cos(2\pi f_c t + \phi(t))$$
 
-En BPSK: $\phi_0 = 0°$, $\phi_1 = 180°$. [source]
+En BPSK: $\phi_0 = 0°$, $\phi_1 = 180°$. [source — [[../../explicaciones_anki/unidad_06/carta_27_comparacion-ask-fsk-psk]]]
 
 ## Ancho de Banda
 
@@ -45,7 +45,7 @@ donde $\Delta f = |f_1 - f_0|/2$ y $R_s$ es la velocidad de símbolo.
 
 ## Probabilidad de Error
 
-Para canal AWGN con detección coherente: [source]
+Para canal AWGN con detección coherente: [source — [[../../explicaciones_anki/unidad_06/carta_27_comparacion-ask-fsk-psk]]]
 
 $$\boxed{P_e^{BPSK} = Q\left(\sqrt{\frac{2E_b}{N_0}}\right)}$$
 
@@ -67,6 +67,6 @@ Ranking general de desempeño: **PSK > FSK > ASK**. [analysis]
 
 ## Ver también
 
-- [[modulacion-digital/modulacion-qam]] — Combinación de ASK y PSK
-- [[modulacion-digital/constelaciones]] — Representación I-Q de estas modulaciones
-- [[modulacion-digital/probabilidad-error]] — Análisis detallado de BER
+- [[../modulacion-digital/modulacion-qam]] — Combinación de ASK y PSK
+- [[../modulacion-digital/constelaciones]] — Representación I-Q de estas modulaciones
+- [[../modulacion-digital/probabilidad-error]] — Análisis detallado de BER

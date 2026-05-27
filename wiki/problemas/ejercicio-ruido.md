@@ -52,7 +52,7 @@ Relación de comprobación: $F = 1 + T_e/T_0 = 1 + 580/290 = 3$ ✓
 
 ### (c) Figura de ruido de cascada (Friis)
 
-Aplicando la [[ruido/formula-friis|fórmula de Friis]] para dos etapas idénticas:
+Aplicando la [[../ruido/formula-friis|fórmula de Friis]] para dos etapas idénticas:
 
 $$F_{total} = F_1 + \frac{F_2 - 1}{G_1} = 3 + \frac{3 - 1}{10^5} = 3 + 0.00002 = 3.00002$$
 
@@ -101,14 +101,14 @@ El amplificador degrada la SNR exactamente en su figura de ruido: de 6.20 dB a 1
 ### Fórmulas clave utilizadas
 - $F = P_{n,out} / (G \cdot P_{n,in})$ — definición de figura de ruido
 - $T_e = (F-1)T_0$ — relación ruido-temperatura
-- $F_{total} = F_1 + (F_2-1)/G_1$ — [[ruido/formula-friis|Friis]]
+- $F_{total} = F_1 + (F_2-1)/G_1$ — [[../ruido/formula-friis|Friis]]
 - $SNR_{out} = SNR_{in}/F$ — degradación de SNR
 
 ## Ver también
 
-- [[ruido/factor-ruido-temperatura]]
-- [[ruido/formula-friis]]
-- [[ruido/relacion-snr]]
-- [[ruido/fuentes-ruido]]
-- [[derivaciones/ecuacion-friis]]
-- [[ruido/ruido-termico]]
+- [[../ruido/factor-ruido-temperatura]]
+- [[../ruido/formula-friis]]
+- [[../ruido/relacion-snr]]
+- [[../ruido/fuentes-ruido]]
+- [[../derivaciones/ecuacion-friis]]
+- [[../ruido/ruido-termico]]

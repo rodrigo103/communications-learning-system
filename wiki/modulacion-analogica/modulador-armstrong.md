@@ -10,4 +10,4 @@ curso: Sistemas de Comunicaciones
 
 Pagina de referencia. Ver:
 
-- [[modulacion-analogica/modulador-fm]] — Modulacion FM: metodos directo e indirecto
+- [[../modulacion-analogica/modulador-fm]] — Modulacion FM: metodos directo e indirecto

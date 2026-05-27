@@ -8,11 +8,11 @@ unidad: 5
 
 # Modulación Delta y Delta Adaptativa
 
-> **Last verified:** 2025-11-16 | **Verified by:** [source]
+> **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_05/carta_25_pcm-vs-delta-modulation]]]
 
 ## Modulación Delta (DM)
 
-A diferencia de [[modulacion-pulsos/pcm-cuantificacion|PCM]], que transmite el valor absoluto de cada muestra con $n$ bits, la Modulación Delta transmite **solo 1 bit por muestra**: la dirección del cambio (incremento/decremento).
+A diferencia de [[../modulacion-pulsos/pcm-cuantificacion|PCM]], que transmite el valor absoluto de cada muestra con $n$ bits, la Modulación Delta transmite **solo 1 bit por muestra**: la dirección del cambio (incremento/decremento).
 
 ### Principio de Funcionamiento
 
@@ -29,7 +29,7 @@ $$\hat{x}[n] = \hat{x}[0] + \delta \sum_{i=1}^{n} b[i]$$
 **Slope Overload** (sobrecarga de pendiente):
 - Ocurre cuando $|\frac{dx}{dt}| > \delta \cdot f_s$
 - La señal cambia más rápido de lo que DM puede seguir
-- Condición para evitarlo: $\boxed{\delta \cdot f_s \geq \max|dx/dt|}$ [source]
+- Condición para evitarlo: $\boxed{\delta \cdot f_s \geq \max|dx/dt|}$ [source — [[../../explicaciones_anki/unidad_05/carta_25_pcm-vs-delta-modulation]]]
 
 **Granular Noise** (ruido granular):
 - Ocurre en regiones planas de la señal
@@ -44,7 +44,7 @@ $$\delta[n] = \begin{cases}
 \delta[n-1] / K & \text{si } b[n] \neq b[n-1] \text{ (cambio dirección)}
 \end{cases}$$
 
-con $K > 1$ (típicamente 1.5). [source]
+con $K > 1$ (típicamente 1.5). [source — [[../../explicaciones_anki/unidad_05/carta_25_pcm-vs-delta-modulation]]]
 
 Esto permite:
 - Pasos grandes para pendientes pronunciadas (evita slope overload)
@@ -70,6 +70,6 @@ Esto permite:
 
 ## Ver también
 
-- [[modulacion-pulsos/pcm-cuantificacion]] — Paradigma alternativo de digitalización
-- [[modulacion-pulsos/muestreo-ideal-natural]] — Oversampling requerido en DM
-- [[ruido/relacion-snr]] — SNR en sistemas de comunicaciones
+- [[../modulacion-pulsos/pcm-cuantificacion]] — Paradigma alternativo de digitalización
+- [[../modulacion-pulsos/muestreo-ideal-natural]] — Oversampling requerido en DM
+- [[../ruido/relacion-snr]] — SNR en sistemas de comunicaciones

@@ -10,4 +10,4 @@ curso: Sistemas de Comunicaciones
 
 Pagina de referencia. Ver:
 
-- [[modulacion-pulsos/multiplex-tdm]] — Multiplexacion por division de tiempo
+- [[../modulacion-pulsos/multiplex-tdm]] — Multiplexacion por division de tiempo

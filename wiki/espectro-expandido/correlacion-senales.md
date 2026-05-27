@@ -20,7 +20,7 @@ La autocorrelacion de un codigo PN $c(t)$ con periodo $T$:
 
 $$R_{cc}(\tau) = \frac{1}{T} \int_0^T c(t) \cdot c(t + \tau) \, dt$$
 
-Propiedades deseables: [source]
+Propiedades deseables: [source — [[../../explicaciones_anki/unidad_10/carta_50_spread-spectrum]]]
 - **Pico estrecho en $\tau = 0$**: permite sincronizacion precisa
 - **Valores bajos para $\tau \neq 0$**: evita falsas detecciones
 
@@ -111,8 +111,8 @@ La correlacion sobre $T_b = 20$ ms acumula energia de 20,460 chips, amplificando
 
 ## Ver tambien
 
-- [[espectro-expandido/cdma]]
-- [[espectro-expandido/dsss]]
-- [[espectro-expandido/fhss]]
-- [[herramientas-matematicas/densidad-espectral-potencia]]
-- [[ruido/ruido-blanco-banda-angosta]]
+- [[../espectro-expandido/cdma]]
+- [[../espectro-expandido/dsss]]
+- [[../espectro-expandido/fhss]]
+- [[../herramientas-matematicas/densidad-espectral-potencia]]
+- [[../ruido/ruido-blanco-banda-angosta]]

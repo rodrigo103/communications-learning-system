@@ -8,11 +8,11 @@ unidad: 6
 
 # Codificación de Línea y Detección
 
-> **Last verified:** 2025-11-16 | **Verified by:** [source]
+> **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_06/carta_32_deteccion_coherente_no_coherente]]]
 
 ## Detección Coherente vs. No Coherente
 
-La elección del tipo de detección representa un trade-off fundamental entre complejidad del receptor y eficiencia de potencia. [source]
+La elección del tipo de detección representa un trade-off fundamental entre complejidad del receptor y eficiencia de potencia. [source — [[../../explicaciones_anki/unidad_06/carta_32_deteccion_coherente_no_coherente]]]
 
 ### Detección Coherente
 
@@ -22,7 +22,7 @@ $$y = \int_0^T r(t)\cos(2\pi f_c t) \, dt$$
 
 **Ventaja**: mejor desempeño (menor BER para mismo SNR)
 **Desventaja**: requiere circuito de recuperación de portadora (PLL)
-**Usado en**: [[modulacion-digital/ask-fsk-psk|PSK]], [[modulacion-digital/modulacion-qam|QAM]]
+**Usado en**: [[../modulacion-digital/ask-fsk-psk|PSK]], [[../modulacion-digital/modulacion-qam|QAM]]
 
 ### Detección No Coherente
 
@@ -61,10 +61,10 @@ La codificación de línea adapta los bits para transmisión en banda base, prop
 
 **Manchester** (usado en Ethernet 10 Mbps): cada bit tiene transición en el centro — "1" = alto→bajo, "0" = bajo→alto. Excelente sincronización pero duplica el ancho de banda.
 
-**HDB3** (usado en E1): sustituye secuencias de 4 ceros con patrones de violación para garantizar transiciones. [source]
+**HDB3** (usado en E1): sustituye secuencias de 4 ceros con patrones de violación para garantizar transiciones. [source — [[../../explicaciones_anki/unidad_06/carta_32_deteccion_coherente_no_coherente]]]
 
 ## Ver también
 
-- [[modulacion-digital/ask-fsk-psk]] — Modulaciones que requieren detección coherente/no coherente
-- [[modulacion-pulsos/pcm-cuantificacion]] — Origen de los bits que se codifican en línea
-- [[modulacion-digital/probabilidad-error]] — BER como métrica afectada por el tipo de detección
+- [[../modulacion-digital/ask-fsk-psk]] — Modulaciones que requieren detección coherente/no coherente
+- [[../modulacion-pulsos/pcm-cuantificacion]] — Origen de los bits que se codifican en línea
+- [[../modulacion-digital/probabilidad-error]] — BER como métrica afectada por el tipo de detección

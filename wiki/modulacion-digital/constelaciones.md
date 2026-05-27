@@ -8,11 +8,11 @@ unidad: 6
 
 # Diagramas de Constelación
 
-> **Last verified:** 2025-11-16 | **Verified by:** [source]
+> **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_06/carta_28_constelacion-modulacion-digital]]]
 
 ## Definición
 
-Una **constelación** es la representación gráfica de todos los símbolos posibles de una modulación digital en el plano complejo I-Q. Cada punto $(I_k, Q_k)$ corresponde a un símbolo único. [source]
+Una **constelación** es la representación gráfica de todos los símbolos posibles de una modulación digital en el plano complejo I-Q. Cada punto $(I_k, Q_k)$ corresponde a un símbolo único. [source — [[../../explicaciones_anki/unidad_06/carta_28_constelacion-modulacion-digital]]]
 
 ## Representación Matemática
 
@@ -46,7 +46,7 @@ Para canal AWGN, la probabilidad de error de símbolo se aproxima por:
 
 $$P_e \approx Q\left(\frac{d_{min}}{2\sigma_n}\right)$$
 
-**Principio fundamental:** mayor $d_{min}$ → menor $P_e$. [source]
+**Principio fundamental:** mayor $d_{min}$ → menor $P_e$. [source — [[../../explicaciones_anki/unidad_06/carta_28_constelacion-modulacion-digital]]]
 
 ## Mapeo Gray
 
@@ -74,6 +74,6 @@ Mayor $M$ → mayor eficiencia espectral pero menor $d_{min}$ → requiere mayor
 
 ## Ver también
 
-- [[modulacion-digital/ask-fsk-psk]] — BPSK/QPSK como constelaciones básicas
-- [[modulacion-digital/modulacion-qam]] — Constelaciones rectangulares densas
-- [[modulacion-digital/probabilidad-error]] — Relación $d_{min}$ con BER
+- [[../modulacion-digital/ask-fsk-psk]] — BPSK/QPSK como constelaciones básicas
+- [[../modulacion-digital/modulacion-qam]] — Constelaciones rectangulares densas
+- [[../modulacion-digital/probabilidad-error]] — Relación $d_{min}$ con BER

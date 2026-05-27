@@ -8,7 +8,7 @@ unidad: 8
 
 # Intercomparación de Sistemas de Modulación
 
-> **Last verified:** 2025-11-16 | **Verified by:** [source]
+> **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_08/carta_40_parametros-comparacion-sistemas]]]
 
 ## Parámetros de Comparación
 
@@ -31,11 +31,11 @@ Un $\gamma > 1$ indica que el sistema ofrece mejor SNR por unidad de ancho de ba
 
 ## Trade-off Fundamental (Shannon)
 
-El [[teoria-informacion/teorema-shannon-hartley|teorema de Shannon-Hartley]] establece el límite:
+El [[../teoria-informacion/teorema-shannon-hartley|teorema de Shannon-Hartley]] establece el límite:
 
 $$C = B \log_2(1 + SNR)$$
 
-Esto implica que **ancho de banda y potencia son intercambiables**: se puede reducir la potencia requerida aumentando el ancho de banda, y viceversa. [source]
+Esto implica que **ancho de banda y potencia son intercambiables**: se puede reducir la potencia requerida aumentando el ancho de banda, y viceversa. [source — [[../../explicaciones_anki/unidad_08/carta_40_parametros-comparacion-sistemas]]]
 
 ## Comparación Global
 
@@ -77,9 +77,9 @@ Esto implica que **ancho de banda y potencia son intercambiables**: se puede red
 
 ## Ver también
 
-- [[ruido/relacion-snr]] — Métrica fundamental de comparación
-- [[ruido/snr-modulacion-lineal]] — Desempeño de AM, DSB-SC, SSB
-- [[ruido/snr-modulacion-exponencial]] — Desempeño de FM y PM
-- [[ruido/efecto-umbral]] — Limitación crítica de FM
-- [[conceptos-integradores/comparacion-global-modulaciones]] — Visión integradora de todas las modulaciones
-- [[teoria-informacion/teorema-shannon-hartley]] — Límite teórico fundamental
+- [[../ruido/relacion-snr]] — Métrica fundamental de comparación
+- [[../ruido/snr-modulacion-lineal]] — Desempeño de AM, DSB-SC, SSB
+- [[../ruido/snr-modulacion-exponencial]] — Desempeño de FM y PM
+- [[../ruido/efecto-umbral]] — Limitación crítica de FM
+- [[../conceptos-integradores/comparacion-global-modulaciones]] — Visión integradora de todas las modulaciones
+- [[../teoria-informacion/teorema-shannon-hartley]] — Límite teórico fundamental

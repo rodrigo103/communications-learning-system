@@ -12,7 +12,7 @@ unidad: 9
 
 ## Definicion
 
-Un **codigo optimo** (o compacto) minimiza la longitud promedio de palabra codigo $\bar{L}$ para una fuente con distribucion de probabilidad conocida. Es la herramienta fundamental para la codificacion de fuente (compresion sin perdida). [source]
+Un **codigo optimo** (o compacto) minimiza la longitud promedio de palabra codigo $\bar{L}$ para una fuente con distribucion de probabilidad conocida. Es la herramienta fundamental para la codificacion de fuente (compresion sin perdida). [source — [[../../explicaciones_anki/unidad_09/carta_47_codigo_optimo_kraft_mcmillan]]]
 
 $$\bar{L} = \sum_{i=1}^{n} p_i \cdot l_i$$
 
@@ -20,7 +20,7 @@ donde $p_i$ es la probabilidad del simbolo $i$ y $l_i$ la longitud de su palabra
 
 ## Criterio de Kraft-McMillan
 
-Para cualquier codigo **unicamente decodificable** (y en particular para codigos instantaneos o de prefijo), las longitudes $l_i$ deben satisfacer: [source]
+Para cualquier codigo **unicamente decodificable** (y en particular para codigos instantaneos o de prefijo), las longitudes $l_i$ deben satisfacer: [source — [[../../explicaciones_anki/unidad_09/carta_47_codigo_optimo_kraft_mcmillan]]]
 
 $$\boxed{\sum_{i=1}^{n} 2^{-l_i} \leq 1}$$
 
@@ -38,7 +38,7 @@ $$\sum_i 2^{L_{max} - l_i} \leq 2^{L_{max}} \Rightarrow \sum_i 2^{-l_i} \leq 1$$
 
 ## Limite de Shannon para Codigos de Fuente
 
-El teorema de codificacion de fuente establece que la longitud promedio de cualquier codigo sin perdida satisface: [source]
+El teorema de codificacion de fuente establece que la longitud promedio de cualquier codigo sin perdida satisface: [source — [[../../explicaciones_anki/unidad_09/carta_47_codigo_optimo_kraft_mcmillan]]]
 
 $$\boxed{H \leq \bar{L} < H + 1}$$
 
@@ -85,7 +85,7 @@ $K = 1.0 \leq 1 \Rightarrow$ codigo posible y completo. Un codigo concreto: $A \
 
 ## Ver tambien
 
-- [[teoria-informacion/entropia-fuente]]
-- [[teoria-informacion/codigos-deteccion-error]]
-- [[teoria-informacion/teorema-shannon-hartley]]
-- [[teoria-informacion/capacidad-canal-shannon]]
+- [[../teoria-informacion/entropia-fuente]]
+- [[../teoria-informacion/codigos-deteccion-error]]
+- [[../teoria-informacion/teorema-shannon-hartley]]
+- [[../teoria-informacion/capacidad-canal-shannon]]

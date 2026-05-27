@@ -8,11 +8,11 @@ unidad: 4
 
 # FM vs PM: Modulacion en Frecuencia y Fase
 
-> **Last verified:** 2025-11-16 | **Verified by:** [source]
+> **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_04/carta_16_fm_vs_pm]]]
 
 ## Definiciones
 
-Ambas son modulaciones angulares (exponenciales) con **amplitud constante** [source]:
+Ambas son modulaciones angulares (exponenciales) con **amplitud constante** [source — [[../../explicaciones_anki/unidad_04/carta_16_fm_vs_pm]]]:
 
 ### FM (Frequency Modulation)
 
@@ -36,7 +36,7 @@ donde $k_p$ = sensibilidad de fase [rad/V].
 
 ## Relacion Fundamental
 
-FM y PM estan intimamente relacionadas [source]:
+FM y PM estan intimamente relacionadas [source — [[../../explicaciones_anki/unidad_04/carta_16_fm_vs_pm]]]:
 
 $$\boxed{\text{FM}[m(t)] \equiv \text{PM}\left[\int m(t) dt\right]}$$
 
@@ -56,7 +56,7 @@ Para moduladora sinusoidal $m(t) = A_m\cos(2\pi f_m t)$:
 
 ## Comportamiento Espectral
 
-**FM**: $\beta_{FM}$ decrece con la frecuencia → las bajas frecuencias tienen mayor indice y ocupan mas espectro. FM naturalmente "comprime" el espectro de audio [source].
+**FM**: $\beta_{FM}$ decrece con la frecuencia → las bajas frecuencias tienen mayor indice y ocupan mas espectro. FM naturalmente "comprime" el espectro de audio [source — [[../../explicaciones_anki/unidad_04/carta_16_fm_vs_pm]]].
 
 **PM**: $\beta_{PM}$ constante → todas las frecuencias contribuyen igualmente al espectro. Esto hace que PM requiera pre-ecualizacion para señales de audio [analysis].
 
@@ -86,28 +86,28 @@ Para moduladora sinusoidal $m(t) = A_m\cos(2\pi f_m t)$:
 ## Ventajas y Desventajas
 
 **FM**:
-- ✓ Excelente rechazo al ruido (amplitud constante) [source]
+- ✓ Excelente rechazo al ruido (amplitud constante) [source — [[../../explicaciones_anki/unidad_04/carta_16_fm_vs_pm]]]
 - ✓ Natural para audio analogico (favorece bajas frecuencias)
-- ✗ Mayor ancho de banda (WBFM) [source]
+- ✗ Mayor ancho de banda (WBFM) [source — [[../../explicaciones_anki/unidad_04/carta_16_fm_vs_pm]]]
 - ✗ Circuitos mas complejos (VCO lineal)
 
 **PM**:
 - ✓ Implementacion mas simple conceptualmente
-- ✓ Transiciones precisas → ideal para datos digitales [source]
+- ✓ Transiciones precisas → ideal para datos digitales [source — [[../../explicaciones_anki/unidad_04/carta_16_fm_vs_pm]]]
 - ✓ Base de PSK, QPSK, QAM [analysis]
 - ✗ Sensible a ruido de fase y jitter
 
 ## Puntos Clave
 
-- ✓ FM y PM son **matematicamente duales** (relacion integral/derivada) [source]
+- ✓ FM y PM son **matematicamente duales** (relacion integral/derivada) [source — [[../../explicaciones_anki/unidad_04/carta_16_fm_vs_pm]]]
 - ✓ FM para audio analogico, PM para datos digitales [analysis]
-- ✓ $\beta_{FM} \propto 1/f_m$, $\beta_{PM}$ = constante [source]
-- ✓ Amplitud constante en ambas (ventaja sobre AM) [source]
+- ✓ $\beta_{FM} \propto 1/f_m$, $\beta_{PM}$ = constante [source — [[../../explicaciones_anki/unidad_04/carta_16_fm_vs_pm]]]
+- ✓ Amplitud constante en ambas (ventaja sobre AM) [source — [[../../explicaciones_anki/unidad_04/carta_16_fm_vs_pm]]]
 
 ## Ver tambien
 
-- [[modulacion-analogica/ancho-banda-carson]]
-- [[modulacion-analogica/fm-banda-angosta]]
-- [[modulacion-analogica/modulador-fm]]
-- [[derivaciones/modulacion-fm-carson]]
-- [[ruido/snr-modulacion-exponencial]]
+- [[../modulacion-analogica/ancho-banda-carson]]
+- [[../modulacion-analogica/fm-banda-angosta]]
+- [[../modulacion-analogica/modulador-fm]]
+- [[../derivaciones/modulacion-fm-carson]]
+- [[../ruido/snr-modulacion-exponencial]]

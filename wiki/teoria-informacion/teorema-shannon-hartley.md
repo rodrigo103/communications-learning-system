@@ -12,7 +12,7 @@ unidad: 9
 
 ## Enunciado
 
-El **Teorema de Shannon-Hartley** establece la **capacidad maxima** de un canal de comunicacion con ruido gaussiano blanco aditivo (AWGN): [source]
+El **Teorema de Shannon-Hartley** establece la **capacidad maxima** de un canal de comunicacion con ruido gaussiano blanco aditivo (AWGN): [source — [[../../explicaciones_anki/unidad_09/carta_45_teorema-shannon-hartley]]]
 
 $$\boxed{C = B \log_2\left(1 + \frac{S}{N}\right) \quad \text{[bits/s]}}$$
 
@@ -23,7 +23,7 @@ Puntos clave:
 
 ## Implicaciones Fundamentales
 
-1. **Limite teorico estricto**: tasa maxima a la cual es posible comunicacion libre de errores. Ningun esquema puede superar $C$. [source]
+1. **Limite teorico estricto**: tasa maxima a la cual es posible comunicacion libre de errores. Ningun esquema puede superar $C$. [source — [[../../explicaciones_anki/unidad_09/carta_45_teorema-shannon-hartley]]]
 2. **Trade-off BW-SNR**: se puede intercambiar ancho de banda por potencia y viceversa, pero con rendimientos diferentes.
 3. **Inalcanzable en la practica**: la demostracion asume codigos de longitud infinita (latencia infinita). Los sistemas reales operan 1–3 dB por debajo.
 4. **Base de comparacion**: eficiencia de sistemas reales vs. limite de Shannon como benchmark universal.
@@ -78,7 +78,7 @@ Limite cuando $\eta \to 0$ (banda infinita):
 
 $$\boxed{\left(\frac{E_b}{N_0}\right)_{min} = \ln(2) \approx -1.59 \text{ dB}}$$
 
-Este es el limite absoluto: ningun sistema, sin importar cuanto ancho de banda use, puede operar con $E_b/N_0 < -1.59$ dB. [source]
+Este es el limite absoluto: ningun sistema, sin importar cuanto ancho de banda use, puede operar con $E_b/N_0 < -1.59$ dB. [source — [[../../explicaciones_anki/unidad_09/carta_45_teorema-shannon-hartley]]]
 
 ## Errores Comunes
 
@@ -88,9 +88,9 @@ Este es el limite absoluto: ningun sistema, sin importar cuanto ancho de banda u
 
 ## Ver tambien
 
-- [[teoria-informacion/capacidad-canal-shannon]]
-- [[teoria-informacion/entropia-fuente]]
-- [[teoria-informacion/sistema-ideal-comunicaciones]]
-- [[conceptos-integradores/comparacion-global-modulaciones]]
-- [[conceptos-integradores/compromisos-diseno]]
-- [[ruido/intercomparacion-sistemas]]
+- [[../teoria-informacion/capacidad-canal-shannon]]
+- [[../teoria-informacion/entropia-fuente]]
+- [[../teoria-informacion/sistema-ideal-comunicaciones]]
+- [[../conceptos-integradores/comparacion-global-modulaciones]]
+- [[../conceptos-integradores/compromisos-diseno]]
+- [[../ruido/intercomparacion-sistemas]]

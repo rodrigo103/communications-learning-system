@@ -8,11 +8,11 @@ unidad: 8
 
 # Efecto Umbral en FM y AM
 
-> **Last verified:** 2025-11-16 | **Verified by:** [source]
+> **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_07/carta_39_efecto_umbral_fm]]]
 
 ## Definición
 
-El **efecto umbral** es una degradación súbita y no lineal del desempeño cuando la SNR de entrada cae por debajo de un valor crítico. Es característico de los demoduladores no lineales (envolvente en AM, discriminador en FM). [source]
+El **efecto umbral** es una degradación súbita y no lineal del desempeño cuando la SNR de entrada cae por debajo de un valor crítico. Es característico de los demoduladores no lineales (envolvente en AM, discriminador en FM). [source — [[../../explicaciones_anki/unidad_07/carta_39_efecto_umbral_fm]]]
 
 ## Umbral en FM
 
@@ -24,7 +24,7 @@ $$\phi_{total}(t) = \phi_m(t) + \tan^{-1}\left(\frac{-n_q(t)}{A_c + n_i(t)}\righ
 
 **Sobre el umbral** ($A_c \gg n$): la fase extra es pequeña y lineal, ruido aditivo.
 
-**Bajo el umbral** ($A_c < n$): el denominador $A_c + n_i(t)$ cruza cero, produciendo **saltos de fase de $2\pi$** (clicks). El discriminador de frecuencia detecta estos saltos como pulsos impulsivos intensos. [source]
+**Bajo el umbral** ($A_c < n$): el denominador $A_c + n_i(t)$ cruza cero, produciendo **saltos de fase de $2\pi$** (clicks). El discriminador de frecuencia detecta estos saltos como pulsos impulsivos intensos. [source — [[../../explicaciones_anki/unidad_07/carta_39_efecto_umbral_fm]]]
 
 ### Umbral Típico
 
@@ -36,7 +36,7 @@ $$\lambda_{clicks} \approx \frac{B}{\pi}\exp(-SNR_{in})$$
 
 - Sobre el umbral (SNR > 10 dB): $\lambda \approx 0$
 - En el umbral (SNR ≈ 10 dB): clicks esporádicos audibles
-- Bajo el umbral: colapso total [source]
+- Bajo el umbral: colapso total [source — [[../../explicaciones_anki/unidad_07/carta_39_efecto_umbral_fm]]]
 
 ### Reducción del Umbral
 
@@ -64,7 +64,7 @@ En AM con detección de envolvente, el umbral también ocurre cerca de 10 dB. La
 
 ## Ver también
 
-- [[ruido/snr-modulacion-lineal]] — Umbral en AM: comportamiento comparado
-- [[ruido/snr-modulacion-exponencial]] — Ventaja de FM sobre el umbral
-- [[modulacion-analogica/fm-vs-pm]] — Ambos sufren efecto umbral
-- [[ruido/intercomparacion-sistemas]] — Umbral como factor de comparación
+- [[../ruido/snr-modulacion-lineal]] — Umbral en AM: comportamiento comparado
+- [[../ruido/snr-modulacion-exponencial]] — Ventaja de FM sobre el umbral
+- [[../modulacion-analogica/fm-vs-pm]] — Ambos sufren efecto umbral
+- [[../ruido/intercomparacion-sistemas]] — Umbral como factor de comparación

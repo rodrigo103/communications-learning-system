@@ -12,7 +12,7 @@ unidad: 9
 
 ## El Marco de Shannon
 
-Claude Shannon (1948) establecio que existe un esquema de comunicacion "ideal" basado en codificacion digital: [source]
+Claude Shannon (1948) establecio que existe un esquema de comunicacion "ideal" basado en codificacion digital: [source — [[../../explicaciones_anki/unidad_09/carta_49_analogico_vs_digital_teoria_informacion]]]
 
 - Para cualquier tasa $R < C$ (capacidad del canal), existe un codigo que permite transmitir con error arbitrariamente pequeno.
 - Este resultado **solo es valido para sistemas digitales**. Los sistemas analogicos no pueden alcanzar comunicacion libre de errores.
@@ -30,7 +30,7 @@ $$s_{rx}(t) = s_{tx}(t) + n(t)$$
 - Cada etapa de amplificacion agrega mas ruido: $SNR_{salida} < SNR_{entrada}$
 - No existe metodo para eliminar el ruido sin conocimiento previo de la senal original [analysis]
 
-Caracteristicas: [source]
+Caracteristicas: [source — [[../../explicaciones_anki/unidad_09/carta_49_analogico_vs_digital_teoria_informacion]]]
 - SNR disminuye con cada repetidor
 - No alcanza la capacidad de Shannon
 - Imposible regenerar sin perdida
@@ -42,9 +42,9 @@ $$\hat{s} = \arg\min_{s_i} d(r, s_i)$$
 
 - El receptor toma **decisiones** discretas sobre que simbolo se transmitio
 - Si el ruido es insuficiente para cambiar la decision: recuperacion perfecta
-- **Regeneracion perfecta** en cada repetidor (ver [[conceptos-integradores/compromisos-diseno]]) [analysis]
+- **Regeneracion perfecta** en cada repetidor (ver [[../conceptos-integradores/compromisos-diseno]]) [analysis]
 
-Caracteristicas: [source]
+Caracteristicas: [source — [[../../explicaciones_anki/unidad_09/carta_49_analogico_vs_digital_teoria_informacion]]]
 - Operacion libre de errores posible si $R < C$
 - Degradacion abrupta en umbral ("cliff effect")
 - Puede acercarse arbitrariamente a la capacidad con codificacion
@@ -56,7 +56,7 @@ Caracteristicas: [source]
 
 $$\boxed{P_e < \epsilon \quad \text{para cualquier } R < C, \epsilon > 0}$$
 
-Con codificacion optima, la probabilidad de error decae exponencialmente con la longitud del bloque. [source]
+Con codificacion optima, la probabilidad de error decae exponencialmente con la longitud del bloque. [source — [[../../explicaciones_anki/unidad_09/carta_49_analogico_vs_digital_teoria_informacion]]]
 
 ### Limite para Sistemas Analogicos
 
@@ -105,9 +105,9 @@ El sistema digital aprovecha casi 3 veces mejor el canal. [analysis]
 
 ## Ver tambien
 
-- [[teoria-informacion/teorema-shannon-hartley]]
-- [[teoria-informacion/capacidad-canal-shannon]]
-- [[introduccion/modelo-shannon]]
-- [[conceptos-integradores/comparacion-global-modulaciones]]
-- [[conceptos-integradores/compromisos-diseno]]
-- [[conceptos-integradores/evolucion-sistemas]]
+- [[../teoria-informacion/teorema-shannon-hartley]]
+- [[../teoria-informacion/capacidad-canal-shannon]]
+- [[../introduccion/modelo-shannon]]
+- [[../conceptos-integradores/comparacion-global-modulaciones]]
+- [[../conceptos-integradores/compromisos-diseno]]
+- [[../conceptos-integradores/evolucion-sistemas]]

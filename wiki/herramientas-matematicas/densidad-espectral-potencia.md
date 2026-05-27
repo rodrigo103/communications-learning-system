@@ -8,15 +8,15 @@ unidad: 2
 
 # Densidad Espectral de Potencia y Teorema de Wiener-Khinchin
 
-> **Last verified:** 2025-11-22 | **Verified by:** [source]
+> **Last verified:** 2025-11-22 | **Verified by:** [source — [[../../explicaciones_anki/unidad_02/carta_06_densidad-espectral-potencia]]]
 
 ## Definicion
 
-La **densidad espectral de potencia (DEP)** $S_x(f)$ describe como se distribuye la potencia de una señal en el dominio de la frecuencia, con unidades [W/Hz] [source].
+La **densidad espectral de potencia (DEP)** $S_x(f)$ describe como se distribuye la potencia de una señal en el dominio de la frecuencia, con unidades [W/Hz] [source — [[../../explicaciones_anki/unidad_02/carta_06_densidad-espectral-potencia]]].
 
 ## Teorema de Wiener-Khinchin
 
-La DEP y la funcion de autocorrelacion $R_x(\tau)$ forman un **par de transformadas de Fourier** [source]:
+La DEP y la funcion de autocorrelacion $R_x(\tau)$ forman un **par de transformadas de Fourier** [source — [[../../explicaciones_anki/unidad_02/carta_06_densidad-espectral-potencia]]]:
 
 $$\boxed{S_x(f) = \mathcal{F}\{R_x(\tau)\} = \int_{-\infty}^{\infty} R_x(\tau) e^{-j2\pi f\tau} d\tau}$$
 
@@ -32,7 +32,7 @@ $$R_x(\tau) = E[X(t)X^*(t-\tau)]$$
 
 ## Propiedades Fundamentales
 
-- **Potencia total**: $P = R_x(0) = \int_{-\infty}^{\infty} S_x(f) df$ [source]
+- **Potencia total**: $P = R_x(0) = \int_{-\infty}^{\infty} S_x(f) df$ [source — [[../../explicaciones_anki/unidad_02/carta_06_densidad-espectral-potencia]]]
 - **No negatividad**: $S_x(f) \geq 0$ para todo $f$ (es potencia)
 - **Real**: $S_x(f)$ es siempre real (por ser $R_x(\tau)$ hermitiana)
 - **Filtro LTI**: si $y(t) = x(t) * h(t)$, entonces $S_y(f) = |H(f)|^2 S_x(f)$
@@ -45,7 +45,7 @@ $$S_x(f) = \lim_{T \to \infty} \frac{|X_T(f)|^2}{2T}$$
 
 ## Ruido Blanco Gaussiano
 
-El caso mas importante en comunicaciones [source]:
+El caso mas importante en comunicaciones [source — [[../../explicaciones_anki/unidad_02/carta_06_densidad-espectral-potencia]]]:
 
 - **DEP**: $N_0 = kT$ [W/Hz] (convencion unilateral, $f > 0$)
 - A $T = 290$K: $N_0 = 4.0 \times 10^{-21}$ W/Hz $= -174$ dBm/Hz
@@ -67,14 +67,14 @@ La DEP es como un **analisis financiero de gastos**: el total mensual es la pote
 
 ## Puntos Clave
 
-- ✓ Dualidad DEP $\leftrightarrow$ autocorrelacion es fundamental [source]
+- ✓ Dualidad DEP $\leftrightarrow$ autocorrelacion es fundamental [source — [[../../explicaciones_anki/unidad_02/carta_06_densidad-espectral-potencia]]]
 - ✓ DEP plana $\leftrightarrow$ autocorrelacion delta (ruido blanco)
 - ✓ Area bajo la DEP = potencia total = $R_x(0)$
 - ✓ DEP requiere estacionariedad; para señales no estacionarias usar espectrograma
 
 ## Ver tambien
 
-- [[herramientas-matematicas/teorema-parseval]]
-- [[herramientas-matematicas/senales-energia-potencia]]
-- [[herramientas-matematicas/teorema-convolucion]]
-- [[ruido/ruido-blanco-banda-angosta]]
+- [[../herramientas-matematicas/teorema-parseval]]
+- [[../herramientas-matematicas/senales-energia-potencia]]
+- [[../herramientas-matematicas/teorema-convolucion]]
+- [[../ruido/ruido-blanco-banda-angosta]]

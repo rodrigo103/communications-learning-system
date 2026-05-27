@@ -8,11 +8,11 @@ unidad: 2
 
 # Señales de Energia vs Señales de Potencia
 
-> **Last verified:** 2025-11-16 | **Verified by:** [source]
+> **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_02/carta_09_energia_vs_potencia]]]
 
 ## Clasificacion Fundamental
 
-Toda señal se clasifica en una de dos categorias mutuamente excluyentes [source]:
+Toda señal se clasifica en una de dos categorias mutuamente excluyentes [source — [[../../explicaciones_anki/unidad_02/carta_09_energia_vs_potencia]]]:
 
 ### Señales de Energia
 
@@ -32,7 +32,7 @@ Toda señal se clasifica en una de dos categorias mutuamente excluyentes [source
 
 ## Expresiones Matematicas
 
-Para una señal $x(t)$ [source]:
+Para una señal $x(t)$ [source — [[../../explicaciones_anki/unidad_02/carta_09_energia_vs_potencia]]]:
 
 $$\boxed{E_x = \int_{-\infty}^{\infty} |x(t)|^2 dt}$$
 
@@ -54,7 +54,7 @@ $$E_x = \infty, \quad P_x = \frac{A^2}{2} < \infty \quad \Rightarrow \quad \text
 
 ## Ejemplo: Ruido Termico
 
-El ruido termico es siempre una **señal de potencia** [source]:
+El ruido termico es siempre una **señal de potencia** [source — [[../../explicaciones_anki/unidad_02/carta_09_energia_vs_potencia]]]:
 
 - DEP: $N_0 = kT$ [W/Hz]
 - Potencia en banda $B$: $P_n = N_0 B = kTB$ (finita)
@@ -72,18 +72,18 @@ Una linterna con flash (señal de energia) libera energia finita en tiempo corto
 | Potencia | $S_x(f)$ (DEP) | Wiener-Khinchin |
 
 - Las señales de potencia **no tienen transformada de Fourier tradicional**
-- Para ellas se usa la [[herramientas-matematicas/densidad-espectral-potencia]]
+- Para ellas se usa la [[../herramientas-matematicas/densidad-espectral-potencia]]
 - El ruido es siempre señal de potencia → se analiza con DEP
 
 ## Puntos Clave
 
-- ✓ Clasificacion **mutuamente excluyente**: una señal es de energia O de potencia [source]
-- ✓ Señales periodicas (no nulas) son siempre de potencia [source]
-- ✓ Señales de duracion finita son siempre de energia [source]
-- ✓ El ruido siempre es señal de potencia [source]
+- ✓ Clasificacion **mutuamente excluyente**: una señal es de energia O de potencia [source — [[../../explicaciones_anki/unidad_02/carta_09_energia_vs_potencia]]]
+- ✓ Señales periodicas (no nulas) son siempre de potencia [source — [[../../explicaciones_anki/unidad_02/carta_09_energia_vs_potencia]]]
+- ✓ Señales de duracion finita son siempre de energia [source — [[../../explicaciones_anki/unidad_02/carta_09_energia_vs_potencia]]]
+- ✓ El ruido siempre es señal de potencia [source — [[../../explicaciones_anki/unidad_02/carta_09_energia_vs_potencia]]]
 
 ## Ver tambien
 
-- [[herramientas-matematicas/densidad-espectral-potencia]]
-- [[herramientas-matematicas/teorema-parseval]]
-- [[ruido/ruido-blanco-banda-angosta]]
+- [[../herramientas-matematicas/densidad-espectral-potencia]]
+- [[../herramientas-matematicas/teorema-parseval]]
+- [[../ruido/ruido-blanco-banda-angosta]]
