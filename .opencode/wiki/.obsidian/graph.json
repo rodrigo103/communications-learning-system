@@ -1,0 +1,100 @@
+{
+  "collapse-filter": false,
+  "search": "",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "tag:#wiki/introduccion",
+      "color": {
+        "a": 1,
+        "rgb": 5292152
+      }
+    },
+    {
+      "query": "tag:#wiki/herramientas",
+      "color": {
+        "a": 1,
+        "rgb": 10310673
+      }
+    },
+    {
+      "query": "tag:#wiki/modulacion",
+      "color": {
+        "a": 1,
+        "rgb": 13399090
+      }
+    },
+    {
+      "query": "tag:#wiki/ruido",
+      "color": {
+        "a": 1,
+        "rgb": 14720594
+      }
+    },
+    {
+      "query": "tag:#wiki/digital",
+      "color": {
+        "a": 1,
+        "rgb": 5341184
+      }
+    },
+    {
+      "query": "tag:#wiki/informacion",
+      "color": {
+        "a": 1,
+        "rgb": 10854764
+      }
+    },
+    {
+      "query": "tag:#wiki/derivacion",
+      "color": {
+        "a": 1,
+        "rgb": 16744448
+      }
+    },
+    {
+      "query": "tag:#wiki/problema",
+      "color": {
+        "a": 1,
+        "rgb": 16564924
+      }
+    },
+    {
+      "query": "tag:#wiki/resumen",
+      "color": {
+        "a": 1,
+        "rgb": 8224128
+      }
+    },
+    {
+      "query": "tag:#wiki/planificacion",
+      "color": {
+        "a": 1,
+        "rgb": 10145074
+      }
+    },
+    {
+      "query": "tag:#wiki/meta",
+      "color": {
+        "a": 1,
+        "rgb": 9807270
+      }
+    }
+  ],
+  "collapse-display": true,
+  "showArrow": false,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1,
+  "lineSizeMultiplier": 1,
+  "collapse-forces": false,
+  "centerStrength": 0.495138888888889,
+  "repelStrength": 10.0104166666667,
+  "linkStrength": 1,
+  "linkDistance": 250,
+  "scale": 1.51936981926577,
+  "close": true
+}

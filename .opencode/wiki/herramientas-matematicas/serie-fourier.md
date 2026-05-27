@@ -1,0 +1,14 @@
+---
+tags:
+  - wiki/herramientas-matematicas
+curso: Sistemas de Comunicaciones
+---
+
+# Serie de Fourier
+
+> **Last verified:** 2025-11-16 | **Verified by:** [analysis]
+
+Pagina de referencia. Ver:
+
+- [[herramientas-matematicas/teorema-parseval]] — Teorema de Parseval y relacion energia-espectro
+- [[herramientas-matematicas/teorema-convolucion]] — Teorema de convolucion en tiempo y frecuencia
