@@ -105,3 +105,4 @@ Precaución: La fórmula de Friis usa valores **lineales** (no dB). Convertir si
 - [[../ruido/fuentes-ruido]]
 - [[../ruido/ruido-termico]]
 - [[../ruido/lna-diseno-receptor]]
+- [[../derivaciones/ecuacion-friis-extendida]] — Version extendida y detallada

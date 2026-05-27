@@ -66,13 +66,19 @@ Base de conocimiento interconectada para el curso de Sistemas de Comunicaciones.
 ## Ruido e Intercomparacion
 
 - [[ruido/fuentes-ruido]] — Fuentes de ruido y radiointerferencias
-- [[ruido/ruido-blanco-banda-angosta]] — Ruido blanco vs banda angosta
-- [[ruido/factor-ruido-temperatura]] — Factor de ruido, temperatura equivalente
+- [[ruido/fuentes-ruido]] — Fuentes de ruido y radiointerferencias
+- [[ruido/ruido-blanco-banda-angosta]] — Ruido blanco: caracteristicas
+- [[ruido/ruido-banda-angosta]] — Ruido de banda angosta: I-Q, Rayleigh
+- [[ruido/temperatura-ruido]] — Temperatura equivalente de ruido Te
+- [[ruido/factor-ruido-temperatura]] — Factor de ruido F, NF, conversion
 - [[ruido/formula-friis]] — Formula de Friis para cuadripolos en cascada
 - [[ruido/relacion-snr]] — Relacion Senal a Ruido (SNR)
 - [[ruido/snr-modulacion-lineal]] — S/R en modulacion lineal, efecto umbral
 - [[ruido/snr-modulacion-exponencial]] — S/R en FM/PM, red de enfasis
 - [[ruido/efecto-umbral]] — Efecto umbral en FM y AM
+- [[ruido/efecto-enfasis-fm-am]] — Enfasis en FM/AM, mejora 10-13 dB
+- [[ruido/eficiencia-espectral-comparada]] — Eficiencia espectral por sistema
+- [[ruido/ganancia-procesamiento-pulsos]] — Ganancia de procesamiento PCM
 - [[ruido/intercomparacion-sistemas]] — Intercomparacion global de sistemas
 
 ## Teoria de la Informacion
@@ -82,6 +88,7 @@ Base de conocimiento interconectada para el curso de Sistemas de Comunicaciones.
 - [[teoria-informacion/teorema-shannon-hartley]] — Teorema de Shannon-Hartley
 - [[teoria-informacion/codigos-deteccion-error]] — Codigos de deteccion de error
 - [[teoria-informacion/codigo-compacto]] — Codigo compacto, longitud media
+- [[teoria-informacion/redundancia-compresion]] — Redundancia y compresion
 - [[teoria-informacion/sistema-ideal-comunicaciones]] — Sistema ideal de comunicaciones
 
 ## Espectro Expandido
@@ -91,6 +98,7 @@ Base de conocimiento interconectada para el curso de Sistemas de Comunicaciones.
 - [[espectro-expandido/fhss]] — Salto de Frecuencia (FHSS)
 - [[espectro-expandido/ofdm]] — OFDM: fundamentos y aplicaciones
 - [[espectro-expandido/correlacion-senales]] — Correlacion de senales en CDMA
+- [[espectro-expandido/prefijo-ciclico]] — Prefijo ciclico en OFDM
 - [[espectro-expandido/aplicaciones-spread-spectrum]] — Aplicaciones practicas
 
 ## Conceptos Integradores
@@ -100,6 +108,7 @@ Base de conocimiento interconectada para el curso de Sistemas de Comunicaciones.
 - [[conceptos-integradores/seleccion-modulacion]] — Criterios de seleccion de modulacion
 - [[conceptos-integradores/compromisos-diseno]] — Compromisos de diseno fundamentales
 - [[conceptos-integradores/aplicaciones-reales]] — Mapeo de modulaciones a aplicaciones
+- [[conceptos-integradores/eb-n0-vs-snr]] — Eb/N0 vs SNR: comparacion justa
 
 ## Derivaciones Matematicas
 
@@ -110,6 +119,9 @@ Base de conocimiento interconectada para el curso de Sistemas de Comunicaciones.
 - [[derivaciones/teorema-parseval]] — Teorema de Parseval: derivacion
 - [[derivaciones/teorema-shannon-hartley]] — Shannon-Hartley: derivacion
 - [[derivaciones/ecuacion-friis]] — Formula de Friis: derivacion
+- [[derivaciones/ecuacion-friis-extendida]] — Friis: derivacion extendida
+- [[derivaciones/modulacion-am-extendida]] — AM: derivacion extendida
+- [[derivaciones/modulacion-am-alternativa]] — AM: derivacion alternativa
 
 ## Resumenes y Mindmaps
 

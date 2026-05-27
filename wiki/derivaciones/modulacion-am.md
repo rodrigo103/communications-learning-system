@@ -96,3 +96,5 @@ Si $\mu > 1$, ocurre **sobremodulación**: la envolvente se vuelve negativa, cau
 - [[../modulacion-analogica/indice-modulacion-am]]
 - [[../ruido/snr-modulacion-lineal]]
 - [[../modulacion-analogica/deteccion-coherente]]
+- [[../derivaciones/modulacion-am-extendida]] — Version extendida y didactica
+- [[../derivaciones/modulacion-am-alternativa]] — Version alternativa (subagente)
