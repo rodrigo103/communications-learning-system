@@ -96,3 +96,4 @@ El espectro electromagnetico como autopista: sin modulacion todos los vehiculos 
 - [[../modulacion-analogica/multiplex-fdm]]
 - [[../modulacion-pulsos/multiplex-tdm]]
 - [[../modulacion-digital/ask-fsk-psk]]
+- [[../../explicaciones_anki/conceptos_integradores/carta_60_evolucion_historica_sistemas_modulacion|Evolucion historica]] — De AM a 5G

@@ -59,3 +59,15 @@ Registro cronologico de todas las actualizaciones al wiki de Sistemas de Comunic
   - `derivaciones/ecuacion-friis-extendida.md` — Friis extendida (621 lineas)
 - Links bidireccionales agregados desde las paginas canonicas a las extendidas
 - `index.md` actualizado con las 11 nuevas paginas
+
+### Unificacion de duplicados y archivos huerfanos
+
+- **3 pares duplicados unificados** en `explicaciones_anki/`:
+  - `carta_01_sistemas_comunicaciones` → mergeado en `carta_01_sistema-comunicaciones`
+  - `carta_02_modulacion` → mergeado en `carta_02_necesidad-modulacion`
+  - `carta_04_teorema_parseval` → mergeado en `carta_04_teorema-parseval`
+  - Archivos sobrantes eliminados
+- **Nueva pagina wiki**: `ruido/aclaracion-densidad-espectral-ruido.md` desde archivo fuente previamente huerfano
+- **Nueva pagina wiki**: `resumenes/resumen-modulacion-digital.md` desde `outputs/unidad_6_modulacion_digital_resumen.md`
+- **Conexiones fortalecidas**: wikilinks agregados a `fuentes-ruido`, `temperatura-ruido`, `formula-friis`, `modelo-shannon`, `programa-oficial`, `comparacion-digital-analogica`, `necesidad-modulacion`
+- Resultado: 0 archivos fuente huerfanos, 1058 wikilinks, 0 rotos

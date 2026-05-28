@@ -69,6 +69,7 @@ Base de conocimiento interconectada para el curso de Sistemas de Comunicaciones.
 - [[ruido/fuentes-ruido]] — Fuentes de ruido y radiointerferencias
 - [[ruido/ruido-blanco-banda-angosta]] — Ruido blanco: caracteristicas
 - [[ruido/ruido-banda-angosta]] — Ruido de banda angosta: I-Q, Rayleigh
+- [[ruido/aclaracion-densidad-espectral-ruido]] — Densidad espectral: $N_0 = kT$ vs $4kT$
 - [[ruido/temperatura-ruido]] — Temperatura equivalente de ruido Te
 - [[ruido/factor-ruido-temperatura]] — Factor de ruido F, NF, conversion
 - [[ruido/formula-friis]] — Formula de Friis para cuadripolos en cascada

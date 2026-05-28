@@ -80,3 +80,4 @@ En modulaciones multinivel como [[../modulacion-digital/modulacion-qam|QAM]], ca
 - [[../modulacion-analogica/am-vs-dsb-sc]] — Modulaciones analógicas de referencia
 - [[../ruido/intercomparacion-sistemas]] — Comparación sistemática de todos los esquemas
 - [[../conceptos-integradores/comparacion-global-modulaciones]] — Visión integradora
+- [[../../explicaciones_anki/conceptos_integradores/carta_59_regeneracion_digital_vs_amplificacion_analogica|Regeneracion digital]] — Amplificacion analogica vs regeneracion

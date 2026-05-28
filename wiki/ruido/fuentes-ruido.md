@@ -68,3 +68,4 @@ La potencia disponible es la misma en ambas: $N = kTB$. [source — [[../../expl
 - [[../ruido/ruido-blanco-banda-angosta]] — Ruido blanco filtrado: modelo de banda angosta
 - [[../ruido/factor-ruido-temperatura]] — Temperatura equivalente de ruido
 - [[../ruido/relacion-snr]] — Relación señal-ruido como métrica de calidad
+- [[aclaracion-densidad-espectral-ruido]] — Densidad espectral de ruido (aclaración)

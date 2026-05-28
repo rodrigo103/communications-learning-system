@@ -108,3 +108,4 @@ El ruido es inevitable en todo sistema real [source — [[../../explicaciones_an
 - [[../introduccion/necesidad-modulacion]]
 - [[../ruido/fuentes-ruido]]
 - [[../herramientas-matematicas/transformada-hilbert]]
+- [[../../outputs/mindmaps/communications_systems_course_overview_20251116|Mapa mental del curso]] — Vista general de todos los temas

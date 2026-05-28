@@ -66,3 +66,4 @@ Ver [[../ruido/snr-modulacion-lineal]] y [[../ruido/efecto-umbral]] para el aná
 - [[../ruido/fuentes-ruido]] — Origen físico del ruido blanco
 - [[../herramientas-matematicas/densidad-espectral-potencia]] — DEP como herramienta de análisis
 - [[../ruido/factor-ruido-temperatura]] — Cuantificación del ruido agregado
+- [[aclaracion-densidad-espectral-ruido]] — Aclaracion sobre densidad espectral de ruido

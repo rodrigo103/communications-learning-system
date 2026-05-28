@@ -60,3 +60,4 @@ $$T_{total} = T_1 + \frac{T_2}{G_1} + \frac{T_3}{G_1 G_2} + \cdots$$
 - [[../derivaciones/ecuacion-friis]] — Derivación completa de la fórmula
 - [[../ruido/relacion-snr]] — Impacto de $F_{total}$ en la SNR del sistema
 - [[../modulacion-analogica/receptor-superheterodino]] — Arquitectura típica donde se aplica Friis
+- [[../../outputs/solutions/ejercicio_ruido_complete_20251115|Ejercicio de ruido resuelto]] — Aplicacion practica de Friis
