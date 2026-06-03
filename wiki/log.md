@@ -9,6 +9,26 @@ Registro cronologico de todas las actualizaciones al wiki de Sistemas de Comunic
 
 ---
 
+## 2026-06-02
+
+### Wikilinks desde conversaciones Claude
+
+- **Conversaciones**: Incorporados 13 archivos historicos de conversaciones con Claude (`claude-conversations/`) como vault de Obsidian.
+- **Pagina indice**: Creada `sesiones/conversaciones-claude.md` con mapeo de 11 conversaciones de contenido del curso a paginas del wiki.
+- **Links reciprocos**: Agregados enlaces desde 26 paginas del wiki (`Ver tambien`) hacia las conversaciones relevantes:
+  - `ruido/` (7 paginas): formula-friis, factor-ruido-temperatura, relacion-snr, lna-diseno-receptor, intercomparacion-sistemas, temperatura-ruido, problemas/ejercicio-ruido
+  - `modulacion-analogica/` (3): ancho-banda-carson, fm-estereo, fm-vs-pm
+  - `modulacion-digital/` (3): comparacion-digital-analogica, ask-fsk-psk, constelaciones
+  - `herramientas-matematicas/` (3): teorema-parseval, senales-energia-potencia, teorema-muestreo, transformada-fourier
+  - `teoria-informacion/` (3): teorema-shannon-hartley, capacidad-canal-shannon, sistema-ideal-comunicaciones
+  - `planificacion/` (3): mazo-anki, progreso-actual, programa-oficial
+  - `conceptos-integradores/` (1): evolucion-sistemas
+  - `sesiones/` (1): 2025-11-15-sesion
+  - `modulacion-pulsos/` (1): muestreo-ideal-natural
+- **Index**: Actualizado `wiki/index.md` con link a la nueva pagina.
+
+---
+
 ## 2026-05-27
 
 ### Creacion inicial del vault

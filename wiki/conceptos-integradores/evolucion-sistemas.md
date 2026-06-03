@@ -124,3 +124,4 @@ En 100 anos hemos pasado de $\sim 5\%$ a $\sim 75\%$ del limite teorico. Los ult
 - [[../conceptos-integradores/comparacion-global-modulaciones]]
 - [[../teoria-informacion/teorema-shannon-hartley]]
 - [[../conceptos-integradores/seleccion-modulacion]]
+- [[../../claude-conversations/2025-11-16_digital-modulation-history-and-bandpass-concepts|Conversación: historia mod. digital y bandpass]]

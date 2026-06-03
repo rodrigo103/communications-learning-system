@@ -100,3 +100,4 @@ La contribucion del mezclador es de solo 5 K gracias a la ganancia del LNA. Sin 
 - [[../ruido/relacion-snr]] — Relacion Senal a Ruido
 - [[../ruido/lna-diseno-receptor]] — Diseno de receptor con LNA
 - [[aclaracion-densidad-espectral-ruido]] — Aclaracion: $N_0 = kT$ vs $N_0 = 4kT$
+- [[../../claude-conversations/2025-11-05_final-exam-noise-exercise-solution|Conversación: ejercicio de ruido de examen final]]

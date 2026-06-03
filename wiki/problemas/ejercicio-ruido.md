@@ -112,3 +112,4 @@ El amplificador degrada la SNR exactamente en su figura de ruido: de 6.20 dB a 1
 - [[../ruido/fuentes-ruido]]
 - [[../derivaciones/ecuacion-friis]]
 - [[../ruido/ruido-termico]]
+- [[../../claude-conversations/2025-11-05_final-exam-noise-exercise-solution|Conversación: ejercicio de ruido de examen final]]

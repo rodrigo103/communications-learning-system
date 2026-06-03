@@ -70,3 +70,5 @@ Ranking general de desempeño: **PSK > FSK > ASK**. [analysis]
 - [[../modulacion-digital/modulacion-qam]] — Combinación de ASK y PSK
 - [[../modulacion-digital/constelaciones]] — Representación I-Q de estas modulaciones
 - [[../modulacion-digital/probabilidad-error]] — Análisis detallado de BER
+- [[../../claude-conversations/2025-11-16_digital-modulation-history-and-bandpass-concepts|Conversación: historia mod. digital y bandpass]]
+- [[../../claude-conversations/2025-11-20_modulaci-n-bpsk-sobre-fm-en-telemetr-a-espacial|Conversación: BPSK sobre FM en telemetría]]

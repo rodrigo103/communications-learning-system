@@ -76,3 +76,5 @@ Las cartas están alineadas con estas áreas del wiki:
 - [[../planificacion/programa-oficial]]
 - [[../planificacion/progreso-actual]]
 - [[../resumenes/overview-curso]]
+- [[../../claude-conversations/2025-11-07_anki-flashcard-deck-for-subject-fundamentals|Conversación: mazo Anki de fundamentos]]
+- [[../../claude-conversations/2025-11-12_converting-cards-to-anki-flashcard-format|Conversación: conversión de tarjetas a .apkg]]

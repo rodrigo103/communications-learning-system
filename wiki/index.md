@@ -144,6 +144,7 @@ Base de conocimiento interconectada para el curso de Sistemas de Comunicaciones.
 ## Sesiones
 
 - [[sesiones/2025-11-15-sesion]] — Sesion del 15/11/2025
+- [[sesiones/conversaciones-claude]] — Indice de conversaciones Claude con conceptos del curso
 
 ---
 

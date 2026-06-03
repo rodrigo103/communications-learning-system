@@ -83,3 +83,4 @@ Aunque el progreso formal marca 0%, se ha generado material de estudio significa
 - [[../planificacion/programa-oficial]]
 - [[../planificacion/mazo-anki]]
 - [[../resumenes/overview-curso]]
+- [[../../claude-conversations/2025-11-15_multi-agent-learning-system-for-communications|Conversación: sistema multi-agente de aprendizaje]]

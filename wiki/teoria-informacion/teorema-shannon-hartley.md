@@ -94,3 +94,4 @@ Este es el limite absoluto: ningun sistema, sin importar cuanto ancho de banda u
 - [[../conceptos-integradores/comparacion-global-modulaciones]]
 - [[../conceptos-integradores/compromisos-diseno]]
 - [[../ruido/intercomparacion-sistemas]]
+- [[../../claude-conversations/2025-11-05_shannon-capacity-and-signal-to-noise-ratio|Conversación: capacidad de Shannon y SNR]]

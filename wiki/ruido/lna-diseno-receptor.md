@@ -11,3 +11,4 @@ curso: Sistemas de Comunicaciones
 Pagina de referencia. Ver:
 
 - [[../ruido/formula-friis]] — Formula de Friis para figura de ruido en cascada
+- [[../../claude-conversations/2025-12-07_sub-ndices-de-snr-en-cadena-receptora-rf|Conversación: SNR en cadena receptora RF]]

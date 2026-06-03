@@ -92,3 +92,4 @@ Los sistemas modernos (con Turbo codes, LDPC) operan a 1–3 dB del limite de Sh
 - [[../teoria-informacion/sistema-ideal-comunicaciones]]
 - [[../conceptos-integradores/comparacion-global-modulaciones]]
 - [[../conceptos-integradores/compromisos-diseno]]
+- [[../../claude-conversations/2025-11-05_shannon-capacity-and-signal-to-noise-ratio|Conversación: capacidad de Shannon y SNR]]

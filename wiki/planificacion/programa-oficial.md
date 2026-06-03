@@ -98,3 +98,4 @@ Ruido de banda angosta: modelo estadístico. SNR para modulación lineal (AM, DS
 - [[../planificacion/mazo-anki]]
 - [[../resumenes/overview-curso]]
 - [[../../outputs/mindmaps/communications_systems_course_overview_20251116|Mapa mental del curso]] — Estructura visual de contenidos
+- [[../../claude-conversations/2025-11-07_anki-flashcard-deck-for-subject-fundamentals|Conversación: mazo Anki de fundamentos]]

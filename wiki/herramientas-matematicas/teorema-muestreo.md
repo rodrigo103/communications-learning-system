@@ -86,3 +86,4 @@ El muestreo es como tomar fotografias de una rueda girando. Si tomas suficientes
 - [[../herramientas-matematicas/densidad-espectral-potencia]]
 - [[../modulacion-pulsos/pcm-cuantificacion]]
 - [[../modulacion-pulsos/muestreo-ideal-natural]]
+- [[../../claude-conversations/2025-11-05_understanding-an-explanation|Conversación: muestreo, Nyquist y reconstrucción]]

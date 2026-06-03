@@ -87,3 +87,4 @@ Una linterna con flash (señal de energia) libera energia finita en tiempo corto
 - [[../herramientas-matematicas/densidad-espectral-potencia]]
 - [[../herramientas-matematicas/teorema-parseval]]
 - [[../ruido/ruido-blanco-banda-angosta]]
+- [[../../claude-conversations/2025-11-04_signal-power-calculations-and-mean-value-expressions|Conversación: potencia de señal y Parseval]]

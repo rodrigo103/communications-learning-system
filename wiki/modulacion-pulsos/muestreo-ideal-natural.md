@@ -66,3 +66,4 @@ Para telefonía con $f_s = 8$ kHz y ciclo de trabajo del $10\%$: $\tau = 12.5$ �
 - [[../herramientas-matematicas/teorema-muestreo]] — Fundamento de la frecuencia de muestreo
 - [[../modulacion-pulsos/pcm-cuantificacion]] — PAM como primera etapa del PCM
 - [[../modulacion-pulsos/multiplex-tdm]] — Multiplexación temporal de canales PAM
+- [[../../claude-conversations/2025-11-05_understanding-an-explanation|Conversación: muestreo, Nyquist y reconstrucción]]

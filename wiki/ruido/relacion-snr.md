@@ -67,3 +67,4 @@ donde $\beta$ es el índice de modulación. Ver [[../ruido/snr-modulacion-expone
 - [[../ruido/factor-ruido-temperatura]] — Caracterización del ruido en dispositivos
 - [[../ruido/formula-friis]] — SNR en sistemas en cascada
 - [[../ruido/intercomparacion-sistemas]] — Comparación de SNR entre sistemas
+- [[../../claude-conversations/2025-12-07_sub-ndices-de-snr-en-cadena-receptora-rf|Conversación: SNR en cadena receptora RF]]

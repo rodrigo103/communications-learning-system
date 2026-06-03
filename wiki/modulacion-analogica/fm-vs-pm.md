@@ -111,3 +111,5 @@ Para moduladora sinusoidal $m(t) = A_m\cos(2\pi f_m t)$:
 - [[../modulacion-analogica/modulador-fm]]
 - [[../derivaciones/modulacion-fm-carson]]
 - [[../ruido/snr-modulacion-exponencial]]
+- [[../../claude-conversations/2025-11-19_separaci-n-de-canales-fm-y-ancho-de-banda-real|Conversación: canales FM y ancho de banda real]]
+- [[../../claude-conversations/2025-11-20_modulaci-n-bpsk-sobre-fm-en-telemetr-a-espacial|Conversación: BPSK sobre FM en telemetría]]

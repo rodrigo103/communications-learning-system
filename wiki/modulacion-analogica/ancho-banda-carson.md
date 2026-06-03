@@ -101,3 +101,4 @@ $$\boxed{BW = 2f_m(\beta + 1) = 2(\Delta f + f_m)}$$
 - [[../modulacion-analogica/fm-vs-pm]]
 - [[../modulacion-analogica/fm-banda-angosta]]
 - [[../derivaciones/modulacion-fm-carson]]
+- [[../../claude-conversations/2025-11-19_separaci-n-de-canales-fm-y-ancho-de-banda-real|Conversación: separación de canales FM]]

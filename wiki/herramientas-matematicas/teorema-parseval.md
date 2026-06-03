@@ -74,3 +74,4 @@ Ambos calculos coinciden exactamente, confirmando el teorema.
 - [[../herramientas-matematicas/teorema-convolucion]]
 - [[../herramientas-matematicas/senales-energia-potencia]]
 - [[../derivaciones/teorema-parseval]]
+- [[../../claude-conversations/2025-11-04_signal-power-calculations-and-mean-value-expressions|Conversación: potencia de señal y Parseval]]

@@ -83,3 +83,4 @@ Esto implica que **ancho de banda y potencia son intercambiables**: se puede red
 - [[../ruido/efecto-umbral]] — Limitación crítica de FM
 - [[../conceptos-integradores/comparacion-global-modulaciones]] — Visión integradora de todas las modulaciones
 - [[../teoria-informacion/teorema-shannon-hartley]] — Límite teórico fundamental
+- [[../../claude-conversations/2025-12-07_sub-ndices-de-snr-en-cadena-receptora-rf|Conversación: SNR en cadena receptora RF]]

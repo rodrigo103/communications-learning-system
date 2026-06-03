@@ -61,3 +61,5 @@ $$T_{total} = T_1 + \frac{T_2}{G_1} + \frac{T_3}{G_1 G_2} + \cdots$$
 - [[../ruido/relacion-snr]] — Impacto de $F_{total}$ en la SNR del sistema
 - [[../modulacion-analogica/receptor-superheterodino]] — Arquitectura típica donde se aplica Friis
 - [[../../outputs/solutions/ejercicio_ruido_complete_20251115|Ejercicio de ruido resuelto]] — Aplicacion practica de Friis
+- [[../../claude-conversations/2025-11-05_final-exam-noise-exercise-solution|Conversación: ejercicio de ruido de examen final]]
+- [[../../claude-conversations/2025-12-07_sub-ndices-de-snr-en-cadena-receptora-rf|Conversación: SNR en cadena receptora RF]]

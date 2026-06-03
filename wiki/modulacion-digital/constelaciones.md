@@ -77,3 +77,4 @@ Mayor $M$ → mayor eficiencia espectral pero menor $d_{min}$ → requiere mayor
 - [[../modulacion-digital/ask-fsk-psk]] — BPSK/QPSK como constelaciones básicas
 - [[../modulacion-digital/modulacion-qam]] — Constelaciones rectangulares densas
 - [[../modulacion-digital/probabilidad-error]] — Relación $d_{min}$ con BER
+- [[../../claude-conversations/2025-11-20_modulaci-n-bpsk-sobre-fm-en-telemetr-a-espacial|Conversación: BPSK sobre FM en telemetría]]

@@ -77,3 +77,4 @@ Donde $T_{antena}$ incluye ruido cósmico, atmosférico y terrestre. Minimizar $
 - [[../ruido/formula-friis]] — Cálculo de ruido en cascada
 - [[../ruido/relacion-snr]] — Relación señal-ruido
 - [[../ruido/ruido-blanco-banda-angosta]] — $N_0 = kT$ como referencia
+- [[../../claude-conversations/2025-11-05_final-exam-noise-exercise-solution|Conversación: ejercicio de ruido de examen final]]

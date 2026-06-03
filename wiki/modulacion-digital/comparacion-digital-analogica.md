@@ -81,3 +81,4 @@ En modulaciones multinivel como [[../modulacion-digital/modulacion-qam|QAM]], ca
 - [[../ruido/intercomparacion-sistemas]] — Comparación sistemática de todos los esquemas
 - [[../conceptos-integradores/comparacion-global-modulaciones]] — Visión integradora
 - [[../../explicaciones_anki/conceptos_integradores/carta_59_regeneracion_digital_vs_amplificacion_analogica|Regeneracion digital]] — Amplificacion analogica vs regeneracion
+- [[../../claude-conversations/2025-11-16_digital-modulation-history-and-bandpass-concepts|Conversación: historia mod. digital y conceptos bandpass]]
