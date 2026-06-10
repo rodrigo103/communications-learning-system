@@ -44,6 +44,16 @@ Los sistemas de comunicaciones están presentes en prácticamente todos los aspe
 
 El modelo de sistema de comunicaciones fue formalizado por Claude Shannon en 1948 en su trabajo seminal "A Mathematical Theory of Communication". Shannon trabajaba en los Laboratorios Bell y buscaba resolver el problema fundamental de reproducir exactamente o aproximadamente un mensaje seleccionado en un punto, en otro punto diferente. Su modelo revolucionó las telecomunicaciones al proporcionar una base matemática sólida para analizar y diseñar sistemas de comunicación.
 
+> [!note]- 📡 Modelo de Shannon
+> El modelo de Shannon consiste en cinco componentes:
+> 1. **Fuente de información**: produce el mensaje (voz, texto, datos).
+> 2. **Transmisor**: codifica el mensaje en una señal apta para el canal (modulación, compresión).
+> 3. **Canal**: medio físico por donde viaja la señal, sujeto a ruido y distorsión.
+> 4. **Receptor**: decodifica la señal recibida, intentando reconstruir el mensaje original.
+> 5. **Destino**: entidad que consume el mensaje reconstruido.
+> 
+> Lo revolucionario del modelo fue tratar la *información* como una magnitud medible (entropía, bits) y separar el significado del mensaje de su transmisión. Shannon probó matemáticamente que existe un límite máximo de velocidad (capacidad del canal) para transmitir sin errores: $C = B \log_2(1 + S/N)$, sin importar la tecnología usada. Esto convirtió a las comunicaciones en una ingeniería con fundamentos científicos, no solo empíricos.
+
 ### 📐 Fundamentos Teóricos
 
 #### Conceptos Prerequisitos
