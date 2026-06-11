@@ -116,6 +116,7 @@ Base de conocimiento interconectada para el curso de Sistemas de Comunicaciones.
 - [[conceptos-integradores/aportes-fourier]] — Joseph Fourier: base matematica del curso
 - [[conceptos-integradores/aportes-carson]] — John Carson: regla de Carson, modulador balanceado
 - [[conceptos-integradores/aportes-parseval]] — Parseval: conservacion de energia tiempo-frecuencia
+- [[conceptos-integradores/aportes-hilbert]] — David Hilbert: transformada de Hilbert, señal analitica, SSB
 - [[conceptos-integradores/pioneros-comunicaciones]] — Galeria completa de pioneros (Maxwell, Hertz, Marconi, Bell, Friis, Huffman, Hamming, Viterbi, etc.)
 
 ## Derivaciones Matematicas

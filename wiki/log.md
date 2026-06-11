@@ -99,4 +99,5 @@ Registro cronologico de todas las actualizaciones al wiki de Sistemas de Comunic
 - **Nueva pagina wiki**: `conceptos-integradores/aportes-shannon.md` — Hub integrador que vincula todos los aportes de Claude Shannon al curso: modelo de comunicaciones, teorema de muestreo, entropia, capacidad de canal, teoremas de codificacion, limite $E_b/N_0$.
 - **Nuevas paginas wiki**: `aportes-nyquist.md`, `aportes-armstrong.md`, `aportes-fourier.md` — Hubs dedicados a figuras con multiples aportes al curso.
 - **Nuevas paginas wiki**: `aportes-carson.md`, `aportes-parseval.md` — Regla de Carson, modulador balanceado; conservacion de energia tiempo-frecuencia.
+- **Nueva pagina wiki**: `aportes-hilbert.md` — Transformada de Hilbert: señal analitica, SSB por fase, ruido pasabanda.
 - **Nueva pagina wiki**: `pioneros-comunicaciones.md` — Galeria completa de pioneros (24+ figuras) organizada por area: precursores EM, radio, teoria de informacion, digital/redes, ruido/formulas.
