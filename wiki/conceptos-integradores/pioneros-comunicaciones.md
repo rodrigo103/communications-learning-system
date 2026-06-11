@@ -201,6 +201,14 @@ Donde $k = 1.38 \times 10^{-23}$ J/K, $T$ en Kelvin, $R$ en $\Omega$, $B$ en Hz.
 
 → [[../conceptos-integradores/aportes-fourier|Aportes de Fourier]] — pagina dedicada
 
+### John R. Carson (1886–1940)
+
+→ [[../conceptos-integradores/aportes-carson|Aportes de Carson]] — pagina dedicada (regla de Carson para FM, modulador balanceado DSB-SC, pre-enfasis)
+
+### Marc-Antoine Parseval (1755–1836)
+
+→ [[../conceptos-integradores/aportes-parseval|Aportes de Parseval]] — pagina dedicada (conservacion de energia tiempo-frecuencia, base de Wiener-Khinchin)
+
 ### Hendrik Bode (1905–1982)
 
 Desarrollo los **diagramas de Bode**, la herramienta grafica estandar para analizar la respuesta en frecuencia de filtros y amplificadores. Su **integral de sensibilidad de Bode** establece limites fundamentales al diseño de sistemas realimentados: no se puede mejorar el desempeño en una banda sin empeorarlo en otra. Aunque su aplicacion directa es en teoria de control, sus conceptos son utiles para entender limitaciones de ecualizadores y filtros en comunicaciones. [analysis]
@@ -213,4 +221,6 @@ Desarrollo los **diagramas de Bode**, la herramienta grafica estandar para anali
 - [[../conceptos-integradores/aportes-nyquist|Aportes de Nyquist]]
 - [[../conceptos-integradores/aportes-armstrong|Aportes de Armstrong]]
 - [[../conceptos-integradores/aportes-fourier|Aportes de Fourier]]
+- [[../conceptos-integradores/aportes-carson|Aportes de Carson]]
+- [[../conceptos-integradores/aportes-parseval|Aportes de Parseval]]
 - [[../resumenes/overview-curso|Resumen General del Curso]]
