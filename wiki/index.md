@@ -110,6 +110,11 @@ Base de conocimiento interconectada para el curso de Sistemas de Comunicaciones.
 - [[conceptos-integradores/compromisos-diseno]] — Compromisos de diseno fundamentales
 - [[conceptos-integradores/aplicaciones-reales]] — Mapeo de modulaciones a aplicaciones
 - [[conceptos-integradores/eb-n0-vs-snr]] — Eb/N0 vs SNR: comparacion justa
+- [[conceptos-integradores/aportes-shannon]] — Claude Shannon: biografia y aportes al curso
+- [[conceptos-integradores/aportes-nyquist]] — Harry Nyquist: muestreo, ISI, ruido termico
+- [[conceptos-integradores/aportes-armstrong]] — Edwin Armstrong: superheterodino, FM
+- [[conceptos-integradores/aportes-fourier]] — Joseph Fourier: base matematica del curso
+- [[conceptos-integradores/pioneros-comunicaciones]] — Galeria completa de pioneros (Maxwell, Hertz, Marconi, Bell, Friis, Huffman, Hamming, Viterbi, etc.)
 
 ## Derivaciones Matematicas
 

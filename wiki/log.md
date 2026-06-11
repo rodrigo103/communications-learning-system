@@ -91,3 +91,11 @@ Registro cronologico de todas las actualizaciones al wiki de Sistemas de Comunic
 - **Nueva pagina wiki**: `resumenes/resumen-modulacion-digital.md` desde `outputs/unidad_6_modulacion_digital_resumen.md`
 - **Conexiones fortalecidas**: wikilinks agregados a `fuentes-ruido`, `temperatura-ruido`, `formula-friis`, `modelo-shannon`, `programa-oficial`, `comparacion-digital-analogica`, `necesidad-modulacion`
 - Resultado: 0 archivos fuente huerfanos, 1058 wikilinks, 0 rotos
+
+---
+
+### 2026-06-10
+
+- **Nueva pagina wiki**: `conceptos-integradores/aportes-shannon.md` — Hub integrador que vincula todos los aportes de Claude Shannon al curso: modelo de comunicaciones, teorema de muestreo, entropia, capacidad de canal, teoremas de codificacion, limite $E_b/N_0$.
+- **Nuevas paginas wiki**: `aportes-nyquist.md`, `aportes-armstrong.md`, `aportes-fourier.md` — Hubs dedicados a figuras con multiples aportes al curso.
+- **Nueva pagina wiki**: `pioneros-comunicaciones.md` — Galeria completa de pioneros (24+ figuras) organizada por area: precursores EM, radio, teoria de informacion, digital/redes, ruido/formulas.

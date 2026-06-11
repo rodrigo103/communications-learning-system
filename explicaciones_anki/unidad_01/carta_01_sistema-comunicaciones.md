@@ -98,6 +98,9 @@ Ejemplos prácticos:
 - Cámara de video (varios MHz de ancho de banda)
 - Sensor de temperatura (pocos bits por segundo)
 
+> [!note]- 📡 Fuente vs Mensaje
+> La **fuente de información** y el **mensaje** no son lo mismo: la fuente es la entidad que *genera* el mensaje (persona hablando, sensor, servidor), mientras que el mensaje es el *contenido* producido (voz, datos, texto). En rigor, el **ancho de banda** es una propiedad de la *señal* (del mensaje), no de la fuente. Sin embargo, se atribuye a la fuente como una propiedad derivada porque ella determina las características espectrales de lo que genera. Por ejemplo, se dice que «la voz tiene un ancho de banda de 300–3400 Hz» porque la fuente (el hablante) produce un mensaje que ocupa ese rango frecuencial.
+
 **2. Transmisor**
 
 El transmisor procesa la señal de información para prepararla para la transmisión. Funciones principales:
@@ -203,6 +206,13 @@ Imagina gritar a través de un valle. Tu voz (información) necesita ser lo sufi
 4. **Codificación de canal**: Agrega bits de paridad para corrección de errores
 5. **Modulación**: GMSK/QPSK/QAM según el estándar (2G/3G/4G)
 6. **Transmisión RF**: Amplificación a ~1W y radiación por antena
+
+> [!note]- 📡 Valores de la digitalización PCM telefónica
+> - **8 kHz de muestreo**: Por el teorema de Nyquist, $f_s \geq 2B$. La voz telefónica se limita a $B = 300\text{--}3400$ Hz (~4 kHz). Muestrear al doble del ancho de banda (~8 kHz) garantiza que se pueda reconstruir la señal sin pérdida (aliasing).
+> - **8 bits por muestra**: Cada muestra se cuantifica en $2^8 = 256$ niveles. Es el estándar PCM (G.711) que da suficiente calidad para voz inteligible.
+> - **64 kbps**: Resulta de multiplicar ambos: $8000 \text{ muestras/s} \times 8 \text{ bits/muestra} = 64000 \text{ bps}$. Es la tasa básica de un canal telefónico digital y la unidad sobre la que se construyen jerarquías mayores:
+>   - **T1** (Norteamérica/Japón): multiplexa 24 canales de voz → $24 \times 64\text{k} + 8\text{k (sync)} = 1.544\text{ Mbps}$, con companding μ-law.
+>   - **E1** (Europa/resto del mundo): multiplexa 32 time slots (30 voz + 1 sync + 1 señalización) → $32 \times 64\text{k} = 2.048\text{ Mbps}$, con companding A-law.
 
 #### Ejemplo 2: Transmisión de Radio FM
 
