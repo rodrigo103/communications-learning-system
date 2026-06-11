@@ -16,9 +16,10 @@ Documento que recopila las contribuciones de figuras clave en la historia de las
 
 1. [Precursores EM](#precursores-electromagneticos)
 2. [Pioneros de la Radio](#pioneros-de-la-radio)
-3. [Teoria de la Informacion y Codificacion](#teoria-de-la-informacion-y-codificacion)
-4. [Sistemas Digitales y Redes](#sistemas-digitales-y-redes)
-5. [Ruido y Formulas Fundamentales](#ruido-y-formulas-fundamentales)
+3. [Herramientas Matematicas](#herramientas-matematicas)
+4. [Teoria de la Informacion y Codificacion](#teoria-de-la-informacion-y-codificacion)
+5. [Sistemas Digitales y Redes](#sistemas-digitales-y-redes)
+6. [Ruido](#ruido)
 
 ---
 
@@ -79,6 +80,26 @@ Invento el **telefono** (1876), el primer sistema de comunicacion de voz en tiem
 ### Edwin Howard Armstrong
 
 → [[../conceptos-integradores/aportes-armstrong|Aportes de Armstrong]] — pagina dedicada
+
+### John R. Carson (1886–1940)
+
+→ [[../conceptos-integradores/aportes-carson|Aportes de Carson]] — pagina dedicada (regla de Carson para FM, modulador balanceado DSB-SC, pre-enfasis)
+
+---
+
+## Herramientas Matematicas
+
+### Marc-Antoine Parseval (1755–1836)
+
+→ [[../conceptos-integradores/aportes-parseval|Aportes de Parseval]] — pagina dedicada (conservacion de energia tiempo-frecuencia, base de Wiener-Khinchin)
+
+### Joseph Fourier
+
+→ [[../conceptos-integradores/aportes-fourier|Aportes de Fourier]] — pagina dedicada
+
+### Hendrik Bode (1905–1982)
+
+Desarrollo los **diagramas de Bode**, la herramienta grafica estandar para analizar la respuesta en frecuencia de filtros y amplificadores. Su **integral de sensibilidad de Bode** establece limites fundamentales al diseño de sistemas realimentados: no se puede mejorar el desempeño en una banda sin empeorarlo en otra. Aunque su aplicacion directa es en teoria de control, sus conceptos son utiles para entender limitaciones de ecualizadores y filtros en comunicaciones. [analysis]
 
 ---
 
@@ -162,7 +183,7 @@ Co-inventores del protocolo **TCP/IP** (1974), la arquitectura fundamental de In
 
 ---
 
-## Ruido y Formulas Fundamentales
+## Ruido
 
 ### Harald Friis (1893–1976)
 
@@ -196,22 +217,6 @@ Donde $k = 1.38 \times 10^{-23}$ J/K, $T$ en Kelvin, $R$ en $\Omega$, $B$ en Hz.
 ### Harry Nyquist
 
 → [[../conceptos-integradores/aportes-nyquist|Aportes de Nyquist]] — pagina dedicada
-
-### Joseph Fourier
-
-→ [[../conceptos-integradores/aportes-fourier|Aportes de Fourier]] — pagina dedicada
-
-### John R. Carson (1886–1940)
-
-→ [[../conceptos-integradores/aportes-carson|Aportes de Carson]] — pagina dedicada (regla de Carson para FM, modulador balanceado DSB-SC, pre-enfasis)
-
-### Marc-Antoine Parseval (1755–1836)
-
-→ [[../conceptos-integradores/aportes-parseval|Aportes de Parseval]] — pagina dedicada (conservacion de energia tiempo-frecuencia, base de Wiener-Khinchin)
-
-### Hendrik Bode (1905–1982)
-
-Desarrollo los **diagramas de Bode**, la herramienta grafica estandar para analizar la respuesta en frecuencia de filtros y amplificadores. Su **integral de sensibilidad de Bode** establece limites fundamentales al diseño de sistemas realimentados: no se puede mejorar el desempeño en una banda sin empeorarlo en otra. Aunque su aplicacion directa es en teoria de control, sus conceptos son utiles para entender limitaciones de ecualizadores y filtros en comunicaciones. [analysis]
 
 ---
 
