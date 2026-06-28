@@ -123,6 +123,7 @@ En un osciloscopio, una señal de energía aparece como un pulso o transitorio q
 **Situación:** Un sistema de comunicaciones transmite bits usando pulsos rectangulares de 1 μs de duración y 5V de amplitud sobre una impedancia de 50Ω.
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Amplitud (V) | 5 | V |
@@ -250,6 +251,7 @@ Sinusoide: P = A²/2 (valor RMS al cuadrado)
 - 🧠 **"Periódica = Potencia"**: Toda señal periódica (no nula) es de potencia
 
 #### Valores Típicos (para referencias rápidas)
+
 | Tipo de Señal | Clasificación | Ejemplo típico |
 |---------------|--------------|----------------|
 | Pulso único | Energía | Bit en comunicación digital |

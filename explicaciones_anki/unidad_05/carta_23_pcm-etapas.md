@@ -156,6 +156,7 @@ El error es como el "pixelado" en una imagen: visible cuando hay pocos niveles (
 **Situación:** Diseñar PCM para calidad CD de audio
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Frecuencia máxima audible | 20 | kHz |
@@ -297,6 +298,7 @@ BW PCM: BW ≈ n·fs/2
 - 🧠 **"6 para SNR"**: 6 dB por bit para recordar la mejora
 
 #### Valores Típicos (para referencias rápidas)
+
 | Parámetro | Valor Típico | Aplicación |
 |-----------|--------------|------------|
 | Voz telefonía | 8 kHz, 8 bits | G.711 (64 kbps) |

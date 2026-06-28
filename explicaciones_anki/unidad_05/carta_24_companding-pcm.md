@@ -150,6 +150,7 @@ Imagina una regla con marcas uniformes (cuantificación uniforme) vs. una regla 
 **Situación:** Digitalizar una señal de voz con rango dinámico de 40 dB usando PCM de 8 bits.
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Bits por muestra | 8 | bits |
@@ -292,6 +293,7 @@ A-law: A = 87.6 (estándar europeo)
 - 🧠 **"255 y 87.6"**: Valores estándar de μ y A
 
 #### Valores Típicos (para referencias rápidas)
+
 | Parámetro | Valor Típico | Aplicación |
 |-----------|--------------|------------|
 | μ | 255 | Telefonía G.711 μ-law |

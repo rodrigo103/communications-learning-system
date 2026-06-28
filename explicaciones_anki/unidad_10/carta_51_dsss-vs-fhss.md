@@ -147,6 +147,7 @@ FHSS es como una conversación donde cambias constantemente de idioma según un 
 **Situación:** Analizar por qué GPS usa DSSS en lugar de FHSS
 
 **Datos del sistema GPS:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Código C/A length | 1023 | chips |
@@ -208,6 +209,7 @@ FHSS es como una conversación donde cambias constantemente de idioma según un 
 **Escenario:** Sistema militar con jammer parcial
 
 **Condiciones:**
+
 | Parámetro | DSSS | FHSS |
 |-----------|------|------|
 | Ancho de banda total | 100 MHz | 100 MHz |
@@ -313,6 +315,7 @@ FHSS con jammer parcial: Phit = BWjammer/BWtotal
 - 🧠 **GPS-DSSS, Bluetooth-FHSS**: Recordar aplicaciones típicas
 
 #### Valores Típicos (para referencias rápidas)
+
 | Sistema | Técnica | Gp típica | Característica clave |
 |---------|---------|-----------|---------------------|
 | GPS | DSSS | 43 dB | Correlación precisa |

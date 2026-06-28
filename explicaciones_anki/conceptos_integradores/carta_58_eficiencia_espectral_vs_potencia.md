@@ -294,6 +294,7 @@ Con codificación: η_B_efectiva = η_B_mod × R_código
 - ✓ **Codificación media**: Permite moverse en la curva del trade-off
 
 #### Tabla de Aplicaciones y Prioridades
+
 | Aplicación | Recurso Limitado | Prioridad | Solución Típica |
 |------------|------------------|-----------|-----------------|
 | Espacio profundo | Potencia extrema | η_P máxima | BPSK + códigos potentes |

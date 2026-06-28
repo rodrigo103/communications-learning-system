@@ -135,6 +135,7 @@ Imagina la constelación de señal como islas en un mar. Cada símbolo transmiti
 **Situación:** Router WiFi transmitiendo a laptop en sala con 64-QAM.
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Potencia transmitida | 20 | dBm |
@@ -277,6 +278,7 @@ Función Q: Q(x) ≈ (1/√(2π)) × exp(-x²/2) / x  (para x grande)
 - 🧠 **"10⁻⁶ para voz, 10⁻⁹ para datos"**: Requisitos típicos de BER
 
 #### Valores Típicos (para referencias rápidas)
+
 | Aplicación | BER Objetivo | Eb/N0 típico (QPSK) |
 |------------|--------------|---------------------|
 | Voz digital | 10⁻³ - 10⁻⁴ | 4-6 dB |

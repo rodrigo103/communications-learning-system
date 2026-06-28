@@ -186,6 +186,7 @@ Cuando enfriamos un amplificador criogénicamente:
 **Situación:** Diseño de receptor para comunicación con satélite geoestacionario en banda Ku (12 GHz).
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Figura de ruido LNA | 0.8 | dB |
@@ -347,6 +348,7 @@ N = k·Tsys·B                   [Potencia de ruido total]
 - 🧠 **"Primero importa más"**: Primera etapa domina Tsys
 
 #### Valores Típicos (para referencias rápidas)
+
 | Dispositivo | Te Típica | Figura de Ruido | Aplicación |
 |-------------|-----------|-----------------|------------|
 | LNA criogénico | 5-20 K | 0.1-0.3 dB | Radioastronomía |

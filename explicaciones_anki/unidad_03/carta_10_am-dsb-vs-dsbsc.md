@@ -125,6 +125,7 @@ En el dominio del tiempo, AM-DSB-FC siempre tiene una envolvente positiva que si
 **Situación:** Una estación de radio AM transmite música con índice de modulación promedio de 0.3.
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Potencia de portadora | 50 | kW |
@@ -237,6 +238,7 @@ Eficiencia DSB-SC: η = 100%
 - ✓ **Aplicabilidad**: AM para broadcast, DSB-SC para enlaces punto a punto
 
 #### Valores Típicos
+
 | Parámetro | AM-DSB-FC | DSB-SC |
 |-----------|-----------|---------|
 | Eficiencia máxima | 33.33% | 100% |

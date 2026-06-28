@@ -303,6 +303,7 @@ PAPR (dB): 10 log₁₀(N) donde N = número de subportadoras
 - 🧠 **DVB**: "Digital Video Broadcasting = OFDM para TV"
 
 #### Tabla Resumen de Aplicaciones
+
 | Sistema | Band | FFT Size | Δf | Uso Principal |
 |---------|------|----------|-----|--------------|
 | WiFi 6 | 2.4/5/6 GHz | 256-2048 | 78.125 kHz | WLAN |

@@ -125,6 +125,7 @@ Piensa en el espectro de audio como un paisaje montañoso. El preénfasis "levan
 **Situación:** Diseñar filtros de preénfasis/deénfasis para una estación FM comercial.
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Constante de tiempo (USA) | 75 | μs |
@@ -157,6 +158,7 @@ Piensa en el espectro de audio como un paisaje montañoso. El preénfasis "levan
 **Contexto:** Análisis comparativo de estándares de preénfasis.
 
 **Parámetros:**
+
 | Región | τ | f₁ | Mejora SNR @ 15kHz |
 |--------|---|----|--------------------|
 | USA/Japón | 75 μs | 2.12 kHz | 13.5 dB |
@@ -272,6 +274,7 @@ Mejora SNR típica: 10-13 dB @ 15 kHz
 - 🧠 **2-3-15**: 2 kHz corte, 3× mejora, 15 kHz máximo
 
 #### Valores Típicos (para referencias rápidas)
+
 | Parámetro | Valor Típico | Aplicación |
 |-----------|--------------|------------|
 | τ (USA/Japón) | 75 μs | FM broadcast |

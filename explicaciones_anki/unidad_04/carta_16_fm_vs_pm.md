@@ -140,6 +140,7 @@ Para una moduladora sinusoidal $m(t) = A_m\cos(2\pi f_m t)$:
 **Situación:** Modular una portadora de 100 MHz con un tono de 1 kHz
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | $f_c$ | 100 | MHz |
@@ -269,6 +270,7 @@ Relación: FM[m(t)] = PM[∫m(t)dt]
 - 🧠 **"FM Integra, PM Deriva"**: Para convertir, FM necesita integrador
 
 #### Valores Típicos (para referencias rápidas)
+
 | Parámetro | FM Broadcast | PM Digital |
 |-----------|--------------|------------|
 | Desviación típica | ±75 kHz | ±π/4 a ±π rad |

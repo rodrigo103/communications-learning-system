@@ -328,6 +328,7 @@ Relación: FM[m(t)] = PM[∫m(t)dt]
 - 🧠 **"FM∫, PM'"**: FM integra, PM deriva (respecto a la otra)
 
 #### Valores Típicos (para referencias rápidas)
+
 | Aplicación | Tipo | Parámetros Típicos |
 |------------|------|-------------------|
 | Radio broadcast | FM | ±75 kHz desviación |

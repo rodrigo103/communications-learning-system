@@ -153,6 +153,7 @@ En un diagrama tiempo-frecuencia:
 **Situación:** Canal WiFi de 80 MHz usando diferentes modulaciones según condiciones
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Ancho de canal | 80 | MHz |
@@ -289,6 +290,7 @@ Límite de Shannon: η_max = log₂(1 + SNR) [bits/s/Hz]
 - 🧠 **"Duplicar cuesta 6"**: Duplicar eficiencia requiere ~6 dB más de SNR
 
 #### Valores Típicos (para referencias rápidas)
+
 | Aplicación | Modulación común | η típica [bits/s/Hz] | SNR típico [dB] |
 |------------|------------------|---------------------|-----------------|
 | Satélite | QPSK | 1.5 | 5-10 |

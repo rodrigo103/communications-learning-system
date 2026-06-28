@@ -231,6 +231,7 @@ $$\eta_{max} = \frac{1}{3} = 33.33\%$$
 **Critical Insight**: Even at 100% modulation, only 33.33% of the transmitted power carries information! The remaining 66.67% is in the carrier, which carries no information but is necessary for simple envelope detection at the receiver.
 
 **Efficiency Values**:
+
 | $\mu$ | Efficiency $\eta$ | Information Power |
 |-------|-------------------|-------------------|
 | 0.5   | 11.1%            | Very inefficient  |

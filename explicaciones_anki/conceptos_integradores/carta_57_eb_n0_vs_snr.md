@@ -143,6 +143,7 @@ Eb/N0: |█| Energía por cada bit individual
 **Situación:** Comparar dos sistemas de telemetría satelital
 
 **Sistema A:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Potencia de señal (S) | 10⁻¹² | W |
@@ -151,6 +152,7 @@ Eb/N0: |█| Energía por cada bit individual
 | Densidad de ruido (N0) | 10⁻²⁰ | W/Hz |
 
 **Sistema B:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Potencia de señal (S) | 10⁻¹¹ | W |
@@ -289,6 +291,7 @@ Límite de Shannon: Eb/N0_min = ln(2) = -1.59 dB
 - ✓ **Trade-off fundamental**: Mayor tasa requiere mayor Eb/N0 para mismo BER
 
 #### Tabla de Valores Típicos
+
 | Sistema | Eb/N0 típico (dB) | BER objetivo | Comentario |
 |---------|-------------------|--------------|------------|
 | Espacio profundo | 2-3 | 10⁻⁵ | Con codificación fuerte |

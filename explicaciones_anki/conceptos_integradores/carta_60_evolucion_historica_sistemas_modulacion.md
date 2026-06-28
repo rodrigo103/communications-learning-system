@@ -646,6 +646,7 @@ Nunca podemos superar el límite de Shannon, pero nos acercamos cada vez más co
 **Situación:** Canal de 5 MHz disponible. ¿Cuánta información puede transmitir cada generación?
 
 **Datos:**
+
 | Parámetro | Valor |
 |-----------|-------|
 | Ancho de banda | 5 MHz |

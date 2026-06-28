@@ -128,6 +128,7 @@ Imagina un osciloscopio mostrando tres señales con la misma información:
 **Situación:** Diseñar un sistema PAM para transmitir voz telefónica
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Frecuencia máxima voz | 3.4 | kHz |
@@ -249,6 +250,7 @@ Ancho de banda pulsos: BW ≈ 1/τ
 - 🧠 **Robustez**: PAM < PWM < PPM (información temporal > amplitud)
 
 #### Valores Típicos (para referencias rápidas)
+
 | Parámetro | Valor Típico | Aplicación |
 |-----------|--------------|------------|
 | fs telefonía | 8 kHz | PAM en PCM |

@@ -136,6 +136,7 @@ Imagina un osciloscopio mostrando una señal digital. La velocidad de señalizac
 **Situación:** Un módem V.34 de los años 90 operando sobre línea telefónica.
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Velocidad de señalización | 3429 | baudios |
@@ -272,6 +273,7 @@ Ancho de banda real: BW = Rs(1+α)/2
 - 🧠 **"QPSK duplica, 16-QAM cuadruplica"**: Relación directa con BPSK
 
 #### Valores Típicos (para referencias rápidas)
+
 | Modulación | M | Bits/Símbolo | Rb/Rs |
 |------------|---|--------------|-------|
 | BPSK | 2 | 1 | 1 |

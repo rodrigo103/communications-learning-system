@@ -163,6 +163,7 @@ Imagina el espectro de frecuencia como una autopista:
 **Situación:** Dos usuarios transmitiendo bits simultáneamente
 
 **Datos:**
+
 | Parámetro | Valor | Descripción |
 |-----------|-------|-------------|
 | Código usuario 1 | [+1, +1, -1, -1] | Secuencia Walsh |
@@ -193,6 +194,7 @@ Imagina el espectro de frecuencia como una autopista:
 **Contexto:** Red celular CDMA comercial (Verizon, Sprint en USA)
 
 **Especificaciones IS-95:**
+
 | Parámetro | Valor | Significado |
 |-----------|-------|-------------|
 | Chip rate | 1.2288 Mcps | Velocidad de código |
@@ -312,6 +314,7 @@ SNR después de despreading: SNRout = Gp × SNRin
 - 🧠 **MAI**: "Multiple Access Interference" - el ruido es de otros usuarios
 
 #### Valores Típicos (para referencias rápidas)
+
 | Parámetro | Valor Típico | Sistema |
 |-----------|--------------|----------|
 | Chip rate | 1.23 Mcps | IS-95 |

@@ -151,6 +151,7 @@ El teorema dice que estas dos áreas son exactamente iguales.
 **Situación:** Analizar la energía de un pulso rectangular de amplitud A y duración T.
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Amplitud (A) | 5 | V |
@@ -337,6 +338,7 @@ Parseval (potencia): (1/T)∫|x(t)|² dt = Σ|Xₙ|²  (para periódicas)
 - 🧠 **"Módulo al cuadrado"**: Siempre |·|² en ambos lados
 
 #### Valores Típicos
+
 | Señal | Energía | Aplicación |
 |-------|---------|------------|
 | Bit digital (1V, 1μs) | 1 μJ | Comunicaciones digitales |

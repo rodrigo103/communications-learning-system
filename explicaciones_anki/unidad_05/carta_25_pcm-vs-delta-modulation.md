@@ -176,6 +176,7 @@ Piensa en DM como subir una escalera con pasos fijos (puedes quedarte corto o pa
 **Situación:** Digitalizar voz telefónica (300-3400 Hz) comparando PCM vs DM vs ADM.
 
 **Datos:**
+
 | Parámetro | PCM | DM | ADM |
 |-----------|-----|----|----|
 | Frecuencia de muestreo | 8 kHz | 64 kHz | 32 kHz |
@@ -331,6 +332,7 @@ Oversampling típico DM: 4-8x
 - 🧠 **"1 bit maravilla, 8x problema"**: DM usa 1 bit pero necesita 8x oversampling
 
 #### Valores Típicos (para referencias rápidas)
+
 | Parámetro | PCM | DM | ADM |
 |-----------|-----|----|----|
 | Bits/muestra | 8-16 | 1 | 1 |

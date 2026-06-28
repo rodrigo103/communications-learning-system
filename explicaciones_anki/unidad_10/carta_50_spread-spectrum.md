@@ -133,6 +133,7 @@ En el dominio frecuencial, una señal de banda angosta es como un pico alto y es
 **Situación:** Calcular la ganancia de procesamiento del GPS L1 C/A
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Chip rate | 1.023 | Mchips/s |
@@ -273,6 +274,7 @@ Capacidad CDMA: N ≈ Gp/(Eb/N0)req
 - 🧠 **GPS = 43 dB**: Recordar que GPS tiene ~43 dB de ganancia de procesamiento
 
 #### Valores Típicos (para referencias rápidas)
+
 | Sistema | Chip Rate | Gp (dB) | Aplicación |
 |---------|-----------|---------|------------|
 | GPS C/A | 1.023 Mchips/s | 43 | Navegación civil |

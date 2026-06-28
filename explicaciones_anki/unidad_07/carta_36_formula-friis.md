@@ -136,6 +136,7 @@ Ruido₁   Ruido₂/G₁  Ruido₃/G₁G₂  (contribuciones)
 **Situación:** Diseñar la cadena de RF para un receptor GPS de alta sensibilidad
 
 **Datos de componentes disponibles:**
+
 | Componente | NF (dB) | Ganancia (dB) | F (lineal) | G (lineal) |
 |------------|---------|---------------|------------|------------|
 | LNA opción A | 0.8 | 18 | 1.20 | 63.1 |
@@ -294,6 +295,7 @@ G_total = G₁ × G₂ × G₃ × ...                     [Ganancia en cascada]
 - 🧠 **"Linear para Friis"**: Siempre trabajar en valores lineales
 
 #### Valores Típicos de Cascadas Completas
+
 | Sistema | NF Total Típico | Dominado por |
 |---------|-----------------|--------------|
 | Receptor GPS | 2-3 dB | LNA + pérdidas de antena |

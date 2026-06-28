@@ -158,6 +158,7 @@ Imagina una escalera (digital) vs. una rampa (analógica):
 **Situación:** Comparar la transmisión/reproducción de una sinfonía.
 
 **Datos:**
+
 | Parámetro | Vinyl (Analógico) | CD (Digital) |
 |-----------|-------------------|--------------|
 | Rango dinámico | 60-70 dB | 96 dB |
@@ -302,6 +303,7 @@ Regeneración digital: Si BER < umbral → señal perfecta
 - 🧠 **"Escalera vs. Rampa"**: Digital tiene escalones discretos, analógico es continuo
 
 #### Valores Típicos (para referencias rápidas)
+
 | Aplicación | Mejora Digital vs. Analógico | Factor clave |
 |------------|------------------------------|--------------|
 | Voz telefónica | 20-30 dB SNR equivalente | Compresión + FEC |

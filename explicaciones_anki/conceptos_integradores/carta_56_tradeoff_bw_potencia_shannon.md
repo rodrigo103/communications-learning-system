@@ -148,6 +148,7 @@ Cuando tenemos baja potencia de señal, podemos "esparcir" nuestra información 
 **Situación:** Comunicación con sonda en Marte
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Potencia transmisión | 20 | W |
@@ -174,6 +175,7 @@ Cuando tenemos baja potencia de señal, podemos "esparcir" nuestra información 
 **Contexto:** Enlace transoceánico de fibra óptica
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Ancho de banda óptico | 5 | THz |
@@ -277,6 +279,7 @@ Eficiencia espectral límite: C/B = log₂(1 + S/N)
 - ✓ **Diseño óptimo**: Depende de qué recurso es más escaso/costoso
 
 #### Valores Típicos para Referencias Rápidas
+
 | Sistema | SNR Típico | Régimen | Estrategia |
 |---------|------------|---------|------------|
 | Satélite GEO | -10 a 10 dB | Limitado por potencia | Spread spectrum |

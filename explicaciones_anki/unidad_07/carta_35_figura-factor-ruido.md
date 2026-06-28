@@ -132,6 +132,7 @@ Imagina dos tubos de agua:
 **Situación:** Diseñando el front-end de un receptor de TV satelital en banda Ku (12 GHz)
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Ganancia del LNA | 20 | dB |
@@ -278,6 +279,7 @@ Te = T₀(F - 1)                [Temperatura equivalente]
 - 🧠 **"Frío es silencioso"**: Menor temperatura → menor ruido
 
 #### Valores Típicos (para referencias rápidas)
+
 | Dispositivo | NF Típico | Aplicación |
 |-------------|-----------|------------|
 | LNA GaAs | 0.5-1.5 dB | Satélite, radar |

@@ -158,6 +158,7 @@ Ruido B.A.:    ∿∿∿⁓⁓≈≈∿∿∿⁓⁓⁓≈≈∿∿∿
 **Situación:** Receptor AM sintonizado a 1 MHz con filtro IF de 10 kHz de ancho de banda
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Frecuencia central | 1.0 | MHz |
@@ -320,6 +321,7 @@ pR(r) = (r/σ²)exp(-r²/2σ²)             [Distribución Rayleigh]
 - 🧠 **"Narrow needs Nice"**: Banda angosta necesita B << fc
 
 #### Valores y Relaciones Típicas
+
 | Parámetro | Valor/Relación |
 |-----------|----------------|
 | Condición banda angosta | B/fc < 0.1 |

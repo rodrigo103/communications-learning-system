@@ -387,6 +387,7 @@ SNR = -170 - (-182) = 12 dB - insuficiente para analógico, pero suficiente para
 **Situación**: Conectar una torre celular remota a la red core a 50 km de distancia.
 
 **Datos**:
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Distancia | 50 | km |

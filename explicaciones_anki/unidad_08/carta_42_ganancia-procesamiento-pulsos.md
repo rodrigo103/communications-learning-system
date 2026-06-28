@@ -122,6 +122,7 @@ Piensa en la señal digital como escalones discretos en lugar de una rampa conti
 **Situación:** Canal telefónico digitalizado estándar
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Ancho de banda de voz | 3.4 | kHz |
@@ -246,6 +247,7 @@ BW_PCM ≈ n × f_m (aproximado)
 - ✓ **Shannon lo predijo**: El teorema fundamenta este intercambio
 
 #### Valores Típicos
+
 | Sistema | Bits/muestra | SNR (dB) | Expansión BW |
 |---------|--------------|----------|--------------|
 | Telefonía | 8 | 50 | ~10× |

@@ -138,6 +138,7 @@ En el dominio del tiempo:
 **Situación:** Transmitir la secuencia binaria "101" usando cada modulación
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Frecuencia portadora | 10 | kHz |
@@ -262,6 +263,7 @@ Pe_BPSK < Pe_FSK < Pe_ASK (para mismo Eb/N0)
 - 🧠 **"2Rs para binarios"**: Ancho de banda de ASK/PSK binarios
 
 #### Valores Típicos (para referencias rápidas)
+
 | Modulación | BW (binario) | Pe @ 10dB | Aplicación típica |
 |------------|--------------|-----------|-------------------|
 | ASK | 2Rs | 10^-2 | Fibra óptica |

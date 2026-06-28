@@ -167,6 +167,7 @@ Amp  | /  \  /  \  /  \  /  \
 **Situación:** Transmitir 8 bits usando OFDM con 4 subportadoras y QPSK
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Bits a transmitir | [1,0,1,1,0,1,0,0] | - |
@@ -207,6 +208,7 @@ Amp  | /  \  /  \  /  \  /  \
 **Contexto:** Estándar WiFi usando OFDM
 
 **Especificaciones 802.11a:**
+
 | Parámetro | Valor | Significado |
 |-----------|-------|-------------|
 | Subportadoras totales | 64 | Tamaño FFT |
@@ -324,6 +326,7 @@ Tasa datos: R = N × log₂(M) × r × η / (Ts + Tcp)
 - 🧠 **CP**: "Cyclic Prefix = Cura Para multitrayecto"
 
 #### Valores Típicos (para referencias rápidas)
+
 | Sistema | Subportadoras | Δf | CP |
 |---------|---------------|-----|-----|
 | WiFi 802.11a/g | 64 (48 datos) | 312.5 kHz | 0.8 μs |

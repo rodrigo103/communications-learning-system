@@ -148,6 +148,7 @@ En un espacio de 3 bits, tenemos 8 posibles palabras (000 a 111). Si solo usamos
 **Situación:** Transmitir el byte 10110011 con protección básica.
 
 **Datos:**
+
 | Parámetro | Valor | Descripción |
 |-----------|-------|-------------|
 | Datos originales | 10110011 | 8 bits |
@@ -174,6 +175,7 @@ En un espacio de 3 bits, tenemos 8 posibles palabras (000 a 111). Si solo usamos
 **Contexto:** Transmitir 1011 usando Hamming (7,4).
 
 **Codificación:**
+
 | Bit de datos | d1 | d2 | d3 | d4 |
 |--------------|----|----|----|----|
 | Valor | 1 | 0 | 1 | 1 |
@@ -282,6 +284,7 @@ Límite de Singleton: d_min ≤ n - k + 1
 - 🧠 **Hamming (7,4)**: "7 total, 4 datos, 3 paridad, 1 error corregible"
 
 #### Valores Típicos (para referencias rápidas)
+
 | Sistema | Código | Capacidad | Overhead |
 |---------|--------|-----------|----------|
 | WiFi 802.11 | Convolucional | BER 10^-5 → 10^-10 | 50-75% |

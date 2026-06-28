@@ -119,6 +119,7 @@ En el espectro, SSB aparece como un "espectro asimétrico" alrededor de donde es
 **Situación:** Un sistema de comunicación HF necesita transmitir canales de voz con calidad telefónica.
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Frecuencia mínima de voz | 300 | Hz |
@@ -254,6 +255,7 @@ LSB: usa signo positivo
 - 🧠 **"SSB = Mitad de todo"**: Mitad del BW, misma información
 
 #### Valores Típicos
+
 | Parámetro | Valor Típico | Aplicación |
 |-----------|--------------|------------|
 | BW canal voz SSB | 2.4-3 kHz | Radio HF |

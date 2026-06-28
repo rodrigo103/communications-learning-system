@@ -16,6 +16,7 @@ unidad: 7
 Se tiene un amplificador con ganancia $G_{dB} = 50$ dB, ancho de banda $BW = 20$ kHz, potencia de ruido a la salida $P_{n,out} = 72 \times 10^{-12}$ W. La densidad espectral de ruido a la entrada es $\eta_{in} = 12 \times 10^{-21}$ W/Hz. Temperatura de referencia $T_0 = 290$ K.
 
 **Datos dados:**
+
 | Parámetro | Valor |
 |-----------|-------|
 | $G_{dB}$ | 50 dB |

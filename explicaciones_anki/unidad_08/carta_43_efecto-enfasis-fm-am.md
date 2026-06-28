@@ -130,6 +130,7 @@ Post-deénfasis:[Señal: ————————] [Ruido: ————]
 **Situación:** Emisora FM transmitiendo música
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Desviación máxima (Δf) | 75 | kHz |
@@ -267,6 +268,7 @@ SNR_FM_total = 3β²γ + Mejora_énfasis (dB)
 - ✓ **Justificación del BW**: FM+énfasis justifica 200 kHz/canal
 
 #### Comparación Final
+
 | Sistema | SNR (para γ=20dB, audio) | BW Requerido | Complejidad |
 |---------|--------------------------|--------------|-------------|
 | AM | 20 dB | 30 kHz | Baja |

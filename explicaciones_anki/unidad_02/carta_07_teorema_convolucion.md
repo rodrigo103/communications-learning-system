@@ -126,6 +126,7 @@ Piensa en el espectro de una señal como un ecualizador gráfico de audio con in
 **Situación:** Un circuito RC actúa como filtro pasa-bajos con frecuencia de corte fc = 1 kHz. Queremos analizar su efecto sobre una señal cuadrada de 500 Hz.
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | R | 159.15 | Ω |
@@ -255,6 +256,7 @@ Dualidad: x(t)·h(t) ↔ X(f)*H(f)
 - 🧠 **"FFT para filtrar"**: Para filtros largos, es más eficiente usar FFT → multiplicar → IFFT
 
 #### Valores Típicos (para referencias rápidas)
+
 | Sistema | h(t) típico | H(f) típico |
 |---------|------------|-------------|
 | Filtro RC | exponencial decayente | 1/(1+jf/fc) |

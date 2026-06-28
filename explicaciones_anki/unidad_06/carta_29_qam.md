@@ -134,6 +134,7 @@ La constelación QAM se visualiza mejor como una cuadrícula de puntos en un pla
 **Situación:** Un router WiFi transmitiendo video HD usando 64-QAM en un canal de 20 MHz.
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Modulación | 64-QAM | - |
@@ -254,6 +255,7 @@ Potencia promedio: P = (2/3)(M-1)d² para M-QAM cuadrada
 - 🧠 **Potencias de 2**: M siempre es 2^n donde n es par para QAM cuadrada
 
 #### Valores Típicos (para referencias rápidas)
+
 | Sistema | Orden QAM Típico | Eficiencia | SNR mínima |
 |---------|------------------|------------|------------|
 | ADSL | 16-256 QAM | 4-8 bits/s/Hz | 15-25 dB |

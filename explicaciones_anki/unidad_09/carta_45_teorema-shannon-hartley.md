@@ -140,6 +140,7 @@ La función $\log_2(1 + SNR)$ tiene forma característica:
 **Situación:** Línea telefónica tradicional
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Ancho de banda | 3100 | Hz |
@@ -166,6 +167,7 @@ La función $\log_2(1 + SNR)$ tiene forma característica:
 **Contexto:** Canal WiFi moderno de 80 MHz con buena señal
 
 **Parámetros reales:**
+
 | Parámetro | Valor | Notas |
 |-----------|-------|-------|
 | Ancho de banda | 80 MHz | Canal ancho |
@@ -274,6 +276,7 @@ Banda infinita: C∞ = S/(N₀ ln 2) = 1.44 S/N₀
 - 🧠 **0 dB = transición**: Cambio entre régimen lineal y logarítmico
 
 #### Valores Típicos
+
 | Sistema | BW | SNR | Capacidad | Real | Eficiencia |
 |---------|-----|-----|-----------|------|------------|
 | DSL | 1.1 MHz | 40 dB | 44 Mbps | 24 Mbps | 55% |

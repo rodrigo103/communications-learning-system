@@ -133,6 +133,7 @@ En un osciloscopio, verías:
 **Situación:** Una estación AM transmite en 1000 kHz con 50 kW de potencia. Durante un programa de música, el nivel de audio promedio produce m = 0.3, pero los picos alcanzan m = 0.85.
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Frecuencia portadora | 1000 | kHz |
@@ -265,6 +266,7 @@ Condición sin distorsión: m ≤ 1
 - 🧠 **"Dos más eme cuadrado"**: Denominador de la eficiencia (2 + m²)
 
 #### Valores Típicos (para referencias rápidas)
+
 | Parámetro | Valor Típico | Aplicación |
 |-----------|--------------|------------|
 | m | 0.3-0.5 | Radio AM música de fondo |

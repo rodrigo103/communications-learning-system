@@ -146,6 +146,7 @@ El ruido térmico surge del movimiento aleatorio de electrones en conductores. A
 **Situación:** Un receptor FM con ancho de banda de 200 kHz opera a temperatura ambiente (290 K).
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Ancho de banda (B) | 200 | kHz |
@@ -286,6 +287,7 @@ N_dBm = -174 + 10log₁₀(B)    [Potencia total, B en Hz]
 - 🧠 **"-174 dBm/Hz"**: Piso de ruido a temperatura ambiente (memorizar)
 
 #### Valores Típicos (para referencias rápidas)
+
 | Parámetro | Valor Típico | Aplicación |
 |-----------|--------------|------------|
 | N₀ @ 290K | -174 dBm/Hz | Sistemas terrestres |

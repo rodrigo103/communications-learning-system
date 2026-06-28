@@ -170,6 +170,7 @@ Imagina el flujo de bits como una autopista donde cada carril (ranura temporal) 
 **Situación:** Conectar oficina remota con 25 líneas telefónicas a central.
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Líneas telefónicas | 25 | canales |
@@ -352,6 +353,7 @@ Tiempo por canal = Ttrama/N
 - 🧠 **"PETS"**: PDH→E1→T1→SDH (evolución histórica)
 
 #### Valores Típicos (para referencias rápidas)
+
 | Sistema | Tasa (Mbps) | Canales voz | Región | Codificación línea |
 |---------|-------------|-------------|---------|-------------------|
 | T1 | 1.544 | 24 | Americas/Japan | AMI, B8ZS |

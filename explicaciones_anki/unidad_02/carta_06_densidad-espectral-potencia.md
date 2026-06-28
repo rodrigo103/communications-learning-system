@@ -124,6 +124,7 @@ Imagina la DEP como un **ecualizador gráfico** en un sistema de audio:
 **Situación:** Analizar el ruido térmico en un resistor de 50Ω a temperatura ambiente.
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Resistencia | 50 | Ω |
@@ -278,6 +279,7 @@ Ruido blanco: S_n(f) = N₀ = kT (convención unilateral, f > 0)
 - 🧠 **"Área = Potencia"**: Integral de S(f) = potencia total
 
 #### Valores Típicos
+
 | Señal | DEP característica | Aplicación |
 |-------|-------------------|------------|
 | Ruido térmico | N₀ = kT = -174 dBm/Hz @ 290K (unilateral) | Todos los receptores |

@@ -161,6 +161,7 @@ Imagina un histograma de frecuencias de símbolos:
 **Contexto:** Secuencia de ADN con 4 bases: A, C, G, T
 
 **Datos observados en genoma humano:**
+
 | Base | Probabilidad | Información (bits) |
 |------|--------------|-------------------|
 | A | 0.29 | 1.79 |
@@ -283,6 +284,7 @@ Tamaño mínimo: L_min = N × H bits (N símbolos)
 - 🧠 **Uniforme = 0**: Distribución uniforme tiene redundancia cero
 
 #### Valores Típicos de Compresión
+
 | Tipo de Datos | Redundancia | Compresión Típica | Método |
 |---------------|-------------|-------------------|---------|
 | Texto | 50-60% | 2-3× | ZIP/GZIP |

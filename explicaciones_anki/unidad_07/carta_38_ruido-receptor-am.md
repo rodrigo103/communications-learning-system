@@ -158,6 +158,7 @@ Señal domina     Ruido domina
 **Situación:** Estación AM transmitiendo música en 1000 kHz
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Potencia portadora recibida | -60 | dBm |
@@ -323,6 +324,7 @@ P(clicks) = exp(-SNR/2)                [Probabilidad de umbral]
 - 🧠 **"Below threshold = Below useful"**: No hay recuperación gradual
 
 #### Comparación de Detectores AM
+
 | Detector | Umbral | Complejidad | SNR out/in | Uso típico |
 |----------|--------|-------------|------------|------------|
 | Envolvente | 10 dB | Muy simple | < 1 | Broadcast |

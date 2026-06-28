@@ -175,6 +175,7 @@ Imagina un diagrama fasorial:
 **Situación**: Estación de radio FM transmitiendo con parámetros típicos
 
 **Datos del sistema**:
+
 | Parámetro | Valor |
 |-----------|-------|
 | Potencia ERP | 50 kW |
@@ -211,6 +212,7 @@ $$= 3 \times 25 \times 6 \times 100 = 45,000 = 46.5 \text{ dB}$$
 **Contexto**: Sonda espacial transmitiendo datos científicos a la Tierra
 
 **Datos**:
+
 | Parámetro | Valor |
 |-----------|-------|
 | Distancia | 1 millón de km |
@@ -242,6 +244,7 @@ Si SNR resultante está cerca del umbral:
 **Experimento**: Medir BER o calidad vs SNR de entrada
 
 **Demodulador discriminador convencional**:
+
 | SNR entrada (dB) | Calidad de salida |
 |------------------|-------------------|
 | 20 dB | Excelente (SNR salida ~47 dB) |
@@ -252,6 +255,7 @@ Si SNR resultante está cerca del umbral:
 | 5 dB | Inutilizable |
 
 **Demodulador PLL** (Phase-Locked Loop):
+
 | SNR entrada (dB) | Calidad de salida |
 |------------------|-------------------|
 | 20 dB | Excelente |

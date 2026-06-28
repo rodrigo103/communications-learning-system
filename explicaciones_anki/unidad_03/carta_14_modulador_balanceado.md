@@ -125,6 +125,7 @@ En un osciloscopio con XY:
 **Situación:** Un radioaficionado construye un transmisor SSB para la banda de 20 metros (14 MHz) usando un modulador balanceado como primera etapa.
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Frecuencia portadora | 9.0 | MHz |
@@ -261,6 +262,7 @@ Balance requerido: ε < 10^(-S[dB]/20)
 - 🧠 **"4 diodos, 2 transformadores, 1 anillo"**: Configuración clásica
 
 #### Valores Típicos (para referencias rápidas)
+
 | Parámetro | Valor Típico | Aplicación |
 |-----------|--------------|------------|
 | Supresión portadora | 30-40 dB | Radioaficionado |

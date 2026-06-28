@@ -141,6 +141,7 @@ Piensa en la señal recibida como un vector rotando en el plano complejo. La det
 **Situación:** Receptor GPS demodulando señal satelital extremadamente débil.
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Potencia recibida | -160 | dBW |
@@ -289,6 +290,7 @@ FSK no coherente: BER = 0.5×exp(-Eb/2N0)
 - 🧠 **"3 dB rule"**: Penalidad típica de no coherente
 
 #### Valores Típicos (para referencias rápidas)
+
 | Modulación | Penalidad No-Coh | Aplicación típica |
 |------------|------------------|-------------------|
 | BPSK/DPSK | 0.8-1 dB | Telemetría espacial |

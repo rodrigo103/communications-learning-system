@@ -131,6 +131,7 @@ Imagina el árbol binario de decodificación. Cada bifurcación representa un bi
 **Situación:** Verificar si es posible construir un código instantáneo con las siguientes longitudes:
 
 **Datos:**
+
 | Símbolo | Longitud deseada | 2^(-l_i) |
 |---------|------------------|----------|
 | A | 1 | 0.5 |
@@ -258,6 +259,7 @@ Eficiencia del código: η = H/L̄
 - 🧠 **Suma ≤ 1**: "No puedes gastar más espacio del que tienes"
 
 #### Valores Típicos (para referencias rápidas)
+
 | Aplicación | Compresión típica | Método |
 |------------|-------------------|---------|
 | Texto inglés | 60-70% | Huffman adaptativo |

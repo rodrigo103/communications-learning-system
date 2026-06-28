@@ -139,6 +139,7 @@ Piensa en FM como "vibración" de la frecuencia:
 **Situación:** Calcular requisitos espectrales para estación FM estéreo
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Audio máximo | 15 | kHz |
@@ -283,6 +284,7 @@ Potencia contenida: ~98%
 - 🧠 **"Beta más uno, multiplicado por dos fm"**: Forma alternativa
 
 #### Valores Típicos (para referencias rápidas)
+
 | Sistema | Δf | fm | BW Carson | BW Asignado |
 |---------|----|----|-----------|-------------|
 | FM Broadcast | 75 kHz | 15 kHz | 180 kHz | 200 kHz |

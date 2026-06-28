@@ -128,6 +128,7 @@ En un analizador de espectro verías:
 **Situación:** Canal 6 de TV (82-88 MHz) transmitiendo señal de video NTSC con VSB.
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Portadora de video | 83.25 | MHz |
@@ -188,6 +189,7 @@ VSB es crítico aquí porque:
 - Error de fase < 5° para evitar distorsión
 
 **Trade-offs de diseño:**
+
 | Factor | Vestigio pequeño | Vestigio grande |
 |--------|------------------|-----------------|
 | Ancho de banda | Más eficiente | Menos eficiente |
@@ -269,6 +271,7 @@ Factor de roll-off: α = fv/fm (típico 0.1-0.25)
 - 🧠 **"1.25 MHz"**: Vestigio estándar en TV NTSC (fácil de recordar)
 
 #### Valores Típicos (para referencias rápidas)
+
 | Parámetro | Valor Típico | Aplicación |
 |-----------|--------------|------------|
 | Vestigio/Señal | 10-25% | Relación típica fv/fm |

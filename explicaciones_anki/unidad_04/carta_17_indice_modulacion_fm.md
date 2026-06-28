@@ -132,6 +132,7 @@ WBFM es como escribir el mismo mensaje con letra más grande:
 **Situación:** Sistema FM con modulación de audio
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Desviación máxima | 15 | kHz |
@@ -273,6 +274,7 @@ Bandas laterales significativas: ≈ β + 1
 - 🧠 **"Bessel da Bandas"**: Número de bandas ≈ β + 1
 
 #### Valores Típicos (para referencias rápidas)
+
 | Sistema | β típico | Δf | BW |
 |---------|----------|-----|-----|
 | Walkie-talkie | 1-2 | ±5 kHz | 12.5 kHz |

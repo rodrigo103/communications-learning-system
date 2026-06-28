@@ -130,6 +130,7 @@ Piensa en el espectro de frecuencias como una autopista con múltiples carriles 
 **Situación:** Diseñar un receptor AM para la banda de 530-1700 kHz con FI estándar.
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Banda de RF | 530-1700 | kHz |
@@ -257,6 +258,7 @@ Rechazo imagen ∝ separación = 2fFI
 - ✓ **Selectividad en FI**: Donde se logra la separación de canales
 
 #### Valores Típicos
+
 | Parámetro | AM | FM | TV (analog) |
 |-----------|-----|-----|-------------|
 | FI estándar | 455 kHz | 10.7 MHz | 45.75 MHz (video) |

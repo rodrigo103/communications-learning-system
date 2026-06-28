@@ -130,6 +130,7 @@ En el plano complejo, si la señal original x(t) representa la proyección sobre
 **Situación:** Queremos transmitir una señal de voz m(t) = cos(2π·1000t) + 0.5cos(2π·3000t) usando modulación de banda lateral superior (USB) con portadora en 100 kHz.
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | f_c | 100,000 | Hz |
@@ -259,6 +260,7 @@ SSB-USB: s(t) = m(t)cos(ωct) - m̂(t)sin(ωct)
 - 🧠 **"Analítica = Real + j·Hilbert"**: Construcción de señal analítica
 
 #### Valores Típicos (para referencias rápidas)
+
 | Señal x(t) | Transformada de Hilbert ĥ(t) |
 |------------|-------------------------------|
 | cos(ωt) | sin(ωt) |

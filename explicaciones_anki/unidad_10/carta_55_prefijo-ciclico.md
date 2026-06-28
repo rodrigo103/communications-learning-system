@@ -181,6 +181,7 @@ Símbolo n:                  [CP][====DATOS====]
 **Situación:** Diseñar CP para ambiente indoor típico
 
 **Datos del canal:**
+
 | Parámetro | Valor | Descripción |
 |-----------|-------|-------------|
 | Delay spread RMS | 50 ns | Ambiente oficina |
@@ -216,6 +217,7 @@ Símbolo n:                  [CP][====DATOS====]
 - Trayecto reflejado: amplitud = 0.5, retardo = 1 μs
 
 **Sistema OFDM:**
+
 | Parámetro | Valor |
 |-----------|-------|
 | Duración símbolo | 10 μs |
@@ -243,6 +245,7 @@ Ecualización simple:
 $$\hat{X}_k = \frac{Y_k}{H_k}$$
 
 **Resultados de simulación:**
+
 | Métrica | Sin CP | Con CP |
 |---------|--------|---------|
 | BER @ 10 dB SNR | 10⁻² | 10⁻⁵ |
@@ -362,6 +365,7 @@ Distancia eco: d = c × TCP (para SFN)
 - 🧠 **"Guard the Orthogonality"**: CP guarda la ortogonalidad
 
 #### Valores Típicos de CP
+
 | Sistema | CP/Ts ratio | TCP típico | Uso |
 |---------|-------------|------------|-----|
 | WiFi | 1/4 o 1/8 | 0.8 μs | Indoor |

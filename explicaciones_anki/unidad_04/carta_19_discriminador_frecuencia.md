@@ -121,6 +121,7 @@ Imagina la curva de respuesta del discriminador como una rampa en el dominio de 
 **Situación:** Diseñar un discriminador para un receptor de FM broadcast.
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Frecuencia central | 100 | MHz |
@@ -259,6 +260,7 @@ Rango lineal necesario: ±Δf_max
 - 🧠 **Foster necesita Limitador, Ratio Rechaza AM, PLL es Preciso**
 
 #### Valores Típicos (para referencias rápidas)
+
 | Parámetro | Valor Típico | Aplicación |
 |-----------|--------------|------------|
 | FI estándar FM | 10.7 MHz | Receptores comerciales |

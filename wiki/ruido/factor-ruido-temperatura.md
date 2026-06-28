@@ -27,6 +27,7 @@ Es la misma magnitud expresada en dB:
 $$\boxed{NF = 10\log_{10}(F) \text{ dB}}$$
 
 **Valores típicos:**
+
 | Dispositivo | NF típico | Aplicación |
 |-------------|-----------|------------|
 | LNA GaAs | 0.5–1.5 dB | Satélite, radar |

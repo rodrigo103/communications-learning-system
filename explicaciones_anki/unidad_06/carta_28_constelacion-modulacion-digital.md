@@ -140,6 +140,7 @@ En un osciloscopio vectorial:
 **Situación:** Diseñar una constelación QPSK con energía promedio unitaria
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Número de símbolos (M) | 4 | - |
@@ -293,6 +294,7 @@ Pe aproximada: Q(dmin/2σn)
 - 🧠 **"Gray Saves the Day"**: Mapeo Gray para símbolos adyacentes
 
 #### Valores Típicos (para referencias rápidas)
+
 | Modulación | M | Forma | dmin (norm) | Eb/N0 @ 10^-6 |
 |------------|---|-------|-------------|---------------|
 | BPSK | 2 | Línea | 2 | 10.5 dB |

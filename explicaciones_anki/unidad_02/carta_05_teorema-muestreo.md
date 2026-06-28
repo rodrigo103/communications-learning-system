@@ -121,6 +121,7 @@ En el dominio frecuencial, el muestreo crea "copias" del espectro original:
 **Situación:** Diseñar el sistema de muestreo para audio CD considerando el rango audible humano.
 
 **Datos:**
+
 | Parámetro | Valor | Unidades |
 |-----------|-------|----------|
 | Frecuencia máxima audible | 20 | kHz |
@@ -255,6 +256,7 @@ Tasa de bits: R = f_s × bits × canales
 - 🧠 **"Teléfono 8"**: 8 kHz para voz telefónica
 
 #### Valores Típicos
+
 | Aplicación | f_máx | f_s estándar | Justificación |
 |------------|-------|--------------|---------------|
 | Telefonía | 3.4 kHz | 8 kHz | Voz inteligible |

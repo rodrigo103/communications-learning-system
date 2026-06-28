@@ -125,6 +125,7 @@ La función $-p\log_2(p)$ tiene forma de campana invertida:
 $$H = -p\log_2(p) - (1-p)\log_2(1-p)$$
 
 **Casos especiales:**
+
 | p | H(bits) | Interpretación |
 |---|---------|----------------|
 | 0.5 | 1.0 | Máxima incertidumbre |
@@ -140,6 +141,7 @@ $$H = -p\log_2(p) - (1-p)\log_2(1-p)$$
 **Contexto:** Analizamos la frecuencia de letras en español.
 
 **Datos típicos:**
+
 | Letra | Probabilidad | Información (bits) |
 |-------|--------------|-------------------|
 | E | 0.1368 | 2.87 |

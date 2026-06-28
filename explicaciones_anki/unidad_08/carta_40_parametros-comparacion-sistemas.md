@@ -141,6 +141,7 @@ Cada modulación forma un punto en este espacio. La frontera de Shannon forma un
 **Situación:** Evaluar AM y FM para transmisión de audio con calidad aceptable
 
 **Datos:**
+
 | Parámetro | AM | FM | Unidades |
 |-----------|-----|-----|----------|
 | Ancho de banda | 10 | 200 | kHz |
@@ -281,6 +282,7 @@ Trade-off fundamental: Mayor η_B requiere mayor Eb/N0
 - 🧠 **"No free lunch"**: Toda mejora en un parámetro tiene un costo en otro
 
 #### Valores Típicos (para referencias rápidas)
+
 | Sistema | η_B [bits/s/Hz] | Eb/N0 @ BER=10^-6 [dB] | Aplicación |
 |---------|-----------------|-------------------------|------------|
 | BPSK | 1 | 10.5 | Satélites, espacio profundo |
