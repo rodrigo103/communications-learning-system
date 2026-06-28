@@ -105,6 +105,17 @@ $$L_{antena} \approx \frac{\lambda}{4} = \frac{c}{4f}$$
 | Celular (1.9 GHz) | 1.9 GHz | 15.8 cm | 4 cm | ✅ Muy práctico |
 | WiFi (2.4 GHz) | 2.4 GHz | 12.5 cm | 3.1 cm | ✅ Ideal para portátiles |
 
+Como es posible entonces que los autos sintonicen radio AM y FM si sus antenas no son tan largas?
+
+> [!note]- 📡 Antenas de auto: ¿cómo funcionan si son más cortas que λ/4?
+> Las antenas de los autos son **eléctricamente cortas** (longitud física $\ll \lambda/4$), pero se compensan con dos técnicas:
+> - **Carga inductiva**: una bobina en la base de la antena agrega reactancia inductiva que cancela la reactancia capacitiva de la antena corta, llevándola a resonancia eléctrica. La antena *físicamente* mide ~75 cm, pero *eléctricamente* se comporta como si midiera $\lambda/4$.
+> - **Plano de tierra**: la carrocería del auto actúa como reflector y plano de tierra, mejorando la captación.
+>
+> Para **FM** (~100 MHz, $\lambda \approx 3$ m), una antena de 75 cm **sí es prácticamente $\lambda/4$**, por lo que no necesita compensación importante.
+>
+> Para **AM** (~1 MHz, $\lambda \approx 300$ m), la antena es extremadamente corta ($\lambda/400$). No puede hacerse resonante, pero funciona como **sonda de campo eléctrico** de alta impedancia: capta la intensidad del campo E, no necesita resonancia. El receptor AM tiene muy alta sensibilidad y amplifica la señal débil. La eficiencia es bajísima comparada con una antena resonante, pero las estaciones AM transmiten con mucha potencia (hasta 50 kW) para compensarlo.
+
 **Conclusión:** Sin modulación a frecuencias altas, las antenas serían imprácticamente grandes.
 
 #### 3. Multiplexación - Compartir el Canal
