@@ -149,6 +149,10 @@ Base de conocimiento interconectada para el curso de Sistemas de Comunicaciones.
 - [[planificacion/progreso-actual]] — Estado actual de aprendizaje
 - [[planificacion/mazo-anki]] — Mazo Anki completo (10 unidades, 60 cartas)
 
+## Referencia
+
+- [[glosario]] — Glosario de acronimos, simbolos y notacion
+
 ## Sesiones
 
 - [[sesiones/2025-11-15-sesion]] — Sesion del 15/11/2025
