@@ -102,4 +102,5 @@ Registro cronologico de todas las actualizaciones al wiki de Sistemas de Comunic
 - **Nueva pagina wiki**: `aportes-hilbert.md` — Transformada de Hilbert: señal analitica, SSB por fase, ruido pasabanda.
 - **Nueva pagina wiki**: `glosario.md` — Glosario completo de acronimos, letras griegas, subindices y notacion matematica del curso.
 - **Nueva pagina wiki**: `clasificacion-modulaciones.md` — Arbol taxonomico, matriz 2D y explicacion de todos los tipos de modulacion (analogica, pulsos, digital).
+- **Nueva pagina wiki**: `plan-estudio-por-modulaciones.md` — Plan de estudio reorganizado en 11 semanas por familia de modulacion con 4 capas progresivas (conceptual, matematica, desempeño, implementacion).
 - **Nueva pagina wiki**: `pioneros-comunicaciones.md` — Galeria completa de pioneros (24+ figuras) organizada por area: precursores EM, radio, teoria de informacion, digital/redes, ruido/formulas.
