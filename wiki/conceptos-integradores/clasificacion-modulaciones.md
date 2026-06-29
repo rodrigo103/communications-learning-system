@@ -156,6 +156,18 @@ Variantes:
 
 Los bits generados por PCM se transmiten usando una **portadora senoidal**. Un parametro de la portadora toma valores discretos segun los bits. [analysis]
 
+No puede haber PCM sin ASK, FSK o PSK?
+
+> [!note]- PCM sin modulacion paso-banda
+> Si, PCM **no necesita** ASK/FSK/PSK para existir. PCM es una modulacion **banda base**: los bits se transmiten directamente como pulsos electricos sobre un cable, sin portadora senoidal. Ejemplos reales:
+> - **T1/E1**: 24/30 canales PCM sobre par trenzado (1.5/2.0 Mbps) — sin portadora de RF
+> - **Audio digital**: CD, S/PDIF, AES/EBU transmiten PCM por cable coaxial/optico
+> - **USB, Ethernet**: los bits viajan en banda base como tensiones electricas sobre cobre
+>
+> ASK/FSK/PSK solo se necesitan cuando los bits deben transmitirse por un **canal inalambrico** (radio) o un canal paso-banda (fibra optica, cable coaxial de RF). Son dos etapas diferentes: PCM *digitaliza*, ASK/FSK/PSK *radioenlazan*:
+> $$m(t) \xrightarrow{\text{PCM}} \text{bits} \xrightarrow{\text{ASK/FSK/PSK}} \text{señal RF}$$
+> La primera etapa (PCM) es suficiente para comunicacion por cable. La segunda solo es necesaria si el canal es inalambrico.
+
 | Tipo | Parametro modulado | Ejemplo binario |
 |------|-------------------|-----------------|
 | **ASK** | Amplitud | Bit 1 → $A \cos(2\pi f_c t)$, Bit 0 → 0 (OOK) |
