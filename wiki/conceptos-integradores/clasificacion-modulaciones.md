@@ -251,6 +251,41 @@ PM es el precursor conceptual de PSK, pero con informacion de distinta naturalez
 
 QAM es una generalizacion de PSK que modula **amplitud y fase simultaneamente**. La constelacion tiene puntos distribuidos en 2D en lugar de sobre un circulo. Es la modulacion digital de mayor eficiencia espectral. [analysis]
 
+> [!note]- QPSK y 4-QAM son identicas
+> En el diagrama de constelaciones, **QPSK = 4-QAM**. Ambas producen los mismos 4 puntos en las esquinas de un cuadrado, separados $90^\circ$:
+> ```
+>          Q
+>          |
+>    01 ●  |  ● 00
+>          |
+>    ------+------ I
+>          |
+>    11 ●  |  ● 10
+>          |
+> ```
+> La diferencia es solo conceptual:
+> - **QPSK** se piensa como modulacion de fase pura: 4 fases posibles ($\pi/4$, $3\pi/4$, $5\pi/4$, $7\pi/4$)
+> - **4-QAM** se piensa como modulacion I/Q: $s(t) = \pm 1 \cdot \cos(2\pi f_c t) \pm 1 \cdot \sin(2\pi f_c t)$
+>
+> Ambas generan exactamente la misma señal matematica. La diferencia practica esta en como se implementa el modulador (desfasador vs mezclador I/Q), pero el resultado es identico.
+>
+> A partir de 16-QAM, los puntos ya **no** estan sobre un circulo (tienen distintas amplitudes), y ahi QAM y PSK si son familias distintas.
+
+> [!note]- Jerarquia de ordenes: de BPSK a 1024-QAM
+> El **orden** de una modulacion es el numero de puntos en la constelacion ($M$). A mayor orden, mas bits por simbolo, pero menor robustez (se necesita mas $E_b/N_0$ para la misma BER):
+>
+> | Orden | Modulacion | Bits/simbolo | $E_b/N_0$ tipico (BER $10^{-5}$) |
+> |-------|-----------|-------------|-----------------------------------|
+> | $M=2$ | **BPSK** (2-QAM) | 1 | ~9.6 dB — la mas robusta |
+> | $M=4$ | **QPSK** (4-QAM) | 2 | ~9.6 dB — igual robustez por bit |
+> | $M=8$ | 8-PSK | 3 | ~14 dB |
+> | $M=16$ | 16-QAM | 4 | ~13 dB |
+> | $M=64$ | 64-QAM | 6 | ~18 dB |
+> | $M=256$ | 256-QAM | 8 | ~24 dB |
+> | $M=1024$ | 1024-QAM | 10 | ~30 dB |
+>
+> BPSK y QPSK comparten el mismo $E_b/N_0$ requerido: son igual de eficientes energeticamente. Pero QPSK duplica los bits en el mismo ancho de banda, por eso es preferida cuando hay suficiente SNR. A partir de 8-PSK y 16-QAM, la eficiencia energetica empeora, pero la eficiencia espectral mejora.
+
 ### 5. La relacion entre PCM y ASK/FSK/PSK
 
 Son etapas en cascada, no alternativas:
