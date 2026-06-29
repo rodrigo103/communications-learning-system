@@ -192,16 +192,58 @@ El estándar G.711 usa:
 - Cuantificación: 8 bits con companding (μ-law o A-law)
 - Tasa de bits: 64 kbps por canal
 
+> [!note]- 📡 Companding (μ-law / A-law): ¿qué es?
+> **Companding** = **Comp**ressing + **Exp**anding. Es cuantificación **no uniforme** que mejora la SNR para señales débiles sin aumentar el número de bits.
+>
+> **Problema:** En cuantificación uniforme con 8 bits, las señales débiles sufren error relativo muy grande (SNR ≈ 9.9 dB en voz con 40 dB de rango). Las fuertes "desperdician" resolución.
+>
+> **Solución:** Pasos de cuantificación **variables**:
+> - **Pequeños** donde la señal es débil → alta resolución
+> - **Grandes** donde la señal es fuerte → resolución suficiente
+>
+> **Dos leyes (G.711):**
+> - **μ-law** ($\mu = 255$): Norteamérica y Japón
+>   $$C_\mu(x) = \text{sgn}(x) \cdot \frac{\ln(1 + \mu|x/V_{max}|)}{\ln(1 + \mu)}$$
+> - **A-law** ($A = 87.6$): Europa y resto del mundo (función lineal + logarítmica)
+>
+> **Proceso:** comprimir en TX → cuantificar uniforme → expandir en RX ($C^{-1}$). Mejora el rango dinámico en ≈ $20\log_{10}(\mu) \approx 48$ dB **sin aumentar bits**. ⚠️ μ-law y A-law **no son compatibles** entre sí.
+
 Para una central telefónica con 30 canales (E1 europeo):
 
 **Trama PCM:**
 - 30 canales de voz + 2 canales de señalización
 - 32 × 8 bits × 8000 Hz = 2.048 Mbps
 
+> [!note]- 📡 Canales de señalización E1: ¿para qué sirven?
+> Los 2 slots no-voz de la trama E1 son:
+> - **TS0**: sincronización de trama (*Frame Alignment Word*). Sin él, el receptor no sabe dónde empieza cada trama y los 30 canales se mezclan.
+> - **TS16**: señalización por canal asociado (CAS). Transporta la info de control de los 30 canales rotando en una *multitrama* de 16 tramas.
+>
+> **Qué viaja en la señalización:**
+> - **Supervisión:** off-hook (descolgó), on-hook (colgó), contestó
+> - **Direccionamiento:** dígitos marcados (DTMF o decádicos)
+> - **Tasación:** pulsos de billing
+> - **Alarmas:** pérdida de señal, falla de equipo
+>
+> Equivalente digital del "tono de llamada" y "tono de ocupado": sin señalización, los canales transmitirían voz pero no podrían establecer ni terminar llamadas.
+
 **Estructura temporal:**
-- Período de trama: 125 μs
+- Período de trama: 125 μs (1/8000 Hz)
 - 32 time slots de 3.9 μs cada uno
 - Cada slot transporta 8 bits de un canal
+
+> [!note]- 📡 Ancho de banda del sistema PCM (E1): ¿cuánto ocupa?
+> $$BW_{PCM} \approx \frac{R_b}{2} = \frac{n \cdot f_s}{2} \quad \text{(banda base, pulsos NRZ)}$$
+>
+> **E1 completo (2.048 Mbps):**
+> $$BW_{E1} \approx \frac{2.048 \times 10^6}{2} = 1.024 \text{ MHz}$$
+>
+> **Un solo canal de voz (64 kbps):**
+> $$BW_{canal} \approx \frac{64 \times 10^3}{2} = 32 \text{ kHz}$$
+>
+> **Trade-off fundamental:** la voz original ocupa ~3.4 kHz. PCM requiere ~32 kHz por canal, casi **10× más**. Se sacrifica ancho de banda a cambio de inmunidad al ruido y capacidad de regeneración digital.
+>
+> En la práctica, con codificación HDB3 (usada en E1), el espectro se moldea para eliminar la DC y el primer nulo espectral cae en $R_b$ (NRZ) o menos (pulsos conformados).
 
 ---
 
