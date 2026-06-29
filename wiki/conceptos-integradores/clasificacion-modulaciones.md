@@ -267,6 +267,70 @@ Son tecnicas de **multiplexacion y acceso multiple**, no modulaciones en si mism
 
 ---
 
+## Tabla de Referencia Rapida: Modulacion, Multiplexacion y Acceso Multiple
+
+### Modulacion de Pulsos
+
+| Sigla | Nombre | Tipo | Descripcion |
+|-------|--------|------|-------------|
+| **PAM** | Pulse Amplitude Modulation | Analogica | Amplitud del pulso $\propto m(t)$ continua |
+| **PWM** | Pulse Width Modulation | Analogica | Ancho del pulso $\propto m(t)$ continua |
+| **PPM** | Pulse Position Modulation | Analogica | Posicion del pulso $\propto m(t)$ continua |
+| **PCM** | Pulse Code Modulation | Digital banda base | Muestreo + cuantificacion + codificacion binaria |
+| **M-PAM** | M-ary PAM | Digital banda base | PAM con $M$ niveles discretos de amplitud ($\log_2 M$ bits/simbolo) |
+| **Delta (DM)** | Delta Modulation | Digital banda base | 1 bit/muestra: transmite si la señal sube o baja |
+| **DPCM** | Differential PCM | Digital banda base | Transmite diferencia cuantificada entre muestras |
+| **ADPCM** | Adaptive DPCM | Digital banda base | DPCM con paso de cuantificacion y predictor adaptativos |
+
+### Modulacion Digital Paso-Banda
+
+| Sigla | Nombre | Bits/simbolo | Descripcion |
+|-------|--------|-------------|-------------|
+| **ASK (OOK)** | Amplitude Shift Keying | 1 | Amplitud toma 2 valores discretos |
+| **FSK** | Frequency Shift Keying | 1 | Frecuencia salta entre $f_0$ y $f_1$ |
+| **BPSK** | Binary Phase Shift Keying | 1 | Dos fases: $0^\circ$ y $180^\circ$. La mas robusta |
+| **QPSK** | Quadrature PSK | 2 | 4 fases: $0^\circ, 90^\circ, 180^\circ, 270^\circ$ |
+| **OQPSK** | Offset QPSK | 2 | QPSK con rama Q retrasada medio simbolo → evita cruces por cero |
+| **M-PSK** | M-ary PSK | $\log_2 M$ | M fases equidistantes sobre un circulo |
+| **8-PSK** | 8-ary PSK | 3 | 8 fases a $45^\circ$ |
+| **QAM** | Quadrature Amplitude Modulation | $\log_2 M$ | Amplitud + fase (constelacion 2D). 16/64/256/1024-QAM |
+| **DBPSK** | Differential BPSK | 1 | BPSK con codificacion diferencial (no necesita referencia de fase) |
+| **DQPSK** | Differential QPSK | 2 | QPSK con codificacion diferencial |
+| **8-DPSK** | 8-ary DPSK | 3 | 8-PSK con codificacion diferencial |
+| **GMSK** | Gaussian Minimum Shift Keying | 1 | FSK de fase continua con filtro gaussiano (GSM) |
+| **GFSK** | Gaussian FSK | 1 | FSK con filtro gaussiano (Bluetooth) |
+| **CPM** | Continuous Phase Modulation | variable | Familia de modulaciones con fase continua (sin saltos bruscos) |
+
+### Multiplexacion y Acceso Multiple
+
+| Sigla | Nombre | Dominio | Descripcion |
+|-------|--------|--------|-------------|
+| **FDM** | Frequency Division Multiplexing | Frecuencia | Señales en distintas bandas de frecuencia (analogico) |
+| **FDMA** | Frequency Division Multiple Access | Frecuencia | Acceso multiple por FDM (1G) |
+| **TDM** | Time Division Multiplexing | Tiempo | Señales en distintos slots de tiempo |
+| **TDMA** | Time Division Multiple Access | Tiempo | Acceso multiple por TDM (2G GSM) |
+| **CDM** | Code Division Multiplexing | Codigo | Señales separadas por codigos ortogonales |
+| **CDMA** | Code Division Multiple Access | Codigo | Acceso multiple por CDM (3G) |
+| **OFDM** | Orthogonal Frequency Div. Multiplexing | Frecuencia | Multiportadora con subportadoras ortogonales |
+| **OFDMA** | Orthogonal Frequency Div. Multiple Access | Frecuencia | Acceso multiple por OFDM (4G/5G) |
+| **WDM** | Wavelength Division Multiplexing | Longitud de onda | Multiplexacion optica en fibra |
+
+### Combinaciones y Tecnicas Hibridas
+
+| Combinacion | Descripcion | Ejemplo |
+|-------------|-------------|---------|
+| **PAM-TDM** | PAM analogica multiplexada en tiempo | Sistema telefonico analogico multiplexado |
+| **PCM-TDM** | PCM + TDM: canales digitales en slots temporales | T1 (24 canales), E1 (30 canales) |
+| **TDM + FDM** | Jerarquia: señales TDM moduladas en distintas portadoras FDM | Radioenlaces PDH |
+| **WDM + TDM** | Longitudes de onda con slots temporales en cada una | OTN (Optical Transport Network) |
+| **DSSS (CDMA)** | Datos × secuencia PN de alta velocidad | GPS, IS-95, WCDMA |
+| **FHSS** | Portadora salta entre frecuencias segun secuencia PN | Bluetooth, militar |
+| **OFDM + QAM** | Cada subportadora OFDM modulada con QAM/PSK | WiFi, LTE, 5G, DVB-T |
+| **SC-FDMA** | OFDM con precodificacion DFT para reducir PAPR | LTE uplink |
+| **TCM** | Trellis Coded Modulation: modulacion + FEC conjunta | Modems de banda vocal |
+
+---
+
 ## Ver Tambien
 
 - [[../modulacion-analogica/am-vs-dsb-sc|AM vs DSB-SC]]
