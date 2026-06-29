@@ -156,6 +156,49 @@ Variantes:
 
 Los bits generados por PCM se transmiten usando una **portadora senoidal**. Un parametro de la portadora toma valores discretos segun los bits. [analysis]
 
+##### Por que se llama "paso-banda"
+
+El espectro de los bits (banda base, centrado en $f = 0$) se **traslada** a la frecuencia de la portadora $f_c$ mediante la multiplicacion por $\cos(2\pi f_c t)$. La señal resultante ocupa una banda alrededor de $f_c$, no alrededor de $0$ → es una señal **paso-banda**. [analysis]
+
+```
+Espectro banda base           Espectro paso-banda
+     |                              |
+     |  ████                        |              ████         ████
+     |  ████                        |              ████         ████
+     |__████____f                   |______________████_________████____f
+        0                                        -fc          +fc
+```
+
+##### De analogico a digital: el paralelo directo
+
+ASK, FSK y PSK son las versiones **digitales** de AM, FM y PM. La diferencia es que el parametro modulado ya no varia continuamente segun $m(t)$, sino que solo toma **valores discretos** determinados por los bits:
+
+| Analogica | Digital | Que cambia |
+|-----------|---------|-------------|
+| **AM**: amplitud varia con $m(t)$ continua | **ASK**: amplitud toma valores discretos (ej: 0 o $A_c$) |
+| **FM**: frecuencia varia con $m(t)$ continua | **FSK**: frecuencia salta entre $f_0$ y $f_1$ |
+| **PM**: fase varia con $m(t)$ continua | **PSK**: fase salta entre valores fijos (ej: $0^\circ$, $180^\circ$) |
+
+##### El flujo completo
+
+$$m(t) \xrightarrow{\text{Muestreo}} \text{muestras} \xrightarrow{\text{Cuantificacion}} \text{bits} \xrightarrow{\text{ASK/FSK/PSK}} \text{señal RF en } f_c$$
+
+1. La voz $m(t)$ se muestrea y cuantifica → bits (PCM)
+2. Los bits controlan un **commutador digital** que selecciona entre parametros discretos de portadora
+3. La portadora senoidal modificada se transmite por la antena
+
+Ejemplo concreto con BPSK y el bit "1":
+- Bit = 1 → commutador selecciona fase $0^\circ$ → $s(t) = A_c \cos(2\pi f_c t + 0^\circ)$
+- Bit = 0 → commutador selecciona fase $180^\circ$ → $s(t) = A_c \cos(2\pi f_c t + 180^\circ) = -A_c \cos(2\pi f_c t)$
+
+##### Simbolos, bits y tasa
+
+Cada cambio de parametro de la portadora es un **simbolo**. Un simbolo puede representar 1 bit (BPSK), 2 bits (QPSK), 4 bits (16-QAM), etc.:
+
+$$\boxed{R_b = R_s \cdot \log_2 M}$$
+
+Donde $R_s$ = simbolos/segundo (baudios), $M$ = numero de simbolos distintos, $R_b$ = bits/segundo. [analysis]
+
 No puede haber PCM sin ASK, FSK o PSK?
 
 > [!note]- PCM sin modulacion paso-banda
