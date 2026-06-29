@@ -79,6 +79,58 @@ Para cada modulacion o familia, se estudia en este orden:
 
 ---
 
+## Ruta Acelerada: Foco en Modulaciones Digitales
+
+Si tu interes esta en las modulaciones digitales (ASK, FSK, PSK, QAM, OFDM) y queres dejar AM/FM analogicas para despues, esta ruta alternativa elimina las semanas 3 y 4 del plan completo.
+
+### Prerrequisitos minimos (no salteables)
+
+Necesitas **dos conceptos** de modulacion analogica para entender las digitales (15-30 minutos):
+
+- Saber que es una **portadora senoidal** $A_c \cos(2\pi f_c t)$ y que modular significa variar amplitud, frecuencia o fase.
+- Entender la analogia **AM→ASK, FM→FSK, PM→PSK**: misma operacion, pero con valores discretos en vez de continuos.
+
+El resto de AM/FM (indice de modulacion, regla de Carson, SNR en FM, preenfasis, superheterodino) no bloquea el estudio de digitales.
+
+### Ruta de 8 etapas
+
+| Etapa | Tema | Horas est. | Unidad |
+|-------|------|-----------|--------|
+| **1** | Herramientas matematicas: Fourier, Parseval, Hilbert, DEP, ancho de banda | 4-6h | U2 |
+| **2** | Clasificacion de modulaciones (arbol, matriz 2D, analogias analogico→digital) | 30 min | U1+CI |
+| **3** | Muestreo, cuantificacion, PCM: como se generan los bits | 3-4h | U5 |
+| **4** | ASK, FSK, BPSK, QPSK: constelaciones, BER, $E_b/N_0$ | 6-8h | U6 |
+| **5** | QAM: 16/64/256-QAM, M-PSK | 3-4h | U6 |
+| **6** | Ruido digital: BER vs $E_b/N_0$, temperatura de ruido, Friis | 4-6h | U7 |
+| **7** | Teoria de la informacion: entropia, Shannon-Hartley, codigos (Hamming, LDPC) | 6-8h | U9 |
+| **8** | OFDM, DSSS, FHSS, CDMA | 4-6h | U10 |
+| **Post** | Repaso de modulaciones analogicas (AM/FM/PM) para el examen | 2-3h | U3, U4 |
+
+### Que queda afuera (y cuando lo ves)
+
+| Tema diferido | Cuando volver |
+|---------------|---------------|
+| AM, DSB-SC, SSB, VSB | En el repaso post-etapa 8 |
+| FM, PM, NBFM, WBFM, regla de Carson | En el repaso post-etapa 8 |
+| Ruido en AM/FM analogicas (SNR, efecto umbral) | En el repaso post-etapa 8 |
+| Intercomparacion analogica | Con U8 si queda tiempo |
+
+### Links clave para esta ruta
+
+- → [[../conceptos-integradores/clasificacion-modulaciones|Clasificacion de Modulaciones]] — el arbol y la matriz 2D
+- → [[../herramientas-matematicas/teorema-muestreo|Teorema de Muestreo]]
+- → [[../modulacion-pulsos/pcm-cuantificacion|PCM y Cuantificacion]]
+- → [[../modulacion-digital/ask-fsk-psk|ASK, FSK, PSK]]
+- → [[../modulacion-digital/modulacion-qam|QAM]]
+- → [[../modulacion-digital/constelaciones|Constelaciones]]
+- → [[../modulacion-digital/probabilidad-error|Probabilidad de Error (BER)]]
+- → [[../ruido/formula-friis|Formula de Friis]]
+- → [[../teoria-informacion/teorema-shannon-hartley|Teorema de Shannon-Hartley]]
+- → [[../espectro-expandido/ofdm|OFDM]]
+- → [[../espectro-expandido/cdma|CDMA]]
+
+---
+
 ## Ver Tambien
 
 - [[../conceptos-integradores/clasificacion-modulaciones|Clasificacion de Modulaciones]]
