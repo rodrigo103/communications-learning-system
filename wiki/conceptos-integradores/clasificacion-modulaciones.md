@@ -297,6 +297,57 @@ PCM digitaliza la voz. ASK/FSK/PSK adaptan esos bits al canal inalambrico. [anal
 
 Son tecnicas de **multiplexacion y acceso multiple**, no modulaciones en si mismas. OFDM usa QAM/PSK en cada subportadora. CDMA usa PSK + codigos de expansion. [analysis]
 
+### 7. AM y ASK usan el mismo circuito (producto)
+
+Ambos emplean un **modulador de producto** (multiplicador). La unica diferencia es la señal de entrada: [analysis]
+
+- **AM**: $(A_c + m(t)) \times \cos(2\pi f_c t)$ — $m(t)$ analogica con offset DC para no suprimir la portadora
+- **ASK (OOK)**: $\text{bit}(t) \times \cos(2\pi f_c t)$ — señal binaria ($0$ o $A_c$) sin offset
+- **DSB-SC**: $m(t) \times \cos(2\pi f_c t)$ — $m(t)$ analogica sin offset (portadora suprimida)
+
+El multiplicador es el mismo. Que sea AM, ASK o DSB-SC depende de que entra por la entrada de modulacion.
+
+### 8. FM↔FSK y PM↔PSK comparten el mismo principio de circuito
+
+La misma relacion se extiende a las otras familias: [analysis]
+
+- **FM ↔ FSK**: un VCO recibe $m(t)$ continua → FM. El mismo VCO recibe bits (tension alta/baja) → FSK. En implementaciones baratas a veces se usan dos osciladores conmutados para FSK, pero el principio es identico.
+- **PM ↔ PSK**: un desfasador controlado por $m(t)$ continua → PM. Con bits → PSK.
+
+**El circuito que varia el parametro no sabe si la entrada es analogica o digital.** Lo que cambia es la naturaleza de la señal moduladora, no el modulador.
+
+### 9. ASK no es solo OOK
+
+Aunque OOK (bit 0 = sin señal) es la forma mas comun de ASK, existen variantes: [analysis]
+
+- **ASK binaria con dos amplitudes no nulas**: bit 1 = $A_1$, bit 0 = $A_0$, ambas > 0. Poco usada porque OOK da mas distancia entre simbolos.
+- **M-ASK**: mas de 2 amplitudes discretas (ej: 4-ASK = 4 niveles = 2 bits/simbolo). Rara vez se usa sola; se prefiere QAM.
+
+En la practica, "ASK" casi siempre significa OOK.
+
+> [!note]- M-ASK y M-PAM: el mismo mapeo en banda base y paso-banda
+> **M-PAM** y **M-ASK** usan el mismo conjunto de $M$ amplitudes discretas. La diferencia es si hay portadora:
+>
+> | | M-PAM | M-ASK |
+> |--|-------|-------|
+> | **Tipo** | Digital banda base | Digital paso-banda |
+> | **Señal** | $A_m \cdot p(t)$ | $A_m \cdot \cos(2\pi f_c t)$ |
+> | **Espectro** | Centrado en $f = 0$ | Centrado en $\pm f_c$ |
+> | **Bits/simbolo** | $\log_2 M$ | $\log_2 M$ |
+>
+> M-ASK **es** M-PAM trasladado a $f_c$. Los niveles de amplitud y el mapeo de bits son identicos. La unica diferencia es la multiplicacion por la portadora senoidal.
+>
+> Ejemplo 4-PAM / 4-ASK con $M=4$ niveles: $\{-3d, -d, +d, +3d\}$, 2 bits por simbolo, mapeo Gray:
+> ```
+> Bits   Nivel   4-PAM (banda base)       4-ASK (paso-banda)
+> 00     -3d     pulso de altura -3d      -3d · cos(2π fc t)
+> 01     -d      pulso de altura -d       -d  · cos(2π fc t)
+> 11     +d      pulso de altura +d       +d  · cos(2π fc t)
+> 10     +3d     pulso de altura +3d      +3d · cos(2π fc t)
+> ```
+>
+> En la practica, M-PAM se usa en banda base (Ethernet 1000BASE-T usa 5-PAM). M-ASK solo casi nunca se usa porque QAM aprovecha mejor las dos dimensiones (I/Q) para la misma energia.
+
 → [[../espectro-expandido/ofdm|OFDM]]
 → [[../espectro-expandido/cdma|CDMA]]
 
