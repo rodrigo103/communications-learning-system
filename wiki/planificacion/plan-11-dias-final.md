@@ -10,7 +10,11 @@ curso: Sistemas de Comunicaciones
 
 Estrategia de preparacion para el examen final. Foco en modulaciones digitales, con cobertura reforzada en analogicas tras revisar el patron real de exigencia en finales anteriores.
 
-> ⚠️ **Pendiente de confirmar con la catedra:** el formato "oral teorico-integrador" no coincide con la evidencia de los 13 finales revisados (`exercises/finales/md/`), que son todos examenes **escritos**, cronometrados ("Hora de finalizacion"), con hoja de calificacion por item. Confirmar si el formato cambio para 2026 o si hay una instancia escrita previa a la oral — esto cambia como practicar el dia 11.
+> ✅ **Confirmado (19/07):** el examen es **escrito y con carpeta abierta** (se puede consultar material durante el examen), consistente con los 13 finales revisados en `exercises/finales/md/` (examenes escritos, cronometrados, con hoja de calificacion por item).
+>
+> ⚠️ **Accion pendiente — material impreso:** la carpeta de apuntes de Rodrigo es digital (este repo). Con carpeta abierta, la restriccion tipica no es "saber de memoria" sino "poder llegar al dato rapido durante el examen". Dos frentes:
+> 1. Preguntar a la catedra si se puede usar/imprimir la carpeta digital (notebook, tablet, o impresion completa) el dia del examen.
+> 2. Como respaldo (o si la respuesta es que solo se admite papel impreso), llevar un **formulario impreso de 1-2 paginas** con las formulas clave — ver [[../planificacion/formulario-imprimible|Formulario Imprimible]].
 
 ---
 
@@ -18,8 +22,8 @@ Estrategia de preparacion para el examen final. Foco en modulaciones digitales, 
 
 - **Fecha examen:** 30 de julio de 2026
 - **Dias disponibles:** 11 (19 jul → 29 jul)
-- **Formato:** oral teorico-integrador + resolucion de problema
-- **Estrategia:** profundidad en digitales, superficial en analogicas (AM/FM), nada omitido
+- **Formato:** escrito, con carpeta abierta (consulta de material permitida)
+- **Estrategia:** con carpeta abierta el cuello de botella es la *velocidad para resolver*, no la memorizacion pura — igual conviene tener las formulas mas usadas de memoria para no perder tiempo buscando. Profundidad en digitales, cobertura reforzada en analogicas (AM/FM) segun el patron real de los finales, nada omitido. Preparar un formulario impreso compacto como respaldo por si la carpeta digital no se puede usar en el examen.
 
 ---
 

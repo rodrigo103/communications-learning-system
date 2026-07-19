@@ -1,0 +1,415 @@
+<title>Formulario — Sistemas de Comunicaciones</title>
+<style>
+  :root{
+    --paper:#f4f7f6;
+    --panel:#ffffff;
+    --ink:#152524;
+    --muted:#4f6663;
+    --rule:#c7d6d3;
+    --accent:#0c6e57;
+    --accent-soft:#0c6e5714;
+    --mem:#a8641a;
+    --mem-soft:#a8641a12;
+    --mono: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Menlo, Consolas, monospace;
+    --sans: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --serif: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+  }
+  :root[data-theme="dark"]{
+    --paper:#0c1614;
+    --panel:#101c1a;
+    --ink:#dfeae7;
+    --muted:#8fa8a3;
+    --rule:#24413c;
+    --accent:#4fd6ab;
+    --accent-soft:#4fd6ab1a;
+    --mem:#e8a659;
+    --mem-soft:#e8a65920;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0c1614;
+      --panel:#101c1a;
+      --ink:#dfeae7;
+      --muted:#8fa8a3;
+      --rule:#24413c;
+      --accent:#4fd6ab;
+      --accent-soft:#4fd6ab1a;
+      --mem:#e8a659;
+      --mem-soft:#e8a65920;
+    }
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:14.5px;
+    line-height:1.45;
+  }
+
+  .sheet{
+    max-width:1180px;
+    margin:0 auto;
+    padding:32px 28px 64px;
+  }
+
+  header.top{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:8px 24px;
+    border-bottom:2.5px solid var(--ink);
+    padding-bottom:14px;
+    margin-bottom:6px;
+  }
+  header.top h1{
+    font-family:var(--sans);
+    font-weight:800;
+    font-size:1.55rem;
+    letter-spacing:.01em;
+    margin:0;
+    text-wrap:balance;
+  }
+  header.top .tag{
+    font-family:var(--mono);
+    font-size:.72rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--accent);
+    border:1px solid var(--accent);
+    border-radius:2px;
+    padding:3px 8px;
+    white-space:nowrap;
+  }
+  .subline{
+    font-family:var(--mono);
+    font-size:.78rem;
+    color:var(--muted);
+    margin:6px 0 22px;
+    letter-spacing:.01em;
+  }
+  .subline b{color:var(--ink);font-weight:600;}
+
+  .legend{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+    font-family:var(--mono);
+    font-size:.72rem;
+    color:var(--muted);
+    margin-bottom:26px;
+  }
+  .legend span.mem{
+    display:inline-block;
+    width:.62em;height:.62em;
+    background:var(--mem);
+    border-radius:50%;
+    margin-right:.4em;
+    vertical-align:middle;
+  }
+
+  .board{
+    column-count:2;
+    column-gap:34px;
+  }
+  @media (max-width: 760px){
+    .board{column-count:1;}
+  }
+
+  section.block{
+    break-inside:avoid;
+    -webkit-column-break-inside:avoid;
+    margin-bottom:24px;
+    background:var(--panel);
+    border:1px solid var(--rule);
+    border-radius:3px;
+    padding:14px 16px 8px;
+  }
+
+  .block h2{
+    font-family:var(--sans);
+    font-size:.92rem;
+    font-weight:700;
+    margin:0 0 2px;
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:10px;
+  }
+  .block h2 .freq{
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:.68rem;
+    color:var(--accent);
+    background:var(--accent-soft);
+    padding:2px 6px;
+    border-radius:2px;
+    white-space:nowrap;
+  }
+  .block .note{
+    font-size:.74rem;
+    color:var(--muted);
+    margin:0 0 10px;
+    font-family:var(--sans);
+  }
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin-bottom:4px;
+  }
+  tr{break-inside:avoid;}
+  td{
+    vertical-align:top;
+    padding:5px 4px;
+    border-top:1px solid var(--rule);
+    font-size:.86rem;
+  }
+  tr:first-child td{border-top:none;}
+  td.f{
+    font-family:var(--mono);
+    font-size:.82rem;
+    white-space:nowrap;
+    padding-right:10px;
+    color:var(--ink);
+  }
+  td.what{
+    font-family:var(--sans);
+    color:var(--ink);
+    width:38%;
+  }
+  td.notes{
+    font-family:var(--sans);
+    color:var(--muted);
+    font-size:.75rem;
+    width:24%;
+  }
+  .mem-row td.f::before{
+    content:"";
+    display:inline-block;
+    width:.55em;height:.55em;
+    border-radius:50%;
+    background:var(--mem);
+    margin-right:.5em;
+  }
+  .mem-row{background:var(--mem-soft);}
+
+  var, i.v{font-style:italic;font-family:var(--serif);}
+
+  footer.end{
+    margin-top:10px;
+    padding-top:14px;
+    border-top:1px solid var(--rule);
+    font-family:var(--mono);
+    font-size:.72rem;
+    color:var(--muted);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  .print-btn{
+    font-family:var(--sans);
+    font-size:.78rem;
+    font-weight:600;
+    background:var(--accent);
+    color:var(--paper);
+    border:none;
+    border-radius:3px;
+    padding:8px 14px;
+    cursor:pointer;
+  }
+  .print-btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px;}
+  @media print{
+    .print-btn, .no-print{display:none !important;}
+    body{background:#fff;font-size:9.2pt;}
+    .sheet{padding:0;max-width:none;}
+    .board{column-count:2;column-gap:22px;}
+    section.block{border-color:#bbb;background:#fff;padding:8px 10px 4px;margin-bottom:12px;}
+    @page{margin:12mm;size:A4;}
+  }
+</style>
+
+<div class="sheet">
+  <header class="top">
+    <h1>Formulario — Sistemas de Comunicaciones</h1>
+    <span class="tag">Final 30/07/2026</span>
+  </header>
+  <p class="subline">Chuleta de consulta rápida, no explicativa · respaldo impreso por si la carpeta digital no se puede usar en el examen · <span class="mem"><span class="mem">●</span></span> <b>marcadas = de memoria</b>, el resto se puede consultar acá directamente</p>
+
+  <div class="legend no-print">
+    <span><span class="mem"></span>fórmula recomendada de memoria (por si no hay tiempo de buscarla)</span>
+    <button class="print-btn" onclick="window.print()">Imprimir / Guardar como PDF</button>
+  </div>
+
+  <div class="board">
+
+    <section class="block">
+      <h2>1 · Modulación lineal <span class="freq">77% de los finales</span></h2>
+      <p class="note">AM, DSB-SC, SSB, VSB — el bloque más evaluado.</p>
+      <table>
+        <tr><td class="f">s(t) = A_c[1+m·cos ω_mt]·cos ω_ct</td><td class="what">Señal AM, tono único</td><td class="notes">m = A_m/A_c</td></tr>
+        <tr><td class="f">m = (A_max−A_min)/(A_max+A_min)</td><td class="what">Índice de modulación desde envolvente</td><td class="notes">m ≤ 1 sin distorsión</td></tr>
+        <tr class="mem-row"><td class="f">P_AM = A_c²/2Z + m²A_c²/4Z<br>= P_c(1 + m²/2)</td><td class="what">Potencia normalizada AM (tono único)</td><td class="notes">Z = 1Ω si no dan dato</td></tr>
+        <tr><td class="f">P = P_c + ΣP_SB,i = P_c(1+Σm_i²/2)</td><td class="what">AM multitono</td><td class="notes">sumar m_i²/2 de c/tono</td></tr>
+        <tr><td class="f">η_AM = m²/(2+m²)</td><td class="what">Eficiencia de potencia AM</td><td class="notes">máx 33,3% en m=1</td></tr>
+        <tr><td class="f">PEP = P_c(1+m)²</td><td class="what">Potencia pico de envolvente</td><td class="notes">pico, no promedio — muy frecuente</td></tr>
+        <tr><td class="f">s(t) = A_c·m(t)·cos ω_ct</td><td class="what">DSB-SC (sin portadora)</td><td class="notes">η=100%, detección coherente</td></tr>
+        <tr><td class="f">BW_AM = BW_DSB = 2f_m</td><td class="what">Ancho de banda AM/DSB</td><td class="notes">doble banda lateral</td></tr>
+        <tr><td class="f">s(t)=m(t)cos ω_ct ∓ m̂(t)sin ω_ct</td><td class="what">SSB (Hilbert): − USB, + LSB</td><td class="notes">m̂ = Hilbert de m</td></tr>
+        <tr><td class="f">BW_SSB = f_m</td><td class="what">Ancho de banda SSB</td><td class="notes">mitad de DSB</td></tr>
+        <tr><td class="f">BW_VSB = f_m+f_v, f_v≈(0,1–0,25)f_m</td><td class="what">Ancho de banda VSB</td><td class="notes">compromiso DSB/SSB, video</td></tr>
+        <tr><td class="f">H(f_c+f)+H(f_c−f)=1, |f|<f_v</td><td class="what">Simetría vestigial del filtro VSB</td><td class="notes">recuperación perfecta</td></tr>
+        <tr><td class="f">SNR_out = m²/(2+m²) · SNR_in</td><td class="what">SNR salida AM (detección envolvente)</td><td class="notes">umbral ≈10 dB</td></tr>
+        <tr><td class="f">SNR_out(DSB-SC) = SNR_out(SSB) = SNR_in</td><td class="what">SNR salida detección síncrona</td><td class="notes">sin efecto umbral</td></tr>
+        <tr><td class="f">dBW=10log(P/1W), dBm=10log(P/1mW)</td><td class="what">Conversión a dB</td><td class="notes">0 dBW = 30 dBm</td></tr>
+      </table>
+    </section>
+
+    <section class="block">
+      <h2>2 · Modulación exponencial <span class="freq">54%</span></h2>
+      <p class="note">FM, PM, moduladores indirectos.</p>
+      <table>
+        <tr><td class="f">s(t)=A_c cos[2πf_ct + 2πk_f∫m(τ)dτ]</td><td class="what">Señal FM</td><td class="notes">f_i = f_c + k_f·m(t)</td></tr>
+        <tr><td class="f">s(t)=A_c cos[2πf_ct + k_p·m(t)]</td><td class="what">Señal PM</td><td class="notes">φ_i = 2πf_ct + k_p·m(t)</td></tr>
+        <tr><td class="f">β_FM = Δf/f_m = k_f·A_m/f_m</td><td class="what">Índice de modulación FM</td><td class="notes">Δf = desviación máx.</td></tr>
+        <tr><td class="f">β_PM = k_p·A_m</td><td class="what">Índice de modulación PM</td><td class="notes">independiente de f_m</td></tr>
+        <tr class="mem-row"><td class="f">BW ≈ 2(Δf+f_m) = 2f_m(β+1)</td><td class="what">Regla de Carson</td><td class="notes">~98% potencia; NBFM→2f_m, WBFM→2Δf</td></tr>
+        <tr><td class="f">FM[m(t)] ≡ PM[∫m dt]</td><td class="what">Dualidad FM↔PM</td><td class="notes">clave en moduladores indirectos</td></tr>
+        <tr><td class="f">×n: Δf→nΔf, f_c→nf_c, β→nβ</td><td class="what">Multiplicador de frecuencia (Armstrong)</td><td class="notes">escala todo por n</td></tr>
+        <tr><td class="f">f_IF = |f_RF − f_LO|</td><td class="what">Mezclador / receptor superheterodino</td><td class="notes">no cambia β ni Δf; imagen: f_RF±2f_IF</td></tr>
+        <tr><td class="f">SNR_out = 3β²(β+1)·SNR_in</td><td class="what">Ganancia SNR FM (sobre umbral)</td><td class="notes">tono único: 3β²·SNR_in</td></tr>
+        <tr><td class="f">SNR_umbral ≈ 10 dB</td><td class="what">Umbral FM (discriminador conv.)</td><td class="notes">PLL ~7dB, FMFB ~4-5dB</td></tr>
+        <tr><td class="f">mejora énfasis ≈ 10–13 dB</td><td class="what">Pre-énfasis/de-énfasis</td><td class="notes">τ=75µs (USA), 50µs (Europa)</td></tr>
+      </table>
+    </section>
+
+    <section class="block">
+      <h2>3 · Muestreo / PCM / cuantificación <span class="freq">69%</span></h2>
+      <table>
+        <tr class="mem-row"><td class="f">f_s ≥ 2B (Nyquist)</td><td class="what">Frecuencia mínima de muestreo</td><td class="notes">evita aliasing</td></tr>
+        <tr><td class="f">Δ = 2V_max/L = 2V_max/2ⁿ</td><td class="what">Paso de cuantificación</td><td class="notes">L = 2ⁿ niveles</td></tr>
+        <tr><td class="f">σ_q² = Δ²/12</td><td class="what">Potencia ruido de cuantificación</td><td class="notes">error uniforme ±Δ/2</td></tr>
+        <tr class="mem-row"><td class="f">SQNR ≈ 6,02n + 1,76 dB</td><td class="what">SNR de cuantificación PCM</td><td class="notes">+1 bit = +6 dB (senoidal full-scale)</td></tr>
+        <tr><td class="f">R_b = n · f_s</td><td class="what">Tasa de bits PCM</td><td class="notes">telefonía: n=8, f_s=8kHz→64kbps</td></tr>
+        <tr><td class="f">BW_PCM ≈ R_b/2</td><td class="what">Ancho de banda banda base PCM</td><td class="notes">BW_PCM/BW_análog ≥ n</td></tr>
+        <tr><td class="f">BW_min = 1/τ</td><td class="what">Ancho de banda de pulso (PAM)</td><td class="notes">τ = ancho del pulso</td></tr>
+        <tr><td class="f">C_μ(x)=sgn(x)·ln(1+μ|x/V|)/ln(1+μ)</td><td class="what">Companding μ-law</td><td class="notes">μ=255 (USA/Japón)</td></tr>
+        <tr><td class="f">C_A(x): lineal cerca de 0, log lejos</td><td class="what">Companding A-law</td><td class="notes">A=87,6 (Europa) — no compatible con μ-law</td></tr>
+        <tr><td class="f">mejora rango ≈ 20log(μ) dB</td><td class="what">Ganancia por companding</td><td class="notes">μ=255 → ~48 dB</td></tr>
+        <tr><td class="f">δ·f_s ≥ máx|dx/dt|</td><td class="what">Condición de slope overload (DM)</td><td class="notes">1 bit/muestra, R=f_s</td></tr>
+        <tr><td class="f">δ[n]=δ[n−1]·K (misma dir.) ó /K</td><td class="what">Delta adaptativa (ADM)</td><td class="notes">K≈1,5</td></tr>
+      </table>
+    </section>
+
+    <section class="block">
+      <h2>4 · Ruido / Friis / SNR <span class="freq">38%</span></h2>
+      <table>
+        <tr class="mem-row"><td class="f">N = kTB</td><td class="what">Ruido térmico</td><td class="notes">k=1,38×10⁻²³ J/K</td></tr>
+        <tr><td class="f">v_n² = 4kTRB</td><td class="what">Ruido térmico (voltaje, Johnson-Nyquist)</td><td class="notes">potencia disponible = kTB</td></tr>
+        <tr><td class="f">F = SNR_in/SNR_out; NF=10log F</td><td class="what">Figura de ruido</td><td class="notes">F=1 ideal</td></tr>
+        <tr><td class="f">T_e = T_0(F−1); F = 1+T_e/T_0</td><td class="what">Temperatura equivalente de ruido</td><td class="notes">T_0 = 290K</td></tr>
+        <tr><td class="f">T_sys = T_antena + T_receptor</td><td class="what">Temperatura de sistema</td><td class="notes">aditiva</td></tr>
+        <tr class="mem-row"><td class="f">F_tot = F_1 + (F_2−1)/G_1 + (F_3−1)/G_1G_2 + …</td><td class="what">Fórmula de Friis (cascada)</td><td class="notes">valores lineales, no dB</td></tr>
+        <tr><td class="f">T_e,tot = T_e,1 + T_e,2/G_1 + …</td><td class="what">Friis en temperaturas</td><td class="notes">equivalente, más intuitivo</td></tr>
+        <tr><td class="f">SNR_out = SNR_in / F</td><td class="what">Degradación de SNR por etapa</td><td class="notes">1ª etapa domina (LNA crítico)</td></tr>
+        <tr><td class="f">E_b/N_0 = SNR · B/R_b</td><td class="what">Relación SNR ↔ E_b/N_0</td><td class="notes">puente entre ambas métricas</td></tr>
+        <tr><td class="f">E_s/N_0 = (E_b/N_0)·log₂M</td><td class="what">Energía por símbolo</td><td class="notes">M-aria</td></tr>
+      </table>
+    </section>
+
+    <section class="block">
+      <h2>5 · Modulación digital <span class="freq">31%</span></h2>
+      <p class="note">ASK / FSK / PSK / QAM — reusado en Ruido/BER.</p>
+      <table>
+        <tr><td class="f">BW_ASK,BPSK = 2R_s</td><td class="what">Ancho de banda ASK/BPSK</td><td class="notes">pulso rectangular</td></tr>
+        <tr><td class="f">BW_FSK = 2(Δf+R_s)</td><td class="what">Ancho de banda FSK (Carson)</td><td class="notes">Δf=|f1−f0|/2</td></tr>
+        <tr class="mem-row"><td class="f">R_b = R_s · log₂M</td><td class="what">Bits vs símbolos</td><td class="notes">M = orden de modulación</td></tr>
+        <tr><td class="f">s(t)=I(t)cos ω_ct − Q(t)sin ω_ct</td><td class="what">Señal QAM</td><td class="notes">I/Q ortogonales</td></tr>
+        <tr><td class="f">η = R_b/B = log₂M b/s/Hz</td><td class="what">Eficiencia espectral (Nyquist)</td><td class="notes">c/roll-off α: η=2log₂M/(1+α)</td></tr>
+        <tr class="mem-row"><td class="f">P_e(BPSK) = Q(√(2E_b/N_0))</td><td class="what">BER BPSK/QPSK</td><td class="notes">=½erfc(√(E_b/N_0))</td></tr>
+        <tr><td class="f">P_e(FSK) = Q(√(E_b/N_0))</td><td class="what">BER FSK ortogonal coherente</td><td class="notes">peor que BPSK</td></tr>
+        <tr><td class="f">P_e(OOK) = Q(√(E_b/2N_0))</td><td class="what">BER OOK (ASK on-off)</td><td class="notes">la más débil de las 3</td></tr>
+        <tr><td class="f">BER(M-QAM) ≈ [2(√M−1)/√M·log₂M] · Q(√(3log₂M·E_b/(M−1)N_0))</td><td class="what">BER M-QAM rectangular (aprox.)</td><td class="notes">M↑ → mejor η, peor BER</td></tr>
+        <tr><td class="f">d_min = min|s_i − s_j|</td><td class="what">Distancia mínima constelación</td><td class="notes">d_min↑ → P_e↓</td></tr>
+        <tr><td class="f">P_e ≈ Q(d_min/2σ_n)</td><td class="what">BER aprox. vía distancia</td><td class="notes">válido en AWGN</td></tr>
+        <tr><td class="f">BER ≈ SER/log₂M</td><td class="what">Relación BER-SER (mapeo Gray)</td><td class="notes">1 error símbolo ≈ 1 bit</td></tr>
+      </table>
+    </section>
+
+    <section class="block">
+      <h2>6 · Espectro expandido / OFDM <span class="freq">62%</span></h2>
+      <table>
+        <tr class="mem-row"><td class="f">G_p = BW_SS/BW_info = R_chip/R_bit</td><td class="what">Ganancia de procesamiento DSSS/CDMA</td><td class="notes">SNR_out = G_p·SNR_in</td></tr>
+        <tr class="mem-row"><td class="f">N = 2^L − 1</td><td class="what">Longitud secuencia LFSR de L etapas</td><td class="notes">código PN máximo</td></tr>
+        <tr><td class="f">G_p,FHSS ≈ M/k</td><td class="what">Ganancia de procesamiento FHSS</td><td class="notes">M=canales, k=interferidos</td></tr>
+        <tr><td class="f">P_hit = k/M</td><td class="what">Prob. de colisión con jammer (FHSS)</td><td class="notes">slow-hop: varios bits/salto</td></tr>
+        <tr><td class="f">Δf = 1/T_s</td><td class="what">Espaciado subportadoras OFDM</td><td class="notes">T_s = duración símbolo útil</td></tr>
+        <tr><td class="f">Y_k=H(f_k)X_k+N_k; X̂_k=Y_k/H(f_k)</td><td class="what">Ecualización OFDM por subportadora</td><td class="notes">división compleja, trivial con CP</td></tr>
+        <tr><td class="f">T_CP > τ_max</td><td class="what">Condición del prefijo cíclico</td><td class="notes">τ_max = delay spread máx.</td></tr>
+        <tr><td class="f">η_CP = T_s/(T_s+T_CP)</td><td class="what">Eficiencia por overhead de CP</td><td class="notes">WiFi ~80%, LTE ~93%</td></tr>
+        <tr><td class="f">N_subport = BW/Δf</td><td class="what">Número de subportadoras</td><td class="notes">resolución frecuencial</td></tr>
+        <tr><td class="f">s_k(t)=A_k·d_k(t)·c_k(t)·cos(ω_ct+φ_k)</td><td class="what">Señal CDMA usuario k</td><td class="notes">multiplicación por código PN</td></tr>
+      </table>
+    </section>
+
+    <section class="block">
+      <h2>7 · Teoría de la información <span class="freq">69%</span></h2>
+      <table>
+        <tr class="mem-row"><td class="f">H(X) = −Σp_i·log₂p_i</td><td class="what">Entropía</td><td class="notes">bits/símbolo</td></tr>
+        <tr><td class="f">I(p) = −log₂p</td><td class="what">Información de un evento</td><td class="notes">p=1 ⇒ I=0</td></tr>
+        <tr><td class="f">0 ≤ H ≤ log₂n</td><td class="what">Cota de entropía</td><td class="notes">máx si equiprobables</td></tr>
+        <tr><td class="f">R = 1 − H/H_max</td><td class="what">Redundancia de fuente</td><td class="notes">η=H/H_max = eficiencia</td></tr>
+        <tr><td class="f">H ≤ L̄ < H+1</td><td class="what">Límite de Shannon (cod. de fuente)</td><td class="notes">L̄ = Σp_i·l_i, long. media</td></tr>
+        <tr><td class="f">Σ 2^(−l_i) ≤ 1</td><td class="what">Criterio de Kraft-McMillan</td><td class="notes">código unívocamente decodificable</td></tr>
+        <tr class="mem-row"><td class="f">C = B·log₂(1+S/N)</td><td class="what">Shannon-Hartley (capacidad)</td><td class="notes">S/N lineal, no dB</td></tr>
+        <tr><td class="f">C ≈ B·log₂(SNR)</td><td class="what">Régimen limitado por banda (S/N≫1)</td><td class="notes">crecimiento logarítmico</td></tr>
+        <tr><td class="f">C ≈ 1,44·B·S/N</td><td class="what">Régimen limitado por potencia (S/N≪1)</td><td class="notes">crecimiento lineal</td></tr>
+        <tr><td class="f">C_∞ = S/(N_0·ln2) = 1,44·S/N_0</td><td class="what">Capacidad con B→∞</td><td class="notes">límite finito aun con banda infinita</td></tr>
+        <tr class="mem-row"><td class="f">E_b/N_0 > ln2 ≈ −1,59 dB</td><td class="what">Límite absoluto de Shannon</td><td class="notes">ningún sistema opera por debajo</td></tr>
+        <tr><td class="f">e_d = d_min − 1</td><td class="what">Máx. errores detectables</td><td class="notes">d_min = distancia de Hamming</td></tr>
+        <tr><td class="f">e_c = ⌊(d_min−1)/2⌋</td><td class="what">Máx. errores corregibles</td><td class="notes">Hamming(7,4): d_min=3 → corrige 1</td></tr>
+        <tr><td class="f">R_código = k/n</td><td class="what">Tasa de código (bloque k→n)</td><td class="notes">d_min ≤ n−k+1 (Singleton)</td></tr>
+        <tr><td class="f">B_min = R_s/2</td><td class="what">BW mínimo sin ISI (Nyquist)</td><td class="notes">filtro raised-cosine</td></tr>
+      </table>
+    </section>
+
+    <section class="block">
+      <h2>Herramientas matemáticas <span class="freq">transversal</span></h2>
+      <table>
+        <tr><td class="f">X(f) = ∫x(t)e^(−j2πft)dt</td><td class="what">Transformada de Fourier</td><td class="notes"></td></tr>
+        <tr><td class="f">x(t) = Σc_n·e^(j2πnf_0t), f_0=1/T_0</td><td class="what">Serie de Fourier (señal periódica)</td><td class="notes"></td></tr>
+        <tr><td class="f">∫|x(t)|²dt = ∫|X(f)|²df</td><td class="what">Teorema de Parseval</td><td class="notes">conservación de energía</td></tr>
+        <tr><td class="f">x̂(t)=H{x(t)}; X̂(f)=−j·sgn(f)X(f)</td><td class="what">Transformada de Hilbert</td><td class="notes">desfasaje 90°</td></tr>
+        <tr><td class="f">x_a(t)=x(t)+jx̂(t); a(t)=√(x²+x̂²)</td><td class="what">Señal analítica → envolvente/fase</td><td class="notes"></td></tr>
+        <tr><td class="f">x1(t)*x2(t) ↔ X1(f)·X2(f)</td><td class="what">Teorema de convolución</td><td class="notes"></td></tr>
+      </table>
+    </section>
+
+    <section class="block">
+      <h2>Constantes y valores típicos</h2>
+      <table>
+        <tr><td class="f">k = 1,38×10⁻²³ J/K</td><td class="what" colspan="2">Constante de Boltzmann</td></tr>
+        <tr><td class="f">T_0 = 290 K</td><td class="what" colspan="2">Temperatura de referencia (ruido)</td></tr>
+        <tr><td class="f">μ = 255 / A = 87,6</td><td class="what" colspan="2">Companding μ-law (USA/Japón) / A-law (Europa)</td></tr>
+        <tr><td class="f">τ = 75µs / 50µs</td><td class="what" colspan="2">Pre-énfasis FM: USA-Japón / Europa</td></tr>
+        <tr><td class="f">SNR_umbral ≈ 10 dB</td><td class="what" colspan="2">Umbral AM/FM (discriminador conv.)</td></tr>
+        <tr><td class="f">ln2 ≈ −1,59 dB</td><td class="what" colspan="2">Límite absoluto E_b/N_0</td></tr>
+        <tr><td class="f">0 dBW = 30 dBm</td><td class="what" colspan="2">Conversión dBW↔dBm</td></tr>
+        <tr><td class="f">N = −174+10log(B) dBm</td><td class="what" colspan="2">Piso de ruido térmico a T_0=290K</td></tr>
+        <tr><td class="f">FM broadcast: Δf=75kHz, f_m=15kHz, β=5, BW=200kHz</td><td class="what" colspan="2">Valores estándar radio FM</td></tr>
+        <tr><td class="f">PCM telefonía: f_s=8kHz, n=8bit, R_b=64kbps</td><td class="what" colspan="2">Estándar G.711</td></tr>
+      </table>
+    </section>
+
+  </div>
+
+  <footer class="end">
+    <span>Fuente: wiki/planificacion/formulario-imprimible.md — Sistema de estudio Comunicaciones</span>
+    <span>Basado en revisión de 13 finales resueltos 2022–2026</span>
+  </footer>
+</div>
