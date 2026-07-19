@@ -6,9 +6,11 @@ curso: Sistemas de Comunicaciones
 
 # Plan Intensivo: 11 Dias para el Final (30 de julio)
 
-> **Last verified:** 2026-07-19 | **Verified by:** analysis
+> **Last verified:** 2026-07-19 | **Verified by:** analysis + revision cruzada con 13 finales resueltos (2022-2026)
 
-Estrategia de preparacion para el examen final oral teorico-integrador con resolucion de problema. Foco en modulaciones digitales, minimo viable en analogicas.
+Estrategia de preparacion para el examen final. Foco en modulaciones digitales, con cobertura reforzada en analogicas tras revisar el patron real de exigencia en finales anteriores.
+
+> ⚠️ **Pendiente de confirmar con la catedra:** el formato "oral teorico-integrador" no coincide con la evidencia de los 13 finales revisados (`exercises/finales/md/`), que son todos examenes **escritos**, cronometrados ("Hora de finalizacion"), con hoja de calificacion por item. Confirmar si el formato cambio para 2026 o si hay una instancia escrita previa a la oral — esto cambia como practicar el dia 11.
 
 ---
 
@@ -28,25 +30,26 @@ Estrategia de preparacion para el examen final oral teorico-integrador con resol
 | **1** | 19 jul | U1+U2 — Fundamentos | 5-6h | Modelo de Shannon, espectro EM, Fourier, Parseval, Hilbert, DEP, ancho de banda |
 | **2** | 20 jul | U2+U5 — Muestreo + PCM | 5-6h | Teorema de Nyquist ($f_s \geq 2B$), muestreo, cuantificacion, PCM, companding, SQNR = $6n + 1.76$ dB |
 | **3** | 21 jul | U6 — ASK, FSK, BPSK, QPSK | 5-6h | Formulas, constelaciones, ancho de banda, BER, $E_b/N_0$, Q(x) |
-| **4** | 22 jul | U6 — QAM + M-PSK | 4-5h | 16/64/256-QAM, constelaciones, bits/simbolo, $R_b = R_s \log_2 M$ |
+| **4** | 22 jul | U6 — QAM + M-PSK (repaso) | 2-3h | 16/64/256-QAM, constelaciones, bits/simbolo, $R_b = R_s \log_2 M$. Repaso rapido: se reusa integramente en los dias 5-6 (Ruido/BER), no hace falta profundizar mas aca. |
 | **5** | 23 jul | U7 — Ruido digital | 5-6h | $N = kTB$, $N_0$, temperatura de ruido, factor de ruido, Friis cascada |
 | **6** | 24 jul | U7 — BER practica | 4-5h | BER vs $E_b/N_0$ para cada modulacion, curvas, resolucion de problemas |
-| **7** | 25 jul | U3+U4 — Analogicas (minimo) | 3-4h | Solo definiciones y formulas clave: AM ($s(t)$, $\mu$, BW), FM (Carson: $2(\Delta f+f_m)$), SSB/VSB conceptual |
+| **7** | 25 jul | U3+U4 — Analogicas (AM/FM), en profundidad | 5-6h | **Revision de finales:** AM/DSB aparece en 10/13 finales historicos (77%) y FM/PM en 7/13 (54%) — es el tema mas consistentemente evaluado, mas que PCM o Ruido. Practicar los patrones que se repiten: potencia normalizada en dBW, PEP, dibujo de envolvente a escala temporal, AM multitono ($P = P_c + \sum P_{SSB,i}$), DSB-SC vs AM convencional, regla de Carson y moduladores indirectos con multiplicadores/mezcladores de frecuencia. Ver ejercicios "Modulacion lineal" y "Modulacion exponencial" en `exercises/finales/md/`. |
 | **8** | 26 jul | U9 — Teoria de la Informacion | 5-6h | Entropia $H = -\sum p_i \log_2 p_i$, Shannon-Hartley $C = B\log_2(1+SNR)$, limite -1.59 dB, Huffman, Hamming |
-| **9** | 27 jul | U10 — OFDM + Spread Spectrum | 4-5h | DSSS, FHSS, CDMA conceptual, OFDM + prefijo ciclico, IFFT/FFT, aplicaciones (WiFi, 5G, GPS) |
+| **9** | 27 jul | U10 — OFDM + Spread Spectrum | 4-5h | DSSS, FHSS, CDMA conceptual, OFDM + prefijo ciclico, IFFT/FFT, aplicaciones (WiFi, 5G, GPS). Drillear ganancia de procesamiento $G_p = R_c/R_b$ y longitud de LFSR ($N = 2^L - 1$) — patron que se repite en 5/13 finales (ejercicios "Espectro expandido"). |
 | **10** | 28 jul | U8 — Intercomparacion + problemas | 5-6h | Eficiencia espectral vs energetica, tabla comparativa, ejercicios integradores (SNR, Friis, BER, capacidad) |
-| **11** | 29 jul | Repaso + simulacion oral | 4-5h | Repaso de todas las formulas, practica de explicacion oral, repaso del arbol de modulaciones |
+| **11** | 29 jul | Repaso + simulacro cronometrado | 4-5h | Repaso de todas las formulas, repaso del arbol de modulaciones, y **simulacro escrito cronometrado** con un final real completo (recomendado: `exercises/finales/md/F_Comu_2026-02-26_res.md`, el mas reciente) respetando la regla de "minimo 25% desarrollado por item". Si se confirma que la instancia es oral, sumar practica de explicacion oral sobre ese mismo simulacro. |
 
 ---
 
 ## Lo comprimido (y por que no es grave)
 
+> ⚠️ **Revisado:** la version original de este plan comprimia AM/FM a medio dia. Al cruzar el plan contra 13 finales resueltos, se vio que AM/DSB aparece en 10/13 examenes (77%) y FM/PM en 7/13 (54%) — el tema individual mas evaluado, y presente en el 100% de los finales revisados (siempre aparece al menos uno de los dos). Ademas, 12/13 finales incluyen la regla "un punto sin desarrollo alguno implica que el examen esta desaprobado", por lo que no se puede dejar un item en blanco. Por eso AM/FM ya **no** esta en la lista de comprimidos (ver dia 7) y en cambio se recorto QAM/M-PSK (dia 4), que aparece como ejercicio propio en solo 4/13 finales (31%) y cuyo contenido se reusa en los dias de Ruido/BER.
+
 | Tema | Dias dedicados | Justificacion |
 |------|---------------|---------------|
-| AM/DSB/SSB/VSB | Medio dia (dia 7) | AM→ASK ya lo entendiste. Lo demas son variantes de eficiencia. |
-| FM/PM analogicas | Medio dia (dia 7) | Regla de Carson y el concepto de $\beta$ es lo que mas preguntan. |
+| QAM/M-PSK como ejercicio propio | Medio dia (dia 4) | Aparece como ejercicio dedicado en solo 31% de los finales historicos, y sus formulas se repasan de nuevo en los dias 5-6 (Ruido/BER), que sí son casi siempre parte del examen. |
 | SNR en analogicas | Casi nada | Lo preguntan, pero es derivable de las mismas formulas de ruido. |
-| Preenfasis, FM estereo | Nada explicito | Temas de menor peso. Los lees el dia 11 si sobra tiempo. |
+| Preenfasis, FM estereo | Nada explicito | Temas de menor peso. No aparecieron como ejercicio en ninguno de los 13 finales revisados. Los lees el dia 11 si sobra tiempo. |
 
 ---
 
@@ -64,6 +67,9 @@ Estrategia de preparacion para el examen final oral teorico-integrador con resol
 | $BW_{FM} \approx 2(\Delta f + f_m)$ | Carson | U4 |
 | $P_e^{BPSK} = Q(\sqrt{2E_b/N_0})$ | BER BPSK | U6 |
 | $\frac{E_b}{N_0} > \ln 2 = -1.59$ dB | Limite absoluto | U9 |
+| $P_{AM} = \frac{A_c^2}{2Z} + \frac{m^2 A_c^2}{4Z}$ (y su forma multitono $P = P_c + \sum P_{SSB,i}$) | Potencia normalizada AM | U3 |
+| $G_p = R_c / R_b$ | Ganancia de procesamiento (spread spectrum) | U10 |
+| $N = 2^L - 1$ | Longitud de secuencia de un LFSR de $L$ etapas | U10 |
 
 ---
 
@@ -81,6 +87,7 @@ Estrategia de preparacion para el examen final oral teorico-integrador con resol
 - → [[../planificacion/plan-estudio-por-modulaciones|Plan por Modulaciones]] — la ruta acelerada original
 - → [[../glosario|Glosario]] — siglas y notacion rapida
 - → [[../../Mazo_Anki_Sistemas_Comunicaciones|Mazo Anki]] — 60 cartas para repasar en huecos
+- → `exercises/finales/md/` — 13 finales resueltos (2022-2026) convertidos a Markdown, enunciado + resolucion colapsable. Base empirica de este plan revisado.
 
 ---
 
