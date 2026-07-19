@@ -149,6 +149,7 @@ Base de conocimiento interconectada para el curso de Sistemas de Comunicaciones.
 - [[planificacion/programa-oficial]] — Programa oficial de la materia
 - [[planificacion/progreso-actual]] — Estado actual de aprendizaje
 - [[planificacion/plan-estudio-por-modulaciones]] — Plan de estudio reorganizado por familias de modulacion (4 capas)
+- [[planificacion/plan-11-dias-final]] — Plan intensivo: 11 dias para el final del 30 de julio
 - [[planificacion/mazo-anki]] — Mazo Anki completo (10 unidades, 60 cartas)
 
 ## Referencia
