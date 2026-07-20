@@ -37,11 +37,15 @@ Convierte el mensaje en una señal adecuada para el canal. Funciones:
 
 $$\text{Informacion} \rightarrow \text{Codificacion} \rightarrow \text{Modulacion} \rightarrow \text{Amplificacion} \rightarrow \text{Antena/Medio}$$
 
-- **Conversion de formato**: ADC/DAC [source — [[../../explicaciones_anki/unidad_01/carta_01_sistema-comunicaciones]]]
+> Nota: la lista de abajo enumera las funciones del transmisor, no repite el orden secuencial de la linea de arriba. Ese orden (codificar antes de modular) es el que importa: se protege la informacion con redundancia *antes* de subirla a la portadora. [analysis]
+>
+> "Conversion de formato" no es una caja aparte de la cadena de arriba: es el sub-paso inicial de **Codificacion** (ADC, si la fuente es analogica y hay que digitalizarla antes de poder codificar/modular) — y su espejo, el DAC, aparece al final del Receptor, justo antes del Destino (ver seccion 4 abajo, donde ya esta bien ordenado). Si la fuente ya es digital, se salta el ADC. [analysis]
+
+- **Conversion de formato (ADC)**: digitaliza la fuente si es analogica — primer sub-paso de la codificacion [source — [[../../explicaciones_anki/unidad_01/carta_01_sistema-comunicaciones]]]
+- **Codificacion**: agrega redundancia para proteccion contra errores (va antes de modular)
 - **Modulacion**: traslada la informacion a una frecuencia portadora adecuada [source — [[../../explicaciones_anki/unidad_01/carta_01_sistema-comunicaciones]]]
-- **Codificacion**: agrega redundancia para proteccion contra errores
-- **Amplificacion**: proporciona potencia suficiente para transmision
 - **Filtrado**: limita el ancho de banda
+- **Amplificacion**: proporciona potencia suficiente para transmision
 
 ### 3. Canal de Comunicacion
 
@@ -73,6 +77,8 @@ El ruido es inevitable en todo sistema real [source — [[../../explicaciones_an
 - **Ruido termico**: presente en todos los dispositivos electronicos
 - **Interferencia**: señales de otros sistemas
 - **Distorsion**: no-linealidades del sistema
+
+> El diagrama dibuja la flecha de ruido solo sobre el canal como simplificacion (modelo AWGN). En la practica el ruido se origina en cada etapa — transmisor, canal y receptor — y suele dominar el ruido termico de la **primera etapa del receptor** (por eso existe el LNA). La Unidad 7 desagrega esto etapa por etapa con la formula de Friis en cascada: ver [[../ruido/formula-friis]]. [analysis]
 
 ## Principios Clave
 
