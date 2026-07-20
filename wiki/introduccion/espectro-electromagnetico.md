@@ -47,6 +47,16 @@ Rango util para comunicaciones: aproximadamente 3 kHz - 300 GHz.
 - **Tecnologia**: generacion y deteccion limitadas; costo aumenta con la frecuencia
 - **Capacidad teorica**: $C = B \log_2(1 + S/N)$ — espectro limitado $\to$ capacidad limitada
 
+> **¿Por que a mayor frecuencia hay mas capacidad, y por que el alcance se reduce?** $C=B\log_2(1+S/N)$ no tiene a la frecuencia portadora en ningun lado — la ventaja de las bandas altas no es "mas capacidad por Hz", es que hay disponible mucho mas **$B$ absoluto**, y $C$ crece aprox. linealmente con $B$ (mientras que con $S/N$ crece solo logaritmicamente). [analysis]
+> - *Por que hay mas B a alta frecuencia*: limitacion practica de ancho de banda **fraccional** (osciladores, filtros y antenas reales manejan solo ~1-5% de $f_c$). Con el mismo porcentaje, a $f_c$ mas alta el $B$ absoluto es proporcionalmente mayor (AM: $f_c\approx1$MHz, $B\approx10$kHz, ~1%; 5G mmWave: $f_c\approx28$GHz, $B$ hasta 800MHz, ~2-3% — el $B$ absoluto es ~4 ordenes de magnitud mayor).
+> - *Por que el alcance cae a alta frecuencia* — varios mecanismos independientes, todos empeoran con $f$:
+>   1. Perdida de espacio libre con ganancia de antena fija: $L_{fs}(\text{dB}) = 20\log d + 20\log f + 32{,}44$ (Friis, ver [[../ruido/formula-friis]]) — crece con $f^2$ porque la apertura efectiva $A_e=\lambda^2G/4\pi$ se achica con la longitud de onda.
+>   2. Absorcion atmosferica molecular (picos de O2 ~60GHz, vapor de agua ~22GHz y ~183GHz) — inexistente en VLF-HF.
+>   3. Dispersion por lluvia/niebla, relevante quando $\lambda$ se acerca al tamaño de las gotas (mm, en EHF).
+>   4. Se pierden los mecanismos de largo alcance de baja frecuencia: onda de superficie (sigue la curvatura terrestre) y onda de cielo (rebote ionosferico, miles de km) — desde VHF las ondas atraviesan la ionosfera en vez de rebotar, quedando limitadas a linea de vista.
+> - *¿La SNR es constante con la frecuencia? No.* $N_0=kT$ (densidad de ruido termico) si es aprox. constante con $f$, pero $S$ llega mas debil (los 4 mecanismos de arriba) y $N=kTB$ es mayor porque los sistemas de alta frecuencia usan mas $B$ — el mismo $B$ que da la capacidad extra tambien mete mas ruido. La SNR por Hz tiende a empeorar con la frecuencia, no a mantenerse constante.
+> - *No es una ley fisica inapelable, es un trade-off de antena*: con **apertura fija** en vez de ganancia fija, el termino $f^2$ de perdida se cancela con el $f^2$ de ganancia que da esa apertura a mayor frecuencia ($P_r \propto A_tA_r/(\lambda^2d^2) \propto f^2$ a apertura constante). Por eso radares y enlaces satelitales en banda Ku/Ka logran gran alcance en frecuencias altas: usan antenas grandes y muy directivas (o arrays de beamforming en 5G mmWave), no antenas isotropicas.
+
 ## Competencia por el Espectro
 
 Principales categorias de usuarios [source — [[../../explicaciones_anki/unidad_01/carta_03_espectro_electromagnetico]]]:
