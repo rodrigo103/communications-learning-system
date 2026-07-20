@@ -60,8 +60,20 @@ Medio fisico por el cual viaja la señal. Tipos:
 - **No guiados**: espacio libre (radio) [source — [[../../explicaciones_anki/unidad_01/carta_01_sistema-comunicaciones]]]
 
 Caracteristicas del canal:
-- **Atenuacion**: perdida de potencia con la distancia
-- **Distorsion**: alteracion de la forma de la señal
+
+- **Atenuacion**: perdida de potencia de la señal a medida que se propaga. [analysis]
+  - *Medios guiados*: crece con la distancia expresada en dB (constante de atenuacion $\alpha$ en dB/km) y tambien con la frecuencia (efecto pelicular en cables de cobre, absorcion en fibra).
+  - *Medios no guiados (espacio libre)*: perdida de trayecto en espacio libre, $L_{fs}(\text{dB}) = 20\log_{10}d + 20\log_{10}f + 32{,}44$ ($d$ en km, $f$ en MHz) — la potencia cae con $1/d^2$ en espacio libre puro (mas rapido en entornos reales con reflexiones, ej. terrestre $\approx 1/d^4$).
+  - Idealmente es un efecto **lineal** e independiente de la frecuencia dentro de la banda de la señal: escala la amplitud pero no cambia la forma de onda. En la practica suele depender de la frecuencia, lo cual la conecta con la distorsion (ver abajo).
+  - Consecuencia directa: al llegar mas debil al receptor empeora la SNR (el ruido del receptor no cambia, la potencia de señal si) — de ahi la necesidad de amplificadores/repetidores y el vinculo con la Unidad 7 (Ruido, ver [[../ruido/formula-friis]]).
+
+- **Distorsion**: cambio en la **forma** de la señal, no solo en su amplitud — el canal deja de comportarse como un simple atenuador con retardo. [analysis]
+  - *Condicion de canal sin distorsion*: $y(t) = K \cdot x(t-t_0)$, equivalente en frecuencia a $H(f) = K\,e^{-j2\pi f t_0}$ — modulo constante ($|H(f)|=K$) y fase lineal en toda la banda de la señal.
+  - *Distorsion de amplitud*: $|H(f)|$ no es constante dentro de la banda — atenua distinto cada componente de frecuencia (no agrega frecuencias nuevas, pero cambia el peso relativo entre las que ya estaban).
+  - *Distorsion de fase / retardo de grupo*: la fase de $H(f)$ no es lineal con $f$ — cada componente de frecuencia llega con un retardo distinto y la señal se "esparce" en el tiempo (causa interferencia intersimbolica, ISI, en sistemas digitales).
+  - *Distorsion no lineal*: producida por elementos no lineales del sistema (ej. amplificadores saturados). A diferencia de las dos anteriores (que son lineales), esta **si genera componentes de frecuencia nuevas** — armonicos y productos de intermodulacion que no estaban en la señal original.
+  - *Diferencia clave con el ruido*: la distorsion es **deterministica** (depende de la respuesta del canal/sistema, se puede caracterizar y en principio corregir con un ecualizador); el ruido es **aleatorio** y no se puede deshacer una vez sumado.
+
 - **Ruido**: señales no deseadas que se suman (ver [[../ruido/fuentes-ruido]])
 - **Ancho de banda**: rango de frecuencias que puede transmitir
 
