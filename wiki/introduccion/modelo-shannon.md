@@ -44,8 +44,14 @@ $$\text{Informacion} \rightarrow \text{Codificacion} \rightarrow \text{Modulacio
 - **Conversion de formato (ADC)**: digitaliza la fuente si es analogica — primer sub-paso de la codificacion [source — [[../../explicaciones_anki/unidad_01/carta_01_sistema-comunicaciones]]]
 - **Codificacion**: agrega redundancia para proteccion contra errores (va antes de modular)
 - **Modulacion**: traslada la informacion a una frecuencia portadora adecuada [source — [[../../explicaciones_anki/unidad_01/carta_01_sistema-comunicaciones]]]
-- **Filtrado**: limita el ancho de banda
+- **Filtrado**: limita el ancho de banda (va despues de Modulacion, antes de Amplificacion — ver nota abajo)
 - **Amplificacion**: proporciona potencia suficiente para transmision
+
+> **¿Por que Filtrado va justo ahi (despues de Modulacion, antes de Amplificacion)?** [analysis]
+> - *Despues de Modulacion, no antes*: recien cuando la señal esta sobre la portadora tiene sentido este filtrado — elimina componentes espectrales no deseadas que aparecen al modular/mezclar (bandas laterales no deseadas, productos de mezcla, imagenes).
+> - *Antes de Amplificacion, no despues*: no tiene sentido gastar potencia del amplificador en amplificar contenido espectral que despues se va a descartar. Se filtra primero para quedarse solo con la señal util, y recien ahi se sube la potencia. Por eso Amplificacion queda como la ultima etapa activa antes de la antena.
+> - Ejemplo real de esto en un final: `exercises/finales/md/F_Comu_2024-02-22_res.md`, Ejercicio 2 — transmisor de FM indirecto con la cadena **Modulador de FM → Filtro Pasabanda → Multiplicadores de frecuencia (×8) → Amplificador → Salida**. El filtro va pegado a la salida del modulador, y el amplificador queda al final.
+> - En sistemas reales a veces hay un *segundo* filtro despues del amplificador (para limpiar armonicos que genera el propio amplificador de potencia), pero el modelo simplificado de este curso usa un unico bloque de Filtrado entre Modulacion y Amplificacion.
 
 ### 3. Canal de Comunicacion
 
