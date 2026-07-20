@@ -6,24 +6,30 @@ curso: Sistemas de Comunicaciones
 
 # Plan Intensivo: 11 Dias para el Final (30 de julio)
 
-> **Last verified:** 2026-07-19 | **Verified by:** analysis + revision cruzada con 13 finales resueltos (2022-2026)
+> **Last verified:** 2026-07-20 | **Verified by:** analysis + revision cruzada con 13 finales resueltos (2022-2026) + documento oficial de la catedra (modalidad vigente desde feb. 2022, ult. modificacion 30/07/2025)
 
 Estrategia de preparacion para el examen final. Foco en modulaciones digitales, con cobertura reforzada en analogicas tras revisar el patron real de exigencia en finales anteriores.
 
-> ✅ **Confirmado (19/07):** el examen es **escrito y con carpeta abierta** (se puede consultar material durante el examen), consistente con los 13 finales revisados en `exercises/finales/md/` (examenes escritos, cronometrados, con hoja de calificacion por item).
->
-> ⚠️ **Accion pendiente — material impreso:** la carpeta de apuntes de Rodrigo es digital (este repo). Con carpeta abierta, la restriccion tipica no es "saber de memoria" sino "poder llegar al dato rapido durante el examen". Dos frentes:
-> 1. Preguntar a la catedra si se puede usar/imprimir la carpeta digital (notebook, tablet, o impresion completa) el dia del examen.
-> 2. Como respaldo (o si la respuesta es que solo se admite papel impreso), llevar un **formulario impreso de 1-2 paginas** con las formulas clave — ver [[../planificacion/formulario-imprimible|Formulario Imprimible]].
+> ✅ **Modalidad oficial confirmada por la catedra (documento compartido 20/07):**
+> - Examen **escrito**, sin instancia oral. Empieza **19:00** en sede a confirmar.
+> - **4 problemas**, uno por hoja. Cada 30 min (19:30, 20:00, 20:30, 21:00) hay que entregar un problema resuelto **a eleccion** — el orden lo elige el estudiante, pero el presupuesto total es 2 horas para los 4 (30 min promedio c/u). Se resuelve sobre la misma hoja del enunciado, con hojas adicionales si hace falta.
+> - **Material permitido: solo en soporte papel** — libros, presentaciones, tabla de formulas, apuntes propios o de terceros. **No se admite carpeta digital / notebook / tablet.** Esto ya no es una pregunta abierta: el [[../planificacion/formulario-imprimible|Formulario Imprimible]] hay que llevarlo impreso si o si.
+> - **Prohibido:** guias de problemas, y resoluciones de otros finales/parciales/recuperatorios. Los 13 finales en `exercises/finales/md/` son **solo para practicar** — no se pueden llevar al examen.
+> - Se puede consultar al equipo docente durante el examen (probablemente por eso varios finales traen anexo un grafico de $Q(k)$ — no hace falta memorizar esas tablas).
+> - Aprueba con sumatoria $\geq 6/10$ sin redondeo, y minimo 25% desarrollado por problema (un problema en blanco = examen desaprobado, sin importar el resto).
 
 ---
 
 ## Resumen
 
-- **Fecha examen:** 30 de julio de 2026
+- **Fecha examen:** 30 de julio de 2026, 19:00 hs
 - **Dias disponibles:** 11 (19 jul → 29 jul)
-- **Formato:** escrito, con carpeta abierta (consulta de material permitida)
-- **Estrategia:** con carpeta abierta el cuello de botella es la *velocidad para resolver*, no la memorizacion pura — igual conviene tener las formulas mas usadas de memoria para no perder tiempo buscando. Profundidad en digitales, cobertura reforzada en analogicas (AM/FM) segun el patron real de los finales, nada omitido. Preparar un formulario impreso compacto como respaldo por si la carpeta digital no se puede usar en el examen.
+- **Formato:** escrito, 4 problemas, ~30 min c/u con entrega escalonada, material propio en papel permitido
+- **Estrategia:** el cuello de botella real es la *velocidad bajo presion de tiempo fijo* (30 min por problema, no negociable), no la memorizacion pura ni la busqueda de datos — el formulario impreso resuelve la busqueda, pero no resuelve la velocidad. Por eso, ademas de cubrir contenido, hay que practicar cronometrado desde temprano en el plan (ver dia 11 y la nota de metodologia abajo). Profundidad en digitales, cobertura reforzada en analogicas (AM/FM) segun el patron real de los finales, nada omitido.
+
+### Metodologia de practica cronometrada
+
+A partir del dia 3 (primer dia de resolucion de problemas reales), cada ejercicio de `exercises/finales/md/` se practica con reloj: **30 minutos, sin mirar la seccion `<details>` de respuesta hasta que se cumpla el tiempo o el ejercicio este terminado.** El objetivo no es solo llegar al resultado correcto, sino llegar en el tiempo real del examen. Si un tema toma sistematicamente mas de 30 min, es señal de que hace falta mas practica ahi, no de que el limite este mal.
 
 ---
 
@@ -41,7 +47,7 @@ Estrategia de preparacion para el examen final. Foco en modulaciones digitales, 
 | **8** | 26 jul | U9 — Teoria de la Informacion | 5-6h | Entropia $H = -\sum p_i \log_2 p_i$, Shannon-Hartley $C = B\log_2(1+SNR)$, limite -1.59 dB, Huffman, Hamming |
 | **9** | 27 jul | U10 — OFDM + Spread Spectrum | 4-5h | DSSS, FHSS, CDMA conceptual, OFDM + prefijo ciclico, IFFT/FFT, aplicaciones (WiFi, 5G, GPS). Drillear ganancia de procesamiento $G_p = R_c/R_b$ y longitud de LFSR ($N = 2^L - 1$) — patron que se repite en 5/13 finales (ejercicios "Espectro expandido"). |
 | **10** | 28 jul | U8 — Intercomparacion + problemas | 5-6h | Eficiencia espectral vs energetica, tabla comparativa, ejercicios integradores (SNR, Friis, BER, capacidad) |
-| **11** | 29 jul | Repaso + simulacro cronometrado | 4-5h | Repaso de todas las formulas, repaso del arbol de modulaciones, y **simulacro escrito cronometrado** con un final real completo (recomendado: `exercises/finales/md/F_Comu_2026-02-26_res.md`, el mas reciente) respetando la regla de "minimo 25% desarrollado por item". Si se confirma que la instancia es oral, sumar practica de explicacion oral sobre ese mismo simulacro. |
+| **11** | 29 jul | Repaso + simulacro en condiciones reales | 4-5h | Repaso de todas las formulas, repaso del arbol de modulaciones, y **simulacro con el formato exacto del examen**: elegir un final completo no visto antes (ej. `exercises/finales/md/F_Comu_2026-02-26_res.md`), poner reloj en 19:00, y entregar (dejar de escribir) un problema cada 30 min hasta las 21:00, en el orden que Rodrigo elija — usando solo el formulario impreso como material. Sirve para practicar la estrategia de orden (arrancar por el problema mas seguro) ademas del contenido. |
 
 ---
 

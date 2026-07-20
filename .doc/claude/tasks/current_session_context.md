@@ -1,92 +1,42 @@
 # Current Session Context
 
-**Date**: 2025-12-09
-**Activity**: Emergency Progress Assessment - 9 Days to Exam
-**Critical Question**: Can the student pass the exam?
+**Date**: 2026-07-19
+**Activity**: Día 1 del plan intensivo de 11 días
 
 ## Exam Context
-- **Exam Date**: 2025-12-18 (18 de diciembre)
-- **Days Remaining**: 9 days
-- **Critical Constraint**: Cannot study every day
+- **Exam Date**: 2026-07-30, 19:00 hs
+- **Format (oficial, confirmado por documento de cátedra)**: escrito, sin oral. 4 problemas, entrega escalonada cada 30 min (19:30/20:00/20:30/21:00), orden a elección del estudiante. Solo material propio **en papel** (no carpeta digital). Prohibido llevar guías de problemas o resoluciones de otros finales.
+- **Days Remaining**: 10
+- **Plan activo**: `wiki/planificacion/plan-11-dias-final.md` (revisado y ajustado tras cruzar contra 13 finales resueltos en `exercises/finales/md/`, y actualizado con la modalidad oficial)
+- **Material obligatorio para imprimir**: `wiki/planificacion/formulario-imprimible.md` / `.html` — esto SÍ entra al examen (apunte propio). Los finales resueltos en `exercises/finales/md/` NO entran, son solo para practicar.
+- **Metodología clave**: practicar cronometrado, 30 min por problema, desde el día 3 en adelante.
 
-## Student Request
-Student is asking for honest assessment of whether they can pass the Communications Systems exam given:
-1. Current progress level
-2. Time remaining (9 days)
-3. Inability to study every single day
+## Nota sobre el estado del coordinador Python
+`learning_state.json` está desactualizado (progreso 0%, sin fecha de examen vigente) — no reflejo confiable del avance real. El plan de 11 días en la wiki es la fuente de verdad para esta sesión, no el coordinador.
 
-## Analysis Needed
-1. Current progress vs. required progress
-2. Critical topics covered vs. missing
-3. Realistic study plan for 9 days (with rest days)
-4. Honest probability assessment
-5. Emergency triage strategy
+## Foco de hoy (Día 1 — 19 jul, 5-6h)
+**U1 + U2 — Fundamentos**
+- Modelo de Shannon (esquema general de un sistema de comunicaciones)
+- Espectro electromagnético
+- Análisis de Fourier: serie y transformada
+- Teorema de Parseval
+- Transformada de Hilbert
+- Densidad espectral de potencia (DEP)
+- Ancho de banda
 
-## Context for Analysis
-- Last state update: November 15, 2025 (24+ days ago!)
-- State file shows 0% progress (likely not updated)
-- BUT: Context file shows significant work on FM (Unit 4) and Noise (Unit 7)
-- Session history shows minimal activity tracking
-- Need to infer actual progress from outputs/ directory
+## Qué sigue después (referencia rápida)
+- Día 2: Muestreo + PCM (U2+U5)
+- Día 3-4: ASK/FSK/PSK/QAM (U6) — día 4 recortado a repaso, se reusa en días 5-6
+- Día 5-6: Ruido digital + BER (U7)
+- Día 7: Analógicas AM/FM en profundidad (U3+U4) — reforzado tras el análisis de finales (77%/54% de frecuencia real)
+- Día 8: Teoría de la Información (U9)
+- Día 9: OFDM + Spread Spectrum (U10)
+- Día 10: Intercomparación + problemas integradores (U8)
+- Día 11: Repaso + simulacro cronometrado con final real
 
-## Work Identified So Far
-
-### Derivations Completed (9 files):
-1. AM modulation (3 versions)
-2. FM Carson's Rule
-3. FM Narrowband
-4. Friis Cascade (2 versions)
-5. QAM comprehensive
-6. Shannon-Hartley comprehensive
-7. Parseval's theorem
-
-### Solutions Completed (2 files):
-1. Exercise TP5_3 (FM receiver SNR) - CORRECTED version
-2. Noise problem (complete)
-
-### Recent Work (from context file):
-- **Unit 4 (FM)**: Deep understanding, corrected major formula error
-- **Unit 7 (Noise)**: Good understanding of noise figure, Friis formula
-- **Unit 9 (Information Theory)**: Has Shannon-Hartley derivation
-
-## Critical Finding
-The learning_state.json shows 0% progress but this is CLEARLY WRONG - it hasn't been updated since Nov 15. The actual work shows significant progress in critical areas.
-
-## Next Steps for Analysis
-1. Manually assess actual progress from outputs
-2. Map completed work to unit structure
-3. Calculate realistic completion percentage
-4. Identify critical gaps
-5. Create emergency 9-day plan
-6. Provide honest pass/fail assessment
-
-## Priority Topics (from course structure)
-**CRITICAL (Must Know):**
-- Unit 3: Modulación Lineal (AM, DSB, SSB)
-- Unit 4: Modulación Exponencial (FM, Carson)
-- Unit 7: Ruido (Noise figure, Friis, SNR)
-- Unit 9: Teoría de la Información (Shannon-Hartley)
-
-**IMPORTANT (Should Know):**
-- Unit 2: Análisis de Señales (Fourier, Parseval)
-- Unit 6: Modulación Digital (QAM, PSK)
-- Unit 8: Intercomparación (System comparisons)
-
-**LOWER PRIORITY:**
-- Unit 1: Introducción
-- Unit 5: Modulación de Pulsos
-- Unit 10: Temas Avanzados
-
-## Assessment Framework
-With 9 days and inability to study daily, realistic study time:
-- Assume 5-6 effective study days
-- Need ~4-6 hours per day for concentrated work
-- Total available: ~25-35 hours of study time
-
-For 87 concepts:
-- Already covered: ~15-20 concepts (estimated from outputs)
-- Remaining: ~67-72 concepts
-- Need: ~2-3 concepts per hour (aggressive pace)
-- Realistic for critical units only: ~35-40 concepts possible
-
-**Conclusion Setup**: Will need to determine if covering critical 35-40 concepts in critical units is enough to pass.
+## Recursos para hoy
+- → `wiki/conceptos-integradores/aportes-fourier.md`
+- → `wiki/conceptos-integradores/aportes-parseval.md`
+- → `wiki/conceptos-integradores/aportes-hilbert.md`
+- → `wiki/herramientas-matematicas/` (si existen derivaciones ya hechas)
+- → `wiki/planificacion/formulario-imprimible.md` sección "Herramientas Matemáticas de Base" para repaso rápido de las fórmulas

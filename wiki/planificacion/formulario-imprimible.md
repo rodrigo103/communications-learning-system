@@ -6,7 +6,9 @@ curso: Sistemas de Comunicaciones
 
 # Formulario Imprimible — Examen Final
 
-> Chuleta de consulta rápida (no explicativa). Backup impreso por si la carpeta digital no se puede usar en el examen. Basado en el patrón real de 13 finales resueltos: Lineal (77%), TI (69%), PCM (69%), Espectro Expandido (62%), Exponencial (54%), Ruido (38%), Digital (31%).
+> Chuleta de consulta rápida (no explicativa), pensada para imprimir. La cátedra permite material propio **solo en papel** durante el examen (no carpeta digital/notebook/tablet), así que esta es la versión que efectivamente entra a la mesa — no un backup. Basado en el patrón real de 13 finales resueltos: Lineal (77%), TI (69%), PCM (69%), Espectro Expandido (62%), Exponencial (54%), Ruido (38%), Digital (31%).
+>
+> ⚠️ Esto es un formulario de elaboración propia — permitido. Los finales resueltos de `exercises/finales/md/` **no se pueden llevar** al examen (la cátedra prohíbe explícitamente resoluciones de otros finales/parciales/recuperatorios); son solo para practicar antes.
 
 ---
 
