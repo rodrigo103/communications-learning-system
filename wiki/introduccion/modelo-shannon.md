@@ -83,7 +83,12 @@ Realiza las operaciones inversas al transmisor:
 - Amplificacion de bajo ruido
 - **Demodulacion**: recupera la informacion de la portadora
 - Decodificacion: detecta y corrige errores
-- Conversion de formato y filtrado
+- **Conversion de formato (DAC) y filtrado de reconstruccion**: si el destino requiere una señal analogica, se reconstruye a partir de las muestras/bits decodificados (si el destino ya es digital, se salta este paso)
+
+> **"Conversion de formato y filtrado" en el receptor** — es el espejo de la conversion de formato del transmisor, pero al final de la cadena: [analysis]
+> - *Conversion de formato = DAC*: convierte las muestras digitales decodificadas de vuelta a una señal analogica continua, solo si el destino lo requiere (ej. un parlante; se salta si el destino es digital, ej. una PC).
+> - *Filtrado = filtro de reconstruccion (anti-imagen)*: un DAC no entrega una onda continua prolija, entrega una señal "escalonada" (sample-and-hold). Esa forma, vista en frecuencia, tiene el espectro original mas replicas/imagenes en multiplos de $f_s$ (consecuencia directa del teorema de muestreo, ver [[../herramientas-matematicas/teorema-muestreo]]). Este filtro pasabajos elimina esas imagenes y deja la señal analogica suave que necesita el destino.
+> - **"Filtrado" no es un concepto unico** — aparece con tres roles distintos a lo largo de la cadena, y conviene no confundirlos: (1) filtro anti-aliasing antes del ADC en el transmisor (band-limita la señal analogica antes de muestrear, evita aliasing — no aparece como bloque explicito en este diagrama pero es imprescindible), (2) filtro pasabanda/RF despues de Modulacion en el transmisor (limpia el espectro de la señal modulada antes de amplificar), y (3) este filtro de reconstruccion despues del DAC en el receptor.
 
 ### 5. Destino
 
