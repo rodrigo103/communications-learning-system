@@ -28,7 +28,7 @@ La energia total de una señal en el dominio del tiempo es **exactamente igual**
 
 ## Derivacion
 
-Partiendo de la energia en tiempo:
+Partiendo de la energia en tiempo (esta expresion es la definicion de energia de una señal, pero se puede derivar de Ohm+Joule con normalizacion $R=1\Omega$ — ver [[../herramientas-matematicas/senales-energia-potencia]]):
 
 $$E = \int_{-\infty}^{\infty} x(t) \cdot x^*(t) dt$$
 

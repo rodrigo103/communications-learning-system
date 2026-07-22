@@ -10,6 +10,18 @@ unidad: 2
 
 > **Last verified:** 2025-11-16 | **Verified by:** [source — [[../../explicaciones_anki/unidad_02/carta_09_energia_vs_potencia]]]
 
+## Origen fisico de $E=\int|x(t)|^2dt$: ¿definicion o se puede deducir?
+
+Dentro de la teoria de señales, $E\triangleq\int|x(t)|^2dt$ **es la definicion** (norma al cuadrado en $L^2$) — no hay algo mas primitivo del cual deducirla dentro de ese marco. Pero la forma especifica de la formula no es arbitraria: se puede **derivar/motivar** partiendo de electricidad basica (Ohm + Joule) mas una convencion de normalizacion. [analysis]
+
+1. *Ley de Ohm*: para $v(t)$ sobre una resistencia $R$, $i(t)=v(t)/R$.
+2. *Potencia instantanea disipada (Joule)*: $p(t)=v(t)i(t)=v^2(t)/R$ [W].
+3. *Energia = integral de potencia en el tiempo* (definicion fisica basica, $P=dE/dt \Rightarrow E=\int P\,dt$): $E=\int_{-\infty}^{\infty} v^2(t)/R\,dt$.
+4. *Normalizacion $R=1\Omega$*: para que la "energia de la señal" no dependa de una resistencia externa arbitraria (la misma convencion de "$Z=1\Omega$ si no dan dato" que aparece en los ejercicios de potencia de AM), se toma $R=1$: $E=\int v^2(t)\,dt \to E=\int x^2(t)\,dt$.
+5. *Generalizacion a señales complejas*: se reemplaza $x^2(t)$ por $x(t)x^*(t)=|x(t)|^2$ (coincide con $x^2(t)$ si $x(t)$ es real, y garantiza un resultado real y no-negativo si $x(t)$ es complejo, ej. representacion analitica via Hilbert): $E=\int_{-\infty}^{\infty}|x(t)|^2\,dt$.
+
+Esta es la expresion que usa el Teorema de Parseval como punto de partida — ver [[../herramientas-matematicas/teorema-parseval]].
+
 ## Clasificacion Fundamental
 
 Toda señal se clasifica en una de dos categorias mutuamente excluyentes [source — [[../../explicaciones_anki/unidad_02/carta_09_energia_vs_potencia]]]:
