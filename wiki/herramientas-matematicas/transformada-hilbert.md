@@ -55,6 +55,11 @@ $$X_a(f) = \begin{cases} 2X(f) & f > 0 \\ X(0) & f = 0 \\ 0 & f < 0 \end{cases}$
 
 Esto elimina la redundancia de frecuencias negativas en señales reales.
 
+> **¿Que significa esto y por que se llama "analitica"?** [analysis]
+> - *La redundancia que elimina*: toda señal real tiene espectro con simetria hermitica, $X(-f)=X^*(f)$ — la mitad de frecuencias negativas no aporta informacion nueva, es el espejo conjugado de la positiva. La señal analitica empaqueta toda la informacion en un espectro de un solo lado, sin perder nada (siempre se recupera $x(t)=\text{Re}\{x_a(t)\}$).
+> - *Por que hace falta para tener amplitud/fase instantanea bien definidas*: por Euler, $\cos(\omega t)=\tfrac12 e^{j\omega t}+\tfrac12 e^{-j\omega t}$ — un coseno real es la suma de dos fasores girando en direcciones opuestas, y por si solo es ambiguo (no se le puede asignar una unica direccion de giro). La Transformada de Hilbert cancela uno de los dos fasores y deja solo el que gira en sentido positivo, dando $x_a(t)=a(t)e^{j\phi(t)}$ con amplitud $a(t)=|x_a(t)|$ y fase $\phi(t)=\angle x_a(t)$ instantaneas bien definidas — de ahi sale su uso para envolvente en AM y frecuencia instantanea en FM.
+> - *De donde sale el nombre*: si se extiende $t$ a un plano complejo, $x_a(t)$ es el valor de borde de una funcion **analitica/holomorfa** (derivable en sentido complejo, cumple Cauchy-Riemann) en el semiplano superior — condicion que se cumple *solo* cuando no hay frecuencias negativas, que es justo lo que garantiza la Transformada de Hilbert. Conecta con las relaciones de Kramers-Kronig (fuera del alcance del final, pero es el origen del nombre).
+
 ## Aplicaciones en Comunicaciones
 
 ### 1. Generacion de SSB (Banda Lateral Unica)
