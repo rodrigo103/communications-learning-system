@@ -96,6 +96,23 @@ La Transformada de Hilbert es como ver una onda desde una posicion rotada 90°. 
 - ✓ Solo definida para señales reales
 - ✓ La señal analitica elimina frecuencias negativas
 
+## Preguntas y Respuestas (dudas resueltas en sesion de estudio)
+
+**¿A fines practicos, la Transformada de Hilbert se usa siempre solo sobre senos/cosenos?**
+
+En la practica de este curso, casi seguro que si. En los 13 finales resueltos revisados (`exercises/finales/md/`) la palabra "Hilbert" no aparece ni una vez como parte de un calculo — los "$P_{SSB}$" que aparecen en varios ejercicios son la potencia de una banda lateral dentro de una señal AM/DSB, no señales SSB generadas via Hilbert. Todas las señales moduladoras de los finales son sumas de tonos senoidales. Como la Transformada de Hilbert es lineal, para $m(t)=\sum_i A_i\cos(\omega_i t+\phi_i)$ alcanza con aplicar el par fundamental termino a termino: $\hat m(t)=\sum_i A_i\sin(\omega_i t+\phi_i)$ — no hace falta la integral general (valor principal de Cauchy) para resolver un problema, esa forma es para la definicion/demostracion. Ojo: si algun dia dan una $m(t)$ que no sea suma de senos/cosenos, ahi si hace falta ir a $H(f)=-j\,\text{sgn}(f)$. [analysis]
+
+**¿Cual es el espectro del seno y del coseno? ¿Uno de los dos es impar y por eso no tiene simetria hermitica?**
+
+$$\cos(2\pi f_0 t) \leftrightarrow \frac{1}{2}\big[\delta(f-f_0)+\delta(f+f_0)\big] \quad\text{— real y par}$$
+$$\sin(2\pi f_0 t) \leftrightarrow -\frac{j}{2}\delta(f-f_0)+\frac{j}{2}\delta(f+f_0) \quad\text{— imaginario puro e impar}$$
+
+Correccion importante: la **simetria hermitica** ($X(-f)=X^*(f)$) se cumple para **toda** señal real, sin excepcion — no depende de que la señal sea par o impar en el tiempo. Demostracion corta: $X^*(f) = \left(\int x(t)e^{-j2\pi ft}dt\right)^* = \int x^*(t)e^{j2\pi ft}dt \overset{x\text{ real}}{=} \int x(t)e^{j2\pi ft}dt = X(-f)$ — el argumento solo usa que $x^*(t)=x(t)$ (real), nunca paridad. El seno tambien cumple $X(-f)=X^*(f)$ (se puede verificar directo con la formula de arriba). Lo que si depende de la paridad es una propiedad *distinta*, mas especifica: real+par$\to$espectro real y par (coseno); real+impar$\to$espectro imaginario puro e impar (seno); real sin paridad definida$\to$espectro complejo con parte real par + parte imaginaria impar. Las tres son casos particulares de simetria hermitica, no excepciones a ella. [analysis]
+
+**¿El concepto de señal analitica se relaciona con las funciones FRP (Funcion Real Positiva, de Teoria de Circuitos)? ¿Son conceptos fisicos o matematicos?**
+
+*(Asumiendo que FRP = Funcion Real Positiva — no confirmado, no aparece en el material del curso.)* La conexion es real: una FRP caracteriza que funciones $Z(s)$ son fisicamente realizables como impedancia de una red pasiva (R, L, C), via el teorema de Brune. La condicion matematica de fondo es la misma familia que la señal analitica: ambas dependen de que una funcion sea analitica/holomorfa en un semiplano (la señal analitica en el semiplano superior del tiempo complejo; la FRP en el semiplano derecho de $s$). En ambos casos esa analiticidad fuerza una relacion tipo Hilbert entre parte real e imaginaria en el eje de frecuencias — en fisica son las relaciones de Kramers-Kronig, en teoria de circuitos las relaciones de Bode ganancia-fase. Son conceptos **matematicos** (analisis complejo) que se usan porque capturan una restriccion **fisica**: causalidad (señal analitica) o realizabilidad pasiva (FRP). El hilo comun: un sistema fisico causal/realizable impone automaticamente una relacion de Hilbert entre las partes real e imaginaria de su respuesta en frecuencia. [analysis]
+
 ## Ver tambien
 
 - [[../herramientas-matematicas/teorema-convolucion]]
