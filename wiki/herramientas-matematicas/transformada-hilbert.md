@@ -129,6 +129,18 @@ No la inventa de la nada. La informacion ya estaba en la señal real, pero "ocul
 
 Si, exactamente. Simetria hermitica: $X(-f) = X^*(f)$, donde $X^*(f)$ es el **complejo conjugado** (cambia el signo de la parte imaginaria). No significa $X(-f) = X(f)$ (eso seria simetria par). Implica: magnitud par ($|X(-f)| = |X(f)|$) y fase impar ($\angle X(-f) = -\angle X(f)$). Las partes real e imaginaria no son simetricas entre si a secas — por eso necesitas el conjugado: lo que aparece a $-f$ es el espejo con fase invertida. De ahi la redundancia que Hilbert explota. [analysis]
 
+**¿La Transformada de Hilbert existe para todas las señales?**
+
+No. Requisitos: (1) la señal debe ser **real** — no esta definida para señales que ya son complejas; (2) debe tener Transformada de Fourier; (3) la componente DC ($f = 0$) se anula porque $H(0) = 0$. Para las señales tipicas del curso (senos, cosenos, sumas de tonos) siempre existe sin problemas. [analysis]
+
+**¿La Transformada de Hilbert de una señal real siempre es no-real (compleja)?**
+
+Al reves: **siempre es real**. $\mathcal{H}\{\cos\} = \sin$, $\mathcal{H}\{\sin\} = -\cos$ — ambas son señales reales. La Transformada de Hilbert no convierte una señal real en compleja: solo la desfasa 90°. Lo que es complejo es la **señal analitica** $x_a(t) = x(t) + j\hat{x}(t)$, que combina la señal original (parte real) con su Hilbert (parte imaginaria). La confusion es comun: Hilbert = solo desfasaje, no genera numeros complejos por si mismo; la señal analitica = Hilbert + original, esa si es compleja. [analysis]
+
+**¿Existe la antitransformada de Hilbert?**
+
+Si. La antitransformada es simplemente la transformada con signo negativo: $\mathcal{H}^{-1} = -\mathcal{H}$. Aplicar Hilbert dos veces devuelve la señal original con signo invertido: $\mathcal{H}\{\mathcal{H}\{x(t)\}\} = -x(t)$. Esto es consistente con $H(f) = -j \cdot \text{sgn}(f)$: encadenar dos Hilbert en frecuencia da $(-j \cdot \text{sgn}(f))^2 = -1$, que en tiempo significa $-x(t)$. Por lo tanto, para recuperar la señal: $\mathcal{H}^{-1}\{y\} = -\mathcal{H}\{y\}$. [analysis]
+
 ## Ver tambien
 
 - [[../herramientas-matematicas/teorema-convolucion]]
