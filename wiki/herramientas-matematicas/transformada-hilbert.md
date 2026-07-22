@@ -36,7 +36,7 @@ Caracteristicas:
 >
 > Se sale directo de meter $\delta(\tau)$ en la definicion:
 > $$\mathcal{H}\{\delta(t)\} = \frac{1}{\pi}\,\text{P.V.}\int_{-\infty}^{\infty} \frac{\delta(\tau)}{t-\tau}\,d\tau$$
-> Usando la propiedad de "cedazo" (*sifting*) de la delta — $\int f(\tau)\delta(\tau)\,d\tau = f(0)$ — con $f(\tau) = \frac{1}{t-\tau}$ (fijo $t$, variable de integracion $\tau$):
+> Usando la propiedad de "cedazo" (*sifting*, en ingles) de la delta: $\int f(\tau)\delta(\tau)\,d\tau = f(0)$. Un cedazo es literalmente un tamiz/colador — la propiedad se llama asi porque multiplicar $f(\tau)$ por $\delta(\tau)$ y luego integrar "cuela" toda la funcion y deja pasar un unico valor, $f(0)$ (el punto donde esta centrada la delta), descartando el resto — igual que un colador de cocina deja pasar solo lo que entra por sus agujeros. Con $f(\tau) = \frac{1}{t-\tau}$ (fijo $t$, variable de integracion $\tau$):
 > $$\mathcal{H}\{\delta(t)\} = \frac{1}{\pi}\cdot\frac{1}{t-0} = \frac{1}{\pi t}$$
 > Valido para $t\neq0$ (la singularidad del P.V. esta en $\tau=t$, y evaluamos en $\tau=0$, que es distinto mientras $t\neq0$ — consistente con que $1/(\pi t)$ tambien es singular en $t=0$). No hace falta nada mas raro que la propiedad de cedazo que ya se uso mil veces con la delta.
 >
