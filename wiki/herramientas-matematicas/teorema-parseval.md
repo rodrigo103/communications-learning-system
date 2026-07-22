@@ -32,7 +32,19 @@ Partiendo de la energia en tiempo:
 
 $$E = \int_{-\infty}^{\infty} x(t) \cdot x^*(t) dt$$
 
-Usando la transformada inversa y el teorema de Fubini para intercambiar integracion:
+Se sustituye $x^*(t)$ por el conjugado de la transformada inversa, $x^*(t) = \int_{-\infty}^{\infty} X^*(f)\,e^{-j2\pi ft}\,df$:
+
+$$E = \int_{-\infty}^{\infty} x(t) \left[\int_{-\infty}^{\infty} X^*(f)\,e^{-j2\pi ft}\,df\right] dt = \iint_{-\infty}^{\infty} x(t)\,X^*(f)\,e^{-j2\pi ft}\;dt\,df$$
+
+Esto ya es una **integral doble** sobre el plano $(t,f)$. [analysis]
+
+> **¿Donde y para que se usa Fubini?** El teorema de Fubini dice que si $g(t,f)$ es absolutamente integrable en $\mathbb{R}^2$ ($\iint|g(t,f)|\,dt\,df<\infty$), la integral doble se puede calcular integrando en cualquier orden — $t$ primero o $f$ primero — con el mismo resultado: $\iint g\,dt\,df = \int\left[\int g\,dt\right]df = \int\left[\int g\,df\right]dt$. Ese es exactamente el paso que hace falta: la sustitucion dejo la integral con $f$ "de afuera", pero para reconocer $X(f)$ hace falta integrar $t$ primero. **Fubini es lo que autoriza ese cambio de orden** — sin el, no es un paso valido automaticamente, es una manipulacion formal que necesita justificacion. Con $g(t,f)=x(t)X^*(f)e^{-j2\pi ft}$, la condicion de Fubini se reduce a que $x(t)$ sea absolutamente integrable ($x\in L^1$), ademas de energia finita ($L^2$). Para señales fisicas razonables (pulsos, duracion/energia finita) esto se cumple; para el caso general en $L^2$ sin ser $L^1$ la demostracion rigurosa usa un argumento de limite/densidad (Plancherel) en vez de Fubini directo, pero para este curso alcanza con Fubini. [analysis]
+
+Intercambiando el orden de integracion por Fubini:
+
+$$E = \int_{-\infty}^{\infty} X^*(f) \left[\int_{-\infty}^{\infty} x(t)\,e^{-j2\pi ft}\,dt\right] df$$
+
+El corchete es exactamente la definicion de $X(f)$ (transformada directa), entonces:
 
 $$E = \int_{-\infty}^{\infty} X^*(f) \cdot X(f) df = \int_{-\infty}^{\infty} |X(f)|^2 df$$
 

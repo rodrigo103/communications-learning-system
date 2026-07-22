@@ -33,7 +33,9 @@ $$E = \int_{-\infty}^{\infty} |x(t)|^2 dt = \int_{-\infty}^{\infty} x(t) x^*(t) 
 
 $$x^*(t) = \int_{-\infty}^{\infty} X^*(f) e^{-j2\pi ft} df$$
 
-### Paso 3: Intercambiar orden de integración
+### Paso 3: Intercambiar orden de integración (teorema de Fubini)
+
+El Paso 2 deja una integral doble sobre $(t,f)$: $E = \iint x(t)X^*(f)e^{-j2\pi ft}\,dt\,df$. El teorema de Fubini permite integrar primero en $t$ en vez de en $f$ (mismo resultado), siempre que $x(t)$ sea absolutamente integrable ($x \in L^1$) además de energía finita ($L^2$) — condición que cumplen las señales físicas de interés. Ver el detalle de esta condición en [[../herramientas-matematicas/teorema-parseval]]. Intercambiando:
 
 $$E = \int_{-\infty}^{\infty} X^*(f) \left[ \int_{-\infty}^{\infty} x(t) e^{-j2\pi ft} dt \right] df$$
 

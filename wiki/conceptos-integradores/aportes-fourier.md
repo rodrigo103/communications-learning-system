@@ -39,13 +39,13 @@ Esto es esencial para entender: señales de reloj digital, trenes de pulsos en P
 
 ## Propiedades Fundamentales
 
-| Propiedad | Tiempo | Frecuencia |
-|-----------|--------|------------|
-| **Linealidad** | $a x_1 + b x_2$ | $a X_1 + b X_2$ |
-| **Convolucion** | $x_1 * x_2$ | $X_1 \cdot X_2$ |
-| **Modulacion** | $x(t) e^{j2\pi f_c t}$ | $X(f - f_c)$ |
-| **Escalado** | $x(at)$ | $\frac{1}{|a|} X(f/a)$ |
-| **Parseval** | $\int |x|^2 dt$ | $\int |X|^2 df$ |
+| Propiedad       | Tiempo                 | Frecuencia      |        |           |     |        |
+| --------------- | ---------------------- | --------------- | ------ | --------- | --- | ------ |
+| **Linealidad**  | $a x_1 + b x_2$        | $a X_1 + b X_2$ |        |           |     |        |
+| **Convolucion** | $x_1 * x_2$            | $X_1 \cdot X_2$ |        |           |     |        |
+| **Modulacion**  | $x(t) e^{j2\pi f_c t}$ | $X(f - f_c)$    |        |           |     |        |
+| **Escalado**    | $x(at)$                | $\frac{1}{      | a      | } X(f/a)$ |     |        |
+| **Parseval**    | $\int                  | x               | ^2 dt$ | $\int     | X   | ^2 df$ |
 
 La propiedad de **modulacion** (traslacion en frecuencia) es la que hace posible toda modulacion analogica y digital: multiplicar por una portadora desplaza el espectro de la señal a la frecuencia deseada. [analysis]
 
