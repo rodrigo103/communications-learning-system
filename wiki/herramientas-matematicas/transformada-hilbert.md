@@ -30,11 +30,33 @@ Caracteristicas:
 - Elimina la componente DC ($f = 0$)
 - Es una convolucion con $\frac{1}{\pi t}$: $\hat{x}(t) = x(t) * \frac{1}{\pi t}$
 
-> **¿Por que $\mathcal{H}\{\delta(t)\}=\frac{1}{\pi t}$, y por que convolucionar con $\frac{1}{\pi t}$ da la Transformada de Hilbert de cualquier señal?** Son la misma idea vista desde dos angulos, conectados por el teorema general de sistemas LTI (no algo especifico de Hilbert). [analysis]
-> - *Calculo directo de $\mathcal{H}\{\delta(t)\}$*: se sustituye $\delta(\tau)$ en la definicion y se usa la propiedad de cedazo de la delta, $\int f(\tau)\delta(\tau)d\tau=f(0)$, con $f(\tau)=\frac{1}{t-\tau}$: $\mathcal{H}\{\delta(t)\}=\frac{1}{\pi}\text{P.V.}\int\frac{\delta(\tau)}{t-\tau}d\tau=\frac{1}{\pi}\cdot\frac{1}{t-0}=\frac{1}{\pi t}$ (para $t\neq0$; en $t=0$ es la singularidad del P.V., consistente con que $1/(\pi t)$ tambien es singular ahi).
-> - *Teorema general LTI (de Señales y Sistemas)*: para cualquier sistema LTI, la salida ante cualquier entrada es la entrada convolucionada con la respuesta al impulso, $y(t)=x(t)*h(t)$ con $h(t)=\mathcal{L}\{\delta(t)\}$. Demostracion: escribiendo $x(t)=\int x(\tau)\delta(t-\tau)d\tau$ (cedazo) y aplicando el operador (lineal, invariante en el tiempo): $\mathcal{H}\{x(t)\}=\int x(\tau)\mathcal{H}\{\delta(t-\tau)\}d\tau=\int x(\tau)h(t-\tau)d\tau=(x*h)(t)$, usando linealidad para meter $\mathcal{H}$ en la integral e invarianza temporal para que $\mathcal{H}\{\delta(t-\tau)\}=h(t-\tau)$.
-> - *No es circular*: el segundo punto aplicado a $x=\delta$ recupera trivialmente el primero ($\delta*h=h$), pero el primero se calculo de forma independiente (sin usar convolucion), asi que el orden logico es: (1) se calcula $h(t)=1/(\pi t)$ una vez desde la definicion cruda, (2) el teorema LTI general dice que ese mismo $h(t)$ sirve para convolucionar con cualquier señal de ahi en mas.
-> - *Chequeo cruzado en frecuencia (opcional)*: $\mathcal{F}\{\text{sgn}(t)\}=\frac{-j}{\pi f}$ es un par estandar de Fourier; por dualidad, $\mathcal{F}\{1/(\pi t)\}=-j\,\text{sgn}(f)=H(f)$ — confirma que $1/(\pi t)$ es la respuesta al impulso cuya transformada es la $H(f)$ de arriba.
+> **¿Por que $\mathcal{H}\{\delta(t)\} = \frac{1}{\pi t}$, y por que convolucionar una señal temporal con $\frac{1}{\pi t}$ da su Transformada de Hilbert?** Estas dos preguntas en realidad son la misma cosa vista desde dos angulos, y se conectan por un teorema general de sistemas LTI (de Analisis de Señales y Sistemas, no algo especifico de Hilbert). [analysis]
+>
+> **Por que $\mathcal{H}\{\delta(t)\} = \frac{1}{\pi t}$**
+>
+> Se sale directo de meter $\delta(\tau)$ en la definicion:
+> $$\mathcal{H}\{\delta(t)\} = \frac{1}{\pi}\,\text{P.V.}\int_{-\infty}^{\infty} \frac{\delta(\tau)}{t-\tau}\,d\tau$$
+> Usando la propiedad de "cedazo" (*sifting*) de la delta — $\int f(\tau)\delta(\tau)\,d\tau = f(0)$ — con $f(\tau) = \frac{1}{t-\tau}$ (fijo $t$, variable de integracion $\tau$):
+> $$\mathcal{H}\{\delta(t)\} = \frac{1}{\pi}\cdot\frac{1}{t-0} = \frac{1}{\pi t}$$
+> Valido para $t\neq0$ (la singularidad del P.V. esta en $\tau=t$, y evaluamos en $\tau=0$, que es distinto mientras $t\neq0$ — consistente con que $1/(\pi t)$ tambien es singular en $t=0$). No hace falta nada mas raro que la propiedad de cedazo que ya se uso mil veces con la delta.
+>
+> **Por que convolucionar con $\frac{1}{\pi t}$ da la Transformada de Hilbert de cualquier señal**
+>
+> Aca es donde entra el teorema general, no algo especifico de Hilbert: **para cualquier sistema LTI, la salida ante cualquier entrada $x(t)$ es la entrada convolucionada con la respuesta al impulso**, $y(t) = x(t)*h(t)$ donde $h(t)$ es la salida cuando la entrada es $\delta(t)$. Este teorema aplica directo aca porque la Transformada de Hilbert es un sistema LTI.
+>
+> La demostracion, para que no quede como caja negra: cualquier señal se puede escribir usando la propiedad de cedazo de la delta como
+> $$x(t) = \int_{-\infty}^{\infty} x(\tau)\,\delta(t-\tau)\,d\tau$$
+> Se aplica el operador $\mathcal{H}$ a ambos lados. Como $\mathcal{H}$ es **lineal**, entra dentro de la integral (que es, en el fondo, una suma continua):
+> $$\mathcal{H}\{x(t)\} = \int_{-\infty}^{\infty} x(\tau)\,\mathcal{H}\{\delta(t-\tau)\}\,d\tau$$
+> Y como $\mathcal{H}$ es **invariante en el tiempo**, si $\mathcal{H}\{\delta(t)\}=h(t)$ entonces $\mathcal{H}\{\delta(t-\tau)\}=h(t-\tau)$ (correr la entrada $\tau$ corre la salida $\tau$, por definicion de invarianza temporal). Sustituyendo:
+> $$\hat x(t) = \int_{-\infty}^{\infty} x(\tau)\,h(t-\tau)\,d\tau = (x*h)(t)$$
+> Con $h(t)=\frac{1}{\pi t}$ (lo que se calculo arriba), esto es exactamente $\hat x(t) = x(t)*\frac{1}{\pi t}$.
+>
+> **Por que no es circular**
+>
+> Las dos preguntas se contestan mutuamente si se miran mal (la segunda, aplicada a $x=\delta$, devuelve trivialmente la primera, porque $\delta * h = h$). Lo que rompe la circularidad es que la **primera** se calculo de forma independiente, directo de la integral P.V., sin usar la propiedad de convolucion para nada — asi que no es un razonamiento circular, es: (1) se calcula $h(t)$ una vez con la definicion cruda, (2) se usa el teorema general LTI para saber que ESE $h(t)$ sirve para cualquier señal de ahi en mas.
+>
+> *(Bonus, chequeo cruzado en frecuencia): $\mathcal{F}\{\text{sgn}(t)\}=\frac{-j}{\pi f}$ es un par estandar de Fourier; aplicando dualidad se obtiene $\mathcal{F}\{1/(\pi t)\} = -j\,\text{sgn}(f) = H(f)$ — confirma que $1/(\pi t)$ es efectivamente la respuesta al impulso cuya transformada es la $H(f)$ ya conocida.*
 
 ## Pares Fundamentales
 
