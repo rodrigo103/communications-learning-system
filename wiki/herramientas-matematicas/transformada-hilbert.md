@@ -30,6 +30,12 @@ Caracteristicas:
 - Elimina la componente DC ($f = 0$)
 - Es una convolucion con $\frac{1}{\pi t}$: $\hat{x}(t) = x(t) * \frac{1}{\pi t}$
 
+> **¿Por que $\mathcal{H}\{\delta(t)\}=\frac{1}{\pi t}$, y por que convolucionar con $\frac{1}{\pi t}$ da la Transformada de Hilbert de cualquier señal?** Son la misma idea vista desde dos angulos, conectados por el teorema general de sistemas LTI (no algo especifico de Hilbert). [analysis]
+> - *Calculo directo de $\mathcal{H}\{\delta(t)\}$*: se sustituye $\delta(\tau)$ en la definicion y se usa la propiedad de cedazo de la delta, $\int f(\tau)\delta(\tau)d\tau=f(0)$, con $f(\tau)=\frac{1}{t-\tau}$: $\mathcal{H}\{\delta(t)\}=\frac{1}{\pi}\text{P.V.}\int\frac{\delta(\tau)}{t-\tau}d\tau=\frac{1}{\pi}\cdot\frac{1}{t-0}=\frac{1}{\pi t}$ (para $t\neq0$; en $t=0$ es la singularidad del P.V., consistente con que $1/(\pi t)$ tambien es singular ahi).
+> - *Teorema general LTI (de Señales y Sistemas)*: para cualquier sistema LTI, la salida ante cualquier entrada es la entrada convolucionada con la respuesta al impulso, $y(t)=x(t)*h(t)$ con $h(t)=\mathcal{L}\{\delta(t)\}$. Demostracion: escribiendo $x(t)=\int x(\tau)\delta(t-\tau)d\tau$ (cedazo) y aplicando el operador (lineal, invariante en el tiempo): $\mathcal{H}\{x(t)\}=\int x(\tau)\mathcal{H}\{\delta(t-\tau)\}d\tau=\int x(\tau)h(t-\tau)d\tau=(x*h)(t)$, usando linealidad para meter $\mathcal{H}$ en la integral e invarianza temporal para que $\mathcal{H}\{\delta(t-\tau)\}=h(t-\tau)$.
+> - *No es circular*: el segundo punto aplicado a $x=\delta$ recupera trivialmente el primero ($\delta*h=h$), pero el primero se calculo de forma independiente (sin usar convolucion), asi que el orden logico es: (1) se calcula $h(t)=1/(\pi t)$ una vez desde la definicion cruda, (2) el teorema LTI general dice que ese mismo $h(t)$ sirve para convolucionar con cualquier señal de ahi en mas.
+> - *Chequeo cruzado en frecuencia (opcional)*: $\mathcal{F}\{\text{sgn}(t)\}=\frac{-j}{\pi f}$ es un par estandar de Fourier; por dualidad, $\mathcal{F}\{1/(\pi t)\}=-j\,\text{sgn}(f)=H(f)$ — confirma que $1/(\pi t)$ es la respuesta al impulso cuya transformada es la $H(f)$ de arriba.
+
 ## Pares Fundamentales
 
 $$\boxed{\mathcal{H}\{A\cos(2\pi f_0 t + \phi)\} = A\sin(2\pi f_0 t + \phi)}$$
