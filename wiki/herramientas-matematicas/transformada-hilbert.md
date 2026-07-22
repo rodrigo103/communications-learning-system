@@ -113,6 +113,22 @@ Correccion importante: la **simetria hermitica** ($X(-f)=X^*(f)$) se cumple para
 
 *(Asumiendo que FRP = Funcion Real Positiva — no confirmado, no aparece en el material del curso.)* La conexion es real: una FRP caracteriza que funciones $Z(s)$ son fisicamente realizables como impedancia de una red pasiva (R, L, C), via el teorema de Brune. La condicion matematica de fondo es la misma familia que la señal analitica: ambas dependen de que una funcion sea analitica/holomorfa en un semiplano (la señal analitica en el semiplano superior del tiempo complejo; la FRP en el semiplano derecho de $s$). En ambos casos esa analiticidad fuerza una relacion tipo Hilbert entre parte real e imaginaria en el eje de frecuencias — en fisica son las relaciones de Kramers-Kronig, en teoria de circuitos las relaciones de Bode ganancia-fase. Son conceptos **matematicos** (analisis complejo) que se usan porque capturan una restriccion **fisica**: causalidad (señal analitica) o realizabilidad pasiva (FRP). El hilo comun: un sistema fisico causal/realizable impone automaticamente una relacion de Hilbert entre las partes real e imaginaria de su respuesta en frecuencia. [analysis]
 
+**¿Las señales en comunicaciones son reales o complejas? Me confunde con constelaciones y OFDM.**
+
+Las señales **fisicas** (las que viajan por cable o aire) son siempre reales. Los complejos son una herramienta matematica de representacion. El puente es la **envolvente compleja**: cualquier señal real pasabanda $s(t)$ se escribe como $s(t) = \text{Re}\{\tilde{s}(t) \cdot e^{j2\pi f_c t}\}$, donde $\tilde{s}(t) = I(t) + jQ(t)$ es compleja y contiene toda la info de modulacion. Las constelaciones viven en ese plano complejo I-Q: cada simbolo es un punto $I_k + jQ_k$. En OFDM, la IFFT genera muestras complejas en tiempo, que luego se separan en parte real/imaginaria y se modulan en cuadratura para producir la señal real transmitible. Parseval ($\int |x(t)|^2 dt = \int |X(f)|^2 df$) funciona igual para señales reales y complejas porque $|z|^2 = z \cdot z^*$ siempre da un real positivo. La forma generalizada $\int x y^* = \int X Y^*$ usa el conjugado justamente para manejar señales complejas. [analysis]
+
+**¿Entonces en el tiempo son reales y en frecuencia complejas?**
+
+No exactamente. En el dominio del tiempo tambien trabajamos con señales complejas: la envolvente compleja $\tilde{s}(t)$, la señal analitica $x_a(t)$, y los simbolos de constelacion existen en tiempo y son complejos. En frecuencia, $X(f)$ es complejo pero con restriccion: si $x(t)$ es real entonces $X(-f) = X^*(f)$ (simetria hermitica). La mitad negativa del espectro es redundante — de ahi que la señal analitica pueda eliminar las frecuencias negativas sin perder informacion. [analysis]
+
+**¿Como es que Hilbert "inventa" una parte compleja?**
+
+No la inventa de la nada. La informacion ya estaba en la señal real, pero "oculta" en las frecuencias negativas. Toda señal real tiene espectro con simetria hermitica: $X(-f) = X^*(f)$. Las frecuencias negativas son un espejo redundante de las positivas. La transformada de Hilbert, con $H(f) = -j \cdot \text{sgn}(f)$, es el mecanismo para cancelar ese espejo: al formar $x_a(t) = x(t) + j\hat{x}(t)$, las frecuencias negativas se cancelan (las $j \cdot (+j)$ de la parte imaginaria son $-1$ veces la original) y las positivas se duplican. El resultado es un espectro de un solo lado y una señal compleja pura. Lo que Hilbert "inventa" es la parte imaginaria exacta para lograr esa cancelacion destructiva en las negativas y constructiva en las positivas. [analysis]
+
+**¿"Espectro simetrico" se refiere a simetria hermitica, no? ¿Que es el conjugado?**
+
+Si, exactamente. Simetria hermitica: $X(-f) = X^*(f)$, donde $X^*(f)$ es el **complejo conjugado** (cambia el signo de la parte imaginaria). No significa $X(-f) = X(f)$ (eso seria simetria par). Implica: magnitud par ($|X(-f)| = |X(f)|$) y fase impar ($\angle X(-f) = -\angle X(f)$). Las partes real e imaginaria no son simetricas entre si a secas — por eso necesitas el conjugado: lo que aparece a $-f$ es el espejo con fase invertida. De ahi la redundancia que Hilbert explota. [analysis]
+
 ## Ver tambien
 
 - [[../herramientas-matematicas/teorema-convolucion]]
