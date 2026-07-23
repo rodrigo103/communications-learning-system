@@ -140,6 +140,18 @@ Para una señal FM $s(t)$, la frecuencia instantanea se calcula como:
 
 $$f_i(t) = \frac{1}{2\pi}\frac{d}{dt}\angle s_a(t)$$
 
+> **¿Que es la frecuencia instantanea y para que sirve?** [analysis]
+>
+> *Aclaracion de lectura*: en la carta fuente (`explicaciones_anki/unidad_02/carta_08_transformada_hilbert.md`, linea 195) dice "la Transformada de Hilbert permite extraer directamente la frecuencia instantanea, **fundamental para** demodulacion FM" — "fundamental" ahi es un adjetivo que describe importancia (esencial para demodular FM), no parte de un termino tecnico "frecuencia instantanea fundamental". El concepto en si es simplemente "frecuencia instantanea".
+>
+> *Que es*: la generalizacion del concepto de "frecuencia" a señales donde la fase no crece linealmente en el tiempo. Se define $f_i(t)=\frac{1}{2\pi}\frac{d\phi(t)}{dt}$, con $\phi(t)$ la fase instantanea (solo bien definida via la señal analitica, $\phi(t)=\angle s_a(t)$ — ver seccion "Señal Analitica" arriba). Chequeo de sentido: para una portadora pura $s(t)=A\cos(2\pi f_ct)$, $\phi(t)=2\pi f_ct$ (lineal), y $f_i(t)=f_c$ constante — coincide con la frecuencia de toda la vida. La utilidad aparece cuando la fase NO es lineal (como en FM), donde "la frecuencia" deja de ser un unico numero y pasa a ser funcion del tiempo.
+>
+> *Derivacion del ejemplo de la carta*: para $s(t)=A\cos\left(2\pi f_ct+2\pi k_f\int m(\tau)d\tau\right)$, la fase total es $\phi(t)=2\pi f_ct+2\pi k_f\int m(\tau)d\tau$. Derivando (el segundo termino se cancela con la integral por el teorema fundamental del calculo, dejando $m(t)$): $\frac{d\phi}{dt}=2\pi f_c+2\pi k_fm(t) \Rightarrow f_i(t)=f_c+k_fm(t)$.
+>
+> *Para que sirve, dos cosas concretas*:
+> 1. **Es literalmente la definicion de FM**: FM se define *como* la modulacion donde la frecuencia instantanea de la portadora varia linealmente con $m(t)$. El calculo de arriba verifica que $s(t)$ efectivamente cumple esa definicion.
+> 2. **Es el mecanismo de un demodulador FM (discriminador)**: si se conoce $f_i(t)$ (calculada via Hilbert a partir de la señal recibida) y las constantes $f_c$, $k_f$ del sistema, se despeja directamente $m(t) = \frac{f_i(t)-f_c}{k_f}$ — eso ES demodular FM: recuperar el mensaje. Asi funciona en la practica un receptor SDR digital moderno: arma la señal analitica (Hilbert digital) a partir de la señal recibida, calcula la fase, deriva, divide por $2\pi$, obtiene $f_i(t)$, y de ahi sale $m(t)$ directo. No es solo teoria de pizarron, es el algoritmo real.
+
 ## Analogia
 
 La Transformada de Hilbert es como ver una onda desde una posicion rotada 90°. Ambas vistas describen la misma onda pero desde perspectivas ortogonales. La señal analitica combina ambas vistas para una descripcion completa [analysis].
