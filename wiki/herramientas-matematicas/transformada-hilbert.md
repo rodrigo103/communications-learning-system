@@ -58,6 +58,11 @@ Caracteristicas:
 >
 > *(Bonus, chequeo cruzado en frecuencia): $\mathcal{F}\{\text{sgn}(t)\}=\frac{-j}{\pi f}$ es un par estandar de Fourier; aplicando dualidad se obtiene $\mathcal{F}\{1/(\pi t)\} = -j\,\text{sgn}(f) = H(f)$ — confirma que $1/(\pi t)$ es efectivamente la respuesta al impulso cuya transformada es la $H(f)$ ya conocida.*
 
+> **¿Existe para toda señal? ¿$\hat x(t)$ es compleja? ¿Hay antitransformada?** [analysis]
+> - *Existencia*: requiere (1) que la señal sea **real** (no esta definida para señales ya complejas), (2) que tenga Transformada de Fourier, (3) la componente DC se anula porque $H(0)=0$. Para las señales tipicas del curso (senos, cosenos, sumas de tonos) siempre existe sin problemas.
+> - *¿$\hat x(t)$ es compleja? No — al reves, siempre es real.* $\mathcal{H}\{\cos\}=\sin$, $\mathcal{H}\{\sin\}=-\cos$: ambas reales. La Transformada de Hilbert no convierte una señal real en compleja, solo la desfasa 90°. Lo complejo es la **señal analitica** $x_a(t)=x(t)+j\hat x(t)$ (señal original + su Hilbert como parte imaginaria) — esa combinacion si es compleja, $\hat x(t)$ sola no.
+> - *Antitransformada*: si existe, y es simplemente la transformada con signo negativo, $\mathcal{H}^{-1}=-\mathcal{H}$. Aplicar Hilbert dos veces devuelve la señal original invertida: $\mathcal{H}\{\mathcal{H}\{x(t)\}\}=-x(t)$ — consistente con $H(f)=-j\,\text{sgn}(f)$, ya que encadenar dos Hilbert en frecuencia da $(-j\,\text{sgn}(f))^2=-1$, que en tiempo es $-x(t)$.
+
 ## Pares Fundamentales
 
 $$\boxed{\mathcal{H}\{A\cos(2\pi f_0 t + \phi)\} = A\sin(2\pi f_0 t + \phi)}$$
@@ -84,7 +89,7 @@ $$X_a(f) = \begin{cases} 2X(f) & f > 0 \\ X(0) & f = 0 \\ 0 & f < 0 \end{cases}$
 Esto elimina la redundancia de frecuencias negativas en señales reales.
 
 > **¿Que significa esto y por que se llama "analitica"?** [analysis]
-> - *La redundancia que elimina*: toda señal real tiene espectro con simetria hermitica, $X(-f)=X^*(f)$ — la mitad de frecuencias negativas no aporta informacion nueva, es el espejo conjugado de la positiva. La señal analitica empaqueta toda la informacion en un espectro de un solo lado, sin perder nada (siempre se recupera $x(t)=\text{Re}\{x_a(t)\}$).
+> - *La redundancia que elimina*: toda señal real tiene espectro con simetria hermitica, $X(-f)=X^*(f)$ — la mitad de frecuencias negativas no aporta informacion nueva, es el espejo conjugado de la positiva. La señal analitica empaqueta toda la informacion en un espectro de un solo lado, sin perder nada (siempre se recupera $x(t)=\text{Re}\{x_a(t)\}$). Mecanicamente, Hilbert no "inventa" nada de la nada: al formar $x_a(t)=x(t)+j\hat x(t)$, la parte $j\hat x(t)$ cancela exactamente las frecuencias negativas (la multiplicacion $j\cdot(+j)=-1$ ahi) y duplica las positivas — es cancelacion destructiva en un lado, constructiva en el otro, usando informacion que ya estaba oculta en la redundancia hermitica de $x(t)$.
 > - *Por que hace falta para tener amplitud/fase instantanea bien definidas*: por Euler, $\cos(\omega t)=\tfrac12 e^{j\omega t}+\tfrac12 e^{-j\omega t}$ — un coseno real es la suma de dos fasores girando en direcciones opuestas, y por si solo es ambiguo (no se le puede asignar una unica direccion de giro). La Transformada de Hilbert cancela uno de los dos fasores y deja solo el que gira en sentido positivo, dando $x_a(t)=a(t)e^{j\phi(t)}$ con amplitud $a(t)=|x_a(t)|$ y fase $\phi(t)=\angle x_a(t)$ instantaneas bien definidas — de ahi sale su uso para envolvente en AM y frecuencia instantanea en FM.
 > - *De donde sale el nombre*: si se extiende $t$ a un plano complejo, $x_a(t)$ es el valor de borde de una funcion **analitica/holomorfa** (derivable en sentido complejo, cumple Cauchy-Riemann) en el semiplano superior — condicion que se cumple *solo* cuando no hay frecuencias negativas, que es justo lo que garantiza la Transformada de Hilbert. Conecta con las relaciones de Kramers-Kronig (fuera del alcance del final, pero es el origen del nombre).
 
@@ -172,7 +177,7 @@ $$f_i(t) = \frac{1}{2\pi}\frac{d}{dt}\angle s_a(t)$$
 
 ## Tercera Representacion Compleja: Envolvente Compleja → Constelaciones → OFDM
 
-Ademas de $X(f)$ (espectro de Fourier) y $x_a(t)$ (señal analitica), hay una tercera representacion compleja de una señal real, que se construye a partir de la señal analitica y que es la base de como se describen las modulaciones digitales (QAM/PSK) y OFDM en la materia. [analysis]
+Las señales **fisicas** (las que viajan por cable o aire) son siempre reales — los complejos son una herramienta matematica de representacion, nunca la señal transmitida en si. Ademas de $X(f)$ (espectro de Fourier) y $x_a(t)$ (señal analitica), hay una tercera representacion compleja de una señal real, que se construye a partir de la señal analitica y que es la base de como se describen las modulaciones digitales (QAM/PSK) y OFDM en la materia. [analysis]
 
 ### Envolvente compleja (equivalente pasabajos)
 
@@ -204,6 +209,8 @@ $$\tilde s(t) = \sum_{k} X_k\,e^{j2\pi k\Delta f\, t}, \qquad 0\le t< T_s$$
 
 Es, otra vez, construir una envolvente compleja banda base (ahora suma de muchas, una por subportadora) — y subirla a portadora usa el mismo mecanismo que ya vimos: $s(t)=\text{Re}\{\tilde s(t)e^{j2\pi f_ct}\} = x(t)\cos(2\pi f_ct)-y(t)\sin(2\pi f_ct)$, con $x(t)=\text{Re}\{\tilde s(t)\}$, $y(t)=\text{Im}\{\tilde s(t)\}$. Esto coincide exactamente con el diagrama en bloques de un transmisor OFDM real que ya aparecio en un final de esta materia: `exercises/finales/md/F_Comu_2022-07-21_res.md`, Ejercicio 3 (Serial→Paralelo → IFFT → Paralelo→Serial → mezcladores en cuadratura, $v(t)=x(t)\cos(\omega_ct)-y(t)\sin(\omega_ct)$) — es la misma estructura $x(t),y(t)$ de esta seccion, con otros nombres. Ver [[../espectro-expandido/ofdm|OFDM]].
 
+*Nota sobre Parseval con señales complejas*: el teorema de Parseval (ver [[../herramientas-matematicas/teorema-parseval|Teorema de Parseval]]) funciona igual para $\tilde x(t)$, $x_a(t)$ o cualquier señal compleja, porque $|z|^2=z\cdot z^*$ siempre da un real no-negativo — la forma generalizada $\int x(t)y^*(t)\,dt=\int X(f)Y^*(f)\,df$ (Plancherel) usa el conjugado justamente para que esto funcione con señales complejas.
+
 ## Analogia
 
 La Transformada de Hilbert es como ver una onda desde una posicion rotada 90°. Ambas vistas describen la misma onda pero desde perspectivas ortogonales. La señal analitica combina ambas vistas para una descripcion completa [analysis].
@@ -212,8 +219,10 @@ La Transformada de Hilbert es como ver una onda desde una posicion rotada 90°. 
 
 - ✓ NO cambia el contenido de frecuencias, solo las fases [source — [[../../explicaciones_anki/unidad_02/carta_08_transformada_hilbert]]]
 - ✓ $|H(f)| = 1$ para $f \neq 0$: conserva energia
-- ✓ Solo definida para señales reales
-- ✓ La señal analitica elimina frecuencias negativas
+- ✓ Solo definida para señales reales; $\hat x(t)$ en si siempre es real, lo complejo es $x_a(t)=x(t)+j\hat x(t)$
+- ✓ La señal analitica elimina frecuencias negativas — y tiene el doble de energia que la original, $E_{x_a}=2E_x$
+- ✓ El atajo $\mathcal{H}\{m(t)\cos\omega_ct\}=m(t)\sin\omega_ct$ solo vale si $f_c\gg$ ancho de banda de $m(t)$ (señal pasabanda) — no es una regla general de productos
+- ✓ Las señales fisicas siempre son reales; $X(f)$, $x_a(t)$ y la envolvente compleja $\tilde x(t)=I(t)+jQ(t)$ son las tres representaciones complejas que se usan para describirlas (esta ultima es la base de constelaciones y OFDM)
 
 ## Preguntas y Respuestas (dudas resueltas en sesion de estudio)
 
@@ -226,7 +235,9 @@ En la practica de este curso, casi seguro que si. En los 13 finales resueltos re
 $$\cos(2\pi f_0 t) \leftrightarrow \frac{1}{2}\big[\delta(f-f_0)+\delta(f+f_0)\big] \quad\text{— real y par}$$
 $$\sin(2\pi f_0 t) \leftrightarrow -\frac{j}{2}\delta(f-f_0)+\frac{j}{2}\delta(f+f_0) \quad\text{— imaginario puro e impar}$$
 
-Correccion importante: la **simetria hermitica** ($X(-f)=X^*(f)$) se cumple para **toda** señal real, sin excepcion — no depende de que la señal sea par o impar en el tiempo. Demostracion corta: $X^*(f) = \left(\int x(t)e^{-j2\pi ft}dt\right)^* = \int x^*(t)e^{j2\pi ft}dt \overset{x\text{ real}}{=} \int x(t)e^{j2\pi ft}dt = X(-f)$ — el argumento solo usa que $x^*(t)=x(t)$ (real), nunca paridad. El seno tambien cumple $X(-f)=X^*(f)$ (se puede verificar directo con la formula de arriba). Lo que si depende de la paridad es una propiedad *distinta*, mas especifica: real+par$\to$espectro real y par (coseno); real+impar$\to$espectro imaginario puro e impar (seno); real sin paridad definida$\to$espectro complejo con parte real par + parte imaginaria impar. Las tres son casos particulares de simetria hermitica, no excepciones a ella. [analysis]
+Correccion importante: la **simetria hermitica** ($X(-f)=X^*(f)$) se cumple para **toda** señal real, sin excepcion — no depende de que la señal sea par o impar en el tiempo. Demostracion corta: $X^*(f) = \left(\int x(t)e^{-j2\pi ft}dt\right)^* = \int x^*(t)e^{j2\pi ft}dt \overset{x\text{ real}}{=} \int x(t)e^{j2\pi ft}dt = X(-f)$ — el argumento solo usa que $x^*(t)=x(t)$ (real), nunca paridad. El seno tambien cumple $X(-f)=X^*(f)$ (se puede verificar directo con la formula de arriba). Lo que si depende de la paridad es una propiedad *distinta*, mas especifica: real+par$\to$espectro real y par (coseno); real+impar$\to$espectro imaginario puro e impar (seno); real sin paridad definida$\to$espectro complejo con parte real par + parte imaginaria impar. Las tres son casos particulares de simetria hermitica, no excepciones a ella.
+
+En criollo, $X(-f)=X^*(f)$ (el **conjugado**, que cambia el signo de la parte imaginaria — no es lo mismo que $X(-f)=X(f)$, eso seria simetria par a secas) implica dos cosas concretas: **magnitud par** ($|X(-f)|=|X(f)|$) y **fase impar** ($\angle X(-f)=-\angle X(f)$). Las partes real e imaginaria por separado no son simetricas entre si — por eso hace falta el conjugado: lo que aparece en $-f$ es el espejo con la fase invertida. Esa es la redundancia que la señal analitica explota. [analysis]
 
 **¿El concepto de señal analitica se relaciona con las funciones FRP (Funcion Real Positiva, de Teoria de Circuitos)? ¿Son conceptos fisicos o matematicos?**
 
