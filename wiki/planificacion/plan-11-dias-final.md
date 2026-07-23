@@ -43,6 +43,18 @@ Desde el dia 25/07 (Modulacion Digital) en adelante, cada ejercicio de `exercise
 |-----|-------|------|-----------------|
 | **1** | 19, 20, 22, 23 jul (4 dias, no 1) | U1+U2 — Fundamentos | Modelo de Shannon, espectro EM, Fourier, Parseval (con Fubini), Hilbert (transformada, señal analitica, envolvente compleja, teorema pasabanda), DEP. Cobertura muy profunda — mas de lo que pedia el plan original, de ahi el desvio de cronograma. |
 
+#### Lecturas — Dia 1 (fundamentos, ya completado)
+
+- [[../introduccion/modelo-shannon|Modelo de Shannon]] — esquema fuente-transmisor-canal-receptor-destino, el marco que se repite para cada modulacion
+- [[../introduccion/espectro-electromagnetico|Espectro Electromagnetico]] — bandas de frecuencia, para ubicar donde vive cada modulacion
+- [[../conceptos-integradores/aportes-fourier|Aportes de Fourier]] — Transformada y Serie de Fourier, tabla de propiedades (usar esta, no `herramientas-matematicas/serie-fourier` ni `transformada-fourier`, que son paginas stub sin contenido real)
+- [[../herramientas-matematicas/teorema-parseval|Teorema de Parseval]] — conservacion de energia tiempo-frecuencia, con la derivacion completa via Fubini
+- [[../herramientas-matematicas/senales-energia-potencia|Señales de Energia vs Potencia]] — de donde sale $E=\int|x(t)|^2dt$, y la clasificacion energia/potencia
+- [[../herramientas-matematicas/transformada-hilbert|Transformada de Hilbert]] — la nota mas trabajada de todas: transformada, señal analitica, envolvente compleja, teorema pasabanda, constelaciones y OFDM
+- [[../../explicaciones_anki/unidad_02/carta_08_transformada_hilbert|Carta 8: Transformada de Hilbert y Señales Analíticas]] — la fuente original en formato Anki, con los 3 ejemplos numericos (SSB, envolvente AM, frecuencia instantanea FM) que dieron pie a varias de las preguntas de hoy. Opcional si ya leiste la nota de arriba, que absorbio y corrigio su contenido
+- [[../herramientas-matematicas/densidad-espectral-potencia|Densidad Espectral de Potencia]] — DEP y Wiener-Khinchin (prioridad baja, no se testea como categoria propia en los finales)
+- [[../herramientas-matematicas/ancho-de-banda|Ancho de Banda]] — los 5 tipos de ancho de banda, tema del Dia 1 que faltaba y se agrego despues
+
 ### Recalculado v2 — 7 dias reales, reordenado (23 al 29 de julio)
 
 | Dia | Fecha | Foco | Horas | Contenido clave |
