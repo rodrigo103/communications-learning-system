@@ -170,6 +170,40 @@ $$f_i(t) = \frac{1}{2\pi}\frac{d}{dt}\angle s_a(t)$$
 >
 > *Si, la materia ve FM de banda ancha explicitamente*: hay paginas dedicadas [[../modulacion-analogica/fm-banda-angosta|FM Banda Angosta]], [[../modulacion-analogica/fm-banda-ancha|FM Banda Ancha]], [[../modulacion-analogica/ancho-banda-carson|Ancho de Banda de Carson]], [[../modulacion-analogica/fm-vs-pm|FM vs PM]], [[../modulacion-analogica/modulador-fm|Modulador FM]]. Aparece en los finales en el contexto de **moduladores indirectos tipo Armstrong**: se genera FM/PM de banda angosta primero (mas facil de generar linealmente) y despues se pasa por multiplicadores de frecuencia para llegar a la desviacion deseada de banda ancha. Dos finales lo testean: `exercises/finales/md/F_Comu_2024-02-22_res.md` (chequear si $B_T$ corresponde a NBFM o WBFM) y `exercises/finales/md/F_Comu_2025-04-24_res.md` (modulador de fase banda angosta con $\beta'=0{,}02\le0{,}2$ antes de los triplicadores, criterio NBFM).
 
+## Tercera Representacion Compleja: Envolvente Compleja → Constelaciones → OFDM
+
+Ademas de $X(f)$ (espectro de Fourier) y $x_a(t)$ (señal analitica), hay una tercera representacion compleja de una señal real, que se construye a partir de la señal analitica y que es la base de como se describen las modulaciones digitales (QAM/PSK) y OFDM en la materia. [analysis]
+
+### Envolvente compleja (equivalente pasabajos)
+
+Se obtiene sacandole a la señal analitica la rotacion rapida de portadora:
+
+$$\tilde x(t) := x_a(t)\,e^{-j2\pi f_ct} = a(t)\,e^{j[\phi(t)-2\pi f_ct]}$$
+
+Mismo modulo que $x_a(t)$ (multiplicar por $e^{-j2\pi f_ct}$ no cambia el modulo), pero con la parte "rapida" de la fase removida — queda solo la parte "lenta" de la modulacion. Escribiendo $\tilde x(t)=I(t)+jQ(t)$ en cartesianas, y deshaciendo la rotacion:
+
+$$x(t) = \text{Re}\{x_a(t)\} = \text{Re}\{\tilde x(t)\,e^{j2\pi f_ct}\} = I(t)\cos(2\pi f_ct) - Q(t)\sin(2\pi f_ct)$$
+
+Esta es exactamente la formula de QAM del formulario ($s_{QAM}(t)=I(t)\cos\omega_ct-Q(t)\sin\omega_ct$) — I/Q es la forma cartesiana de este tercer representante complejo, no una construccion aparte. En frecuencia: $\tilde X(f)=X_a(f+f_c)$, es decir $X_a(f)$ corrida para quedar centrada en $f=0$ — por eso "equivalente *pasabajos*" (vs. $X_a(f)$, que es pasabanda, centrada en $f_c$). Es tambien el mecanismo real de un demodulador digital I/Q (SDR): multiplicar la señal recibida por $e^{-j2\pi f_ct}$ para bajarla a banda base antes de procesarla.
+
+| Representacion | Dominio | Que le paso a la señal |
+|---|---|---|
+| $X(f)$ | Frecuencia | Fourier directo, bilateral con simetria hermitica |
+| $x_a(t)=x(t)+j\hat x(t)$ | Tiempo | Se le sumo $j$ veces su Hilbert → unilateral en frecuencia, centrado en $f_c$ |
+| $\tilde x(t)=x_a(t)e^{-j2\pi f_ct}=I(t)+jQ(t)$ | Tiempo | Se le saco la rotacion de portadora → mismo modulo, centrado en $f=0$ (banda base) |
+
+### Diagrama de constelacion
+
+Un diagrama de constelacion es, literalmente, graficar $\tilde x(t)=I(t)+jQ(t)$ evaluada en los instantes de muestreo de simbolo — cada punto de la constelacion es un valor posible del par $(I,Q)$ en el plano complejo, uno por simbolo transmitido. La distancia minima $d_{min}$ (formulario, seccion Modulacion Digital) es la distancia euclidea entre esos puntos complejos: $d_{min}=\min_{i\neq j}|s_i-s_j|$, con $s_i,s_j\in\mathbb{C}$ los puntos de constelacion. Ver [[../modulacion-digital/constelaciones|Constelaciones]].
+
+### OFDM
+
+Cada subportadora $k$ lleva su propio simbolo complejo $X_k$ (un punto de constelacion QAM/PSK). La señal OFDM en banda base se arma con una IFFT — sumando todas las subportadoras, cada una una exponencial compleja a frecuencia $k\Delta f$ pesada por su simbolo:
+
+$$\tilde s(t) = \sum_{k} X_k\,e^{j2\pi k\Delta f\, t}, \qquad 0\le t< T_s$$
+
+Es, otra vez, construir una envolvente compleja banda base (ahora suma de muchas, una por subportadora) — y subirla a portadora usa el mismo mecanismo que ya vimos: $s(t)=\text{Re}\{\tilde s(t)e^{j2\pi f_ct}\} = x(t)\cos(2\pi f_ct)-y(t)\sin(2\pi f_ct)$, con $x(t)=\text{Re}\{\tilde s(t)\}$, $y(t)=\text{Im}\{\tilde s(t)\}$. Esto coincide exactamente con el diagrama en bloques de un transmisor OFDM real que ya aparecio en un final de esta materia: `exercises/finales/md/F_Comu_2022-07-21_res.md`, Ejercicio 3 (Serial→Paralelo → IFFT → Paralelo→Serial → mezcladores en cuadratura, $v(t)=x(t)\cos(\omega_ct)-y(t)\sin(\omega_ct)$) — es la misma estructura $x(t),y(t)$ de esta seccion, con otros nombres. Ver [[../espectro-expandido/ofdm|OFDM]].
+
 ## Analogia
 
 La Transformada de Hilbert es como ver una onda desde una posicion rotada 90°. Ambas vistas describen la misma onda pero desde perspectivas ortogonales. La señal analitica combina ambas vistas para una descripcion completa [analysis].
