@@ -52,6 +52,15 @@ $$\boxed{\eta_{DSB-SC} = 100\%}$$
 
 Toda la potencia transmitida esta en las bandas laterales (informacion util).
 
+## Metodos de Generacion
+
+**AM-DSB-FC**: modulador de ley cuadratica (sumar $m(t)+c(t)$, pasar por un dispositivo no lineal, filtrar pasabanda en $f_c$ con ancho $2f_m$) o modulacion de alto nivel (variar la alimentacion de la etapa final de RF). Ver detalle en [[../derivaciones/modulacion-am|Derivacion de AM]]. [analysis]
+
+**DSB-SC**: acá el filtrado *no alcanza*. La portadora pura queda exactamente en $f_c$, pegada a las bandas laterales — para una señal real (con contenido cerca de $f_m\to0$) no existe un filtro que corte solo la portadora sin comerse tambien las frecuencias mas bajas del mensaje. Por eso se necesita **cancelar la portadora por simetria de circuito**, no filtrarla en frecuencia:
+- **Modulador balanceado de diodos (ring modulator)**: 4 diodos en puente, manejados por la portadora — por simetria, la portadora se cancela a la salida y sobrevive solo el producto $m(t)c(t)$.
+- **Celda de Gilbert / multiplicador analogico**: circuito diferencial de transistores que implementa directamente $m(t)\times c(t)$ (multiplicador de 4 cuadrantes; hay chips dedicados, ej. AD633).
+- Equivalente conceptual: dos moduladores de ley cuadratica identicos, con $c(t)$ igual en ambos pero $m(t)$ de signo opuesto — al restar las salidas, la portadora (comun a ambos) se cancela y el producto se duplica.
+
 ## Metodos de Deteccion
 
 | Aspecto | AM-DSB-FC | DSB-SC |
@@ -60,6 +69,8 @@ Toda la potencia transmitida esta en las bandas laterales (informacion util).
 | Complejidad Rx | Baja | Alta |
 | Sincronizacion | No necesaria | Critica |
 | Costo receptor | Economico | Costoso |
+
+**Por que DSB-SC no puede usar detector de envolvente**: usando el teorema pasabanda de Hilbert, la señal analitica de $s(t)=m(t)\cos(2\pi f_ct)$ es $s_a(t)=m(t)e^{j2\pi f_ct}$, y su envolvente es $a(t)=|s_a(t)|=|m(t)|$ — el valor absoluto de $m(t)$, no $m(t)$ mismo. Un detector de envolvente recuperaria $|m(t)|$, perdiendo el signo cada vez que $m(t)$ cruza por cero. Por eso DSB-SC necesita **deteccion coherente/sincrona**: generar localmente una replica de $c(t)$ sincronizada en fase y frecuencia (lazo de Costas o PLL) y multiplicar por ella para recuperar $m(t)$. Ver [[../herramientas-matematicas/transformada-hilbert|Transformada de Hilbert]]. [analysis]
 
 ## Ejemplo Numerico
 

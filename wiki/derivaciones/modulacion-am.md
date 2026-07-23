@@ -105,6 +105,18 @@ Si $\mu > 1$, ocurre **sobremodulación**: la envolvente se vuelve negativa, cau
 - **Dominio del tiempo:** La envolvente sigue la forma $A_c[1 + \mu m_n(t)]$ modulada a frecuencia $f_c$
 - **Dominio de la frecuencia:** El espectro en banda base se traslada a $\pm f_c$, creando portadora + dos bandas laterales
 
+## Generacion practica
+
+**Modulador de ley cuadratica** (el metodo clasico de libro): se suma $m(t)+c(t)$ y se pasa por un dispositivo no lineal (diodo, o transistor en su zona no lineal) con caracteristica $v_{out}=a_1v_{in}+a_2v_{in}^2$. Con $v_{in}=m(t)+c(t)$: [analysis]
+
+$$v_{out} = \underbrace{a_1m(t)}_{\text{banda base}} + \underbrace{a_1c(t)}_{f_c} + \underbrace{a_2m^2(t)}_{\text{banda base}} + \underbrace{2a_2m(t)c(t)}_{f_c\pm f_m} + \underbrace{a_2c^2(t)}_{\text{DC}+2f_c}$$
+
+Cinco terminos en tres zonas de frecuencia distintas. Un **filtro pasabanda centrado en $f_c$ con ancho $2f_m$** (exactamente el $BW_{AM}$ derivado arriba) deja pasar solo $a_1c(t)+2a_2m(t)c(t)$ — portadora mas producto, que es precisamente $A_c'[1+\mu\cos(2\pi f_mt)]\cos(2\pi f_ct)$ con $A_c'=a_1A_c$ y $\mu=2a_2A_m/a_1$.
+
+**Modulacion de alto nivel** (transmisores de mayor potencia, broadcast clasico): en vez de un diodo de bajo nivel, se varia directamente la tension de alimentacion de la etapa final de RF (la que amplifica la portadora) con $m(t)$ amplificado a alta potencia — mismo principio $A(t)=A_c+k_am(t)$, implementado modulando la fuente de la etapa de salida en vez de un dispositivo de bajo nivel seguido de amplificacion lineal.
+
+Ver [[../modulacion-analogica/am-vs-dsb-sc|AM-DSB-FC vs DSB-SC]] para como se genera DSB-SC (no es el mismo metodo — necesita cancelacion balanceada, no alcanza con filtrar).
+
 ## Aplicaciones
 
 - Radio AM broadcasting (540–1600 kHz)
