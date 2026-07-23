@@ -1,0 +1,56 @@
+{
+  "items": [
+    {
+      "type": "file",
+      "ctime": 1784775633156,
+      "path": "wiki/planificacion/plan-11-dias-final.md"
+    },
+    {
+      "type": "group",
+      "ctime": 1784775640773,
+      "items": [
+        {
+          "type": "file",
+          "ctime": 1784775604973,
+          "path": "wiki/herramientas-matematicas/densidad-espectral-potencia.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1784775599090,
+          "path": "explicaciones_anki/unidad_02/carta_08_transformada_hilbert.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1784775593107,
+          "path": "wiki/herramientas-matematicas/transformada-hilbert.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1784775589123,
+          "path": "wiki/herramientas-matematicas/senales-energia-potencia.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1784775584156,
+          "path": "wiki/herramientas-matematicas/teorema-parseval.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1784775573524,
+          "path": "wiki/conceptos-integradores/aportes-fourier.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1784775622339,
+          "path": "wiki/introduccion/espectro-electromagnetico.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1784775629239,
+          "path": "wiki/introduccion/modelo-shannon.md"
+        }
+      ],
+      "title": "1"
+    }
+  ]
+}
