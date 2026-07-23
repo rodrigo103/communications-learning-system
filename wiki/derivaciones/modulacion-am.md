@@ -13,13 +13,18 @@ unidad: 3
 
 ## Señal portadora y mensaje
 
-La señal de mensaje (banda base) es $m(t) = A_m \cos(2\pi f_m t)$ y la portadora de alta frecuencia $c(t) = A_c \cos(2\pi f_c t)$, con $f_c \gg f_m$.
+La señal de mensaje (banda base) es $m(t) = A_m \cos(2\pi f_m t)$ y la portadora de alta frecuencia $c(t) = A_c \cos(2\pi f_c t)$, con $f_c \gg f_m$. Notar que en $c(t)$, la amplitud $A_c$ es una **constante** — no depende de $t$, es un numero fijo que multiplica al coseno.
 
-El principio fundamental de AM consiste en **variar la amplitud de la portadora** proporcionalmente al mensaje.
+El principio fundamental de AM consiste en **variar la amplitud de la portadora** proporcionalmente al mensaje: en vez de dejar esa amplitud fija en $A_c$, se la reemplaza por una funcion del tiempo, $A(t)$, que dependa de $m(t)$. La señal transmitida queda entonces $s_{AM}(t) = A(t)\cos(2\pi f_ct)$ — mismo coseno de portadora que antes, pero con el numero $A_c$ cambiado por la funcion $A(t)$. [analysis]
 
 ## Derivación paso a paso
 
 ### Paso 1: Amplitud variable en el tiempo
+
+Falta definir concretamente que forma tiene $A(t)$. Ahi no hay una deduccion desde primeros principios — es una **eleccion de diseño**, que es justamente lo que define a la modulacion AM (a diferencia de FM, PM, u otras formas de modular). Se elige la relacion mas simple posible entre $A(t)$ y $m(t)$: afin (lineal con un offset), por dos razones concretas: [analysis]
+
+- El offset $A_c$ garantiza que **siempre haya portadora presente**, incluso cuando $m(t)=0$ — eso es lo que permite despues usar un detector de envolvente simple en el receptor (no necesita conocer la fase de la portadora, solo "seguir" la amplitud).
+- La relacion **lineal** (proporcional, via la constante $k_a$) hace que la envolvente reproduzca la forma de $m(t)$ sin distorsion, siempre que $A(t)$ no se vuelva negativa (ver "Sobremodulacion" mas abajo).
 
 $$A(t) = A_c + k_a m(t)$$
 
