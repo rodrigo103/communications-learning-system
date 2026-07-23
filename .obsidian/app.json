@@ -1,1 +1,6 @@
-{}
+{
+  "strictLineBreaks": false,
+  "showLineNumber": false,
+  "readableLineLength": true,
+  "vimMode": false
+}
