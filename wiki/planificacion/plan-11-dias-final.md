@@ -107,6 +107,7 @@ Desde el dia 25/07 (Modulacion Digital) en adelante, cada ejercicio de `exercise
 - → [[../glosario|Glosario]] — siglas y notacion rapida
 - → [[../../Mazo_Anki_Sistemas_Comunicaciones|Mazo Anki]] — 60 cartas para repasar en huecos
 - → `exercises/finales/md/` — 13 finales resueltos (2022-2026) convertidos a Markdown, enunciado + resolucion colapsable. Base empirica de este plan revisado.
+- → [[../herramientas-matematicas/ancho-de-banda|Ancho de Banda]] — los 5 tipos de ancho de banda (absoluto, -3dB, nulo a nulo, fraccional, equivalente de ruido) en un solo lugar
 
 ---
 

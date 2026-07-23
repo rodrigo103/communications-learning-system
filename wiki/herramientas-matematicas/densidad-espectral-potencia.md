@@ -78,3 +78,4 @@ La DEP es como un **analisis financiero de gastos**: el total mensual es la pote
 - [[../herramientas-matematicas/senales-energia-potencia]]
 - [[../herramientas-matematicas/teorema-convolucion]]
 - [[../ruido/ruido-blanco-banda-angosta]]
+- [[../herramientas-matematicas/ancho-de-banda|Ancho de Banda]] — los distintos criterios para definir "cuanto BW ocupa" a partir de la DEP

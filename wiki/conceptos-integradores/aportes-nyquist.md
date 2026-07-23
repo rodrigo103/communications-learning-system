@@ -61,3 +61,4 @@ $$\boxed{N = kTB}$$
 - [[../conceptos-integradores/aportes-shannon|Aportes de Shannon]]
 - [[../conceptos-integradores/aportes-armstrong|Aportes de Armstrong]]
 - [[../conceptos-integradores/aportes-fourier|Aportes de Fourier]]
+- [[../herramientas-matematicas/ancho-de-banda|Ancho de Banda]] — los distintos tipos de ancho de banda, incluido el minimo de Nyquist
