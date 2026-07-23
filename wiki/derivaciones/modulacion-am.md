@@ -53,9 +53,19 @@ $$\boxed{s_{AM}(t) = A_c[1 + \mu \cos(2\pi f_m t)] \cos(2\pi f_c t)}$$
 
 ### Ancho de banda
 
+El ancho de banda absoluto es la diferencia entre la componente espectral mas alta y la mas baja con energia no nula (ver [[../herramientas-matematicas/ancho-de-banda|Ancho de Banda]]). De los "Componentes espectrales" derivados en el Paso 4, las tres componentes de $s_{AM}(t)$ estan en $f_c-f_m$ (LSB), $f_c$ (portadora) y $f_c+f_m$ (USB) — la portadora queda en el medio, asi que no afecta los extremos. Entonces: [analysis]
+
+$$BW_{AM} = f_{max} - f_{min} = (f_c+f_m) - (f_c-f_m) = 2f_m$$
+
 $$\boxed{BW_{AM} = 2f_m}$$
 
 AM requiere el doble del ancho de banda del mensaje porque transmite ambas bandas laterales [source — [[../../outputs/derivations/AM_20251115]]].
+
+**Generalizacion a multiples tonos** (frecuente en los finales, ej. "modulada por tres tonos senoidales"): si la señal moduladora tiene varias componentes de frecuencia $f_{m,1}, f_{m,2}, \ldots$, cada una genera su propio par de bandas laterales alrededor de $f_c$. El ancho de banda queda determinado por la componente de **mayor frecuencia**, no por la suma de todas: [analysis]
+
+$$BW_{AM} = 2f_{m,max}$$
+
+Esto es consistente con la definicion: las bandas laterales de $f_{m,max}$ son las que quedan mas lejos de $f_c$, y todas las demas caen dentro de ese rango.
 
 ### Distribución de potencia
 
