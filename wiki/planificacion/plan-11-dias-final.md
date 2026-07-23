@@ -47,7 +47,7 @@ Desde el dia 25/07 (Modulacion Digital) en adelante, cada ejercicio de `exercise
 
 | Dia | Fecha | Foco | Horas | Contenido clave |
 |-----|-------|------|-------|-----------------|
-| **2** | **23 jul (hoy)** | U3+U4 — Analogicas (AM/FM), en profundidad | 5-6h | **Adelantada por prioridad** (antes era dia 5/27 jul) — es el tema individual mas testeado (AM/DSB 77%, FM/PM 54%) e independiente del resto del temario, asi que va primero como gestion de riesgo. Potencia normalizada en dBW, PEP, envolvente a escala temporal, AM multitono ($P = P_c + \sum P_{SSB,i}$), DSB-SC vs AM convencional, Carson y moduladores indirectos. Ver ejercicios "Modulacion lineal" y "Modulacion exponencial" en `exercises/finales/md/`. |
+| **2** | **23 jul (hoy)** | U3+U4 — Analogicas (AM/FM), en profundidad | 5-6h | **Adelantada por prioridad** (antes era dia 5/27 jul) — es el tema individual mas testeado (AM/DSB 77%, FM/PM 54%) e independiente del resto del temario, asi que va primero como gestion de riesgo. Potencia normalizada en dBW, PEP, envolvente a escala temporal, AM multitono ($P = P_c + \sum P_{SSB,i}$), DSB-SC vs AM convencional, Carson y moduladores indirectos. Ver ejercicios "Modulacion lineal" y "Modulacion exponencial" en `exercises/finales/md/`. Lecturas recomendadas abajo. |
 | **3** | 24 jul | U2+U5 — Muestreo + PCM | 5-6h | Teorema de Nyquist ($f_s \geq 2B$), muestreo, cuantificacion, PCM, companding, SQNR = $6n + 1.76$ dB. 69% de frecuencia en los finales, prioridad alta. |
 | **4** | 25 jul | U6 — Modulacion Digital esencial (ASK/FSK/PSK/QAM) | 5-6h | Formulas de BW, constelaciones, $R_b = R_s \log_2 M$, pares BER ($P_e^{BPSK}=Q(\sqrt{2E_b/N_0})$, etc.). Foco en fluidez de formula, no en derivacion — es la base directa del dia siguiente. **Arranca la practica cronometrada de 30 min por ejercicio.** |
 | **5** | 26 jul | U7 — Ruido + BER integrado | 6-7h | Unico dia que sigue combinando 2 temas — justificado porque varios finales testean BER *dentro* del mismo ejercicio de Ruido (no son categorias tan separadas como TI/Espectro). $N=kTB$, $N_0$, temperatura de ruido, Friis cascada, y BER vs $E_b/N_0$ practicado junto, aprovechando que Digital quedo fresco del dia anterior. |
@@ -55,6 +55,27 @@ Desde el dia 25/07 (Modulacion Digital) en adelante, cada ejercicio de `exercise
 | **7** | 28 jul | U10 — Espectro Expandido/OFDM | 5-6h | **Separada de nuevo.** DSSS, FHSS, CDMA conceptual, OFDM + prefijo ciclico, IFFT/FFT. $G_p=R_c/R_b$, $N=2^L-1$ — patron que se repite en 5/13 finales. 62% de frecuencia. |
 | **8** | 29 jul | Repaso general + Intercomparacion (breve) + **simulacro cronometrado real** | 6-7h | Repaso de todas las formulas y del arbol de modulaciones (Intercomparacion entra aca como repaso conceptual rapido, no como bloque dedicado — ver "Lo comprimido"). Cierra con **simulacro en el formato exacto del examen**: final completo no visto antes (ej. `exercises/finales/md/F_Comu_2026-02-26_res.md`), reloj en 19:00, entregar un problema cada 30 min hasta las 21:00, orden a eleccion, solo formulario impreso como material. |
 | **30 jul** | — | **EXAMEN — 19:00hs** | — | — |
+
+### Lecturas — Dia 2 (23 jul, AM/FM)
+
+**AM / Modulacion Lineal:**
+- [[../derivaciones/modulacion-am|Derivacion Completa de AM]] — potencia, envolvente, indice de modulacion; es la base, empezar por aca
+- [[../modulacion-analogica/indice-modulacion-am|Indice de Modulacion en AM]]
+- [[../modulacion-analogica/am-vs-dsb-sc|AM-DSB-FC vs DSB-SC]] — comparacion explicita, aparece en el enunciado del dia
+- [[../modulacion-analogica/modulacion-ssb|Modulacion SSB]] — conecta directo con la Transformada de Hilbert del Dia 1
+- [[../modulacion-analogica/modulacion-vsb|Modulacion VSB]] — breve, menor peso pero parte de la misma familia
+
+**FM / Modulacion Exponencial:**
+- [[../derivaciones/modulacion-fm-carson|Derivacion de FM y Regla de Carson]] — la formula clave, $BW\approx2(\Delta f+f_m)$
+- [[../modulacion-analogica/fm-banda-angosta|FM Banda Angosta (NBFM) vs Banda Ancha (WBFM)]]
+- [[../modulacion-analogica/fm-vs-pm|FM vs PM]]
+- [[../modulacion-analogica/modulador-armstrong|Modulador Armstrong]] y [[../modulacion-analogica/modulador-fm|Moduladores y Demoduladores FM]] — moduladores indirectos con multiplicadores de frecuencia, el patron que se repite en los finales (ej. `F_Comu_2024-02-22_res.md` y `F_Comu_2025-04-24_res.md`)
+
+**Opcional / menor prioridad** (no aparecieron como ejercicio en ninguno de los 13 finales — leer solo si sobra tiempo):
+- [[../modulacion-analogica/deteccion-coherente|Deteccion Coherente]]
+- [[../modulacion-analogica/preenfasis-deenfasis|Preenfasis/Deenfasis]]
+- [[../modulacion-analogica/fm-estereo|FM Estereo]]
+- [[../modulacion-analogica/funciones-bessel|Funciones de Bessel]]
 
 ---
 
