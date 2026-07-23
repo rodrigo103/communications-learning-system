@@ -28,6 +28,12 @@ Falta definir concretamente que forma tiene $A(t)$. Ahi no hay una deduccion des
 
 $$A(t) = A_c + k_a m(t)$$
 
+> **Forma alternativa — ¿por que no definir AM multiplicando $m(t)$ y $c(t)$ directo?** Se puede, pero da otra cosa. $m(t)\cdot c(t) = \frac{A_mA_c}{2}[\cos(2\pi(f_c-f_m)t)+\cos(2\pi(f_c+f_m)t)]$ — no aparece termino en $f_c$ solo, sin portadora: eso es exactamente **DSB-SC** (ver [[../modulacion-analogica/am-vs-dsb-sc|AM-DSB-FC vs DSB-SC]]), no AM con portadora completa. [analysis]
+>
+> El problema de quedarse solo con el producto: usando el teorema pasabanda de Hilbert ($f_c\gg f_m$), la señal analitica de $s(t)=m(t)\cos(2\pi f_ct)$ es $s_a(t)=m(t)e^{j2\pi f_ct}$ (ver [[../herramientas-matematicas/transformada-hilbert|Transformada de Hilbert]]), y su envolvente es $a(t)=|s_a(t)|=|m(t)|$ — el **valor absoluto** de $m(t)$, no $m(t)$ mismo. Un detector de envolvente simple (diodo + RC) recuperaria $|m(t)|$, perdiendo el signo cada vez que $m(t)$ cruza por cero — informacion destruida, no recuperable con ese circuito.
+>
+> Multiplicar y sumar la portadora de vuelta resuelve esto, y ademas es una forma mas directa de motivar el Paso 1: $s_{AM}(t) = A_c\cos(2\pi f_ct) + k_a\,m(t)\cos(2\pi f_ct) = c(t) + k_a\,m(t)\,c(t)$ — portadora pura **mas** el producto (DSB-SC) escalado por $k_a$. Factoreando el $\cos(2\pi f_ct)$ comun se recupera exactamente $[A_c+k_am(t)]\cos(2\pi f_ct)$. Ese termino sumado ($c(t)$) es justamente lo que garantiza $A(t)\geq0$ y hace posible el detector de envolvente simple.
+
 ### Paso 2: Forma normalizada con índice de modulación
 
 $$A(t) = A_c[1 + \mu m_n(t)]$$
