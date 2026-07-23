@@ -104,6 +104,19 @@ Esto elimina la redundancia de frecuencias negativas en señales reales.
 
 ## Aplicaciones en Comunicaciones
 
+> **¿Por que al calcular $\mathcal{H}\{[1+0{,}8\cos(2\pi\cdot1000t)]\cos(2\pi\cdot10^6t)\}$ la envolvente $[1+0{,}8\cos(2\pi\cdot1000t)]$ queda intacta y solo el coseno de portadora pasa a seno?** No es una regla general de Hilbert sobre productos — $\mathcal{H}\{m(t)\cos(\omega_ct)\}\neq m(t)\mathcal{H}\{\cos(\omega_ct)\}$ en general. Es un teorema especifico, el de la **señal pasabanda/banda angosta**, valido bajo una condicion concreta. [analysis]
+>
+> **Enunciado**: si $m(t)$ tiene espectro limitado a $|f|<W$ (banda base "lenta") y $f_c>W$ (portadora mas alta que el ancho de banda de la envolvente), entonces $\mathcal{H}\{m(t)\cos(2\pi f_ct)\}=m(t)\sin(2\pi f_ct)$.
+>
+> **Por que**: $s(t)=m(t)\cos(2\pi f_ct)$ tiene espectro $S(f)=\frac12[M(f-f_c)+M(f+f_c)]$ (propiedad de modulacion de Fourier) — dos copias de $M(f)$, una centrada en $+f_c$ ocupando $(f_c-W,f_c+W)$ y otra en $-f_c$ ocupando $(-f_c-W,-f_c+W)$. Como $f_c>W$, cada isla queda **enteramente** de un solo lado de $f=0$. Dentro de la isla de arriba, $\text{sgn}(f)=+1$ en todos los puntos (constante), asi que $H(f)=-j$ multiplica uniformemente esa copia de $M(f)$ sin deformarla — idem la isla de abajo, multiplicada uniformemente por $+j$. Como $\text{sgn}(f)$ no cambia de signo *dentro* de ninguna isla, actua como constante ahi, no como algo que reordena la forma de $M(f)$. Rearmando (coincide exactamente con el par de Fourier de $m(t)\sin(2\pi f_ct)$), se llega a $\hat s(t)=m(t)\sin(2\pi f_ct)$ — la envolvente sale intacta porque nunca se toco, solo actuo sobre la portadora.
+>
+> **Chequeo en el ejemplo**: $W=1$kHz (envolvente con tono de 1000 Hz), $f_c=1$MHz — se cumple $f_c\gg W$ por seis ordenes de magnitud. Si en cambio $f_c$ fuera comparable o menor a $W$, las dos islas se solaparian cruzando $f=0$, $\text{sgn}(f)$ dejaria de ser constante dentro de cada una, y el atajo NO valdria — haria falta ir a la definicion general.
+>
+> **Es el mismo teorema que sostiene la formula de SSB** de la seccion 1 de abajo ($s_{SSB}(t)=m(t)\cos(\omega_ct)\mp\hat m(t)\sin(\omega_ct)$) — no es casualidad, es la misma propiedad de señal pasabanda aplicada.
+>
+> **Version grafica**: ![Teorema de la señal pasabanda para Hilbert](img/hilbert-bandpass-theorem.svg)
+> El fondo de cada panel muestra que multiplicador de fase aplica $H(f)$ en cada zona (azul $f>0\to-j$, rojo $f<0\to+j$). Caso valido (centro): cada isla espectral de $S(f)$ cae entera en una sola franja → recibe una fase uniforme → conserva su forma exacta. Caso invalido (derecha, $f_c<W$): cada lobulo cruza $f=0$ y queda partido entre las dos fases → ahi se rompe el atajo.
+
 ### 1. Generacion de SSB (Banda Lateral Unica)
 
 La señal SSB se genera usando la transformada de Hilbert [source — [[../../explicaciones_anki/unidad_02/carta_08_transformada_hilbert]]]:
