@@ -146,19 +146,25 @@ Mismo resultado que por Parseval, como tiene que ser — es el mismo calculo de 
 
 **Dominio del tiempo, sin dudarlo** — es mas rapido y mas robusto que pasar por Parseval/$S_{AM}(f)$, sobre todo bajo presion de 30 min. [analysis]
 
-Via Parseval hace falta escribir $S(f)$ con deltas y tener cuidado con el factor 2 entre amplitud real y altura de delta (el mismo error de factor 2 que es facil cometer, como paso en la autoevaluacion). Via tiempo hay un atajo directo que no pasa por ningun espectro: como $f_c\gg f_m$, $\cos^2(\omega_ct)$ oscila mucho mas rapido que $A(t)$ y promedia a $\tfrac12$ tratando a $A(t)$ como "casi constante" en cada ciclo de RF:
+Via Parseval hace falta escribir $S(f)$ con deltas y tener cuidado con el factor 2 entre amplitud real y altura de delta (el mismo error de factor 2 que es facil cometer, como paso en la autoevaluacion). Via tiempo hay un atajo directo que no pasa por ningun espectro, y que ademas es **exacto, no aproximado** — vale la pena mostrarlo bien: [analysis]
 
-$$P_{total} = \frac{1}{2Z}\langle A^2(t)\rangle$$
+*Paso A*: por angulo doble, $\cos^2(\omega_ct)=\frac12+\frac12\cos(2\omega_ct)$ — es "$\tfrac12$ mas un coseno de frecuencia $2f_c$ (no nula)", que promedia a cero por el mismo lema ya demostrado arriba. Entonces $\langle\cos^2(\omega_ct)\rangle=\tfrac12$ exacto, para cualquier $f_c\neq0$.
+
+*Paso B*: el problema real es el producto $A^2(t)\cos^2(\omega_ct)$, no $\cos^2(\omega_ct)$ solo, porque $A(t)$ tambien varia en el tiempo. Usando la misma identidad: $A^2(t)\cos^2(\omega_ct)=\frac12A^2(t)+\frac12A^2(t)\cos(2\omega_ct)$. El primer termino promedia a $\tfrac12\langle A^2(t)\rangle$ (lo que se busca). Falta el segundo: $A(t)$ tiene contenido de frecuencia hasta $f_m$ (viene de $m(t)$), asi que $A^2(t)$ (al cuadrado) tiene contenido hasta $2f_m$ — la misma idea de "elevar al cuadrado duplica el ancho de banda" que ya vimos en el modulador de ley cuadratica. Multiplicar por $\cos(2\omega_ct)$ traslada ese contenido a quedar centrado en $2f_c$, ocupando de $2f_c-2f_m$ a $2f_c+2f_m$. **Mientras $f_c>f_m$**, esa banda completa queda lejos de $f=0$, y el promedio temporal (que extrae el valor en $f=0$) da **cero exacto** — no una aproximacion por "$A(t)$ casi constante", es el mismo argumento de separacion espectral del teorema pasabanda de Hilbert.
+
+Entonces $\langle A^2(t)\cos^2(\omega_ct)\rangle=\tfrac12\langle A^2(t)\rangle$ exacto, y:
+
+$$P_{total} = \frac{1}{2R}\langle A^2(t)\rangle$$
 
 Con $A(t)=A_c[1+\mu\,m_n(t)]$ y $m_n(t)$ de media nula (tipico):
 
-$$\boxed{P_{total} = \frac{A_c^2}{2Z}\Big[1+\mu^2\langle m_n^2(t)\rangle\Big]}$$
+$$\boxed{P_{total} = \frac{A_c^2}{2R}\Big[1+\mu^2\langle m_n^2(t)\rangle\Big]}$$
 
-Una sola formula general. Verificacion de consistencia: para $m_n(t)=\cos(2\pi f_mt)$ (un tono), $\langle m_n^2\rangle=\tfrac12$, y da exactamente $\frac{A_c^2}{2Z}(1+\mu^2/2)$ — lo de siempre.
+Una sola formula general ($R$ = impedancia/resistencia de carga, la misma de toda la seccion de potencia). Verificacion de consistencia: para $m_n(t)=\cos(2\pi f_mt)$ (un tono), $\langle m_n^2\rangle=\tfrac12$, y da exactamente $\frac{A_c^2}{2R}(1+\mu^2/2)$ — lo de siempre, y coincide con el resultado de sumar las potencias de los tres cosenos por ortogonalidad mas arriba.
 
 **Por que esto importa mas alla de la velocidad — señales no sinusoidales.** Si la moduladora no es un tono (ej. "2 Vpp, valor medio nulo, factor de cresta 3", el tipo de dato que aparece en `exercises/finales/md/F_Comu_2024-11-14_res.md`), no tiene un espectro de lineas limpio para meter en Parseval — inviable en 30 min. Pero con la formula de arriba no hace falta: si $m_n(t)$ esta normalizada a pico 1, $\langle m_n^2\rangle=m_{n,rms}^2=1/CF^2$ (factor de cresta $CF=$ pico/RMS), entonces:
 
-$$P_{total} = \frac{A_c^2}{2Z}\left[1+\frac{\mu^2}{CF^2}\right]$$
+$$P_{total} = \frac{A_c^2}{2R}\left[1+\frac{\mu^2}{CF^2}\right]$$
 
 Sustitucion directa, sin necesidad de espectro. **Cuando si conviene frecuencia**: solo si el problema ya pide o da el espectro como paso previo (ej. "calcule $S(f)$") — ahi conviene seguir en ese dominio en vez de cambiar. Pero como metodo de arranque para calcular potencia, tiempo es mas rapido, mas general (sirve para moduladoras no sinusoidales), y tiene menos pasos donde cometer el error de factor 2.
 
