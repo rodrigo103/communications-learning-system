@@ -81,6 +81,19 @@ Variantes:
 - **SSB (BLU)**: Una sola banda lateral. Maxima eficiencia espectral analogica
 - **VSB**: Banda lateral vestigial. Compromiso usado en TV analogica
 
+> [!note]- DSB-SC es pura traslacion espectral
+> DSB-SC no modifica la forma de $m(t)$; solo la copia a $\pm f_c$:
+> $$m(t) \cdot \cos(2\pi f_c t) \xrightarrow{\mathcal{F}} \frac{1}{2}[M(f-f_c) + M(f+f_c)]$$
+>
+> Es una **fotocopia exacta** del espectro $M(f)$ original, reducida a la mitad en amplitud, ubicada en $+f_c$ y $-f_c$. Sin portadora agregada, sin deformacion.
+>
+> Esto explica la relacion entre variantes AM:
+> - **SSB**: tomar **una sola** de esas dos copias (filtrando la otra)
+> - **VSB**: tomar una copia entera + un pedacito de la otra
+> - **Receptor superheterodino**: misma idea al reves — bajar de RF a IF multiplicando por un LO
+>
+> La identidad trigonometrica $\cos A \cos B = \frac{1}{2}[\cos(A-B)+\cos(A+B)]$ es la razon matematica de que la multiplicacion por portadora produzca traslacion espectral.
+
 → [[../modulacion-analogica/am-vs-dsb-sc|AM vs DSB-SC]]
 → [[../modulacion-analogica/modulacion-ssb|Modulacion SSB]]
 → [[../modulacion-analogica/modulacion-vsb|Modulacion VSB]]
