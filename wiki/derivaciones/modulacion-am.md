@@ -56,6 +56,18 @@ $$s_{AM}(t) = A_c \cos(2\pi f_c t) + \frac{A_c \mu}{2} \cos(2\pi(f_c - f_m)t) + 
 2. **Banda lateral inferior (LSB):** frecuencia $f_c - f_m$, amplitud $\frac{A_c \mu}{2}$
 3. **Banda lateral superior (USB):** frecuencia $f_c + f_m$, amplitud $\frac{A_c \mu}{2}$
 
+### Expresion del espectro $S_{AM}(f)$
+
+Para pasar de la lista de componentes de arriba a una expresion formal $S_{AM}(f)=\mathcal{F}\{s_{AM}(t)\}$, se escribe cada coseno via Euler ($\cos\theta=\tfrac12(e^{j\theta}+e^{-j\theta})$) y se usa el par $e^{j2\pi f_0t}\leftrightarrow\delta(f-f_0)$. Partiendo de $s_{AM}(t)=A_c\cos(2\pi f_ct)+A_c\mu\cos(2\pi f_mt)\cos(2\pi f_ct)$: [analysis]
+
+$$s_{AM}(t) = \frac{A_c}{2}e^{j2\pi f_ct}+\frac{A_c}{2}e^{-j2\pi f_ct} + \frac{A_c\mu}{4}\Big[e^{j2\pi(f_c+f_m)t}+e^{j2\pi(f_c-f_m)t}+e^{-j2\pi(f_c-f_m)t}+e^{-j2\pi(f_c+f_m)t}\Big]$$
+
+(el termino del producto se expande via Euler en las dos exponenciales de $\cos(2\pi f_mt)$ multiplicando a las dos de $\cos(2\pi f_ct)$, dando 4 exponenciales — no hace falta pasar por la identidad producto-a-suma de nuevo, es el mismo resultado por otro camino). Aplicando la transformada termino a termino:
+
+$$\boxed{S_{AM}(f) = \frac{A_c}{2}\big[\delta(f-f_c)+\delta(f+f_c)\big] + \frac{A_c\mu}{4}\big[\delta(f-f_c-f_m)+\delta(f+f_c+f_m)\big] + \frac{A_c\mu}{4}\big[\delta(f-f_c+f_m)+\delta(f+f_c-f_m)\big]}$$
+
+Seis deltas en total: dos grandes en $\pm f_c$ de altura $A_c/2$ (portadora), y cuatro mas chicas en $\pm(f_c+f_m)$ y $\pm(f_c-f_m)$ de altura $A_c\mu/4$ cada una (bandas laterales). **Ojo con el factor 2**: la altura de cada delta ($A_c\mu/4$) es la *mitad* de la amplitud de banda lateral que aparece en la forma real del Paso 4 ($A_c\mu/2$) — es la misma razon por la que $\cos(2\pi f_0t)$ da dos deltas de altura $\tfrac12$ en vez de una de altura $1$ (ver [[../herramientas-matematicas/transformada-hilbert|Transformada de Hilbert]], donde se derivo el mismo par para coseno/seno): cada exponencial compleja se lleva la mitad de la amplitud real, repartida entre $+f$ y $-f$. Consistente con que $s_{AM}(t)$ es real (asi que $S_{AM}(f)$ tiene que cumplir simetria hermitica, $S_{AM}(-f)=S_{AM}^*(f)$ — acá se cumple trivialmente porque todas las alturas son reales y positivas, y estan puestas en pares simetricos $\pm f$).
+
 ## Resultados clave
 
 ### Forma compacta
