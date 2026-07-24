@@ -96,6 +96,34 @@ Esto es consistente con la definicion: las bandas laterales de $f_{m,max}$ son l
 - Potencia de cada banda lateral: $P_{SB} = \frac{A_c^2 \mu^2}{8R}$
 - Potencia total: $P_{total} = \frac{A_c^2}{2R}\left(1 + \frac{\mu^2}{2}\right)$
 
+#### Deduccion via Parseval (a partir de $S_{AM}(f)$)
+
+$s_{AM}(t)$ es una señal de potencia (periodica, energia infinita), asi que no aplica el Parseval de energia ($\int|x|^2dt=\int|X|^2df$, que daria infinito de los dos lados) — aplica la version para señales de potencia: si $x(t)=\sum_k c_k e^{j2\pi f_kt}$ es una suma de exponenciales complejas (como la que se armo arriba con Euler para llegar a $S_{AM}(f)$), la potencia media es $P=\frac{1}{R}\sum_k|c_k|^2$ — cada linea espectral aporta su propia potencia, y se suman porque son ortogonales entre si. [analysis]
+
+De $S_{AM}(f)$ ya derivado, los coeficientes $c_k$ son las alturas de las deltas: dos en $\pm f_c$ con $c=A_c/2$, y cuatro en $\pm(f_c\pm f_m)$ con $c=A_c\mu/4$. Sumando $|c_k|^2$:
+
+$$\sum_k|c_k|^2 = \underbrace{2\left(\frac{A_c}{2}\right)^2}_{\text{portadora}} + \underbrace{4\left(\frac{A_c\mu}{4}\right)^2}_{\text{bandas laterales}} = \frac{A_c^2}{2} + \frac{A_c^2\mu^2}{4}$$
+
+$$P_{total} = \frac{1}{R}\left[\frac{A_c^2}{2}+\frac{A_c^2\mu^2}{4}\right] = \frac{A_c^2}{2R}\left(1+\frac{\mu^2}{2}\right) \checkmark$$
+
+Y por separado: portadora (dos deltas en $\pm f_c$) aporta $P_c=\frac{2(A_c/2)^2}{R}=\frac{A_c^2}{2R}$ — cada banda lateral (un par de deltas, ej. $\pm(f_c+f_m)$) aporta $P_{SB}=\frac{2(A_c\mu/4)^2}{R}=\frac{A_c^2\mu^2}{8R}$. Coincide exacto con los valores de arriba.
+
+#### Deduccion en el dominio del tiempo (el otro metodo)
+
+Sin pasar por frecuencia: la potencia media se define como $P=\langle s_{AM}^2(t)\rangle/R$, con $\langle\cdot\rangle$ el promedio temporal. Partiendo de la forma expandida del Paso 4 (tres cosenos reales, uno por componente): [analysis]
+
+$$s_{AM}(t) = \underbrace{A_c\cos(\omega_1t)}_{x_1} + \underbrace{\frac{A_c\mu}{2}\cos(\omega_2t)}_{x_2} + \underbrace{\frac{A_c\mu}{2}\cos(\omega_3t)}_{x_3}, \quad \omega_1=2\pi f_c,\ \omega_2=2\pi(f_c-f_m),\ \omega_3=2\pi(f_c+f_m)$$
+
+Elevando al cuadrado: $s_{AM}^2 = x_1^2+x_2^2+x_3^2 + 2x_1x_2+2x_1x_3+2x_2x_3$. Los terminos cruzados se anulan al promediar: $\langle x_ix_j\rangle$ (con $\omega_i\neq\omega_j$) usa $\cos A\cos B=\tfrac12[\cos(A-B)+\cos(A+B)]$, y el promedio temporal de un coseno de frecuencia no nula es siempre cero (mientras $\omega_i\neq\omega_j$, ni $\omega_i-\omega_j$ ni $\omega_i+\omega_j$ son cero) — por eso los tres componentes son **ortogonales** entre si y sus potencias se suman sin terminos de interferencia. Queda:
+
+$$\langle s_{AM}^2\rangle = \langle x_1^2\rangle+\langle x_2^2\rangle+\langle x_3^2\rangle = \frac{A_c^2}{2}+\frac{(A_c\mu/2)^2}{2}+\frac{(A_c\mu/2)^2}{2} = \frac{A_c^2}{2}+\frac{A_c^2\mu^2}{4}$$
+
+usando que el valor cuadratico medio de un coseno de amplitud $A$ es $A^2/2$ (equivalente a $A_{rms}^2$, con $A_{rms}=A/\sqrt2$). Dividiendo por $R$:
+
+$$P_{total} = \frac{A_c^2}{2R}+\frac{A_c^2\mu^2}{4R} = \frac{A_c^2}{2R}\left(1+\frac{\mu^2}{2}\right) \checkmark$$
+
+Mismo resultado que por Parseval, como tiene que ser — es el mismo calculo de fondo (potencia de cada linea espectral vs. valor cuadratico medio de cada componente sinusoidal), solo que uno pasa por $S_{AM}(f)$ y el otro se queda en $s_{AM}(t)$.
+
 ### Eficiencia de potencia
 
 Solo las bandas laterales transportan información. La eficiencia es:
