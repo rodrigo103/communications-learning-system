@@ -114,7 +114,25 @@ Sin pasar por frecuencia: la potencia media se define como $P=\langle s_{AM}^2(t
 
 $$s_{AM}(t) = \underbrace{A_c\cos(\omega_1t)}_{x_1} + \underbrace{\frac{A_c\mu}{2}\cos(\omega_2t)}_{x_2} + \underbrace{\frac{A_c\mu}{2}\cos(\omega_3t)}_{x_3}, \quad \omega_1=2\pi f_c,\ \omega_2=2\pi(f_c-f_m),\ \omega_3=2\pi(f_c+f_m)$$
 
-Elevando al cuadrado: $s_{AM}^2 = x_1^2+x_2^2+x_3^2 + 2x_1x_2+2x_1x_3+2x_2x_3$. Los terminos cruzados se anulan al promediar: $\langle x_ix_j\rangle$ (con $\omega_i\neq\omega_j$) usa $\cos A\cos B=\tfrac12[\cos(A-B)+\cos(A+B)]$, y el promedio temporal de un coseno de frecuencia no nula es siempre cero (mientras $\omega_i\neq\omega_j$, ni $\omega_i-\omega_j$ ni $\omega_i+\omega_j$ son cero) — por eso los tres componentes son **ortogonales** entre si y sus potencias se suman sin terminos de interferencia. Queda:
+Elevando al cuadrado: $s_{AM}^2 = x_1^2+x_2^2+x_3^2 + 2x_1x_2+2x_1x_3+2x_2x_3$. Los terminos cruzados se anulan al promediar — el detalle de por que: [analysis]
+
+**Por que $\langle\cos(\Omega t)\rangle=0$ si $\Omega\neq0$.** Con $\langle f(t)\rangle=\lim_{T\to\infty}\frac1T\int_{-T/2}^{T/2}f(t)\,dt$ (la misma definicion de promedio temporal usada para potencia de señales periodicas):
+
+$$\langle\cos(\Omega t)\rangle = \lim_{T\to\infty}\frac{1}{T}\left[\frac{\sin(\Omega t)}{\Omega}\right]_{-T/2}^{T/2} = \lim_{T\to\infty}\frac{2\sin(\Omega T/2)}{\Omega T}$$
+
+El numerador esta acotado ($|\sin(\cdot)|\leq1$, nunca crece) mientras el denominador $\Omega T\to\infty$ — el cociente tiende a 0. Intuicion mas simple: en cada periodo completo del coseno, el lobulo positivo y el negativo tienen la misma area (por simetria) y se cancelan; promediar sobre un tiempo cada vez mas largo diluye cualquier resto de periodo incompleto hasta cero.
+
+**Por que el producto de dos cosenos de frecuencias distintas cae en ese caso.** Usando $\cos(\omega_it)\cos(\omega_jt)=\tfrac12[\cos((\omega_i-\omega_j)t)+\cos((\omega_i+\omega_j)t)]$: el producto se convierte en la suma de un coseno a la frecuencia *diferencia* y uno a la frecuencia *suma*. Si $\omega_i\neq\omega_j$, el primero ya tiene frecuencia no nula. El segundo, al ser suma de dos frecuencias positivas, **siempre** es no nulo (ni siquiera hace falta que sean distintas). Por el resultado de arriba, ambos promedian a cero, entonces $\langle\cos(\omega_it)\cos(\omega_jt)\rangle=0$.
+
+**Chequeo concreto para los tres pares de $s_{AM}(t)$** (con $\omega_1,\omega_2,\omega_3$ definidos arriba, todas positivas y distintas si $f_m\neq0$):
+
+| Par | Diferencia | Suma |
+|---|---|---|
+| $(1,2)$ | $2\pi f_m\neq0$ | $2\pi(2f_c-f_m)>0$ |
+| $(1,3)$ | $-2\pi f_m\neq0$ | $2\pi(2f_c+f_m)>0$ |
+| $(2,3)$ | $-4\pi f_m\neq0$ | $4\pi f_c>0$ |
+
+Los tres pares cumplen la condicion (ninguna diferencia ni suma es cero), asi que los tres terminos cruzados de $s_{AM}^2(t)$ promedian a cero — por eso los tres componentes son **ortogonales** entre si y sus potencias se suman sin terminos de interferencia. Queda:
 
 $$\langle s_{AM}^2\rangle = \langle x_1^2\rangle+\langle x_2^2\rangle+\langle x_3^2\rangle = \frac{A_c^2}{2}+\frac{(A_c\mu/2)^2}{2}+\frac{(A_c\mu/2)^2}{2} = \frac{A_c^2}{2}+\frac{A_c^2\mu^2}{4}$$
 
