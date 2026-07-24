@@ -142,6 +142,26 @@ $$P_{total} = \frac{A_c^2}{2R}+\frac{A_c^2\mu^2}{4R} = \frac{A_c^2}{2R}\left(1+\
 
 Mismo resultado que por Parseval, como tiene que ser — es el mismo calculo de fondo (potencia de cada linea espectral vs. valor cuadratico medio de cada componente sinusoidal), solo que uno pasa por $S_{AM}(f)$ y el otro se queda en $s_{AM}(t)$.
 
+#### ¿Cual metodo conviene usar en el examen?
+
+**Dominio del tiempo, sin dudarlo** — es mas rapido y mas robusto que pasar por Parseval/$S_{AM}(f)$, sobre todo bajo presion de 30 min. [analysis]
+
+Via Parseval hace falta escribir $S(f)$ con deltas y tener cuidado con el factor 2 entre amplitud real y altura de delta (el mismo error de factor 2 que es facil cometer, como paso en la autoevaluacion). Via tiempo hay un atajo directo que no pasa por ningun espectro: como $f_c\gg f_m$, $\cos^2(\omega_ct)$ oscila mucho mas rapido que $A(t)$ y promedia a $\tfrac12$ tratando a $A(t)$ como "casi constante" en cada ciclo de RF:
+
+$$P_{total} = \frac{1}{2Z}\langle A^2(t)\rangle$$
+
+Con $A(t)=A_c[1+\mu\,m_n(t)]$ y $m_n(t)$ de media nula (tipico):
+
+$$\boxed{P_{total} = \frac{A_c^2}{2Z}\Big[1+\mu^2\langle m_n^2(t)\rangle\Big]}$$
+
+Una sola formula general. Verificacion de consistencia: para $m_n(t)=\cos(2\pi f_mt)$ (un tono), $\langle m_n^2\rangle=\tfrac12$, y da exactamente $\frac{A_c^2}{2Z}(1+\mu^2/2)$ — lo de siempre.
+
+**Por que esto importa mas alla de la velocidad — señales no sinusoidales.** Si la moduladora no es un tono (ej. "2 Vpp, valor medio nulo, factor de cresta 3", el tipo de dato que aparece en `exercises/finales/md/F_Comu_2024-11-14_res.md`), no tiene un espectro de lineas limpio para meter en Parseval — inviable en 30 min. Pero con la formula de arriba no hace falta: si $m_n(t)$ esta normalizada a pico 1, $\langle m_n^2\rangle=m_{n,rms}^2=1/CF^2$ (factor de cresta $CF=$ pico/RMS), entonces:
+
+$$P_{total} = \frac{A_c^2}{2Z}\left[1+\frac{\mu^2}{CF^2}\right]$$
+
+Sustitucion directa, sin necesidad de espectro. **Cuando si conviene frecuencia**: solo si el problema ya pide o da el espectro como paso previo (ej. "calcule $S(f)$") — ahi conviene seguir en ese dominio en vez de cambiar. Pero como metodo de arranque para calcular potencia, tiempo es mas rapido, mas general (sirve para moduladoras no sinusoidales), y tiene menos pasos donde cometer el error de factor 2.
+
 ### Eficiencia de potencia
 
 Solo las bandas laterales transportan información. La eficiencia es:
