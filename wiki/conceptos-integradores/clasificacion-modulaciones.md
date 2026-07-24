@@ -85,6 +85,11 @@ Variantes:
 → [[../modulacion-analogica/modulacion-ssb|Modulacion SSB]]
 → [[../modulacion-analogica/modulacion-vsb|Modulacion VSB]]
 
+> [!note]- Por que $f_c - f_m$ y no $f_m - f_c$ en el espectro
+> La identidad $\cos A \cos B = \frac{1}{2}[\cos(A-B)+\cos(A+B)]$ es simetrica en $A$ y $B$. Escribir $f_m - f_c$ o $f_c - f_m$ da el mismo resultado porque $\cos$ es par: $\cos(2\pi(f_m-f_c)t) = \cos(2\pi(f_c-f_m)t)$.
+>
+> En AM se escribe $f_c - f_m$ porque **$f_c \gg f_m$** (la portadora es mucho mayor que la moduladora). Asi la banda lateral inferior cae en frecuencia positiva: $f_c - f_m > 0$. Escribir $f_m - f_c$ matematicamente es correcto pero da un numero negativo que oscurece la interpretacion fisica del espectro.
+
 ### FM — Frequency Modulation
 
 La frecuencia instantanea de la portadora varia proporcionalmente a $m(t)$:

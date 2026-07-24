@@ -21,6 +21,16 @@ donde:
 - $A_c$ = amplitud de la portadora
 - $A_{max}$, $A_{min}$ = valores extremos de la envolvente
 
+> [!note]- $k_a$ vs $\mu$: la constante del modulador
+> En los libros la AM se escribe como $s_{AM}(t) = A_c[1 + k_a m(t)]\cos(2\pi f_c t)$, donde $k_a$ es la **sensibilidad del modulador**. No es un parametro fijo: se diseña para que $\mu = k_a \cdot |\min m(t)| / A_c$ este en el rango deseado.
+>
+> En la practica se habla de $\mu$, no de $k_a$:
+> - $\mu \leq 1$: sin distorsion. AM comercial opera a $\mu \approx 0.85$–$0.95$
+> - $\mu > 1$: sobremodulacion, distorsion severa
+> - $\mu \ll 1$: señal debil, mala eficiencia de potencia
+>
+> $k_a$ = parametro interno del circuito. $\mu$ = lo que se mide en el osciloscopio.
+
 ## Señal AM y Envolvente
 
 La señal AM se expresa:
