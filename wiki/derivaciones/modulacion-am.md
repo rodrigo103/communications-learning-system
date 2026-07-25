@@ -144,6 +144,14 @@ El numerador esta acotado ($|\sin(\cdot)|\leq1$, nunca crece) mientras el denomi
 | $(1,3)$ | $-2\pi f_m\neq0$ | $2\pi(2f_c+f_m)>0$ |
 | $(2,3)$ | $-4\pi f_m\neq0$ | $4\pi f_c>0$ |
 
+> **¿Por que hace falta que sean positivas, y por que que sean distintas?** Son dos condiciones que protegen cada una un termino distinto de la identidad producto-a-suma. [analysis]
+>
+> **Distintas protege la diferencia.** Si $\omega_i=\omega_j$, la diferencia seria $\omega_i-\omega_j=0$, y $\cos(0\cdot t)=\cos(0)=1$ — una constante, no un coseno oscilante. El promedio de una constante es esa misma constante (1), no cero: ahi se rompe el argumento, dos componentes de la misma frecuencia no son ortogonales. Por eso se pide $f_m\neq0$: si $f_m=0$ (sin modulacion), $\omega_2=\omega_3=\omega_c$ y las tres frecuencias colapsan.
+>
+> **Positivas protege la suma** — con un matiz: el signo de $\Omega$ no afecta al lema en si ($\cos(\Omega t)=\cos(-\Omega t)$, el coseno es par, promedia a cero para cualquier $\Omega\neq0$ sea cual sea el signo). Lo que la positividad compra es una garantia barata sobre la *suma*: si $\omega_i,\omega_j>0$, la suma $\omega_i+\omega_j$ es automaticamente positiva, nunca puede dar cero, sin necesidad de calcularla caso por caso. Con frecuencias negativas permitidas, la suma si podria cancelarse por accidente (ej. $\omega_i=5$, $\omega_j=-5$, distintas mas la suma da cero igual) y el argumento se romperia.
+>
+> **La positividad no es gratis**: que $\omega_1,\omega_2,\omega_3$ sean todas positivas requiere $f_c>f_m$ (si no, $\omega_2=2\pi(f_c-f_m)$ seria negativa) — la misma condicion que ya se uso para el "cero exacto" de $\langle A^2(t)\cos^2(\omega_ct)\rangle$ en el Paso B mas arriba. No es coincidencia, es la condicion de banda base/pasabanda de siempre reapareciendo.
+
 Los tres pares cumplen la condicion (ninguna diferencia ni suma es cero), asi que los tres terminos cruzados de $s_{AM}^2(t)$ promedian a cero — por eso los tres componentes son **ortogonales** entre si y sus potencias se suman sin terminos de interferencia. Queda:
 
 $$\langle s_{AM}^2\rangle = \langle x_1^2\rangle+\langle x_2^2\rangle+\langle x_3^2\rangle = \frac{A_c^2}{2}+\frac{(A_c\mu/2)^2}{2}+\frac{(A_c\mu/2)^2}{2} = \frac{A_c^2}{2}+\frac{A_c^2\mu^2}{4}$$
