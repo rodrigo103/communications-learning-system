@@ -206,9 +206,21 @@ $$\boxed{\eta_{max} = \frac{1}{3} = 33.33\%}$$
 
 Esta baja eficiencia es la principal debilidad de AM [analysis]. La portadora consume el 67% de la potencia sin transportar información. Esto motivó el desarrollo de variantes como [[../modulacion-analogica/am-vs-dsb-sc|DSB-SC]] (supresión de portadora) y SSB (banda lateral única).
 
+### Potencia Pico de Envolvente (PEP)
+
+**Que es**: la potencia instantanea **maxima** que alcanza la envolvente de la señal modulada — a diferencia de $P_{total}$ (un promedio sobre todo el ciclo del mensaje), PEP es el valor en el peor instante (el pico). Importa para diseño de transmisores: el amplificador de salida tiene que soportar ese pico sin saturar, aunque en promedio maneje mucha menos potencia — es la misma logica del "headroom" en audio. [analysis]
+
+**Deduccion**: la potencia instantanea de la envolvente (promediada sobre los ciclos rapidos de portadora, ya que $\cos^2(\omega_ct)$ promedia a $\tfrac12$ mucho mas rapido de lo que varia $A(t)$ — ver [[#¿Cual metodo conviene usar en el examen?|la deduccion de arriba]]) es $p(t)=\frac{A^2(t)}{2R}$. El pico ocurre cuando la envolvente es maxima, $A_{max}=A_c(1+\mu)$ (cuando $\cos(2\pi f_mt)=1$, el pico positivo de la moduladora):
+
+$$PEP = \frac{A_{max}^2}{2R} = \frac{A_c^2(1+\mu)^2}{2R} = P_c(1+\mu)^2$$
+
+usando $P_c=A_c^2/(2R)$. Para $\mu=1$ (maxima modulacion sin sobremodular): $PEP=4P_c$, mientras $P_{total}=1{,}5P_c$ — el pico es $4/1{,}5\approx2{,}67$ veces la potencia promedio total. El transmisor tiene que estar dimensionado para ese pico, no para el promedio.
+
+**Multitono**: si la moduladora es una suma de tonos, el peor caso (worst-case PEP) ocurre cuando todos los tonos coinciden en fase simultaneamente, dando $A_{max}=A_c\left(1+\sum_i\mu_i\right)$ — aunque ese pico exacto puede ser un instante raro/momentaneo, el transmisor igual tiene que poder manejarlo sin distorsionar.
+
 ### Sobremodulación
 
-Si $\mu > 1$, ocurre **sobremodulación**: la envolvente se vuelve negativa, causando distorsión en la demodulación por detector de envolvente.
+Si $\mu > 1$, ocurre **sobremodulación**: la envolvente se vuelve negativa, causando distorsión en la demodulación por detector de envolvente. Nota: la $A_{max}=A_c(1+\mu)$ de PEP arriba es el mismo pico que aca — si $\mu>1$, el pico $A_{max}$ sigue siendo positivo y grande, el problema de la sobremodulacion esta del lado del **minimo** ($A_{min}=A_c(1-\mu)<0$), no del pico.
 
 ## Interpretación física
 
