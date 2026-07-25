@@ -156,7 +156,7 @@ Los tres pares cumplen la condicion (ninguna diferencia ni suma es cero), asi qu
 
 $$\langle s_{AM}^2\rangle = \langle x_1^2\rangle+\langle x_2^2\rangle+\langle x_3^2\rangle = \frac{A_c^2}{2}+\frac{(A_c\mu/2)^2}{2}+\frac{(A_c\mu/2)^2}{2} = \frac{A_c^2}{2}+\frac{A_c^2\mu^2}{4}$$
 
-usando que el valor cuadratico medio de un coseno de amplitud $A$ es $A^2/2$ (equivalente a $A_{rms}^2$, con $A_{rms}=A/\sqrt2$). Dividiendo por $R$:
+usando que el valor cuadratico medio de un coseno de amplitud $A$ es $A^2/2$ (equivalente a $A_{rms}^2$, con $A_{rms}=A/\sqrt2$) — y esto si vale la pena mostrarlo, no solo asumirlo: por angulo doble, $\cos^2(\omega t)=\frac{1+\cos(2\omega t)}{2}=\frac12+\frac12\cos(2\omega t)$. Promediando, $\langle\cos^2(\omega t)\rangle=\frac12+\frac12\langle\cos(2\omega t)\rangle=\frac12+0=\frac12$, usando que el promedio temporal de un coseno de frecuencia no nula es cero (demostracion completa en [[#¿Cual metodo conviene usar en el examen?|¿Cual metodo conviene usar en el examen? — Paso A]], mas abajo). Entonces $\langle(A\cos\omega t)^2\rangle=A^2\langle\cos^2(\omega t)\rangle=A^2/2$. [analysis] Dividiendo por $R$:
 
 $$P_{total} = \frac{A_c^2}{2R}+\frac{A_c^2\mu^2}{4R} = \frac{A_c^2}{2R}\left(1+\frac{\mu^2}{2}\right) \checkmark$$
 
