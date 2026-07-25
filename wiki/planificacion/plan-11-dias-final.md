@@ -79,12 +79,12 @@ Desde el dia 25/07 (Modulacion Digital) en adelante, cada ejercicio de `exercise
 
 | Dia | Fecha | Foco | Horas | Contenido clave |
 |-----|-------|------|-------|-----------------|
-| **2** | **23 jul (hoy)** | U3+U4 — Analogicas (AM/FM), en profundidad | 5-6h | **Adelantada por prioridad** (antes era dia 5/27 jul) — es el tema individual mas testeado (AM/DSB 77%, FM/PM 54%) e independiente del resto del temario, asi que va primero como gestion de riesgo. Potencia normalizada en dBW, PEP, envolvente a escala temporal, AM multitono ($P = P_c + \sum P_{SSB,i}$), DSB-SC vs AM convencional, Carson y moduladores indirectos. Ver ejercicios "Modulacion lineal" y "Modulacion exponencial" en `exercises/finales/md/`. Lecturas recomendadas abajo. |
-| **3** | 24 jul | U2+U5 — Muestreo + PCM | 5-6h | Teorema de Nyquist ($f_s \geq 2B$), muestreo, cuantificacion, PCM, companding, SQNR = $6n + 1.76$ dB. 69% de frecuencia en los finales, prioridad alta. |
+| **2** | **23 jul** | U3+U4 — Analogicas (AM/FM), en profundidad | 5-6h | **Adelantada por prioridad** (antes era dia 5/27 jul) — AM y FM estan entre los temas mas testeados, practicamente empatados (61,9% cada uno — ver "Frecuencia de Temas en los Finales") e independientes del resto del temario, asi que van primero como gestion de riesgo. Potencia normalizada en dBW, PEP, envolvente a escala temporal, AM multitono ($P = P_c + \sum P_{SSB,i}$), DSB-SC vs AM convencional, Carson y moduladores indirectos. Ver ejercicios "Modulacion lineal" y "Modulacion exponencial" en `exercises/finales/md/`. Lecturas recomendadas abajo. |
+| **3** | 24 jul | U2+U5 — Muestreo + PCM | 5-6h | Teorema de Nyquist ($f_s \geq 2B$), muestreo, cuantificacion, PCM, companding, SQNR = $6n + 1.76$ dB. **71,4% de frecuencia — el tema individual mas testeado de todos**, por encima de AM/FM. |
 | **4** | 25 jul | U6 — Modulacion Digital esencial (ASK/FSK/PSK/QAM) | 5-6h | Formulas de BW, constelaciones, $R_b = R_s \log_2 M$, pares BER ($P_e^{BPSK}=Q(\sqrt{2E_b/N_0})$, etc.). Foco en fluidez de formula, no en derivacion — es la base directa del dia siguiente. **Arranca la practica cronometrada de 30 min por ejercicio.** |
 | **5** | 26 jul | U7 — Ruido + BER integrado | 6-7h | Unico dia que sigue combinando 2 temas — justificado porque varios finales testean BER *dentro* del mismo ejercicio de Ruido (no son categorias tan separadas como TI/Espectro). $N=kTB$, $N_0$, temperatura de ruido, Friis cascada, y BER vs $E_b/N_0$ practicado junto, aprovechando que Digital quedo fresco del dia anterior. |
-| **6** | 27 jul | U9 — Teoria de la Informacion | 5-6h | **Separada de nuevo** (con el dia extra ya no hace falta fusionarla con Espectro Expandido). Entropia $H=-\sum p_i\log_2p_i$, Shannon-Hartley $C=B\log_2(1+SNR)$, limite -1.59dB, Huffman, Hamming. 69% de frecuencia. |
-| **7** | 28 jul | U10 — Espectro Expandido/OFDM | 5-6h | **Separada de nuevo.** DSSS, FHSS, CDMA conceptual, OFDM + prefijo ciclico, IFFT/FFT. $G_p=R_c/R_b$, $N=2^L-1$ — patron que se repite en 5/13 finales. 62% de frecuencia. |
+| **6** | 27 jul | U9 — Teoria de la Informacion | 5-6h | **Separada de nuevo** (con el dia extra ya no hace falta fusionarla con Espectro Expandido). Entropia $H=-\sum p_i\log_2p_i$, Shannon-Hartley $C=B\log_2(1+SNR)$, limite -1.59dB, Huffman, Hamming. 52,4% de frecuencia (dato recalculado 24/07 — ver nota abajo, ya no es 69%). |
+| **7** | 28 jul | U10 — Espectro Expandido/OFDM | 5-6h | **Separada de nuevo.** DSSS, FHSS, CDMA conceptual, OFDM + prefijo ciclico, IFFT/FFT. $G_p=R_c/R_b$, $N=2^L-1$. 57,1% de frecuencia — con el corpus completo, esto queda **por encima** de Teoria de la Informacion (Dia 6); el orden se mantiene por ahora (ver "Frecuencia de Temas en los Finales" para la nota completa). |
 | **8** | 29 jul | Repaso general + Intercomparacion (breve) + **simulacro cronometrado real** | 6-7h | Repaso de todas las formulas y del arbol de modulaciones (Intercomparacion entra aca como repaso conceptual rapido, no como bloque dedicado — ver "Lo comprimido"). Cierra con **simulacro en el formato exacto del examen**: final completo no visto antes (ej. `exercises/finales/md/F_Comu_2026-02-26_res.md`), reloj en 19:00, entregar un problema cada 30 min hasta las 21:00, orden a eleccion, solo formulario impreso como material. |
 | **30 jul** | — | **EXAMEN — 19:00hs** | — | — |
 
@@ -103,7 +103,7 @@ Desde el dia 25/07 (Modulacion Digital) en adelante, cada ejercicio de `exercise
 - [[../modulacion-analogica/fm-vs-pm|FM vs PM]]
 - [[../modulacion-analogica/modulador-armstrong|Modulador Armstrong]] y [[../modulacion-analogica/modulador-fm|Moduladores y Demoduladores FM]] — moduladores indirectos con multiplicadores de frecuencia, el patron que se repite en los finales (ej. `F_Comu_2024-02-22_res.md` y `F_Comu_2025-04-24_res.md`)
 
-**Opcional / menor prioridad** (no aparecieron como ejercicio en ninguno de los 13 finales — leer solo si sobra tiempo):
+**Opcional / menor prioridad** (no aparecieron como ejercicio en ninguno de los 42 finales unicos — leer solo si sobra tiempo):
 - [[../modulacion-analogica/deteccion-coherente|Deteccion Coherente]]
 - [[../modulacion-analogica/preenfasis-deenfasis|Preenfasis/Deenfasis]]
 - [[../modulacion-analogica/fm-estereo|FM Estereo]]
@@ -113,15 +113,15 @@ Desde el dia 25/07 (Modulacion Digital) en adelante, cada ejercicio de `exercise
 
 ## Lo comprimido (y por que no es grave)
 
-> ⚠️ **Recalculado 23/07 (v2):** con el dia extra recuperado (7 dias reales en vez de 6), se deshizo la fusion mas forzada (Teoria de la Informacion + Espectro Expandido, que no tenian sinergia real entre si). Queda un solo tema combinado — Ruido + BER — que ademas tiene justificacion propia (ver tabla). AM/FM se mantiene sin comprimir y encima se adelanto en el orden (77%/54% de frecuencia, la mas evaluada), porque 12/13 finales incluyen la regla "un punto sin desarrollo alguno implica que el examen esta desaprobado" — no se puede dejar un item en blanco.
+> ⚠️ **Recalculado 23/07 (v2):** con el dia extra recuperado (7 dias reales en vez de 6), se deshizo la fusion mas forzada (Teoria de la Informacion + Espectro Expandido, que no tenian sinergia real entre si). Queda un solo tema combinado — Ruido + BER — que ademas tiene justificacion propia (ver tabla). AM/FM se mantiene sin comprimir y encima se adelanto en el orden (entre los mas evaluados — ver "Frecuencia de Temas en los Finales"), porque la mayoria de los finales incluyen la regla "un punto sin desarrollo alguno implica que el examen esta desaprobado" — no se puede dejar un item en blanco.
 
 | Tema | Que se hizo | Justificacion |
 |------|---------------|---------------|
-| **Intercomparacion (U8)** | Recortada casi del todo — pasa a ser repaso conceptual de 20-30 min el ultimo dia, no un bloque dedicado | Revisando los titulos de ejercicio de los 13 finales, "Intercomparacion" **nunca aparece como categoria propia** — las que rotan son PCM (8), Ruido (5), Modulacion digital (4), Espectro Expandido/OFDM (6). Es el unico recorte de este plan con evidencia de "cero apariciones", no solo "poca frecuencia". |
-| Modulacion Digital (ASK/FSK/PSK/QAM) | Sin dia extra de repaso separado | Aparece como ejercicio dedicado en solo 31% de los finales, y sus formulas se vuelven a usar el dia de Ruido/BER inmediatamente despues. |
+| **Intercomparacion (U8)** | Recortada casi del todo — pasa a ser repaso conceptual de 20-30 min el ultimo dia, no un bloque dedicado | Revisando los titulos de ejercicio de los 42 finales unicos, "Intercomparacion" **nunca aparece como categoria propia** (0/42, ver "Frecuencia de Temas en los Finales"). Es el unico recorte de este plan con evidencia de "cero apariciones", no solo "poca frecuencia". |
+| Modulacion Digital (ASK/FSK/PSK/QAM) | Sin dia extra de repaso separado | Aparece como ejercicio dedicado en 40,5% de los finales (subio de 31% con el corpus completo), y sus formulas se vuelven a usar el dia de Ruido/BER inmediatamente despues. |
 | Ruido + BER | Sigue combinado en 1 dia (6-7h) | No es una compresion forzada como en la v1 del recalculo — varios finales testean BER *dentro* del mismo ejercicio de Ruido (ej. calculo de SNR seguido de BER para una modulacion dada), asi que combinarlos sigue el patron real de como se pregunta. |
 | SNR en analogicas | Casi nada | Lo preguntan, pero es derivable de las mismas formulas de ruido. |
-| Preenfasis, FM estereo | Nada explicito | Temas de menor peso. No aparecieron como ejercicio en ninguno de los 13 finales revisados. |
+| Preenfasis, FM estereo | Nada explicito | Temas de menor peso. Preenfasis/deenfasis no aparece como ejercicio en ninguno de los 42 finales; "estereo" aparece solo como dato incidental de contexto en 2 ejercicios de FM (no como categoria propia). |
 
 ---
 
@@ -159,7 +159,7 @@ Desde el dia 25/07 (Modulacion Digital) en adelante, cada ejercicio de `exercise
 - → [[../planificacion/plan-estudio-por-modulaciones|Plan por Modulaciones]] — la ruta acelerada original
 - → [[../glosario|Glosario]] — siglas y notacion rapida
 - → [[../../Mazo_Anki_Sistemas_Comunicaciones|Mazo Anki]] — 60 cartas para repasar en huecos
-- → `exercises/finales/md/` — 13 finales resueltos (2022-2026) convertidos a Markdown, enunciado + resolucion colapsable. Base empirica de este plan revisado.
+- → `exercises/finales/md/` — 48 archivos (42 finales unicos, 2019-2026) convertidos a Markdown, enunciado + resolucion colapsable. Base empirica de este plan revisado — ver "Frecuencia de Temas en los Finales" para el desglose completo.
 - → [[../herramientas-matematicas/ancho-de-banda|Ancho de Banda]] — los 5 tipos de ancho de banda (absoluto, -3dB, nulo a nulo, fraccional, equivalente de ruido) en un solo lugar
 
 ---
