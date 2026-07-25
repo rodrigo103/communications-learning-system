@@ -6,9 +6,9 @@ curso: Sistemas de Comunicaciones
 
 # Plan para el Final (30 de julio) — recalculado 23/07
 
-> **Last verified:** 2026-07-23 | **Verified by:** analysis + revision cruzada con 13 finales resueltos (2022-2026) + documento oficial de la catedra (modalidad vigente desde feb. 2022, ult. modificacion 30/07/2025) + recalculo de cronograma tras desvio real de fechas
+> **Last verified:** 2026-07-24 | **Verified by:** analysis + revision cruzada con 42 finales unicos resueltos (2019-2026, ver "Frecuencia de Temas en los Finales") + documento oficial de la catedra (modalidad vigente desde feb. 2022, ult. modificacion 30/07/2025) + recalculo de cronograma tras desvio real de fechas
 
-> ⚠️ **Recalculo de cronograma (23/07, version 2):** el plan original preveia 1 dia (19 jul) para el Dia 1 (Unidad 2: Shannon, Fourier, Parseval, Hilbert, DEP). En la practica llevo 4 dias de calendario (19, 20, 22 y la madrugada del 23 — el 21 no hubo sesion), sobre todo por la profundidad con la que se exploro la Transformada de Hilbert. Fue tiempo bien invertido en entendimiento, pero el cronograma de 11 dias quedo obsoleto. Quedan **7 dias completos** (23 al 29 de julio — el 23 todavia esta entero por delante, el Dia 1 se termino de madrugada antes del amanecer). Con ese dia extra respecto al primer recalculo, se deshizo la fusion mas forzada (Teoria de la Informacion + Espectro Expandido) y **se reordeno el plan**: AM/FM (el tema mas testeado, 77%/54%) se adelanto al primer dia de contenido nuevo en vez de quedar en el medio, como gestion de riesgo por si el cronograma se atrasa de nuevo. Ver "Lo comprimido" para el detalle.
+> ⚠️ **Recalculo de cronograma (23/07, version 2):** el plan original preveia 1 dia (19 jul) para el Dia 1 (Unidad 2: Shannon, Fourier, Parseval, Hilbert, DEP). En la practica llevo 4 dias de calendario (19, 20, 22 y la madrugada del 23 — el 21 no hubo sesion), sobre todo por la profundidad con la que se exploro la Transformada de Hilbert. Fue tiempo bien invertido en entendimiento, pero el cronograma de 11 dias quedo obsoleto. Quedan **7 dias completos** (23 al 29 de julio — el 23 todavia esta entero por delante, el Dia 1 se termino de madrugada antes del amanecer). Con ese dia extra respecto al primer recalculo, se deshizo la fusion mas forzada (Teoria de la Informacion + Espectro Expandido) y **se reordeno el plan**: AM/FM (entre los temas mas testeados — ver "Frecuencia de Temas en los Finales") se adelanto al primer dia de contenido nuevo en vez de quedar en el medio, como gestion de riesgo por si el cronograma se atrasa de nuevo. Ver "Lo comprimido" para el detalle.
 
 Estrategia de preparacion para el examen final. Foco en modulaciones digitales, con cobertura reforzada en analogicas tras revisar el patron real de exigencia en finales anteriores.
 
@@ -16,7 +16,7 @@ Estrategia de preparacion para el examen final. Foco en modulaciones digitales, 
 > - Examen **escrito**, sin instancia oral. Empieza **19:00** en sede a confirmar.
 > - **4 problemas**, uno por hoja. Cada 30 min (19:30, 20:00, 20:30, 21:00) hay que entregar un problema resuelto **a eleccion** — el orden lo elige el estudiante, pero el presupuesto total es 2 horas para los 4 (30 min promedio c/u). Se resuelve sobre la misma hoja del enunciado, con hojas adicionales si hace falta.
 > - **Material permitido: solo en soporte papel** — libros, presentaciones, tabla de formulas, apuntes propios o de terceros. **No se admite carpeta digital / notebook / tablet.** Esto ya no es una pregunta abierta: el [[../planificacion/formulario-imprimible|Formulario Imprimible]] hay que llevarlo impreso si o si.
-> - **Prohibido:** guias de problemas, y resoluciones de otros finales/parciales/recuperatorios. Los 13 finales en `exercises/finales/md/` son **solo para practicar** — no se pueden llevar al examen.
+> - **Prohibido:** guias de problemas, y resoluciones de otros finales/parciales/recuperatorios. Los 42 finales en `exercises/finales/md/` son **solo para practicar** — no se pueden llevar al examen.
 > - Se puede consultar al equipo docente durante el examen (probablemente por eso varios finales traen anexo un grafico de $Q(k)$ — no hace falta memorizar esas tablas).
 > - Aprueba con sumatoria $\geq 6/10$ sin redondeo, y minimo 25% desarrollado por problema (un problema en blanco = examen desaprobado, sin importar el resto).
 
@@ -27,11 +27,31 @@ Estrategia de preparacion para el examen final. Foco en modulaciones digitales, 
 - **Fecha examen:** 30 de julio de 2026, 19:00 hs
 - **Dias disponibles (real, recalculo v2 del 23/07):** 7 (23 jul → 29 jul, completos) — el Dia 1 (19-23 jul) ya esta completo, hoy 23/07 arranca contenido nuevo
 - **Formato:** escrito, 4 problemas, ~30 min c/u con entrega escalonada, material propio en papel permitido
-- **Estrategia:** el cuello de botella real es la *velocidad bajo presion de tiempo fijo* (30 min por problema, no negociable), no la memorizacion pura ni la busqueda de datos — el formulario impreso resuelve la busqueda, pero no resuelve la velocidad. Con 7 dias reales las sesiones siguen teniendo que ser mas rapidas y orientadas a formula+practica que en el Dia 1 — menos derivacion profunda tipo Hilbert (valiosa pero cara en tiempo), mas resolucion cronometrada. AM/FM adelantada por prioridad (77%/54% de frecuencia), Intercomparacion (U8) recortada casi del todo (ver "Lo comprimido").
+- **Estrategia:** el cuello de botella real es la *velocidad bajo presion de tiempo fijo* (30 min por problema, no negociable), no la memorizacion pura ni la busqueda de datos — el formulario impreso resuelve la busqueda, pero no resuelve la velocidad. Con 7 dias reales las sesiones siguen teniendo que ser mas rapidas y orientadas a formula+practica que en el Dia 1 — menos derivacion profunda tipo Hilbert (valiosa pero cara en tiempo), mas resolucion cronometrada. AM/FM adelantada por prioridad (61,9% de frecuencia cada una — ver "Frecuencia de Temas en los Finales"), Intercomparacion (U8) recortada casi del todo (ver "Lo comprimido").
 
 ### Metodologia de practica cronometrada
 
 Desde el dia 25/07 (Modulacion Digital) en adelante, cada ejercicio de `exercises/finales/md/` se practica con reloj: **30 minutos, sin mirar la seccion `<details>` de respuesta hasta que se cumpla el tiempo o el ejercicio este terminado.** El objetivo no es solo llegar al resultado correcto, sino llegar en el tiempo real del examen. Si un tema toma sistematicamente mas de 30 min, es señal de que hace falta mas practica ahi, no de que el limite este mal.
+
+---
+
+## Frecuencia de Temas en los Finales (evidencia)
+
+> **Recalculado 24/07** sobre el corpus completo: 48 archivos en `exercises/finales/md/`, de los cuales 6 son duplicados exactos del mismo llamado (enunciado en blanco + su resolucion, o dos resoluciones distintas del mismo examen) → **42 finales unicos** (2019-2026). El analisis original de este plan (77%/54%/69%/62%/31%, citado en varias notas de abajo) se habia hecho sobre los primeros 13 finales convertidos, antes de sumar los 35 restantes — los numeros de esta tabla son los que valen ahora.
+
+| Tema | Aparece en | Frecuencia |
+|---|---|---|
+| Modulacion por Codificacion de Pulsos (PCM/Muestreo, U2/U5) | 30/42 | **71,4%** |
+| Modulacion Lineal (AM/DSB/SSB, U3) | 26/42 | 61,9% |
+| Modulacion Exponencial (FM/PM, U4) | 26/42 | 61,9% |
+| Espectro Expandido / OFDM (U10) | 24/42 | 57,1% |
+| Ruido (U7) | 22/42 | 52,4% |
+| Teoria de la Informacion (U9) | 22/42 | 52,4% |
+| Modulacion Digital (ASK/FSK/PSK/QAM, U6) | 17/42 | 40,5% |
+| Analisis de Señales, como ejercicio propio (U2) | 1/42 | 2,4% |
+| Intercomparacion de Sistemas (U8) | 0/42 | 0% |
+
+**Que cambia respecto al plan original:** PCM pasa a ser, individualmente, el tema mas testeado — por encima de AM. AM y FM quedan practicamente empatados (61,9% cada uno, ya no 77%/54%). Teoria de la Informacion baja de 69% a 52,4% al sumar los finales nuevos, queda empatada con Ruido y **por debajo** de Espectro Expandido — el orden actual (Dia 6 = Teoria de la Informacion, Dia 7 = Espectro Expandido) ya no refleja la frecuencia real; se mantiene por ahora porque no cambia la urgencia practica (los dos temas siguen cubiertos, en algun orden, antes del simulacro), pero si se prioriza estrictamente por frecuencia convendria invertirlos. Intercomparacion sigue en 0% — el unico recorte de este plan con evidencia de "cero apariciones", no solo "poca frecuencia", se mantiene sin cambios.
 
 ---
 
