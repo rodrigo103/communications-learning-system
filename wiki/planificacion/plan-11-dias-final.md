@@ -111,6 +111,78 @@ Desde el 27/07 (Modulacion Digital + Ruido/BER, ya fusionados por el recalculo v
 - [[../modulacion-analogica/fm-estereo|FM Estereo]]
 - [[../modulacion-analogica/funciones-bessel|Funciones de Bessel]]
 
+### Lecturas — Dia 3 (26 jul, PCM/Muestreo)
+
+**Nucleo:**
+- [[../herramientas-matematicas/teorema-muestreo|Teorema de Muestreo]] — condicion de Nyquist $f_s\geq2B$, empezar por aca
+- [[../modulacion-pulsos/muestreo-ideal-natural|Muestreo Ideal y Natural]]
+- [[../modulacion-pulsos/pcm-cuantificacion|PCM: Muestreo, Cuantificacion y Codificacion]] — la nota real (usar esta, no `pcm.md` ni `cuantificacion.md`, que son paginas stub de redireccion)
+- [[../modulacion-pulsos/companding|Companding]] — Ley A / Ley $\mu$, para el calculo de SQNR con compansion
+- [[../conceptos-integradores/aportes-nyquist|Aportes de Nyquist]]
+
+**Opcional / menor prioridad:**
+- [[../modulacion-pulsos/multiplex-tdm|Multiplexacion TDM]] — aparece combinado con PAM en un par de finales (ej. `F_Comu_2022-02-24_X_res.md`), prioridad media-baja (usar esta nota, no `tdm.md`, que es stub)
+- [[../modulacion-pulsos/modulacion-delta|Modulacion Delta]] — no aparecio como ejercicio en ninguno de los 42 finales
+
+### Lecturas — Dia 4+5 (27 jul, Modulacion Digital + Ruido/BER fusionados)
+
+**Modulacion Digital:**
+- [[../modulacion-digital/ask-fsk-psk|ASK, FSK, PSK]] — formulas de BW y constelaciones basicas, empezar por aca
+- [[../modulacion-digital/modulacion-qam|Modulacion QAM]]
+- [[../modulacion-digital/constelaciones|Constelaciones]] — diagramas I/Q, aparece en varios finales
+- [[../modulacion-digital/probabilidad-error|Probabilidad de Error (BER)]] — pares $Q(\cdot)$ por tipo de modulacion
+- [[../modulacion-digital/codificacion-linea|Codificacion de Linea]] — NRZ/Manchester, aparece con frecuencia notable en los finales
+- [[../modulacion-digital/eficiencia-espectral|Eficiencia Espectral]]
+
+**Ruido:**
+- [[../ruido/fuentes-ruido|Fuentes de Ruido]]
+- [[../ruido/ruido-termico|Ruido Termico]] — $N=kTB$
+- [[../ruido/temperatura-ruido|Temperatura de Ruido]]
+- [[../ruido/factor-ruido-temperatura|Factor de Ruido y Temperatura Equivalente]]
+- [[../ruido/formula-friis|Formula de Friis para Sistemas en Cascada]] — la version corta, para fluidez de formula; si hace falta la derivacion completa ver [[../derivaciones/ecuacion-friis|Derivacion de Friis]] (opcional, mas largo)
+- [[../ruido/relacion-snr|Relacion Señal-Ruido (SNR)]]
+- [[../ruido/aclaracion-densidad-espectral-ruido|Aclaracion sobre Densidad Espectral de Ruido]]
+
+**Opcional / menor prioridad:**
+- [[../modulacion-digital/comparacion-digital-analogica|Comparacion Digital vs Analogica]]
+- [[../ruido/ruido-banda-angosta|Ruido de Banda Angosta]] y [[../ruido/ruido-blanco-banda-angosta|Ruido Blanco de Banda Angosta]] — prioridad media, no critico
+- [[../ruido/efecto-umbral|Efecto Umbral]] — no aparecio como ejercicio en ninguno de los 42 finales (relevante sobre todo para FM, ya cubierto en Dia 2)
+
+### Lecturas — Dia 6+7 (28 jul, Teoria de la Informacion + Espectro Expandido/OFDM re-fusionados)
+
+**Teoria de la Informacion:**
+- [[../teoria-informacion/entropia-fuente|Entropia de Fuente]] — $H=-\sum p_i\log_2p_i$, empezar por aca (usar esta, no `entropia.md`, que es stub)
+- [[../teoria-informacion/capacidad-canal-shannon|Capacidad de Canal y Teorema de Shannon-Hartley]]
+- [[../teoria-informacion/teorema-shannon-hartley|Teorema de Shannon-Hartley]] — nota conceptual corta, para fluidez de formula; si hace falta la derivacion completa ver [[../derivaciones/teorema-shannon-hartley|Derivacion de Shannon-Hartley]] (opcional, mas largo)
+- [[../conceptos-integradores/aportes-shannon|Aportes de Shannon]]
+
+**Opcional / menor prioridad (Huffman/Hamming no aparecieron como ejercicio en ninguno de los 42 finales):**
+- [[../teoria-informacion/codigo-compacto|Codigo Compacto (Huffman)]]
+- [[../teoria-informacion/codigos-deteccion-error|Codigos de Deteccion y Correccion de Errores (Hamming)]]
+- [[../teoria-informacion/redundancia-compresion|Redundancia y Compresion]]
+- [[../teoria-informacion/sistema-ideal-comunicaciones|Sistema Ideal de Comunicaciones]]
+
+**Espectro Expandido / OFDM:**
+- [[../espectro-expandido/dsss|DSSS]]
+- [[../espectro-expandido/fhss|FHSS]]
+- [[../espectro-expandido/cdma|CDMA]]
+- [[../espectro-expandido/ofdm|OFDM]]
+
+**Opcional / menor prioridad:**
+- [[../espectro-expandido/prefijo-ciclico|Prefijo Ciclico]] — aparece en un solo final
+- [[../espectro-expandido/correlacion-senales|Correlacion de Señales]] — no aparecio como ejercicio propio
+- [[../espectro-expandido/aplicaciones-spread-spectrum|Aplicaciones de Spread Spectrum]] — contexto, no formulas
+
+### Lecturas — Dia 8 (29 jul, Repaso + Intercomparacion + Simulacro)
+
+- [[../ruido/intercomparacion-sistemas|Intercomparacion de Sistemas]] — repaso conceptual rapido (20-30 min), no bloque dedicado (ver "Lo comprimido")
+- [[../conceptos-integradores/comparacion-global-modulaciones|Comparacion Global de Modulaciones]]
+- [[../conceptos-integradores/clasificacion-modulaciones|Clasificacion de Modulaciones]] — mapa central para repasar el arbol completo
+- [[../conceptos-integradores/compromisos-diseno|Compromisos de Diseno]] y [[../conceptos-integradores/trade-off-bw-potencia|Trade-off BW vs Potencia]]
+- [[../conceptos-integradores/eb-n0-vs-snr|$E_b/N_0$ vs SNR]] — conexion entre las metricas de Digital y de Ruido, util para el repaso integrador
+- [[../conceptos-integradores/seleccion-modulacion|Seleccion de Modulacion]]
+- [[../planificacion/formulario-imprimible|Formulario Imprimible]] — repaso final antes del simulacro; confirmar que ya esta impreso
+
 ---
 
 ## Lo comprimido (y por que no es grave)
