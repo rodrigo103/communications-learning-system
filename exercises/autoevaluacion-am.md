@@ -36,7 +36,13 @@ El ancho de banda es $2*f_{max}$ , por lo tanto el ancho de banda de la señal r
 
 5. Con $A_c=20$V, $\mu=0{,}6$, $R=50\,\Omega$: calculá $P_c$, la potencia de cada banda lateral, y $P_{total}$.
 
+$P_c$ = 4 W
+$P_{banda\ lateral}$ = 0,36 W
+$P_{total}$ = 4,72 W
+
 6. ¿Qué es la Potencia Pico de Envolvente (PEP) y cómo se relaciona con $A_c$ y $\mu$?
+
+PEP = 10,24 W
 
 7. Para DSB-SC: ¿por qué no se puede usar un detector de envolvente simple para demodularlo? ¿Qué se necesita en su lugar?
 
