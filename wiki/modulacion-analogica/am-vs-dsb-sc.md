@@ -16,13 +16,15 @@ unidad: 3
 
 Contiene portadora mas ambas bandas laterales [source — [[../../explicaciones_anki/unidad_03/carta_10_am-dsb-vs-dsbsc]]]:
 
-$$s_{AM}(t) = A_c[1 + m\cdot m(t)]\cos(2\pi f_c t)$$
+$$s_{AM}(t) = A_c[1 + m\cdot m_n(t)]\cos(2\pi f_c t)$$
 
-donde $m$ (sin argumento) es el indice de modulacion — adimensional, $m\leq1$ — y $m(t)$ (con argumento) es la moduladora, aca asumida normalizada a pico $1$. Misma notacion que la seccion "Eficiencia de Potencia" mas abajo (que ya usaba $m$), que el [[../planificacion/formulario-imprimible|Formulario Imprimible]] ($m=\frac{A_{max}-A_{min}}{A_{max}+A_{min}}$), y que [[../derivaciones/modulacion-am#Paso 2 Forma normalizada con índice de modulación|Derivacion de AM, Paso 2]] (unificado ahi tambien: $\mu\to m$, $k_a\to k$). Antes decia "$k_a\,m(t)$", que generaba dos problemas: (1) mezclaba en un solo simbolo dos magnitudes distintas — $k_a$ (sensibilidad cruda del modulador, *antes* de factorear $A_c$) y el indice ya factoreado (*despues* de factorear) — y (2) no coincidia con el resto. Ver [[../derivaciones/modulacion-am#Paso 2 Forma normalizada con índice de modulación|Derivacion de AM, Paso 1→2]] para la relacion completa entre la sensibilidad cruda ($k$, sin factorear) y el indice factoreado: si $A(t)=A_c+k\,m_{sin\,normalizar}(t)$ con pico $A_{max}$, el indice es $m=kA_{max}/A_c$. Notacion unificada entre ambos documentos (24/07): evidencia de los 42 finales unicos del corpus — $m$ aparece limpio en 4 de las 14 resoluciones completas, $\mu$ en solo 1 (y esa misma resolucion lo usa *inconsistentemente*: escribe el recordatorio general con $m$ pero despues calcula con $\mu$), y $k_a$ en ninguna. [analysis]
+donde $m$ (sin argumento) es el indice de modulacion — adimensional, $m\leq1$ — y $m_n(t)$ es la moduladora **normalizada a pico 1**, exactamente el mismo simbolo y rol que en [[../derivaciones/modulacion-am#Paso 2 Forma normalizada con índice de modulación|Derivacion de AM, Paso 2]] ($A(t)=A_c[1+m\,m_n(t)]$, con $m=\frac{kA_m}{A_c}$). Notacion de indice ya unificada entre ambos documentos (24/07, $\mu\to m$, $k_a\to k$) contra evidencia de los 42 finales unicos: $m$ aparece limpio en 4 de las 14 resoluciones completas, $\mu$ en solo 1 (usado ahi de forma inconsistente), y $k_a$ en ninguna.
+
+**Ojo con $m_n(t)$ vs $m(t)$**: este documento tambien usa el simbolo (sin subindice) $m(t)$ para la moduladora **cruda**, con su propia amplitud adentro (ej. $m(t)=A_m\cos(2\pi f_mt)$) — es la que aparece en la seccion de DSB-SC mas abajo, en "Metodos de Generacion", y en "Deteccion". Esa es la misma convencion de [[../derivaciones/modulacion-am#Señal portadora y mensaje|modulacion-am.md]] (que define $m(t)=A_m\cos(2\pi f_mt)$ arriba de todo), y coincide con como los finales reales suelen dar la moduladora — ej. `F_Comu_2023-12-14.md` la da directo como $m(t)=A_m\cos(2\pi\cdot1000t)+A_m\cos(2\pi\cdot2000t+\theta(t))$, con $A_m$ adentro. Hasta el 25/07 este documento usaba el mismo bare "$m(t)$" para ambas cosas (la cruda de DSB-SC y la normalizada de AM) — colision corregida acá: $m_n(t)$ solo aparece en el contexto de AM (donde el indice $m$ ya se factoreo aparte), $m(t)$ en todo el resto. [analysis]
 
 Expandiendo:
 
-$$s_{AM}(t) = \underbrace{A_c\cos(2\pi f_c t)}_{\text{portadora}} + \underbrace{A_c\, m\, m(t)\cos(2\pi f_c t)}_{\text{bandas laterales}}$$
+$$s_{AM}(t) = \underbrace{A_c\cos(2\pi f_c t)}_{\text{portadora}} + \underbrace{A_c\, m\, m_n(t)\cos(2\pi f_c t)}_{\text{bandas laterales}}$$
 
 ### DSB-SC (Doble Banda con Portadora Suprimida)
 
@@ -36,17 +38,17 @@ $$s_{DSB-SC}(t) = A_c m(t)\cos(2\pi f_c t)$$
 | -------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
 | Ancho de banda | $BW = 2f_m$                                                                                        | $BW = 2f_m$                                       |
 | Portadora      | Presente (gasta potencia)                                                                          | Suprimida                                         |
-| Espectro       | $S_{AM}(f) = \frac{A_c}{2}[\delta(f-f_c) + \delta(f+f_c)] + \frac{A_cm}{2}[M(f-f_c) + M(f+f_c)]$ | $S_{DSB}(f) = \frac{A_c}{2}[M(f-f_c) + M(f+f_c)]$ |
+| Espectro       | $S_{AM}(f) = \frac{A_c}{2}[\delta(f-f_c) + \delta(f+f_c)] + \frac{A_cm}{2}[M_n(f-f_c) + M_n(f+f_c)]$ | $S_{DSB}(f) = \frac{A_c}{2}[M(f-f_c) + M(f+f_c)]$ |
 
-> Nota: el termino de $S_{AM}(f)$ sale de aplicar la propiedad de modulacion de Fourier al termino de bandas laterales ya expandido arriba ($A_c\,m\,m(t)\cos(2\pi f_ct)$) — antes decia solo "+ bandas", que escondia la dependencia en el indice de modulacion y dejaba la fila asimetrica respecto al lado DSB-SC (que si estaba en forma cerrada). [analysis]
+> Nota: el termino de $S_{AM}(f)$ sale de aplicar la propiedad de modulacion de Fourier al termino de bandas laterales ya expandido arriba ($A_c\,m\,m_n(t)\cos(2\pi f_ct)$) — antes decia solo "+ bandas", que escondia la dependencia en el indice de modulacion y dejaba la fila asimetrica respecto al lado DSB-SC (que si estaba en forma cerrada). Notar que $M_n(f)$ (transformada de la moduladora **normalizada**) y $M(f)$ (transformada de la moduladora **cruda**, en la fila de DSB-SC) no son el mismo objeto — la fila de AM ya tiene el indice $m$ factoreado aparte, la de DSB-SC no factorea nada. [analysis]
 >
-> **Deduccion de $\mathcal{F}\{m(t)\cos(2\pi f_ct)\}$**: se sustituye el coseno por su forma de Euler directamente adentro de la integral de Fourier. Partiendo de la definicion:
-> $$\mathcal{F}\{m(t)\cos(2\pi f_ct)\} = \int m(t)\cos(2\pi f_ct)\,e^{-j2\pi ft}\,dt$$
+> **Deduccion de $\mathcal{F}\{m_n(t)\cos(2\pi f_ct)\}$**: se sustituye el coseno por su forma de Euler directamente adentro de la integral de Fourier. Partiendo de la definicion:
+> $$\mathcal{F}\{m_n(t)\cos(2\pi f_ct)\} = \int m_n(t)\cos(2\pi f_ct)\,e^{-j2\pi ft}\,dt$$
 > Con $\cos(2\pi f_ct)=\frac12(e^{j2\pi f_ct}+e^{-j2\pi f_ct})$:
-> $$= \frac12\int m(t)\,e^{-j2\pi(f-f_c)t}\,dt + \frac12\int m(t)\,e^{-j2\pi(f+f_c)t}\,dt$$
-> Cada integral es exactamente la definicion de $M(\cdot)$ evaluada en un argumento corrido (poner $f\mp f_c$ donde en $M(f)=\int m(t)e^{-j2\pi ft}dt$ dice "$f$"):
-> $$\mathcal{F}\{m(t)\cos(2\pi f_ct)\} = \frac12\big[M(f-f_c)+M(f+f_c)\big]$$
-> Esto es la propiedad de **Modulacion** de [[../conceptos-integradores/aportes-fourier|Aportes de Fourier]] ($x(t)e^{j2\pi f_ct}\leftrightarrow X(f-f_c)$) aplicada dos veces (una por cada exponencial de Euler) y promediada — multiplicar por una exponencial compleja corre el espectro; el coseno, al ser suma de dos exponenciales, lo corre a ambos lados ($\pm f_c$) simultaneamente. Con la constante $A_c\,m$ por linealidad se llega al termino completo de la tabla. [analysis]
+> $$= \frac12\int m_n(t)\,e^{-j2\pi(f-f_c)t}\,dt + \frac12\int m_n(t)\,e^{-j2\pi(f+f_c)t}\,dt$$
+> Cada integral es exactamente la definicion de $M_n(\cdot)$ evaluada en un argumento corrido (poner $f\mp f_c$ donde en $M_n(f)=\int m_n(t)e^{-j2\pi ft}dt$ dice "$f$"):
+> $$\mathcal{F}\{m_n(t)\cos(2\pi f_ct)\} = \frac12\big[M_n(f-f_c)+M_n(f+f_c)\big]$$
+> Esto es la propiedad de **Modulacion** de [[../conceptos-integradores/aportes-fourier|Aportes de Fourier]] ($x(t)e^{j2\pi f_ct}\leftrightarrow X(f-f_c)$) aplicada dos veces (una por cada exponencial de Euler) y promediada — multiplicar por una exponencial compleja corre el espectro; el coseno, al ser suma de dos exponenciales, lo corre a ambos lados ($\pm f_c$) simultaneamente. Con la constante $A_c\,m$ por linealidad se llega al termino completo de la tabla. La misma propiedad, aplicada a la moduladora cruda $m(t)$ en vez de $m_n(t)$, es exactamente como se llega a la fila de DSB-SC de al lado (sin el indice $m$ de por medio, porque DSB-SC no lo factorea). [analysis]
 
 ## Eficiencia de Potencia
 
