@@ -24,55 +24,55 @@ El principio fundamental de AM consiste en **variar la amplitud de la portadora*
 Falta definir concretamente que forma tiene $A(t)$. Ahi no hay una deduccion desde primeros principios — es una **eleccion de diseño**, que es justamente lo que define a la modulacion AM (a diferencia de FM, PM, u otras formas de modular). Se elige la relacion mas simple posible entre $A(t)$ y $m(t)$: afin (lineal con un offset), por dos razones concretas: [analysis]
 
 - El offset $A_c$ garantiza que **siempre haya portadora presente**, incluso cuando $m(t)=0$ — eso es lo que permite despues usar un detector de envolvente simple en el receptor (no necesita conocer la fase de la portadora, solo "seguir" la amplitud).
-- La relacion **lineal** (proporcional, via la constante $k_a$) hace que la envolvente reproduzca la forma de $m(t)$ sin distorsion, siempre que $A(t)$ no se vuelva negativa (ver "Sobremodulacion" mas abajo).
+- La relacion **lineal** (proporcional, via la constante $k$) hace que la envolvente reproduzca la forma de $m(t)$ sin distorsion, siempre que $A(t)$ no se vuelva negativa (ver "Sobremodulacion" mas abajo).
 
-$$A(t) = A_c + k_a m(t)$$
+$$A(t) = A_c + k m(t)$$
 
 > **Forma alternativa — ¿por que no definir AM multiplicando $m(t)$ y $c(t)$ directo?** Se puede, pero da otra cosa. $m(t)\cdot c(t) = \frac{A_mA_c}{2}[\cos(2\pi(f_c-f_m)t)+\cos(2\pi(f_c+f_m)t)]$ — no aparece termino en $f_c$ solo, sin portadora: eso es exactamente **DSB-SC** (ver [[../modulacion-analogica/am-vs-dsb-sc|AM-DSB-FC vs DSB-SC]]), no AM con portadora completa. [analysis]
 >
 > El problema de quedarse solo con el producto: usando el teorema pasabanda de Hilbert ($f_c\gg f_m$), la señal analitica de $s(t)=m(t)\cos(2\pi f_ct)$ es $s_a(t)=m(t)e^{j2\pi f_ct}$ (ver [[../herramientas-matematicas/transformada-hilbert|Transformada de Hilbert]]), y su envolvente es $a(t)=|s_a(t)|=|m(t)|$ — el **valor absoluto** de $m(t)$, no $m(t)$ mismo. Un detector de envolvente simple (diodo + RC) recuperaria $|m(t)|$, perdiendo el signo cada vez que $m(t)$ cruza por cero — informacion destruida, no recuperable con ese circuito.
 >
-> Multiplicar y sumar la portadora de vuelta resuelve esto, y ademas es una forma mas directa de motivar el Paso 1: $s_{AM}(t) = A_c\cos(2\pi f_ct) + k_a\,m(t)\cos(2\pi f_ct) = c(t) + k_a\,m(t)\,c(t)$ — portadora pura **mas** el producto (DSB-SC) escalado por $k_a$. Factoreando el $\cos(2\pi f_ct)$ comun se recupera exactamente $[A_c+k_am(t)]\cos(2\pi f_ct)$. Ese termino sumado ($c(t)$) es justamente lo que garantiza $A(t)\geq0$ y hace posible el detector de envolvente simple.
+> Multiplicar y sumar la portadora de vuelta resuelve esto, y ademas es una forma mas directa de motivar el Paso 1: $s_{AM}(t) = A_c\cos(2\pi f_ct) + k\,m(t)\cos(2\pi f_ct) = c(t) + k\,m(t)\,c(t)$ — portadora pura **mas** el producto (DSB-SC) escalado por $k$. Factoreando el $\cos(2\pi f_ct)$ comun se recupera exactamente $[A_c+km(t)]\cos(2\pi f_ct)$. Ese termino sumado ($c(t)$) es justamente lo que garantiza $A(t)\geq0$ y hace posible el detector de envolvente simple.
 
 ### Paso 2: Forma normalizada con índice de modulación
 
-$$A(t) = A_c[1 + \mu m_n(t)]$$
+$$A(t) = A_c[1 + m\,m_n(t)]$$
 
-donde $\mu = \frac{k_a A_m}{A_c}$ es el índice de modulación (típicamente $\mu \leq 1$ para evitar sobremodulación) [source — [[../../outputs/derivations/AM_20251115]]].
+donde $m = \frac{k A_m}{A_c}$ es el índice de modulación (típicamente $m \leq 1$ para evitar sobremodulación) [source — [[../../outputs/derivations/AM_20251115]]].
 
 ### Paso 3: Señal modulada
 
-$$s_{AM}(t) = A(t) \cdot \cos(2\pi f_c t) = A_c[1 + \mu \cos(2\pi f_m t)] \cos(2\pi f_c t)$$
+$$s_{AM}(t) = A(t) \cdot \cos(2\pi f_c t) = A_c[1 + m \cos(2\pi f_m t)] \cos(2\pi f_c t)$$
 
 ### Paso 4: Expansión con identidad trigonométrica
 
 Aplicando $\cos A \cos B = \frac{1}{2}[\cos(A-B) + \cos(A+B)]$:
 
-$$s_{AM}(t) = A_c \cos(2\pi f_c t) + \frac{A_c \mu}{2} \cos(2\pi(f_c - f_m)t) + \frac{A_c \mu}{2} \cos(2\pi(f_c + f_m)t)$$
+$$s_{AM}(t) = A_c \cos(2\pi f_c t) + \frac{A_c m}{2} \cos(2\pi(f_c - f_m)t) + \frac{A_c m}{2} \cos(2\pi(f_c + f_m)t)$$
 
 ### Componentes espectrales
 
 1. **Portadora:** frecuencia $f_c$, amplitud $A_c$
-2. **Banda lateral inferior (LSB):** frecuencia $f_c - f_m$, amplitud $\frac{A_c \mu}{2}$
-3. **Banda lateral superior (USB):** frecuencia $f_c + f_m$, amplitud $\frac{A_c \mu}{2}$
+2. **Banda lateral inferior (LSB):** frecuencia $f_c - f_m$, amplitud $\frac{A_c m}{2}$
+3. **Banda lateral superior (USB):** frecuencia $f_c + f_m$, amplitud $\frac{A_c m}{2}$
 
 ### Expresion del espectro $S_{AM}(f)$
 
-Para pasar de la lista de componentes de arriba a una expresion formal $S_{AM}(f)=\mathcal{F}\{s_{AM}(t)\}$, se escribe cada coseno via Euler ($\cos\theta=\tfrac12(e^{j\theta}+e^{-j\theta})$) y se usa el par $e^{j2\pi f_0t}\leftrightarrow\delta(f-f_0)$. Partiendo de $s_{AM}(t)=A_c\cos(2\pi f_ct)+A_c\mu\cos(2\pi f_mt)\cos(2\pi f_ct)$: [analysis]
+Para pasar de la lista de componentes de arriba a una expresion formal $S_{AM}(f)=\mathcal{F}\{s_{AM}(t)\}$, se escribe cada coseno via Euler ($\cos\theta=\tfrac12(e^{j\theta}+e^{-j\theta})$) y se usa el par $e^{j2\pi f_0t}\leftrightarrow\delta(f-f_0)$. Partiendo de $s_{AM}(t)=A_c\cos(2\pi f_ct)+A_c\,m\cos(2\pi f_mt)\cos(2\pi f_ct)$: [analysis]
 
-$$s_{AM}(t) = \frac{A_c}{2}e^{j2\pi f_ct}+\frac{A_c}{2}e^{-j2\pi f_ct} + \frac{A_c\mu}{4}\Big[e^{j2\pi(f_c+f_m)t}+e^{j2\pi(f_c-f_m)t}+e^{-j2\pi(f_c-f_m)t}+e^{-j2\pi(f_c+f_m)t}\Big]$$
+$$s_{AM}(t) = \frac{A_c}{2}e^{j2\pi f_ct}+\frac{A_c}{2}e^{-j2\pi f_ct} + \frac{A_c\,m}{4}\Big[e^{j2\pi(f_c+f_m)t}+e^{j2\pi(f_c-f_m)t}+e^{-j2\pi(f_c-f_m)t}+e^{-j2\pi(f_c+f_m)t}\Big]$$
 
 (el termino del producto se expande via Euler en las dos exponenciales de $\cos(2\pi f_mt)$ multiplicando a las dos de $\cos(2\pi f_ct)$, dando 4 exponenciales — no hace falta pasar por la identidad producto-a-suma de nuevo, es el mismo resultado por otro camino). Aplicando la transformada termino a termino:
 
-$$\boxed{S_{AM}(f) = \frac{A_c}{2}\big[\delta(f-f_c)+\delta(f+f_c)\big] + \frac{A_c\mu}{4}\big[\delta(f-f_c-f_m)+\delta(f+f_c+f_m)\big] + \frac{A_c\mu}{4}\big[\delta(f-f_c+f_m)+\delta(f+f_c-f_m)\big]}$$
+$$\boxed{S_{AM}(f) = \frac{A_c}{2}\big[\delta(f-f_c)+\delta(f+f_c)\big] + \frac{A_c\,m}{4}\big[\delta(f-f_c-f_m)+\delta(f+f_c+f_m)\big] + \frac{A_c\,m}{4}\big[\delta(f-f_c+f_m)+\delta(f+f_c-f_m)\big]}$$
 
-Seis deltas en total: dos grandes en $\pm f_c$ de altura $A_c/2$ (portadora), y cuatro mas chicas en $\pm(f_c+f_m)$ y $\pm(f_c-f_m)$ de altura $A_c\mu/4$ cada una (bandas laterales). **Ojo con el factor 2**: la altura de cada delta ($A_c\mu/4$) es la *mitad* de la amplitud de banda lateral que aparece en la forma real del Paso 4 ($A_c\mu/2$) — es la misma razon por la que $\cos(2\pi f_0t)$ da dos deltas de altura $\tfrac12$ en vez de una de altura $1$ (ver [[../herramientas-matematicas/transformada-hilbert|Transformada de Hilbert]], donde se derivo el mismo par para coseno/seno): cada exponencial compleja se lleva la mitad de la amplitud real, repartida entre $+f$ y $-f$. Consistente con que $s_{AM}(t)$ es real (asi que $S_{AM}(f)$ tiene que cumplir simetria hermitica, $S_{AM}(-f)=S_{AM}^*(f)$ — acá se cumple trivialmente porque todas las alturas son reales y positivas, y estan puestas en pares simetricos $\pm f$).
+Seis deltas en total: dos grandes en $\pm f_c$ de altura $A_c/2$ (portadora), y cuatro mas chicas en $\pm(f_c+f_m)$ y $\pm(f_c-f_m)$ de altura $A_c\,m/4$ cada una (bandas laterales). **Ojo con el factor 2**: la altura de cada delta ($A_c\,m/4$) es la *mitad* de la amplitud de banda lateral que aparece en la forma real del Paso 4 ($A_c\,m/2$) — es la misma razon por la que $\cos(2\pi f_0t)$ da dos deltas de altura $\tfrac12$ en vez de una de altura $1$ (ver [[../herramientas-matematicas/transformada-hilbert|Transformada de Hilbert]], donde se derivo el mismo par para coseno/seno): cada exponencial compleja se lleva la mitad de la amplitud real, repartida entre $+f$ y $-f$. Consistente con que $s_{AM}(t)$ es real (asi que $S_{AM}(f)$ tiene que cumplir simetria hermitica, $S_{AM}(-f)=S_{AM}^*(f)$ — acá se cumple trivialmente porque todas las alturas son reales y positivas, y estan puestas en pares simetricos $\pm f$).
 
 ## Resultados clave
 
 ### Forma compacta
 
-$$\boxed{s_{AM}(t) = A_c[1 + \mu \cos(2\pi f_m t)] \cos(2\pi f_c t)}$$
+$$\boxed{s_{AM}(t) = A_c[1 + m \cos(2\pi f_m t)] \cos(2\pi f_c t)}$$
 
 ### Ancho de banda
 
@@ -93,20 +93,20 @@ Esto es consistente con la definicion: las bandas laterales de $f_{m,max}$ son l
 ### Distribución de potencia
 
 - Potencia de portadora: $P_c = \frac{A_c^2}{2R}$
-- Potencia de cada banda lateral: $P_{SB} = \frac{A_c^2 \mu^2}{8R}$
-- Potencia total: $P_{total} = \frac{A_c^2}{2R}\left(1 + \frac{\mu^2}{2}\right)$
+- Potencia de cada banda lateral: $P_{SB} = \frac{A_c^2 m^2}{8R}$
+- Potencia total: $P_{total} = \frac{A_c^2}{2R}\left(1 + \frac{m^2}{2}\right)$
 
 #### Deduccion via Parseval (a partir de $S_{AM}(f)$)
 
 $s_{AM}(t)$ es una señal de potencia (periodica, energia infinita), asi que no aplica el Parseval de energia ($\int|x|^2dt=\int|X|^2df$, que daria infinito de los dos lados) — aplica la version para señales de potencia: si $x(t)=\sum_k c_k e^{j2\pi f_kt}$ es una suma de exponenciales complejas (como la que se armo arriba con Euler para llegar a $S_{AM}(f)$), la potencia media es $P=\frac{1}{R}\sum_k|c_k|^2$ — cada linea espectral aporta su propia potencia, y se suman porque son ortogonales entre si. [analysis]
 
-De $S_{AM}(f)$ ya derivado, los coeficientes $c_k$ son las alturas de las deltas: dos en $\pm f_c$ con $c=A_c/2$, y cuatro en $\pm(f_c\pm f_m)$ con $c=A_c\mu/4$. Sumando $|c_k|^2$:
+De $S_{AM}(f)$ ya derivado, los coeficientes $c_k$ son las alturas de las deltas: dos en $\pm f_c$ con $c=A_c/2$, y cuatro en $\pm(f_c\pm f_m)$ con $c=A_c\,m/4$. Sumando $|c_k|^2$:
 
-$$\sum_k|c_k|^2 = \underbrace{2\left(\frac{A_c}{2}\right)^2}_{\text{portadora}} + \underbrace{4\left(\frac{A_c\mu}{4}\right)^2}_{\text{bandas laterales}} = \frac{A_c^2}{2} + \frac{A_c^2\mu^2}{4}$$
+$$\sum_k|c_k|^2 = \underbrace{2\left(\frac{A_c}{2}\right)^2}_{\text{portadora}} + \underbrace{4\left(\frac{A_c\,m}{4}\right)^2}_{\text{bandas laterales}} = \frac{A_c^2}{2} + \frac{A_c^2\,m^2}{4}$$
 
-$$P_{total} = \frac{1}{R}\left[\frac{A_c^2}{2}+\frac{A_c^2\mu^2}{4}\right] = \frac{A_c^2}{2R}\left(1+\frac{\mu^2}{2}\right) \checkmark$$
+$$P_{total} = \frac{1}{R}\left[\frac{A_c^2}{2}+\frac{A_c^2\,m^2}{4}\right] = \frac{A_c^2}{2R}\left(1+\frac{m^2}{2}\right) \checkmark$$
 
-Y por separado: portadora (dos deltas en $\pm f_c$) aporta $P_c=\frac{2(A_c/2)^2}{R}=\frac{A_c^2}{2R}$ — cada banda lateral (un par de deltas, ej. $\pm(f_c+f_m)$) aporta $P_{SB}=\frac{2(A_c\mu/4)^2}{R}=\frac{A_c^2\mu^2}{8R}$. Coincide exacto con los valores de arriba.
+Y por separado: portadora (dos deltas en $\pm f_c$) aporta $P_c=\frac{2(A_c/2)^2}{R}=\frac{A_c^2}{2R}$ — cada banda lateral (un par de deltas, ej. $\pm(f_c+f_m)$) aporta $P_{SB}=\frac{2(A_c\,m/4)^2}{R}=\frac{A_c^2\,m^2}{8R}$. Coincide exacto con los valores de arriba.
 
 #### Deduccion en el dominio del tiempo (el otro metodo)
 
@@ -124,7 +124,7 @@ Sin pasar por frecuencia: la potencia media se define como $P=\langle s_{AM}^2(t
 >
 > Como se resuelve en la practica: **por cantidad de argumentos** (unario, una sola funcion, casi siempre es promedio/valor esperado; binario, dos funciones, casi siempre es producto interno sin normalizar); **por convencion del campo** (en mecanica cuantica $\langle\hat O\rangle$ nunca lleva limite, es un valor esperado sobre un estado ya normalizado; en señales de potencia se asume el limite $T\to\infty$ si no se dice lo contrario; para un periodo fijo de una señal periodica no hace falta limite porque el intervalo ya es finito y exacto); y sobre todo **por definicion explicita previa** — la unica forma realmente confiable. Ese fue el criterio usado aca: se definio $\langle f(t)\rangle$ una sola vez con el limite completo, y de ahi en mas todo el documento usa $\langle\cdot\rangle$ dando por sentada esa definicion — el simbolo no "recuerda" que tiene un limite adentro, es un atajo para lo que ya se dijo antes. Algunos textos usan $\langle\cdot\rangle_T$ (ventana finita, sin limite) versus $\langle\cdot\rangle$ o $\langle\cdot\rangle_\infty$ (el limite) para sacarse la ambiguedad de encima, aunque no es una convencion universal.
 
-$$s_{AM}(t) = \underbrace{A_c\cos(\omega_1t)}_{x_1} + \underbrace{\frac{A_c\mu}{2}\cos(\omega_2t)}_{x_2} + \underbrace{\frac{A_c\mu}{2}\cos(\omega_3t)}_{x_3}, \quad \omega_1=2\pi f_c,\ \omega_2=2\pi(f_c-f_m),\ \omega_3=2\pi(f_c+f_m)$$
+$$s_{AM}(t) = \underbrace{A_c\cos(\omega_1t)}_{x_1} + \underbrace{\frac{A_c\,m}{2}\cos(\omega_2t)}_{x_2} + \underbrace{\frac{A_c\,m}{2}\cos(\omega_3t)}_{x_3}, \quad \omega_1=2\pi f_c,\ \omega_2=2\pi(f_c-f_m),\ \omega_3=2\pi(f_c+f_m)$$
 
 Elevando al cuadrado: $s_{AM}^2 = x_1^2+x_2^2+x_3^2 + 2x_1x_2+2x_1x_3+2x_2x_3$. Los terminos cruzados se anulan al promediar — el detalle de por que: [analysis]
 
@@ -154,11 +154,11 @@ El numerador esta acotado ($|\sin(\cdot)|\leq1$, nunca crece) mientras el denomi
 
 Los tres pares cumplen la condicion (ninguna diferencia ni suma es cero), asi que los tres terminos cruzados de $s_{AM}^2(t)$ promedian a cero — por eso los tres componentes son **ortogonales** entre si y sus potencias se suman sin terminos de interferencia. Queda:
 
-$$\langle s_{AM}^2\rangle = \langle x_1^2\rangle+\langle x_2^2\rangle+\langle x_3^2\rangle = \frac{A_c^2}{2}+\frac{(A_c\mu/2)^2}{2}+\frac{(A_c\mu/2)^2}{2} = \frac{A_c^2}{2}+\frac{A_c^2\mu^2}{4}$$
+$$\langle s_{AM}^2\rangle = \langle x_1^2\rangle+\langle x_2^2\rangle+\langle x_3^2\rangle = \frac{A_c^2}{2}+\frac{(A_c\,m/2)^2}{2}+\frac{(A_c\,m/2)^2}{2} = \frac{A_c^2}{2}+\frac{A_c^2\,m^2}{4}$$
 
 usando que el valor cuadratico medio de un coseno de amplitud $A$ es $A^2/2$ (equivalente a $A_{rms}^2$, con $A_{rms}=A/\sqrt2$) — y esto si vale la pena mostrarlo, no solo asumirlo: por angulo doble, $\cos^2(\omega t)=\frac{1+\cos(2\omega t)}{2}=\frac12+\frac12\cos(2\omega t)$. Promediando, $\langle\cos^2(\omega t)\rangle=\frac12+\frac12\langle\cos(2\omega t)\rangle=\frac12+0=\frac12$, usando que el promedio temporal de un coseno de frecuencia no nula es cero (demostracion completa en [[#¿Cual metodo conviene usar en el examen?|¿Cual metodo conviene usar en el examen? — Paso A]], mas abajo). Entonces $\langle(A\cos\omega t)^2\rangle=A^2\langle\cos^2(\omega t)\rangle=A^2/2$. [analysis] Dividiendo por $R$:
 
-$$P_{total} = \frac{A_c^2}{2R}+\frac{A_c^2\mu^2}{4R} = \frac{A_c^2}{2R}\left(1+\frac{\mu^2}{2}\right) \checkmark$$
+$$P_{total} = \frac{A_c^2}{2R}+\frac{A_c^2\,m^2}{4R} = \frac{A_c^2}{2R}\left(1+\frac{m^2}{2}\right) \checkmark$$
 
 Mismo resultado que por Parseval, como tiene que ser — es el mismo calculo de fondo (potencia de cada linea espectral vs. valor cuadratico medio de cada componente sinusoidal), solo que uno pasa por $S_{AM}(f)$ y el otro se queda en $s_{AM}(t)$.
 
@@ -174,7 +174,7 @@ Via Parseval hace falta escribir $S(f)$ con deltas y tener cuidado con el factor
 
 > **¿Por que se puede aplicar el angulo doble aca, si $A(t)$ no es necesariamente un coseno?** La identidad $\cos^2\theta=\frac{1+\cos2\theta}{2}$ se aplica **solo** al factor $\cos^2(\omega_ct)$ (que si es, literalmente, un coseno al cuadrado — es la portadora, por construccion de AM) — despues se **distribuye la multiplicacion** sobre la suma resultante: $A^2(t)\cdot\left[\frac12+\frac12\cos(2\omega_ct)\right]=\frac12A^2(t)+\frac12A^2(t)\cos(2\omega_ct)$. Ese ultimo paso es pura propiedad distributiva ($x\cdot(y+z)=xy+xz$), valida sea lo que sea $A^2(t)$ — no hace falta que $A(t)$ "contenga un coseno" ni que tenga ninguna forma particular. [analysis]
 >
-> Esto es la clave de la generalidad del metodo: $A(t)=A_c[1+\mu\,m_n(t)]$ con $m_n(t)$ arbitraria (un tono, varios tonos, o una señal no sinusoidal por factor de cresta) — en ningun momento de esta manipulacion se uso que $A(t)$ fuera un coseno, solo se toco el factor $\cos^2(\omega_ct)$, que es fijo (la portadora). Recien mas adelante, al calcular $\langle A^2(t)\rangle$ en si, hace falta la forma concreta de $m_n(t)$ (tono: $\langle m_n^2\rangle=\tfrac12$; factor de cresta: $1/CF^2$). Por eso el metodo sirve para moduladoras arbitrarias — nunca se apoyo en que $A(t)$ tuviera estructura sinusoidal.
+> Esto es la clave de la generalidad del metodo: $A(t)=A_c[1+m\,m_n(t)]$ con $m_n(t)$ arbitraria (un tono, varios tonos, o una señal no sinusoidal por factor de cresta) — en ningun momento de esta manipulacion se uso que $A(t)$ fuera un coseno, solo se toco el factor $\cos^2(\omega_ct)$, que es fijo (la portadora). Recien mas adelante, al calcular $\langle A^2(t)\rangle$ en si, hace falta la forma concreta de $m_n(t)$ (tono: $\langle m_n^2\rangle=\tfrac12$; factor de cresta: $1/CF^2$). Por eso el metodo sirve para moduladoras arbitrarias — nunca se apoyo en que $A(t)$ tuviera estructura sinusoidal.
 
 El primer termino promedia a $\tfrac12\langle A^2(t)\rangle$ (lo que se busca). Falta el segundo: $A(t)$ tiene contenido de frecuencia hasta $f_m$ (viene de $m(t)$), asi que $A^2(t)$ (al cuadrado) tiene contenido hasta $2f_m$ — porque multiplicar en tiempo equivale a convolucionar en frecuencia ($x(t)^2\leftrightarrow X(f)*X(f)$), y convolucionar dos soportes $[-W,W]$ da soporte $[-2W,2W]$: elevar al cuadrado siempre duplica el ancho de banda. Es la misma regla que se usa mas abajo en [[#Generacion practica|Generación práctica]] para explicar donde caen $m^2(t)$ y $c^2(t)$ en el modulador de ley cuadratica. Multiplicar por $\cos(2\omega_ct)$ traslada ese contenido a quedar centrado en $2f_c$, ocupando de $2f_c-2f_m$ a $2f_c+2f_m$. **Mientras $f_c>f_m$**, esa banda completa queda lejos de $f=0$, y el promedio temporal (que extrae el valor en $f=0$) da **cero exacto** — no una aproximacion por "$A(t)$ casi constante", es el mismo argumento de separacion espectral del teorema pasabanda de Hilbert. ^u9s3nm
 
@@ -182,15 +182,15 @@ Entonces $\langle A^2(t)\cos^2(\omega_ct)\rangle=\tfrac12\langle A^2(t)\rangle$ 
 
 $$P_{total} = \frac{1}{2R}\langle A^2(t)\rangle$$
 
-Con $A(t)=A_c[1+\mu\,m_n(t)]$ y $m_n(t)$ de media nula (tipico):
+Con $A(t)=A_c[1+m\,m_n(t)]$ y $m_n(t)$ de media nula (tipico):
 
-$$\boxed{P_{total} = \frac{A_c^2}{2R}\Big[1+\mu^2\langle m_n^2(t)\rangle\Big]}$$
+$$\boxed{P_{total} = \frac{A_c^2}{2R}\Big[1+m^2\langle m_n^2(t)\rangle\Big]}$$
 
-Una sola formula general ($R$ = impedancia/resistencia de carga, la misma de toda la seccion de potencia). Verificacion de consistencia: para $m_n(t)=\cos(2\pi f_mt)$ (un tono), $\langle m_n^2\rangle=\tfrac12$, y da exactamente $\frac{A_c^2}{2R}(1+\mu^2/2)$ — lo de siempre, y coincide con el resultado de sumar las potencias de los tres cosenos por ortogonalidad mas arriba.
+Una sola formula general ($R$ = impedancia/resistencia de carga, la misma de toda la seccion de potencia). Verificacion de consistencia: para $m_n(t)=\cos(2\pi f_mt)$ (un tono), $\langle m_n^2\rangle=\tfrac12$, y da exactamente $\frac{A_c^2}{2R}(1+m^2/2)$ — lo de siempre, y coincide con el resultado de sumar las potencias de los tres cosenos por ortogonalidad mas arriba.
 
 **Por que esto importa mas alla de la velocidad — señales no sinusoidales.** Si la moduladora no es un tono (ej. "2 Vpp, valor medio nulo, factor de cresta 3", el tipo de dato que aparece en `exercises/finales/md/F_Comu_2024-11-14_res.md`), no tiene un espectro de lineas limpio para meter en Parseval — inviable en 30 min. Pero con la formula de arriba no hace falta: si $m_n(t)$ esta normalizada a pico 1, $\langle m_n^2\rangle=m_{n,rms}^2=1/CF^2$ (factor de cresta $CF=$ pico/RMS), entonces:
 
-$$P_{total} = \frac{A_c^2}{2R}\left[1+\frac{\mu^2}{CF^2}\right]$$
+$$P_{total} = \frac{A_c^2}{2R}\left[1+\frac{m^2}{CF^2}\right]$$
 
 Sustitucion directa, sin necesidad de espectro. **Cuando si conviene frecuencia**: solo si el problema ya pide o da el espectro como paso previo (ej. "calcule $S(f)$") — ahi conviene seguir en ese dominio en vez de cambiar. Pero como metodo de arranque para calcular potencia, tiempo es mas rapido, mas general (sirve para moduladoras no sinusoidales), y tiene menos pasos donde cometer el error de factor 2.
 
@@ -198,9 +198,9 @@ Sustitucion directa, sin necesidad de espectro. **Cuando si conviene frecuencia*
 
 Solo las bandas laterales transportan información. La eficiencia es:
 
-$$\eta = \frac{P_{sidebands}}{P_{total}} = \frac{\mu^2}{2 + \mu^2}$$
+$$\eta = \frac{P_{sidebands}}{P_{total}} = \frac{m^2}{2 + m^2}$$
 
-Eficiencia máxima con $\mu = 1$:
+Eficiencia máxima con $m = 1$:
 
 $$\boxed{\eta_{max} = \frac{1}{3} = 33.33\%}$$
 
@@ -210,21 +210,21 @@ Esta baja eficiencia es la principal debilidad de AM [analysis]. La portadora co
 
 **Que es**: la potencia instantanea **maxima** que alcanza la envolvente de la señal modulada — a diferencia de $P_{total}$ (un promedio sobre todo el ciclo del mensaje), PEP es el valor en el peor instante (el pico). Importa para diseño de transmisores: el amplificador de salida tiene que soportar ese pico sin saturar, aunque en promedio maneje mucha menos potencia — es la misma logica del "headroom" en audio. [analysis]
 
-**Deduccion**: la potencia instantanea de la envolvente (promediada sobre los ciclos rapidos de portadora, ya que $\cos^2(\omega_ct)$ promedia a $\tfrac12$ mucho mas rapido de lo que varia $A(t)$ — ver [[#¿Cual metodo conviene usar en el examen?|la deduccion de arriba]]) es $p(t)=\frac{A^2(t)}{2R}$. El pico ocurre cuando la envolvente es maxima, $A_{max}=A_c(1+\mu)$ (cuando $\cos(2\pi f_mt)=1$, el pico positivo de la moduladora):
+**Deduccion**: la potencia instantanea de la envolvente (promediada sobre los ciclos rapidos de portadora, ya que $\cos^2(\omega_ct)$ promedia a $\tfrac12$ mucho mas rapido de lo que varia $A(t)$ — ver [[#¿Cual metodo conviene usar en el examen?|la deduccion de arriba]]) es $p(t)=\frac{A^2(t)}{2R}$. El pico ocurre cuando la envolvente es maxima, $A_{max}=A_c(1+m)$ (cuando $\cos(2\pi f_mt)=1$, el pico positivo de la moduladora):
 
-$$PEP = \frac{A_{max}^2}{2R} = \frac{A_c^2(1+\mu)^2}{2R} = P_c(1+\mu)^2$$
+$$PEP = \frac{A_{max}^2}{2R} = \frac{A_c^2(1+m)^2}{2R} = P_c(1+m)^2$$
 
-usando $P_c=A_c^2/(2R)$. Para $\mu=1$ (maxima modulacion sin sobremodular): $PEP=4P_c$, mientras $P_{total}=1{,}5P_c$ — el pico es $4/1{,}5\approx2{,}67$ veces la potencia promedio total. El transmisor tiene que estar dimensionado para ese pico, no para el promedio.
+usando $P_c=A_c^2/(2R)$. Para $m=1$ (maxima modulacion sin sobremodular): $PEP=4P_c$, mientras $P_{total}=1{,}5P_c$ — el pico es $4/1{,}5\approx2{,}67$ veces la potencia promedio total. El transmisor tiene que estar dimensionado para ese pico, no para el promedio.
 
-**Multitono**: si la moduladora es una suma de tonos, el peor caso (worst-case PEP) ocurre cuando todos los tonos coinciden en fase simultaneamente, dando $A_{max}=A_c\left(1+\sum_i\mu_i\right)$ — aunque ese pico exacto puede ser un instante raro/momentaneo, el transmisor igual tiene que poder manejarlo sin distorsionar.
+**Multitono**: si la moduladora es una suma de tonos, el peor caso (worst-case PEP) ocurre cuando todos los tonos coinciden en fase simultaneamente, dando $A_{max}=A_c\left(1+\sum_im_i\right)$ — aunque ese pico exacto puede ser un instante raro/momentaneo, el transmisor igual tiene que poder manejarlo sin distorsionar.
 
 ### Sobremodulación
 
-Si $\mu > 1$, ocurre **sobremodulación**: la envolvente se vuelve negativa, causando distorsión en la demodulación por detector de envolvente. Nota: la $A_{max}=A_c(1+\mu)$ de PEP arriba es el mismo pico que aca — si $\mu>1$, el pico $A_{max}$ sigue siendo positivo y grande, el problema de la sobremodulacion esta del lado del **minimo** ($A_{min}=A_c(1-\mu)<0$), no del pico.
+Si $m > 1$, ocurre **sobremodulación**: la envolvente se vuelve negativa, causando distorsión en la demodulación por detector de envolvente. Nota: la $A_{max}=A_c(1+m)$ de PEP arriba es el mismo pico que aca — si $m>1$, el pico $A_{max}$ sigue siendo positivo y grande, el problema de la sobremodulacion esta del lado del **minimo** ($A_{min}=A_c(1-m)<0$), no del pico.
 
 ## Interpretación física
 
-- **Dominio del tiempo:** La envolvente sigue la forma $A_c[1 + \mu m_n(t)]$ modulada a frecuencia $f_c$
+- **Dominio del tiempo:** La envolvente sigue la forma $A_c[1 + m\,m_n(t)]$ modulada a frecuencia $f_c$
 - **Dominio de la frecuencia:** El espectro en banda base se traslada a $\pm f_c$, creando portadora + dos bandas laterales
 
 ## Generacion practica
@@ -235,9 +235,9 @@ $$v_{out} = \underbrace{a_1m(t)}_{\text{banda base}} + \underbrace{a_1c(t)}_{f_c
 
 Los terminos al cuadrado ($m^2(t)$, $c^2(t)$) caen donde caen por la regla general "elevar al cuadrado duplica el ancho de banda" (ver [[#^u9s3nm|derivacion completa en la seccion de potencia]] mas arriba): multiplicar en tiempo convoluciona en frecuencia, y convolucionar dos soportes $[-W,W]$ da $[-2W,2W]$. $m(t)$ esta limitado a $f_m$ → $m^2(t)$ llega a $2f_m$ (sigue en banda base, mas ancho). $c(t)$ es un tono puro (deltas en $\pm f_c$) → autoconvolucionar deltas da $\delta(f-f_c)*\delta(f-f_c)=\delta(f-2f_c)$, entonces $c^2(t)$ cae en DC y $2f_c$, no en $f_c$.
 
-Cinco terminos en tres zonas de frecuencia distintas. Un **filtro pasabanda centrado en $f_c$ con ancho $2f_m$** (exactamente el $BW_{AM}$ derivado arriba) deja pasar solo $a_1c(t)+2a_2m(t)c(t)$ — portadora mas producto, que es precisamente $A_c'[1+\mu\cos(2\pi f_mt)]\cos(2\pi f_ct)$ con $A_c'=a_1A_c$ y $\mu=2a_2A_m/a_1$.
+Cinco terminos en tres zonas de frecuencia distintas. Un **filtro pasabanda centrado en $f_c$ con ancho $2f_m$** (exactamente el $BW_{AM}$ derivado arriba) deja pasar solo $a_1c(t)+2a_2m(t)c(t)$ — portadora mas producto, que es precisamente $A_c'[1+m\cos(2\pi f_mt)]\cos(2\pi f_ct)$ con $A_c'=a_1A_c$ y $m=2a_2A_m/a_1$.
 
-**Modulacion de alto nivel** (transmisores de mayor potencia, broadcast clasico): en vez de un diodo de bajo nivel, se varia directamente la tension de alimentacion de la etapa final de RF (la que amplifica la portadora) con $m(t)$ amplificado a alta potencia — mismo principio $A(t)=A_c+k_am(t)$, implementado modulando la fuente de la etapa de salida en vez de un dispositivo de bajo nivel seguido de amplificacion lineal.
+**Modulacion de alto nivel** (transmisores de mayor potencia, broadcast clasico): en vez de un diodo de bajo nivel, se varia directamente la tension de alimentacion de la etapa final de RF (la que amplifica la portadora) con $m(t)$ amplificado a alta potencia — mismo principio $A(t)=A_c+km(t)$, implementado modulando la fuente de la etapa de salida en vez de un dispositivo de bajo nivel seguido de amplificacion lineal.
 
 Ver [[../modulacion-analogica/am-vs-dsb-sc|AM-DSB-FC vs DSB-SC]] para como se genera DSB-SC (no es el mismo metodo — necesita cancelacion balanceada, no alcanza con filtrar).
 
