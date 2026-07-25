@@ -73,6 +73,17 @@ El $2\pi$ de la version en $\omega$ se cancela exacto contra el $\frac{1}{2\pi}$
 
 **Recomendacion para el final: usar $f$, no $\omega$.** Motivos concretos: (1) es lo que usa el 100% del material real de este curso, nunca aparece $\omega$ con la convencion asimetrica; (2) con $f$ los pares de exponenciales/deltas salen "limpios", sin $2\pi$ sueltos que rastrear bajo presion de tiempo; (3) Parseval queda sin factores extra ($\int|x|^2dt=\int|X|^2df$), coincidiendo con lo derivado via Fubini en [[../herramientas-matematicas/teorema-parseval|Teorema de Parseval]]; (4) todo en el curso se mide en Hz, no en rad/s. Si aparece una tabla en $\omega$, el puente seguro es recordar la equivalencia de arriba en vez de mezclar las dos convenciones a mitad de una cuenta.
 
+### ¿Cuando conviene usar $\omega$ en cambio?
+
+No siempre gana $f$ — hay casos concretos donde $\omega$ es mas conveniente, y de hecho se uso $\omega$ como herramienta intermedia en varias derivaciones de esta misma wiki. [analysis]
+
+1. **Impedancias y circuitos**: $Z_L=j\omega L$, $Z_C=\frac{1}{j\omega C}$ — asi se memorizan siempre, no como $j2\pi fL$. Cualquier derivada temporal se convierte limpio en $j\omega$ ($\frac{d}{dt}\leftrightarrow j\omega$), sin arrastrar un $2\pi$ en cada termino. Filtros, circuitos resonantes: $\omega$ es lo natural.
+2. **Transformada de Laplace / dominio $s$**: $s=\sigma+j\omega$, Fourier es el caso particular $s=j\omega$. Diagramas de Bode, polos y ceros, $H(j\omega)$: viven en $\omega$.
+3. **Compacidad algebraica en medio de una derivacion larga**: en [[../derivaciones/modulacion-am|Derivacion de Modulacion AM]] (seccion "Deduccion en el dominio del tiempo"), se define $\omega_1=2\pi f_c$, $\omega_2=2\pi(f_c-f_m)$, $\omega_3=2\pi(f_c+f_m)$ especificamente para escribir $\cos(\omega_1t)$ en vez de $\cos(2\pi f_1t)$ repetido en cada paso de la demostracion de ortogonalidad — mas compacto, aunque el resultado final ($BW=2f_m$, potencias) se reporta en $f$.
+4. **Frecuencia instantanea sin factor de conversion**: $f_i(t)=\frac{1}{2\pi}\frac{d\phi(t)}{dt}$ (ver [[../herramientas-matematicas/transformada-hilbert|Transformada de Hilbert]]) — el $\frac{1}{2\pi}$ existe solo porque se quiere el resultado en Hz. La **frecuencia angular instantanea** $\omega_i(t):=\frac{d\phi(t)}{dt}$ no lleva factor de conversion — es la derivada de la fase, sin mas.
+
+**La regla practica**: usar $\omega$ como herramienta algebraica intermedia (para no ensuciar una derivacion larga con $2\pi$ repetidos, o cuando aparecen derivadas/impedancias) esta perfecto. Pero el resultado final que se reporta (anchos de banda, frecuencias, en un final de esta materia) siempre va en $f$/Hz, porque es lo que se pide y lo que usa todo el material del curso.
+
 ## De Fourier a la Ingenieria Moderna
 
 Sin la transformada de Fourier no existirian: [analysis]
