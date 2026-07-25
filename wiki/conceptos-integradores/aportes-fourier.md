@@ -39,15 +39,39 @@ Esto es esencial para entender: señales de reloj digital, trenes de pulsos en P
 
 ## Propiedades Fundamentales
 
-| Propiedad       | Tiempo                 | Frecuencia      |        |           |     |        |
-| --------------- | ---------------------- | --------------- | ------ | --------- | --- | ------ |
-| **Linealidad**  | $a x_1 + b x_2$        | $a X_1 + b X_2$ |        |           |     |        |
-| **Convolucion** | $x_1 * x_2$            | $X_1 \cdot X_2$ |        |           |     |        |
-| **Modulacion**  | $x(t) e^{j2\pi f_c t}$ | $X(f - f_c)$    |        |           |     |        |
-| **Escalado**    | $x(at)$                | $\frac{1}{      | a      | } X(f/a)$ |     |        |
-| **Parseval**    | $\int                  | x               | ^2 dt$ | $\int     | X   | ^2 df$ |
+| Propiedad       | Tiempo                 | Frecuencia                        |
+| --------------- | ---------------------- | ---------------------------------- |
+| **Linealidad**  | $a x_1 + b x_2$        | $a X_1 + b X_2$                    |
+| **Convolucion** | $x_1 * x_2$            | $X_1 \cdot X_2$                    |
+| **Modulacion**  | $x(t) e^{j2\pi f_c t}$ | $X(f - f_c)$                       |
+| **Escalado**    | $x(at)$                | $\frac{1}{\lvert a\rvert} X(f/a)$  |
+| **Parseval**    | $\int \lvert x\rvert^2 dt$ | $\int \lvert X\rvert^2 df$     |
 
 La propiedad de **modulacion** (traslacion en frecuencia) es la que hace posible toda modulacion analogica y digital: multiplicar por una portadora desplaza el espectro de la señal a la frecuencia deseada. [analysis]
+
+## Convencion $f$ vs $\omega$ — por que este curso usa $f$
+
+Hay dos convenciones para escribir la Transformada de Fourier, y difieren en donde meten el $2\pi$. Vale la pena distinguirlas porque tablas/libros distintos pueden mostrar resultados que a primera vista parecen no coincidir. [analysis]
+
+**Convencion en $f$ (la que usa toda esta materia — formulario, finales, todo lo derivado en la wiki):**
+
+$$X(f) = \int x(t)e^{-j2\pi ft}\,dt, \qquad x(t) = \int X(f)e^{j2\pi ft}\,df$$
+
+El $2\pi$ esta metido *adentro* del exponente, simetrico en ambas direcciones, sin factor extra afuera. Calculando $\mathcal F\{e^{j2\pi f_0t}\}$: $X(f)=\int e^{-j2\pi(f-f_0)t}dt=\delta(f-f_0)$ — sin $2\pi$ sobrante.
+
+**Convencion en $\omega$ (comun en muchos libros/tablas, ej. Oppenheim):**
+
+$$X(\omega) = \int x(t)e^{-j\omega t}\,dt, \qquad x(t) = \frac{1}{2\pi}\int X(\omega)e^{j\omega t}\,d\omega$$
+
+El exponente no lleva $2\pi$ adentro, asi que el $\frac{1}{2\pi}$ aparece afuera, en la inversa, para compensar. Calculando $\mathcal F\{e^{j\omega_0t}\}$: $X(\omega)=\int e^{-j(\omega-\omega_0)t}dt=2\pi\delta(\omega-\omega_0)$ — de ahi sale el $2\pi$ que aparece en tablas escritas en $\omega$.
+
+**Por que son exactamente lo mismo, no dos resultados distintos**: usando la propiedad de escala de la delta, $\delta(ax)=\frac{1}{|a|}\delta(x)$, con $\omega-\omega_0=2\pi(f-f_0)$:
+
+$$2\pi\delta(\omega-\omega_0) = 2\pi\cdot\delta\big(2\pi(f-f_0)\big) = 2\pi\cdot\frac{1}{2\pi}\delta(f-f_0) = \delta(f-f_0)$$
+
+El $2\pi$ de la version en $\omega$ se cancela exacto contra el $\frac{1}{2\pi}$ que sale de la propiedad de escala al cambiar de variable — son el mismo objeto matematico.
+
+**Recomendacion para el final: usar $f$, no $\omega$.** Motivos concretos: (1) es lo que usa el 100% del material real de este curso, nunca aparece $\omega$ con la convencion asimetrica; (2) con $f$ los pares de exponenciales/deltas salen "limpios", sin $2\pi$ sueltos que rastrear bajo presion de tiempo; (3) Parseval queda sin factores extra ($\int|x|^2dt=\int|X|^2df$), coincidiendo con lo derivado via Fubini en [[../herramientas-matematicas/teorema-parseval|Teorema de Parseval]]; (4) todo en el curso se mide en Hz, no en rad/s. Si aparece una tabla en $\omega$, el puente seguro es recordar la equivalencia de arriba en vez de mezclar las dos convenciones a mitad de una cuenta.
 
 ## De Fourier a la Ingenieria Moderna
 
