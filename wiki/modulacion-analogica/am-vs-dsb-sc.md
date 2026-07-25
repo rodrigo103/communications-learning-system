@@ -16,11 +16,13 @@ unidad: 3
 
 Contiene portadora mas ambas bandas laterales [source — [[../../explicaciones_anki/unidad_03/carta_10_am-dsb-vs-dsbsc]]]:
 
-$$s_{AM}(t) = A_c[1 + k_a m(t)]\cos(2\pi f_c t)$$
+$$s_{AM}(t) = A_c[1 + m\cdot m(t)]\cos(2\pi f_c t)$$
+
+donde $m$ (sin argumento) es el indice de modulacion — adimensional, $m\leq1$ — y $m(t)$ (con argumento) es la moduladora, aca asumida normalizada a pico $1$. Misma notacion que la seccion "Eficiencia de Potencia" mas abajo (que ya usaba $m$), que el [[../planificacion/formulario-imprimible|Formulario Imprimible]] ($m=\frac{A_{max}-A_{min}}{A_{max}+A_{min}}$), y que [[../derivaciones/modulacion-am#Paso 2 Forma normalizada con índice de modulación|Derivacion de AM, Paso 2]] (unificado ahi tambien: $\mu\to m$, $k_a\to k$). Antes decia "$k_a\,m(t)$", que generaba dos problemas: (1) mezclaba en un solo simbolo dos magnitudes distintas — $k_a$ (sensibilidad cruda del modulador, *antes* de factorear $A_c$) y el indice ya factoreado (*despues* de factorear) — y (2) no coincidia con el resto. Ver [[../derivaciones/modulacion-am#Paso 2 Forma normalizada con índice de modulación|Derivacion de AM, Paso 1→2]] para la relacion completa entre la sensibilidad cruda ($k$, sin factorear) y el indice factoreado: si $A(t)=A_c+k\,m_{sin\,normalizar}(t)$ con pico $A_{max}$, el indice es $m=kA_{max}/A_c$. Notacion unificada entre ambos documentos (24/07): evidencia de los 42 finales unicos del corpus — $m$ aparece limpio en 4 de las 14 resoluciones completas, $\mu$ en solo 1 (y esa misma resolucion lo usa *inconsistentemente*: escribe el recordatorio general con $m$ pero despues calcula con $\mu$), y $k_a$ en ninguna. [analysis]
 
 Expandiendo:
 
-$$s_{AM}(t) = \underbrace{A_c\cos(2\pi f_c t)}_{\text{portadora}} + \underbrace{A_c k_a m(t)\cos(2\pi f_c t)}_{\text{bandas laterales}}$$
+$$s_{AM}(t) = \underbrace{A_c\cos(2\pi f_c t)}_{\text{portadora}} + \underbrace{A_c\, m\, m(t)\cos(2\pi f_c t)}_{\text{bandas laterales}}$$
 
 ### DSB-SC (Doble Banda con Portadora Suprimida)
 
@@ -30,11 +32,21 @@ $$s_{DSB-SC}(t) = A_c m(t)\cos(2\pi f_c t)$$
 
 ## Comparacion Espectral
 
-| Propiedad | AM-DSB-FC | DSB-SC |
-|-----------|-----------|---------|
-| Ancho de banda | $BW = 2f_m$ | $BW = 2f_m$ |
-| Portadora | Presente (gasta potencia) | Suprimida |
-| Espectro | $S_{AM}(f) = \frac{A_c}{2}[\delta(f-f_c) + \delta(f+f_c)] + \text{bandas}$ | $S_{DSB}(f) = \frac{A_c}{2}[M(f-f_c) + M(f+f_c)]$ |
+| Propiedad      | AM-DSB-FC                                                                                          | DSB-SC                                            |
+| -------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| Ancho de banda | $BW = 2f_m$                                                                                        | $BW = 2f_m$                                       |
+| Portadora      | Presente (gasta potencia)                                                                          | Suprimida                                         |
+| Espectro       | $S_{AM}(f) = \frac{A_c}{2}[\delta(f-f_c) + \delta(f+f_c)] + \frac{A_cm}{2}[M(f-f_c) + M(f+f_c)]$ | $S_{DSB}(f) = \frac{A_c}{2}[M(f-f_c) + M(f+f_c)]$ |
+
+> Nota: el termino de $S_{AM}(f)$ sale de aplicar la propiedad de modulacion de Fourier al termino de bandas laterales ya expandido arriba ($A_c\,m\,m(t)\cos(2\pi f_ct)$) — antes decia solo "+ bandas", que escondia la dependencia en el indice de modulacion y dejaba la fila asimetrica respecto al lado DSB-SC (que si estaba en forma cerrada). [analysis]
+>
+> **Deduccion de $\mathcal{F}\{m(t)\cos(2\pi f_ct)\}$**: se sustituye el coseno por su forma de Euler directamente adentro de la integral de Fourier. Partiendo de la definicion:
+> $$\mathcal{F}\{m(t)\cos(2\pi f_ct)\} = \int m(t)\cos(2\pi f_ct)\,e^{-j2\pi ft}\,dt$$
+> Con $\cos(2\pi f_ct)=\frac12(e^{j2\pi f_ct}+e^{-j2\pi f_ct})$:
+> $$= \frac12\int m(t)\,e^{-j2\pi(f-f_c)t}\,dt + \frac12\int m(t)\,e^{-j2\pi(f+f_c)t}\,dt$$
+> Cada integral es exactamente la definicion de $M(\cdot)$ evaluada en un argumento corrido (poner $f\mp f_c$ donde en $M(f)=\int m(t)e^{-j2\pi ft}dt$ dice "$f$"):
+> $$\mathcal{F}\{m(t)\cos(2\pi f_ct)\} = \frac12\big[M(f-f_c)+M(f+f_c)\big]$$
+> Esto es la propiedad de **Modulacion** de [[../conceptos-integradores/aportes-fourier|Aportes de Fourier]] ($x(t)e^{j2\pi f_ct}\leftrightarrow X(f-f_c)$) aplicada dos veces (una por cada exponencial de Euler) y promediada — multiplicar por una exponencial compleja corre el espectro; el coseno, al ser suma de dos exponenciales, lo corre a ambos lados ($\pm f_c$) simultaneamente. Con la constante $A_c\,m$ por linealidad se llega al termino completo de la tabla. [analysis]
 
 ## Eficiencia de Potencia
 
