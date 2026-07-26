@@ -66,20 +66,6 @@ $$\boxed{\eta_{DSB-SC} = 100\%}$$
 
 Toda la potencia transmitida esta en las bandas laterales (informacion util).
 
-### ¿Por que no se puede pensar a DSB-SC como AM con $m=1$?
-
-Es tentador pensar "$\eta_{DSB-SC}=100\%$, y a mayor $m$ mayor eficiencia, asi que DSB-SC debe ser el caso $m\to\infty$ o $m=1$ de AM" — pero es un error, y vale la pena ver por que con cuidado. [analysis]
-
-**$m=1$ no apaga la portadora.** En $s_{AM}(t)=A_c[1+m\,m_n(t)]\cos(2\pi f_ct)$, la potencia de portadora es $P_c=A_c^2/2R$ — **no depende de $m$**. Poner $m=1$ da "modulacion al 100%" en el sentido de *profundidad de envolvente* (la envolvente $A_c[1+m_n(t)]$ toca cero en el minimo), pero el termino $A_c\cos(2\pi f_ct)$ sigue exactamente igual de fuerte. Confundir "$100\%$ de profundidad de modulacion" con "$100\%$ de potencia en bandas laterales" es el error — son dos cosas distintas que comparten el numero $100\%$ por casualidad. Chequeo directo: en $m=1$, $\eta_{AM}=1/3\approx33\%$ (no $100\%$); para que $\eta_{AM}\to100\%$ haria falta $m\to\infty$, fuera del rango valido ($m\leq1$ para no sobremodular).
-
-**La relacion correcta no es un limite de la forma factoreada, es una decision de circuito.** Partiendo de la forma sin factorear, $A(t)=A_c+k\,m(t)$:
-
-$$s(t) = \underbrace{A_c\cos(2\pi f_ct)}_{\text{portadora}} + \underbrace{k\,m(t)\cos(2\pi f_ct)}_{\text{producto}}$$
-
-Portadora y producto tienen constantes **independientes**: $A_c$ y $k$. Pensar "DSB-SC es AM con $A_c\to0$" mezcla mal las cosas — si de verdad $A_c\to0$ ahi, el termino sobreviviente queda con constante $k$ (no $A_c$), y escribir la formula de DSB-SC como "$A_c\,m(t)\cos(2\pi f_ct)$" (mas abajo, y en la definicion de arriba) usa esa letra para una constante *distinta*, no la que se fue a cero. La imagen fisica correcta, sin necesidad de ningun limite, es la de un **oscilador local compartido**: con la misma amplitud $A_c$ de referencia se puede armar AM (sumandola aparte antes de modular: $[A_c+k\,m(t)]\cos(\cdot)$) o DSB-SC (usandola directo como escala del producto, sin sumarla aparte: $A_c\,m(t)\cos(\cdot)$ — la cuenta de la seccion "Forma alternativa" en [[../derivaciones/modulacion-am#Paso 1 Amplitud variable en el tiempo|Derivacion de AM, Paso 1]]). Lo que cambia entre los dos no es la amplitud del oscilador, es la **decision de sumarlo aparte o no** — por eso "Metodos de Generacion" (abajo) describe topologias de circuito distintas, no un mismo circuito con una perilla de $m$ girada a un valor extremo.
-
-**Por eso el indice de $m$ no esta definido para DSB-SC** — no por una division por cero en un limite, sino porque $m=kA_m/A_c$ mide "cuanto vaivén tiene el mensaje *relativo a un termino de portadora aditivo*", y DSB-SC nunca tuvo ese termino aditivo para empezar. No es que su valor se indefina al acercarse a un limite; es que la estructura "$1+m\cdot(\ldots)$" directamente no aplica a la señal de DSB-SC.
-
 ## Metodos de Generacion
 
 **AM-DSB-FC**: modulador de ley cuadratica (sumar $m(t)+c(t)$, pasar por un dispositivo no lineal, filtrar pasabanda en $f_c$ con ancho $2f_m$) o modulacion de alto nivel (variar la alimentacion de la etapa final de RF). Ver detalle en [[../derivaciones/modulacion-am|Derivacion de AM]]. [analysis]
