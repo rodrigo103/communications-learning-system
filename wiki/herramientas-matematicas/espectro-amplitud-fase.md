@@ -38,7 +38,23 @@ Dos impulsos de magnitud $1/2$ en $\pm f_0$:
 
 ### Espectro de Fase
 
-Todos los terminos son reales positivos → $a > 0, b = 0$ → $\phi = \arctan(0/a) = 0^\circ$:
+Para cada frecuencia se escribe $X(f)$ en la forma $a + jb$ y se calcula $\phi = \arctan(b/a)$:
+
+**En $f = +f_0$:**
+
+$$X(+f_0) = \frac{1}{2} = \frac{1}{2} + j0$$
+
+- $a = 1/2$, $b = 0$
+- $b = 0, a > 0$ → $\boxed{\phi = 0^\circ}$
+
+**En $f = -f_0$:**
+
+$$X(-f_0) = \frac{1}{2} = \frac{1}{2} + j0$$
+
+- $a = 1/2$, $b = 0$
+- $b = 0, a > 0$ → $\boxed{\phi = 0^\circ}$
+
+Ambos terminos son reales puros y positivos: la energia esta concentrada en el eje real, sin componente imaginaria.
 
 ```
           φ(f)
