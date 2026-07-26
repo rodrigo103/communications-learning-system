@@ -55,7 +55,7 @@ PEP = 10,24 W
 
 *Cómo se llega de $s(t)$ a $s_a(t)$ (tres pasos, no es un salto directo):*
 1. **Definición**: $s_a(t)=s(t)+j\,\hat s(t)$, con $\hat s(t)=\mathcal{H}\{s(t)\}$.
-2. **Linealidad + teorema pasabanda**: $\hat s(t)=\mathcal{H}\{A_c\,m(t)\cos(2\pi f_ct)\}=A_c\cdot\mathcal{H}\{m(t)\cos(2\pi f_ct)\}=A_c\,m(t)\sin(2\pi f_ct)$ — el último paso usa $\mathcal{H}\{m(t)\cos(2\pi f_ct)\}=m(t)\sin(2\pi f_ct)$, válido porque $m(t)$ es banda base y $f_c>f_m$ (misma condición de siempre).
+2. **Linealidad + teorema pasabanda**: $\hat s(t)=\mathcal{H}\{A_c\,m(t)\cos(2\pi f_ct)\}=A_c\cdot\mathcal{H}\{m(t)\cos(2\pi f_ct)\}=A_c\,m(t)\sin(2\pi f_ct)$ — el último paso usa el [[../wiki/herramientas-matematicas/transformada-hilbert#Aplicaciones en Comunicaciones|teorema de la señal pasabanda]], $\mathcal{H}\{m(t)\cos(2\pi f_ct)\}=m(t)\sin(2\pi f_ct)$, válido porque $m(t)$ es banda base y $f_c>f_m$ (misma condición de siempre).
 3. **Euler**: $s_a(t)=A_c\,m(t)\cos(2\pi f_ct)+j\,A_c\,m(t)\sin(2\pi f_ct)=A_c\,m(t)[\cos(2\pi f_ct)+j\sin(2\pi f_ct)]=A_c\,m(t)e^{j2\pi f_ct}$.
 
 Derivación completa con la demostración del teorema pasabanda en [[../wiki/modulacion-analogica/am-vs-dsb-sc|AM-DSB-FC vs DSB-SC]]. Un detector de envolvente simple (diodo + RC) recuperaría $|m(t)|$, perdiendo el signo cada vez que $m(t)$ cruza por cero — información destruida, no recuperable con ese circuito (a diferencia de AM completa, donde el offset $A_c$ garantiza que la envolvente nunca cambie de signo).
