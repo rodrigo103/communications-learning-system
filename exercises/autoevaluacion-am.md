@@ -51,7 +51,14 @@ PEP = 10,24 W
 
 7. Para DSB-SC: ¿por qué no se puede usar un detector de envolvente simple para demodularlo? ¿Qué se necesita en su lugar?
 
-**Respuesta (Claude):** Usando el teorema pasabanda de Hilbert, la señal analítica de $s(t)=A_c\,m(t)\cos(2\pi f_ct)$ es $s_a(t)=A_c\,m(t)e^{j2\pi f_ct}$ ($A_c$ pasa igual porque el Hilbert/la señal analítica son lineales), y su envolvente es $a(t)=|s_a(t)|=A_c\,|m(t)|$ (con $A_c>0$) — proporcional al **valor absoluto** de $m(t)$, no a $m(t)$ mismo. Un detector de envolvente simple (diodo + RC) recuperaría $|m(t)|$, perdiendo el signo cada vez que $m(t)$ cruza por cero — información destruida, no recuperable con ese circuito (a diferencia de AM completa, donde el offset $A_c$ garantiza que la envolvente nunca cambie de signo).
+**Respuesta (Claude):** Usando el teorema pasabanda de Hilbert, la señal analítica de $s(t)=A_c\,m(t)\cos(2\pi f_ct)$ es $s_a(t)=A_c\,m(t)e^{j2\pi f_ct}$, y su envolvente es $a(t)=|s_a(t)|=A_c\,|m(t)|$ (con $A_c>0$) — proporcional al **valor absoluto** de $m(t)$, no a $m(t)$ mismo.
+
+*Cómo se llega de $s(t)$ a $s_a(t)$ (tres pasos, no es un salto directo):*
+1. **Definición**: $s_a(t)=s(t)+j\,\hat s(t)$, con $\hat s(t)=\mathcal{H}\{s(t)\}$.
+2. **Linealidad + teorema pasabanda**: $\hat s(t)=\mathcal{H}\{A_c\,m(t)\cos(2\pi f_ct)\}=A_c\cdot\mathcal{H}\{m(t)\cos(2\pi f_ct)\}=A_c\,m(t)\sin(2\pi f_ct)$ — el último paso usa $\mathcal{H}\{m(t)\cos(2\pi f_ct)\}=m(t)\sin(2\pi f_ct)$, válido porque $m(t)$ es banda base y $f_c>f_m$ (misma condición de siempre).
+3. **Euler**: $s_a(t)=A_c\,m(t)\cos(2\pi f_ct)+j\,A_c\,m(t)\sin(2\pi f_ct)=A_c\,m(t)[\cos(2\pi f_ct)+j\sin(2\pi f_ct)]=A_c\,m(t)e^{j2\pi f_ct}$.
+
+Derivación completa con la demostración del teorema pasabanda en [[../wiki/modulacion-analogica/am-vs-dsb-sc|AM-DSB-FC vs DSB-SC]]. Un detector de envolvente simple (diodo + RC) recuperaría $|m(t)|$, perdiendo el signo cada vez que $m(t)$ cruza por cero — información destruida, no recuperable con ese circuito (a diferencia de AM completa, donde el offset $A_c$ garantiza que la envolvente nunca cambie de signo).
 
 En su lugar hace falta **detección coherente/síncrona**: generar localmente una réplica de la portadora $c(t)$, sincronizada en fase y frecuencia exacta con la del transmisor (típicamente con un lazo de Costas o un PLL enganchado a algún resto de portadora o a una tonalidad piloto), y multiplicar la señal recibida por esa réplica antes de filtrar pasabajos. Esto reconstruye $m(t)$ con su signo correcto. El costo es la complejidad extra del receptor (sincronización crítica) frente a la simpleza del detector de envolvente de AM — el trade-off central entre ambos esquemas.
 

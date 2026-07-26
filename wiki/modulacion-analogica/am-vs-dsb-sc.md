@@ -84,7 +84,23 @@ Toda la potencia transmitida esta en las bandas laterales (informacion util).
 | Sincronizacion | No necesaria | Critica |
 | Costo receptor | Economico | Costoso |
 
-**Por que DSB-SC no puede usar detector de envolvente**: usando el teorema pasabanda de Hilbert, la señal analitica de $s(t)=A_c\,m(t)\cos(2\pi f_ct)$ es $s_a(t)=A_c\,m(t)e^{j2\pi f_ct}$ ($A_c$ pasa igual porque el Hilbert/la señal analitica son lineales — una constante real multiplicando adentro sale multiplicando afuera), y su envolvente es $a(t)=|s_a(t)|=A_c\,|m(t)|$ (con $A_c>0$) — proporcional al valor absoluto de $m(t)$, no a $m(t)$ mismo. Un detector de envolvente recuperaria $|m(t)|$, perdiendo el signo cada vez que $m(t)$ cruza por cero. Por eso DSB-SC necesita **deteccion coherente/sincrona**: generar localmente una replica de $c(t)$ sincronizada en fase y frecuencia (lazo de Costas o PLL) y multiplicar por ella para recuperar $m(t)$. Ver [[../herramientas-matematicas/transformada-hilbert|Transformada de Hilbert]]. [analysis]
+**Por que DSB-SC no puede usar detector de envolvente**: usando el teorema pasabanda de Hilbert, la señal analitica de $s(t)=A_c\,m(t)\cos(2\pi f_ct)$ es $s_a(t)=A_c\,m(t)e^{j2\pi f_ct}$, y su envolvente es $a(t)=|s_a(t)|=A_c\,|m(t)|$ (con $A_c>0$) — proporcional al valor absoluto de $m(t)$, no a $m(t)$ mismo. Un detector de envolvente recuperaria $|m(t)|$, perdiendo el signo cada vez que $m(t)$ cruza por cero.
+
+> **Deduccion completa de $s(t)\to s_a(t)$** — no es un salto directo, son tres pasos: definicion de señal analitica, teorema pasabanda de Hilbert, y Euler. [analysis]
+>
+> **Paso 1 — definicion.** La señal analitica de cualquier señal real $x(t)$ es $x_a(t)=x(t)+j\,\hat x(t)$, con $\hat x(t)=\mathcal{H}\{x(t)\}$ su Transformada de Hilbert (ver [[../herramientas-matematicas/transformada-hilbert#Señal Analitica|Transformada de Hilbert]]). Para $s(t)=A_c\,m(t)\cos(2\pi f_ct)$, hace falta entonces calcular $\hat s(t)=\mathcal{H}\{A_c\,m(t)\cos(2\pi f_ct)\}$.
+>
+> **Paso 2 — sacar la constante y aplicar el teorema pasabanda.** La Transformada de Hilbert es lineal, asi que la constante real $A_c$ sale afuera sin tocar nada: $\hat s(t)=A_c\cdot\mathcal{H}\{m(t)\cos(2\pi f_ct)\}$. Para lo que queda adentro aplica el **teorema de la señal pasabanda** (ver [[../herramientas-matematicas/transformada-hilbert#Aplicaciones en Comunicaciones|Transformada de Hilbert — Aplicaciones]]): si $m(t)$ tiene espectro limitado a $|f|<f_m$ y $f_c>f_m$ (la portadora esta por encima del ancho de banda del mensaje — se cumple siempre en DSB-SC, es la misma condicion $f_c\gg f_m$ del principio), entonces
+> $$\mathcal{H}\{m(t)\cos(2\pi f_ct)\}=m(t)\sin(2\pi f_ct)$$
+> (la demostracion completa esta en la nota de Hilbert: separa el espectro en dos "islas" a $\pm f_c$, cada una lejos de $f=0$, donde $\text{sgn}(f)$ actua como constante y no deforma la envolvente). Entonces $\hat s(t)=A_c\,m(t)\sin(2\pi f_ct)$.
+>
+> **Paso 3 — armar la señal analitica con Euler.** Sustituyendo en la definicion del Paso 1:
+> $$s_a(t)=s(t)+j\hat s(t)=A_c\,m(t)\cos(2\pi f_ct)+j\,A_c\,m(t)\sin(2\pi f_ct)=A_c\,m(t)\big[\cos(2\pi f_ct)+j\sin(2\pi f_ct)\big]$$
+> Sacando $A_c\,m(t)$ como factor comun (es el mismo termino real en ambas partes) y usando $\cos\theta+j\sin\theta=e^{j\theta}$:
+> $$\boxed{s_a(t)=A_c\,m(t)\,e^{j2\pi f_ct}}$$
+> De ahi la envolvente $a(t)=|s_a(t)|=A_c\,|m(t)|\cdot|e^{j2\pi f_ct}|=A_c\,|m(t)|$, usando que $|e^{j\theta}|=1$ para cualquier $\theta$ real.
+
+Por eso DSB-SC necesita **deteccion coherente/sincrona**: generar localmente una replica de $c(t)$ sincronizada en fase y frecuencia (lazo de Costas o PLL) y multiplicar por ella para recuperar $m(t)$. Ver [[../herramientas-matematicas/transformada-hilbert|Transformada de Hilbert]]. [analysis]
 
 ## Ejemplo Numerico
 
