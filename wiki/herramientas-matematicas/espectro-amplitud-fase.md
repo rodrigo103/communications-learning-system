@@ -25,6 +25,22 @@ $$\boxed{\mathcal{F}\{\cos(2\pi f_0 t)\} = \frac{1}{2}[\delta(f - f_0) + \delta(
 
 ### Espectro de Amplitud
 
+Para calcular la magnitud se usa $|X(f)| = \sqrt{a^2 + b^2}$, donde $X(f) = a + jb$:
+
+**En $f = +f_0$:**
+
+$$X(+f_0) = \frac{1}{2} = \frac{1}{2} + j0$$
+
+- $a = 1/2$, $b = 0$
+- $|X(+f_0)| = \sqrt{(1/2)^2 + 0^2} = \boxed{1/2}$
+
+**En $f = -f_0$:**
+
+$$X(-f_0) = \frac{1}{2} = \frac{1}{2} + j0$$
+
+- $a = 1/2$, $b = 0$
+- $|X(-f_0)| = \sqrt{(1/2)^2 + 0^2} = \boxed{1/2}$
+
 Dos impulsos de magnitud $1/2$ en $\pm f_0$:
 
 ```
@@ -77,7 +93,23 @@ $$X(f) = \frac{j}{2}\delta(f + f_0) - \frac{j}{2}\delta(f - f_0)$$
 
 ### Espectro de Amplitud
 
-Identico al coseno: dos impulsos de magnitud $1/2$ en $\pm f_0$. La magnitud de $\pm j/2$ es $1/2$:
+Para calcular la magnitud se usa $|X(f)| = \sqrt{a^2 + b^2}$, donde $X(f) = a + jb$:
+
+**En $f = +f_0$:**
+
+$$X(+f_0) = -\frac{j}{2} = 0 - j\frac{1}{2}$$
+
+- $a = 0$, $b = -1/2$
+- $|X(+f_0)| = \sqrt{0^2 + (-1/2)^2} = \boxed{1/2}$
+
+**En $f = -f_0$:**
+
+$$X(-f_0) = +\frac{j}{2} = 0 + j\frac{1}{2}$$
+
+- $a = 0$, $b = +1/2$
+- $|X(-f_0)| = \sqrt{0^2 + (1/2)^2} = \boxed{1/2}$
+
+Resultado: dos impulsos de magnitud $1/2$ en $\pm f_0$, identico al coseno:
 
 ```
           |X(f)|
