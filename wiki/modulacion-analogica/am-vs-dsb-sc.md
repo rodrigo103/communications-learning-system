@@ -84,7 +84,7 @@ Toda la potencia transmitida esta en las bandas laterales (informacion util).
 | Sincronizacion | No necesaria | Critica |
 | Costo receptor | Economico | Costoso |
 
-**Por que DSB-SC no puede usar detector de envolvente**: usando el teorema pasabanda de Hilbert, la señal analitica de $s(t)=m(t)\cos(2\pi f_ct)$ es $s_a(t)=m(t)e^{j2\pi f_ct}$, y su envolvente es $a(t)=|s_a(t)|=|m(t)|$ — el valor absoluto de $m(t)$, no $m(t)$ mismo. Un detector de envolvente recuperaria $|m(t)|$, perdiendo el signo cada vez que $m(t)$ cruza por cero. Por eso DSB-SC necesita **deteccion coherente/sincrona**: generar localmente una replica de $c(t)$ sincronizada en fase y frecuencia (lazo de Costas o PLL) y multiplicar por ella para recuperar $m(t)$. Ver [[../herramientas-matematicas/transformada-hilbert|Transformada de Hilbert]]. [analysis]
+**Por que DSB-SC no puede usar detector de envolvente**: usando el teorema pasabanda de Hilbert, la señal analitica de $s(t)=A_c\,m(t)\cos(2\pi f_ct)$ es $s_a(t)=A_c\,m(t)e^{j2\pi f_ct}$ ($A_c$ pasa igual porque el Hilbert/la señal analitica son lineales — una constante real multiplicando adentro sale multiplicando afuera), y su envolvente es $a(t)=|s_a(t)|=A_c\,|m(t)|$ (con $A_c>0$) — proporcional al valor absoluto de $m(t)$, no a $m(t)$ mismo. Un detector de envolvente recuperaria $|m(t)|$, perdiendo el signo cada vez que $m(t)$ cruza por cero. Por eso DSB-SC necesita **deteccion coherente/sincrona**: generar localmente una replica de $c(t)$ sincronizada en fase y frecuencia (lazo de Costas o PLL) y multiplicar por ella para recuperar $m(t)$. Ver [[../herramientas-matematicas/transformada-hilbert|Transformada de Hilbert]]. [analysis]
 
 ## Ejemplo Numerico
 
