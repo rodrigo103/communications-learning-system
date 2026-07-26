@@ -50,6 +50,23 @@ Por la condicion de simetria, la recuperacion es **perfecta**.
 
 ## Aplicacion Principal: Television
 
+### ¿De donde salen los 4,2 MHz de ancho de banda de video?
+
+No es un numero arbitrario — sale del **barrido**, y conecta directo con Nyquist. Cadena NTSC: [analysis]
+
+- 525 lineas/cuadro $\times$ 30 cuadros/s = 15.750 lineas/s → periodo de linea $63{,}5\,\mu$s
+- De ese periodo, ~$52{,}6\,\mu$s son **linea activa** (el resto es retrazado/blanking)
+- Lineas activas: ~485. Con **factor de Kell** ($\approx0{,}7$, porque las lineas de barrido no se alinean con los detalles de la imagen) → resolucion vertical efectiva $\approx340$
+- Para que la resolucion horizontal iguale a la vertical con aspecto 4:3 → $340\times\tfrac43\approx453$ elementos por linea
+
+El peor caso es blanco-negro alternado, donde **dos elementos = un ciclo**:
+
+$$f_{max} = \frac{453}{2\times52{,}6\,\mu s} \approx 4{,}3\text{ MHz}\quad(\to 4{,}2\text{ MHz nominal})$$
+
+> **Conexion con teoria de la informacion — es Nyquist leido al reves.** Escrito como tasa de elementos: $453/52{,}6\mu s = 8{,}6$ Melementos/s, y $B=R/2$. Esa es exactamente la relacion $f_s\geq2B$ del [[../herramientas-matematicas/teorema-muestreo|Teorema de Muestreo]]: el ancho de banda no es una propiedad intrinseca del video, es **la tasa de muestras independientes dividida por dos**.
+>
+> Y cierra por el otro lado con **Shannon-Hartley**: con SNR tipica de broadcast (~50 dB), $C=4{,}2\text{M}\times\log_2(1+10^5)\approx70$ Mbps — y el video digital crudo equivalente ($640\times480\times30\times8$ bits) da ~74 Mbps. **Coinciden porque la TV analogica es esencialmente sin comprimir**: manda cada cuadro entero, 30 veces por segundo, sin explotar redundancia espacial ni temporal. La ATSC digital mete HD (que crudo serian ~1,5 Gbps) en los *mismos* 6 MHz gracias a compresion MPEG (~80:1) — exactamente la redundancia que el teorema de codificacion de fuente de Shannon dice que era removible, y que la analogica desperdiciaba. Ver [[../teoria-informacion/redundancia-compresion|Redundancia y Compresion]] y [[../teoria-informacion/teorema-shannon-hartley|Teorema de Shannon-Hartley]].
+
 ### Por que TV usa VSB — el razonamiento desde el problema
 
 El "vestigio" tiene sentido si se sigue la cadena de descartes, no como definicion suelta: [analysis]
@@ -59,6 +76,16 @@ El "vestigio" tiene sentido si se sigue la cadena de descartes, no como definici
 **2. SSB seria lo natural… y no funciona.** Filtrar una banda lateral entera dejaria 4,2 MHz, pero aca aparece la limitacion clave: **el video tiene contenido hasta continua (DC)**. Eso significa que las dos bandas laterales se *tocan* en la portadora, sin ningun hueco entre ellas.
 
 > **La comparacion que lo hace evidente**: la voz telefonica no tiene energia por debajo de ~300 Hz, asi que en DSB queda un hueco de 600 Hz entre las dos bandas laterales — ese hueco es el espacio de transicion donde el filtro puede caer. En video ese hueco **no existe**: cortar una banda lateral pediria un filtro con flanco infinitamente abrupto exactamente en la portadora. Fisicamente irrealizable.
+
+> **¿Y por que no correr los 4,2 MHz un poco hacia arriba para fabricar el hueco? ¿La continua es fundamentalmente distinta de, digamos, 100 kHz?** Dos capas de respuesta, y la segunda es la que decide. [analysis]
+>
+> **Capa matematica: "correr" una señal real no es una operacion disponible.** El espectro de $m(t)$ real no va de 0 a 4,2 MHz — va de $-4{,}2$ a $+4{,}2$ MHz, con simetria hermitica ($M(-f)=M^*(f)$). Para correrlo 100 kHz habria que multiplicar por $e^{j2\pi\cdot100\text{k}\,t}$, lo que **vuelve compleja la señal** — y por un canal real no se puede transmitir algo complejo. Multiplicando por $\cos(2\pi\cdot100\text{k}\,t)$ (real, que si se puede) salen *dos* copias, en $+100$k y $-100$k, que se superponen y se destruyen entre si, porque el corrimiento (0,1 MHz) es muchisimo menor que el ancho de la señal (4,2 MHz).
+>
+> Aca esta lo especial de $f=0$: es el **unico punto fijo del eje de frecuencias** ($f=-f$ solo en cero). Por eso la copia espejada se toca a si misma justo ahi, y por eso al modular a $f_c$ la continua mapea exactamente *a la portadora* — el borde inferior de la banda superior y el borde superior de la inferior convergen al mismo punto. El hueco disponible para el filtro es $2f_{min}$ del mensaje: 600 Hz en voz, **cero** en video.
+>
+> **Capa practica — y aca esta la respuesta de fondo: si, es fundamentalmente distinto.** Lo que *si* se podria hacer (en vez de "correr") es **filtrar pasaaltos el video**, sacandole todo lo de abajo de 100 kHz: eso crearia el hueco de 200 kHz y haria viable el filtro SSB. Tecnicamente funciona. El problema es **que se pierde**: en video, la continua y las frecuencias muy bajas son el **brillo promedio y las areas grandes uniformes**. Un video pasaaltado se ve como una deteccion de bordes — contornos sobre gris uniforme, sin poder distinguir un cielo brillante de una habitacion oscura. En voz, en cambio, debajo de 300 Hz no hay practicamente nada (ni energia significativa en el habla, ni sensibilidad auditiva relevante), asi que tirarlo sale gratis.
+>
+> **Conclusion**: como componentes de señal, la continua y los 100 kHz no difieren en naturaleza — ambos son contenido espectral legitimo. Pero **en video la continua carga informacion perceptualmente esencial y en voz no**, y esa asimetria es la que decide todo. VSB existe precisamente porque el video no puede pagar el precio que la voz si puede.
 
 **3. El compromiso (VSB).** Se transmite una banda lateral completa (la superior) **mas un pedacito — un vestigio — de la inferior**. Ese vestigio no aporta informacion nueva: su unica funcion es darle al filtro un flanco suave donde caer, en vez de un acantilado.
 
