@@ -18,6 +18,19 @@ $$\boxed{BW_{VSB} = f_m + f_v}$$
 
 donde $f_v$ es la frecuencia del vestigio, tipicamente $f_v \approx (0.1\text{--}0.25)f_m$.
 
+### VSB no es un esquema aparte: es el continuo entre SSB y DSB
+
+$f_v$ **es literalmente el ancho de la banda de transicion del filtro** — "cuanto necesita tu filtro para pasar de 1 a 0". Eso convierte a $BW_{VSB}=f_m+f_v$ en una familia parametrizada por la calidad del filtro, con SSB y DSB como los dos extremos: [analysis]
+
+| Filtro | $f_v$ | $BW$ | Que resulta |
+|---|---|---|---|
+| Ideal (irrealizable) | $0$ | $f_m$ | **SSB** |
+| Muy bueno | chico | apenas $>f_m$ | VSB angosto |
+| Malo | grande | acercandose a $2f_m$ | VSB ancho |
+| Ninguno | $f_m$ | $2f_m$ | **DSB** |
+
+Consecuencia practica: el "$25\text{--}30\%$ mas de BW que SSB" de la seccion siguiente **no es una constante de la naturaleza** — es el precio que pagaba la tecnologia de filtros analogicos de los años 40-50. La TV digital, que filtra digitalmente con flancos mucho mas abruptos, logra un vestigio bastante menor que los 0,75 MHz de NTSC dentro de los mismos 6 MHz.
+
 ## Por que VSB
 
 Para señales con contenido DC significativo (ej: video) [source — [[../../explicaciones_anki/unidad_03/carta_15_banda_lateral_vestigial]]]:
@@ -129,6 +142,22 @@ El "vestigio" tiene sentido si se sigue la cadena de descartes, no como definici
 
 La antisimetria hace que la respuesta total sea plana en todo el rango: las bajas viajan "en DSB a media amplitud", las altas "en SSB a amplitud completa", y la transicion es continua. Es exactamente la [[#Condicion de Simetria Vestigial|condicion de simetria vestigial]] de mas arriba ($H(f_c+f)+H(f_c-f)=1$) leida en terminos fisicos.
 
+> **¿El receptor podria ignorar el vestigio y demodular "como si fuera SSB"? No — se suma solo, automaticamente.** La deteccion coherente **pliega las dos bandas laterales sobre banda base**; no hay forma de leer una sola. Multiplicando por $2\cos(\omega_ct)$ y filtrando pasabajos, la salida en la frecuencia de banda base $f$ es [analysis]
+> $$Y_{LP}(f) = \tfrac12 M(f)\big[H(f_c+f) + H(f_c-f)\big]$$
+> Cada $f$ recibe contribucion de **ambos** lados — de $f_c+f$ (banda superior) y de $f_c-f$ (zona del vestigio) — y el receptor no elige: la multiplicacion por el coseno las junta inherentemente. De ahi sale la suma de la condicion de simetria; no es una convencion, es lo que la demodulacion hace.
+>
+> **Matiz importante**: para $f>f_v$ (arriba de ~0,75 MHz, o sea el ~82% de los 4,2 MHz) el vestigio ya no tiene contenido, $H(f_c-f)=0$, y esas frecuencias **si** llegan exactamente como SSB a amplitud completa. Solo las bajas ($f<f_v$) dependen de la suma de los dos lados.
+
+> **¿Entonces el vestigio sirve para "transmitir potencia"? No — la palabra precisa es *amplitud*, y la diferencia importa.** [analysis]
+>
+> **Se suman amplitudes, no potencias**: cerca de $f_c$ la banda superior aporta $0{,}5$ y el vestigio $0{,}5$, y dan $1$. Si se sumaran potencias daria $\sqrt{0{,}5^2+0{,}5^2}=0{,}707$, no $1$. La suma es **coherente** (en fase, como fasores) — eso es lo que dice $H(f_c+f)+H(f_c-f)=1$, es una ecuacion de amplitudes.
+>
+> **El objetivo es respuesta en frecuencia plana, no entregar energia.** Sin vestigio, las altas llegan con amplitud $1$ y las bajas cayendo hacia $0{,}5$: las bajas quedan a **mitad de amplitud relativa a las altas** → distorsion de respuesta (imagen lavada, bordes sobre-marcados — el mismo efecto de pasaalto parcial).
+>
+> **El test que lo deja claro**: no se arregla subiendo la potencia del transmisor. Amplificar sube *todo* por igual y la relacion bajas/altas queda igual de mal. Es un problema de **forma** de la respuesta, no de **nivel**.
+>
+> **Donde si aparece la potencia, como efecto lateral**: se podria corregir la forma con un ecualizador en el receptor que amplifique $\times2$ las bajas — pero eso amplificaria tambien el ruido de esa banda, con penalidad de SNR. Con vestigio, la señal de las dos bandas se suma coherentemente ($0{,}5+0{,}5=1$) mientras el ruido de cada una se suma incoherentemente ($\sim\sqrt2$), dando ~3 dB mejor SNR ahi que la alternativa de ecualizar. Real, pero beneficio secundario — la razon de ser sigue siendo la respuesta plana.
+
 **La portadora se transmite, no se suprime** — justamente para que el receptor pueda usar un **detector de envolvente barato** en lugar de deteccion sincronica. Con millones de televisores en la calle, conviene poner el costo en el transmisor (uno solo) y no en el receptor (millones). Misma logica que la de [[../modulacion-analogica/am-vs-dsb-sc|AM comercial vs DSB-SC]].
 
 ### TV Analogica NTSC — canal de 6 MHz
@@ -149,6 +178,14 @@ La antisimetria hace que la respuesta total sea plana en todo el rango: las baja
 > | 88,00 MHz | borde superior del canal |
 >
 > La tabla de abajo da los mismos valores en forma **relativa** (para que sirvan en cualquier canal); esta los muestra absolutos en un canal concreto.
+
+> **¿Los canales son contiguos? ¿Eso no complica ubicar la portadora de cada uno?** Son contiguos (canal 2 = 54-60, canal 3 = 60-66: el borde superior de uno *es* el inferior del siguiente), pero **no complica nada** — y esa es justamente la razon de diseño del offset fijo. [analysis]
+>
+> Entre el contenido real de dos canales vecinos queda: portadora de audio del canal 2 en $54+1{,}25+4{,}5=59{,}75$ MHz → guarda superior hasta 60,00 → guarda inferior del canal 3 hasta 60,50 → vestigio del canal 3 (60,50-61,25) → portadora de video del canal 3 en **61,25** MHz. O sea $0{,}25+0{,}5=0{,}75$ MHz de guarda combinada.
+>
+> **Por que el calculo no se complica**: la portadora esta siempre a 1,25 MHz del borde inferior de **su propio** canal, con layout interno identico en todos. Entonces $f_{portadora}(N)=f_{borde\,inf}(N)+1{,}25$ MHz — no hay que mirar al vecino para nada. Estandarizar el offset una vez convierte el problema en aritmetica trivial sobre la grilla de 6 MHz; la asimetria (1,25 abajo, 4,75 arriba de la portadora) refleja que VSB es asimetrico, pero esta congelada en el estandar, no se recalcula por canal. En SSB el layout seria mas simple (sin vestigio, la banda arranca en el borde), pero la facilidad de calculo viene de lo mismo en ambos casos: fijar el offset una sola vez.
+>
+> **El problema real de la adyacencia no es el calculo, es la interferencia**: el audio del canal 2 (59,75, portadora FM fuerte) queda a solo **1,5 MHz** de la portadora de video del canal 3 (61,25), lo que genera batidos visibles. La solucion fue regulatoria, no matematica: **no se asignaban canales adyacentes en la misma plaza** (una ciudad recibia 2, 4, 6 pero no 3, 5) — la regla de "canales tabu".
 
 | Parametro                                       | Valor                                   |
 | ----------------------------------------------- | --------------------------------------- |
