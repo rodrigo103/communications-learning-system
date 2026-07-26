@@ -110,13 +110,17 @@ El "vestigio" tiene sentido si se sigue la cadena de descartes, no como definici
 
 **3. El compromiso (VSB).** Se transmite una banda lateral completa (la superior) **mas un pedacito — un vestigio — de la inferior**.
 
-> **¿Para que sirve el vestigio exactamente?** Decir "para darle al filtro un flanco suave donde caer" suena a que es relleno decorativo — **no lo es**. La cadena causal real: [analysis]
+> **¿Para que sirve el vestigio exactamente?** Conviene invertir la pregunta: el vestigio **no es un ingrediente que se agrega por una razon** — es una consecuencia forzada. El unico requisito real es la [[#Condicion de Simetria Vestigial|condicion de simetria]] $H(f_c+f)+H(f_c-f)=1$, y todo lo demas sale de ahi. [analysis]
 >
-> 1. El filtro no puede cortar en vertical justo en $f_c$, asi que su flanco es gradual — y ese flanco **inevitablemente atenua tambien las frecuencias bajas de la banda superior**, la que si se quiere conservar.
-> 2. Sin nada mas, esas bajas llegarian con amplitud reducida (a la mitad, justo en $f_c$) → distorsion: se perderia el contraste de areas grandes.
-> 3. **El vestigio repone exactamente esa perdida**: lo que el flanco saca de un lado, se lo deja del otro, y al demodular las dos contribuciones se suman dando amplitud completa.
+> **Dato que lo aclara: el SSB ideal tambien cumple esa condicion** — con $H=1$ arriba de $f_c$ y $H=0$ abajo, la suma da $1+0=1$. O sea, la condicion no es "de VSB": **VSB es el conjunto de soluciones *realizables* de esa misma ecuacion**, y SSB ideal es el miembro degenerado (irrealizable) de la misma familia.
 >
-> Entonces si es cierto que el vestigio **no aporta informacion nueva** (ambas bandas laterales llevan la misma informacion — el vestigio es una copia parcial de lo que ya esta en la superior), pero su funcion **no es darle espacio al filtro**: es **compensar** la atenuacion que el flanco gradual le produce a la banda que si se quiere. Eso es literalmente la condicion $H(f_c+f)+H(f_c-f)=1$.
+> **De ahi sale el vestigio, obligado.** Si el flanco es gradual (unica forma realizable), entonces $H(f_c+f)<1$ cerca de $f_c$. Pero la condicion exige $H(f_c-f)=1-H(f_c+f)$, con lo cual $H(f_c-f)>0$: **sobrevive banda lateral inferior, si o si**. Eso es el vestigio.
+>
+> **La distincion que si importa es entre *existencia* y *forma*** (no entre "darle espacio al filtro" y "compensar la atenuacion" — esas dos descripciones son el mismo hecho visto de dos angulos):
+> - **Que exista** el vestigio ⟸ el filtro necesita transicion gradual. Aca "hay lugar donde caer" y "sobra banda inferior" son literalmente lo mismo.
+> - **Que forma tenga** ⟸ el requisito extra, y es lo unico no trivial: **gradual no alcanza**. Un filtro que caiga de $1$ a $0$ entre $f_c$ y $f_c+0{,}75$ MHz tambien es gradual y realizable, pero no deja vestigio y da $H(f_c+f)+H(f_c-f)=r(f)\neq1$ → distorsiona. Lo que hace que funcione es la **antisimetria**, no la suavidad.
+>
+> Y si, el vestigio **no aporta informacion nueva** (ambas bandas laterales llevan la misma informacion — es una copia parcial de lo que ya esta en la superior); lo que aporta es la **amplitud** que la antisimetria necesita para que la suma de las dos contribuciones de $1$.
 
 **Por que no se duplican las frecuencias bajas.** El flanco del filtro se diseña **antisimetrico respecto de la portadora**: en la portadora misma la respuesta vale $0{,}5$, y lo que se le saca de un lado se le deja del otro. Resultado:
 
