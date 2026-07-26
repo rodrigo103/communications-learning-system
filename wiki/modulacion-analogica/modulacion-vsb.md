@@ -67,6 +67,27 @@ $$f_{max} = \frac{453}{2\times52{,}6\,\mu s} \approx 4{,}3\text{ MHz}\quad(\to 4
 >
 > Y cierra por el otro lado con **Shannon-Hartley**: con SNR tipica de broadcast (~50 dB), $C=4{,}2\text{M}\times\log_2(1+10^5)\approx70$ Mbps — y el video digital crudo equivalente ($640\times480\times30\times8$ bits) da ~74 Mbps. **Coinciden porque la TV analogica es esencialmente sin comprimir**: manda cada cuadro entero, 30 veces por segundo, sin explotar redundancia espacial ni temporal. La ATSC digital mete HD (que crudo serian ~1,5 Gbps) en los *mismos* 6 MHz gracias a compresion MPEG (~80:1) — exactamente la redundancia que el teorema de codificacion de fuente de Shannon dice que era removible, y que la analogica desperdiciaba. Ver [[../teoria-informacion/redundancia-compresion|Redundancia y Compresion]] y [[../teoria-informacion/teorema-shannon-hartley|Teorema de Shannon-Hartley]].
 
+### Que significa cada frecuencia en video (por que la continua es el brillo)
+
+El barrido **convierte espacio en tiempo de forma lineal** — la camara recorre la linea horizontal a velocidad constante — asi que "que tan rapido varia el brillo en el espacio" se traduce directo en "que tan rapido varia la señal en el tiempo". Con $\tau=52{,}6\mu s/453\approx0{,}116\,\mu$s por elemento, un patron cuyo ciclo espacial abarca $N$ elementos da: [analysis]
+
+$$f = \frac{1}{N\tau}$$
+
+Frecuencia temporal **inversamente proporcional al tamaño espacial** del detalle:
+
+| Que hay en la imagen | Ciclo abarca | Frecuencia |
+|---|---|---|
+| Brillo uniforme en toda la linea (sin variacion) | $N\to\infty$ | **DC (0 Hz)** |
+| Degrade u objeto que ocupa toda la pantalla | 453 elementos | ~19 kHz |
+| Objeto de ~1/5 del ancho de pantalla | ~86 elementos | ~100 kHz |
+| Detalle mas fino posible (blanco/negro alternado) | 2 elementos | **4,3 MHz** |
+
+**Por que la continua es literalmente el brillo promedio**: la componente de continua de cualquier señal es su valor medio, $M(0)=\int m(t)\,dt$. Como $m(t)$ *es* el brillo a lo largo del barrido, su valor medio **es** el brillo promedio de lo que se esta barriendo. No es analogia — es la misma cantidad.
+
+De ahi que pasaaltar duela tanto: cortar debajo de 100 kHz elimina todo lo mas grande que ~1/5 de la pantalla (el cielo, la pared del fondo, la cara de la persona) y deja solo bordes y textura — el aspecto de "deteccion de bordes" mencionado arriba.
+
+> **Detalle practico**: la TV real **si recupera la continua en el receptor**, usando el nivel de blanking/sync transmitido como referencia fija (circuito de *DC restoration*). Pero eso solo repone el nivel absoluto — el contenido de baja frecuencia (las variaciones lentas entre areas grandes) igual hay que transmitirlo, y es lo que VSB protege.
+
 ### Por que TV usa VSB — el razonamiento desde el problema
 
 El "vestigio" tiene sentido si se sigue la cadena de descartes, no como definicion suelta: [analysis]
@@ -83,11 +104,19 @@ El "vestigio" tiene sentido si se sigue la cadena de descartes, no como definici
 >
 > Aca esta lo especial de $f=0$: es el **unico punto fijo del eje de frecuencias** ($f=-f$ solo en cero). Por eso la copia espejada se toca a si misma justo ahi, y por eso al modular a $f_c$ la continua mapea exactamente *a la portadora* — el borde inferior de la banda superior y el borde superior de la inferior convergen al mismo punto. El hueco disponible para el filtro es $2f_{min}$ del mensaje: 600 Hz en voz, **cero** en video.
 >
-> **Capa practica — y aca esta la respuesta de fondo: si, es fundamentalmente distinto.** Lo que *si* se podria hacer (en vez de "correr") es **filtrar pasaaltos el video**, sacandole todo lo de abajo de 100 kHz: eso crearia el hueco de 200 kHz y haria viable el filtro SSB. Tecnicamente funciona. El problema es **que se pierde**: en video, la continua y las frecuencias muy bajas son el **brillo promedio y las areas grandes uniformes**. Un video pasaaltado se ve como una deteccion de bordes — contornos sobre gris uniforme, sin poder distinguir un cielo brillante de una habitacion oscura. En voz, en cambio, debajo de 300 Hz no hay practicamente nada (ni energia significativa en el habla, ni sensibilidad auditiva relevante), asi que tirarlo sale gratis.
+> **Capa practica — y aca esta la respuesta de fondo: si, es fundamentalmente distinto.** Lo que *si* se podria hacer (en vez de "correr") es **filtrar pasaaltos el video**, sacandole todo lo de abajo de 100 kHz: eso crearia el hueco de 200 kHz y haria viable el filtro SSB. Tecnicamente funciona. El problema es **que se pierde**: en video, la continua y las frecuencias muy bajas son el **brillo promedio y las areas grandes uniformes** (ver "Que significa cada frecuencia" abajo). Un video pasaaltado se ve como una deteccion de bordes — contornos sobre gris uniforme, sin poder distinguir un cielo brillante de una habitacion oscura. En voz, en cambio, debajo de 300 Hz no hay practicamente nada (ni energia significativa en el habla, ni sensibilidad auditiva relevante), asi que tirarlo sale gratis.
 >
 > **Conclusion**: como componentes de señal, la continua y los 100 kHz no difieren en naturaleza — ambos son contenido espectral legitimo. Pero **en video la continua carga informacion perceptualmente esencial y en voz no**, y esa asimetria es la que decide todo. VSB existe precisamente porque el video no puede pagar el precio que la voz si puede.
 
-**3. El compromiso (VSB).** Se transmite una banda lateral completa (la superior) **mas un pedacito — un vestigio — de la inferior**. Ese vestigio no aporta informacion nueva: su unica funcion es darle al filtro un flanco suave donde caer, en vez de un acantilado.
+**3. El compromiso (VSB).** Se transmite una banda lateral completa (la superior) **mas un pedacito — un vestigio — de la inferior**.
+
+> **¿Para que sirve el vestigio exactamente?** Decir "para darle al filtro un flanco suave donde caer" suena a que es relleno decorativo — **no lo es**. La cadena causal real: [analysis]
+>
+> 1. El filtro no puede cortar en vertical justo en $f_c$, asi que su flanco es gradual — y ese flanco **inevitablemente atenua tambien las frecuencias bajas de la banda superior**, la que si se quiere conservar.
+> 2. Sin nada mas, esas bajas llegarian con amplitud reducida (a la mitad, justo en $f_c$) → distorsion: se perderia el contraste de areas grandes.
+> 3. **El vestigio repone exactamente esa perdida**: lo que el flanco saca de un lado, se lo deja del otro, y al demodular las dos contribuciones se suman dando amplitud completa.
+>
+> Entonces si es cierto que el vestigio **no aporta informacion nueva** (ambas bandas laterales llevan la misma informacion — el vestigio es una copia parcial de lo que ya esta en la superior), pero su funcion **no es darle espacio al filtro**: es **compensar** la atenuacion que el flanco gradual le produce a la banda que si se quiere. Eso es literalmente la condicion $H(f_c+f)+H(f_c-f)=1$.
 
 **Por que no se duplican las frecuencias bajas.** El flanco del filtro se diseña **antisimetrico respecto de la portadora**: en la portadora misma la respuesta vale $0{,}5$, y lo que se le saca de un lado se le deja del otro. Resultado:
 
@@ -100,15 +129,32 @@ La antisimetria hace que la respuesta total sea plana en todo el rango: las baja
 
 ### TV Analogica NTSC — canal de 6 MHz
 
-| Parametro | Valor |
-|-----------|-------|
-| Portadora de video | a 1,25 MHz del borde inferior del canal |
-| Vestigio (banda lateral inferior transmitida) | ~0,75 MHz por debajo de la portadora |
-| Luminancia (banda lateral superior) | hasta 4,2 MHz sobre la portadora |
-| Subportadora de color | 3,58 MHz sobre la de video |
-| Portadora de audio (FM) | 4,5 MHz sobre la de video |
-| Ancho ocupado por video (borde inferior → tope) | $1{,}25+4{,}2 = 5{,}45$ MHz |
-| Eficiencia espectral | $4{,}2/5{,}45 = 77\%$ |
+> **¿Que es "el borde inferior del canal"?** Es el limite inferior del **slot de 6 MHz que la regulacion le asigna a ese canal** — un numero administrativo, no algo de la señal en si. Cada canal de TV ocupa un bloque fijo de 6 MHz del espectro (canal 2 = 54-60 MHz, canal 6 = 82-88 MHz, etc.), y todo lo de la tabla de abajo se ubica *dentro* de ese bloque, medido desde su borde. [analysis]
+>
+> **Presupuesto completo del canal 6 (82-88 MHz)**, para ver como se reparten los 6 MHz:
+>
+> | Frecuencia | Que hay |
+> |---|---|
+> | 82,00 MHz | **borde inferior del canal** |
+> | 82,00-82,50 | banda de guarda (0,5 MHz) |
+> | 82,50-83,25 | vestigio (0,75 MHz) |
+> | **83,25 MHz** | **portadora de video** ($82{,}00+1{,}25$) |
+> | hasta 87,45 | banda lateral superior (4,2 MHz) |
+> | 86,83 | subportadora de color ($+3{,}58$) |
+> | 87,75 | portadora de audio FM ($+4{,}5$) |
+> | 88,00 MHz | borde superior del canal |
+>
+> La tabla de abajo da los mismos valores en forma **relativa** (para que sirvan en cualquier canal); esta los muestra absolutos en un canal concreto.
+
+| Parametro                                       | Valor                                   |
+| ----------------------------------------------- | --------------------------------------- |
+| Portadora de video                              | a 1,25 MHz del borde inferior del canal (ej. 83,25 MHz en canal 6) |
+| Vestigio (banda lateral inferior transmitida)   | ~0,75 MHz por debajo de la portadora    |
+| Luminancia (banda lateral superior)             | hasta 4,2 MHz sobre la portadora        |
+| Subportadora de color                           | 3,58 MHz sobre la de video              |
+| Portadora de audio (FM)                         | 4,5 MHz sobre la de video               |
+| Ancho ocupado por video (borde inferior → tope) | $1{,}25+4{,}2 = 5{,}45$ MHz             |
+| Eficiencia espectral                            | $4{,}2/5{,}45 = 77\%$                   |
 
 > ⚠️ **Ojo con dos numeros que se confunden facil** (esta nota tenia antes "Vestigio inferior: 1,25 MHz", que mezclaba los dos): [analysis]
 > - **1,25 MHz** = distancia del **borde inferior del canal a la portadora de video**. Incluye el vestigio *mas* una banda de guarda de ~0,5 MHz.
