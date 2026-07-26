@@ -4,9 +4,11 @@ tags:
 curso: Sistemas de Comunicaciones
 ---
 
-# Plan para el Final (30 de julio) — recalculado 25/07 (v3)
+# Plan para el Final (30 de julio) — recalculado 26/07 (v4)
 
-> **Last verified:** 2026-07-25 | **Verified by:** analysis + revision cruzada con 42 finales unicos resueltos (2019-2026, ver "Frecuencia de Temas en los Finales") + documento oficial de la catedra (modalidad vigente desde feb. 2022, ult. modificacion 30/07/2025) + recalculo de cronograma tras desvio real de fechas (v3, 25/07)
+> **Last verified:** 2026-07-26 | **Verified by:** analysis + revision cruzada con 42 finales unicos resueltos (2019-2026, ver "Frecuencia de Temas en los Finales") + documento oficial de la catedra (modalidad vigente desde feb. 2022, ult. modificacion 30/07/2025) + recalculo de cronograma tras desvio real de fechas (v4, 26/07)
+
+> ⚠️ **Recalculo de cronograma (26/07, version 4) + cambio de ritmo:** el Dia 2 no llego a cubrir SSB, VSB ni FM (solo AM) — se extiende a hoy 26/07. Como todavia es la madrugada del 26 (0 dias perdidos, el 26 sigue entero por delante), el resto de temas se recorre asi: **26/07** SSB+VSB+FM (y PCM si alcanza); **27/07** PCM (si quedo pendiente) + Modulacion Digital; **28/07** Ruido+BER + Teoria de la Informacion + Espectro Expandido, los tres juntos; **29/07** Repaso + Simulacro (se recupera, ya no hace falta correrlo al 30/07). Ademas, **desde ahora el ritmo cambia**: formula compacta + un ejemplo numerico rapido, sin re-derivar desde cero salvo pedido explicito — la profundidad tipo Dia 1 fue valiosa pero ya no hay tiempo para sostenerla.
 
 > ⚠️ **Recalculo de cronograma (23/07, version 2):** el plan original preveia 1 dia (19 jul) para el Dia 1 (Unidad 2: Shannon, Fourier, Parseval, Hilbert, DEP). En la practica llevo 4 dias de calendario (19, 20, 22 y la madrugada del 23 — el 21 no hubo sesion), sobre todo por la profundidad con la que se exploro la Transformada de Hilbert. Fue tiempo bien invertido en entendimiento, pero el cronograma de 11 dias quedo obsoleto. Quedan **7 dias completos** (23 al 29 de julio — el 23 todavia esta entero por delante, el Dia 1 se termino de madrugada antes del amanecer). Con ese dia extra respecto al primer recalculo, se deshizo la fusion mas forzada (Teoria de la Informacion + Espectro Expandido) y **se reordeno el plan**: AM/FM (entre los temas mas testeados — ver "Frecuencia de Temas en los Finales") se adelanto al primer dia de contenido nuevo en vez de quedar en el medio, como gestion de riesgo por si el cronograma se atrasa de nuevo. Ver "Lo comprimido" para el detalle.
 
@@ -27,13 +29,13 @@ Estrategia de preparacion para el examen final. Foco en modulaciones digitales, 
 ## Resumen
 
 - **Fecha examen:** 30 de julio de 2026, 19:00 hs
-- **Dias disponibles (real, recalculo v3 del 25/07):** 4 dias completos (26 jul → 29 jul) — el Dia 2 (AM/FM) se extendio hasta hoy 25/07 (3 dias de calendario en vez de 1), consumiendo el dia extra que la v2 habia recuperado
+- **Dias disponibles (real, recalculo v4 del 26/07):** 4 dias completos (26 jul → 29 jul) — sin perder ninguno respecto a la v3, pero recontenidos porque el Dia 2 no llego a SSB/VSB/FM
 - **Formato:** escrito, 4 problemas, ~30 min c/u con entrega escalonada, material propio en papel permitido
-- **Estrategia:** el cuello de botella real es la *velocidad bajo presion de tiempo fijo* (30 min por problema, no negociable), no la memorizacion pura ni la busqueda de datos — el formulario impreso resuelve la busqueda, pero no resuelve la velocidad. Con solo 4 dias reales quedando, dos de ellos son ahora dias fusionados (Digital+Ruido/BER, y Teoria de la Informacion+Espectro Expandido) — mas fluidez de formula y practica cronometrada, casi nada de derivacion nueva tipo Dia 1. AM/FM ya cubierto (adelantado por prioridad, 61,9% de frecuencia cada una — ver "Frecuencia de Temas en los Finales"), Intercomparacion (U8) recortada casi del todo (ver "Lo comprimido").
+- **Estrategia:** el cuello de botella real es la *velocidad bajo presion de tiempo fijo* (30 min por problema, no negociable). **Ritmo nuevo desde el 26/07**: formula compacta + ejemplo rapido, casi sin derivacion — la profundidad tipo Dia 1 costo demasiado tiempo para lo que queda. Intercomparacion (U8) recortada casi del todo (ver "Lo comprimido").
 
 ### Metodologia de practica cronometrada
 
-Desde el 27/07 (Modulacion Digital + Ruido/BER, ya fusionados por el recalculo v3) en adelante, cada ejercicio de `exercises/finales/md/` se practica con reloj: **30 minutos, sin mirar la seccion `<details>` de respuesta hasta que se cumpla el tiempo o el ejercicio este terminado.** El objetivo no es solo llegar al resultado correcto, sino llegar en el tiempo real del examen. Si un tema toma sistematicamente mas de 30 min, es señal de que hace falta mas practica ahi, no de que el limite este mal.
+Desde ya (26/07) en adelante, cada ejercicio de `exercises/finales/md/` se practica con reloj: **30 minutos, sin mirar la seccion `<details>` de respuesta hasta que se cumpla el tiempo o el ejercicio este terminado.** El objetivo no es solo llegar al resultado correcto, sino llegar en el tiempo real del examen. Si un tema toma sistematicamente mas de 30 min, es señal de que hace falta mas practica ahi, no de que el limite este mal.
 
 ---
 
@@ -77,20 +79,20 @@ Desde el 27/07 (Modulacion Digital + Ruido/BER, ya fusionados por el recalculo v
 - [[../herramientas-matematicas/densidad-espectral-potencia|Densidad Espectral de Potencia]] — DEP y Wiener-Khinchin (prioridad baja, no se testea como categoria propia en los finales)
 - [[../herramientas-matematicas/ancho-de-banda|Ancho de Banda]] — los 5 tipos de ancho de banda, tema del Dia 1 que faltaba y se agrego despues
 
-### Recalculado v3 — 4 dias reales, recomprimido (26 al 29 de julio)
+### Recalculado v4 — 4 dias reales, ritmo rapido (26 al 29 de julio)
 
 | Dia | Fecha | Foco | Horas | Contenido clave |
 |-----|-------|------|-------|-----------------|
-| **2** | 23-25 jul (3 dias, no 1) | U3+U4 — Analogicas (AM/FM), en profundidad | ~15-16h total | **Completado hoy 25/07** — se extendio 2 dias mas de lo planeado (autoevaluacion + ejercicio de practica multitono terminados recien hoy). AM y FM estan entre los temas mas testeados, practicamente empatados (61,9% cada uno — ver "Frecuencia de Temas en los Finales"). Potencia normalizada en dBW, PEP, envolvente a escala temporal, AM multitono ($P = P_c + \sum P_{SSB,i}$), DSB-SC vs AM convencional, Carson y moduladores indirectos. |
-| **3** | 26 jul | U2+U5 — Muestreo + PCM | 5-6h | Teorema de Nyquist ($f_s \geq 2B$), muestreo, cuantificacion, PCM, companding, SQNR = $6n + 1.76$ dB. **71,4% de frecuencia — el tema individual mas testeado de todos**, por encima de AM/FM. Se mantiene como dia propio, sin fusionar — es el que mas rinde por hora invertida. |
-| **4+5** | 27 jul | U6+U7 — Modulacion Digital **fusionado con** Ruido + BER | 8-9h | **Fusion forzada por el atraso de v3** (en v2 eran 2 dias separados) — justificada porque ya eran dias adyacentes que reusan las mismas formulas (BER depende del tipo de modulacion visto en Digital). Manana: formulas de BW, constelaciones, $R_b=R_s\log_2M$, pares BER ($P_e^{BPSK}=Q(\sqrt{2E_b/N_0})$). Tarde: $N=kTB$, $N_0$, temperatura de ruido, Friis cascada, BER vs $E_b/N_0$ con las formulas de Digital ya frescas. Foco en fluidez de formula, no en derivacion. **Arranca la practica cronometrada de 30 min por ejercicio.** |
-| **6+7** | 28 jul | U9+U10 — Teoria de la Informacion **re-fusionado con** Espectro Expandido/OFDM | 8-9h | **Misma fusion que existia en la v1 del recalculo** (antes de recuperar el dia extra que ahora se volvio a perder) — sin sinergia real de contenido entre los dos temas, es pura necesidad de cronograma. TI (52,4%): Entropia $H=-\sum p_i\log_2p_i$, Shannon-Hartley $C=B\log_2(1+SNR)$, limite -1.59dB, Huffman, Hamming. Espectro Expandido (57,1%, ahora por encima de TI): DSSS, FHSS, CDMA conceptual, OFDM + prefijo ciclico, IFFT/FFT, $G_p=R_c/R_b$, $N=2^L-1$. |
-| **8** | 29 jul | Repaso general + Intercomparacion (breve) + **simulacro cronometrado real** | 6-7h | Repaso de todas las formulas y del arbol de modulaciones (Intercomparacion entra aca como repaso conceptual rapido, no como bloque dedicado — ver "Lo comprimido"). Cierra con **simulacro en el formato exacto del examen**: final completo no visto antes (ej. `exercises/finales/md/F_Comu_2026-02-26_res.md`), reloj en 19:00, entregar un problema cada 30 min hasta las 21:00, orden a eleccion, solo formulario impreso como material. |
+| **2** | 23-26 jul (en curso) | U3+U4 — Analogicas: AM listo, falta SSB+VSB+FM | ~15-16h + hoy | AM completo (potencia, PEP, envolvente, multitono, DSB-SC) ya cubierto. **Hoy 26/07, rapido**: SSB (conecta con Hilbert del Dia 1), VSB (breve), y FM completo (Carson $BW\approx2(\Delta f+f_m)$, indice $\beta$, NBFM/WBFM, moduladores indirectos) — formula y ejemplo, sin re-derivar. |
+| **3** | 26-27 jul | U2+U5 — Muestreo + PCM | 5-6h | Nyquist ($f_s\geq2B$), cuantificacion, PCM, companding, SQNR$\approx6n+1{,}76$dB. **71,4% de frecuencia, el tema individual mas testeado** — arranca hoy si alcanza, si no pasa al 27. |
+| **4** | 27 jul | U6 — Modulacion Digital | 5-6h | BW, constelaciones, $R_b=R_s\log_2M$, pares BER ($P_e^{BPSK}=Q(\sqrt{2E_b/N_0})$). Comparte dia con el resto de PCM si hizo falta correrlo. |
+| **5+6+7** | 28 jul | U7+U9+U10 — Ruido+BER, Teoria de la Informacion y Espectro Expandido, los tres juntos | 9-10h | **Dia mas cargado del plan** — sin sinergia fuerte entre los tres, es necesidad de cronograma pura. Ruido: $N=kTB$, Friis, SNR. TI (52,4%): Entropia, Shannon-Hartley, limite -1.59dB. Espectro (57,1%): DSSS/FHSS/CDMA/OFDM, $G_p=R_c/R_b$, $N=2^L-1$ — el que mas formulas de sustitucion directa tiene, el mas facil de ir rapido. |
+| **8** | 29 jul | Repaso general + Intercomparacion (breve) + **simulacro cronometrado real** | 6-7h | Repaso de formulas y del arbol de modulaciones (Intercomparacion, repaso rapido — ver "Lo comprimido"). **Simulacro en formato real**: final no visto antes (ej. `exercises/finales/md/F_Comu_2026-02-26_res.md`), reloj en 19:00, un problema cada 30 min hasta las 21:00, solo formulario impreso. |
 | **30 jul** | — | **EXAMEN — 19:00hs** | — | — |
 
-> Si el 27 o el 28 jul se vuelven a atrasar, el candidato a recortar mas es el bloque de Espectro Expandido/OFDM dentro del dia 28 (57,1% de frecuencia, pero es el que menos derivacion propia tiene — casi todo son formulas directas de sustitucion), reduciendolo a repaso de formulas el dia 29 en vez de bloque propio.
+> Si el 27 o el 28 jul se atrasan, el primer candidato a recortar es Espectro Expandido dentro del dia 5+6+7 (57,1% de frecuencia, pero el que menos derivacion propia tiene — formulas directas de sustitucion), pasandolo a repaso el dia 29 en vez de bloque propio.
 
-### Lecturas — Dia 2 (23-25 jul, AM/FM — completado)
+### Lecturas — Dia 2 (23-26 jul, AM/FM — AM listo, hoy SSB+VSB+FM)
 
 **AM / Modulacion Lineal:**
 - [[../derivaciones/modulacion-am|Derivacion Completa de AM]] — potencia, envolvente, indice de modulacion; es la base, empezar por aca
@@ -111,7 +113,7 @@ Desde el 27/07 (Modulacion Digital + Ruido/BER, ya fusionados por el recalculo v
 - [[../modulacion-analogica/fm-estereo|FM Estereo]]
 - [[../modulacion-analogica/funciones-bessel|Funciones de Bessel]]
 
-### Lecturas — Dia 3 (26 jul, PCM/Muestreo)
+### Lecturas — Dia 3 (26-27 jul, PCM/Muestreo)
 
 **Nucleo:**
 - [[../herramientas-matematicas/teorema-muestreo|Teorema de Muestreo]] — condicion de Nyquist $f_s\geq2B$, empezar por aca
@@ -124,7 +126,7 @@ Desde el 27/07 (Modulacion Digital + Ruido/BER, ya fusionados por el recalculo v
 - [[../modulacion-pulsos/multiplex-tdm|Multiplexacion TDM]] — aparece combinado con PAM en un par de finales (ej. `F_Comu_2022-02-24_X_res.md`), prioridad media-baja (usar esta nota, no `tdm.md`, que es stub)
 - [[../modulacion-pulsos/modulacion-delta|Modulacion Delta]] — no aparecio como ejercicio en ninguno de los 42 finales
 
-### Lecturas — Dia 4+5 (27 jul, Modulacion Digital + Ruido/BER fusionados)
+### Lecturas — Dia 4 (27 jul, Modulacion Digital)
 
 **Modulacion Digital:**
 - [[../modulacion-digital/ask-fsk-psk|ASK, FSK, PSK]] — formulas de BW y constelaciones basicas, empezar por aca
@@ -133,6 +135,11 @@ Desde el 27/07 (Modulacion Digital + Ruido/BER, ya fusionados por el recalculo v
 - [[../modulacion-digital/probabilidad-error|Probabilidad de Error (BER)]] — pares $Q(\cdot)$ por tipo de modulacion
 - [[../modulacion-digital/codificacion-linea|Codificacion de Linea]] — NRZ/Manchester, aparece con frecuencia notable en los finales
 - [[../modulacion-digital/eficiencia-espectral|Eficiencia Espectral]]
+
+**Opcional / menor prioridad:**
+- [[../modulacion-digital/comparacion-digital-analogica|Comparacion Digital vs Analogica]]
+
+### Lecturas — Dia 5+6+7 (28 jul, Ruido+BER + Teoria de la Informacion + Espectro Expandido, los tres juntos)
 
 **Ruido:**
 - [[../ruido/fuentes-ruido|Fuentes de Ruido]]
@@ -143,12 +150,9 @@ Desde el 27/07 (Modulacion Digital + Ruido/BER, ya fusionados por el recalculo v
 - [[../ruido/relacion-snr|Relacion Señal-Ruido (SNR)]]
 - [[../ruido/aclaracion-densidad-espectral-ruido|Aclaracion sobre Densidad Espectral de Ruido]]
 
-**Opcional / menor prioridad:**
-- [[../modulacion-digital/comparacion-digital-analogica|Comparacion Digital vs Analogica]]
+**Opcional / menor prioridad (Ruido):**
 - [[../ruido/ruido-banda-angosta|Ruido de Banda Angosta]] y [[../ruido/ruido-blanco-banda-angosta|Ruido Blanco de Banda Angosta]] — prioridad media, no critico
 - [[../ruido/efecto-umbral|Efecto Umbral]] — no aparecio como ejercicio en ninguno de los 42 finales (relevante sobre todo para FM, ya cubierto en Dia 2)
-
-### Lecturas — Dia 6+7 (28 jul, Teoria de la Informacion + Espectro Expandido/OFDM re-fusionados)
 
 **Teoria de la Informacion:**
 - [[../teoria-informacion/entropia-fuente|Entropia de Fuente]] — $H=-\sum p_i\log_2p_i$, empezar por aca (usar esta, no `entropia.md`, que es stub)
