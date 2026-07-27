@@ -18,13 +18,13 @@ unidad: 6
 
 $$R_b\ [\text{bps}] \to \ell \to D\ [\text{baudios}] \to B\ [\text{Hz}] \to SNR \to BER$$
 
-| # | Fórmula | Nota |
-|---|---|---|
-| 1 | $\boxed{\ell = \log_2 M}$ | bits/símbolo. 16-QAM → $\ell=4$; QPSK → $\ell=2$ |
-| 2 | $\boxed{D = \dfrac{R_b}{\ell}}$ | Tasa de símbolos [baudios]. También se escribe $R_s$ |
-| 3 | $\boxed{N = N_0\,B_N}$ | Potencia de ruido ($B_N$ = ancho de banda equivalente de ruido) |
-| 4 | $\boxed{E_b = \dfrac{S}{R_b}}$ | Energía por bit (potencia $\times$ duración de bit) |
-| 5 | $\boxed{\dfrac{E_b}{N_0} = SNR\cdot\dfrac{B}{R_b}}$ | **El puente** entre SNR y BER |
+| #   | Fórmula                                             | Nota                                                            |
+| --- | --------------------------------------------------- | --------------------------------------------------------------- |
+| 1   | $\boxed{\ell = \log_2 M}$                           | bits/símbolo. 16-QAM → $\ell=4$; QPSK → $\ell=2$                |
+| 2   | $\boxed{D = \dfrac{R_b}{\ell}}$                     | Tasa de símbolos [baudios]. También se escribe $R_s$            |
+| 3   | $\boxed{N = N_0\,B_N}$                              | Potencia de ruido ($B_N$ = ancho de banda equivalente de ruido) |
+| 4   | $\boxed{E_b = \dfrac{S}{R_b}}$                      | Energía por bit (potencia $\times$ duración de bit)             |
+| 5   | $\boxed{\dfrac{E_b}{N_0} = SNR\cdot\dfrac{B}{R_b}}$ | **El puente** entre SNR y BER                                   |
 
 ## Los tres anchos de banda — no confundirlos
 

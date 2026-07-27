@@ -56,6 +56,39 @@
         }
       ],
       "title": "Día 1"
+    },
+    {
+      "type": "group",
+      "ctime": 1785181658576,
+      "items": [
+        {
+          "type": "file",
+          "ctime": 1785181684309,
+          "path": "outputs/solutions/PCM_CD_audio_F_Comu_2023-12-07.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785181684309,
+          "path": "exercises/finales/F_Comu_2024-11-14_res.pdf"
+        },
+        {
+          "type": "file",
+          "ctime": 1785181684309,
+          "path": "exercises/finales/md/F_Comu_2024-11-14_res.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785181676526,
+          "path": "wiki/modulacion-pulsos/pcm-formulario-examen.md"
+        }
+      ],
+      "title": "Día 2"
+    },
+    {
+      "type": "group",
+      "ctime": 1785181665825,
+      "items": [],
+      "title": "Día 3"
     }
   ]
 }
