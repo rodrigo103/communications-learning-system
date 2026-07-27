@@ -62,6 +62,30 @@ $$\boxed{k = 6{,}22\times10^{-3} \approx 0{,}62\%\text{ del fondo de escala}}$$
 
 > **Chequeo mental rápido (sirve para validar en el examen):** hay $94{,}11-50 = 44{,}11$ dB de margen, y $10^{44{,}11/20}\approx160$. O sea se puede atenuar **160 veces** antes de caer a 50 dB → $k=1/160=6{,}25\times10^{-3}$ ✓. Coincide, y se hace sin calculadora.
 
+### Método alternativo para f) — vía niveles efectivos (el que usé al resolver)
+
+En vez de razonar sobre cómo escala la potencia, se puede razonar sobre **cuántos niveles abarca la señal**. Se pasa 50 dB a veces, se despeja $M$ de la misma fórmula, y se compara contra el total:
+
+$$10^5 = \frac{3M_{ef}^2}{F_C^2} = \frac{3M_{ef}^2}{5} \ \Rightarrow\ M_{ef}^2 = \frac{5\times10^5}{3} \ \Rightarrow\ M_{ef} = 408{,}25\ \text{niveles}$$
+
+$$k = \frac{M_{ef}}{M_{total}} = \frac{408{,}25}{65536} = \boxed{6{,}23\times10^{-3}}$$
+
+**Por qué es exacto y no una aproximación**: en cuantificación uniforme el paso $q$ está fijo (lo define el rango del ADC), así que la cantidad de niveles que abarca una señal es **proporcional a su amplitud**:
+
+$$\frac{M_{ef}}{M_{total}} = \frac{V/q}{V_{FS}/q} = \frac{V}{V_{FS}} = k$$
+
+El $q$ se cancela — por eso "fracción de niveles usados" y "amplitud relativa" son literalmente el mismo número.
+
+Conceptualmente esta ruta es **más directa**: en vez de "la potencia escala con $k^2$", dice "la señal solo abarca 408 de los 65536 niveles disponibles". Misma física vista desde el ADC en vez de desde la potencia.
+
+> **Detalle**: que $M_{ef}=408{,}25$ no sea entero está bien — es un conteo *equivalente* en el umbral, no una cantidad física de niveles. Y ojo con la terminología: $M$ son **niveles**, no muestras (las muestras son lo que sale del muestreo, a razón de $f_s$ por segundo).
+
+### Tercera ruta: en bits efectivos
+
+$\log_2(408{,}25) = 8{,}67$ bits. O sea a 50 dB se están usando efectivamente **~8,7 bits de los 16** disponibles → sobran $16-8{,}67 = 7{,}33$ bits, y $7{,}33\times6{,}02 \approx 44$ dB de margen. Coincide con los 44,11 dB del primer método.
+
+**Las tres rutas dan lo mismo** porque son la misma relación leída en tres escalas: amplitud ($k$), niveles ($M_{ef}$) y bits ($n_{ef}$), ligadas por $M_{ef}=k\,M_{total}$ y $n_{ef}=\log_2M_{ef}$.
+
 ---
 
 ## Lo que hay que sacar de este ejercicio
