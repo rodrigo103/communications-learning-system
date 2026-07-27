@@ -18,13 +18,15 @@ unidad: 6
 
 $$R_b\ [\text{bps}] \to \ell \to D\ [\text{baudios}] \to B\ [\text{Hz}] \to SNR \to BER$$
 
-| #   | Fórmula                                             | Nota                                                            |
-| --- | --------------------------------------------------- | --------------------------------------------------------------- |
-| 1   | $\boxed{\ell = \log_2 M}$                           | bits/símbolo. 16-QAM → $\ell=4$; QPSK → $\ell=2$                |
-| 2   | $\boxed{D = \dfrac{R_b}{\ell}}$                     | Tasa de símbolos [baudios]. También se escribe $R_s$            |
-| 3   | $\boxed{N = N_0\,B_N}$                              | Potencia de ruido ($B_N$ = ancho de banda equivalente de ruido) |
-| 4   | $\boxed{E_b = \dfrac{S}{R_b}}$                      | Energía por bit (potencia $\times$ duración de bit)             |
-| 5   | $\boxed{\dfrac{E_b}{N_0} = SNR\cdot\dfrac{B}{R_b}}$ | **El puente** entre SNR y BER                                   |
+| # | Nombre | Fórmula | Qué es y para qué sirve |
+|---|---|---|---|
+| 1 | **Bits por símbolo** (orden de la modulación) | $\boxed{\ell = \log_2 M}$ | Cuántos bits codifica cada punto de la constelación. Define la modulación: QPSK → $\ell=2$; 16-QAM → $\ell=4$; 64-QAM → $\ell=6$. Unidad: bits/símbolo |
+| 2 | **Tasa de símbolos** (velocidad de señalización) | $\boxed{D = \dfrac{R_b}{\ell}}$ | Cuántos símbolos por segundo salen al canal. **Es lo que determina el ancho de banda**, no $R_b$. Unidad: baudios. También se escribe $R_s$ |
+| 3 | **Potencia de ruido** en la banda | $\boxed{N = N_0\,B_N}$ | Ruido total que entra al receptor. $N_0$ = densidad espectral de ruido [W/Hz], $B_N$ = ancho de banda equivalente de ruido. Unidad: W |
+| 4 | **Energía por bit** | $\boxed{E_b = \dfrac{S}{R_b} = S\,T_b}$ | Energía que el transmisor gasta en cada bit: potencia $\times$ duración de bit ($T_b=1/R_b$). Unidad: Joules |
+| 5 | **Relación $E_b/N_0$** | $\boxed{\dfrac{E_b}{N_0} = SNR\cdot\dfrac{B}{R_b}}$ | La métrica universal de calidad de un enlace digital — **es lo que entra en la fórmula de BER**. Adimensional (se suele dar en dB) |
+
+> **¿Por qué $E_b/N_0$ y no directamente SNR?** Porque la SNR depende del ancho de banda elegido, así que **no permite comparar modulaciones distintas de forma justa**. $E_b/N_0$ normaliza por bit y por densidad de ruido, y queda independiente de $B$ y de $R_b$ — por eso todas las curvas de BER se grafican contra $E_b/N_0$ y no contra SNR. La fórmula 5 es el puente entre ambas. Detalle en [[../conceptos-integradores/eb-n0-vs-snr|$E_b/N_0$ vs SNR]]. [analysis]
 
 ### ¿$\ell$ es lo mismo que el $n$ de PCM?
 
@@ -51,11 +53,11 @@ $n$ **multiplica** al entrar y $\ell$ **divide** al salir: los dos son factores 
 
 Los finales piden los tres y son distintos. Confundirlos es el error más frecuente:
 
-| Cuál | Fórmula | Cuándo se usa |
-|---|---|---|
-| **Nulo a nulo** | $B = 2D$ | Pulso rectangular, ancho del lóbulo principal. **Lo piden explícitamente 4 veces en el corpus** |
-| **Mínimo (Nyquist ideal)** | $B = D$ | Cuando dice "ancho de banda mínimo ideal" ($\alpha=0$) |
-| **Con roll-off** | $B = D(1+\alpha)$ | Coseno realzado real; el enunciado da $\alpha$ |
+| Cuál                       | Fórmula           | Cuándo se usa                                                                                   |
+| -------------------------- | ----------------- | ----------------------------------------------------------------------------------------------- |
+| **Nulo a nulo**            | $B = 2D$          | Pulso rectangular, ancho del lóbulo principal. **Lo piden explícitamente 4 veces en el corpus** |
+| **Mínimo (Nyquist ideal)** | $B = D$           | Cuando dice "ancho de banda mínimo ideal" ($\alpha=0$)                                          |
+| **Con roll-off**           | $B = D(1+\alpha)$ | Coseno realzado real; el enunciado da $\alpha$                                                  |
 
 Ver la justificación del $B=D$ pasabanda en [[../modulacion-pulsos/pcm-formulario-examen#Justificación del paso $R_s \to B_{min}$ (criterio de Nyquist sin ISI)|criterio de Nyquist sin ISI]] — es la misma relación, con $D$ en lugar de $R_s$.
 
