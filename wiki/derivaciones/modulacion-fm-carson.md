@@ -126,6 +126,36 @@ $$f_i(t) = f_c+\Delta f\cos(2\pi f_mt) \quad\longrightarrow\quad n f_i(t) = nf_c
 
 El centro y la excursión se escalan por $n$, pero **la velocidad a la que oscila** (que es $f_m$) no cambia — solo se agrandó el vaivén, no se aceleró.
 
+### Cómo se implementa físicamente
+
+No se construye literalmente un "elevador al cuadrado". Se usa un dispositivo **naturalmente no lineal**, que genera *todos* los armónicos a la vez, y un circuito sintonizado que selecciona el deseado: [analysis]
+
+| Implementación | Cómo genera armónicos |
+|---|---|
+| **Amplificador clase C con tanque sintonizado** (el clásico en transmisores) | Conduce solo una fracción chica del ciclo → tren de pulsos angostos → espectro rico en armónicos. El tanque LC de salida se sintoniza en $nf_c$ y filtra el resto. |
+| **Diodo varactor** | Capacidad que varía con la tensión = reactancia no lineal. Excitado fuerte genera armónicos, y al ser reactivo (no resistivo) casi no disipa → alta eficiencia. Típico en microondas. |
+| **Step-recovery diode (snap diode)** | Produce pulsos extremadamente abruptos, muy ricos en armónicos. Sirve para factores altos ($\times10$ o más). |
+| **PLL con divisor $\div N$ en el lazo** | Mecanismo distinto (realimentación, no generación de armónicos): al enganchar, la fase del VCO queda $N$ veces la de la referencia. Es como se hace hoy en sintetizadores. |
+
+**El argumento general que cubre todos los casos**: si $x=A\cos\phi$ entra a cualquier no linealidad $y=f(x)$, la salida es periódica en $\phi$, así que admite serie de Fourier en $\phi$:
+
+$$y = \sum_n c_n\cos(n\phi)$$
+
+**Todos los armónicos están presentes** — la no linealidad concreta solo determina los pesos $c_n$. El filtro elige el término $n$-ésimo y queda $\cos(n\phi)$. Por eso da igual si es un diodo, un transistor en clase C o un varactor: el mecanismo matemático es el mismo, y el $\phi\to n\phi$ vale en todos.
+
+### Triplicador (y por qué en la práctica se cascadean duplicadores)
+
+Elevar al cubo, usando $\cos^3\theta=\tfrac34\cos\theta+\tfrac14\cos3\theta$ (sale de $\cos^3=\cos\cdot\cos^2$ más producto-a-suma):
+
+$$s^3(t) = A^3\cos^3\phi(t) = A^3\Big[\underbrace{\tfrac34\cos\phi(t)}_{\text{en } f_c} + \underbrace{\tfrac14\cos3\phi(t)}_{\text{en } 3f_c}\Big]$$
+
+El pasabanda en $3f_c$ deja $\propto\cos(3\phi(t))$, o sea $\phi\to3\phi$, y de ahí $3\phi(t)=2\pi(3f_c)t+3\beta\sin(2\pi f_mt)$ — misma estructura que el duplicador.
+
+**Dos consecuencias prácticas que salen de la propia cuenta:**
+
+- **El armónico útil es débil**: el término de $3f_c$ tiene coeficiente $\tfrac14$ contra $\tfrac34$ del fundamental, y empeora con el orden $n$. Por eso los multiplicadores reales se limitan a $n$ chico por etapa ($\times2$, $\times3$) y se **cascadean con amplificación entre etapas**.
+- **Por eso los finales dicen "tres duplicadores en serie"** en vez de "un multiplicador $\times8$" — refleja cómo se hace en serio. Matemáticamente es lo mismo: $\phi\to2\phi\to4\phi\to8\phi$, o sea $\beta\to8\beta$, $\Delta f\to8\Delta f$, $f_c\to8f_c$.
+
 ### La amplitud
 
 En el $s^2(t)$ de arriba la amplitud sí cambia ($A\to A^2/2$). En la práctica el multiplicador va seguido de un **limitador/amplificador** que normaliza la amplitud, y por eso los enunciados aclaran "la amplitud de la señal permanece sin cambio". Como en FM la potencia es $P=A_c^2/2R$ independiente de la modulación, si la amplitud no cambia **la potencia tampoco** — pase lo que pase con $\beta$.
