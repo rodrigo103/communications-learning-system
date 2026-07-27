@@ -203,7 +203,7 @@ $$\boxed{m(t) \cdot \cos(2\pi f_c t) \;\xleftrightarrow{\mathcal{F}}\; \frac{1}{
 
 El espectro $M(f)$ se **copia** en $+f_c$ y $-f_c$, cada copia reducida a la mitad de amplitud. Es una fotocopia exacta, sin distorsion. [analysis]
 
-Cuando $m(t)$ es un solo tono ($\cos$ a frecuencia $f_m$), esto se reduce a la identidad trigonometrica $\cos A \cos B = \frac{1}{2}[\cos(A-B) + \cos(A+B)]$, pero el principio es general y vale para **cualquier** $m(t)$.
+==Cuando $m(t)$ es un solo tono ($\cos$ a frecuencia $f_m$), esto se reduce a la identidad trigonometrica $\cos A \cos B = \frac{1}{2}[\cos(A-B) + \cos(A+B)]$, pero el principio es general y vale para **cualquier** $m(t)$.==
 
 ### Producto por Seno
 
