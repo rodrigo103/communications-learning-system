@@ -160,20 +160,41 @@ El pasabanda en $3f_c$ deja $\propto\cos(3\phi(t))$, o sea $\phi\to3\phi$, y de 
 
 En el $s^2(t)$ de arriba la amplitud sí cambia ($A\to A^2/2$). En la práctica el multiplicador va seguido de un **limitador/amplificador** que normaliza la amplitud, y por eso los enunciados aclaran "la amplitud de la señal permanece sin cambio". Como en FM la potencia es $P=A_c^2/2R$ independiente de la modulación, si la amplitud no cambia **la potencia tampoco** — pase lo que pase con $\beta$.
 
-### No confundir con un mezclador (mixer)
+### Multiplicador vs mezclador: una sola operación, dos segundas entradas
 
-Distinción que los finales testean, y es la razón de ser del [[../modulacion-analogica/modulador-armstrong|modulador Armstrong]]:
+Distinción que los finales testean, y es la razón de ser del [[../modulacion-analogica/modulador-armstrong|modulador Armstrong]]. Lo importante es que **no son dos operaciones distintas**: ambos multiplican dos señales y filtran un término, y multiplicar **suma las fases**: [analysis]
 
-| Bloque | $f_c$ | $\Delta f$ | $\beta$ | $f_m$ |
-|---|---|---|---|---|
-| **Multiplicador $\times n$** | $nf_c$ | $n\Delta f$ | $n\beta$ | igual |
-| **Mezclador con OL $f_{OL}$** | $f_c\pm f_{OL}$ | **igual** | **igual** | igual |
+$$\cos\phi_1\cos\phi_2 = \tfrac12\big[\underbrace{\cos(\phi_1-\phi_2)}_{\text{diferencia}} + \underbrace{\cos(\phi_1+\phi_2)}_{\text{suma}}\big]$$
 
-El mezclador multiplica por $\cos(2\pi f_{OL}t)$ y filtra una banda:
+Todo lo demás depende de **qué se pone en $\phi_2$**:
 
-$$A\cos\phi(t)\cdot\cos(2\pi f_{OL}t) \to \tfrac{A}{2}\cos\big(2\pi(f_c\pm f_{OL})t+\beta\sin(2\pi f_mt)\big)$$
+| Caso                 | $\phi_2$                            | Fase de salida (término suma)                 | Efecto                              |
+| -------------------- | ----------------------------------- | --------------------------------------------- | ----------------------------------- |
+| **Mezclador** con OL | $2\pi f_{OL}t$ (**sin modulación**) | $2\pi(f_c{+}f_{OL})t+\beta\sin(2\pi f_mt)$    | traslada $f_c$, $\beta$ **intacto** |
+| **Duplicador**       | $\phi_1$ (**la señal misma**)       | $2\phi_1 = 2\pi(2f_c)t+2\beta\sin(2\pi f_mt)$ | escala $f_c$ **y** $\beta$          |
 
-El término de modulación $\beta\sin(2\pi f_mt)$ **queda idéntico** — el mezclador *traslada* la portadora sin tocar la desviación. Por eso Armstrong usa **multiplicadores para subir $\beta$** (de NBFM a WBFM) y **mezcladores para ubicar la portadora final** en la frecuencia deseada sin arruinar el $\beta$ ya conseguido.
+**Regla unificada**: el término de modulación de la salida es **la suma de los términos de modulación de las dos entradas**. El oscilador local tiene modulación cero (su fase es puramente lineal en $t$), así que solo aporta frecuencia de portadora — $\beta$ ni se entera. La señal misma sí lleva $\beta\sin(2\pi f_mt)$, así que al sumarse consigo misma la modulación se duplica junto con la portadora.
+
+> **Confirmación de que es literalmente el mismo mecanismo**: en el duplicador, ¿dónde esta el término *diferencia*? Es $\cos(\phi_1-\phi_1)=\cos 0=1$ — **la continua**. Y efectivamente $\cos^2\phi=\tfrac12[1+\cos2\phi]$: ese "$1$" que arriba se describió como "el término de continua que el filtro elimina" **es** la salida de frecuencia-diferencia del mezclador con las dos entradas iguales. No hay dos fenómenos, hay uno. [analysis]
+>
+> Consecuencia: un **triplicador** también se puede armar mezclando la señal con su propia versión duplicada ($2\phi+\phi=3\phi$), sin necesidad de una no linealidad cúbica.
+
+### ¿Son entonces el mismo dispositivo físico? No — y por qué
+
+Matemáticamente es una sola operación, pero **los circuitos son distintos**, elegidos por eficiencia y nivel de potencia (no por la matemática): [analysis]
+
+| | Mezclador | Multiplicador de transmisor |
+|---|---|---|
+| **Puertos de entrada** | **Dos** (RF y OL) | **Uno solo** — no hay dónde meter una segunda señal |
+| **Circuitos típicos** | Anillo de diodos (doble balanceado), celda de Gilbert | Clase C con tanque sintonizado, varactor, SRD |
+| **Nivel de potencia** | Bajo (procesamiento de señal) | Alto (etapa de transmisor, watts a kW) |
+| **Eficiencia** | Tiene **pérdida** de conversión (−6 a −8 dB en diodos) | Clase C llega a 70–80% |
+
+Un multiplicador clase C **no es** un mezclador con las entradas unidas: es una topología de un solo puerto que genera armónicos a partir de una forma de onda pulsada. **Pero los conjuntos se superponen**: un mezclador con las dos entradas unidas *sí* funciona como duplicador, y se hace — típicamente a bajo nivel, dentro de un chip. Lo que no se hace es usarlo en la etapa de potencia de un transmisor, donde la pérdida de conversión es inaceptable.
+
+### Por qué esto importa para Armstrong
+
+Como el mezclador traslada la portadora **sin tocar la desviación**, y el multiplicador escala **ambas**, el [[../modulacion-analogica/modulador-armstrong|modulador Armstrong]] usa cada uno para lo suyo: **multiplicadores para subir $\beta$** (de NBFM a WBFM) y **mezcladores para ubicar la portadora final** en la frecuencia deseada sin arruinar el $\beta$ ya conseguido. Si se usara un multiplicador para corregir la frecuencia final, se volvería a cambiar $\Delta f$ y habría que rehacer todo.
 
 ## Clasificación: NBFM vs WBFM
 
