@@ -77,6 +77,39 @@ $$R_b\ [\text{bps}] \xrightarrow{\ \div\log_2 M_{mod}\ } R_s\ [\text{baudios}] \
 
 **No confundir $M$ con $M_{mod}$**: $M$ = niveles de cuantificación del ADC (define $n=\log_2M$ bits por muestra); $M_{mod}$ = puntos de la constelación de la modulación digital (define cuántos bits van por símbolo). Son cosas distintas y aparecen las dos en el mismo ejercicio.
 
+### Justificación del paso $R_s \to B_{min}$ (criterio de Nyquist sin ISI)
+
+El puente entre tasa de símbolos y ancho de banda es el **criterio de Nyquist para señalización sin interferencia entre símbolos (ISI)**: por un canal pasabajos ideal de ancho $B$ se pueden transmitir como máximo $2B$ símbolos independientes por segundo. [analysis]
+
+$$R_{s,max} = 2B \quad\Longrightarrow\quad \boxed{B_{min} = \frac{R_s}{2}}$$
+
+**Demostración constructiva (el pulso sinc).** Transmitiendo con $p(t)=\operatorname{sinc}(t/T_s)=\dfrac{\sin(\pi t/T_s)}{\pi t/T_s}$, donde $T_s=1/R_s$ es el período de símbolo. La propiedad clave:
+
+$$p(0)=1, \qquad p(kT_s)=0 \ \ \forall k\neq0 \quad(\text{porque }\sin(\pi k)=0)$$
+
+Mandando $y(t)=\sum_k a_k\,p(t-kT_s)$ y muestreando en $t=mT_s$:
+
+$$y(mT_s)=\sum_k a_k\,p\big((m-k)T_s\big) = a_m$$
+
+Todos los términos con $k\neq m$ se anulan: **cada muestra recupera exactamente su propio símbolo, ISI cero**. Y el ancho de banda de ese pulso sale de su transformada, $\operatorname{sinc}(t/T_s)\leftrightarrow T_s\operatorname{rect}(fT_s)$ — un rectángulo no nulo solo para $|f|<\frac{1}{2T_s}=\frac{R_s}{2}$. O sea: el sinc **logra** ISI cero usando exactamente $R_s/2$ Hz, y Nyquist probó que no se puede hacer mejor.
+
+**Es el teorema de muestreo dado vuelta.** El [[../herramientas-matematicas/teorema-muestreo|teorema de muestreo]] dice que una señal de ancho $B$ queda determinada por $2B$ muestras/segundo — o sea que **un canal de ancho $B$ tiene $2B$ grados de libertad por segundo**, y no se pueden especificar más números independientes que eso. Para mandar $R_s$ símbolos independientes hace falta $R_s\leq2B$. Es literalmente $f_s\geq2B$ aplicado al canal en vez de a la señal fuente.
+
+**Por qué pasabanda duplica**: modular por $\cos(2\pi f_ct)$ copia el espectro a $\pm f_c$.
+
+| | Contenido en frecuencias positivas | Ancho |
+|---|---|---|
+| Banda base | $(0,\ W)$ | $W$ |
+| Pasabanda | $(f_c{-}W,\ f_c{+}W)$ | $2W$ |
+
+Con $W=R_s/2$, pasabanda ocupa $2\times R_s/2=R_s$. Es el mismo "modular duplica el ancho de banda" de AM ($BW=2f_m$), no una regla nueva.
+
+**Detalle práctico — roll-off**: el sinc ideal es irrealizable (dura infinito, pide filtro brick-wall). En la práctica se usa **coseno realzado** con factor $\alpha$:
+
+$$B = \frac{R_s}{2}(1+\alpha)\ \text{[banda base]}, \qquad B = R_s(1+\alpha)\ \text{[pasabanda]}$$
+
+Mismo trade-off que en [[../modulacion-analogica/modulacion-vsb|VSB]]: filtro ideal irrealizable → hay que pagar banda de transición. **Cuando el enunciado dice "ancho de banda mínimo *ideal*"** (que es como lo piden casi siempre en los finales) **es $\alpha=0$** y se usan las fórmulas limpias.
+
 ## Ejemplo completo verificado
 
 **Enunciado** (de `F_Comu_2024-11-14_res.md`): señal 4 V pico a pico, valor medio nulo, $B=4$ kHz, factor de cresta $F_C=4$, cuantificada linealmente en $M=256$ niveles, modulada en QPSK.
