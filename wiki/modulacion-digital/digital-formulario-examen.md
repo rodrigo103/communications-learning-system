@@ -61,6 +61,32 @@ Los finales piden los tres y son distintos. Confundirlos es el error más frecue
 
 Ver la justificación del $B=D$ pasabanda en [[../modulacion-pulsos/pcm-formulario-examen#Justificación del paso $R_s \to B_{min}$ (criterio de Nyquist sin ISI)|criterio de Nyquist sin ISI]] — es la misma relación, con $D$ en lugar de $R_s$.
 
+### De dónde sale el $2D$, y las unidades del paso $D \to B$
+
+**Origen del nulo a nulo**: un pulso rectangular de duración $T_s=1/D$ tiene espectro $\text{sinc}(fT_s)$, con **primer nulo** donde $f\,T_s=1$, o sea $f=1/T_s=D$. En pasabanda ese lóbulo queda centrado en $f_c$ y se extiende $D$ hacia cada lado → ancho total $2D$. [analysis]
+
+**La conversión de unidades**: $D$ está en símbolos/s y $B$ en ciclos/s, así que **tiene que haber un factor de conversión** — y lo hay, solo que vale 1 y por eso no se escribe:
+
+$$f_0 = \kappa\cdot\frac{1}{T_s}, \qquad \kappa = 1\ \frac{\text{ciclo}}{\text{símbolo}}$$
+
+**Contenido físico de $\kappa$**: en la frecuencia del primer nulo entra **exactamente un ciclo de la sinusoide en una duración de símbolo**. Eso es lo que hace que los números coincidan; es invisible en la fórmula solo porque su valor numérico es 1.
+
+La contabilidad completa tiene entonces **tres** factores, no dos:
+
+$$B_{n\text{-}n} = \underbrace{2}_{\substack{\text{lados del lóbulo} \\ \text{adimensional}}} \times \underbrace{1\ \tfrac{\text{ciclo}}{\text{símbolo}}}_{\kappa,\ \text{conversión}} \times \underbrace{D\ \tfrac{\text{símbolos}}{\text{s}}}_{\text{tasa}} = 2D\ \left[\tfrac{\text{ciclos}}{\text{s}}\right]$$
+
+**Y esto unifica los tres anchos de banda** — son la misma relación con distinto $\kappa$ total:
+
+| Relación | $\kappa$ total [ciclos/símbolo] | De dónde sale |
+|---|---|---|
+| $B = D/2$ (Nyquist banda base) | $1/2$ | los 2 símbolos/ciclo de Nyquist, invertidos |
+| $B = D$ (Nyquist pasabanda) | $1$ | anclaje puro: 1 ciclo/símbolo |
+| $B = 2D$ (nulo a nulo, pulso rectangular) | $2$ | anclaje $\times$ 2 lados del lóbulo |
+
+> **Ojo con los dos "2" distintos**: el de Nyquist ($R_s=2B$) es **2 símbolos/ciclo**, un factor de conversión con contenido físico; el de nulo a nulo ($B=2D$) es **2 lados**, pura simetría geométrica. Se confunden fácil porque ambos relacionan $B$ con $D$. [analysis]
+>
+> **Consecuencia útil**: $B_{n\text{-}n} = 2\,B_{min}$ en pasabanda. Esa duplicación es **el precio de usar pulsos rectangulares** en vez de pulsos sinc — rectangular en tiempo se desparrama en frecuencia (sinc), mientras que sinc en tiempo da un rectángulo compacto en frecuencia. Mismo trade-off tiempo-frecuencia de siempre.
+
 ## BER — las fórmulas a tener
 
 $$\boxed{P_e^{BPSK} = P_e^{QPSK} = Q\!\left(\sqrt{\frac{2E_b}{N_0}}\right)}, \qquad \boxed{P_e^{FSK\ coh} = Q\!\left(\sqrt{\frac{E_b}{N_0}}\right)}$$
@@ -86,6 +112,35 @@ $$\ell = \log_2 16 = 4 \ \Rightarrow\ D = \frac{256\text{k}}{4} = 64\text{ kbaud
 **b) Densidad espectral de potencia**
 
 Lóbulo principal centrado en $f_c$, con **nulos en $f_c\pm64$ kHz, $\pm128$ kHz, $\pm192$ kHz** (múltiplos de $D$). Forma $\text{sinc}^2$, típica de señalización pasabanda con pulso rectangular.
+
+> **Justificación completa de la DEP** (no está cubierto en otra nota de la vault — `densidad-espectral-potencia.md` trata Wiener-Khinchin en general, no este caso). [analysis]
+>
+> **¿Qué hay en el eje vertical?** **Densidad espectral de potencia**, en W/Hz (o V²/Hz si es normalizada) — es decir, **potencia por unidad de ancho de banda**, no amplitud ni potencia. Integrar la curva sobre toda la frecuencia devuelve la potencia total $S$. Por eso la unidad tiene "/Hz": es una densidad, igual que $N_0$ del ruido.
+>
+> **¿Por qué sinc — y por qué al cuadrado?** La señal es una secuencia *aleatoria* de símbolos, cada uno con forma de pulso $p(t)$. Para símbolos independientes y equiprobables:
+> $$S(f) = \frac{\sigma_a^2}{T_s}\,|P(f)|^2$$
+> con $P(f)=\mathcal F\{p(t)\}$ y $\sigma_a^2$ la varianza de los símbolos. La cadena es:
+>
+> | Paso | Resultado |
+> |---|---|
+> | Pulso **rectangular** de duración $T_s$ en el tiempo | $p(t)$ |
+> | Su transformada de Fourier | $P(f)=A\,T_s\operatorname{sinc}(fT_s)$ → **sinc** |
+> | La DEP es $\|P(f)\|^2$ (magnitud al cuadrado, porque es potencia) | $\propto\operatorname{sinc}^2(fT_s)$ → **sinc²** |
+>
+> O sea: **sinc** aparece por ser la transformada del rectángulo; **el cuadrado** aparece porque la DEP es una magnitud de potencia. Al modular, esa DEP de banda base se copia a $\pm f_c$ (y se divide por 4): $S_{pb}(f)=\tfrac14[S_{bb}(f-f_c)+S_{bb}(f+f_c)]$.
+>
+> **¿Dónde caen los nulos?** $\operatorname{sinc}^2(fT_s)$ se anula donde $fT_s$ es entero no nulo, o sea en $f=\pm kD$ (con $D=1/T_s$). Trasladado a pasabanda: **$f_c\pm kD$** para $k=1,2,3\ldots$ — en este ejercicio $f_c\pm64$, $\pm128$, $\pm192$ kHz. El lóbulo principal va de $f_c-D$ a $f_c+D$, ancho $2D$.
+>
+> **Alturas relativas de los lóbulos** (valores estándar de $\operatorname{sinc}^2$, sirven para dibujar "con suficiente detalle"):
+>
+> | Lóbulo | Altura relativa al pico | En dB |
+> |---|---|---|
+> | Principal | $1$ | $0$ dB |
+> | 1er lateral | $0{,}047$ | $\mathbf{-13{,}3}$ **dB** |
+> | 2do lateral | $0{,}016$ | $-17{,}8$ dB |
+> | 3er lateral | $0{,}008$ | $-20{,}8$ dB |
+>
+> El **lóbulo principal concentra ~90% de la potencia total** — por eso el ancho de banda de nulo a nulo es una medida razonable pese a que el espectro se extiende infinitamente. El $-13{,}3$ dB del primer lateral es el número clásico del pulso rectangular, y es la razón de que se usen pulsos conformados (coseno realzado) cuando importa no interferir a los canales vecinos: bajan muchísimo los lóbulos laterales a cambio de $\alpha$ de exceso de banda.
 
 **c) Potencia normalizada** — ⚠️ **acá cayeron los dos**
 
