@@ -168,10 +168,14 @@ $$\cos\phi_1\cos\phi_2 = \tfrac12\big[\underbrace{\cos(\phi_1-\phi_2)}_{\text{di
 
 Todo lo demás depende de **qué se pone en $\phi_2$**:
 
-| Caso                 | $\phi_2$                            | Fase de salida (término suma)                 | Efecto                              |
-| -------------------- | ----------------------------------- | --------------------------------------------- | ----------------------------------- |
-| **Mezclador** con OL | $2\pi f_{OL}t$ (**sin modulación**) | $2\pi(f_c{+}f_{OL})t+\beta\sin(2\pi f_mt)$    | traslada $f_c$, $\beta$ **intacto** |
-| **Duplicador**       | $\phi_1$ (**la señal misma**)       | $2\phi_1 = 2\pi(2f_c)t+2\beta\sin(2\pi f_mt)$ | escala $f_c$ **y** $\beta$          |
+| Caso                 | $\phi_2$                            | Término **suma** ($\phi_1{+}\phi_2$)                                   | Término **resta** ($\phi_1{-}\phi_2$)                                 | Efecto sobre $\beta$               |
+| -------------------- | ----------------------------------- | ---------------------------------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------- |
+| **Mezclador** con OL | $2\pi f_{OL}t$ (**sin modulación**) | $2\pi(f_c{+}f_{OL})t+\beta\sin(2\pi f_mt)$ — *conversión hacia arriba* | $2\pi(f_c{-}f_{OL})t+\beta\sin(2\pi f_mt)$ — *conversión hacia abajo* | **intacto en los dos**             |
+| **Duplicador**       | $\phi_1$ (**la señal misma**)       | $2\phi_1 = 2\pi(2f_c)t+2\beta\sin(2\pi f_mt)$                          | $\phi_1-\phi_1 = 0 \Rightarrow \cos0=1$ (**continua**)                | $\beta\to2\beta$ (solo en el útil) |
+
+> **Asimetría importante entre las dos filas**: en el **mezclador los dos términos sirven** — suma para subir la portadora, resta para bajarla (esta última es la del **receptor superheterodino**, y es el uso más común en la práctica); el filtro pasabanda elige cuál queda. En el **duplicador el término resta degenera a continua** ($\phi_1-\phi_1=0$), así que solo el de suma es aprovechable — y es exactamente el "$1$" de $\cos^2\phi=\tfrac12[1+\cos2\phi]$ que el filtro descarta (ver más abajo). [analysis]
+>
+> Para FM lo que importa es la última columna: **el mezclador preserva $\beta$ en ambos términos**, suba o baje la portadora. Por eso sirve para reubicar frecuencia sin tocar la desviación.
 
 #### De dónde sale cada fila de la tabla
 
@@ -194,13 +198,17 @@ Desarrollando el término suma paso a paso:
 $$\phi_1+\phi_2 = \big[2\pi f_ct + \beta\sin(2\pi f_mt)\big] + 2\pi f_{OL}t = 2\pi f_ct + 2\pi f_{OL}t + \beta\sin(2\pi f_mt)$$
 $$= 2\pi(f_c{+}f_{OL})\,t + \beta\sin(2\pi f_mt)$$
 
-**El OL no tiene con qué modificar la modulación**: su fase es puramente lineal en $t$ ($\psi_2=0$), así que $\beta\sin(2\pi f_mt)$ **atraviesa sin tocarse** y solo se movió la portadora. (El término diferencia da lo mismo pero con $f_c-f_{OL}$; el filtro elige cuál queda.)
+Y el término resta, con la misma cuenta cambiando el signo:
+
+$$\phi_1-\phi_2 = 2\pi f_ct - 2\pi f_{OL}t + \beta\sin(2\pi f_mt) = 2\pi(f_c{-}f_{OL})\,t + \beta\sin(2\pi f_mt)$$
+
+**El OL no tiene con qué modificar la modulación**: su fase es puramente lineal en $t$ ($\psi_2=0$), así que $\beta\sin(2\pi f_mt)$ **atraviesa sin tocarse en los dos términos** — el signo $\pm$ solo afecta a la parte lineal, o sea a la portadora. El filtro pasabanda elige si queda $f_c+f_{OL}$ (subir) o $f_c-f_{OL}$ (bajar, el caso del superheterodino), y en cualquiera de los dos $\Delta f$ y $\beta$ se conservan.
 
 **Fila 2 — duplicador** ($f_2=f_c$, $\psi_2=\psi_1=\beta\sin(2\pi f_mt)$):
 
 $$A\cos\phi_1(t)\cdot A\cos\phi_1(t) = A^2\cos^2\phi_1 = \frac{A^2}{2}\big[\cos(\phi_1-\phi_1)+\cos(\phi_1+\phi_1)\big]$$
 
-El término suma es $2\phi_1$, y **el factor 2 se distribuye sobre los dos términos**:
+Acá el término resta se anula solo: $\phi_1-\phi_1=0$, y $\cos 0=1$ — es **la continua**, sin información, que el filtro descarta. Queda solo el término suma, $2\phi_1$, donde **el factor 2 se distribuye sobre los dos sumandos**:
 
 $$2\phi_1 = 2\big[2\pi f_ct + \beta\sin(2\pi f_mt)\big] = 2\cdot2\pi f_ct + 2\beta\sin(2\pi f_mt) = 2\pi(2f_c)\,t + 2\beta\sin(2\pi f_mt)$$
 
