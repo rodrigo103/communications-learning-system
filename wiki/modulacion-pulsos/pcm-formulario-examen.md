@@ -18,15 +18,15 @@ unidad: 5
 
 $$\text{Analógica} \to \boxed{\text{Muestreo}} \to \boxed{\text{Cuantificación}} \to \boxed{\text{Codificación}} \to \text{bits}$$
 
-| # | Fórmula | Qué es |
-|---|---|---|
-| 1 | $\boxed{f_s \geq 2B}$ | **Nyquist** — frecuencia de muestreo mínima |
-| 2 | $\boxed{M = 2^n}$ | $M$ niveles con $n$ bits por muestra |
-| 3 | $\boxed{q = \dfrac{V_{pp}}{M}}$ | Paso de cuantificación. **Error máximo $= q/2$** |
-| 4 | $\boxed{P_q = \dfrac{q^2}{12}}$ | Potencia de ruido de cuantificación |
-| 5 | $\boxed{R_b = n\,f_s}$ | Tasa de bits [bps] |
-| 6a | $\boxed{R_s = \dfrac{R_b}{\log_2 M_{mod}}}$ | Tasa de **símbolos** [baudios] |
-| 6b | $\boxed{B_{min} = R_s \text{ (pasabanda)}}$ | Ancho de banda mínimo [Hz] |
+| #   | Fórmula                                     | Qué es                                           |
+| --- | ------------------------------------------- | ------------------------------------------------ |
+| 1   | $\boxed{f_s \geq 2B}$                       | **Nyquist** — frecuencia de muestreo mínima      |
+| 2   | $\boxed{M = 2^n}$                           | $M$ niveles con $n$ bits por muestra             |
+| 3   | $\boxed{q = \dfrac{V_{pp}}{M}}$             | Paso de cuantificación. **Error máximo $= q/2$** |
+| 4   | $\boxed{P_q = \dfrac{q^2}{12}}$             | Potencia de ruido de cuantificación              |
+| 5   | $\boxed{R_b = n\,f_s}$                      | Tasa de bits [bps]                               |
+| 6a  | $\boxed{R_s = \dfrac{R_b}{\log_2 M_{mod}}}$ | Tasa de **símbolos** [baudios]                   |
+| 6b  | $\boxed{B_{min} = R_s \text{ (pasabanda)}}$ | Ancho de banda mínimo [Hz]                       |
 
 ## SNR de cuantificación — esta cátedra usa factor de cresta
 
@@ -42,6 +42,18 @@ $$\boxed{SNR_Q = \frac{3M^2}{F_C^2}}$$
 | "señal senoidal" | $SNR_Q \approx 6n+1{,}76$ dB (o la de arriba con $F_C=\sqrt2$) |
 
 Regla mnemotécnica del $6n$: **cada bit agregado mejora la SNR en ~6 dB** (duplicar $M$ cuadruplica $SNR_Q$).
+
+### Unidades de $q$, $P_q$ y $SNR_Q$
+
+| Cantidad | Unidad | Por qué |
+|---|---|---|
+| $q = \dfrac{V_{pp}}{M}$ | **Volts** (V/nivel) | $V_{pp}$ en Volts, $M$ es un conteo de niveles → $q$ es la **altura de un escalón** |
+| $P_q = \dfrac{q^2}{12}$ | **V²** (= Watts con $R=1$) | $q^2$ en V², y el 12 es adimensional (varianza de una uniforme en $[-q/2,\,q/2]$) |
+| $SNR_Q = \dfrac{3M^2}{F_C^2}$ | **adimensional** | $M$ es conteo, $F_C=$ pico/RMS es cociente de dos tensiones → todo se cancela |
+
+**Sobre $P_q$**: sale en V², no en Watts, salvo que se divida por $R$. Los finales piden "potencia **normalizada** (impedancia unitaria)", o sea $R=1\,\Omega$, y ahí V² se lee directo como Watts — la misma convención que el resto del curso ($P=A^2/2$).
+
+**Sobre $SNR_Q$**: que sea **adimensional es justamente lo que permite expresarla en dB** (el logaritmo solo acepta números puros). Y el motivo de fondo: es cociente de dos potencias, ambas en V², así que las unidades se cancelan. De hecho **el $q^2$ también se cancela** en la derivación — por eso $SNR_Q$ depende solo de $M$ y $F_C$, y no del paso de cuantificación ni de la amplitud absoluta.
 
 ## La trampa del ancho de banda (error frecuente)
 
@@ -76,6 +88,19 @@ Dicho eso, la contabilidad es perfectamente consistente, y ahí está lo prácti
 | $B = \frac{R_s}{2}$ | $\frac{\text{símbolos}}{\text{s}}\div\frac{\text{símbolos}}{\text{ciclo}} =$ **ciclos/s $=$ Hz** | ancho de banda |
 
 **El patrón**: hay tres factores de conversión y son todos del mismo tipo — "cuántos X por Y". Cada uno cambia *qué se está contando* sin cambiar la dimensión ($1/\text{s}$ en todas las tasas). Los dos primeros son $\log_2$ de un conteo (cuántos bits hacen falta para etiquetar $M$ posibilidades: con $M_{mod}=4$ → 00, 01, 10, 11 → 2 bits; es el mismo $\log_2$ de la entropía en [[../teoria-informacion/entropia-fuente|Teoría de la Información]]).
+
+> **¿Y $M=2^n$ entra en esta contabilidad? No — y eso es informativo.** La contabilidad de unidades **solo funciona con multiplicación y división** (ahí las etiquetas cancelan); con exponentes no hay nada que cancelar. Además rige la regla dura: **el argumento de toda función trascendente (exponencial, logaritmo, seno) debe ser adimensional**. Que $2^n$ sea legal *confirma* que $n$ es un número puro — si "bit" fuera una dimensión física de verdad, $2^n$ no tendría sentido. [analysis]
+>
+> $M=2^n$ no es una conversión sino un **cambio de representación** de la misma información: $M$ = cuántos niveles hay; $n$ = cuántos dígitos binarios hacen falta para etiquetarlos. Dos conteos del mismo alfabeto.
+>
+> **Y $n$ cumple dos roles distintos según dónde aparece:**
+>
+> | Dónde | Rol de $n$ | ¿Lleva etiqueta? |
+> |---|---|---|
+> | $M=2^n$ | **exponente** — conteo puro de dígitos | No, ninguna tiene sentido |
+> | $R_b=n\,f_s$ | **factor de conversión** | Sí: bits/muestra |
+>
+> Mismo número, dos papeles. La etiqueta "bits/muestra" se le pone *cuando multiplica*, porque ahí es útil — no es propiedad intrínseca de $n$.
 
 **El "2" de Nyquist también tiene interpretación**: es **2 símbolos por ciclo** — en un ciclo de la componente más alta se pueden distinguir 2 valores independientes (pico y valle), la misma intuición del teorema de muestreo. Y eso es literalmente la **eficiencia espectral**:
 
