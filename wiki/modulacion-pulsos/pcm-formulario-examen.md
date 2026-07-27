@@ -86,6 +86,26 @@ Dicho eso, la contabilidad es perfectamente consistente, y ahí está lo prácti
 
 Por eso la eficiencia espectral se mide en **bits/s/Hz** — dimensionalmente adimensional ($\frac{1/s}{1/s}$), pero semánticamente dice "cuántos bits se exprimen por cada Hz". Misma contabilidad, con las etiquetas puestas.
 
+#### ¿Entonces muestras/s = Hz?
+
+Sí, y acá la razón es **más fuerte** que en los casos anteriores: **la frecuencia de muestreo *es* literalmente una frecuencia**. El reloj de muestreo es una señal periódica real que oscila 8000 veces por segundo — ese tren de impulsos tiene frecuencia fundamental 8 kHz, medible con un osciloscopio. Escribir "$f_s=8$ kHz" no es licencia, es literal. Lo mismo con $R_s$: el reloj de símbolo a 32 kbaud es un reloj de 32 kHz. [analysis]
+
+**Pero hay una distinción de *tipo* que sí importa:**
+
+| Cantidad | Qué es | ¿Hay un reloj oscilando? |
+|---|---|---|
+| $f_s$ [muestras/s] | **tasa de eventos** | Sí — el reloj de muestreo |
+| $R_s$ [símbolos/s] | **tasa de eventos** | Sí — el reloj de símbolo |
+| $B$ [Hz] | **ancho de un intervalo** del eje de frecuencias | **No** — no es tasa de nada |
+
+Las dos primeras son "cada cuánto pasa algo"; la tercera es $B=f_{max}-f_{min}$, una **resta de frecuencias**, no un conteo de eventos. Por eso escribir $f_s$ en Hz está perfecto, pero **igualar $f_s$ con un ancho de banda sería un error de tipo**, aunque los números y las dimensiones lo permitan.
+
+**Y el 2 de Nyquist, otra vez el mismo tipo de factor:**
+
+$$f_s \geq 2B: \qquad 8000\ \frac{\text{muestras}}{\text{s}} \geq 2\ \frac{\text{muestras}}{\text{ciclo}} \times 4000\ \frac{\text{ciclos}}{\text{s}}$$
+
+**2 muestras por ciclo** — hacen falta al menos dos muestras por ciclo de la componente más alta. Es el dual del "2 símbolos/ciclo" del criterio de señalización sin ISI: uno para **muestrear**, otro para **transmitir**, y por eso aparece el mismo 2 en las dos fórmulas ($f_s\geq2B$ y $R_s\leq2B$).
+
 **No confundir $M$ con $M_{mod}$**: $M$ = niveles de cuantificación del ADC (define $n=\log_2M$ bits por muestra); $M_{mod}$ = puntos de la constelación de la modulación digital (define cuántos bits van por símbolo). Son cosas distintas y aparecen las dos en el mismo ejercicio.
 
 ### Justificación del paso $R_s \to B_{min}$ (criterio de Nyquist sin ISI)
