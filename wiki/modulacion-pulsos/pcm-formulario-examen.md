@@ -59,21 +59,32 @@ $$R_b\ [\text{bps}] \xrightarrow{\ \div\log_2 M_{mod}\ } R_s\ [\text{baudios}] \
 
 > **¿Por qué $B_{min}$ y $R_s$ dan el mismo número en pasabanda?** No es una identidad — es una **cancelación**: Nyquist aporta un $\tfrac12$ ($B=R_s/2$) y modular aporta un $2$, y $2\times\tfrac{R_s}{2}=R_s$. Son magnitudes **distintas** (una cuenta símbolos por segundo, la otra mide una extensión del eje de frecuencias); que ambas sean dimensionalmente $1/\text{s}$ es lo que permite que coincidan sin contradicción. **En banda base NO coinciden** ($B=R_s/2$), lo que confirma que no son lo mismo. [analysis]
 
-> **¿Cómo se pasa de bps a baudios? ¿El denominador tiene unidades?** Sí — es **bits/símbolo**, y ahí está la conversión: [analysis]
-> $$R_s\left[\frac{\text{símbolos}}{\text{s}}\right] = \frac{R_b\left[\frac{\text{bits}}{\text{s}}\right]}{\log_2 M_{mod}\left[\frac{\text{bits}}{\text{símbolo}}\right]}$$
-> Los **bits se cancelan** y queda símbolos/s. Ejemplo QPSK: $\dfrac{64000\ \text{bits/s}}{2\ \text{bits/símbolo}} = 32000\ \text{símbolos/s} = 32$ kbaud.
->
-> **Por qué $\log_2M_{mod}$ son bits por símbolo**: un símbolo elegido entre $M_{mod}$ posibilidades necesita $\log_2M_{mod}$ dígitos binarios para identificarse (con $M_{mod}=4$: 00, 01, 10, 11 → 2 bits). Es el mismo $\log_2$ de la entropía en [[../teoria-informacion/entropia-fuente|Teoría de la Información]] — un símbolo equiprobable entre $M$ transporta $\log_2M$ bits.
->
-> **El detalle fino**: matemáticamente $\log_2M$ es un número puro (adimensional), pero "bit" y "símbolo" no son dimensiones físicas sino **unidades de conteo** (como el radián). Por eso:
->
-> | Magnitud | Dimensión física | Qué cuenta |
-> |---|---|---|
-> | $R_b$ [bps] | $1/\text{s}$ | bits por segundo |
-> | $R_s$ [baudios] | $1/\text{s}$ | símbolos por segundo |
-> | $B$ [Hz] | $1/\text{s}$ | extensión en el eje de frecuencias |
->
-> **Las tres son dimensionalmente $1/\text{s}$** — de ahí que puedan dar el mismo número sin contradicción. Lo que las distingue es *qué* cuentan, no la dimensión. Mismo fenómeno que Hz vs. rad/s.
+### Cómo funcionan las unidades en toda la cadena
+
+**Primero lo incómodo: dimensionalmente todo esto es $1/\text{s}$ y nada más.** El análisis dimensional real (metros, kilos, segundos) **no puede distinguir** bps de baudios de Hz — "bit", "símbolo", "ciclo" y "muestra" no son dimensiones físicas, son **etiquetas de conteo**. Entonces "bits/símbolo" no es física derivable: es **contabilidad semántica**, una convención de bookkeeping. Real y útil (evita errores), pero convención. [analysis]
+
+Dicho eso, la contabilidad es perfectamente consistente, y ahí está lo práctico — **cada paso de la cadena PCM tiene su factor de conversión, y todos cancelan**:
+
+| Cantidad | Unidad | Rol |
+|---|---|---|
+| $f_s$ | muestras/s | tasa |
+| $n=\log_2M$ | **bits/muestra** | factor de conversión |
+| $R_b = n\,f_s$ | $\frac{\text{bits}}{\text{muestra}}\times\frac{\text{muestras}}{\text{s}} =$ **bits/s** | tasa |
+| $\log_2M_{mod}$ | **bits/símbolo** | factor de conversión |
+| $R_s = \frac{R_b}{\log_2M_{mod}}$ | $\frac{\text{bits}}{\text{s}}\div\frac{\text{bits}}{\text{símbolo}} =$ **símbolos/s** | tasa |
+| $2$ (Nyquist, banda base) | **símbolos/ciclo** | factor de conversión |
+| $B = \frac{R_s}{2}$ | $\frac{\text{símbolos}}{\text{s}}\div\frac{\text{símbolos}}{\text{ciclo}} =$ **ciclos/s $=$ Hz** | ancho de banda |
+
+**El patrón**: hay tres factores de conversión y son todos del mismo tipo — "cuántos X por Y". Cada uno cambia *qué se está contando* sin cambiar la dimensión ($1/\text{s}$ en todas las tasas). Los dos primeros son $\log_2$ de un conteo (cuántos bits hacen falta para etiquetar $M$ posibilidades: con $M_{mod}=4$ → 00, 01, 10, 11 → 2 bits; es el mismo $\log_2$ de la entropía en [[../teoria-informacion/entropia-fuente|Teoría de la Información]]).
+
+**El "2" de Nyquist también tiene interpretación**: es **2 símbolos por ciclo** — en un ciclo de la componente más alta se pueden distinguir 2 valores independientes (pico y valle), la misma intuición del teorema de muestreo. Y eso es literalmente la **eficiencia espectral**:
+
+| Caso | Eficiencia | Factor |
+|---|---|---|
+| Banda base | 2 símbolos/s/Hz | $B=R_s/2$ |
+| Pasabanda | 1 símbolo/s/Hz | $B=R_s$ |
+
+Por eso la eficiencia espectral se mide en **bits/s/Hz** — dimensionalmente adimensional ($\frac{1/s}{1/s}$), pero semánticamente dice "cuántos bits se exprimen por cada Hz". Misma contabilidad, con las etiquetas puestas.
 
 **No confundir $M$ con $M_{mod}$**: $M$ = niveles de cuantificación del ADC (define $n=\log_2M$ bits por muestra); $M_{mod}$ = puntos de la constelación de la modulación digital (define cuántos bits van por símbolo). Son cosas distintas y aparecen las dos en el mismo ejercicio.
 
