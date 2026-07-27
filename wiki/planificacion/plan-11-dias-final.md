@@ -4,7 +4,22 @@ tags:
 curso: Sistemas de Comunicaciones
 ---
 
-# Plan para el Final (30 de julio) — recalculado 26/07 (v4)
+# Plan para el Final (30 de julio) — recalculado 26/07 noche (v5)
+
+> 🔴 **v5 (26/07, 23:45) — situación real:** el 26/07 cubrió VSB (en exceso de profundidad para lo que rinde), FM núcleo (Carson, multiplicadores, 1 ejercicio resuelto) y SSB compacto. **PCM no se llegó a tocar.** Quedan **3 días completos (27, 28, 29) + la mañana del 30** para 5 temas en cero: PCM (71,4%), Espectro Expandido (57,1%), Ruido (52,4%), TI (52,4%), Digital (40,5%).
+>
+> **Cambio de criterio, no solo de fechas:** ya no alcanza con "ir rápido" — hay que ir **a nivel formulario**. El objetivo deja de ser entender cada tema y pasa a ser **poder arrancar los 4 problemas y sacar >25% en cada uno** (regla: un punto en blanco = examen desaprobado sin importar el resto). Cobertura amplia y superficial le gana a profundidad en pocos temas.
+>
+> | Día | Temas | Nota |
+> |---|---|---|
+> | **27/07** | **PCM** (mañana, es el más testeado) + **Modulación Digital** (tarde) | Pareja natural: PCM digitaliza, Digital transmite esos bits |
+> | **28/07** | **Ruido + BER** (mañana) + **Teoría de la Información** (tarde) | |
+> | **29/07** | **Espectro Expandido/OFDM** (mañana) + **simulacro cronometrado** (tarde/noche) | El simulacro no se negocia: es la única forma de calibrar velocidad |
+> | **30/07 mañana** | Repaso de formulario, sin material nuevo | |
+>
+> ⚠️ **Riesgo abierto: el formulario todavía no está impreso.** Es el único material que entra al examen. Imprimirlo es acción de máxima prioridad — si falla eso, no importa nada del resto.
+
+# (histórico) Plan recalculado 26/07 (v4)
 
 > **Last verified:** 2026-07-26 | **Verified by:** analysis + revision cruzada con 42 finales unicos resueltos (2019-2026, ver "Frecuencia de Temas en los Finales") + documento oficial de la catedra (modalidad vigente desde feb. 2022, ult. modificacion 30/07/2025) + recalculo de cronograma tras desvio real de fechas (v4, 26/07)
 
