@@ -106,6 +106,27 @@ $$f_s \geq 2B: \qquad 8000\ \frac{\text{muestras}}{\text{s}} \geq 2\ \frac{\text
 
 **2 muestras por ciclo** — hacen falta al menos dos muestras por ciclo de la componente más alta. Es el dual del "2 símbolos/ciclo" del criterio de señalización sin ISI: uno para **muestrear**, otro para **transmitir**, y por eso aparece el mismo 2 en las dos fórmulas ($f_s\geq2B$ y $R_s\leq2B$).
 
+#### ¿Conviene distinguir las unidades al resolver? Sí, pero liviano
+
+**Etiquetar, no hacer álgebra de unidades.** [analysis]
+
+**Por qué conviene**: los dos errores más caros de estos ejercicios son exactamente confusiones de unidad, y los dos aparecen en el mismo final (`F_Comu_2024-11-14_res.md`, donde se los marcaron mal al estudiante):
+
+1. **Confundir $R_b$ con $R_s$** — dividir o no dividir por $\log_2M_{mod}$
+2. **Confundir $R_s$ con $B$** — el factor 2 de banda base vs pasabanda
+
+Preguntarse "¿esto son bits o símbolos?" y "¿esto es una tasa o un ancho?" ataca justo esos dos.
+
+**El hábito concreto para el examen**: escribir la unidad al lado de cada resultado intermedio — no cuentas dimensionales, solo la etiqueta:
+
+$$f_s = 8\text{ kmuestras/s} \ \to\ R_b = 64\text{ kbps} \ \to\ R_s = 32\text{ kbaud} \ \to\ B = 32\text{ kHz}$$
+
+Cuatro números, cuatro etiquetas. Eso solo ya obliga a notar si se saltó un paso o se dividió de más. **Si el enunciado pide "ancho de banda" y el último número quedó etiquetado "kbps", hay alarma inmediata.**
+
+**Cuándo no molestarse**: durante la aritmética misma. Los tres son $1/\text{s}$, así que los números se comportan bien sin cuidado especial — no perder segundos verificando cancelaciones. Poner la etiqueta al resultado y seguir.
+
+**Para entender los conceptos: sí, sin reservas.** La cadena PCM entera *es* una secuencia de "qué estoy contando ahora" — muestras → bits → símbolos → ciclos. Si eso se mezcla, la cadena se vuelve fórmulas sueltas para memorizar en vez de una historia con lógica.
+
 **No confundir $M$ con $M_{mod}$**: $M$ = niveles de cuantificación del ADC (define $n=\log_2M$ bits por muestra); $M_{mod}$ = puntos de la constelación de la modulación digital (define cuántos bits van por símbolo). Son cosas distintas y aparecen las dos en el mismo ejercicio.
 
 ### Justificación del paso $R_s \to B_{min}$ (criterio de Nyquist sin ISI)
