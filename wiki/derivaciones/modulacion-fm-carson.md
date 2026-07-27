@@ -173,7 +173,40 @@ Todo lo demás depende de **qué se pone en $\phi_2$**:
 | **Mezclador** con OL | $2\pi f_{OL}t$ (**sin modulación**) | $2\pi(f_c{+}f_{OL})t+\beta\sin(2\pi f_mt)$    | traslada $f_c$, $\beta$ **intacto** |
 | **Duplicador**       | $\phi_1$ (**la señal misma**)       | $2\phi_1 = 2\pi(2f_c)t+2\beta\sin(2\pi f_mt)$ | escala $f_c$ **y** $\beta$          |
 
-**Regla unificada**: el término de modulación de la salida es **la suma de los términos de modulación de las dos entradas**. El oscilador local tiene modulación cero (su fase es puramente lineal en $t$), así que solo aporta frecuencia de portadora — $\beta$ ni se entera. La señal misma sí lleva $\beta\sin(2\pi f_mt)$, así que al sumarse consigo misma la modulación se duplica junto con la portadora.
+#### De dónde sale cada fila de la tabla
+
+**Deducción general.** Escribiendo cada fase separada en su **parte de portadora** (lineal en $t$) y su **parte de modulación**:
+
+$$\phi_1(t) = 2\pi f_1 t + \psi_1(t), \qquad \phi_2(t) = 2\pi f_2 t + \psi_2(t)$$
+
+El término suma, agrupando:
+
+$$\phi_1+\phi_2 = \underbrace{2\pi f_1t + 2\pi f_2t}_{\text{lineales en }t} + \underbrace{\psi_1(t)+\psi_2(t)}_{\text{modulaciones}} = \boxed{2\pi(f_1{+}f_2)\,t + \big[\psi_1(t)+\psi_2(t)\big]}$$
+
+El paso clave es **sacar $2\pi t$ como factor común** de los dos términos lineales — de ahí sale que las portadoras se suman. Las partes de modulación, al no ser lineales en $t$, no se pueden agrupar con esas: quedan sumándose aparte. O sea: **las portadoras se suman entre sí, y las modulaciones entre sí**, sin mezclarse. Las dos filas de la tabla son especializaciones de esto.
+
+**Fila 1 — mezclador** ($f_2=f_{OL}$, $\psi_2=0$):
+
+$$A\cos\phi_1(t)\cdot\cos(2\pi f_{OL}t) = \frac{A}{2}\big[\cos(\phi_1-\phi_2)+\cos(\phi_1+\phi_2)\big]$$
+
+Desarrollando el término suma paso a paso:
+
+$$\phi_1+\phi_2 = \big[2\pi f_ct + \beta\sin(2\pi f_mt)\big] + 2\pi f_{OL}t = 2\pi f_ct + 2\pi f_{OL}t + \beta\sin(2\pi f_mt)$$
+$$= 2\pi(f_c{+}f_{OL})\,t + \beta\sin(2\pi f_mt)$$
+
+**El OL no tiene con qué modificar la modulación**: su fase es puramente lineal en $t$ ($\psi_2=0$), así que $\beta\sin(2\pi f_mt)$ **atraviesa sin tocarse** y solo se movió la portadora. (El término diferencia da lo mismo pero con $f_c-f_{OL}$; el filtro elige cuál queda.)
+
+**Fila 2 — duplicador** ($f_2=f_c$, $\psi_2=\psi_1=\beta\sin(2\pi f_mt)$):
+
+$$A\cos\phi_1(t)\cdot A\cos\phi_1(t) = A^2\cos^2\phi_1 = \frac{A^2}{2}\big[\cos(\phi_1-\phi_1)+\cos(\phi_1+\phi_1)\big]$$
+
+El término suma es $2\phi_1$, y **el factor 2 se distribuye sobre los dos términos**:
+
+$$2\phi_1 = 2\big[2\pi f_ct + \beta\sin(2\pi f_mt)\big] = 2\cdot2\pi f_ct + 2\beta\sin(2\pi f_mt) = 2\pi(2f_c)\,t + 2\beta\sin(2\pi f_mt)$$
+
+Notar **dónde entra cada 2**: en el primer término se absorbe dentro de la frecuencia ($2\cdot2\pi f_ct = 2\pi(2f_c)t$ → portadora al doble); en el segundo queda como **coeficiente del seno** ($\beta\to2\beta$), sin poder entrar al argumento — y por eso $f_m$ no se toca.
+
+**Regla unificada** (que ahora es consecuencia, no afirmación): el término de modulación de la salida es **la suma de los términos de modulación de las dos entradas**. El oscilador local tiene $\psi_2=0$, así que $\beta$ ni se entera. La señal misma tiene $\psi_2=\psi_1$, así que la modulación se duplica junto con la portadora.
 
 > **Confirmación de que es literalmente el mismo mecanismo**: en el duplicador, ¿dónde esta el término *diferencia*? Es $\cos(\phi_1-\phi_1)=\cos 0=1$ — **la continua**. Y efectivamente $\cos^2\phi=\tfrac12[1+\cos2\phi]$: ese "$1$" que arriba se describió como "el término de continua que el filtro elimina" **es** la salida de frecuencia-diferencia del mezclador con las dos entradas iguales. No hay dos fenómenos, hay uno. [analysis]
 >
