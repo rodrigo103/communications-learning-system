@@ -24,8 +24,9 @@ $$\text{Analógica} \to \boxed{\text{Muestreo}} \to \boxed{\text{Cuantificación
 | 2 | $\boxed{M = 2^n}$ | $M$ niveles con $n$ bits por muestra |
 | 3 | $\boxed{q = \dfrac{V_{pp}}{M}}$ | Paso de cuantificación. **Error máximo $= q/2$** |
 | 4 | $\boxed{P_q = \dfrac{q^2}{12}}$ | Potencia de ruido de cuantificación |
-| 5 | $\boxed{R_b = n\,f_s}$ | Tasa de bits (bit rate) |
-| 6 | $\boxed{B_{min} = \dfrac{R_b}{\log_2 M_{mod}}}$ | Ancho de banda mínimo **pasabanda** (modulado) |
+| 5 | $\boxed{R_b = n\,f_s}$ | Tasa de bits [bps] |
+| 6a | $\boxed{R_s = \dfrac{R_b}{\log_2 M_{mod}}}$ | Tasa de **símbolos** [baudios] |
+| 6b | $\boxed{B_{min} = R_s \text{ (pasabanda)}}$ | Ancho de banda mínimo [Hz] |
 
 ## SNR de cuantificación — esta cátedra usa factor de cresta
 
@@ -44,16 +45,21 @@ Regla mnemotécnica del $6n$: **cada bit agregado mejora la SNR en ~6 dB** (dupl
 
 ## La trampa del ancho de banda (error frecuente)
 
-Es donde se equivocó el estudiante en `exercises/finales/md/F_Comu_2024-11-14_res.md` y se lo marcaron mal:
+Es donde se equivocó el estudiante en `exercises/finales/md/F_Comu_2024-11-14_res.md` y se lo marcaron mal.
 
-| Caso | $B_{min}$ |
-|---|---|
-| **Banda base** | $R_s/2$ |
-| **Pasabanda** (modulado: QPSK, QAM, PSK…) | $R_s = \dfrac{R_b}{\log_2 M_{mod}}$ |
+**Son dos pasos con unidades distintas, no uno solo:**
 
-con $R_s$ = tasa de símbolos $= R_b/\log_2 M_{mod}$.
+$$R_b\ [\text{bps}] \xrightarrow{\ \div\log_2 M_{mod}\ } R_s\ [\text{baudios}] \xrightarrow{\ \text{Nyquist}\ } B_{min}\ [\text{Hz}]$$
 
-**Pasabanda es el doble de banda base** — modular duplica el ancho de banda, mismo motivo de siempre: el espectro se copia a $\pm f_c$. No confundir $M$ (niveles de cuantificación del ADC) con $M_{mod}$ (puntos de la constelación de la modulación digital): son cosas distintas y aparecen las dos en el mismo ejercicio.
+| Paso | Fórmula | Unidad | Qué significa |
+|---|---|---|---|
+| **1. Tasa de símbolos** | $R_s = \dfrac{R_b}{\log_2 M_{mod}}$ | **baudios** (símbolos/s) | Cada símbolo lleva $\log_2M_{mod}$ bits, así que se mandan menos símbolos que bits |
+| **2a. BW banda base** | $B_{min} = R_s/2$ | **Hz** | Nyquist: con ancho $B$ se pueden mandar $2B$ símbolos/s sin ISI |
+| **2b. BW pasabanda** | $B_{min} = R_s$ | **Hz** | Modular duplica el ancho de banda (espectro copiado a $\pm f_c$) |
+
+> **¿Por qué $B_{min}$ y $R_s$ dan el mismo número en pasabanda?** No es una identidad — es una **cancelación**: Nyquist aporta un $\tfrac12$ ($B=R_s/2$) y modular aporta un $2$, y $2\times\tfrac{R_s}{2}=R_s$. Son magnitudes **distintas** (una cuenta símbolos por segundo, la otra mide una extensión del eje de frecuencias); que ambas sean dimensionalmente $1/\text{s}$ es lo que permite que coincidan sin contradicción. **En banda base NO coinciden** ($B=R_s/2$), lo que confirma que no son lo mismo. [analysis]
+
+**No confundir $M$ con $M_{mod}$**: $M$ = niveles de cuantificación del ADC (define $n=\log_2M$ bits por muestra); $M_{mod}$ = puntos de la constelación de la modulación digital (define cuántos bits van por símbolo). Son cosas distintas y aparecen las dos en el mismo ejercicio.
 
 ## Ejemplo completo verificado
 
@@ -68,8 +74,8 @@ con $R_s$ = tasa de símbolos $= R_b/\log_2 M_{mod}$.
 | Frecuencia de muestreo | $f_s = 2B = 2\times4$ kHz | $\mathbf{8}$ **kHz** |
 | Bits por muestra | $n = \log_2 256$ | $8$ |
 | Tasa de bits | $R_b = n f_s = 8\times8$ kHz | $\mathbf{64}$ **kbps** |
-| Tasa de símbolos (QPSK, $M_{mod}=4$) | $R_s = R_b/\log_2 4 = 64\text{k}/2$ | $32$ kbaud |
-| Ancho de banda mínimo | $B_{min} = R_s$ | $\mathbf{32}$ **kHz** |
+| Tasa de símbolos (QPSK, $M_{mod}=4$) | $R_s = R_b/\log_2 4 = 64\text{k}/2$ | $32$ **kbaud** |
+| Ancho de banda mínimo (pasabanda) | $B_{min} = R_s$ *(mismo número, otra unidad)* | $\mathbf{32}$ **kHz** |
 
 **Variante típica — muestrear por encima de Nyquist**: si $f_s$ es 25% superior a la mínima teórica, $f_s' = 10$ kHz y **todo escala $\times1{,}25$**: $R_b = 80$ kbps, $R_s = 40$ kbaud, $B_{min} = 40$ kHz. La SNR de cuantificación **no cambia** (depende solo de $M$ y $F_C$, no de $f_s$).
 
