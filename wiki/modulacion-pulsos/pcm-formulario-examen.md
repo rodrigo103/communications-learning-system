@@ -51,13 +51,29 @@ Es donde se equivocó el estudiante en `exercises/finales/md/F_Comu_2024-11-14_r
 
 $$R_b\ [\text{bps}] \xrightarrow{\ \div\log_2 M_{mod}\ } R_s\ [\text{baudios}] \xrightarrow{\ \text{Nyquist}\ } B_{min}\ [\text{Hz}]$$
 
-| Paso | Fórmula | Unidad | Qué significa |
-|---|---|---|---|
+| Paso                    | Fórmula                             | Unidad                   | Qué significa                                                                      |
+| ----------------------- | ----------------------------------- | ------------------------ | ---------------------------------------------------------------------------------- |
 | **1. Tasa de símbolos** | $R_s = \dfrac{R_b}{\log_2 M_{mod}}$ | **baudios** (símbolos/s) | Cada símbolo lleva $\log_2M_{mod}$ bits, así que se mandan menos símbolos que bits |
-| **2a. BW banda base** | $B_{min} = R_s/2$ | **Hz** | Nyquist: con ancho $B$ se pueden mandar $2B$ símbolos/s sin ISI |
-| **2b. BW pasabanda** | $B_{min} = R_s$ | **Hz** | Modular duplica el ancho de banda (espectro copiado a $\pm f_c$) |
+| **2a. BW banda base**   | $B_{min} = R_s/2$                   | **Hz**                   | Nyquist: con ancho $B$ se pueden mandar $2B$ símbolos/s sin ISI                    |
+| **2b. BW pasabanda**    | $B_{min} = R_s$                     | **Hz**                   | Modular duplica el ancho de banda (espectro copiado a $\pm f_c$)                   |
 
 > **¿Por qué $B_{min}$ y $R_s$ dan el mismo número en pasabanda?** No es una identidad — es una **cancelación**: Nyquist aporta un $\tfrac12$ ($B=R_s/2$) y modular aporta un $2$, y $2\times\tfrac{R_s}{2}=R_s$. Son magnitudes **distintas** (una cuenta símbolos por segundo, la otra mide una extensión del eje de frecuencias); que ambas sean dimensionalmente $1/\text{s}$ es lo que permite que coincidan sin contradicción. **En banda base NO coinciden** ($B=R_s/2$), lo que confirma que no son lo mismo. [analysis]
+
+> **¿Cómo se pasa de bps a baudios? ¿El denominador tiene unidades?** Sí — es **bits/símbolo**, y ahí está la conversión: [analysis]
+> $$R_s\left[\frac{\text{símbolos}}{\text{s}}\right] = \frac{R_b\left[\frac{\text{bits}}{\text{s}}\right]}{\log_2 M_{mod}\left[\frac{\text{bits}}{\text{símbolo}}\right]}$$
+> Los **bits se cancelan** y queda símbolos/s. Ejemplo QPSK: $\dfrac{64000\ \text{bits/s}}{2\ \text{bits/símbolo}} = 32000\ \text{símbolos/s} = 32$ kbaud.
+>
+> **Por qué $\log_2M_{mod}$ son bits por símbolo**: un símbolo elegido entre $M_{mod}$ posibilidades necesita $\log_2M_{mod}$ dígitos binarios para identificarse (con $M_{mod}=4$: 00, 01, 10, 11 → 2 bits). Es el mismo $\log_2$ de la entropía en [[../teoria-informacion/entropia-fuente|Teoría de la Información]] — un símbolo equiprobable entre $M$ transporta $\log_2M$ bits.
+>
+> **El detalle fino**: matemáticamente $\log_2M$ es un número puro (adimensional), pero "bit" y "símbolo" no son dimensiones físicas sino **unidades de conteo** (como el radián). Por eso:
+>
+> | Magnitud | Dimensión física | Qué cuenta |
+> |---|---|---|
+> | $R_b$ [bps] | $1/\text{s}$ | bits por segundo |
+> | $R_s$ [baudios] | $1/\text{s}$ | símbolos por segundo |
+> | $B$ [Hz] | $1/\text{s}$ | extensión en el eje de frecuencias |
+>
+> **Las tres son dimensionalmente $1/\text{s}$** — de ahí que puedan dar el mismo número sin contradicción. Lo que las distingue es *qué* cuentan, no la dimensión. Mismo fenómeno que Hz vs. rad/s.
 
 **No confundir $M$ con $M_{mod}$**: $M$ = niveles de cuantificación del ADC (define $n=\log_2M$ bits por muestra); $M_{mod}$ = puntos de la constelación de la modulación digital (define cuántos bits van por símbolo). Son cosas distintas y aparecen las dos en el mismo ejercicio.
 
