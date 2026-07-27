@@ -26,6 +26,27 @@ $$R_b\ [\text{bps}] \to \ell \to D\ [\text{baudios}] \to B\ [\text{Hz}] \to SNR 
 | 4   | $\boxed{E_b = \dfrac{S}{R_b}}$                      | Energía por bit (potencia $\times$ duración de bit)             |
 | 5   | $\boxed{\dfrac{E_b}{N_0} = SNR\cdot\dfrac{B}{R_b}}$ | **El puente** entre SNR y BER                                   |
 
+### ¿$\ell$ es lo mismo que el $n$ de PCM?
+
+Misma **fórmula**, cosas **distintas** — y los símbolos distintos ($n$ vs $\ell$, ambos usados así por la cátedra) están justamente para no mezclarlas: [analysis]
+
+| | PCM | Digital |
+|---|---|---|
+| Símbolo | $n$ | $\ell$ |
+| Qué cuenta $M$ | **Niveles del ADC** | **Puntos de la constelación** |
+| Unidad | bits/**muestra** | bits/**símbolo** |
+| Etapa | Digitalización (fuente) | Transmisión |
+
+**Son números independientes**: en el ejercicio del CD-Audio, $n=16$ bits/muestra (ADC de 65536 niveles); si eso se transmite en QPSK, $\ell=2$ bits/símbolo. Nada obliga a que coincidan, y en `F_Comu_2024-11-14_res.md` aparecen los dos en el mismo problema ($M=256$ niveles → $n=8$; QPSK → $\ell=2$).
+
+**Dónde se conectan — la cadena completa:**
+
+$$\frac{\text{muestras}}{\text{s}} \xrightarrow{\ \times n\ } \frac{\text{bits}}{\text{s}} \xrightarrow{\ \div\ell\ } \frac{\text{símbolos}}{\text{s}} \xrightarrow{\ \text{Nyquist}\ } \text{Hz}$$
+
+$$f_s \xrightarrow{\ \times n\ } R_b \xrightarrow{\ \div\ell\ } D \xrightarrow{\ \times1\ \text{(pasabanda)}\ } B$$
+
+$n$ **multiplica** al entrar y $\ell$ **divide** al salir: los dos son factores de conversión del mismo tipo ("bits por algo"), actuando en etapas distintas y en direcciones opuestas — $n$ convierte muestras→bits, $\ell$ convierte bits→símbolos. Ver la contabilidad de unidades completa en [[../modulacion-pulsos/pcm-formulario-examen#Cómo funcionan las unidades en toda la cadena|PCM — Cómo funcionan las unidades]].
+
 ## Los tres anchos de banda — no confundirlos
 
 Los finales piden los tres y son distintos. Confundirlos es el error más frecuente:

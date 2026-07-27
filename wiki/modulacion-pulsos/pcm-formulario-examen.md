@@ -152,7 +152,12 @@ Cuatro números, cuatro etiquetas. Eso solo ya obliga a notar si se saltó un pa
 
 **Para entender los conceptos: sí, sin reservas.** La cadena PCM entera *es* una secuencia de "qué estoy contando ahora" — muestras → bits → símbolos → ciclos. Si eso se mezcla, la cadena se vuelve fórmulas sueltas para memorizar en vez de una historia con lógica.
 
-**No confundir $M$ con $M_{mod}$**: $M$ = niveles de cuantificación del ADC (define $n=\log_2M$ bits por muestra); $M_{mod}$ = puntos de la constelación de la modulación digital (define cuántos bits van por símbolo). Son cosas distintas y aparecen las dos en el mismo ejercicio.
+**No confundir $M$ con $M_{mod}$**: $M$ = niveles de cuantificación del ADC (define $n=\log_2M$ bits por muestra); $M_{mod}$ = puntos de la constelación de la modulación digital (define $\ell=\log_2M_{mod}$ bits por símbolo). Son cosas distintas y aparecen las dos en el mismo ejercicio — en `F_Comu_2024-11-14_res.md`, $M=256$ niveles ($n=8$) y QPSK ($M_{mod}=4$, $\ell=2$).
+
+> **$n$ y $\ell$ tienen la misma fórmula pero cuentan cosas distintas** ($\log_2$ de un conteo, sí, pero de *qué* conteo cambia): $n$ es bits/**muestra** y vive en la digitalización; $\ell$ es bits/**símbolo** y vive en la transmisión. Son **números independientes** — un ADC de 16 bits puede alimentar un modulador QPSK ($\ell=2$). En la cadena, **$n$ multiplica al entrar y $\ell$ divide al salir**: [analysis]
+> $$f_s \xrightarrow{\ \times n\ } R_b \xrightarrow{\ \div\ell\ } D \xrightarrow{\ \text{Nyquist}\ } B$$
+> $$\frac{\text{muestras}}{\text{s}} \to \frac{\text{bits}}{\text{s}} \to \frac{\text{símbolos}}{\text{s}} \to \text{Hz}$$
+> Detalle en [[../modulacion-digital/digital-formulario-examen#¿$\ell$ es lo mismo que el $n$ de PCM?|Digital — ¿$\ell$ es lo mismo que $n$?]].
 
 ### Justificación del paso $R_s \to B_{min}$ (criterio de Nyquist sin ISI)
 
