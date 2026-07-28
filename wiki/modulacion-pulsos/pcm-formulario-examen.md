@@ -14,6 +14,29 @@ unidad: 5
 >
 > **PCM es el tema más testeado de todos: 71,4% de los 42 finales únicos** (ver [[../planificacion/plan-11-dias-final#Frecuencia de Temas en los Finales|Frecuencia de Temas]]).
 
+## Glosario de símbolos
+
+| Símbolo | Nombre | Unidad | Notas |
+|---|---|---|---|
+| $B$ | Ancho de banda **de la señal analógica** a digitalizar | Hz | El del mensaje, antes de muestrear |
+| $f_s$ | Frecuencia de **muestreo** | muestras/s (= Hz) | Mínimo $2B$ por Nyquist |
+| $M$ | Cantidad de **niveles de cuantificación** del ADC | conteo | ⚠️ No confundir con $M_{mod}$ |
+| $n$ | **Bits por muestra** | bits/muestra | $n=\log_2M$ |
+| $V_{pp}$ | Tensión **pico a pico** del rango del ADC | V | El "fondo de escala" |
+| $q$ | **Paso de cuantificación** (altura de un escalón) | V | $q=V_{pp}/M$. Error máx $=q/2$ |
+| $P_q$ | Potencia de **ruido de cuantificación** | V² (= W con $R=1$) | $q^2/12$ |
+| $F_C$ | **Factor de cresta** de la señal | adimensional | $=$ pico/RMS. Senoidal: $\sqrt2$ |
+| $SNR_Q$ | Relación señal a **ruido de cuantificación** | adimensional | Se da en dB |
+| $R_b$ | **Tasa de bits** (bit rate) | bps | $R_b=n\,f_s$ |
+| $M_{mod}$ | Puntos de la **constelación** de la modulación digital | conteo | ⚠️ Distinto de $M$ |
+| $R_s$ | **Tasa de símbolos** | baudios (símbolos/s) | $R_s=R_b/\log_2M_{mod}$ |
+| $B_{min}$ | **Ancho de banda mínimo** de transmisión | Hz | Pasabanda: $=R_s$; banda base: $=R_s/2$ |
+| $R$ | Impedancia de carga | Ω | Los finales piden potencia **normalizada**: $R=1\,\Omega$ |
+
+> ⚠️ **Las dos colisiones a vigilar**: [analysis]
+> - **$M$ vs $M_{mod}$** — niveles del ADC vs puntos de constelación. **Aparecen los dos en el mismo ejercicio.**
+> - **$B$ vs $B_{min}$** — $B$ es el ancho de la señal *analógica de entrada*; $B_{min}$ el de la señal *digital transmitida*. No tienen relación directa.
+
 ## La cadena PCM — 6 fórmulas
 
 $$\text{Analógica} \to \boxed{\text{Muestreo}} \to \boxed{\text{Cuantificación}} \to \boxed{\text{Codificación}} \to \text{bits}$$

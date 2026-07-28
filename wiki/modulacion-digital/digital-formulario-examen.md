@@ -14,6 +14,38 @@ unidad: 6
 >
 > **Modulación Digital aparece en 40,5% de los 42 finales únicos.** Menos que PCM o AM/FM, pero sus fórmulas se reusan en Ruido/BER, así que rinde doble.
 
+## Glosario de símbolos
+
+| Símbolo | Nombre | Unidad | Notas |
+|---|---|---|---|
+| $M$ | Puntos de la **constelación** | conteo | 16-QAM → $M=16$. En PCM $M$ es otra cosa (niveles del ADC) |
+| $\ell$ | **Bits por símbolo** | bits/símbolo | $\ell=\log_2M$. Es el $n$ de PCM pero para símbolos |
+| $R_b$ | **Tasa de bits** | bps | Dato del enunciado o viene de PCM |
+| $D$ | **Tasa de símbolos** (velocidad de señalización) | baudios | $D=R_b/\ell$. También se escribe $R_s$ |
+| $\alpha$ | **Factor de roll-off** del coseno realzado | adimensional, $0\le\alpha\le1$ | $\alpha=0$ → Nyquist ideal |
+| $B$ | Ancho de banda ocupado | Hz | Tres variantes: $2D$, $D$, $D(1+\alpha)$ |
+| $B_N$ | Ancho de banda **equivalente de ruido** | Hz | Casi siempre lo da el enunciado |
+| $f_c$ | Frecuencia de **portadora** | Hz | |
+| $I$, $Q$ | Componentes **en fase** y **en cuadratura** | V | Coordenadas del punto de constelación |
+| $\lvert s\rvert$ | **Magnitud del símbolo** | V | $=\sqrt{I^2+Q^2}$. Amplitud pico de la sinusoide transmitida |
+| $a$ | **Unidad de grilla** de QAM | V | Niveles en $\pm a,\pm3a,\ldots$ ⚠️ Ningún símbolo *vale* $a$ |
+| $A$ | **Radio** de la constelación PSK | V | Todos los símbolos valen $A$ |
+| $d_{min}$ | **Distancia mínima** entre puntos | V | Lo que decide la inmunidad al ruido |
+| $S$ | Potencia de **señal** | W | $S=\langle\lvert s\rvert^2\rangle/2$ |
+| $N$ | Potencia de **ruido** | W | $N=N_0B_N$ |
+| $N_0$ | **Densidad** espectral de ruido | W/Hz ($\equiv$ J) | |
+| $E_b$ | **Energía por bit** | J/bit | $E_b=S/R_b$ |
+| $T_b$ | Duración de un **bit** | s | $T_b=1/R_b$ |
+| $T_s$ | Duración de un **símbolo** | s | $T_s=1/D$ |
+| $P_e$ | Probabilidad de error (**BER**) | adimensional | |
+| $Q(\cdot)$ | Función **Q** (cola de la gaussiana) | adimensional | Se lee del ábaco anexo |
+
+> ⚠️ **Colisiones a vigilar**: [analysis]
+> - **$M$ (aquí) vs $M$ (en PCM)** — constelación vs niveles del ADC. Por eso en la nota de PCM se lo llama $M_{mod}$ cuando aparecen juntos.
+> - **$a$ vs $A$** — unidad de grilla (QAM) vs radio (PSK). Ver detalle más abajo.
+> - **$T_b$ vs $T_s$** — duración de bit vs de símbolo. Se relacionan por $T_s = \ell\,T_b$.
+> - **$N$ vs $N_0$** — potencia [W] vs densidad [W/Hz]. Se conectan multiplicando por un ancho de banda.
+
 ## Cadena de fórmulas
 
 $$R_b\ [\text{bps}] \to \ell \to D\ [\text{baudios}] \to B\ [\text{Hz}] \to SNR \to BER$$
