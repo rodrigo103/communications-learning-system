@@ -127,7 +127,26 @@ Lóbulo principal centrado en $f_c$, con **nulos en $f_c\pm64$ kHz, $\pm128$ kHz
 > | Su transformada de Fourier | $P(f)=A\,T_s\operatorname{sinc}(fT_s)$ → **sinc** |
 > | La DEP es $\|P(f)\|^2$ (magnitud al cuadrado, porque es potencia) | $\propto\operatorname{sinc}^2(fT_s)$ → **sinc²** |
 >
-> O sea: **sinc** aparece por ser la transformada del rectángulo; **el cuadrado** aparece porque la DEP es una magnitud de potencia. Al modular, esa DEP de banda base se copia a $\pm f_c$ (y se divide por 4): $S_{pb}(f)=\tfrac14[S_{bb}(f-f_c)+S_{bb}(f+f_c)]$.
+> O sea: **sinc** aparece por ser la transformada del rectángulo; **el cuadrado** aparece porque la DEP es una magnitud de potencia. Al modular, esa DEP de banda base se copia a $\pm f_c$ y **se divide por 4**: $S_{pb}(f)=\tfrac14[S_{bb}(f-f_c)+S_{bb}(f+f_c)]$.
+>
+> **¿Por qué $\tfrac14$ y no $\tfrac12$?** Porque **el $\tfrac12$ es de amplitud y la DEP es potencia** — se eleva al cuadrado:
+> $$\mathcal F\{m(t)\cos(2\pi f_ct)\} = \tfrac12\big[M(f-f_c)+M(f+f_c)\big] \ \longrightarrow\ \left(\tfrac12\right)^2 = \tfrac14$$
+> La propiedad de modulación pone $\tfrac12$ en **cada copia** (viene de Euler: el coseno son dos exponenciales, cada una con la mitad). Como la DEP va con $|\cdot|^2$, ese $\tfrac12$ se vuelve $\tfrac14$.
+>
+> **Chequeo por conservación de potencia** — si fuera $\tfrac12$ por copia la potencia total quedaría igual que en banda base, lo cual es falso:
+> $$\int S_{pb}(f)\,df = \tfrac14P_m + \tfrac14P_m = \frac{P_m}{2}$$
+> Dos copias, $\tfrac14$ cada una → factor total $\tfrac12$. Coincide exacto con la cuenta en el tiempo, $P_s=\langle m^2\cos^2\rangle=\tfrac12\langle m^2\rangle$, usando $\langle\cos^2\rangle=\tfrac12$: **modular parte la potencia al medio**, y el $\tfrac14$ por copia es lo que hace cerrar la contabilidad.
+>
+> **Es el mismo "factor 2" recurrente del curso** — el que costó puntos en la pregunta 3 de `exercises/autoevaluacion-am.md` (las deltas de $S_{AM}(f)$ valen $A_c/2$ y $A_c m/4$, no $A_c$ y $A_cm/2$):
+>
+> | Dónde | Magnitud real | Al pasar a frecuencia |
+> |---|---|---|
+> | Coseno → deltas (AM) | $A_c$ | $A_c/2$ por delta |
+> | Espectro → DEP (Digital) | $\tfrac12$ por copia | $\tfrac14$ por copia |
+>
+> **Cada coseno real se reparte en dos mitades**, y si además se está en una magnitud de potencia, esas mitades se elevan al cuadrado.
+>
+> *(Detalle técnico: el $\tfrac14$ por copia vale porque las dos copias **no se superponen**, o sea $f_c>W$ — la misma condición pasabanda de [[../herramientas-matematicas/transformada-hilbert#Aplicaciones en Comunicaciones|Hilbert]]. Si se solaparan habría términos cruzados.)*
 >
 > **¿Dónde caen los nulos?** $\operatorname{sinc}^2(fT_s)$ se anula donde $fT_s$ es entero no nulo, o sea en $f=\pm kD$ (con $D=1/T_s$). Trasladado a pasabanda: **$f_c\pm kD$** para $k=1,2,3\ldots$ — en este ejercicio $f_c\pm64$, $\pm128$, $\pm192$ kHz. El lóbulo principal va de $f_c-D$ a $f_c+D$, ancho $2D$.
 >
