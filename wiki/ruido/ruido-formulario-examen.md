@@ -87,6 +87,31 @@ que es exactamente $T_e = (F-1)T_0$ despejada al revés. **El $kB$ y el $G$ se c
 > $$F = \frac{(S/N)_{in}}{(S/N)_{out}} \qquad\Longleftrightarrow\qquad F = \frac{N_o}{N_i\,G}$$
 > Son lo mismo: $\frac{S_i/N_i}{S_o/N_o} = \frac{S_iN_o}{N_iS_o} \overset{S_o=GS_i}{=} \frac{N_o}{N_iG}$. La primera se lee *"cuánto degrada la SNR"*; la segunda, *"ruido real a la salida sobre el ruido que habría si el dispositivo fuera perfecto"* — más física.
 
+### $F$ de catálogo vs degradación real (la distinción que cuesta puntos)
+
+Hay **dos cosas parecidas** que conviene no mezclar: [analysis]
+
+$$\boxed{F_{\text{spec}} = 1+\frac{T_{eq}}{T_0}}\ \text{(catálogo, fijo)} \qquad\qquad \boxed{\text{Degradación} = 1+\frac{T_{eq}}{T_{fuente}}}\ \text{(situación concreta)}$$
+
+**Por qué existe la distinción**: la definición general $F=\frac{(S/N)_{in}}{(S/N)_{out}}$ **depende de qué se conecte a la entrada**. Así no serviría como especificación — el mismo amplificador tendría "distinto $F$" según la fuente. Por eso la norma **fija la referencia en $T_0 = 290$ K**: el *noise figure* de catálogo se mide siempre con una fuente a esa temperatura. **Coinciden solo cuando la fuente está a $T_0$**, que es el caso habitual y por eso casi siempre se confunden.
+
+**Lo que físicamente pasa**: el dispositivo agrega una cantidad **fija** de ruido propio ($N_a$, o equivalentemente $T_{eq}$), independiente de lo que entre:
+
+$$N_{out} = G\,(N_i+N_a)$$
+
+Si $N_i$ sube y $N_a$ queda igual, el aporte del amplificador **pesa proporcionalmente menos** → degrada menos. No es un artificio de definición.
+
+**El ejemplo que lo hace evidente** — LNA satelital con $T_{eq}=50$ K:
+
+| Fuente | Degradación real |
+|---|---|
+| A $T_0=290$ K (banco de medición) | $1+\frac{50}{290}=1{,}17$ → **0,7 dB** ← *lo que dice el catálogo* |
+| Antena mirando cielo frío, $T_{ant}=20$ K | $1+\frac{50}{20}=3{,}5$ → **5,4 dB** |
+
+**El mismo LNA degrada 0,7 dB o 5,4 dB según a qué se conecte.** Por eso en sistemas de bajo ruido (satélites, radioastronomía) se trabaja con $T_{eq}$ y no con $F$: $T_{eq}$ es propiedad del dispositivo, sin ambigüedad de referencia.
+
+> **Cómo redactarlo en el examen**: si un ítem cambia el ruido de entrada, conviene **explicitar el supuesto**: *"el ruido propio del amplificador no cambia, por lo tanto la degradación efectiva pasa de $F$ a $1+T_{eq}/T_{fuente}$"*. Si el corrector esperaba la lectura simple, al menos ve el razonamiento — y con la regla del 25% mínimo por punto, eso suma. Ver el caso resuelto en [[../../outputs/solutions/Ruido_amplificador_F_Comu_2019-02-25|Ruido — amplificador (F_Comu_2019-02-25)]], ítem c).
+
 ### ¿Cuándo hace falta $B_N$ en las cuentas?
 
 **Regla general: $B_N$ hace falta cuando necesitás potencias absolutas, no cuando trabajás con cocientes.** [analysis]
