@@ -65,6 +65,35 @@ unidad: 7
 | 5 | **Friis en temperatura** | $\boxed{T_e = T_1 + \dfrac{T_2}{G_1} + \dfrac{T_3}{G_1G_2}+\cdots}$ | Equivalente a 4; a veces más cómoda |
 | 6 | **Elemento pasivo** (cable, atenuador) | $\boxed{F = L, \quad G = 1/L}$ | La **pérdida es igual a la figura de ruido**. Clave para los ejercicios de repetidores |
 
+### ¿Qué es el ancho de banda equivalente de ruido ($B_N$)?
+
+Es un **truco de definición** para convertir una integral en una multiplicación. [analysis]
+
+**El problema**: un filtro real no corta en vertical — tiene flancos graduales y deja pasar ruido fuera de la banda nominal. La potencia de ruido que realmente pasa es
+
+$$N = \int_0^\infty N_0\,|H(f)|^2\,df$$
+
+una integral distinta para cada filtro.
+
+**La solución**: se define un **filtro rectangular ideal equivalente** con (1) la misma ganancia máxima $|H(f_0)|$ y (2) que deje pasar la misma potencia de ruido total. Su ancho es $B_N$:
+
+$$N_0|H(f_0)|^2 B_N = \int_0^\infty N_0|H(f)|^2df \quad\Longrightarrow\quad \boxed{B_N = \frac{1}{|H(f_0)|^2}\int_0^\infty|H(f)|^2df}$$
+
+**Imagen mental**: es el **rectángulo con la misma área** que la curva $|H(f)|^2$, a la misma altura. Se reemplaza la curva de bordes suaves por un rectángulo equivalente. Por eso $N = N_0B_N$ es **exacta**, no aproximada — $B_N$ está definido precisamente para que lo sea.
+
+**Comparado con el ancho de banda de −3 dB**: $B_N$ es **siempre mayor**, porque las colas del filtro también dejan pasar ruido.
+
+| Filtro | $B_N/B_{3dB}$ |
+|---|---|
+| RC de un polo | $\pi/2 = 1{,}57$ |
+| Butterworth 2 polos | $1{,}11$ |
+| Butterworth 3 polos | $1{,}05$ |
+| Ideal (brick-wall) | $1$ |
+
+Cuanto más abrupto el filtro, más se parecen.
+
+> **En el examen casi siempre te lo dan** — como dato directo ("ancho de banda equivalente de ruido $B_{eq}=25$ kHz") o por referencia ("tomar el ancho equivalente de ruido igual al calculado en a)"). Rara vez hay que calcular la integral.
+
 > **Atajos numéricos que conviene memorizar:**
 > - $T_0 = 290$ K
 > - $kT_0 = 4\times10^{-21}$ W/Hz $= \mathbf{-174}$ **dBm/Hz** ← el número más útil de todo el tema
