@@ -24,10 +24,19 @@ $$R_b\ [\text{bps}] \to \ell \to D\ [\text{baudios}] \to B\ [\text{Hz}] \to SNR 
 | 2 | **Tasa de símbolos** (velocidad de señalización) | $\boxed{D = \dfrac{R_b}{\ell}}$ | Cuántos símbolos por segundo salen al canal. **Es lo que determina el ancho de banda**, no $R_b$. Unidad: baudios. También se escribe $R_s$ |
 | 3 | **Potencia de señal** | $\boxed{S = \dfrac{\langle\lvert s\rvert^2\rangle}{2}}$ | Potencia media transmitida. El $/2$ es pico→RMS del portador. $\langle\lvert s\rvert^2\rangle$ depende de la constelación (ver tabla abajo). Unidad: W (normalizada, $R=1$) |
 | 4 | **Potencia de ruido** en la banda | $\boxed{N = N_0\,B_N}$ | Ruido total que entra al receptor. $N_0$ = densidad espectral de ruido [W/Hz], $B_N$ = ancho de banda equivalente de ruido. Unidad: W |
-| 5 | **Energía por bit** | $\boxed{E_b = \dfrac{S}{R_b} = S\,T_b}$ | Energía que el transmisor gasta en cada bit: potencia $\times$ duración de bit ($T_b=1/R_b$). Unidad: Joules |
+| 5 | **Energía por bit** | $\boxed{E_b = \dfrac{S}{R_b} = S\,T_b}$ | Energía que el transmisor gasta en cada bit: potencia $\times$ duración de bit ($T_b=1/R_b$). Unidad: **J/bit** $\left(\frac{\text{J/s}}{\text{bits/s}}\right)$ |
 | 6 | **Relación $E_b/N_0$** | $\boxed{\dfrac{E_b}{N_0} = \dfrac{S}{R_b\,N_0}}$ *(directa)* $\boxed{\dfrac{E_b}{N_0} = SNR\cdot\dfrac{B}{R_b}}$ *(vía SNR)* | La métrica universal de calidad de un enlace digital — **es lo que entra en la fórmula de BER**. Adimensional (se suele dar en dB) |
 
 > ⚠️ **Preferí siempre la ruta directa** $\frac{E_b}{N_0}=\frac{S}{R_bN_0}$: solo necesita potencia, tasa de bits y densidad de ruido — **ni ancho de banda ni SNR**. La ruta vía SNR sirve cuando te dan la SNR ya calculada, pero **arrastra cualquier error previo** y falla si el enunciado cambia $N_0$ entre ítems (que es exactamente lo que hace el ejercicio resuelto abajo, a propósito).
+
+> **Unidades de $E_b/N_0$: adimensional** — y el porqué es que $N_0$ resulta ser una **energía**: [analysis]
+> $$\frac{\text{W}}{\text{Hz}} = \frac{\text{J}/\text{s}}{1/\text{s}} = \text{J} \qquad\Longrightarrow\qquad \frac{E_b}{N_0} = \frac{[\text{J/bit}]}{[\text{J}]} \to \text{número puro}$$
+>
+> **Interpretación física**: $N_0$ es la potencia de ruido en 1 Hz de ancho de banda, y resolver 1 Hz requiere observar 1 segundo (Nyquist otra vez) — así que $N_0$ = potencia $\times$ 1 s = **energía de ruido por grado de libertad del canal**. Comparar $E_b$ (energía de señal por bit) contra $N_0$ (energía de ruido por dimensión) es comparar energía contra energía: por eso es *la* métrica justa para enlaces digitales.
+>
+> *(Nota de honestidad: acá las etiquetas semánticas —"por bit" y "por dimensión"— no se cancelan tan limpio como los bits/símbolo de la cadena PCM→Digital; lo que sí cierra sin discusión es el argumento **dimensional**: J sobre J. Eso es lo que habilita el dB.)*
+>
+> **Consecuencias prácticas**: se puede expresar en **dB** (solo los números puros admiten logaritmo); es el argumento de $Q(\cdot)$, que también requiere entrada adimensional; y el límite de Shannon $E_b/N_0 > \ln 2 = -1{,}59$ dB es un valor de esta misma magnitud.
 
 **Potencia según la constelación** (el $\langle\lvert s\rvert^2\rangle$ de la fórmula 3):
 
