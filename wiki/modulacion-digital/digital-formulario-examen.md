@@ -22,9 +22,21 @@ $$R_b\ [\text{bps}] \to \ell \to D\ [\text{baudios}] \to B\ [\text{Hz}] \to SNR 
 |---|---|---|---|
 | 1 | **Bits por símbolo** (orden de la modulación) | $\boxed{\ell = \log_2 M}$ | Cuántos bits codifica cada punto de la constelación. Define la modulación: QPSK → $\ell=2$; 16-QAM → $\ell=4$; 64-QAM → $\ell=6$. Unidad: bits/símbolo |
 | 2 | **Tasa de símbolos** (velocidad de señalización) | $\boxed{D = \dfrac{R_b}{\ell}}$ | Cuántos símbolos por segundo salen al canal. **Es lo que determina el ancho de banda**, no $R_b$. Unidad: baudios. También se escribe $R_s$ |
-| 3 | **Potencia de ruido** en la banda | $\boxed{N = N_0\,B_N}$ | Ruido total que entra al receptor. $N_0$ = densidad espectral de ruido [W/Hz], $B_N$ = ancho de banda equivalente de ruido. Unidad: W |
-| 4 | **Energía por bit** | $\boxed{E_b = \dfrac{S}{R_b} = S\,T_b}$ | Energía que el transmisor gasta en cada bit: potencia $\times$ duración de bit ($T_b=1/R_b$). Unidad: Joules |
-| 5 | **Relación $E_b/N_0$** | $\boxed{\dfrac{E_b}{N_0} = SNR\cdot\dfrac{B}{R_b}}$ | La métrica universal de calidad de un enlace digital — **es lo que entra en la fórmula de BER**. Adimensional (se suele dar en dB) |
+| 3 | **Potencia de señal** | $\boxed{S = \dfrac{\langle\lvert s\rvert^2\rangle}{2}}$ | Potencia media transmitida. El $/2$ es pico→RMS del portador. $\langle\lvert s\rvert^2\rangle$ depende de la constelación (ver tabla abajo). Unidad: W (normalizada, $R=1$) |
+| 4 | **Potencia de ruido** en la banda | $\boxed{N = N_0\,B_N}$ | Ruido total que entra al receptor. $N_0$ = densidad espectral de ruido [W/Hz], $B_N$ = ancho de banda equivalente de ruido. Unidad: W |
+| 5 | **Energía por bit** | $\boxed{E_b = \dfrac{S}{R_b} = S\,T_b}$ | Energía que el transmisor gasta en cada bit: potencia $\times$ duración de bit ($T_b=1/R_b$). Unidad: Joules |
+| 6 | **Relación $E_b/N_0$** | $\boxed{\dfrac{E_b}{N_0} = SNR\cdot\dfrac{B}{R_b}}$ | La métrica universal de calidad de un enlace digital — **es lo que entra en la fórmula de BER**. Adimensional (se suele dar en dB) |
+
+**Potencia según la constelación** (el $\langle\lvert s\rvert^2\rangle$ de la fórmula 3):
+
+| Constelación | $\langle\lvert s\rvert^2\rangle$ | Potencia $S=\langle\lvert s\rvert^2\rangle/2$ |
+|---|---|---|
+| **$M$-QAM cuadrada** (niveles $\pm a,\pm3a,\ldots$) | $\dfrac{2(M-1)}{3}a^2$ | $\boxed{S = \dfrac{(M-1)a^2}{3}}$ |
+| **$M$-PSK** (radio $A$, envolvente constante) | $A^2$ | $\boxed{S = \dfrac{A^2}{2}}$ |
+
+> **A dBm** (lo piden explícitamente en 4 ejercicios del corpus): $P_{dBm} = 10\log_{10}\!\left(\dfrac{P}{1\text{ mW}}\right)$. Ojo con el denominador — es **mW**, no W. Para pasar de dBW a dBm se suman 30 dB.
+
+> **El error clásico**: calcular $S$ usando la **amplitud máxima** de la constelación en vez del promedio, u olvidar el $/2$ del portador. En 16-QAM eso da $18a^2$ (máximo) o $10a^2$ (promedio sin $/2$) en vez del correcto $5a^2$ — ver el ejercicio resuelto abajo, donde los dos estudiantes perdieron el punto justamente ahí.
 
 > **¿Por qué $E_b/N_0$ y no directamente SNR?** Porque la SNR depende del ancho de banda elegido, así que **no permite comparar modulaciones distintas de forma justa**. $E_b/N_0$ normaliza por bit y por densidad de ruido, y queda independiente de $B$ y de $R_b$ — por eso todas las curvas de BER se grafican contra $E_b/N_0$ y no contra SNR. La fórmula 5 es el puente entre ambas. Detalle en [[../conceptos-integradores/eb-n0-vs-snr|$E_b/N_0$ vs SNR]]. [analysis]
 
@@ -299,6 +311,22 @@ $$P_{dBm} = 10\log_{10}\!\left(\frac{5\times10^{-6}}{10^{-3}}\right) = 10\log_{1
 $$N = N_0 B_N = 4\times10^{-14}\times128\times10^3 = 5{,}12\text{ nW}$$
 
 $$SNR = \frac{5\ \mu\text{W}}{5{,}12\ \text{nW}} = 976{,}6 \ \Rightarrow\ \boxed{SNR \approx 29{,}9\text{ dB}}$$
+
+> **¿De dónde sale $B_N$?** **Lo da el enunciado**: dice *"si el ancho de banda equivalente de ruido **es igual al ancho de banda calculado en a)**"*, o sea usar los 128 kHz. No hay que deducirlo. [analysis]
+>
+> Conceptualmente, el **ancho de banda equivalente de ruido** es el ancho de un filtro rectangular ideal que dejaría pasar la misma potencia de ruido que el filtro real:
+> $$B_N = \frac{1}{\lvert H(f_0)\rvert^2}\int_0^\infty \lvert H(f)\rvert^2\,df$$
+> Como los filtros reales tienen flancos graduales, se define este equivalente ideal para simplificar la cuenta. En los finales **casi siempre te lo dan**, o te dicen que lo tomes igual a algún ancho de banda ya calculado. **Unidad: Hz.**
+>
+> **¿De dónde sale $N=N_0B_N$?** El ruido térmico se modela como **blanco**: densidad espectral de potencia $N_0$ **constante** en toda frecuencia [W/Hz]. El receptor solo deja pasar una banda de ancho $B_N$, así que la potencia que entra es la densidad integrada sobre esa banda:
+> $$N = \int_{\text{banda}} N_0\,df = N_0\cdot B_N$$
+> Al ser $N_0$ constante, la integral es simplemente **densidad $\times$ ancho**. Chequeo de unidades:
+> $$N_0\left[\tfrac{\text{W}}{\text{Hz}}\right]\times B_N\,[\text{Hz}] = [\text{W}] \ ✓$$
+> Los Hz se cancelan — misma lógica que la DEP del punto b): $N_0$ es una **densidad** (potencia por unidad de ancho de banda), y para obtener potencia hay que multiplicarla por un ancho.
+>
+> **El $N$ en la SNR** es esa potencia de ruido, y $S$ la potencia de señal del punto c). El cociente es adimensional (W/W), que es lo que permite expresarlo en dB.
+>
+> ⚠️ **Trampa de convención**: algunos textos dan la densidad espectral **bilateral** como $N_0/2$, y ahí la cuenta cambia por un factor 2. Esta cátedra da $N_0$ directo en W/Hz y espera $N=N_0B$ (convención **unilateral**). Si un enunciado dice "densidad espectral bilateral", ojo. Ver [[../ruido/aclaracion-densidad-espectral-ruido|Aclaración sobre Densidad Espectral de Ruido]].
 
 *(El estudiante había obtenido 32,99 dB arrastrando la potencia sin corregir; el corrector anotó "arrastra error" — igual descuenta.)*
 
