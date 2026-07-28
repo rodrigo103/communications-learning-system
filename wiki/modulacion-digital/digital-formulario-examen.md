@@ -45,6 +45,22 @@ $$R_b\ [\text{bps}] \to \ell \to D\ [\text{baudios}] \to B\ [\text{Hz}] \to SNR 
 | **$M$-QAM cuadrada** (niveles $\pm a,\pm3a,\ldots$) | $\dfrac{2(M-1)}{3}a^2$ | $\boxed{S = \dfrac{(M-1)a^2}{3}}$ |
 | **$M$-PSK** (radio $A$, envolvente constante) | $A^2$ | $\boxed{S = \dfrac{A^2}{2}}$ |
 
+> ⚠️ **El $a$ de QAM y el $A$ de PSK NO son lo mismo** — las letras distintas (minúscula vs mayúscula) lo marcan a propósito: [analysis]
+>
+> | | QAM: $a$ | PSK: $A$ |
+> |---|---|---|
+> | Qué es | **Unidad de la grilla** — mitad del espaciado entre niveles adyacentes | **Radio de la circunferencia** |
+> | Relación con los símbolos | **Ningún símbolo tiene magnitud $a$** (los más cercanos están en $(\pm a,\pm a)$, con $\lvert s\rvert=a\sqrt2$) | **Todos los símbolos tienen magnitud $A$** |
+> | $d_{min}$ | $2a$ | $2A\sin(\pi/M)$ |
+>
+> $a$ es una **unidad de coordenadas** (parámetro de la grilla); $A$ es una **magnitud real de los símbolos**. Por eso las fórmulas de potencia se ven tan distintas: miden cosas diferentes.
+>
+> **Chequeo con QPSK** (que es a la vez 4-QAM y 4-PSK, así que ambas fórmulas deben coincidir):
+> $$\text{4-QAM: } \tfrac{2(4-1)}{3}a^2 = 2a^2 \qquad\text{4-PSK: } A^2 \qquad\Longrightarrow\qquad \boxed{A = a\sqrt2}$$
+> Y se verifica geométricamente: los puntos $(\pm a,\pm a)$ están sobre una circunferencia de radio $\sqrt{a^2+a^2}=a\sqrt2$ ✓
+>
+> **Para comparar $M$-QAM contra $M$-PSK con $M>4$** son constelaciones distintas, así que no hay relación automática — hay que **imponerla** según el criterio del enunciado. Ej. "a igualdad de amplitud máxima" en 16-QAM vs 16-PSK: $A = 3a\sqrt2 \Rightarrow a = 0{,}236A$.
+
 > **A dBm** (lo piden explícitamente en 4 ejercicios del corpus): $P_{dBm} = 10\log_{10}\!\left(\dfrac{P}{1\text{ mW}}\right)$. Ojo con el denominador — es **mW**, no W. Para pasar de dBW a dBm se suman 30 dB.
 
 > **El error clásico**: calcular $S$ usando la **amplitud máxima** de la constelación en vez del promedio, u olvidar el $/2$ del portador. En 16-QAM eso da $18a^2$ (máximo) o $10a^2$ (promedio sin $/2$) en vez del correcto $5a^2$ — ver el ejercicio resuelto abajo, donde los dos estudiantes perdieron el punto justamente ahí.
