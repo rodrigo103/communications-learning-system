@@ -165,11 +165,11 @@ Lóbulo principal centrado en $f_c$, con **nulos en $f_c\pm64$ kHz, $\pm128$ kHz
 
 **Paso 1 — sacar la constelación del dato.** 16-QAM es una grilla 4×4 con niveles I/Q en $\pm a,\pm3a$. Los 16 puntos tienen **tres magnitudes distintas**:
 
-| Puntos | Coordenadas | $\lvert s\rvert=\sqrt{I^2+Q^2}$ | Cuántos |
-|---|---|---|---|
-| Interiores | $(\pm a,\pm a)$ | $a\sqrt2$ | 4 |
-| Intermedios | $(\pm a,\pm3a)$, $(\pm3a,\pm a)$ | $a\sqrt{10}$ | 8 |
-| Esquinas | $(\pm3a,\pm3a)$ | $3a\sqrt2$ | 4 |
+| Puntos      | Coordenadas                      | $\lvert s\rvert=\sqrt{I^2+Q^2}$ | Cuántos |
+| ----------- | -------------------------------- | ------------------------------- | ------- |
+| Interiores  | $(\pm a,\pm a)$                  | $a\sqrt2$                       | 4       |
+| Intermedios | $(\pm a,\pm3a)$, $(\pm3a,\pm a)$ | $a\sqrt{10}$                    | 8       |
+| Esquinas    | $(\pm3a,\pm3a)$                  | $3a\sqrt2$                      | 4       |
 
 La **amplitud máxima** del enunciado ($3\sqrt2$ mV) corresponde a las esquinas: $3a\sqrt2=3\sqrt2$ mV $\Rightarrow \boxed{a=1\text{ mV}}$. De ahí los tres niveles $\sqrt2$, $\sqrt{10}$, $3\sqrt2$ mV.
 
