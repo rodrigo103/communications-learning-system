@@ -163,6 +163,14 @@ Lóbulo principal centrado en $f_c$, con **nulos en $f_c\pm64$ kHz, $\pm128$ kHz
 
 **c) Potencia normalizada** — ⚠️ **acá cayeron los dos.** Cuenta completa en 4 pasos:
 
+> **Notación usada acá:**
+> - $\lvert s\rvert$ = **magnitud del símbolo** en el plano I/Q, o sea la distancia del punto de constelación al origen: $\lvert s\rvert = \sqrt{I^2+Q^2}$. Físicamente es la **amplitud pico** de la sinusoide que se transmite para ese símbolo (ver Paso 3). Cada punto de la constelación tiene su propio $\lvert s\rvert$.
+> - $\langle\lvert s\rvert^2\rangle$ = **valor cuadrático medio de esa magnitud, promediado sobre los $M$ símbolos** de la constelación:
+> $$\langle\lvert s\rvert^2\rangle = \frac{1}{M}\sum_{i=1}^{M}\lvert s_i\rvert^2$$
+> (con símbolos equiprobables, que es lo que dice el enunciado; si no lo fueran habría que pesar por probabilidad).
+>
+> ⚠️ **Ojo con el $\langle\cdot\rangle$**: acá es un **promedio sobre la constelación** (16 puntos discretos), **no** el promedio temporal $\lim_{T\to\infty}\frac1T\int$ que se usa en [[../derivaciones/modulacion-am#Distribución de potencia|AM]]. Es la misma notación sobrecargada de siempre — se distingue por el contexto: ahí se promedia sobre el tiempo, acá sobre el alfabeto de símbolos. [analysis]
+
 **Paso 1 — sacar la constelación del dato.** 16-QAM es una grilla 4×4 con niveles I/Q en $\pm a,\pm3a$. Los 16 puntos tienen **tres magnitudes distintas**:
 
 | Puntos      | Coordenadas                      | $\lvert s\rvert=\sqrt{I^2+Q^2}$ | Cuántos |
