@@ -28,6 +28,44 @@ unidad: 9
 | $B$ | Ancho de banda del canal | Hz |
 | $S/N$ | Relación señal a ruido | adimensional (lineal) |
 
+## Símbolo, binit y bit — tres cosas distintas
+
+La cátedra es **más rigurosa que la mayoría** acá: usa "**binits**" explícitamente (6+ apariciones en el corpus, ej. *"64000 Binits/Sg"*), lo que implica distinguir **tres** conceptos: [analysis]
+
+| Concepto | Qué es | Unidad |
+|---|---|---|
+| **Símbolo** | Una **forma de onda transmitida**, sostenida durante $T_s$ (un punto de constelación) | símbolos/s = **baudios** |
+| **Binit** (dígito binario) | Un **0 o un 1** — un valor lógico | binits/s |
+| **Bit** (Shannon) | Unidad de **información** — cuánto reduce la incertidumbre | bits/s |
+
+### Símbolo vs bit
+
+Un símbolo es **una sola forma de onda enviada al canal**, y puede llevar varios bits: $\ell = \log_2M$ bits por símbolo.
+
+**Ejemplo QPSK a 1000 símbolos/s**: se envían 1000 formas de onda por segundo (una cada 1 ms), cada una codifica 2 binits (00, 01, 10, 11) → flujo de 2000 binits/s.
+
+Se confunden porque **en sistemas binarios ($M=2$) coinciden**: 1 símbolo = 1 binit. Recién con $M>2$ se separan.
+
+> **Por qué importa**: el **ancho de banda depende de la tasa de símbolos**, no de la de bits. Por eso subir $M$ reduce el ancho de banda sin bajar la tasa de bits — es todo el negocio de QAM.
+
+### Binit vs bit
+
+Un binit transporta **1 bit de información solo si los dos valores son equiprobables**. Si $p(0)=0{,}9$ y $p(1)=0{,}1$:
+
+$$H = -0{,}9\log_2 0{,}9 - 0{,}1\log_2 0{,}1 = 0{,}469\ \text{bits/binit}$$
+
+Se manda 1 binit pero se transporta solo 0,469 bits de información. **El resto es redundancia** — exactamente lo que la compresión elimina. Por eso:
+
+$$\boxed{R_{\text{información}} = r\,H \ \leq\ R_{\text{binario}} = \ell\,D}$$
+
+con igualdad **solo si todo es equiprobable**.
+
+### El cuadro completo
+
+$$\underbrace{D\ [\text{símbolos/s}]}_{\text{fija el ancho de banda}} \xrightarrow{\ \times\ell\ } \underbrace{R_b\ [\text{binits/s}]}_{\text{flujo en el canal}} \xrightarrow{\ \times H/\ell\ } \underbrace{R\ [\text{bits/s}]}_{\text{información real}}$$
+
+En los ejercicios donde todo es equiprobable (la mayoría) los dos últimos coinciden y se usan indistintamente. Pero cuando el enunciado da probabilidades distintas — como el ítem que aparece **5 veces** en el corpus (*"si el carácter espacio tiene probabilidad 1/7…"*) — **hay que separarlos**: ahí $H<\log_2M$ y la tasa de información es menor que la binaria.
+
 ## Las 5 fórmulas
 
 | # | Nombre | Fórmula | Notas |
