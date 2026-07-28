@@ -100,7 +100,42 @@ $$\boxed{\text{16-QAM es más resistente al ruido}}$$
 
 > **La duda que apareció al resolver — potencia de PSK**: para $M$-PSK, $\langle\lvert s\rvert^2\rangle = A^2$ (todos los símbolos están a la misma distancia del origen, así que el promedio es trivial), y la potencia media es $S = A^2/2$. Contrasta con QAM cuadrada, donde $\langle\lvert s\rvert^2\rangle = \frac{2(M-1)}{3}a^2$ porque los puntos tienen magnitudes distintas. Ver la tabla en [[../../wiki/modulacion-digital/digital-formulario-examen#Cadena de fórmulas|el formulario de Digital]].
 >
-> **Consecuencia práctica del contraste**: PSK tiene **envolvente constante** (sin factor de cresta de constelación), lo que permite trabajar con el amplificador saturado — por eso se usa en enlaces satelitales. QAM gana en eficiencia espectral y en $d_{min}$, y se usa donde la linealidad del amplificador no es problema.
+### Comparando las potencias medias: de dónde sale el factor 1,8
+
+Con $A = 3a\sqrt2$ (igual amplitud máxima), o sea $A^2 = 18a^2$:
+
+$$\frac{\langle\lvert s\rvert^2\rangle_{PSK}}{\langle\lvert s\rvert^2\rangle_{QAM}} = \frac{18a^2}{10a^2} = 1{,}8$$
+
+**Ese 1,8 es la relación pico-a-promedio de potencia (PAPR) de la constelación 16-QAM.** No es coincidencia que aparezca acá: como PSK tiene envolvente constante (su promedio *es* su pico), compararlas a igual pico equivale a comparar el promedio de PSK contra el promedio de QAM — y eso da exactamente el PAPR de QAM.
+
+$$\text{PAPR}_{16\text{-QAM}} = \frac{\lvert s\rvert^2_{max}}{\langle\lvert s\rvert^2\rangle} = \frac{18a^2}{10a^2} = 1{,}8 \quad (2{,}55\text{ dB})$$
+
+**Significado práctico — dimensionamiento del amplificador**: el amplificador se dimensiona por el **pico** pero entrega útilmente el **promedio**. Con PAPR 1,8 hace falta un amplificador capaz de $18a^2$ para transmitir solo $10a^2$ medios: **2,55 dB de back-off desperdiciado**. PSK tiene PAPR $=1$ (0 dB) y puede trabajar saturado.
+
+### La comparación a igual amplitud máxima subestima a QAM
+
+| Criterio | $d_{min}$ QAM | $d_{min}$ PSK | Ventaja QAM |
+|---|---|---|---|
+| **Igual amplitud máxima** (lo que pide el enunciado) | $0{,}471A$ | $0{,}390A$ | $1{,}21\times$ → **1,7 dB** |
+| **Igual potencia media** (comparación justa) | $0{,}632\sqrt P$ | $0{,}390\sqrt P$ | $1{,}62\times$ → **4,2 dB** |
+
+A igual amplitud máxima QAM gana en $d_{min}$ **y además usa 44% menos potencia media** — gana por partida doble. Igualando potencia media (que es lo que realmente cuesta), la ventaja sube a ~4 dB, que es el número que suele citar la bibliografía para 16-QAM vs 16-PSK.
+
+### ¿En qué es mejor 16-PSK entonces?
+
+QAM gana en inmunidad al ruido, pero PSK tiene ventajas reales — todas derivadas de la **envolvente constante**:
+
+| Aspecto | Por qué gana PSK |
+|---|---|
+| **Eficiencia del amplificador** | PAPR $=1$ → el HPA trabaja **saturado**, en su punto de máxima eficiencia (~60-70% vs ~30% con back-off). Decisivo cuando la energía es el recurso escaso: satélites, equipos a batería |
+| **Tolerancia a no linealidad** | Al no llevar información en la amplitud, la compresión/distorsión del amplificador **no destruye datos**. QAM sí se degrada: la no linealidad deforma la grilla de amplitudes |
+| **Recuperación de portadora y sincronismo** | Con envolvente constante el lazo de portadora es más simple y robusto |
+| **Detección diferencial** | DPSK permite demodular **sin recuperar portadora** (con ~3 dB de penalidad). QAM no tiene equivalente práctico — necesita referencia de amplitud sí o sí |
+| **AGC en el receptor** | No hace falta control de ganancia preciso: la amplitud no lleva información |
+
+**El resumen del trade-off**: QAM invierte el plano I/Q completo para maximizar $d_{min}$ por unidad de potencia media, pero exige un **amplificador lineal con headroom**. PSK sacrifica $d_{min}$ a cambio de **poder saturar el amplificador**. Cuál conviene depende de si el cuello de botella es el ancho de banda (→ QAM) o la potencia disponible (→ PSK).
+
+Por eso: **satélites y espacio profundo → PSK**; **cable, WiFi, DVB-C, LTE → QAM**.
 
 ---
 
