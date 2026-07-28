@@ -81,11 +81,15 @@ $$\left(\frac{S}{N}\right)_{out}' = 33{,}02 - 3{,}98 = \boxed{29{,}0\text{ dB}}$
 | Efecto                                    | Cambio                                              |
 | ----------------------------------------- | --------------------------------------------------- |
 | Índice de modulación $\beta = \Delta f/W$ | se **triplica** → $\beta^2$ se multiplica por **9** |
-| $\gamma = S_R/(N_0W)$ (SNR en banda base) | se **triplica** (entra menos ruido al bajar $W$)    |
+| $\gamma = S_R/(N_0W)$ (SNR de referencia en banda base) | se **triplica** (entra menos ruido al bajar $W$)    |
 
-$$\left(\frac{S}{N}\right)_D \propto 3\beta^2\gamma \ \Rightarrow\ \text{mejora } 9\times3 = 27\times \approx +14{,}3\text{ dB}$$
+> **Qué es $\gamma$**: la **SNR de referencia** — la que se tendría transmitiendo el mensaje directo en banda base con la misma potencia recibida. $\gamma = \dfrac{S_R}{N_0W}$, con $W$ el ancho de banda del mensaje. Es el patrón contra el cual se comparan todas las modulaciones analógicas (mismo rol que $E_b/N_0$ en digital). La define el enunciado de `F_Comu_2019-02-11` en el corpus. Ver [[../../wiki/ruido/ruido-formulario-examen#SNR en modulaciones analógicas — la referencia $\gamma$|el formulario de Ruido]].
 
-De 35 dB pasaría a **~49 dB**.
+$$\left(\frac{S}{N}\right)_D = 3\beta^2(\beta+1)\,\gamma \ \Rightarrow\ \text{factor} = \underbrace{9}_{\beta^2}\times\underbrace{\frac{3\beta+1}{\beta+1}}_{(\beta+1)}\times\underbrace{3}_{\gamma}$$
+
+⚠️ **El factor exacto depende de $\beta$**, y el enunciado no da $\Delta f$ — así que **no se puede fijar un número**. Con la forma simplificada $3\beta^2\gamma$ (tono único) daría $27\times$ (+14,3 dB); con la forma completa y $\beta$ grande tiende a $81\times$ (+19 dB).
+
+**La respuesta correcta es cualitativa**: **mejora**, porque los dos efectos empujan en la misma dirección — entra menos ruido ($W$ menor) y sube el índice de modulación ($\beta=\Delta f/W$ con $\Delta f$ fijo). Justificar eso alcanza para el ítem.
 
 ---
 

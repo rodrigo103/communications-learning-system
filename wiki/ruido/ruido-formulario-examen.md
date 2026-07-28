@@ -207,6 +207,31 @@ $$\left(\frac{S}{N}\right)_{out} = 76{,}9 - 36{,}0 \approx \boxed{40{,}9\text{ d
 
 **Pero no es viable en la práctica**: el repetidor tendría que entregar la potencia amplificada al inicio del tramo, y con 40 dB de ganancia sobre 100 mW se necesitarían **1000 W** de salida. Inviable por consumo, disipación, no linealidad y seguridad. Por eso los sistemas reales atenúan primero y amplifican después, aceptando la penalidad de ruido.
 
+## SNR en modulaciones analógicas — la referencia $\gamma$
+
+Los finales usan $\gamma$ como **patrón de comparación** entre modulaciones. Lo definen en el propio enunciado (ej. `F_Comu_2019-02-11`: *"$\gamma = S_R/N_R$ en banda base"*): [analysis]
+
+$$\boxed{\gamma = \frac{S_R}{N_0\,W}}$$
+
+| Símbolo | Qué es |
+|---|---|
+| $S_R$ | Potencia de señal **recibida** |
+| $W$ | Ancho de banda del **mensaje** (banda base) |
+| $N_0W$ | Potencia de ruido **en la banda del mensaje** |
+
+**Interpretación**: $\gamma$ es la SNR que se tendría transmitiendo el mensaje **directo en banda base**, sin modular, con esa misma potencia recibida. Es el punto de referencia contra el cual se mide si una modulación mejora o empeora las cosas — **el mismo rol que cumple $E_b/N_0$ en digital**.
+
+| Modulación | $(S/N)_D$ | Comparación |
+|---|---|---|
+| Banda base | $\gamma$ | referencia |
+| AM (detección de envolvente) | $<\gamma$ | **peor** que banda base |
+| DSB-SC / SSB (coherente) | $\gamma$ | igual |
+| **WBFM** | $3\beta^2(\beta+1)\,\gamma$ | **mucho mejor** — es el motivo de usar FM |
+
+> **Es el mismo $(S/N)_{in}$** de la fórmula en [[snr-modulacion-exponencial|SNR en Modulaciones Exponenciales]]; $\gamma$ solo lo hace explícito al aclarar que se mide en el ancho de banda base $W$.
+
+**El trade-off de FM que esto revela**: la mejora va con $\beta^2$, pero el ancho de banda ocupado va con $(\beta+1)$ por Carson. **Se compra SNR gastando espectro** — cuadráticamente a favor, linealmente en contra. Por eso FM broadcast usa $\beta=5$ y no más.
+
 ## Los errores que cuestan puntos
 
 1. **Dividir la pérdida total en lineal en vez de en dB** — $L_c$ sale de dividir los dB, después se convierte
