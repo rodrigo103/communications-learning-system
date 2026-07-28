@@ -110,17 +110,71 @@ $$B_{n\text{-}n} = \underbrace{2}_{\substack{\text{lados del lóbulo} \\ \text{a
 >
 > **Consecuencia útil**: $B_{n\text{-}n} = 2\,B_{min}$ en pasabanda. Esa duplicación es **el precio de usar pulsos rectangulares** en vez de pulsos sinc — rectangular en tiempo se desparrama en frecuencia (sinc), mientras que sinc en tiempo da un rectángulo compacto en frecuencia. Mismo trade-off tiempo-frecuencia de siempre.
 
-## BER — las fórmulas a tener
+## BER — tabla completa
 
-$$\boxed{P_e^{BPSK} = P_e^{QPSK} = Q\!\left(\sqrt{\frac{2E_b}{N_0}}\right)}, \qquad \boxed{P_e^{FSK\ coh} = Q\!\left(\sqrt{\frac{E_b}{N_0}}\right)}$$
+| Modulación | $P_e$ |
+|---|---|
+| **BPSK** | $Q\!\left(\sqrt{2E_b/N_0}\right)$ |
+| **QPSK** | $Q\!\left(\sqrt{2E_b/N_0}\right)$ — **igual que BPSK** |
+| **$M$-PSK** | $\approx Q\!\left(\sqrt{2E_b/N_0}\,\sin(\pi/M)\right)$ |
+| **$M$-QAM** | $\approx 4\,Q\!\left(\sqrt{3E_b/\big[(M-1)N_0\big]}\right)$ |
+| **FSK coherente** | $Q\!\left(\sqrt{E_b/N_0}\right)$ |
+| **FSK no coherente** | $\tfrac12 e^{-E_b/2N_0}$ |
+| **DPSK** | $\tfrac12 e^{-E_b/N_0}$ |
 
-**BPSK y QPSK dan lo mismo por bit** — QPSK transmite el doble de bits en el mismo ancho de banda **sin penalidad de BER**. Es la razón de que QPSK sea tan usada, y un punto conceptual que los finales preguntan.
+*(Versiones de la cátedra, ver [[../resumenes/modulacion-digital-unidad6|Resumen Unidad 6]]. Existen formas más precisas con prefactores $\frac{4}{\ell}(1-\frac{1}{\sqrt M})$ para QAM y $\frac{2}{\ell}$ para PSK, pero para el examen conviene usar estas.)*
 
-Para $M$-QAM:
+**Dos lecturas conceptuales que preguntan:**
 
-$$P_e \approx \frac{4}{\ell}\left(1-\frac{1}{\sqrt M}\right)Q\!\left(\sqrt{\frac{3\,\ell\,E_b}{(M-1)N_0}}\right)$$
+- **BPSK y QPSK dan lo mismo por bit** — QPSK transmite el doble de bits en el mismo ancho de banda **sin penalidad de BER**. Por eso se usa tanto.
+- **Las no coherentes (FSK no coh., DPSK) tienen forma exponencial**, no $Q(\cdot)$ — y pagan ~3 dB de penalidad frente a sus versiones coherentes, a cambio de no necesitar recuperación de portadora.
+- **Al subir $M$**: se gana eficiencia espectral ($\ell$ bits/símbolo) pero **empeora la BER** para el mismo $E_b/N_0$ — los puntos quedan más juntos. Ver [[constelaciones|Constelaciones]].
 
-**El trade-off central**: al subir $M$ se gana eficiencia espectral ($\ell$ bits por símbolo) pero **empeora la BER** para el mismo $E_b/N_0$ — los puntos de la constelación quedan más juntos. Ver [[constelaciones|Constelaciones]].
+### Cómo se evalúa $Q(x)$ en el examen
+
+**$Q(x)$ no tiene forma cerrada** — es la integral de cola de la gaussiana, sin primitiva elemental. No se calcula: **se lee de una tabla o ábaco**.
+
+> ✅ **Los finales traen el ábaco anexado.** Confirmado en `F_Comu_2019-09-24` y `F_Comu_2022-02-16`: última página con carta de $Q(k)$ vs $k$ en escala logarítmica, eje $k$ de 0 a 7 y $Q(k)$ de $10^{-12}$ a 1. **No hay que memorizar la tabla** — pero sí conviene tener valores ancla para verificar que se está leyendo bien el gráfico.
+
+**Valores ancla** (para chequear la lectura del ábaco):
+
+| $x$ | $Q(x)$ |
+|---|---|
+| 0 | $0{,}5$ |
+| 1 | $1{,}6\times10^{-1}$ |
+| 2 | $2{,}3\times10^{-2}$ |
+| 3 | $1{,}3\times10^{-3}$ |
+| 4 | $3{,}2\times10^{-5}$ |
+| 5 | $2{,}9\times10^{-7}$ |
+| 6 | $10^{-9}$ |
+| 7 | $10^{-12}$ |
+
+**En sentido inverso** (dado un BER objetivo, hallar el $x$ necesario) — sale seguido:
+
+| BER objetivo | $x$ requerido |
+|---|---|
+| $10^{-3}$ | $3{,}1$ |
+| $10^{-6}$ | $4{,}75$ |
+| $10^{-9}$ | $6{,}0$ |
+
+**Con calculadora científica — receta para la Casio fx-991LAX** (ClassWiz, la que se va a usar):
+
+1. Menú → **Distribución**
+2. Elegir **DA normal** (Distribución Acumulada). ⚠️ **No** "DP normal", que es la *densidad* — la altura de la campana, no el área
+3. Cargar: **Inferior** $=x$, **Superior** $=99$ (hace de infinito), $\sigma=1$, $\mu=0$
+4. El resultado **es $Q(x)$ directo**
+
+> **Verificación**: con Inferior $=3$ debe dar $1{,}3499\times10^{-3}$. [analysis]
+>
+> ⚠️ **Detalle de precisión que importa**: cargar siempre Inferior $=x$, Superior $=99$ — **nunca** calcular $\Phi(x)$ (Inferior $=-99$) y después restar $1-\Phi(x)$. Para $x=5$, $\Phi(5)=0{,}9999997133$: al restar de 1 se pierden casi todos los dígitos significativos. Yendo directo por la cola sale con precisión completa ($2{,}87\times10^{-7}$). Con BERs de $10^{-6}$ o $10^{-9}$ es justo el régimen donde este problema muerde.
+>
+> *(En modelos viejos fx-991ES con funciones P/Q/R en modo STAT hay una trampa extra: la "$Q(t)$" de Casio es el área de $0$ a $t$, **no** nuestra $Q$ — ahí hay que usar $R(t)$. La ClassWiz usa el menú Distribución y evita esa confusión.)*
+
+**Otras salidas:**
+- **Si tiene $\operatorname{erfc}$**: $\boxed{Q(x) = \tfrac12\operatorname{erfc}\!\left(\tfrac{x}{\sqrt2}\right)}$
+- **Aproximación asintótica** (buena para $x\gtrsim3$): $Q(x)\approx\dfrac{e^{-x^2/2}}{x\sqrt{2\pi}}$ — con $x=4{,}42$ da $5{,}2\times10^{-6}$ contra el valor real $\approx5\times10^{-6}$, error del 4%
+
+**Estrategia recomendada**: usar **las dos fuentes**. Leer el ábaco (rápido, y es lo que la cátedra provee) y confirmar con la calculadora. Leer mal una escala logarítmica es fácil, y dos fuentes independientes lo detectan.
 
 ## Cómo se arman las constelaciones (de dónde salen las coordenadas)
 
