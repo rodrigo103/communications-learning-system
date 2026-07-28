@@ -231,7 +231,11 @@ La **amplitud máxima** del enunciado ($3\sqrt2$ mV) corresponde a las esquinas:
 
 **Paso 2 — promediar sobre la constelación** (símbolos equiprobables):
 
-$$\langle\lvert s\rvert^2\rangle = \frac{4(2a^2)+8(10a^2)+4(18a^2)}{16} = \frac{160}{16}a^2 = 10a^2 = 10\text{ mV}^2$$
+$$\langle\lvert s\rvert^2\rangle = \frac{4(2a^2)+8(10a^2)+4(18a^2)}{16} = \frac{160}{16}a^2 = 10a^2$$
+
+Con $a=1$ mV $=10^{-3}$ V, o sea $a^2 = 10^{-6}$ V²:
+
+$$\langle\lvert s\rvert^2\rangle = 10a^2 = 10^{-5}\text{ V}^2$$
 
 Fórmula general para no rehacer la tabla ($M$-QAM cuadrada con niveles $\pm a,\pm3a,\ldots$):
 
@@ -243,7 +247,9 @@ $$s(t) = I\cos(\omega_ct)-Q\sin(\omega_ct) = \lvert s\rvert\cos(\omega_ct+\phi)$
 
 y una sinusoide de pico $A$ tiene potencia media $A^2/2$, **no** $A^2$:
 
-$$P = \frac{\langle\lvert s\rvert^2\rangle}{2} = \frac{10\text{ mV}^2}{2} = \boxed{5\ \mu\text{W}}$$
+$$P = \frac{\langle\lvert s\rvert^2\rangle}{2} = \frac{10^{-5}\text{ V}^2}{2} = 5\times10^{-6}\text{ V}^2 = \boxed{5\ \mu\text{W}}$$
+
+(el último paso, V² → W, es la convención de **potencia normalizada** con $R=1\,\Omega$)
 
 **Paso 4 — a dBm** (como pedía el enunciado):
 
