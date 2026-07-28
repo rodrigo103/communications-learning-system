@@ -249,11 +249,29 @@ $$s(t) = I\cos(\omega_ct)-Q\sin(\omega_ct) = \lvert s\rvert\cos(\omega_ct+\phi)$
 
 y una sinusoide de pico $A$ tiene potencia media $A^2/2$, **no** $A^2$:
 
-> **Por qué $A^2/2$** — es el mismo $\langle\cos^2\rangle=\tfrac12$ ya derivado en [[../derivaciones/modulacion-am#Distribución de potencia|AM]]. Por ángulo doble, $A^2\cos^2(\omega t+\phi)=\frac{A^2}{2}[1+\cos(2\omega t+2\phi)]$; al promediar, el segundo término tiene frecuencia $2\omega\neq0$ y **promedia a cero**, quedando $\langle s^2\rangle=A^2/2$. Equivalente: $A_{rms}=A/\sqrt2$ y $P=A_{rms}^2$. **El $A^2$ sería la potencia instantánea en el pico**, que ocurre un instante por ciclo — la media es la mitad. [analysis]
+> ### Qué es $s(t)=I\cos(\omega_ct)-Q\sin(\omega_ct)$, y de dónde sale el $\lvert s\rvert^2/2$
 >
-> Y de acá se ve por qué $\lvert s\rvert$ es el pico: combinando las dos componentes en cuadratura,
-> $$I\cos(\omega_ct)-Q\sin(\omega_ct) = \lvert s\rvert\cos(\omega_ct+\phi), \qquad \phi=\arctan\frac{Q}{I}$$
-> o sea el símbolo se transmite como **una sola sinusoide de amplitud pico $\lvert s\rvert$ y fase $\phi$** — la constelación codifica la información en esos dos parámetros.
+> **1. Qué significa la expresión.** Son **dos portadoras de la misma frecuencia desfasadas 90°** ($\cos$ y $\sin$ están en cuadratura). QAM manda **dos números independientes simultáneamente**, uno en cada una: [analysis]
+> - $I$ (*in-phase*) = cuánto se le pone a la portadora coseno
+> - $Q$ (*quadrature*) = cuánto se le pone a la portadora seno
+>
+> $I$ y $Q$ son **constantes durante todo el símbolo** — son las coordenadas del punto de constelación. El receptor puede separarlas porque $\cos$ y $\sin$ son ortogonales.
+>
+> **2. Por qué esa suma es *una sola* sinusoide.** Dos sinusoides de la misma frecuencia siempre suman una sola sinusoide de esa frecuencia; cambian solo amplitud y fase. Expandiendo el lado derecho con el coseno de una suma:
+> $$R\cos(\omega_ct+\phi) = R\cos\phi\,\cos(\omega_ct) - R\sin\phi\,\sin(\omega_ct)$$
+> Comparando término a término con $I\cos(\omega_ct)-Q\sin(\omega_ct)$: $I=R\cos\phi$ y $Q=R\sin\phi$. Elevando al cuadrado y sumando ($\cos^2\phi+\sin^2\phi=1$):
+> $$R = \sqrt{I^2+Q^2} = \lvert s\rvert, \qquad \phi = \arctan\frac{Q}{I}$$
+> **Es literalmente el pasaje de coordenadas cartesianas a polares**: $(I,Q)$ es el punto en cartesianas, $(\lvert s\rvert,\phi)$ el mismo punto en polares.
+>
+> *Ejemplo*: $I=3$, $Q=4$ → $\lvert s\rvert=5$, $\phi=53{,}1°$, o sea $3\cos(\omega t)-4\sin(\omega t)=5\cos(\omega t+53{,}1°)$. Verificando en $t=0$: izquierda $=3$; derecha $=5\cos(53{,}1°)=3$ ✓
+>
+> **3. Recién ahora aparece el coseno cuadrado.** Colapsado a $s(t)=\lvert s\rvert\cos(\omega_ct+\phi)$ — **una sola sinusoide de amplitud pico $\lvert s\rvert$** — al elevar al cuadrado sí queda un coseno cuadrado. Por ángulo doble:
+> $$s^2(t) = \lvert s\rvert^2\cos^2(\omega_ct+\phi) = \frac{\lvert s\rvert^2}{2}\big[1+\cos(2\omega_ct+2\phi)\big]$$
+> El segundo término tiene frecuencia $2\omega_c\neq0$ y **promedia a cero**, quedando $\langle s^2\rangle=\lvert s\rvert^2/2$. Es el mismo $\langle\cos^2\rangle=\tfrac12$ de [[../derivaciones/modulacion-am#Distribución de potencia|AM]]. Equivalente: $A_{rms}=A/\sqrt2$ y $P=A_{rms}^2$. **El $\lvert s\rvert^2$ sería la potencia instantánea en el pico**, que ocurre un instante por ciclo — la media es la mitad.
+>
+> **4. Ruta alternativa, sin colapsar a polares.** Se puede calcular la potencia directo:
+> $$\langle s^2\rangle = \big\langle (I\cos - Q\sin)^2\big\rangle = I^2\underbrace{\langle\cos^2\rangle}_{1/2} - 2IQ\underbrace{\langle\cos\sin\rangle}_{0} + Q^2\underbrace{\langle\sin^2\rangle}_{1/2} = \frac{I^2+Q^2}{2} = \frac{\lvert s\rvert^2}{2}$$
+> El término cruzado se anula **por la ortogonalidad entre $\cos$ y $\sin$** — la misma ortogonalidad que permite al receptor separar $I$ de $Q$. Mismo resultado, y muestra dónde hace el trabajo la cuadratura.
 
 $$P = \frac{\langle\lvert s\rvert^2\rangle}{2} = \frac{10^{-5}\text{ V}^2}{2} = 5\times10^{-6}\text{ V}^2 = \boxed{5\ \mu\text{W}}$$
 
