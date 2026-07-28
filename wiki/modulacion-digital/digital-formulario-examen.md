@@ -213,6 +213,8 @@ Lóbulo principal centrado en $f_c$, con **nulos en $f_c\pm64$ kHz, $\pm128$ kHz
 
 > **Notación usada acá:**
 > - $\lvert s\rvert$ = **magnitud del símbolo** en el plano I/Q, o sea la distancia del punto de constelación al origen: $\lvert s\rvert = \sqrt{I^2+Q^2}$. Físicamente es la **amplitud pico** de la sinusoide que se transmite para ese símbolo (ver Paso 3). Cada punto de la constelación tiene su propio $\lvert s\rvert$.
+>   - **Por qué la letra $s$**: por **señal** — la misma $s$ de $s_{AM}(t)$, $s_{FM}(t)$, $s_{DSB\text{-}SC}(t)$ usada en todo el curso. En modulación digital $s_i$ denota el $i$-ésimo elemento del **alfabeto de señales**: los $M$ puntos de la constelación son $s_1,\ldots,s_M$. Las barras $\lvert\cdot\rvert$ son módulo de vector, porque cada símbolo es un punto/vector del plano I/Q.
+>   - **Por qué esa distancia es una tensión**: sale de la señal transmitida, $s(t)=I\cos(\omega_ct)-Q\sin(\omega_ct)$. Como $s(t)$ es una tensión [V] y $\cos/\sin$ son adimensionales, **$I$ y $Q$ tienen que estar en volts** — los ejes del plano I/Q están en volts, y la distancia al origen también.
 > - $\langle\lvert s\rvert^2\rangle$ = **valor cuadrático medio de esa magnitud, promediado sobre los $M$ símbolos** de la constelación:
 > $$\langle\lvert s\rvert^2\rangle = \frac{1}{M}\sum_{i=1}^{M}\lvert s_i\rvert^2$$
 > (con símbolos equiprobables, que es lo que dice el enunciado; si no lo fueran habría que pesar por probabilidad).
@@ -246,6 +248,12 @@ $$\boxed{\langle\lvert s\rvert^2\rangle = \frac{2(M-1)}{3}\,a^2} \qquad (M=16 \t
 $$s(t) = I\cos(\omega_ct)-Q\sin(\omega_ct) = \lvert s\rvert\cos(\omega_ct+\phi)$$
 
 y una sinusoide de pico $A$ tiene potencia media $A^2/2$, **no** $A^2$:
+
+> **Por qué $A^2/2$** — es el mismo $\langle\cos^2\rangle=\tfrac12$ ya derivado en [[../derivaciones/modulacion-am#Distribución de potencia|AM]]. Por ángulo doble, $A^2\cos^2(\omega t+\phi)=\frac{A^2}{2}[1+\cos(2\omega t+2\phi)]$; al promediar, el segundo término tiene frecuencia $2\omega\neq0$ y **promedia a cero**, quedando $\langle s^2\rangle=A^2/2$. Equivalente: $A_{rms}=A/\sqrt2$ y $P=A_{rms}^2$. **El $A^2$ sería la potencia instantánea en el pico**, que ocurre un instante por ciclo — la media es la mitad. [analysis]
+>
+> Y de acá se ve por qué $\lvert s\rvert$ es el pico: combinando las dos componentes en cuadratura,
+> $$I\cos(\omega_ct)-Q\sin(\omega_ct) = \lvert s\rvert\cos(\omega_ct+\phi), \qquad \phi=\arctan\frac{Q}{I}$$
+> o sea el símbolo se transmite como **una sola sinusoide de amplitud pico $\lvert s\rvert$ y fase $\phi$** — la constelación codifica la información en esos dos parámetros.
 
 $$P = \frac{\langle\lvert s\rvert^2\rangle}{2} = \frac{10^{-5}\text{ V}^2}{2} = 5\times10^{-6}\text{ V}^2 = \boxed{5\ \mu\text{W}}$$
 
