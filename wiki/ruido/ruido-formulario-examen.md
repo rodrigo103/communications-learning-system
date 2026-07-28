@@ -65,6 +65,42 @@ unidad: 7
 | 5 | **Friis en temperatura** | $\boxed{T_e = T_1 + \dfrac{T_2}{G_1} + \dfrac{T_3}{G_1G_2}+\cdots}$ | Equivalente a 4; a veces más cómoda |
 | 6 | **Elemento pasivo** (cable, atenuador) | $\boxed{F = L, \quad G = 1/L}$ | La **pérdida es igual a la figura de ruido**. Clave para los ejercicios de repetidores |
 
+### De dónde sale $T_e = (F-1)T_0$ (deducción de la fórmula 3)
+
+La fórmula 3 no es una definición arbitraria — sale de aplicar $N=kTB$ dos veces. [analysis]
+
+**Paso 1 — ruido total referido a la entrada.** Son dos aportes: el ruido que trae la fuente ($kT_0B$) más el ruido propio del dispositivo, expresado como si viniera de una fuente a temperatura $T_{eq}$ ($kT_{eq}B$):
+
+$$N_{i,total} = kT_0B + kT_{eq}B = kB\,(T_0+T_{eq})$$
+
+**Paso 2 — ruido a la salida.** Todo lo anterior amplificado por $G$:
+
+$$N_o = G\,N_{i,total} = G\,kB\,(T_0+T_{eq})$$
+
+**Paso 3 — aplicar la definición de factor de ruido:**
+
+$$F = \frac{N_o}{N_i\,G} = \frac{G\,kB\,(T_0+T_{eq})}{kT_0B\cdot G} = \frac{T_0+T_{eq}}{T_0} = \boxed{1+\frac{T_{eq}}{T_0}}$$
+
+que es exactamente $T_e = (F-1)T_0$ despejada al revés. **El $kB$ y el $G$ se cancelan** — por eso $F$ no depende ni del ancho de banda ni de la ganancia, solo de la relación entre el ruido propio del dispositivo y el de referencia.
+
+> **Las dos definiciones equivalentes de $F$** (conviene conocer ambas, según qué datos den):
+> $$F = \frac{(S/N)_{in}}{(S/N)_{out}} \qquad\Longleftrightarrow\qquad F = \frac{N_o}{N_i\,G}$$
+> Son lo mismo: $\frac{S_i/N_i}{S_o/N_o} = \frac{S_iN_o}{N_iS_o} \overset{S_o=GS_i}{=} \frac{N_o}{N_iG}$. La primera se lee *"cuánto degrada la SNR"*; la segunda, *"ruido real a la salida sobre el ruido que habría si el dispositivo fuera perfecto"* — más física.
+
+### ¿Cuándo hace falta $B_N$ en las cuentas?
+
+**Regla general: $B_N$ hace falta cuando necesitás potencias absolutas, no cuando trabajás con cocientes.** [analysis]
+
+| Necesitás… | ¿Hace falta $B$? |
+|---|---|
+| SNR de entrada dada la de salida y $F$ | ❌ No — todo son cocientes |
+| Convertir entre $N$ [W] y $N_0$ [W/Hz] | ✅ Sí |
+| Potencia de ruido absoluta desde temperatura ($N=kTB$) | ✅ Sí |
+| Expresar un resultado en dBm o W | ✅ Sí |
+| Comparar SNR antes/después de un cambio | ❌ No |
+
+> Muchos enunciados dan $B_{eq}$ y $G$ aunque el camino más corto no los use — o habilitan una ruta alternativa, o son distractores. **No forzar su uso**: si se llega al resultado con cocientes, está bien.
+
 ### ¿Qué es el ancho de banda equivalente de ruido ($B_N$)?
 
 Es un **truco de definición** para convertir una integral en una multiplicación. [analysis]
