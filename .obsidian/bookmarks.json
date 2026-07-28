@@ -89,6 +89,74 @@
       "ctime": 1785181665825,
       "items": [],
       "title": "Día 3"
+    },
+    {
+      "type": "group",
+      "ctime": 1785253914690,
+      "items": [
+        {
+          "type": "file",
+          "ctime": 1785254022371,
+          "path": "wiki/modulacion-digital/digital-formulario-examen.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785254022371,
+          "path": "wiki/modulacion-digital/ask-fsk-psk.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785254022371,
+          "path": "wiki/modulacion-digital/modulacion-qam.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785254022371,
+          "path": "outputs/solutions/Digital_canal_telefonico_F_Comu_2019-02-25.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785254022371,
+          "path": "explicaciones_anki/unidad_06/carta_31_ber_probabilidad_error.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785253985171,
+          "path": "exercises/finales/md/F_Comu_2026-02-26_res.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785253985171,
+          "path": "exercises/finales/F_Comu_2026-02-26_res.pdf"
+        },
+        {
+          "type": "file",
+          "ctime": 1785253985171,
+          "path": "exercises/finales/F_Comu_2026-02-26_res(1).pdf"
+        },
+        {
+          "type": "file",
+          "ctime": 1785253985171,
+          "path": "wiki/herramientas-matematicas/densidad-espectral-potencia.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785253985171,
+          "path": "exercises/finales/F_Comu_2019-02-25.pdf"
+        },
+        {
+          "type": "file",
+          "ctime": 1785254087437,
+          "path": "wiki/conceptos-integradores/pcm-vs-modulacion-digital.md"
+        }
+      ],
+      "title": "Día 4"
+    },
+    {
+      "type": "group",
+      "ctime": 1785254053504,
+      "items": [],
+      "title": "Día 5"
     }
   ]
 }
