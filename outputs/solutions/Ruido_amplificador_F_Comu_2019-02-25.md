@@ -34,18 +34,27 @@ Sube la señal y el ruido queda igual → la SNR de entrada sube los mismos 3 dB
 
 $$\left(\frac{S}{N}\right)_{in}' = 36{,}02+3 = 39{,}02\text{ dB} \ \Rightarrow\ \left(\frac{S}{N}\right)_{out}' = 39{,}02-6{,}02 = \boxed{33{,}0\text{ dB}}$$
 
-### c) Ruido de entrada +3 dB, señal igual — ⚠️ **acá $F$ SÍ cambia**
+### c) Ruido de entrada +3 dB, señal igual — ⚠️ **cambia la degradación real, no el $F$ del dispositivo**
 
-**El punto clave**: el ruido propio del amplificador, $N_a$ (referido a la entrada), es **una propiedad del dispositivo** — no cambia porque le entre más ruido. Pero $F$ se define *relativo al ruido de entrada*:
+**El punto clave**: el ruido propio del amplificador, $N_a$ (referido a la entrada), es **una propiedad del dispositivo** — no cambia porque le entre más ruido. Lo que sí cambia es **cuánto pesa relativamente** frente al ruido que entra.
 
-$$F = 1 + \frac{N_a}{N_i}$$
+**Distinción importante para justificar bien por escrito:**
 
-Entonces al subir $N_i$, el aporte propio del amplificador **pesa relativamente menos** y $F$ **baja**:
+| Concepto | Definición | ¿Cambia en c)? |
+|---|---|---|
+| **$F$ del amplificador** (spec de catálogo) | $F = 1+\dfrac{T_{eq}}{T_0}$, **siempre** referido a $T_0=290$ K | ❌ **No** — sigue siendo 4 |
+| **Degradación real de SNR** | $\dfrac{(S/N)_{in}}{(S/N)_{out}} = 1+\dfrac{T_{eq}}{T_{fuente}} = 1+\dfrac{N_a}{N_i}$ | ✅ **Sí** — baja a 2,5 |
+
+Las dos coinciden **solo cuando la fuente está a $T_0$**. Al duplicarse el ruido de entrada (fuente a $2T_0$), se separan:
+
+$$\text{Degradación} = 1+\frac{N_a}{N_i'} = 1+\frac{3N_i}{2N_i} = 1+1{,}5 = \mathbf{2{,}5} \equiv 3{,}98\text{ dB}$$
+
+> **De dónde sale $1+\frac{N_a}{N_i}$**: es la misma fórmula $F = 1+\frac{T_{eq}}{T_0}$ escrita en potencias, sustituyendo $N_a = kT_{eq}B$ (ruido propio del ampli referido a la entrada) y $N_i = kT_0B$ (ruido de la fuente) — el $kB$ se cancela y queda $\frac{N_a}{N_i}=\frac{T_{eq}}{T_0}$. Ver [[../../wiki/ruido/ruido-formulario-examen#De dónde sale $T_e = (F-1)T_0$ (deducción de la fórmula 3)|la deducción completa]].
 
 | | Original | Después ($N_i'=2N_i$) |
 |---|---|---|
 | $N_a/N_i$ | $F-1 = 3$ | $3N_i/2N_i = 1{,}5$ |
-| $F$ | $4$ (6,02 dB) | $\mathbf{2{,}5}$ (**3,98 dB**) |
+| Degradación de SNR | $4$ (6,02 dB) | $\mathbf{2{,}5}$ (**3,98 dB**) |
 
 $$\left(\frac{S}{N}\right)_{in}' = 36{,}02-3 = 33{,}02\text{ dB}$$
 
@@ -69,10 +78,10 @@ $$\left(\frac{S}{N}\right)_{out}' = 33{,}02 - 3{,}98 = \boxed{29{,}0\text{ dB}}$
 
 **Mejora, y bastante.** Con $W$ de 15 → 5 kHz y $\Delta f$ **fijo** (lo determina el diseño del transmisor, no la modulante), actúan **dos efectos en la misma dirección**:
 
-| Efecto | Cambio |
-|---|---|
+| Efecto                                    | Cambio                                              |
+| ----------------------------------------- | --------------------------------------------------- |
 | Índice de modulación $\beta = \Delta f/W$ | se **triplica** → $\beta^2$ se multiplica por **9** |
-| $\gamma = S_R/(N_0W)$ (SNR en banda base) | se **triplica** (entra menos ruido al bajar $W$) |
+| $\gamma = S_R/(N_0W)$ (SNR en banda base) | se **triplica** (entra menos ruido al bajar $W$)    |
 
 $$\left(\frac{S}{N}\right)_D \propto 3\beta^2\gamma \ \Rightarrow\ \text{mejora } 9\times3 = 27\times \approx +14{,}3\text{ dB}$$
 
@@ -82,7 +91,7 @@ De 35 dB pasaría a **~49 dB**.
 
 ## Qué aprender de este ejercicio
 
-1. **$F$ es constante frente a cambios en la señal, pero NO frente a cambios en el ruido de entrada.** Es la diferencia entre b) y c), y es todo el contenido del ítem que vale doble.
+1. **La degradación real de SNR es constante frente a cambios en la señal, pero NO frente a cambios en el ruido de entrada.** Es la diferencia entre b) y c), y es todo el contenido del ítem que vale doble. Ojo con la redacción: el **$F$ del amplificador no cambia** (es spec a $T_0$); lo que cambia es cuánto degrada realmente, porque su ruido propio pesa menos frente a un ruido de entrada mayor.
 2. **El puntaje delata la dificultad**: si un ítem vale el doble que sus vecinos, tiene una vuelta de tuerca. Desconfiar de la respuesta simétrica obvia.
 3. **$B_{eq}$ y $G$ no se usaron en ningún ítem** — el enunciado los da como datos para una ruta alternativa (o distractores). Ver [[../../wiki/ruido/ruido-formulario-examen#¿Cuándo hace falta $B_N$ en las cuentas?|cuándo hace falta $B_N$]]: solo para potencias absolutas, no para cocientes.
 4. **Regla de examen**: si a los 5 minutos de un ítem no aparece el camino, **escribir el planteo y pasar al siguiente**. Acá dejar asentado *"$F$ cambia porque $N_a$ es fijo y $N_i$ subió"* ya habría sumado, sin necesidad de cerrar la cuenta.
