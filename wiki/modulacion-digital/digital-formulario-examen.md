@@ -25,7 +25,9 @@ $$R_b\ [\text{bps}] \to \ell \to D\ [\text{baudios}] \to B\ [\text{Hz}] \to SNR 
 | 3 | **Potencia de señal** | $\boxed{S = \dfrac{\langle\lvert s\rvert^2\rangle}{2}}$ | Potencia media transmitida. El $/2$ es pico→RMS del portador. $\langle\lvert s\rvert^2\rangle$ depende de la constelación (ver tabla abajo). Unidad: W (normalizada, $R=1$) |
 | 4 | **Potencia de ruido** en la banda | $\boxed{N = N_0\,B_N}$ | Ruido total que entra al receptor. $N_0$ = densidad espectral de ruido [W/Hz], $B_N$ = ancho de banda equivalente de ruido. Unidad: W |
 | 5 | **Energía por bit** | $\boxed{E_b = \dfrac{S}{R_b} = S\,T_b}$ | Energía que el transmisor gasta en cada bit: potencia $\times$ duración de bit ($T_b=1/R_b$). Unidad: Joules |
-| 6 | **Relación $E_b/N_0$** | $\boxed{\dfrac{E_b}{N_0} = SNR\cdot\dfrac{B}{R_b}}$ | La métrica universal de calidad de un enlace digital — **es lo que entra en la fórmula de BER**. Adimensional (se suele dar en dB) |
+| 6 | **Relación $E_b/N_0$** | $\boxed{\dfrac{E_b}{N_0} = \dfrac{S}{R_b\,N_0}}$ *(directa)* $\boxed{\dfrac{E_b}{N_0} = SNR\cdot\dfrac{B}{R_b}}$ *(vía SNR)* | La métrica universal de calidad de un enlace digital — **es lo que entra en la fórmula de BER**. Adimensional (se suele dar en dB) |
+
+> ⚠️ **Preferí siempre la ruta directa** $\frac{E_b}{N_0}=\frac{S}{R_bN_0}$: solo necesita potencia, tasa de bits y densidad de ruido — **ni ancho de banda ni SNR**. La ruta vía SNR sirve cuando te dan la SNR ya calculada, pero **arrastra cualquier error previo** y falla si el enunciado cambia $N_0$ entre ítems (que es exactamente lo que hace el ejercicio resuelto abajo, a propósito).
 
 **Potencia según la constelación** (el $\langle\lvert s\rvert^2\rangle$ de la fórmula 3):
 
@@ -332,11 +334,17 @@ $$SNR = \frac{5\ \mu\text{W}}{5{,}12\ \text{nW}} = 976{,}6 \ \Rightarrow\ \boxed
 
 **e) BER con filtro acoplado (QPSK)** — *ninguno de los dos llegó*
 
-$$\frac{E_b}{N_0} = SNR\cdot\frac{B}{R_b} = 976{,}6\times\frac{128\text{k}}{256\text{k}} = 488$$
+⚠️ **Ojo: el enunciado da un $N_0$ distinto acá** ($2\times10^{-12}$ W/Hz) que en el punto d) ($4\times10^{-14}$ W/Hz). **No se puede reciclar la SNR de d)** — hay que ir por la ruta directa:
 
-$$P_e = Q\!\left(\sqrt{2\times488}\right) = Q(31{,}2) \approx 0$$
+$$E_b = \frac{S}{R_b} = \frac{5\times10^{-6}}{256\times10^3} = 1{,}953\times10^{-11}\text{ J}$$
 
-BER prácticamente nula — el enlace tiene muchísimo margen.
+$$\frac{E_b}{N_0} = \frac{1{,}953\times10^{-11}}{2\times10^{-12}} = 9{,}77 \quad(\approx 9{,}9\text{ dB})$$
+
+$$P_e^{QPSK} = Q\!\left(\sqrt{\frac{2E_b}{N_0}}\right) = Q\!\left(\sqrt{19{,}53}\right) = Q(4{,}42) \approx \boxed{5\times10^{-6}}$$
+
+> **Por qué el examen cambia $N_0$ entre d) y e)**: es **deliberado**, para que e) no dependa de d) y no se arrastren errores. Obliga a usar $\dfrac{E_b}{N_0}=\dfrac{S}{R_b N_0}$, que **no necesita ni el ancho de banda ni la SNR** — solo potencia, tasa de bits y densidad de ruido. Si en el examen ves que un ítem repite un dato que ya estaba, sospechá que quiere la ruta independiente. [analysis]
+>
+> **Dónde entra que sea QPSK**: solo para **elegir la fórmula** de BER. No afecta $E_b/N_0$, porque $E_b=S/R_b$ depende únicamente de potencia total y tasa de bits, no de la modulación. Si fuera 16-QAM, el mismo $E_b/N_0$ daría un BER **peor** al usar la fórmula de $M$-QAM.
 
 ## Los cuatro errores que cuestan el ejercicio
 
