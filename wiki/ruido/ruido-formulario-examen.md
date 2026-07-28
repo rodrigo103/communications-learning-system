@@ -14,6 +14,34 @@ unidad: 7
 >
 > **Ruido aparece en 52,4% de los 42 finales únicos.** El patrón dominante es la **cascada de repetidores**.
 
+## Glosario de símbolos
+
+| Símbolo | Nombre | Unidad | Notas |
+|---|---|---|---|
+| $S$ | Potencia de **señal** | W | |
+| $N$ | Potencia de **ruido** | W | |
+| $N_0$ | **Densidad** espectral de ruido | W/Hz | Potencia de ruido *por Hz*. Dimensionalmente es energía (J) |
+| $S/N$ | Relación señal a ruido (SNR) | adimensional | Se expresa en dB: $10\log_{10}(S/N)$ |
+| $(S/N)_D$ | SNR en el **destino** (salida del sistema) | adimensional | Notación de los enunciados |
+| $k$ | Constante de **Boltzmann** | J/K | $1{,}38\times10^{-23}$ |
+| $T$ | Temperatura absoluta | K | |
+| $T_0$ | Temperatura de **referencia** | K | $290$ K por convención |
+| $T_e$ | Temperatura **equivalente de ruido** | K | Ruido propio de un dispositivo, expresado como temperatura |
+| $B$ | Ancho de banda | Hz | $B_N$ = ancho equivalente **de ruido** |
+| $F$ | **Figura (cifra) de ruido** | adimensional, $\geq1$ | Cuánto degrada la SNR un dispositivo |
+| $F_i$ | Figura de ruido de la **etapa $i$** | adimensional | $F_1$ = primera etapa, etc. |
+| $F_T$ | Figura de ruido **total** de la cascada | adimensional | La "T" es de *total* |
+| $G$ | **Ganancia** de potencia | adimensional, lineal | $G>1$ amplifica, $G<1$ atenúa |
+| $G_i$ | Ganancia de la **etapa $i$** | adimensional | |
+| $L$ | **Pérdida** (atenuación) | adimensional, $\geq1$ | $L = 1/G$. En un cable, $L$ es cuánto atenúa |
+| $L_c$ | Pérdida de **un tramo de cable** | adimensional | Un solo tramo entre repetidores |
+| $L_{TOTAL}$ | Pérdida **de todo el enlace** | adimensional | Se reparte entre los tramos |
+| $n$ | **Cantidad de secciones** de repetición | conteo | *(ver aviso abajo)* |
+
+> ⚠️ **Ojo con dos colisiones de notación:**
+> - **$N$ vs $n$**: $N$ (mayúscula) es **potencia de ruido**; $n$ (minúscula) es **cantidad de secciones**. Los enunciados a veces usan $N$ para las secciones — leer por contexto.
+> - **$F$ y $L$ y $G$ son adimensionales pero casi siempre se dan en dB en el enunciado.** Friis **solo funciona en lineal**: hay que convertir antes de aplicarla ($X = 10^{X_{dB}/10}$) y recién pasar el resultado a dB. Es el error #3 de la lista del final de esta nota. [analysis]
+
 ## Las 6 fórmulas
 
 | # | Nombre | Fórmula | Notas |
@@ -38,27 +66,27 @@ $$\boxed{\left(\frac{S}{N}\right)_{out}\bigg|_{dB} = \left(\frac{S}{N}\right)_{i
 
 ## El patrón estrella: cascada de repetidores
 
-Es el que más aparece. Configuración: $N$ secciones idénticas, cada una **cable (pérdida $L_c$) + repetidor (ganancia $G_r = L_c$)** — el repetidor compensa exactamente la atenuación del tramo.
+Es el que más aparece. Configuración: $n$ secciones idénticas, cada una **cable (pérdida $L_c$) + repetidor (ganancia $G_r = L_c$)** — el repetidor compensa exactamente la atenuación del tramo.
 
 ### Caso repetidores ideales ($F_r = 1$)
 
-$$\boxed{F_T = N\,L_c - (N-1)}$$
+$$\boxed{F_T = n\,L_c - (n-1)}$$
 
 **Deducción** (por qué se telescopa): con cable ($F=L_c$, $G=1/L_c$) alternando con repetidor ($F=1$, $G=L_c$), los productos de ganancia acumulada valen $G_1G_2 = \frac{1}{L_c}L_c = 1$ después de cada par. Entonces cada tramo de cable posterior al primero aporta $\frac{L_c-1}{1} = L_c-1$, y los repetidores aportan $0$ (porque $F_r-1=0$):
 
-$$F_T = L_c + (N-1)(L_c-1) = N L_c - (N-1)$$
+$$F_T = L_c + (n-1)(L_c-1) = n L_c - (n-1)$$
 
 ### Cómo se reparte la pérdida
 
-$$L_{TOTAL}\big|_{dB} = \text{atenuación [dB/km]} \times \text{distancia [km]}, \qquad L_c\big|_{dB} = \frac{L_{TOTAL}\big|_{dB}}{N}$$
+$$L_{TOTAL}\big|_{dB} = \text{atenuación [dB/km]} \times \text{distancia [km]}, \qquad L_c\big|_{dB} = \frac{L_{TOTAL}\big|_{dB}}{n}$$
 
-⚠️ **Ojo**: se divide **en dB**, y recién después se pasa a lineal. Con $L_{TOTAL}=200$ dB y $N=5$: $L_c = 40$ dB $= 10^4$ (no $200/5$ en lineal).
+⚠️ **Ojo**: se divide **en dB**, y recién después se pasa a lineal. Con $L_{TOTAL}=200$ dB y $n=5$: $L_c = 40$ dB $= 10^4$ (no $200/5$ en lineal).
 
 ### Por qué conviene poner más repetidores
 
-Con más secciones, cada tramo de cable atenúa menos y $L_c$ baja **exponencialmente** (porque se divide en dB), mientras que $F_T \approx N L_c$ solo crece linealmente en $N$. Gana la caída de $L_c$:
+Con más secciones, cada tramo de cable atenúa menos y $L_c$ baja **exponencialmente** (porque se divide en dB), mientras que $F_T \approx n L_c$ solo crece linealmente en $n$. Gana la caída de $L_c$:
 
-| $N$ | $L_c$ [dB] | $L_c$ lineal | $F_T = NL_c-(N-1)$ | $F_T$ [dB] |
+| $n$ | $L_c$ [dB] | $L_c$ lineal | $F_T = nL_c-(n-1)$ | $F_T$ [dB] |
 |---|---|---|---|---|
 | 5 | 40 | $10^4$ | $49\,996$ | 47,0 |
 | 10 | 20 | $10^2$ | $991$ | 29,9 |
@@ -90,9 +118,9 @@ $$\left(\frac{S}{N}\right)_{out} = 76{,}9 - 29{,}9 = \boxed{47\text{ dB}}$$
 
 Ahora los repetidores **sí aportan**. Cada uno agrega $\frac{F_r-1}{G_{acum}}$, y como después de cada cable la ganancia acumulada es $1/L_c$, cada repetidor aporta $(F_r-1)L_c$:
 
-$$F_T = \underbrace{N L_c - (N-1)}_{\text{cables}} + \underbrace{N(F_r-1)L_c}_{\text{repetidores}}$$
+$$F_T = \underbrace{n L_c - (n-1)}_{\text{cables}} + \underbrace{n(F_r-1)L_c}_{\text{repetidores}}$$
 
-Con $N=10$, $L_c=100$, $F_r=4$: $F_T = 991 + 10(3)(100) = 991+3000 = 3991 \equiv 36{,}0$ dB
+Con $n=10$, $L_c=100$, $F_r=4$: $F_T = 991 + 10(3)(100) = 991+3000 = 3991 \equiv 36{,}0$ dB
 
 $$\left(\frac{S}{N}\right)_{out} = 76{,}9 - 36{,}0 \approx \boxed{40{,}9\text{ dB}}$$
 
