@@ -443,4 +443,5 @@ Del análisis de cómo fallaron los estudiantes reales:
 - [[eficiencia-espectral|Eficiencia Espectral]]
 - [[../modulacion-pulsos/pcm-formulario-examen|PCM — Formulario de examen]] — la cadena previa (PCM genera los bits que esto transmite)
 - [[../conceptos-integradores/eb-n0-vs-snr|$E_b/N_0$ vs SNR]] — el puente de la fórmula 5, en detalle
+- [[../conceptos-integradores/pcm-vs-modulacion-digital|PCM vs Modulación Digital]] — cómo se conectan y diferencian
 - [[../planificacion/formulario-imprimible|Formulario Imprimible]]

@@ -119,6 +119,7 @@ Base de conocimiento interconectada para el curso de Sistemas de Comunicaciones.
 - [[conceptos-integradores/aportes-hilbert]] — David Hilbert: transformada de Hilbert, señal analitica, SSB
 - [[conceptos-integradores/pioneros-comunicaciones]] — Galeria completa de pioneros (Maxwell, Hertz, Marconi, Bell, Friis, Huffman, Hamming, Viterbi, etc.)
 - [[conceptos-integradores/clasificacion-modulaciones]] — Clasificacion jerarquica de todos los tipos de modulacion
+- [[conceptos-integradores/pcm-vs-modulacion-digital]] — Como se conectan y diferencian PCM y modulacion digital
 
 ## Derivaciones Matematicas
 

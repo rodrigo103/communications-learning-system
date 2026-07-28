@@ -230,4 +230,5 @@ Notar que **casi todo termina en ancho de banda o tasa de bits** — la cadena d
 - [[multiplex-tdm|Multiplexación TDM]] — aparece combinado con PAM en varios finales
 - [[muestreo-ideal-natural|Muestreo Ideal y Natural]]
 - [[../modulacion-digital/constelaciones|Constelaciones]] — para el $M_{mod}$ del último paso
+- [[../conceptos-integradores/pcm-vs-modulacion-digital|PCM vs Modulación Digital]] — cómo se conectan ambas etapas
 - [[../planificacion/formulario-imprimible|Formulario Imprimible]]

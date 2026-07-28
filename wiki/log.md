@@ -105,3 +105,9 @@ Registro cronologico de todas las actualizaciones al wiki de Sistemas de Comunic
 - **Nueva pagina wiki**: `plan-estudio-por-modulaciones.md` — Plan de estudio reorganizado en 11 semanas por familia de modulacion con 4 capas progresivas (conceptual, matematica, desempeño, implementacion).
 - **Nueva pagina wiki**: `plan-11-dias-final.md` — Plan intensivo de 11 dias para el examen final del 30 de julio: foco digital, analogicas comprimidas, 10 formulas clave.
 - **Nueva pagina wiki**: `pioneros-comunicaciones.md` — Galeria completa de pioneros (24+ figuras) organizada por area: precursores EM, radio, teoria de informacion, digital/redes, ruido/formulas.
+
+## 2026-07-28
+
+### PCM vs Modulacion Digital
+
+- **Nueva pagina wiki**: `conceptos-integradores/pcm-vs-modulacion-digital.md` — Comparacion completa de ambas etapas: que hace cada una, como se conectan en la cadena $f_s \to R_b \to D \to B$, independencia de $n$ y $\ell$, ejemplos con $n=3$ acoplado a QPSK ($\ell=2$) y 16-QAM ($\ell=4$). Dudas de sesion de estudio.
