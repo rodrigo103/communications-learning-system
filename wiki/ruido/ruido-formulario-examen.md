@@ -28,9 +28,21 @@ unidad: 7
 | $T_0$ | Temperatura de **referencia** | K | $290$ K por convención |
 | $T_e$ | Temperatura **equivalente de ruido** | K | Ruido propio de un dispositivo, expresado como temperatura |
 | $B$ | Ancho de banda | Hz | $B_N$ = ancho equivalente **de ruido** |
-| $F$ | **Figura (cifra) de ruido** | adimensional, $\geq1$ | Cuánto degrada la SNR un dispositivo |
-| $F_i$ | Figura de ruido de la **etapa $i$** | adimensional | $F_1$ = primera etapa, etc. |
-| $F_T$ | Figura de ruido **total** de la cascada | adimensional | La "T" es de *total* |
+| $F$ | **Factor de ruido** | adimensional, $\geq1$ | Cuánto degrada la SNR un dispositivo. En dB se llama **cifra de ruido** |
+| $F_i$ | Factor de ruido de la **etapa $i$** | adimensional | $F_1$ = primera etapa, etc. |
+| $F_T$ | Factor de ruido **total** de la cascada | adimensional | La "T" es de *total* |
+
+> ⚠️ **"Factor de ruido" ≠ "cifra de ruido" — y la cátedra respeta la distinción con total consistencia** (verificado sobre el corpus): [analysis]
+>
+> | Término | Cómo aparece en los finales | Unidad |
+> |---|---|---|
+> | **"factor de ruido"** | "factor de ruido 4", "factor de ruido igual a uno ($F=1$)", "factor de ruido total de 40" | **siempre lineal** |
+> | **"cifra de ruido"** | "cifra de ruido de **6 dB**" (7 apariciones) | **siempre en dB** |
+> | "figura de ruido" | **cero apariciones** (es traducción del inglés *noise figure*) | — |
+>
+> $$\text{factor de ruido} = F\ \text{(lineal)}, \qquad \text{cifra de ruido} = 10\log_{10}F\ \text{[dB]}$$
+>
+> **El vocabulario del enunciado te dice las unidades** — información gratis al leer. Si dice "factor de ruido 4" es $F=4$ lineal (equivalente a 6 dB de cifra); si dijera "cifra de ruido de 4 dB" sería $F=2{,}51$.
 | $G$ | **Ganancia** de potencia | adimensional, lineal | $G>1$ amplifica, $G<1$ atenúa |
 | $G_i$ | Ganancia de la **etapa $i$** | adimensional | |
 | $L$ | **Pérdida** (atenuación) | adimensional, $\geq1$ | $L = 1/G$. En un cable, $L$ es cuánto atenúa |
