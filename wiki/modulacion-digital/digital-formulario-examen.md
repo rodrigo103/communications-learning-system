@@ -99,6 +99,54 @@ $$P_e \approx \frac{4}{\ell}\left(1-\frac{1}{\sqrt M}\right)Q\!\left(\sqrt{\frac
 
 **El trade-off central**: al subir $M$ se gana eficiencia espectral ($\ell$ bits por símbolo) pero **empeora la BER** para el mismo $E_b/N_0$ — los puntos de la constelación quedan más juntos. Ver [[constelaciones|Constelaciones]].
 
+## Cómo se arman las constelaciones (de dónde salen las coordenadas)
+
+No hay que memorizar cada constelación — hay una regla fija. [analysis]
+
+### QAM cuadrada ($M=4,16,64,256\ldots$)
+
+Grilla $L\times L$ con $L=\sqrt M$ niveles por eje, **uniformemente espaciados y simétricos respecto de cero**, lo que los deja en **múltiplos impares** de $a$:
+
+$$\pm a,\ \pm3a,\ \pm5a,\ \ldots,\ \pm(L-1)a$$
+
+| $M$ | $L=\sqrt M$ | Niveles por eje |
+|---|---|---|
+| 4 (QPSK) | 2 | $\pm a$ |
+| 16 | 4 | $\pm a,\pm3a$ |
+| 64 | 8 | $\pm a,\pm3a,\pm5a,\pm7a$ |
+| 256 | 16 | $\pm a,\ldots,\pm15a$ |
+
+**Por qué así**: espaciado uniforme **maximiza la distancia mínima** para una potencia media dada (o sea minimiza la BER), y la simetría respecto de cero da **media nula** — si no, se gastaría potencia en una componente de continua que no lleva información.
+
+### Cómo sacar el valor de $a$
+
+Del dato que dé el enunciado, que es siempre uno de estos tres:
+
+| Si el enunciado da… | Relación | Despeje |
+|---|---|---|
+| **Amplitud máxima** (punto esquina) | $\lvert s\rvert_{max} = (L-1)a\sqrt2$ | $a = \dfrac{\lvert s\rvert_{max}}{(L-1)\sqrt2}$ |
+| **Potencia media** | $\langle\lvert s\rvert^2\rangle = \dfrac{2(M-1)}{3}a^2$ | $a=\sqrt{\dfrac{3\langle\lvert s\rvert^2\rangle}{2(M-1)}}$ |
+| **Distancia mínima** $d_{min}$ | $d_{min} = 2a$ | $a = d_{min}/2$ |
+
+### PSK — distinto, y más simple
+
+Los puntos van **sobre una circunferencia** de radio $A$, a ángulos $2\pi k/M$:
+
+$$s_k = \Big(A\cos\tfrac{2\pi k}{M},\ A\sin\tfrac{2\pi k}{M}\Big), \qquad d_{min} = 2A\sin\tfrac{\pi}{M}$$
+
+**Todos los puntos tienen la misma magnitud $A$** → envolvente constante. Consecuencia práctica: en PSK **no hay factor de cresta de constelación** ($\langle\lvert s\rvert^2\rangle = A^2$ directo), a diferencia de QAM. Por eso PSK se usa donde el amplificador trabaja saturado (enlaces satelitales) y QAM donde importa más la eficiencia espectral.
+
+*(QAM no cuadrada — $M=8,32,128$ — usa constelaciones en cruz; no aparecieron en el corpus de finales.)*
+
+### Receta para el examen
+
+1. Identificar $M$ y si es QAM o PSK
+2. QAM: $L=\sqrt M$, niveles $\pm a,\pm3a,\ldots,\pm(L-1)a$
+3. Sacar $a$ del dato dado (tabla de arriba)
+4. Potencia: $\langle\lvert s\rvert^2\rangle=\frac{2(M-1)}{3}a^2$, y después **dividir por 2** (pico→RMS del portador)
+
+Ver también [[constelaciones|Constelaciones]] para los diagramas I/Q.
+
 ## Ejercicio resuelto — 16-QAM (`F_Comu_2026-02-26_res.md`)
 
 > ⚠️ **Los dos estudiantes que rindieron este ejercicio lo reprobaron** (1,5/2,5 y 0,75/2,5). Vale la pena estudiar dónde fallaron.
