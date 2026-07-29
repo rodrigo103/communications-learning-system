@@ -204,7 +204,21 @@ $$\boxed{S = \frac{V^2}{2}} \qquad \boxed{E_d = V^2T_b = 2S\,T_b = \frac{2S}{R_b
 > | **Fórmula** | $E_b = S\,T_b = \dfrac{S}{R_b}$ | $E_d = \int_0^{T_b}\lvert s_1-s_0\rvert^2dt$ |
 > | **Mide** | **Costo** energético | **Distinguibilidad** |
 >
-> **Por qué el BER depende de $E_d$ y no de $E_b$**: el trabajo del receptor es **distinguir** $s_1$ de $s_0$. No importa cuánta energía tiene cada símbolo, sino **qué tan diferentes son entre sí**. Dos símbolos enormes pero casi idénticos son difíciles de distinguir; dos chicos pero opuestos son fáciles. El cociente $E_d/E_b$ mide la **eficiencia del esquema para convertir energía en distinguibilidad**: **4** para antipodal (máximo binario), **2** para unipolar/ortogonal — de ahí los 3 dB de diferencia. [analysis]
+> **Cómo se relacionan con el BER — en dos niveles, no en competencia**: [analysis]
+>
+> - **$E_d$ es la cantidad fundamental**: una sola fórmula, $P_e=Q\!\left(\sqrt{E_d/2N_0}\right)$, válida para **cualquier** señalización
+> - **$E_b$ funciona una vez fijado el esquema**, porque ahí $E_d = k\,E_b$ con $k$ conocido
+>
+> **Y las distintas fórmulas de la [[#BER — tabla completa|tabla de BER]] SON los distintos $k$** — no son fórmulas independientes:
+>
+> | Esquema | $k=E_d/E_b$ | Sustituyendo en $Q\!\left(\sqrt{E_d/2N_0}\right)$ | Queda |
+> |---|---|---|---|
+> | BPSK/QPSK | **4** | $Q\!\left(\sqrt{4E_b/2N_0}\right)$ | $Q\!\left(\sqrt{2E_b/N_0}\right)$ ✓ |
+> | Unipolar / FSK coh. | **2** | $Q\!\left(\sqrt{2E_b/2N_0}\right)$ | $Q\!\left(\sqrt{E_b/N_0}\right)$ ✓ |
+>
+> **Por qué la tabla se escribe en $E_b$ y no en $E_d$**: porque $E_b$ es lo que **cuesta**, así que permite comparar esquemas de forma justa — el mismo motivo por el que las curvas de BER se grafican contra $E_b/N_0$.
+>
+> **Y por qué $E_d$ es el que manda conceptualmente**: el trabajo del receptor es **distinguir** $s_1$ de $s_0$. No importa cuánta energía tiene cada símbolo, sino **qué tan diferentes son entre sí** — dos símbolos enormes pero casi idénticos son difíciles de distinguir; dos chicos pero opuestos son fáciles. El cociente $k=E_d/E_b$ mide la **eficiencia del esquema para convertir energía en distinguibilidad**: 4 es el máximo binario (antipodal), 2 el de unipolar/ortogonal — de ahí los 3 dB.
 >
 > ### La unificación: $E_d = d_{min}^2$
 >
