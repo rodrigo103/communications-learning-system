@@ -64,7 +64,7 @@ con igualdad **solo si todo es equiprobable**.
 
 $$\underbrace{D\ [\text{símbolos/s}]}_{\text{fija el ancho de banda}} \xrightarrow{\ \times\ell\ } \underbrace{R_b\ [\text{binits/s}]}_{\text{flujo en el canal}} \xrightarrow{\ \times H/\ell\ } \underbrace{R\ [\text{bits/s}]}_{\text{información real}}$$
 
-En los ejercicios donde todo es equiprobable (la mayoría) los dos últimos coinciden y se usan indistintamente. Pero cuando el enunciado da probabilidades distintas — como el ítem que aparece **5 veces** en el corpus (*"si el carácter espacio tiene probabilidad 1/7…"*) — **hay que separarlos**: ahí $H<\log_2M$ y la tasa de información es menor que la binaria.
+En los ejercicios donde todo es equiprobable (la mayoría) los dos últimos coinciden y se usan indistintamente. Pero cuando el enunciado da probabilidades distintas — como el ítem que aparece **7 veces** en el corpus (*"si el carácter espacio tiene probabilidad 1/7…"*) — **hay que separarlos**: ahí $H<\log_2M$ y la tasa de información es menor que la binaria.
 
 ## Las 5 fórmulas
 
@@ -156,7 +156,7 @@ Los enunciados suelen describir la fuente en capas (imagen → líneas → punto
 
 $$R\ \left[\tfrac{\text{bits}}{\text{s}}\right] = \underbrace{\text{elementos por trama}}_{\text{conteo}} \times \underbrace{H}_{\text{bits/elemento}} \times \underbrace{\text{tramas por segundo}}_{1/\text{s}}$$
 
-**Si los símbolos NO son equiprobables**, en vez de $H=\log_2M$ hay que usar $H=-\sum p_i\log_2p_i$ — es el caso del ítem que aparece 5 veces en el corpus ("*si el carácter espacio tiene probabilidad 1/7, cada uno de los diez caracteres…*").
+**Si los símbolos NO son equiprobables**, en vez de $H=\log_2M$ hay que usar $H=-\sum p_i\log_2p_i$ — es el caso del ítem que aparece 7 veces en el corpus ("*si el carácter espacio tiene probabilidad 1/7, cada uno de los diez caracteres…*").
 
 ## Codificación de fuente (baja prioridad para el examen)
 
