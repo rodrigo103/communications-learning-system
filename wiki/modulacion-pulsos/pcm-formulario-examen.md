@@ -91,11 +91,14 @@ $$\boxed{\left(\frac{S}{N}\right)_{salida} = \frac{SNR_Q}{1+4P_e\,(M^2-1)}}$$
 
 **Casos particulares del numerador** según lo que asuma el enunciado:
 
-| Si el enunciado da… | $SNR_Q$ |
-|---|---|
-| Factor de cresta $F_C$ | $3M^2/F_C^2$ |
-| Señal **uniformemente distribuida** ($F_C=\sqrt3$) | $\boxed{M^2}$ |
-| Señal senoidal ($F_C=\sqrt2$) | $1{,}5M^2$ |
+| Si el enunciado da… | $SNR_Q$ | Forma completa que aparece en los finales |
+|---|---|---|
+| $\left\langle\left(\frac{m(t)}{V_p}\right)^2\right\rangle$ *(la más general)* | $3M^2\left\langle\left(\frac{m}{V_p}\right)^2\right\rangle$ | $\dfrac{3M^2\left\langle(m(t)/V_p)^2\right\rangle}{1+4P_e(M^2-1)}$ |
+| Factor de cresta $F_C$ | $3M^2/F_C^2$ | *(es lo mismo: $\langle(m/V_p)^2\rangle = 1/F_C^2$)* |
+| Señal **uniformemente distribuida** ($F_C=\sqrt3$) | $\boxed{M^2}$ | $\dfrac{M^2}{1+4P_e(M^2-1)}$ |
+| Señal senoidal ($F_C=\sqrt2$) | $1{,}5M^2$ | |
+
+> **Las tres formas son la misma**: $\left\langle\left(\frac{m(t)}{V_p}\right)^2\right\rangle$ es el **valor cuadrático medio normalizado al pico**, que es exactamente $1/F_C^2$. Con distribución uniforme vale $1/3$, y $3M^2\cdot\frac13 = M^2$. **Los finales usan las tres notaciones** — reconocerlas como equivalentes ahorra tiempo.
 
 > ⚠️ Cuando el enunciado escribe la expresión como $\dfrac{M^2}{1+4P_e(M^2-1)}$ **está asumiendo señal uniformemente distribuida** — es el caso $F_C=\sqrt3$, donde $3M^2/3 = M^2$. Coherente con que los ADC de estos ejercicios se especifiquen "de cuantificación lineal con señal uniformemente distribuida".
 

@@ -275,6 +275,24 @@ $$\boxed{\gamma = \frac{S_R}{N_0\,W}}$$
 
 **El trade-off de FM que esto revela**: la mejora va con $\beta^2$, pero el ancho de banda ocupado va con $(\beta+1)$ por Carson. **Se compra SNR gastando espectro** — cuadráticamente a favor, linealmente en contra. Por eso FM broadcast usa $\beta=5$ y no más.
 
+## Balance de enlace: pérdida de espacio libre (FSPL)
+
+Aparece en los ejercicios de enlace radioeléctrico (*"calcular la potencia necesaria en la antena transmisora en dBm"*). **El enunciado la da**, pero conviene reconocerla:
+
+$$\boxed{L_{[dB]} = 32{,}44 + 20\log_{10}\!\big(f_{[MHz]}\big) + 20\log_{10}\!\big(d_{[km]}\big)}$$
+
+⚠️ **Ojo con las unidades**: $f$ en **MHz** y $d$ en **km**. La constante cambia con las unidades (algunos finales la escriben como $32{,}442$ y otros redondean a $33$).
+
+Sale de $L = (4\pi d/\lambda)^2$ con las conversiones de unidad metidas en la constante. **Crece 6 dB cada vez que se duplica la distancia o la frecuencia** (por los $20\log$).
+
+**Balance de enlace completo** (todo en dB, se suma y resta):
+
+$$\left(\frac{S}{N}\right)_{RX} = P_{TX} + G_{TX} - L_{FSPL} - L_{otras} + G_{RX} - N$$
+
+con $N = 10\log_{10}(kT B)$ o directamente $N_{dBm} = -174 + 10\log_{10}B$ si $T=T_0$.
+
+> **El atajo de los $-174$ dBm/Hz**: como $kT_0 = 4\times10^{-21}$ W/Hz $= -174$ dBm/Hz, la potencia de ruido en dBm es $\boxed{N_{dBm} = -174 + 10\log_{10}B_{[Hz]} + F_{[dB]}}$ — evita pasar por watts. [analysis]
+
 ## Los errores que cuestan puntos
 
 1. **Dividir la pérdida total en lineal en vez de en dB** — $L_c$ sale de dividir los dB, después se convierte

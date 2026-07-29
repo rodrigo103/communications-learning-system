@@ -176,6 +176,24 @@ $$R\ \left[\tfrac{\text{bits}}{\text{s}}\right] = \underbrace{\text{elementos po
 
 **Si los símbolos NO son equiprobables**, en vez de $H=\log_2M$ hay que usar $H=-\sum p_i\log_2p_i$ — es el caso del ítem que aparece 7 veces en el corpus ("*si el carácter espacio tiene probabilidad 1/7, cada uno de los diez caracteres…*").
 
+## El "sistema ideal" — SNR de salida vs ancho de banda
+
+Un ítem que aparece pide **demostrar** esta relación a partir de Hartley-Shannon:
+
+$$\boxed{\left(\frac{S}{N}\right)_{sal} = \left[1+\left(\frac{S}{N}\right)_{ent}\right]^{B_T/B} - 1}$$
+
+**Demostración** (es corta): un sistema ideal no pierde información, así que la capacidad del canal **pasabanda** (ancho $B_T$, SNR de entrada) debe igualar la del canal **de salida** en banda base (ancho $B$, SNR de salida):
+
+$$\underbrace{B_T\log_2\!\left[1+\left(\tfrac{S}{N}\right)_{ent}\right]}_{C \text{ del canal de transmisión}} = \underbrace{B\log_2\!\left[1+\left(\tfrac{S}{N}\right)_{sal}\right]}_{C \text{ en banda base}}$$
+
+Dividiendo por $B$ y despejando:
+
+$$\log_2\!\left[1+\left(\tfrac{S}{N}\right)_{sal}\right] = \frac{B_T}{B}\log_2\!\left[1+\left(\tfrac{S}{N}\right)_{ent}\right] = \log_2\!\left[1+\left(\tfrac{S}{N}\right)_{ent}\right]^{B_T/B}$$
+
+$$\Longrightarrow\quad 1+\left(\frac{S}{N}\right)_{sal} = \left[1+\left(\frac{S}{N}\right)_{ent}\right]^{B_T/B} \quad\blacksquare$$
+
+> **Interpretación**: **ensanchar la banda de transmisión mejora la SNR de salida exponencialmente** — con exponente $B_T/B$. Es la versión ideal del trade-off que FM aproxima: FM logra mejora $\propto\beta^2$ (polinómica), mientras el sistema ideal daría mejora **exponencial** en $B_T/B$. Por eso FM no es óptimo, solo bueno. [analysis]
+
 ## Codificación de fuente (baja prioridad para el examen)
 
 > ⚠️ **Huffman / códigos compactos aparecen en CERO de los 42 finales** como ejercicio. Esta sección está por completitud conceptual — no es donde invertir tiempo de estudio. [analysis]
