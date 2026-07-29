@@ -82,6 +82,46 @@ $$\underbrace{R_b\ \text{serie}}_{\text{16 Mbps}} \xrightarrow{\ S/P\ } \underbr
 >
 > **Por eso el sincronismo es crítico en OFDM**: si el receptor se equivoca de ventana temporal (dónde empieza el símbolo) o se corre una subportadora en frecuencia, **los $N_p$ grupos quedan mal asignados** y se pierde el bloque entero.
 
+## ¿Por qué conviene que cada subportadora sea lenta?
+
+> 📌 **Pregunta de examen frecuente**: *"indicar la ventaja de emplear la señal descrita versus transmitir la misma tasa de información con una sola portadora"* — **aparece 6 veces en el corpus**. Conviene tener la respuesta redactada.
+
+**No es una limitación del hardware**: el conversor serie/paralelo maneja el caudal completo sin problema. La lentitud es una **elección de diseño**, y el motivo está en el canal.
+
+### La razón central: ISI por multitrayecto
+
+La señal llega por varios caminos con retardos distintos. La **dispersión temporal** $\tau$ hace que cada símbolo se derrame sobre los siguientes:
+
+| Sistema | $T_s$ | Eco urbano típico (~1 μs) |
+|---|---|---|
+| Una portadora, 1024-QAM | $0{,}625\ \mu$s | **Se superpone a ~2 símbolos** → ISI severa |
+| OFDM | $1024\ \mu$s | **0,1% del símbolo** → despreciable |
+
+Con una sola portadora haría falta un **ecualizador** que corrija varios símbolos de arrastre — caro y difícil de adaptar. **OFDM esquiva el problema en vez de resolverlo.**
+
+### Los beneficios adicionales
+
+**1. Cada subportadora ve un canal plano** *(el más importante)*. La respuesta del canal varía con la frecuencia (*fading selectivo*); una portadora ancha atraviesa toda esa variación y se distorsiona. Cada subportadora ocupa solo $\Delta f$ (976 Hz acá) — en ese ancho el canal es esencialmente **constante**. Consecuencia: el canal actúa como **una simple multiplicación compleja** por subportadora, corregible con **un ecualizador de un solo tap**. Reemplaza un ecualizador temporal complejo por $N_p$ multiplicaciones triviales.
+
+**2. El prefijo cíclico sale barato**:
+
+| Sistema | Símbolo | Una guarda de 10 μs cuesta |
+|---|---|---|
+| OFDM | 1024 μs | **~1%** |
+| Una portadora | 0,625 μs | **1600%** — absurdo |
+
+Solo con símbolos largos el [[prefijo-ciclico|prefijo cíclico]] es viable.
+
+**3. Bit loading adaptativo**: como cada subportadora tiene su propia ganancia de canal, se le pueden asignar más bits a las buenas y menos a las malas (*water-filling*). Es lo que hace ADSL.
+
+**4. Rechazo de interferencia de banda angosta**: un interferente mata unas pocas subportadoras y el resto sobrevive. Con una portadora ancha, corrompe todo.
+
+### El precio
+
+- **PAPR alto** — suma coherente de muchas subportadoras (ver ítem d) del ejercicio)
+- **Sensibilidad a error de frecuencia** — al estar tan juntas, un desvío del oscilador rompe la ortogonalidad y produce interferencia entre subportadoras (ICI)
+- **Latencia** — símbolos de 1 ms son mucho para aplicaciones sensibles
+
 ## Las 4 fórmulas
 
 | # | Fórmula | Notas |
