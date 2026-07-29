@@ -85,6 +85,18 @@ En los ejercicios donde todo es equiprobable (la mayoría) los dos últimos coin
 > **Redundancia**: $\boxed{\text{Red} = 1-\dfrac{H}{H_{max}}}$ — cuánto se puede comprimir sin perder información.
 
 > **Límite de Shannon**: $\boxed{\dfrac{E_b}{N_0} > \ln 2 = -1{,}59\text{ dB}}$ — por debajo de eso **no hay comunicación confiable posible**, sin importar el esquema. Sale de $C=B\log_2(1+S/N)$ con $S=E_bR_b$, $N=N_0B$, tomando $R_b\to C$ y $B\to\infty$.
+>
+> > [!note]- Derivacion del limite -1.59 dB (paso a paso)
+> > 1. $C = B\log_2\left(1 + \frac{S}{N}\right)$ — capacidad de Shannon
+> > 2. $S = E_b \cdot R_b$. Al limite $R_b = C$ → $S = E_b C$
+> > 3. $N = N_0 B$
+> > 4. Sustituyendo: $C = B\log_2\left(1 + \frac{E_b C}{N_0 B}\right)$
+> > 5. Divido por $B$, defino $\eta = C/B$: $\eta = \log_2\left(1 + \eta \cdot \frac{E_b}{N_0}\right)$
+> > 6. Despejo: $2^\eta = 1 + \eta \cdot \frac{E_b}{N_0} \implies \boxed{\frac{E_b}{N_0} = \frac{2^\eta - 1}{\eta}}$
+> > 7. Limite $B \to \infty$ ($\eta \to 0$): $\displaystyle\lim_{\eta\to 0} \frac{2^\eta - 1}{\eta} = \ln 2$ (derivada de $a^x$ en $x=0$ es $\ln a$)
+> > 8. En dB: $10\log_{10}(\ln 2) = 10\log_{10}(0.693) \approx \boxed{-1.59\text{ dB}}$
+> >
+> > **Interpretacion**: por mas ancho de banda infinito, jamas se puede transmitir sin errores con $E_b/N_0 < -1.59$ dB. Es el piso absoluto de energia por bit que exige la fisica.
 
 ## El patrón dominante: ¿es factible esta modulación?
 
