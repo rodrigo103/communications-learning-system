@@ -78,6 +78,41 @@ Regla mnemotécnica del $6n$: **cada bit agregado mejora la SNR en ~6 dB** (dupl
 
 **Sobre $SNR_Q$**: que sea **adimensional es justamente lo que permite expresarla en dB** (el logaritmo solo acepta números puros). Y el motivo de fondo: es cociente de dos potencias, ambas en V², así que las unidades se cancelan. De hecho **el $q^2$ también se cancela** en la derivación — por eso $SNR_Q$ depende solo de $M$ y $F_C$, y no del paso de cuantificación ni de la amplitud absoluta.
 
+## SNR de PCM **con errores de canal**
+
+Hasta acá el ruido era solo de cuantificación. Pero si el canal introduce errores de bit ($P_e\neq0$), se degrada más. La forma que usan los finales: [analysis]
+
+$$\boxed{\left(\frac{S}{N}\right)_{salida} = \frac{SNR_Q}{1+4P_e\,(M^2-1)}}$$
+
+| Término | Qué representa |
+|---|---|
+| **Numerador** $SNR_Q$ | Ruido de **cuantificación** solo — la SNR *antes del canal* |
+| **Denominador** $1+4P_e(M^2-1)$ | Degradación por **errores de bit** en el canal |
+
+**Casos particulares del numerador** según lo que asuma el enunciado:
+
+| Si el enunciado da… | $SNR_Q$ |
+|---|---|
+| Factor de cresta $F_C$ | $3M^2/F_C^2$ |
+| Señal **uniformemente distribuida** ($F_C=\sqrt3$) | $\boxed{M^2}$ |
+| Señal senoidal ($F_C=\sqrt2$) | $1{,}5M^2$ |
+
+> ⚠️ Cuando el enunciado escribe la expresión como $\dfrac{M^2}{1+4P_e(M^2-1)}$ **está asumiendo señal uniformemente distribuida** — es el caso $F_C=\sqrt3$, donde $3M^2/3 = M^2$. Coherente con que los ADC de estos ejercicios se especifiquen "de cuantificación lineal con señal uniformemente distribuida".
+
+### Los dos ítems típicos
+
+**"Determine la SNR si $P_e$ cambia a…"** → despejar $M$ de la condición dada, y reevaluar con el nuevo $P_e$:
+
+$$M^2 = \frac{SNR\,\big[1-4P_e\big]}{1-4P_e\,SNR}\quad\text{(despeje directo)}\qquad\text{o resolver numéricamente}$$
+
+En la práctica $M$ sale una potencia de 2 (256, 1024…), lo que sirve de **verificación**: si no da algo cercano a $2^n$, hay error.
+
+**"Determine la SNR antes de ingresar al canal"** → es el **numerador solo**, o sea $P_e\to0$:
+
+$$\boxed{\left(\frac{S}{N}\right)_{antes\ del\ canal} = SNR_Q = M^2}$$
+
+> **Lectura conceptual**: el denominador es siempre $\geq1$, así que **el canal solo puede empeorar**. Con $P_e$ muy chico ($10^{-8}$ o menos) el denominador $\to1$ y la SNR de salida se acerca a la de cuantificación pura — el sistema queda **limitado por cuantificación**, no por el canal. Con $P_e$ grande, domina el canal. El punto de cruce está donde $4P_e M^2 \approx 1$.
+
 ## La trampa del ancho de banda (error frecuente)
 
 Es donde se equivocó el estudiante en `exercises/finales/md/F_Comu_2024-11-14_res.md` y se lo marcaron mal.

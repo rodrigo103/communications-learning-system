@@ -75,6 +75,33 @@ Es la razón de que los finales pidan **$\Delta f$ y $\Delta\phi$ por separado**
 
 > **Por eso Armstrong usa los dos**: multiplicadores para **subir $\beta$** (de NBFM a WBFM) y mezcladores para **ubicar la portadora final** sin arruinar el $\beta$ conseguido. Ver [[modulador-armstrong|Modulador Armstrong]].
 
+## Diseño de un modulador Armstrong (procedimiento)
+
+Es el ejercicio típico: dan los parámetros de **entrada** (etapa NBFM) y de **salida** (transmisor), y piden los factores de multiplicación y el oscilador local.
+
+$$\text{NBFM}(f_1,\Delta f_1) \to \boxed{\times n_1} \to \boxed{\text{Mezclador } f_{OL}} \to \boxed{\times n_2} \to \text{salida}(f_c,\Delta f)$$
+
+**Paso 1 — La multiplicación total la fija la desviación** (el mezclador no la toca):
+
+$$\boxed{n_{total} = n_1 n_2 = \frac{\Delta f_{salida}}{\Delta f_{NBFM}}}$$
+
+**Paso 2 — La portadora no cierra sola.** Si multiplicaras todo sin mezclar, quedaría $n_{total}\cdot f_1$, que **no** coincide con $f_c$ pedida. El mezclador corrige esa diferencia.
+
+**Paso 3 — Despejar $f_{OL}$** según dónde esté el mezclador. Con la estructura $\times n_1 \to$ mezclador $\to \times n_2$:
+
+$$f_c = n_2\big(n_1f_1 \pm f_{OL}\big) \quad\Longrightarrow\quad \boxed{f_{OL} = \left|\frac{f_c}{n_2} - n_1f_1\right|}$$
+
+> **El grado de libertad**: $n_1$ y $n_2$ solo deben cumplir $n_1n_2 = n_{total}$; el reparto lo elegís vos (por eso hay varias soluciones válidas). Conviene elegir factores que se armen con duplicadores/triplicadores en cascada, y que dejen $f_{OL}$ en un valor razonable. **Justificá la elección por escrito.**
+
+**Ancho de banda en cada etapa:**
+
+| Punto | $BW$ |
+|---|---|
+| Salida del **NBFM** | $\approx 2f_m$ (banda angosta, $\beta\ll1$) |
+| **Transmisión** (salida final) | Carson: $2(\Delta f + f_m)$ |
+
+⚠️ **Si la modulante es una banda** (ej. "de 30 Hz a 15 kHz"), usar $f_m = f_{m,max}$ — la componente más alta.
+
 ## Espectro (Bessel) y SNR
 
 $$s_{FM}(t) = A_c\sum_{n=-\infty}^{\infty}J_n(\beta)\cos\big[2\pi(f_c+nf_m)t\big]$$
