@@ -81,6 +81,20 @@ Hay que **subir la tasa de chips ~8 veces** (LFSR más largo o reloj más rápid
 
 > **La clave de OFDM**: $\Delta f = 1/T_S$ **no es una elección de diseño, es la condición de ortogonalidad**. Con ese espaciado exacto, cada subportadora tiene un **nulo** en la frecuencia de todas las demás → se pueden superponer sin interferirse. Por eso OFDM es espectralmente tan eficiente: las subportadoras se solapan pero no se estorban.
 
+> **Las unidades de la cadena $T_S \to \Delta f \to B_T$** — acá el factor de conversión **significa algo concreto**, a diferencia de los otros casos: [analysis]
+>
+> $$T_S = \frac{N_p\ell\ [\text{bits/símbolo}]}{R_b\ [\text{bits/s}]} = \left[\frac{\text{s}}{\text{símbolo}}\right] \qquad\Longrightarrow\qquad \frac{1}{T_S} = \left[\frac{\text{símbolos}}{\text{s}}\right] \xrightarrow{\ \kappa\ } [\text{Hz}]$$
+>
+> De nuevo aparece $\kappa=1$ ciclo/símbolo. Pero mientras en Nyquist o en el nulo a nulo ese $\kappa$ era casi un tecnicismo, **acá es literalmente la definición de ortogonalidad**:
+>
+> $$\boxed{\text{Dos subportadoras vecinas difieren en exactamente 1 ciclo por período de símbolo}}$$
+>
+> **Demostración**: dos subportadoras son ortogonales sobre $[0,T_S]$ si $\int_0^{T_S}e^{j2\pi(f_1-f_2)t}dt = 0$, lo que ocurre cuando $(f_1-f_2)T_S$ es un **entero no nulo**. El espaciado **mínimo** corresponde al entero 1:
+> $$\Delta f\cdot T_S = 1 \quad\Rightarrow\quad \Delta f = \frac{1}{T_S}$$
+> O sea: en un período de símbolo, cada subportadora completa **exactamente un ciclo más** que su vecina. Ese "1 ciclo por símbolo" **es** el $\kappa$ y **es** el mecanismo físico de la ortogonalidad — no es contabilidad de unidades.
+>
+> **El paso siguiente sí es limpio**: $B_T = N_p\cdot\Delta f$ con $N_p$ un conteo puro (adimensional) → Hz $\times$ número $=$ Hz, sin conversiones ocultas.
+
 > **Consecuencia contraintuitiva**: $T_S$ es **larguísimo** comparado con una sola portadora ($1{,}024$ ms vs $0{,}625\ \mu$s en el ejemplo — **1600 veces más**). Eso es una **ventaja**: símbolos largos toleran mucho mejor la dispersión temporal del canal (multipath), que es el motivo real de usar OFDM.
 
 **Posición de las subportadoras** (relativas a $f_c$, con $N_p$ par y espectro centrado):
