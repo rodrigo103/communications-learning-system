@@ -134,11 +134,29 @@ $$\Delta f = \frac{1}{T_S} = \frac{1}{1{,}024\text{ms}} = 976{,}56\ \text{Hz} \ 
 
 **c) Frecuencias de subportadoras** (relativas a $f_c$)
 
+**Por qué medio espaciado y no múltiplos enteros**: con $N_p$ **par** (4096) no se puede poner una subportadora en $f_c$ y mantener la simetría — quedarían 1 central + pares, o sea un número impar. Corriendo todo medio espaciado:
+
+$$f_k = f_c \pm\left(k+\tfrac12\right)\Delta f, \qquad k=0,1,\ldots,\underbrace{2047}_{N_p/2-1}$$
+
+quedan **2048 arriba + 2048 abajo = 4096** ✓, simétricas respecto de $f_c$, y **ninguna exactamente en $f_c$**.
+
+**Los valores** (con $\Delta f = 976{,}5625$ Hz):
+
+$$\text{centrales }(k=0):\quad f_c \pm 0{,}5\times976{,}5625 = f_c \pm 488{,}28\ \text{Hz}$$
+$$k=2047:\quad 2047{,}5\times976{,}5625 = 1{,}999{,}512\ \text{Hz}$$
+$$k=2046:\quad 2046{,}5\times976{,}5625 = 1{,}998{,}535\ \text{Hz}$$
+
 | | Frecuencia |
 |---|---|
 | Dos **centrales** | $f_c \pm 488{,}28$ Hz $\ \left(=\pm\tfrac{\Delta f}{2}\right)$ |
-| Dos **inferiores** | $f_c - 1{,}9995$ MHz y $f_c - 1{,}9985$ MHz |
-| Dos **superiores** | $f_c + 1{,}9985$ MHz y $f_c + 1{,}9995$ MHz |
+| Dos **inferiores** | $f_c - 1{,}99951$ MHz y $f_c - 1{,}99854$ MHz |
+| Dos **superiores** | $f_c + 1{,}99854$ MHz y $f_c + 1{,}99951$ MHz |
+
+> **Chequeo de consistencia con $B_T$**: de centro a centro entre las extremas hay $2\times1{,}999{,}512 = 3{,}999{,}023$ Hz. El ancho **ocupado** suma media celda de cada lado (cada subportadora ocupa su propio $\Delta f$):
+> $$B_T = 3{,}999{,}023 + 976{,}56 = 4{,}000{,}000\ \text{Hz} \ ✓$$
+> Coincide exacto con $N_p\Delta f$. **De acá sale el "4 MHz o 4,001 MHz"** de la resolución transcripta: contando $N_p+1$ espaciados en vez de $N_p$ da $4097\times976{,}5625 = 4{,}001$ MHz. **La respuesta correcta es 4 MHz exactos.** [analysis]
+
+> **Detalle práctico**: que **no haya subportadora en $f_c$** es conveniente — tras la bajada a banda base $f_c$ mapea a continua, donde los receptores tienen problemas (offset de DC, fuga del oscilador local). Los sistemas reales (WiFi, LTE) usan $N_p$ impar con una **subportadora nula** en el centro para lo mismo; acá se consigue el mismo efecto con el corrimiento de medio espaciado.
 
 **d) Si la entrada fuera una sucesión continua de ceros**
 
