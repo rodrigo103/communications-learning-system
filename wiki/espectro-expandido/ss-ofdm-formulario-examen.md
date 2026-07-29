@@ -160,17 +160,37 @@ $$k=2046:\quad 2046{,}5\times976{,}5625 = 1{,}998{,}535\ \text{Hz}$$
 
 **d) Si la entrada fuera una sucesión continua de ceros**
 
-Todas las subportadoras transmitirían el mismo símbolo fijo → el espectro deja de ser continuo y se vuelve **4096 deltas de Dirac separadas $976{,}56$ Hz**. (Sin variación de datos no hay ensanchamiento espectral: cada subportadora queda como un tono puro.)
+**Qué cambia**: normalmente cada subportadora lleva un símbolo 16-QAM que **cambia** de un símbolo OFDM al siguiente. Esa variación aleatoria es lo que produce el espectro **continuo** — cada subportadora aporta una $\text{sinc}^2$ (por el enventanado rectangular de duración $T_S$) y al promediar sobre datos aleatorios se solapan en algo aproximadamente plano.
+
+Con entrada constante, **todas las subportadoras transmiten siempre el mismo símbolo** → la señal se vuelve **periódica** con período $T_S$, y una señal periódica tiene **espectro de líneas**:
+
+$$\boxed{4096\ \text{deltas de Dirac, separadas } \Delta f = 976{,}56\text{ Hz}}$$
+
+Cada subportadora queda como un **tono puro** sin modular.
+
+> **La idea de fondo, que conecta con Digital**: la DEP de una señal digital es $S(f)=\frac{\sigma_a^2}{T_s}|P(f)|^2$ — proporcional a la **varianza de los símbolos**. Sin variación de datos no hay ensanchamiento espectral. **El espectro continuo de OFDM lo produce la información, no las portadoras.** Ver [[../modulacion-digital/digital-formulario-examen|Digital — DEP]]. [analysis]
 
 **e) Valor adecuado de $f_c$ para transmitir centrado en 3,9 GHz**
 
-$$f_c = 3{,}9\ \text{GHz} - 488{,}28\ \text{Hz}$$
+**El razonamiento**: las subportadoras no quedan centradas exactamente en el oscilador. Con la indexación que produce una IFFT (4096 salidas, de $-2048$ a $+2047$), el conjunto queda **corrido medio espaciado** respecto de $f_c$. Para que el espectro quede centrado en 3,9 GHz hay que compensar ese corrimiento:
 
-Como las subportadoras están en $f_c\pm(k+\frac12)\Delta f$ y **ninguna cae en $f_c$**, hay que correr el oscilador media separación para que el conjunto quede centrado en 3,9 GHz.
+$$|\text{corrimiento}| = \frac{\Delta f}{2} = \boxed{488{,}28\ \text{Hz}}$$
+
+> ⚠️ **Sobre el signo**: la resolución transcripta dice $f_c = 3{,}9\text{ GHz} - 488{,}28$ Hz; con la indexación estándar de IFFT ($k=-N/2$ a $N/2-1$) da **$+488{,}28$**. **El signo depende de la convención de indexación** y no se puede verificar cuál usó el estudiante. **La magnitud (medio espaciado) es lo seguro y es lo que evalúa el ítem** — en el examen conviene *escribir explícitamente qué convención se usa* y justificar el corrimiento, para que el corrector vea el razonamiento aunque el signo dependa del criterio. [analysis]
 
 **f) Tiempo de símbolo con una sola portadora en 1024-QAM**
 
 $$\ell = \log_2 1024 = 10 \ \Rightarrow\ D = \frac{16\text{M}}{10} = 1{,}6\ \text{Mbaud} \ \Rightarrow\ T_{S1c} = \frac{1}{1{,}6\text{M}} = \boxed{0{,}625\ \mu\text{s}}$$
+
+**El punto del ítem es el contraste:**
+
+$$\frac{T_S^{OFDM}}{T_S^{1c}} = \frac{1{,}024\text{ ms}}{0{,}625\ \mu\text{s}} = \mathbf{1638}$$
+
+Y ese factor sale de la estructura, no es casual:
+
+$$\frac{T_S^{OFDM}}{T_S^{1c}} = N_p\cdot\frac{\ell_{OFDM}}{\ell_{1c}} = 4096\times\frac{4}{10} = 1638{,}4 \ ✓$$
+
+> **Por qué eso es la ventaja de OFDM**: si el canal tiene dispersión temporal por multitrayecto (ecos de ~1 μs), con una sola portadora el eco se superpone a los ~1,6 símbolos siguientes → **ISI severa**. Con OFDM, 1 μs sobre 1024 μs de símbolo es un **0,1%** — despreciable, y el [[prefijo-ciclico|prefijo cíclico]] lo elimina del todo. **Ese es el motivo real de usar OFDM**, no la eficiencia espectral.
 
 > ⚠️ **En la transcripción de este final las respuestas de d) y e) están intercambiadas** respecto de los ítems del enunciado — verificado recalculando. Acá están puestas donde corresponden.
 
