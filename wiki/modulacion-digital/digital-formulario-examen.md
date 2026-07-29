@@ -178,6 +178,32 @@ $$B_{n\text{-}n} = \underbrace{2}_{\substack{\text{lados del lóbulo} \\ \text{a
 - **Las no coherentes (FSK no coh., DPSK) tienen forma exponencial**, no $Q(\cdot)$ — y pagan ~3 dB de penalidad frente a sus versiones coherentes, a cambio de no necesitar recuperación de portadora.
 - **Al subir $M$**: se gana eficiencia espectral ($\ell$ bits/símbolo) pero **empeora la BER** para el mismo $E_b/N_0$ — los puntos quedan más juntos. Ver [[constelaciones|Constelaciones]].
 
+### La forma general con filtro acoplado: energía diferencia $E_d$
+
+Todas las fórmulas de BER de la tabla son **casos particulares** de un solo resultado. Con filtro acoplado, la probabilidad de error depende únicamente de la **energía de la señal diferencia** entre los dos símbolos: [analysis]
+
+$$\boxed{P_e = Q\!\left(\sqrt{\frac{E_d}{2N_0}}\right)}, \qquad \boxed{E_d = \int_0^{T_b}\big|s_1(t)-s_0(t)\big|^2dt}$$
+
+**Es la forma que dan los enunciados** cuando el ejercicio es de banda base con NRZ.
+
+| Señalización | $s_1,\ s_0$ | $E_d$ | $S$ (potencia media) | $E_d$ en función de $E_b$ | $P_e$ |
+|---|---|---|---|---|---|
+| **Antipodal** (polar NRZ, BPSK) | $+V,\ -V$ | $4V^2T_b$ | $V^2$ | $\boxed{4E_b}$ | $Q\!\left(\sqrt{\tfrac{2E_b}{N_0}}\right)$ |
+| **Unipolar** (NRZ, OOK) | $V,\ 0$ | $V^2T_b$ | $\boxed{\dfrac{V^2}{2}}$ | $\boxed{2E_b}$ | $Q\!\left(\sqrt{\tfrac{E_b}{N_0}}\right)$ |
+| **Ortogonal** (FSK coherente) | ortogonales | $2E_b$ | — | $2E_b$ | $Q\!\left(\sqrt{\tfrac{E_b}{N_0}}\right)$ |
+
+**Fórmulas útiles para unipolar NRZ** (el caso que piden en banda base):
+
+$$\boxed{S = \frac{V^2}{2}} \qquad \boxed{E_d = V^2T_b = 2S\,T_b = \frac{2S}{R_b}}$$
+
+> **Por qué antipodal es 3 dB mejor**: $E_d = 4E_b$ contra $2E_b$ — el doble de energía diferencia para la misma energía por bit. La razón geométrica: los símbolos antipodales están **el doble de separados** ($2V$ contra $V$) usando la misma potencia media. Es el mismo argumento de $d_{min}$ que decide todo en constelaciones. [analysis]
+>
+> **Verificación de consistencia**: con $E_d=2E_b$ (unipolar), $P_e = Q\left(\sqrt{\frac{2E_b}{2N_0}}\right)=Q\left(\sqrt{\frac{E_b}{N_0}}\right)$ ✓ — coincide con la tabla de BER de arriba. Con $E_d=4E_b$ (antipodal): $Q\left(\sqrt{\frac{4E_b}{2N_0}}\right)=Q\left(\sqrt{\frac{2E_b}{N_0}}\right)$ ✓
+
+> **El límite absoluto de Shannon** (piso de $E_b/N_0$, válido para *cualquier* esquema):
+> $$\boxed{\frac{E_b}{N_0} > \ln 2 = -1{,}59\text{ dB}}$$
+> Por debajo de eso **no hay comunicación confiable posible**, ni con ancho de banda infinito ni con la mejor codificación. Derivación paso a paso en [[../teoria-informacion/ti-formulario-examen|TI — Límite de Shannon]].
+
 ### Cómo se evalúa $Q(x)$ en el examen
 
 **$Q(x)$ no tiene forma cerrada** — es la integral de cola de la gaussiana, sin primitiva elemental. No se calcula: **se lee de una tabla o ábaco**.
