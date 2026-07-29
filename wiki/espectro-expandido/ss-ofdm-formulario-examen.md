@@ -95,6 +95,21 @@ Hay que **subir la tasa de chips ~8 veces** (LFSR más largo o reloj más rápid
 >
 > **El paso siguiente sí es limpio**: $B_T = N_p\cdot\Delta f$ con $N_p$ un conteo puro (adimensional) → Hz $\times$ número $=$ Hz, sin conversiones ocultas.
 
+> **¿Dónde vive exactamente el $\kappa$ en $\Delta f = 1/T_S$?** En el **numerador** — es la constante 1 escrita implícitamente, $\Delta f = \dfrac{\kappa}{T_S}$. Pero se ve mejor **sin despejar**: [analysis]
+> $$\Delta f\cdot T_S = \kappa, \qquad \underbrace{\Delta f}_{\text{ciclos/s}}\times\underbrace{T_S}_{\text{s/símbolo}} = \left[\frac{\text{ciclos}}{\text{símbolo}}\right]$$
+> **El producto $\Delta f\,T_S$ tiene naturalmente unidades de ciclos/símbolo**, y $\kappa$ es su valor. No es un factor que se agrega: **es la magnitud que la condición de ortogonalidad iguala a un entero**.
+>
+> **Y acá está la diferencia con todos los otros $\kappa$ del curso:**
+>
+> | Caso | $\kappa$ | ¿De dónde sale? |
+> |---|---|---|
+> | Nyquist, nulo a nulo, chips, muestreo | $1$ | **Fijo por la física** — es donde cae el nulo de la sinc, no se elige |
+> | **OFDM** | $1,2,3,\ldots$ | **Entero libre** — cualquiera da ortogonalidad; **se elige 1** |
+>
+> La ortogonalidad se cumple para **cualquier $\kappa$ entero**: con $\kappa=2$ las subportadoras seguirían siendo ortogonales, pero el espaciado y el ancho de banda total se duplicarían — desperdicio puro. **Se elige $\kappa=1$ porque es el mínimo espaciado ortogonal**, y de ahí sale la eficiencia espectral de OFDM.
+>
+> Entonces el $1$ del numerador de $\Delta f=1/T_S$ **no es un 1 trivial**: es una decisión de diseño — empaquetar lo más apretado posible sin perder ortogonalidad.
+
 > **Consecuencia contraintuitiva**: $T_S$ es **larguísimo** comparado con una sola portadora ($1{,}024$ ms vs $0{,}625\ \mu$s en el ejemplo — **1600 veces más**). Eso es una **ventaja**: símbolos largos toleran mucho mejor la dispersión temporal del canal (multipath), que es el motivo real de usar OFDM.
 
 **Posición de las subportadoras** (relativas a $f_c$, con $N_p$ par y espectro centrado):
