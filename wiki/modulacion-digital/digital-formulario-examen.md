@@ -219,6 +219,35 @@ $$\boxed{S = \frac{V^2}{2}} \qquad \boxed{E_d = V^2T_b = 2S\,T_b = \frac{2S}{R_b
 > **Por qué la tabla se escribe en $E_b$ y no en $E_d$**: porque $E_b$ es lo que **cuesta**, así que permite comparar esquemas de forma justa — el mismo motivo por el que las curvas de BER se grafican contra $E_b/N_0$.
 >
 > **Y por qué $E_d$ es el que manda conceptualmente**: el trabajo del receptor es **distinguir** $s_1$ de $s_0$. No importa cuánta energía tiene cada símbolo, sino **qué tan diferentes son entre sí** — dos símbolos enormes pero casi idénticos son difíciles de distinguir; dos chicos pero opuestos son fáciles. El cociente $k=E_d/E_b$ mide la **eficiencia del esquema para convertir energía en distinguibilidad**: 4 es el máximo binario (antipodal), 2 el de unipolar/ortogonal — de ahí los 3 dB.
+
+### Receta para una señalización que NO esté en la tabla
+
+Si el enunciado define una señalización distinta, **no hace falta memorizar su fórmula** — se deduce en 4 pasos:
+
+1. **$E_d = \displaystyle\int_0^{T_b}\big|s_1(t)-s_0(t)\big|^2dt$** — energía de la diferencia
+2. **$E_b = \dfrac{E_1+E_0}{2}$** (símbolos equiprobables), con $E_i=\int|s_i|^2dt$ — energía media por bit
+3. **$k = E_d/E_b$**
+4. **$P_e = Q\!\left(\sqrt{\dfrac{k\,E_b}{2N_0}}\right)$**
+
+**Ejemplo A — Polar RZ** (pulso solo en la primera mitad del bit): $s_1=+V$ y $s_0=-V$ durante $T_b/2$, luego 0.
+
+La diferencia de señales vale $2V$ en la primera mitad y **cero** en la segunda (ahí ambos símbolos son 0), así que integrando sobre **todo $T_b$**:
+
+$$E_d = \int_0^{T_b}\lvert s_1-s_0\rvert^2dt = \underbrace{\int_0^{T_b/2}(2V)^2dt}_{2V^2T_b} + \underbrace{\int_{T_b/2}^{T_b}0\,dt}_{0} = 2V^2T_b$$
+
+$$E_b = \frac{E_1+E_0}{2} = \frac{V^2T_b/2 + V^2T_b/2}{2} = \frac{V^2T_b}{2}$$
+
+$$k = \frac{2V^2T_b}{V^2T_b/2} = 4 \quad\Rightarrow\quad P_e = Q\!\left(\sqrt{\frac{2E_b}{N_0}}\right)$$
+
+**Mismo BER que BPSK.** Resultado que sorprende y vale entenderlo: acortar el pulso **no empeora la BER** a igual $E_b$ — solo **duplica el ancho de banda** (porque $T$ del pulso se redujo a la mitad). El precio de RZ es espectral, no de error.
+
+**Ejemplo B — Unipolar con offset** ($s_1=V$, $s_0=V/2$): un esquema mal diseñado, para ver hasta dónde llega el método.
+
+$$E_d = \left(V-\tfrac{V}{2}\right)^2T_b = \frac{V^2T_b}{4} \qquad E_b = \frac{V^2T_b + V^2T_b/4}{2} = \frac{5V^2T_b}{8}$$
+
+$$k = \frac{V^2T_b/4}{5V^2T_b/8} = 0{,}4 \quad\Rightarrow\quad P_e = Q\!\left(\sqrt{\frac{0{,}2\,E_b}{N_0}}\right)$$
+
+**10 dB peor que antipodal** ($2E_b/N_0$ contra $0{,}2E_b/N_0$ → factor 10). La razón: casi toda la energía se va en un **offset de continua común a los dos símbolos**, que no aporta nada a distinguirlos. Es la misma lección que la portadora en AM — potencia gastada en algo que no lleva información.
 >
 > ### La unificación: $E_d = d_{min}^2$
 >
