@@ -21,6 +21,8 @@ unidad: 10
 | $R_c$ | **Tasa de chips** | chips/s |
 | $R_b$ | Tasa de bits (datos) | bps |
 | $G_p$ | **Ganancia de procesamiento** | adimensional (se da en dB) |
+| $B_{datos}$ | Ancho de banda **sin expandir** (solo BPSK con datos) | Hz — vale $2R_b$ |
+| $B_{SS}$ | Ancho de banda **expandido** (spread spectrum) | Hz — vale $2R_c$ |
 | $N_p$ | Cantidad de **subportadoras** OFDM | conteo |
 | $\ell$ | Bits por símbolo de cada subportadora | bits/símbolo |
 | $T_S$ | **Tiempo de símbolo OFDM** | s |
@@ -33,12 +35,12 @@ unidad: 10
 
 ## Las 4 fórmulas
 
-| #   | Fórmula                                                      | Notas                                                 |
-| --- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| 1   | $\boxed{N = 2^L - 1}$                                        | Longitud de secuencia máxima de un LFSR de $L$ etapas |
-| 2   | $\boxed{R_c = \dfrac{N}{T_{sec}}}$                           | Tasa de chips ($T_{sec}$ = período de la secuencia)   |
-| 3   | $\boxed{G_p = \dfrac{R_c}{R_b} = \dfrac{B_{SS}}{B_{datos}}}$ | **Ganancia de procesamiento**                         |
-| 4   | $\boxed{B = 2R_c}$                                           | Ancho de banda transmitido (nulo a nulo, DS-BPSK)     |
+| #   | Fórmula                                                      | Notas                                                                                                                                      |
+| --- | ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1   | $\boxed{N = 2^L - 1}$                                        | Longitud de secuencia máxima de un LFSR de $L$ etapas                                                                                      |
+| 2   | $\boxed{R_c = \dfrac{N}{T_{sec}}}$                           | Tasa de chips ($T_{sec}$ = período de la secuencia)                                                                                        |
+| 3   | $\boxed{G_p = \dfrac{R_c}{R_b} = \dfrac{B_{SS}}{B_{datos}}}$ | **Ganancia de procesamiento**. Las dos formas son equivalentes porque $\frac{B_{SS}}{B_{datos}}=\frac{2R_c}{2R_b}$ — **los 2 se cancelan** |
+| 4   | $\boxed{B = 2R_c}$                                           | Ancho de banda transmitido (nulo a nulo, DS-BPSK)                                                                                          |
 
 > **Qué significa $G_p$**: cuánto se ensancha el espectro, y equivalentemente **cuánta ventaja se gana contra interferencia**. Al despreader, la señal útil se recomprime mientras el interferente se dispersa → mejora efectiva de SNR en $G_p$.
 
