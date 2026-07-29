@@ -140,6 +140,16 @@ Necesitaría **menos** ancho de banda que el mínimo teórico de Shannon para es
 
 > ⚠️ **Ojo con el paso $D\to B$**: son **magnitudes distintas** (baudios = símbolos/s; Hz = ancho del intervalo de frecuencias) que dan **el mismo número** en pasabanda, por la cancelación de Nyquist ($\kappa=1$ ciclo/símbolo). No es un cambio de unidad gratuito — es la relación $B_{min}=D$, y hay que escribirla explícitamente. La comparación final con Shannon es **MHz contra MHz**, que es lo que la hace válida. Ver [[../modulacion-digital/digital-formulario-examen#De dónde sale el $2D$, y las unidades del paso $D \to B$|el detalle del paso $D\to B$]]. [analysis]
 
+### La misma cuenta en prosa (para justificar por escrito en el examen)
+
+> Con 8-PSK cada símbolo codifica 3 bits, porque hay 8 puntos de constelación y $\log_2 8 = 3$. Para transportar 61,44 Mbps hacen falta entonces $61{,}44/3 = 20{,}48$ millones de símbolos por segundo. Por Nyquist, enviar 20,48 Mbaudios en pasabanda exige un ancho de banda de al menos 20,48 MHz. Shannon, por su lado, establece que con 20 dB de SNR **ningún** esquema puede transportar esa tasa en menos de 9,228 MHz. Como 8-PSK pide 20,48 MHz —o sea **más** que ese mínimo teórico— la modulación es realizable.
+
+Tres frases, tres pasos: **cuántos bits por símbolo → cuántos símbolos por segundo → cuánto ancho de banda**, y recién ahí la comparación.
+
+**Lo que conviene dejar explícito por escrito es por qué "más" significa factible**: Shannon marca un **piso**, no un techo. Necesitar más ancho de banda que el mínimo es normal (todo esquema real lo hace); necesitar *menos* sería violar el límite.
+
+Versión de una línea para el ítem h): *"1024-QAM requeriría solo 6,144 MHz, por debajo del piso de Shannon de 9,228 MHz para esta SNR — imposible."*
+
 ## Cómo calcular $R$ de fuentes compuestas
 
 Los enunciados suelen describir la fuente en capas (imagen → líneas → puntos → niveles). La receta es **multiplicar en cadena hasta llegar a bits/segundo**, cuidando las unidades:
