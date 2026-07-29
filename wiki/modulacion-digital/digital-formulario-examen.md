@@ -248,6 +248,24 @@ $$E_d = \left(V-\tfrac{V}{2}\right)^2T_b = \frac{V^2T_b}{4} \qquad E_b = \frac{V
 $$k = \frac{V^2T_b/4}{5V^2T_b/8} = 0{,}4 \quad\Rightarrow\quad P_e = Q\!\left(\sqrt{\frac{0{,}2\,E_b}{N_0}}\right)$$
 
 **10 dB peor que antipodal** ($2E_b/N_0$ contra $0{,}2E_b/N_0$ → factor 10). La razón: casi toda la energía se va en un **offset de continua común a los dos símbolos**, que no aporta nada a distinguirlos. Es la misma lección que la portadora en AM — potencia gastada en algo que no lleva información.
+
+**Ejemplo C — NRZ, verificando la receta contra la tabla.** Los dos formatos NRZ ya están en la tabla; aplicar la receta debe reproducirlos (buen chequeo de que el método está bien usado).
+
+**C1 · Polar NRZ (antipodal)**: $s_1=+V$, $s_0=-V$, ambos durante **todo** $T_b$.
+
+$$E_d = \int_0^{T_b}\big(V-(-V)\big)^2dt = 4V^2T_b \qquad E_b = \frac{V^2T_b+V^2T_b}{2} = V^2T_b$$
+
+$$k = \frac{4V^2T_b}{V^2T_b} = 4 \quad\Rightarrow\quad P_e = Q\!\left(\sqrt{\frac{2E_b}{N_0}}\right) \ ✓\ \text{(coincide con la tabla)}$$
+
+**C2 · Unipolar NRZ** (el caso de los ejercicios de banda base): $s_1=V$, $s_0=0$, durante todo $T_b$.
+
+$$E_d = \int_0^{T_b}(V-0)^2dt = V^2T_b \qquad E_b = \frac{V^2T_b+0}{2} = \frac{V^2T_b}{2}$$
+
+$$k = \frac{V^2T_b}{V^2T_b/2} = 2 \quad\Rightarrow\quad P_e = Q\!\left(\sqrt{\frac{E_b}{N_0}}\right) \ ✓$$
+
+> Notar que de $E_b = V^2T_b/2$ sale directo $\boxed{S = \dfrac{E_b}{T_b} = \dfrac{V^2}{2}}$ — la fórmula de potencia media de unipolar. **Todo sale de la misma receta**, no hay que memorizarla aparte.
+
+> ⚠️ **Sutileza entre A y C1** (ambos con $k=4$): **mismo $k$ no significa misma performance a igual amplitud $V$.** Para el mismo $V$, RZ tiene $E_b = V^2T_b/2$ y NRZ tiene $E_b=V^2T_b$ — o sea RZ gasta **la mitad** de energía por bit. Lo que dice $k=4$ es que **a igual $E_b$ rinden idéntico**; para llegar a ese mismo $E_b$, RZ necesita $V_{RZ}=\sqrt2\,V_{NRZ}$. [analysis]
 >
 > ### La unificación: $E_d = d_{min}^2$
 >
