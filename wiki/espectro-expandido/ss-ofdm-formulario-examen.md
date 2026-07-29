@@ -286,3 +286,4 @@ $$\frac{T_S^{OFDM}}{T_S^{1c}} = N_p\cdot\frac{\ell_{OFDM}}{\ell_{1c}} = 4096\tim
 - [[prefijo-ciclico|Prefijo Cíclico]] — protección contra multipath (aparece en 1 final)
 - [[../modulacion-digital/digital-formulario-examen|Modulación Digital]] — el $\ell=\log_2M$ de cada subportadora
 - [[../herramientas-matematicas/transformada-hilbert#OFDM|Transformada de Hilbert — OFDM]] — de dónde sale $v(t)=x(t)\cos\omega_ct - y(t)\sin\omega_ct$
+- [[ss-ofdm-preguntas-respuestas|Q&A OFDM/SS]] — eco, PAPR, 5G, beneficios

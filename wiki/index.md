@@ -101,6 +101,7 @@ Base de conocimiento interconectada para el curso de Sistemas de Comunicaciones.
 - [[espectro-expandido/correlacion-senales]] — Correlacion de senales en CDMA
 - [[espectro-expandido/prefijo-ciclico]] — Prefijo ciclico en OFDM
 - [[espectro-expandido/aplicaciones-spread-spectrum]] — Aplicaciones practicas
+- [[espectro-expandido/ss-ofdm-preguntas-respuestas]] — Q&A: eco, PAPR, 5G, beneficios OFDM
 
 ## Conceptos Integradores
 
