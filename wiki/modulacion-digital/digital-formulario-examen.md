@@ -196,7 +196,24 @@ $$\boxed{P_e = Q\!\left(\sqrt{\frac{E_d}{2N_0}}\right)}, \qquad \boxed{E_d = \in
 
 $$\boxed{S = \frac{V^2}{2}} \qquad \boxed{E_d = V^2T_b = 2S\,T_b = \frac{2S}{R_b}}$$
 
-> **Por qué antipodal es 3 dB mejor**: $E_d = 4E_b$ contra $2E_b$ — el doble de energía diferencia para la misma energía por bit. La razón geométrica: los símbolos antipodales están **el doble de separados** ($2V$ contra $V$) usando la misma potencia media. Es el mismo argumento de $d_{min}$ que decide todo en constelaciones. [analysis]
+> ### $E_b$ vs $E_d$ — no son lo mismo
+>
+> | | $E_b$ | $E_d$ |
+> |---|---|---|
+> | **Qué es** | Energía **por bit** que gasta el transmisor | Energía de la **señal diferencia** entre símbolos |
+> | **Fórmula** | $E_b = S\,T_b = \dfrac{S}{R_b}$ | $E_d = \int_0^{T_b}\lvert s_1-s_0\rvert^2dt$ |
+> | **Mide** | **Costo** energético | **Distinguibilidad** |
+>
+> **Por qué el BER depende de $E_d$ y no de $E_b$**: el trabajo del receptor es **distinguir** $s_1$ de $s_0$. No importa cuánta energía tiene cada símbolo, sino **qué tan diferentes son entre sí**. Dos símbolos enormes pero casi idénticos son difíciles de distinguir; dos chicos pero opuestos son fáciles. El cociente $E_d/E_b$ mide la **eficiencia del esquema para convertir energía en distinguibilidad**: **4** para antipodal (máximo binario), **2** para unipolar/ortogonal — de ahí los 3 dB de diferencia. [analysis]
+>
+> ### La unificación: $E_d = d_{min}^2$
+>
+> $E_d$ es literalmente el **cuadrado de la distancia mínima** en el espacio de señales:
+> $$E_d = \|s_1-s_0\|^2 = d_{min}^2$$
+> Con lo cual **las tres formas del BER son la misma fórmula**:
+> $$P_e = Q\!\left(\sqrt{\frac{E_d}{2N_0}}\right) = Q\!\left(\frac{d_{min}}{\sqrt{2N_0}}\right) = Q\!\left(\frac{d_{min}}{2\sigma}\right), \qquad \sigma^2=\frac{N_0}{2}$$
+>
+> **Y eso cierra el círculo con la comparación 16-QAM vs 16-PSK**: ahí se concluyó que *"lo que decide la inmunidad al ruido es $d_{min}$, no la potencia"*. Acá se ve **por qué es literalmente cierto** — $d_{min}^2$ **es** el $E_d$ que entra en la fórmula del BER. Toda la teoría de constelaciones y toda la de BER binario son la misma cosa vista desde dos lados.
 >
 > **Verificación de consistencia**: con $E_d=2E_b$ (unipolar), $P_e = Q\left(\sqrt{\frac{2E_b}{2N_0}}\right)=Q\left(\sqrt{\frac{E_b}{N_0}}\right)$ ✓ — coincide con la tabla de BER de arriba. Con $E_d=4E_b$ (antipodal): $Q\left(\sqrt{\frac{4E_b}{2N_0}}\right)=Q\left(\sqrt{\frac{2E_b}{N_0}}\right)$ ✓
 
