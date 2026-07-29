@@ -122,6 +122,40 @@ Solo con simbolos largos el prefijo ciclico es viable.
 
 **4. Rechazo de interferencia de banda angosta.** Un interferente puntual ocupa pocas subportadoras; las otras sobreviven intactas. Con una portadora ancha, el mismo interferente corrompe todo el simbolo. Es diversidad en frecuencia: el daño se reparte en vez de concentrarse. El FEC puede recuperar los bits de las subportadoras afectadas. [analysis]
 
+## De donde salen esos numeros del CP? (1024 μs, 0,625 μs, 1%, 1600%)
+
+Los numeros salen del mismo ejemplo del formulario: $R_b = 16$ Mbps, $N_p = 4096$ subportadoras 16-QAM, y la comparacion con una sola portadora 1024-QAM.
+
+**OFDM:**
+
+$$\ell = \log_2 16 = 4 \text{ bits/símbolo}$$
+
+$$\text{bits por símbolo OFDM} = N_p \cdot \ell = 4096 \cdot 4 = 16\,384$$
+
+$$T_S = \frac{16\,384 \text{ bits/símbolo}}{16 \times 10^6 \text{ bits/s}} = 1{,}024 \text{ ms} = \mathbf{1024\ \mu s}$$
+
+Overhead del CP con 10 μs: $10 / 1024 \approx \mathbf{0{,}98\% \approx 1\%}$
+
+**Una sola portadora (1024-QAM):**
+
+Para transmitir los mismos 16 Mbps con una sola portadora, usando 1024-QAM ($\ell = \log_2 1024 = 10$):
+
+$$D = \frac{16\text{M}}{10} = 1{,}6 \text{ Mbaud}$$
+
+$$T_S = \frac{1}{1{,}6\text{M}} = \mathbf{0{,}625\ \mu s}$$
+
+Overhead del CP con 10 μs: $10 / 0{,}625 = 16 \rightarrow \mathbf{1600\%}$
+
+**De donde sale el 16:**
+
+Es literalmente $10 / 0{,}625 = 16$. Una guarda de 10 μs equivale a **16 simbolos completos** de una sola portadora. Es como meter un camion de carga en un auto — el overhead es 16 veces mas grande que lo que estas protegiendo. Absurdo.
+
+La relacion entre ambos es:
+
+$$\frac{T_S^{OFDM}}{T_S^{1c}} = \frac{1024}{0{,}625} = \mathbf{1638}$$
+
+OFDM tiene simbolos 1638 veces mas largos. Por eso el mismo CP de 10 μs pasa de ser inviable (1600%) a ser insignificante (1%). Solo con simbolos largos el prefijo ciclico es viable. [analysis]
+
 ## Ver tambien
 
 - [[ss-ofdm-formulario-examen|SS/OFDM — Formulario de examen]]
