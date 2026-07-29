@@ -68,13 +68,19 @@ En los ejercicios donde todo es equiprobable (la mayoría) los dos últimos coin
 
 ## Las 5 fórmulas
 
-| # | Nombre | Fórmula | Notas |
-|---|---|---|---|
-| 1 | **Información de un símbolo** | $\boxed{I_i = \log_2\dfrac{1}{p_i} = -\log_2 p_i}$ | Menos probable → más información |
-| 2 | **Entropía** (información media) | $\boxed{H = -\sum_i p_i\log_2 p_i}$ | bits/símbolo. Es el promedio de $I_i$ pesado por $p_i$ |
-| 3 | **Entropía máxima** | $\boxed{H_{max} = \log_2 M}$ | Cuando los $M$ símbolos son **equiprobables** |
-| 4 | **Tasa de información** | $\boxed{R = r\,H}$ | símbolos/s $\times$ bits/símbolo $=$ bps |
-| 5 | **Shannon-Hartley** | $\boxed{C = B\log_2\!\left(1+\dfrac{S}{N}\right)}$ | Capacidad máxima del canal, bps |
+| #   | Nombre                           | Fórmula                                            | Notas                                                  |
+| --- | -------------------------------- | -------------------------------------------------- | ------------------------------------------------------ |
+| 1   | **Información de un símbolo**    | $\boxed{I_i = \log_2\dfrac{1}{p_i} = -\log_2 p_i}$ | Menos probable → más información                       |
+| 2   | **Entropía** (información media) | $\boxed{H = -\sum_i p_i\log_2 p_i}$                | bits/símbolo. Es el promedio de $I_i$ pesado por $p_i$ |
+| 3   | **Entropía máxima**              | $\boxed{H_{max} = \log_2 M}$                       | Cuando los $M$ símbolos son **equiprobables**          |
+| 4   | **Tasa de información**          | $\boxed{R = r\,H}$                                 | símbolos/s $\times$ bits/símbolo $=$ bps               |
+| 5   | **Shannon-Hartley**              | $\boxed{C = B\log_2\!\left(1+\dfrac{S}{N}\right)}$ | Capacidad máxima del canal, bps                        |
+
+> **Las dos formas de escribir la entropía son idénticas** — $\log_2\frac{1}{p_i} = -\log_2 p_i$, así que: [analysis]
+> $$H = -\sum_i p_i\log_2 p_i \quad\equiv\quad H = \sum_i p_i\log_2\frac{1}{p_i} = \sum_i p_i\,I_i$$
+> **Para calcular a mano conviene la del recíproco**: como $p_i<1$, se tiene $1/p_i>1$ y **todos los términos salen positivos** — no hay signos que arrastrar. La forma con el menos adelante es más compacta pero obliga a manejar $\log_2 p_i<0$ en cada término.
+>
+> **La resolución del propio final usa la del recíproco**: $H=\tfrac17\log_2 7 + 10\cdot\tfrac{3}{56}\log_2\tfrac{56}{3} + 72\cdot\tfrac{1}{224}\log_2 224$ — escribieron $\log_2 7$, no $-\log_2\tfrac17$. Con varios grupos de términos, arrastrar signos bajo reloj es donde se cometen errores.
 
 > **Redundancia**: $\boxed{\text{Red} = 1-\dfrac{H}{H_{max}}}$ — cuánto se puede comprimir sin perder información.
 
