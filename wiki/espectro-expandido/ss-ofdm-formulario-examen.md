@@ -40,11 +40,11 @@ unidad: 10
 | 1   | $\boxed{N = 2^L - 1}$                                        | Longitud de secuencia máxima de un LFSR de $L$ etapas                                                                                      |
 | 2   | $\boxed{R_c = \dfrac{N}{T_{sec}}}$                           | Tasa de chips ($T_{sec}$ = período de la secuencia)                                                                                        |
 | 3   | $\boxed{G_p = \dfrac{R_c}{R_b} = \dfrac{B_{SS}}{B_{datos}}}$ | **Ganancia de procesamiento**. Las dos formas son equivalentes porque $\frac{B_{SS}}{B_{datos}}=\frac{2R_c}{2R_b}$ — **los 2 se cancelan** |
-| 4   | $\boxed{B = 2R_c}$                                           | Ancho de banda transmitido (nulo a nulo, DS-BPSK)                                                                                          |
+| 4   | $\boxed{B_{SS} = 2R_c}$ &nbsp;&nbsp; (y $B_{datos}=2R_b$)     | Anchos de banda **después** y **antes** de expandir (nulo a nulo, DS-BPSK). De acá sale directo la equivalencia de la fórmula 3            |
 
 > **Qué significa $G_p$**: cuánto se ensancha el espectro, y equivalentemente **cuánta ventaja se gana contra interferencia**. Al despreader, la señal útil se recomprime mientras el interferente se dispersa → mejora efectiva de SNR en $G_p$.
 
-> **Las unidades del $2$ en $B=2R_c$** — es el **mismo caso** que $B_{n\text{-}n}=2D$ en [[../modulacion-digital/digital-formulario-examen#De dónde sale el $2D$, y las unidades del paso $D \to B$|Digital]], no una analogía: en DS-BPSK **el chip hace de símbolo**. El chip es un pulso rectangular de duración $T_c=1/R_c$, su espectro es una sinc con primer nulo en $f=1/T_c=R_c$, y al modular el lóbulo se extiende $R_c$ hacia cada lado de $f_c$. Descomposición completa: [analysis]
+> **Las unidades del $2$ en $B_{SS}=2R_c$** — es el **mismo caso** que $B_{n\text{-}n}=2D$ en [[../modulacion-digital/digital-formulario-examen#De dónde sale el $2D$, y las unidades del paso $D \to B$|Digital]], no una analogía: en DS-BPSK **el chip hace de símbolo**. El chip es un pulso rectangular de duración $T_c=1/R_c$, su espectro es una sinc con primer nulo en $f=1/T_c=R_c$, y al modular el lóbulo se extiende $R_c$ hacia cada lado de $f_c$. Descomposición completa: [analysis]
 > $$B = \underbrace{2}_{\substack{\text{lados del lóbulo}\\\text{adimensional}}} \times \underbrace{1\ \tfrac{\text{ciclo}}{\text{chip}}}_{\kappa,\ \text{conversión}} \times \underbrace{R_c\ \tfrac{\text{chips}}{\text{s}}}_{\text{tasa}} = 2R_c\ \left[\tfrac{\text{ciclos}}{\text{s}}\right]$$
 > El **2 es geométrico** (los dos lados); la conversión real es $\kappa=1$ ciclo/chip, invisible porque vale 1. Contenido físico: en la frecuencia del primer nulo entra exactamente un ciclo en la duración de un chip.
 
@@ -56,11 +56,13 @@ LFSR de $L=8$, período de secuencia $104{,}99\ \mu$s, datos BPSK a $R_b = 19{,}
 
 $$N = 2^8-1 = 255\ \text{chips} \ \Rightarrow\ R_c = \frac{255}{104{,}99\ \mu s} = \boxed{2{,}43\ \text{Mchips/s}}$$
 
-$$G_p = \frac{2{,}43\times10^6}{19{,}2\times10^3} = 126{,}5 \equiv \boxed{21{,}0\ \text{dB}} \qquad B = 2R_c = \boxed{4{,}86\ \text{MHz}}$$
+$$G_p = \frac{2{,}43\times10^6}{19{,}2\times10^3} = 126{,}5 \equiv \boxed{21{,}0\ \text{dB}} \qquad B_{SS} = 2R_c = \boxed{4{,}86\ \text{MHz}}$$
+
+*(Chequeo por la otra vía: $B_{datos}=2R_b=38{,}4$ kHz, y $B_{SS}/B_{datos}=4{,}86\text{M}/38{,}4\text{k}=126{,}5$ ✓ — mismo $G_p$.)*
 
 **Para $G_p = 30$ dB $= 1000$ con la misma $R_b$:**
 
-$$R_c' = G_p\cdot R_b = 1000\times19{,}2\text{k} = \boxed{19{,}2\ \text{Mchips/s}} \ \Rightarrow\ B' = 2R_c' = \boxed{38{,}4\ \text{MHz}}$$
+$$R_c' = G_p\cdot R_b = 1000\times19{,}2\text{k} = \boxed{19{,}2\ \text{Mchips/s}} \ \Rightarrow\ B_{SS}' = 2R_c' = \boxed{38{,}4\ \text{MHz}}$$
 
 Hay que **subir la tasa de chips ~8 veces** (LFSR más largo o reloj más rápido). El precio: el ancho de banda crece en la misma proporción — **$G_p$ se compra con espectro**.
 
