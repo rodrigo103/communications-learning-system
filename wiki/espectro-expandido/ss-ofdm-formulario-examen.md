@@ -33,14 +33,18 @@ unidad: 10
 
 ## Las 4 fórmulas
 
-| # | Fórmula | Notas |
-|---|---|---|
-| 1 | $\boxed{N = 2^L - 1}$ | Longitud de secuencia máxima de un LFSR de $L$ etapas |
-| 2 | $\boxed{R_c = \dfrac{N}{T_{sec}}}$ | Tasa de chips ($T_{sec}$ = período de la secuencia) |
-| 3 | $\boxed{G_p = \dfrac{R_c}{R_b} = \dfrac{B_{SS}}{B_{datos}}}$ | **Ganancia de procesamiento** |
-| 4 | $\boxed{B = 2R_c}$ | Ancho de banda transmitido (nulo a nulo, DS-BPSK) |
+| #   | Fórmula                                                      | Notas                                                 |
+| --- | ------------------------------------------------------------ | ----------------------------------------------------- |
+| 1   | $\boxed{N = 2^L - 1}$                                        | Longitud de secuencia máxima de un LFSR de $L$ etapas |
+| 2   | $\boxed{R_c = \dfrac{N}{T_{sec}}}$                           | Tasa de chips ($T_{sec}$ = período de la secuencia)   |
+| 3   | $\boxed{G_p = \dfrac{R_c}{R_b} = \dfrac{B_{SS}}{B_{datos}}}$ | **Ganancia de procesamiento**                         |
+| 4   | $\boxed{B = 2R_c}$                                           | Ancho de banda transmitido (nulo a nulo, DS-BPSK)     |
 
 > **Qué significa $G_p$**: cuánto se ensancha el espectro, y equivalentemente **cuánta ventaja se gana contra interferencia**. Al despreader, la señal útil se recomprime mientras el interferente se dispersa → mejora efectiva de SNR en $G_p$.
+
+> **Las unidades del $2$ en $B=2R_c$** — es el **mismo caso** que $B_{n\text{-}n}=2D$ en [[../modulacion-digital/digital-formulario-examen#De dónde sale el $2D$, y las unidades del paso $D \to B$|Digital]], no una analogía: en DS-BPSK **el chip hace de símbolo**. El chip es un pulso rectangular de duración $T_c=1/R_c$, su espectro es una sinc con primer nulo en $f=1/T_c=R_c$, y al modular el lóbulo se extiende $R_c$ hacia cada lado de $f_c$. Descomposición completa: [analysis]
+> $$B = \underbrace{2}_{\substack{\text{lados del lóbulo}\\\text{adimensional}}} \times \underbrace{1\ \tfrac{\text{ciclo}}{\text{chip}}}_{\kappa,\ \text{conversión}} \times \underbrace{R_c\ \tfrac{\text{chips}}{\text{s}}}_{\text{tasa}} = 2R_c\ \left[\tfrac{\text{ciclos}}{\text{s}}\right]$$
+> El **2 es geométrico** (los dos lados); la conversión real es $\kappa=1$ ciclo/chip, invisible porque vale 1. Contenido físico: en la frecuencia del primer nulo entra exactamente un ciclo en la duración de un chip.
 
 > **El patrón de ejercicio** (aparece 9 veces): dan LFSR y período → sacar $R_c$ → sacar $G_p$ y $B$ → después piden **rediseñar para un $G_p$ objetivo** manteniendo $R_b$. Ahí se despeja al revés: $R_c = G_p\cdot R_b$.
 
