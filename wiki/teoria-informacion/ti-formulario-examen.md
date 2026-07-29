@@ -122,15 +122,23 @@ $$P_{dBm} = 10\log_{10}\!\left(\frac{10^{-10}}{10^{-3}}\right) = \boxed{-70\text
 
 **g) Con 8-PSK — ¿factible?**
 
-$$\ell = \log_2 8 = 3 \ \Rightarrow\ D = \frac{61{,}44\text{M}}{3} = 20{,}48\text{ Mbaud} \ \Rightarrow\ B_{min} = \boxed{20{,}48\text{ MHz}}$$
+$$\ell = \log_2 8 = 3 \ \Rightarrow\ D = \frac{61{,}44\text{ Mbps}}{3\ \text{bits/símbolo}} = 20{,}48\ \textbf{Mbaudios}$$
 
-$20{,}48 > 9{,}228$ MHz → **✅ FACTIBLE** (está por encima del mínimo de Shannon)
+$$\xrightarrow{\ \text{Nyquist pasabanda: } B_{min}=D\ }\ B_{min} = \boxed{20{,}48\ \textbf{MHz}}$$
+
+$$\underbrace{20{,}48\text{ MHz}}_{\text{lo que necesita 8-PSK}} > \underbrace{9{,}228\text{ MHz}}_{\text{mínimo de Shannon}} \ \Rightarrow\ \textbf{✅ FACTIBLE}$$
 
 **h) Con 1024-QAM — ¿factible?**
 
-$$\ell = \log_2 1024 = 10 \ \Rightarrow\ D = \frac{61{,}44\text{M}}{10} = 6{,}144\text{ Mbaud} \ \Rightarrow\ B_{min} = \boxed{6{,}144\text{ MHz}}$$
+$$\ell = \log_2 1024 = 10 \ \Rightarrow\ D = \frac{61{,}44\text{ Mbps}}{10\ \text{bits/símbolo}} = 6{,}144\ \textbf{Mbaudios}$$
 
-$6{,}144 < 9{,}228$ MHz → **❌ NO FACTIBLE** — necesitaría menos ancho de banda que el mínimo teórico de Shannon para esa SNR. Con 20 dB de SNR **no alcanza** para sostener 10 bits/símbolo.
+$$\xrightarrow{\ B_{min}=D\ }\ B_{min} = \boxed{6{,}144\ \textbf{MHz}}$$
+
+$$\underbrace{6{,}144\text{ MHz}}_{\text{lo que necesita 1024-QAM}} < \underbrace{9{,}228\text{ MHz}}_{\text{mínimo de Shannon}} \ \Rightarrow\ \textbf{❌ NO FACTIBLE}$$
+
+Necesitaría **menos** ancho de banda que el mínimo teórico de Shannon para esa SNR — imposible. Con 20 dB de SNR no alcanza para sostener 10 bits/símbolo.
+
+> ⚠️ **Ojo con el paso $D\to B$**: son **magnitudes distintas** (baudios = símbolos/s; Hz = ancho del intervalo de frecuencias) que dan **el mismo número** en pasabanda, por la cancelación de Nyquist ($\kappa=1$ ciclo/símbolo). No es un cambio de unidad gratuito — es la relación $B_{min}=D$, y hay que escribirla explícitamente. La comparación final con Shannon es **MHz contra MHz**, que es lo que la hace válida. Ver [[../modulacion-digital/digital-formulario-examen#De dónde sale el $2D$, y las unidades del paso $D \to B$|el detalle del paso $D\to B$]]. [analysis]
 
 ## Cómo calcular $R$ de fuentes compuestas
 
@@ -139,6 +147,61 @@ Los enunciados suelen describir la fuente en capas (imagen → líneas → punto
 $$R\ \left[\tfrac{\text{bits}}{\text{s}}\right] = \underbrace{\text{elementos por trama}}_{\text{conteo}} \times \underbrace{H}_{\text{bits/elemento}} \times \underbrace{\text{tramas por segundo}}_{1/\text{s}}$$
 
 **Si los símbolos NO son equiprobables**, en vez de $H=\log_2M$ hay que usar $H=-\sum p_i\log_2p_i$ — es el caso del ítem que aparece 5 veces en el corpus ("*si el carácter espacio tiene probabilidad 1/7, cada uno de los diez caracteres…*").
+
+## Codificación de fuente (baja prioridad para el examen)
+
+> ⚠️ **Huffman / códigos compactos aparecen en CERO de los 42 finales** como ejercicio. Esta sección está por completitud conceptual — no es donde invertir tiempo de estudio. [analysis]
+
+### ¿Hace falta saber codificación para calcular la tasa de información? **No.**
+
+| Pregunta | Herramienta |
+|---|---|
+| ¿**Cuánta** información produce la fuente? | **Entropía** ($H$, $R=rH$) — esto es lo que piden los finales |
+| ¿**Cómo** representarla con la menor cantidad de bits? | **Codificación de fuente** (Huffman, extensión) |
+
+$R$ es una **propiedad de la fuente**, independiente de cómo se la codifique después.
+
+**Pero la conexión conceptual importa**: el teorema de codificación de fuente es *lo que justifica* que la entropía sea la medida correcta. Demuestra que $H\leq\bar L<H+1$ (y $\to H$ con extensión), o sea que **no se puede bajar de $H$ bits por símbolo y se puede acercar tanto como se quiera**. Por eso $H$ *es* la información: es el piso irreducible.
+
+### Notación
+
+$n$ = símbolos distintos de la **fuente**; $M$ = símbolos distintos del **código** (binario → $M=2$).
+
+### Codificación directa
+
+Una palabra código por cada símbolo fuente: $\bar L = \sum_{i=1}^n p_i\,l_i$
+
+**El problema**: $l_i$ debe ser entero. Con fuente binaria $p=\{0{,}9;\,0{,}1\}$ → $H=0{,}469$ bits pero $\bar L = 1$ forzosamente:
+
+$$\eta = \frac{H}{\bar L} = 46{,}9\%$$
+
+Más de la mitad desperdiciada, y **ningún código directo lo mejora** — no se puede asignar "media palabra".
+
+### Extensión de la fuente
+
+Agrupar $s$ símbolos en bloques y codificar los bloques (la extensión de orden $s$ tiene $n^s$ símbolos). Como la entropía es aditiva para símbolos independientes, $H(S^s)=s\,H(S)$, y aplicando el teorema a la extensión y dividiendo por $s$:
+
+$$\boxed{\frac{H(S)}{\log_2M} \ \leq\ \frac{\bar L_s}{s} \ <\ \frac{H(S)}{\log_2M}+\frac{1}{s}}$$
+
+**El truco está en que el "+1" queda dividido por $s$**: agrandando el bloque, la cota superior se acerca tanto como se quiera a la entropía.
+
+**El ejemplo anterior con $s=2$** — bloques con $p=\{0{,}81;\,0{,}09;\,0{,}09;\,0{,}01\}$, Huffman da longitudes $\{1,2,3,3\}$:
+
+$$\bar L_2 = 0{,}81(1)+0{,}09(2)+0{,}09(3)+0{,}01(3)=1{,}29 \ \Rightarrow\ \frac{\bar L_2}{2}=0{,}645$$
+
+$$\eta = \frac{0{,}469}{0{,}645} = \mathbf{72{,}7\%}$$
+
+De 46,9% a 72,7% **sin cambiar fuente ni canal**, solo agrupando de a dos.
+
+### Palabras código y Kraft-McMillan
+
+La **palabra código** es la secuencia asignada a un símbolo (o bloque); su longitud $l_i$ se mide en símbolos de código. Las **palabras de longitud variable** son las que permiten dar códigos cortos a los símbolos frecuentes, con la restricción:
+
+$$\sum_{i=1}^{n} M^{-l_i} \leq 1 \qquad\text{(Kraft-McMillan general)}$$
+
+Garantiza que exista un código de prefijo con esas longitudes: cada palabra de longitud $l_i$ "ocupa" una fracción $M^{-l_i}$ del árbol. La versión binaria ($\sum2^{-l_i}\leq1$) está en [[codigo-compacto|Códigos Compactos]].
+
+**Eficiencia general**: $\eta = \dfrac{H}{\bar L\,\log_2M}$
 
 ## Los errores que cuestan puntos
 
