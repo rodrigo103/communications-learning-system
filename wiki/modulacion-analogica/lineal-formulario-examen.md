@@ -89,6 +89,32 @@ $$\boxed{\sum_i m_i \leq 1} \qquad (\text{no cada } m_i \text{ por separado})$$
 
 > **Por qué TV usa VSB y no SSB**: el video tiene contenido hasta continua, así que las bandas laterales se tocan en $f_c$ y no hay hueco donde el filtro pueda caer. Ver [[modulacion-vsb|VSB]].
 
+## SNR de posdetección ⭐ (ítem más frecuente del corpus)
+
+$$\boxed{\left(\frac{S}{N}\right)_D^{AM} = \eta_{AM}\cdot\gamma = \frac{m^2/2}{1+m^2/2}\,\gamma} \qquad \boxed{\left(\frac{S}{N}\right)_D^{DSB} = \left(\frac{S}{N}\right)_D^{SSB} = \gamma}$$
+
+con $\gamma = \dfrac{S_R}{N_0W}$ la SNR de referencia en banda base.
+
+**AM siempre pierde** (nunca supera $-4{,}8$ dB respecto de banda base); DSB-SC y SSB **empatan**. Con $m=0{,}9$: $-5{,}4$ dB. Tabla completa y comparación con FM en [[../ruido/ruido-formulario-examen#Tabla de SNR de posdetección ⭐ (el ítem MÁS frecuente del corpus — 8 apariciones)|Ruido — SNR de posdetección]].
+
+## Conversiones a dB (piden dBW y dBm seguido)
+
+$$P_{dBW} = 10\log_{10}\!\left(\frac{P}{1\text{ W}}\right) \qquad P_{dBm} = 10\log_{10}\!\left(\frac{P}{1\text{ mW}}\right) = P_{dBW}+30$$
+
+**Aparecen 16 veces (dBW) y 25 veces (dBm) en el corpus** — casi siempre pidiendo "potencia de cada banda lateral en dBW" o "PEP sobre la carga en dBW".
+
+## Modulador de ley cuadrática (aparece 3 veces)
+
+$$v_{out} = a\,v_{in} + b\,v_{in}^2, \qquad v_{in}=m(t)+c(t)$$
+
+$$v_{out} = \underbrace{a\,m(t)}_{\text{BB}} + \underbrace{a\,c(t)}_{f_c} + \underbrace{b\,m^2(t)}_{\text{BB},\ 2f_m} + \underbrace{2b\,m(t)c(t)}_{f_c\pm f_m} + \underbrace{b\,c^2(t)}_{\text{DC},\ 2f_c}$$
+
+**El filtro pasabanda** va centrado en $f_c$ con ancho $2f_m$, y deja pasar $a\,c(t) + 2b\,m(t)c(t)$ — que es AM completa con:
+
+$$\boxed{A_c' = a\,A_c} \qquad \boxed{m = \frac{2b\,A_m}{a}}$$
+
+**Para pasar a DSB-SC** hacen falta **dos moduladores** con $m(t)$ de signo opuesto y restar las salidas: la portadora (común) se cancela y el producto se duplica. Filtrando no alcanza. Ver [[../derivaciones/modulacion-am#Generacion practica|Derivación de AM]].
+
 ## Los errores que cuestan puntos
 
 1. **El factor 2 en el espectro** — alturas de delta $A_c/2$ y $A_cm/4$, no $A_c$ y $A_cm/2$

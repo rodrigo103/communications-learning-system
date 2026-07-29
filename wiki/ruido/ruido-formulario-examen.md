@@ -246,12 +246,30 @@ $$\boxed{\gamma = \frac{S_R}{N_0\,W}}$$
 
 **Interpretación**: $\gamma$ es la SNR que se tendría transmitiendo el mensaje **directo en banda base**, sin modular, con esa misma potencia recibida. Es el punto de referencia contra el cual se mide si una modulación mejora o empeora las cosas — **el mismo rol que cumple $E_b/N_0$ en digital**.
 
-| Modulación | $(S/N)_D$ | Comparación |
+### Tabla de SNR de posdetección ⭐ (el ítem MÁS frecuente del corpus — 8 apariciones)
+
+> 📌 *"Determinar la relación señal a ruido de **posdetección** si se utiliza modulación de amplitud con 90% de índice / banda lateral única / doble banda sin portadora / frecuencia con desvío de 75 kHz"* — **es el ítem individual que más se repite en los 42 finales.**
+
+| Modulación | $(S/N)_D$ | Respecto de $\gamma$ |
 |---|---|---|
-| Banda base | $\gamma$ | referencia |
-| AM (detección de envolvente) | $<\gamma$ | **peor** que banda base |
-| DSB-SC / SSB (coherente) | $\gamma$ | igual |
-| **WBFM** | $3\beta^2(\beta+1)\,\gamma$ | **mucho mejor** — es el motivo de usar FM |
+| **Banda base** | $\gamma$ | 0 dB (referencia) |
+| **DSB-SC** (coherente) | $\gamma$ | **0 dB** |
+| **SSB** (coherente) | $\gamma$ | **0 dB** |
+| **AM** (envolvente), índice $m$ | $\boxed{\dfrac{m^2\langle m_n^2\rangle}{1+m^2\langle m_n^2\rangle}\,\gamma = \eta_{AM}\,\gamma}$ | **negativo — siempre peor** |
+| **FM** | $\boxed{3\Delta^2x^2\,\gamma}$, con $\Delta=\dfrac{\Delta f}{W}$, $x^2=\left\langle\left(\dfrac{m(t)}{A_m}\right)^2\right\rangle$ | **muy positivo** |
+
+**Valores para tono senoidal** ($\langle m_n^2\rangle = x^2 = \tfrac12$):
+
+| Caso | Cuenta | vs $\gamma$ |
+|---|---|---|
+| AM con $m=0{,}9$ | $\dfrac{0{,}405}{1{,}405}=0{,}288$ | $\mathbf{-5{,}4}$ **dB** |
+| AM con $m=1$ (máximo) | $\dfrac{0{,}5}{1{,}5}=\tfrac13$ | $-4{,}8$ dB (el mejor caso de AM) |
+| DSB-SC / SSB | $1$ | $0$ dB |
+| FM, $\Delta f=75$ kHz, $W=15$ kHz ($\beta=5$) | $3(25)(0{,}5)=37{,}5$ | $\mathbf{+15{,}7}$ **dB** |
+
+> **La lectura conceptual que evalúan**: **AM con detección de envolvente es *peor* que transmitir en banda base** (nunca supera $-4{,}8$ dB), porque gasta la mayor parte de la potencia en la portadora, que no lleva información. DSB-SC y SSB **empatan** con banda base. **Solo FM mejora**, y lo hace comprando SNR con ancho de banda. Notar que $(S/N)_D^{AM} = \eta_{AM}\cdot\gamma$ — **la eficiencia de potencia de AM es exactamente su penalidad de SNR**. [analysis]
+
+> ⚠️ **Sobre las variantes de la fórmula de FM**: distintos textos la escriben como $3\beta^2\gamma$, $3\beta^2(\beta+1)\gamma$ o $3\Delta^2x^2\gamma$ según qué incluyan y contra qué SNR de entrada la refieran. **Los finales suelen dar la expresión en el enunciado** — usar la que den. Si no la dan, la de la tabla ($3\Delta^2x^2\gamma$) es la que aparece en `F_Comu_2019-02-11`.
 
 > **Es el mismo $(S/N)_{in}$** de la fórmula en [[snr-modulacion-exponencial|SNR en Modulaciones Exponenciales]]; $\gamma$ solo lo hace explícito al aclarar que se mide en el ancho de banda base $W$.
 

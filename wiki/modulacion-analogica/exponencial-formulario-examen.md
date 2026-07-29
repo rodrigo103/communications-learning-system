@@ -112,7 +112,13 @@ $$s_{FM}(t) = A_c\sum_{n=-\infty}^{\infty}J_n(\beta)\cos\big[2\pi(f_c+nf_m)t\big
 
 $$\boxed{\left(\frac{S}{N}\right)_D = 3\beta^2(\beta+1)\,\gamma}, \qquad \gamma = \frac{S_R}{N_0W}$$
 
-**El trade-off de FM**: la mejora va con $\beta^2$ pero el ancho de banda con $(\beta+1)$ — **se compra SNR gastando espectro**, cuadrático a favor contra lineal en contra. Por eso FM broadcast usa $\beta=5$ y no más. Ver [[../ruido/ruido-formulario-examen#SNR en modulaciones analógicas — la referencia $\gamma$|Ruido — la referencia $\gamma$]].
+**El trade-off de FM**: la mejora va con $\beta^2$ pero el ancho de banda con $(\beta+1)$ — **se compra SNR gastando espectro**, cuadrático a favor contra lineal en contra. Por eso FM broadcast usa $\beta=5$ y no más.
+
+> ⭐ **La SNR de posdetección es el ítem MÁS frecuente del corpus (8 apariciones)** y suelen pedir comparar FM contra AM/DSB/SSB en el mismo ejercicio. Forma más usada en los enunciados:
+> $$\left(\frac{S}{N}\right)_D = 3\Delta^2x^2\,\gamma, \qquad \Delta=\frac{\Delta f}{W},\quad x^2=\left\langle\left(\frac{m(t)}{A_m}\right)^2\right\rangle$$
+> Para tono senoidal ($x^2=\tfrac12$) con $\Delta f=75$ kHz y $W=15$ kHz ($\beta=5$): $3(25)(0{,}5)=37{,}5 \to \mathbf{+15{,}7}$ **dB** sobre $\gamma$ — contra $-5{,}4$ dB de AM al 90%. **Tabla comparativa completa** en [[../ruido/ruido-formulario-examen#Tabla de SNR de posdetección ⭐ (el ítem MÁS frecuente del corpus — 8 apariciones)|Ruido — SNR de posdetección]].
+>
+> ⚠️ Distintos textos escriben esta fórmula como $3\beta^2\gamma$, $3\beta^2(\beta+1)\gamma$ o $3\Delta^2x^2\gamma$. **Los finales suelen darla en el enunciado — usar la que den.**
 
 ## Los errores que cuestan puntos
 
