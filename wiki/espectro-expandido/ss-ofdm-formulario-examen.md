@@ -138,7 +138,24 @@ $R_b = 16$ Mbps, $N_p = 4096$ subportadoras, cada una en 16-QAM.
 
 $$\ell = \log_2 16 = 4 \ \Rightarrow\ \text{bits/símbolo} = 4096\times4 = 16\,384$$
 
-$$T_S = \frac{16\,384\ \text{bits}}{16\times10^6\ \text{bps}} = \boxed{1{,}024\ \text{ms}}$$
+$$T_S = \frac{16\,384\ \tfrac{\text{bits}}{\text{símbolo}}}{16\times10^6\ \tfrac{\text{bits}}{\text{s}}} = \boxed{1{,}024\ \frac{\text{ms}}{\text{símbolo}}}$$
+
+> **Qué es $T_S$, exactamente**: las dos lecturas coinciden porque **todas las subportadoras están sincronizadas** y cambian de símbolo en el mismo instante — es a la vez la **duración de un símbolo OFDM completo** (el bloque de 4096 en paralelo) y el **tiempo que cada subportadora sostiene su punto de constelación** antes de pasar al siguiente. [analysis]
+>
+> **De dónde sale ese valor: es una condición de igualación de tasas.** El símbolo tiene que durar exactamente lo que tarda en acumularse el bloque de bits del símbolo siguiente — si durara más se desborda el buffer de entrada, si durara menos faltan datos. **$T_S$ no es una elección libre: la fija el caudal.**
+>
+> **La reformulación que hace clic** — cada subportadora, vista sola, es un enlace lentísimo:
+>
+> | Por subportadora | Valor |
+> |---|---|
+> | Tasa de símbolos | $1/T_S = \Delta f = 976{,}56$ baudios |
+> | Bits por segundo | $4\times976{,}56 = 3906{,}25$ bps |
+>
+> $$4096\ \text{subportadoras} \times 3906{,}25\ \text{bps} = 16\ \text{Mbps} \ ✓$$
+>
+> **OFDM es literalmente 4096 enlaces lentos de 3,9 kbps en paralelo**, en vez de un enlace rápido de 16 Mbps. Esa es toda la idea: repartir el caudal entre muchas portadoras lentas para que cada símbolo sea largo y tolere el multitrayecto.
+>
+> Y notar que **$1/T_S$ es a la vez la tasa de símbolos de cada subportadora y el espaciado $\Delta f$** — no es coincidencia, es la condición de ortogonalidad otra vez: **el espaciado en frecuencia iguala a la tasa de señalización de cada subportadora.**
 
 **b) Ancho de banda mínimo ideal**
 
