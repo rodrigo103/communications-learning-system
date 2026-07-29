@@ -70,6 +70,18 @@ Hay que **subir la tasa de chips ~8 veces** (LFSR más largo o reloj más rápid
 
 # Parte 2 — OFDM
 
+## Cómo funciona: la cadena serie↔paralelo
+
+$$\underbrace{R_b\ \text{serie}}_{\text{16 Mbps}} \xrightarrow{\ S/P\ } \underbrace{N_p\ \text{grupos de }\ell\ \text{bits}}_{\text{4096 grupos de 4}} \xrightarrow{\ \text{mapeo QAM}\ } N_p\ \text{símbolos} \xrightarrow{\ \textbf{IFFT}\ } \text{muestras temporales} \xrightarrow{\ P/S\ } \text{señal}$$
+
+**Las $N_p$ subportadoras transmiten simultáneamente**, cada una con sus propios $\ell$ bits. Por eso el símbolo dura tanto: en vez de mandar $N_p\ell$ bits uno tras otro rápido, se mandan **todos juntos despacio**.
+
+**En el receptor, el proceso inverso**: bajada a banda base → **FFT** sobre un período de símbolo → $N_p$ valores complejos → demapeo → P/S.
+
+> **¿Cómo se reordenan los bits?** Por **convención previa**: la FFT devuelve los valores indexados por subportadora, y el índice $k$ *es* la posición — la subportadora $k$ lleva los bits $\ell k$ a $\ell k + \ell - 1$ del bloque. Transmisor y receptor acuerdan ese mapeo de antemano (es parte del estándar); **no se transmite información extra para ordenar**. [analysis]
+>
+> **Por eso el sincronismo es crítico en OFDM**: si el receptor se equivoca de ventana temporal (dónde empieza el símbolo) o se corre una subportadora en frecuencia, **los $N_p$ grupos quedan mal asignados** y se pierde el bloque entero.
+
 ## Las 4 fórmulas
 
 | # | Fórmula | Notas |
@@ -169,6 +181,16 @@ $$\boxed{4096\ \text{deltas de Dirac, separadas } \Delta f = 976{,}56\text{ Hz}}
 Cada subportadora queda como un **tono puro** sin modular.
 
 > **La idea de fondo, que conecta con Digital**: la DEP de una señal digital es $S(f)=\frac{\sigma_a^2}{T_s}|P(f)|^2$ — proporcional a la **varianza de los símbolos**. Sin variación de datos no hay ensanchamiento espectral. **El espectro continuo de OFDM lo produce la información, no las portadoras.** Ver [[../modulacion-digital/digital-formulario-examen|Digital — DEP]]. [analysis]
+
+> **¿Qué transmite exactamente cada subportadora con entrada de ceros?** Con 16-QAM cada una toma 4 bits por símbolo OFDM; si el flujo es todo ceros, cada grupo es `0000` y **todas mapean al mismo punto de constelación**. ⚠️ **`0000` no es amplitud cero**: es *un punto específico* de la grilla (ej. $(-3a,-3a)$ según el mapeo Gray del estándar). Los 16 puntos tienen coordenadas $\pm a,\pm3a$ — **ninguno está en el origen**. Cada subportadora transmite entonces un **tono constante no nulo**. [analysis]
+>
+> **Y en el dominio del tiempo pasa algo peor que el espectro de líneas.** Si todas llevan el mismo símbolo $X$:
+> $$\tilde s(t) = X\sum_k e^{j2\pi f_kt}$$
+> son 4096 tonos equiespaciados de igual amplitud **y fase**, que en $t=0$ se suman **todos en fase**:
+> $$|\tilde s(0)| = 4096|X| \quad\text{vs}\quad \langle|\tilde s|^2\rangle = 4096|X|^2 \quad\Longrightarrow\quad \text{PAPR} = 4096 \equiv \mathbf{36{,}1\ dB}$$
+> La señal se vuelve un **tren de pulsos angostísimos** — enorme en un instante, casi nula el resto. Es el **peor caso posible de PAPR en OFDM**, e inviable para cualquier amplificador. **Por eso los sistemas OFDM reales usan un scrambler** que aleatoriza los datos antes de mapear, justamente para que entradas patológicas (todo ceros, todo unos) no produzcan esto.
+>
+> Comparar con el PAPR de la constelación 16-QAM ($1{,}8 \equiv 2{,}55$ dB, ver [[../modulacion-digital/digital-formulario-examen|Digital]]): ahí el problema viene de las amplitudes de los símbolos; acá viene de la **suma coherente de subportadoras**, y es tres órdenes de magnitud peor.
 
 **e) Valor adecuado de $f_c$ para transmitir centrado en 3,9 GHz**
 
