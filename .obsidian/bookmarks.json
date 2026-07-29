@@ -155,7 +155,83 @@
     {
       "type": "group",
       "ctime": 1785254053504,
-      "items": [],
+      "items": [
+        {
+          "type": "file",
+          "ctime": 1785293265993,
+          "path": "wiki/ruido/ruido-formulario-examen.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785293265993,
+          "path": "outputs/solutions/Ruido_amplificador_F_Comu_2019-02-25.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785293265993,
+          "path": "wiki/ruido/ruido-formulario-examen.md"
+        },        
+        {
+          "type": "file",
+          "ctime": 1785293265993,
+          "path": "outputs/solutions/TI_entropia_texto_F_Comu_2024-11-14.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785293265993,
+          "path": "wiki/modulacion-digital/digital-formulario-examen.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785293265993,
+          "path": "wiki/teoria-informacion/capacidad-canal-shannon.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785293265993,
+          "path": "wiki/teoria-informacion/entropia-fuente.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785293265993,
+          "path": "wiki/ruido/ruido-formulario-examen.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785293265993,
+          "path": "wiki/planificacion/plan-11-dias-final.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785293280260,
+          "path": "wiki/teoria-informacion/ti-formulario-examen.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785293280260,
+          "path": "exercises/finales/md/F_Comu_2019-02-25.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785293280260,
+          "path": "exercises/finales/F_Comu_2019-02-25.pdf"
+        },
+        {
+          "type": "file",
+          "ctime": 1785293280260,
+          "path": "exercises/finales/F_Comu_2019-02-11.pdf"
+        },
+        {
+          "type": "file",
+          "ctime": 1785293280260,
+          "path": "exercises/finales/md/F_Comu_2022-12-22_res.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785293280260,
+          "path": "exercises/finales/F_Comu_2022-12-22_res.pdf"
+        }
+      ],
       "title": "Día 5"
     }
   ]
