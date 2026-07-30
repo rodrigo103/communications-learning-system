@@ -2,5 +2,11 @@
   "strictLineBreaks": false,
   "showLineNumber": false,
   "readableLineLength": true,
-  "vimMode": false
+  "vimMode": false,
+  "pdfExportSettings": {
+    "pageSize": "A4",
+    "landscape": false,
+    "margin": "2",
+    "downscalePercent": 100
+  }
 }
