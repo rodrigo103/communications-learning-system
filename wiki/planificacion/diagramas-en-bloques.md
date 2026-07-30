@@ -6,10 +6,6 @@ curso: Sistemas de Comunicaciones
 
 # Diagramas en Bloques — los que hay que tener a mano
 
-> 🖨️ **Para imprimir**: abrir `diagramas-en-bloques.html` en Chrome o Safari. **Ese HTML se genera de este archivo** con `node scripts/build-diagramas.mjs` — los bloques ```` ```diagram ```` se dibujan como SVG. Todo cambio va acá, no en el HTML.
-
-> Diagramas de referencia: la cadena de bloques de cada sistema, con la función de cada etapa.
-
 ## 1. Generador PCM
 
 ```diagram
