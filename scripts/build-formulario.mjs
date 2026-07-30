@@ -35,8 +35,6 @@ const html = `<meta charset="utf-8">
   </header>
 
   <div class="legend">
-    <span><b style="color:var(--mem)">●</b> de memoria</span>
-    <span><b>°</b> tema de baja prioridad</span>
     <button class="print-btn no-print" onclick="window.print()">Imprimir / Guardar PDF</button>
   </div>
 
