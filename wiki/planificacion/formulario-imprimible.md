@@ -38,9 +38,46 @@ curso: Sistemas de Comunicaciones
 | ● | $\eta = \dfrac{R_b}{B}$ | **Eficiencia espectral** [bits/s/Hz] | **La piden 7 veces.** A $B$ mínimo pasabanda: $\eta=\ell$; banda base: $\eta=2\ell$ |
 | | $B_{pulso} = 1/\tau$ | Ancho de banda de un pulso PAM | $\tau$ = ancho del pulso |
 
-**La cadena completa, con las unidades** (donde se cometen los dos errores más caros):
+### Contabilidad de unidades, fórmula por fórmula
+
+| Fórmula | Cómo se cancela | Queda |
+|---|---|---|
+| $f_s \geq 2B$ | $\tfrac{\text{muestras}}{\text{s}} \geq \tfrac{\text{muestras}}{\text{ciclo}}\times\tfrac{\text{ciclos}}{\text{s}}$ | **muestras/s** |
+| $M = 2^n$ | **No hay contabilidad** — $n$ es exponente, o sea conteo puro | **niveles** (conteo) |
+| $q = \dfrac{V_{pp}}{M}$ | $\tfrac{\text{V}}{\text{niveles}}$ | **V** — altura de un escalón |
+| $P_q = \dfrac{q^2}{12}$ | $\text{V}^2\div$ adimensional (el 12 es la varianza de una uniforme) | **V²** ($=$ W con $R=1$) |
+| $SNR_Q = \dfrac{3M^2}{F_C^2}$ | $\tfrac{\text{conteo}^2}{(\text{V}/\text{V})^2}$ — **se cancela todo** (incluso el $q^2$ en la derivación) | **adimensional** → por eso admite dB |
+| $R_b = n\,f_s$ | $\tfrac{\text{bits}}{\text{muestra}}\times\tfrac{\text{muestras}}{\text{s}}$ | **bits/s** |
+| $\dfrac{SNR_Q}{1+4P_e(M^2-1)}$ | adimensional $\div$ adimensional ($P_e$ es probabilidad) | **adimensional** |
+| $R_s = \dfrac{R_b}{\log_2M_{mod}}$ | $\tfrac{\text{bits}}{\text{s}}\div\tfrac{\text{bits}}{\text{símbolo}}$ | **símbolos/s** $=$ baudios |
+| $B_{min} = \dfrac{R_s}{2}$ (banda base) | $\tfrac{\text{símbolos}}{\text{s}}\div\tfrac{\text{símbolos}}{\text{ciclo}}$ | **ciclos/s** $=$ Hz |
+| $B_{min} = R_s$ (pasabanda) | $\tfrac{\text{símbolos}}{\text{s}}\times\kappa$, con $\kappa=1\ \tfrac{\text{ciclo}}{\text{símbolo}}$ | **Hz** |
+| $\eta = \dfrac{R_b}{B}$ | $\tfrac{\text{bits}}{\text{s}}\div\tfrac{\text{ciclos}}{\text{s}}$ | **bits/ciclo** $=$ bits/s/Hz |
+| $B_{pulso} = \dfrac{1}{\tau}$ | $1\div\text{s}$ | **Hz** |
+
+> ⚠️ **Lo incómodo primero**: dimensionalmente **todo esto es $1/\text{s}$ y nada más**. "Bit", "símbolo", "ciclo" y "muestra" **no son dimensiones físicas** — son etiquetas de conteo. O sea que esto es contabilidad **semántica**, no análisis dimensional: una convención. Pero es la convención que atrapa los dos errores más caros del tema, así que conviene sostenerla.
+
+**Los tres factores de conversión** — todos son del mismo tipo ("cuántos X por Y") y **cambian qué se está contando sin cambiar la dimensión**:
+
+| Factor | Unidad | Dónde vive |
+|---|---|---|
+| $n = \log_2M$ | bits/**muestra** | digitalización (fuente) |
+| $\ell = \log_2M_{mod}$ | bits/**símbolo** | transmisión |
+| $2$ (Nyquist) | muestras/ciclo *o* símbolos/ciclo | muestrear *o* señalizar — son duales |
+
+> **Por qué $M=2^n$ queda afuera de la contabilidad, y eso es informativo**: la contabilidad **solo funciona con multiplicación y división**, que es donde las etiquetas cancelan; con exponentes no hay nada que cancelar. Y rige la regla dura: **el argumento de toda función trascendente debe ser adimensional**. Que $2^n$ sea legal *confirma* que $n$ es un número puro — si "bit" fuera una dimensión física de verdad, $2^n$ no tendría sentido. $M=2^n$ no es una conversión sino un **cambio de representación**: $M$ = cuántos niveles hay; $n$ = cuántos dígitos binarios hacen falta para etiquetarlos.
+>
+> **Y $n$ cumple dos roles distintos según dónde aparece**: en $M=2^n$ es **exponente** (conteo puro, ninguna etiqueta tiene sentido); en $R_b=n\,f_s$ es **factor de conversión** (bits/muestra). Mismo número, dos papeles — la etiqueta se le pone *cuando multiplica*, porque ahí es útil.
+
+> **Tasa vs ancho — la distinción de tipo que sí importa**: $f_s$ y $R_s$ son **tasas de eventos**, y hay un reloj oscilando de verdad (el reloj de muestreo a 8 kHz *es* una señal de 8 kHz, medible con osciloscopio — escribirlo en Hz no es licencia, es literal). $B$ en cambio es el **ancho de un intervalo** del eje de frecuencias, $B=f_{max}-f_{min}$: una resta, **no es tasa de nada**. Por eso escribir $f_s$ en Hz está perfecto, pero **igualar $f_s$ con un ancho de banda sería un error de tipo**, aunque los números y las dimensiones lo permitan.
+
+**La cadena completa** (la composición de los tres factores, y donde se cometen los dos errores más caros):
 
 $$f_s\ \left[\tfrac{\text{muestras}}{\text{s}}\right] \xrightarrow{\ \times n\ (\text{bits/muestra})\ } R_b\ [\text{bps}] \xrightarrow{\ \div\ell\ (\text{bits/símbolo})\ } D\ [\text{baudios}] \xrightarrow{\ \text{Nyquist}\ } B\ [\text{Hz}]$$
+
+**El hábito para el examen**: escribir la etiqueta al lado de cada resultado intermedio — no cuentas dimensionales, solo la etiqueta. Cuatro números, cuatro etiquetas:
+
+$$f_s = 8\text{ kmuestras/s} \ \to\ R_b = 64\text{ kbps} \ \to\ R_s = 32\text{ kbaud} \ \to\ B = 32\text{ kHz}$$
 
 > **Los dos errores**: (1) confundir $R_b$ con $R_s$ — dividir o no por $\log_2M_{mod}$; (2) confundir $R_s$ con $B$ — el factor 2 de banda base vs pasabanda. **El hábito**: escribir la etiqueta al lado de cada resultado intermedio. Si piden "ancho de banda" y el último número quedó en kbps, hay alarma.
 
