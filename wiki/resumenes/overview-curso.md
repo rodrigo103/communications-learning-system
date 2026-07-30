@@ -95,7 +95,7 @@ Criterios: ancho de banda, eficiencia espectral, eficiencia de potencia, complej
 | Shannon | $C = B\log_2(1 + SNR)$ |
 | Friis | $F_{total} = F_1 + \frac{F_2-1}{G_1} + \cdots$ |
 | QAM | $s(t) = I(t)\cos(2\pi f_c t) - Q(t)\sin(2\pi f_c t)$ |
-| Parseval | $\int |x(t)|^2 dt = \int |X(f)|^2 df$ |
+| Parseval | $\int \lvert x(t)\rvert^2 dt = \int \lvert X(f)\rvert^2 df$ |
 
 ## Ver también
 

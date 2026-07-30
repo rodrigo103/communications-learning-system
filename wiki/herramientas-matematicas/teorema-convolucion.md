@@ -54,7 +54,7 @@ La multiplicacion en frecuencia es computacionalmente mas simple que la convoluc
 
 Para $H(f) = \frac{1}{1 + jf/f_c}$:
 
-| Armonico | Frecuencia | $|H(f)|$ | Efecto |
+| Armonico | Frecuencia | $\lvert H(f)\rvert$ | Efecto |
 |----------|------------|---------|--------|
 | Fundamental | 500 Hz | 0.894 | Leve atenuacion |
 | 3er armonico | 1500 Hz | 0.555 | Atenuacion moderada |

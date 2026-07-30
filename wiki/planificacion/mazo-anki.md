@@ -63,7 +63,7 @@ Las cartas están alineadas con estas áreas del wiki:
 
 | Carta | Fórmula |
 |-------|---------|
-| Parseval | $\int \|x(t)\|^2 dt = \int \|X(f)\|^2 df$ |
+| Parseval | $\int \lVert x(t)\rVert^2 dt = \int \lVert X(f)\rVert^2 df$ |
 | Nyquist | $f_s \geq 2f_{max}$ |
 | Carson | $BW \approx 2(\Delta f + f_m)$ |
 | PCM SQNR | $SNR_q \approx 6n + 1.76$ dB |
