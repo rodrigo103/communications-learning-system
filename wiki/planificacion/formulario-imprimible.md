@@ -460,21 +460,7 @@ $$S(f) = \frac{\sigma_a^2}{T_s}\,|P(f)|^2 \quad\Longrightarrow\quad \text{pulso 
 
 ## 9 · La función $Q(x)$ — cómo evaluarla
 
-**$Q(x)$ no tiene forma cerrada** — es la integral de cola de la gaussiana, sin primitiva elemental. **No se calcula: se lee.** **Se lee del ábaco de $Q(k)$**: última página, $Q(k)$ vs $k$ en escala logarítmica, con $k$ de 0 a 7. **Si no aparece, se puede pedir al equipo docente** — el reglamento habilita consultas.
-
-| $x$ | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
-|---|---|---|---|---|---|---|---|---|
-| $Q(x)$ | $0{,}5$ | $1{,}6{\times}10^{-1}$ | $2{,}3{\times}10^{-2}$ | $1{,}3{\times}10^{-3}$ | $3{,}2{\times}10^{-5}$ | $2{,}9{\times}10^{-7}$ | $10^{-9}$ | $10^{-12}$ |
-
-**En sentido inverso** (dado un BER objetivo, hallar el $x$ necesario): $10^{-3}\to3{,}1$; $10^{-6}\to4{,}75$; $10^{-9}\to6{,}0$.
-
 **Casio fx-991LAX (ClassWiz)**: Menú → **Distribución** → **DA normal** (Acumulada; ⚠️ **no** "DP normal", que es la densidad). Cargar **Inferior $=x$, Superior $=99$**, $\sigma=1$, $\mu=0$ → el resultado **es $Q(x)$ directo**. Verificación: Inferior $=3$ debe dar $1{,}3499\times10^{-3}$.
-
-> ⚠️ **Nunca** calcular $\Phi(x)$ y restar $1-\Phi(x)$: para $x=5$, $\Phi=0{,}9999997133$ y al restar se pierden casi todos los dígitos. Ir directo por la cola.
-
-**Otras salidas**: $Q(x)=\tfrac12\operatorname{erfc}\!\left(\tfrac{x}{\sqrt2}\right)$; asintótica para $x\gtrsim3$: $Q(x)\approx\dfrac{e^{-x^2/2}}{x\sqrt{2\pi}}$ (error ~4% en $x=4{,}4$).
-
-**Estrategia**: usar **las dos fuentes** — leer el ábaco y confirmar con la calculadora. Leer mal una escala logarítmica es fácil.
 
 ---
 
@@ -536,7 +522,7 @@ $$P_{dBm} = 10\log_{10}\!\left(\frac{P}{1\ \text{mW}}\right) \qquad P_{dBW} = 10
 
 ---
 
-## 12 · Constantes y valores típicos
+## 11 · Constantes y valores típicos
 
 | Constante / valor | Significado |
 |---|---|
@@ -557,7 +543,7 @@ $$P_{dBm} = 10\log_{10}\!\left(\frac{P}{1\ \text{mW}}\right) \qquad P_{dBW} = 10
 
 ---
 
-## 13 · Errores frecuentes
+## 12 · Errores frecuentes
 
 **Transversales**
 

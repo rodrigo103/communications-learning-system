@@ -28,16 +28,6 @@ const html = `<meta charset="utf-8">
 ${DIAGRAM_CSS}</style>
 
 <div class="sheet">
-  <header class="top">
-    <h1>Diagramas en Bloques — Sistemas de Comunicaciones</h1>
-    <span class="tag">Final 30/07/2026 · 19:00 hs</span>
-  </header>
-
-  <div class="legend">
-    <span>Cadenas de bloques de los sistemas del programa</span>
-    <button class="print-btn no-print" onclick="window.print()">Imprimir / Guardar PDF</button>
-  </div>
-
 ${content}
 
   <footer class="end">

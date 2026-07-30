@@ -29,15 +29,6 @@ const html = `<meta charset="utf-8">
 <style>${STYLE}</style>
 
 <div class="sheet">
-  <header class="top">
-    <h1>Formulario — Sistemas de Comunicaciones</h1>
-    <span class="tag">Final 30/07/2026 · 19:00 hs</span>
-  </header>
-
-  <div class="legend">
-    <button class="print-btn no-print" onclick="window.print()">Imprimir / Guardar PDF</button>
-  </div>
-
 ${content}
 
   <footer class="end">
