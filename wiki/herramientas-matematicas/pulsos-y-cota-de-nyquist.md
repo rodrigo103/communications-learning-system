@@ -144,6 +144,41 @@ $$\underbrace{\sqrt{H(f)}}_{\text{TX}} \times \underbrace{\sqrt{H(f)}}_{\text{RX
 
 > ⚠️ **La tensión que aparece seguido**: el enunciado dice "pulsos rectangulares" y después pide "ancho de banda **mínimo**". Estrictamente son incompatibles — los rectangulares no alcanzan el mínimo. **Responder el mínimo (lo que preguntan) y aclarar en una línea** que la señal descrita, siendo rectangular, ocupa el doble. Así queda claro que se entiende la diferencia, independientemente de qué esperara el corrector. [analysis]
 
+## Qué parte de cada fórmula es Nyquist (y qué parte no)
+
+Las fórmulas de ancho de banda mezclan **tres ingredientes distintos**, y solo uno es el criterio de Nyquist. Separarlos evita confusiones: [analysis]
+
+| Ingrediente | Qué es | ¿Es Nyquist? |
+|---|---|---|
+| **1. Cota de ISI cero** | $B\geq R_s/2$ en banda base | ✅ **Sí — esto es el criterio** |
+| **2. Duplicación pasabanda** | $\times2$ al modular | ❌ No — es la **propiedad de modulación de Fourier** (espectro copiado a $\pm f_c$) |
+| **3. Forma de pulso** | Cuánto exceso de banda se usa | ❌ No — es **elección de diseño** |
+
+**Descomposición de cada caso:**
+
+| Fórmula | Cota Nyquist | $\times2$ pasabanda | Forma de pulso |
+|---|---|---|---|
+| $B=R_s/2$ (BB, sinc) | ✅ **en la igualdad** | — | sinc, exceso 0 |
+| $B=R_s$ (PB, sinc) | ✅ en la igualdad | ✅ | sinc |
+| $B=\frac{R_s}{2}(1+\alpha)$ (BB, cos. realzado) | ✅ **satisfecho, no en la cota** | — | exceso $\alpha$ |
+| $B=R_s$ (BB, nulo a nulo rect.) | ✅ satisfecho | — | rectangular, lóbulo en $R_s$ |
+| $B=2R_s$ (PB, nulo a nulo rect.) | ✅ satisfecho | ✅ | rectangular |
+
+### El pulso rectangular SÍ cumple Nyquist
+
+Conviene aclararlo porque suele malinterpretarse: cada pulso rectangular está **confinado a su propia ranura**, así que $p(kT_s)=0$ para $k\neq0$ → **ISI cero**. Verificable también por espectro plegado, usando la identidad $\sum_k\operatorname{sinc}(x-k)=1$ (constante ✓).
+
+**No viola el criterio — simplemente no lo alcanza con eficiencia**: su espectro se extiende infinitamente y el lóbulo principal ya ocupa el doble del mínimo.
+
+### ⚠️ La trampa: $B = R_s$ significa dos cosas distintas
+
+| $B=R_s$ significa… | Cuando… | Por qué |
+|---|---|---|
+| Mínimo de Nyquist **pasabanda** | pulso sinc, modulado | $\frac{R_s}{2}\times2$ |
+| Nulo a nulo en **banda base** | pulso rectangular, sin modular | primer nulo en $1/T_s$ |
+
+**Mismo número, dos orígenes sin relación entre sí.** Si un ejercicio da $R_s$ como ancho de banda, hay que identificar cuál de los dos es — y la pista está en si la señal es de banda base o pasabanda, y en qué pulso usa.
+
 ## Ver también
 
 - [[../modulacion-digital/digital-formulario-examen|Modulación Digital — Formulario]] · [[../modulacion-pulsos/pcm-formulario-examen|PCM — Formulario]]

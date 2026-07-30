@@ -148,11 +148,11 @@ $$B_{n\text{-}n} = \underbrace{2}_{\substack{\text{lados del lóbulo} \\ \text{a
 
 **Y esto unifica los tres anchos de banda** — son la misma relación con distinto $\kappa$ total:
 
-| Relación | $\kappa$ total [ciclos/símbolo] | De dónde sale |
-|---|---|---|
-| $B = D/2$ (Nyquist banda base) | $1/2$ | los 2 símbolos/ciclo de Nyquist, invertidos |
-| $B = D$ (Nyquist pasabanda) | $1$ | anclaje puro: 1 ciclo/símbolo |
-| $B = 2D$ (nulo a nulo, pulso rectangular) | $2$ | anclaje $\times$ 2 lados del lóbulo |
+| Relación                                  | $\kappa$ total [ciclos/símbolo] | De dónde sale                               |
+| ----------------------------------------- | ------------------------------- | ------------------------------------------- |
+| $B = D/2$ (Nyquist banda base)            | $1/2$                           | los 2 símbolos/ciclo de Nyquist, invertidos |
+| $B = D$ (Nyquist pasabanda)               | $1$                             | anclaje puro: 1 ciclo/símbolo               |
+| $B = 2D$ (nulo a nulo, pulso rectangular) | $2$                             | anclaje $\times$ 2 lados del lóbulo         |
 
 > **Ojo con los dos "2" distintos**: el de Nyquist ($R_s=2B$) es **2 símbolos/ciclo**, un factor de conversión con contenido físico; el de nulo a nulo ($B=2D$) es **2 lados**, pura simetría geométrica. Se confunden fácil porque ambos relacionan $B$ con $D$. [analysis]
 >
