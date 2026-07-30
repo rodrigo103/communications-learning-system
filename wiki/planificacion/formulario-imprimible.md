@@ -14,7 +14,7 @@ curso: Sistemas de Comunicaciones
 |     | $q = \dfrac{V_{pp}}{M}$                                                 | Paso de cuantificación                               | $\tfrac{\text{V}}{\text{niveles}}$ → **V**, altura de un escalón                                                                                                                               | **Error máximo $=q/2$**                                                                 |
 |     | $P_q = \dfrac{q^2}{12}$                                                 | Ruido de cuantificación                              | $\text{V}^2\div$ adimensional → **V²** ($=$ W con $R=1$)                                                                                                                                       | El 12 es la varianza de una uniforme en $[-q/2,\,q/2]$                                  |
 | ●   | $SNR_Q = \dfrac{3M^2}{F_C^2}$                                           | **SNR de cuantificación — la forma de esta cátedra** | $\tfrac{\text{conteo}^2}{(\text{V}/\text{V})^2}$ — se cancela todo, incluso el $q^2$ de la derivación → **adimensional**                                                                       | $F_C=$ factor de cresta $=$ pico/RMS. Que sea adimensional **es lo que habilita el dB** |
-|     | $SNR_Q \approx 6{,}02\,n+1{,}76$ dB                                     | Caso senoidal ($F_C=\sqrt2$)                         | El $6{,}02\,n$ **es** $20\log_{10}2^n$ → **dB**                                                                                                                                                | **Es la misma fórmula**, no otra                                                        |
+|     | $SNR_Q \approx 6{,}02\,n+1{,}76$ dB                                     | Caso senoidal ($F_C=\sqrt2$)                         | El $6{,}02\,n$ **es** $20\log_{10}2^n$ → **dB**                                                                                                                                                | Es la misma fórmula, no otra                                                        |
 |     | $SNR_Q = 3M^2\left\langle\left(\dfrac{m(t)}{V_p}\right)^2\right\rangle$ | Forma general                                        | $\left\langle(m/V_p)^2\right\rangle = 1/F_C^2$, cociente de tensiones → **adimensional**                                                                                                       | Uniforme ($F_C=\sqrt3$) $\Rightarrow SNR_Q=M^2$                                         |
 | ●   | $R_b = n\,f_s$                                                          | Tasa de bits                                         | $\tfrac{\text{bits}}{\text{muestra}}\times\tfrac{\text{muestras}}{\text{s}}$ → **bits/s**                                                                                                      | Telefonía: $n=8$, $f_s=8$k → 64 kbps                                                    |
 |     | $\left(\dfrac{S}{N}\right)_{sal} = \dfrac{SNR_Q}{1+4P_e(M^2-1)}$        | **SNR con errores de canal**                         | adimensional $\div$ adimensional ($P_e$ es probabilidad) → **adimensional**                                                                                                                    | "Antes del canal" $=$ numerador solo ($P_e\to0$)                                        |
@@ -49,11 +49,11 @@ $$f_s = 8\text{ kmuestras/s} \ \to\ R_b = 64\text{ kbps} \ \to\ R_s = 32\text{ k
 |  | $S_{AM}(f)=\tfrac{A_c}{2}\delta(f{\mp}f_c) + \tfrac{A_c\,m}{4}\delta(f{\mp}f_c{\mp}f_m) + \tfrac{A_c\,m}{4}\delta(f{\mp}f_c{\pm}f_m)$ | **Espectro: 6 deltas** | 2 de portadora ($A_c/2$) + 4 laterales ($A_c m/4$) |
 | ● | $m = \dfrac{k\,A_m}{A_c} \qquad m = \dfrac{A_{max}-A_{min}}{A_{max}+A_{min}}$ | Índice de modulación | La 2ª cuando dan medidas de envolvente |
 | ● | $P_c = \dfrac{A_c^2}{2R}$ | Potencia de portadora | $R=1\,\Omega$ si no dan dato (normalizada) |
-|  | $P_{SB} = \dfrac{A_c^2m^2}{8R} = \dfrac{P_c\,m^2}{4}$ | Potencia de **cada** banda lateral | Piden "cada banda lateral en dBW" seguido |
+|  | $P_{SB} = \dfrac{A_c^2m^2}{8R} = \dfrac{P_c\,m^2}{4}$ | Potencia de **cada** banda lateral | En dBW: $10\log_{10}(P_{SB}/1\text{W})$ |
 | ● | $P_{total} = P_c\left(1+\dfrac{m^2}{2}\right)$ | **Potencia total, un tono** | De memoria |
 |  | $P_{total} = P_c\left[1+m^2\langle m_n^2\rangle\right] = P_c\left[1+\dfrac{m^2}{F_C^2}\right]$ | Forma general / con factor de cresta | Tono: $\langle m_n^2\rangle=\tfrac12$ |
 |  | $P_{total} = P_c\left(1+\dfrac{\sum_i m_i^2}{2}\right)$ | **AM multitono** | Sumar $m_i^2/2$ de cada tono |
-| ● | $PEP = \dfrac{A_{max}^2}{2R} = P_c(1+m)^2$ | Potencia pico de envolvente | Pico, **no** promedio. Muy frecuente |
+| ● | $PEP = \dfrac{A_{max}^2}{2R} = P_c(1+m)^2$ | Potencia pico de envolvente | Pico, **no** promedio |
 |  | $\eta_{AM} = \dfrac{m^2}{2+m^2}$ | Eficiencia de potencia | Máx $33{,}3\%$ en $m=1$. DSB/SSB: $100\%$ |
 |  | $\sum_i m_i \leq 1$ | **Sobremodulación en multitono** | El criterio es sobre la **suma**, no cada $m_i$ |
 |  | $s_{DSB}(t)=A_c\,m(t)\cos(2\pi f_ct)$ | DSB-SC | $S_{DSB}(f)=\tfrac{A_c}{2}[M(f{-}f_c)+M(f{+}f_c)]$ |
@@ -64,7 +64,7 @@ $$f_s = 8\text{ kmuestras/s} \ \to\ R_b = 64\text{ kbps} \ \to\ R_s = 32\text{ k
 
 > ⚠️ **La trampa del factor 2**: las alturas de las deltas son **la mitad** de las amplitudes de los cosenos reales ($A_c$ y $A_cm/2$), porque cada coseno real se reparte en dos exponenciales complejas.
 
-**Tabla comparativa** (pregunta conceptual frecuente):
+**Tabla comparativa**:
 
 | | AM | DSB-SC | SSB | VSB |
 |---|---|---|---|---|
@@ -102,7 +102,7 @@ El **filtro pasabanda** centrado en $f_c$ con ancho $2f_m$ deja pasar $a\,c+2b\,
 
 **Clasificación**: NBFM si $\beta<0{,}3$ → $B_T\approx2f_m$ (como AM). WBFM si $\beta>1$ → $B_T\approx2\Delta f$.
 
-**FM vs PM — qué queda invariante** (se piden $\Delta f$ y $\Delta\phi$ por separado):
+**FM vs PM — qué queda invariante**:
 
 | | FM | PM |
 |---|---|---|
@@ -112,9 +112,9 @@ El **filtro pasabanda** centrado en $f_c$ con ancho $2f_m$ deja pasar $a\,c+2b\,
 | **Si se duplica $f_m$** (con $A_m$ fijo) | $\Delta f$ **igual**, $\beta$ **a la mitad** | $\Delta\phi$ **igual**, $\Delta f$ **se duplica** |
 | Si se duplica $A_m$ | $\Delta f$ y $\beta$ se duplican | $\Delta\phi$ y $\beta$ se duplican |
 
-> 📌 **Si se duplica la frecuencia del tono modulante manteniendo su amplitud**: **en FM $\beta$ cae a la mitad; en PM $\beta$ no cambia** (y por eso $\Delta f$ se duplica).
+> **Si se duplica la frecuencia del tono modulante manteniendo su amplitud**: **en FM $\beta$ cae a la mitad; en PM $\beta$ no cambia** (y por eso $\Delta f$ se duplica).
 
-**Multiplicadores y mezcladores** — el patrón más testeado:
+**Multiplicadores y mezcladores**:
 
 | Bloque | $f_c$ | $\Delta f$ | $\beta$ | $f_m$ | $BW$ |
 |---|---|---|---|---|---|
@@ -154,7 +154,7 @@ $\gamma$ es la SNR que se tendría transmitiendo el mensaje **directo en banda b
 | DSB-SC / SSB | $1$ | $0$ dB |
 | FM, $\Delta f=75$ kHz, $W=15$ kHz ($\beta=5$) | $3(25)(0{,}5)=37{,}5$ | $\mathbf{+15{,}7}$ **dB** |
 
-> 		**La lectura conceptual que evalúan**: **AM con detección de envolvente es peor que transmitir en banda base** (nunca supera $-4{,}8$ dB), porque gasta la mayor parte de la potencia en la portadora, que no lleva información. DSB-SC y SSB **empatan**. **Solo FM mejora**, comprando SNR con ancho de banda: la mejora va con $\beta^2$ pero el $BW$ con $(\beta+1)$ — cuadrático a favor contra lineal en contra. Notar que $(S/N)_D^{AM}=\eta_{AM}\gamma$: **la eficiencia de potencia de AM es exactamente su penalidad de SNR**.
+> 		**La lectura conceptual**: **AM con detección de envolvente es peor que transmitir en banda base** (nunca supera $-4{,}8$ dB), porque gasta la mayor parte de la potencia en la portadora, que no lleva información. DSB-SC y SSB **empatan**. **Solo FM mejora**, comprando SNR con ancho de banda: la mejora va con $\beta^2$ pero el $BW$ con $(\beta+1)$ — cuadrático a favor contra lineal en contra. Notar que $(S/N)_D^{AM}=\eta_{AM}\gamma$: **la eficiencia de potencia de AM es exactamente su penalidad de SNR**.
 
 > ⚠️ **Variantes de la fórmula de FM**: distintos textos escriben $3\beta^2\gamma$, $3\beta^2(\beta+1)\gamma$ o $3\Delta^2x^2\gamma$. **Si el enunciado la da, usar esa.**
 
@@ -166,18 +166,18 @@ $\gamma$ es la SNR que se tendría transmitiendo el mensaje **directo en banda b
 
 > ⚠️ **"Factor de ruido" $\neq$ "cifra de ruido"**: "factor de ruido 4" es **lineal**; "cifra de ruido de 6 dB" es **en dB**. **El vocabulario del enunciado te dice las unidades.**
 
-| | Fórmula | Qué es | Notas |
-|---|---|---|---|
-| ● | $N = kTB$ | **Ruido térmico** | $k=1{,}38\times10^{-23}$ J/K. También $N_0=kT$ [W/Hz] |
-| | $v_n^2 = 4kTRB$ | Ruido térmico visto como **tensión** (Johnson-Nyquist) | Sobre una resistencia $R$. La potencia **disponible** sigue siendo $kTB$ |
-| ● | $F = \dfrac{(S/N)_{in}}{(S/N)_{out}} = \dfrac{N_o}{N_i\,G}$ | **Factor de ruido** (adimensional, $\geq1$) | 2ª forma: "ruido real vs el de un dispositivo perfecto" |
-| ● | $T_e = (F-1)\,T_0 \qquad F = 1+\dfrac{T_e}{T_0}$ | Temperatura equivalente de ruido | $T_0=290$ K de referencia |
-| ● | $F_T = F_1 + \dfrac{F_2-1}{G_1} + \dfrac{F_3-1}{G_1G_2}+\cdots$ | **Friis (cascada)** | **La 1ª etapa domina** → LNA primero. **En lineal** |
-| | $T_e = T_1+\dfrac{T_2}{G_1}+\dfrac{T_3}{G_1G_2}+\cdots$ | Friis en temperaturas | Equivalente; a veces más cómoda |
-| ● | $F = L$, $\quad G = 1/L$ | **Elemento pasivo** (cable, atenuador) | **La pérdida es igual a la figura de ruido** |
-| ● | $\left(\dfrac{S}{N}\right)_{out}\Big\rvert_{dB} = \left(\dfrac{S}{N}\right)_{in}\Big\rvert_{dB} - F_T\Big\rvert_{dB}$ | La relación que más se usa | En lineal es $(S/N)_{out} = (S/N)_{in}/F_T$. $F_T$ en dB **es** cuántos dB de SNR se pierden |
-| | $T_{sys}=T_{antena}+T_{receptor}$ | Temperatura de sistema | Aditiva |
-| | $B_N = \dfrac{1}{\lvert H(f_0)\rvert^2}\displaystyle\int_0^\infty \lvert H(f)\rvert^2df$ | Ancho de banda **equivalente de ruido** | Hace $N=N_0B_N$ **exacta**. Casi siempre lo dan |
+|     | Fórmula                                                                                                               | Qué es                                                 | Notas                                                                                        |
+| --- | --------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ | -------------------------------------------------------------------------------------------- |
+| ●   | $N = kTB$                                                                                                             | **Ruido térmico**                                      | $k=1{,}38\times10^{-23}$ J/K. También $N_0=kT$ [W/Hz]                                        |
+|     | $v_n^2 = 4kTRB$                                                                                                       | Ruido térmico visto como **tensión** (Johnson-Nyquist) | Sobre una resistencia $R$. La potencia **disponible** sigue siendo $kTB$                     |
+| ●   | $F = \dfrac{(S/N)_{in}}{(S/N)_{out}} = \dfrac{N_o}{N_i\,G}$                                                           | **Factor de ruido** (adimensional, $\geq1$)            | 2ª forma: "ruido real vs el de un dispositivo perfecto"                                      |
+| ●   | $T_e = (F-1)\,T_0 \qquad F = 1+\dfrac{T_e}{T_0}$                                                                      | Temperatura equivalente de ruido                       | $T_0=290$ K de referencia                                                                    |
+| ●   | $F_T = F_1 + \dfrac{F_2-1}{G_1} + \dfrac{F_3-1}{G_1G_2}+\cdots$                                                       | **Friis (cascada)**                                    | **La 1ª etapa domina** → LNA primero. **En lineal**                                          |
+|     | $T_e = T_1+\dfrac{T_2}{G_1}+\dfrac{T_3}{G_1G_2}+\cdots$                                                               | Friis en temperaturas                                  | Equivalente; a veces más cómoda                                                              |
+| ●   | $F = L$, $\quad G = 1/L$                                                                                              | **Elemento pasivo** (cable, atenuador)                 | **La pérdida es igual a la figura de ruido**                                                 |
+| ●   | $\left(\dfrac{S}{N}\right)_{out}\Big\rvert_{dB} = \left(\dfrac{S}{N}\right)_{in}\Big\rvert_{dB} - F_T\Big\rvert_{dB}$ | La relación que más se usa                             | En lineal es $(S/N)_{out} = (S/N)_{in}/F_T$. $F_T$ en dB **es** cuántos dB de SNR se pierden |
+|     | $T_{sys}=T_{antena}+T_{receptor}$                                                                                     | Temperatura de sistema                                 | Aditiva                                                                                      |
+|     | $B_N = \dfrac{1}{\lvert H(f_0)\rvert^2}\displaystyle\int_0^\infty \lvert H(f)\rvert^2df$                              | Ancho de banda **equivalente de ruido**                | Hace $N=N_0B_N$ **exacta**. Casi siempre lo dan                                              |
 
 > ⚠️ **Friis solo funciona en lineal.** $F$, $L$ y $G$ son adimensionales pero casi siempre los dan en dB: convertir con $X=10^{X_{dB}/10}$ **antes** de aplicar Friis, y recién pasar el resultado a dB.
 
@@ -213,13 +213,13 @@ $$\left(\frac{S}{N}\right)_{RX} = P_{TX}+G_{TX}-L_{FSPL}-L_{otras}+G_{RX}-N \qqu
 
 $$\boxed{N_{dBm} = -174 + 10\log_{10}B_{[Hz]} + F_{[dB]}} \qquad (kT_0 = 4\times10^{-21}\ \text{W/Hz} = -174\ \text{dBm/Hz})$$
 
-### $F$ de catálogo vs degradación real (la distinción que cuesta puntos)
+### $F$ de catálogo vs degradación real
 
 $$F_{spec} = 1+\frac{T_{eq}}{T_0}\ \text{(catálogo, fijo)} \qquad\qquad \text{Degradación} = 1+\frac{T_{eq}}{T_{fuente}}\ \text{(situación concreta)}$$
 
 El dispositivo agrega ruido propio **fijo** ($N_{out}=G(N_i+N_a)$, con $N_a=kT_{eq}B$): si $N_i$ sube, ese aporte **pesa proporcionalmente menos** → degrada menos. La norma fija la referencia en $T_0=290$ K para que $F$ sirva como especificación. **Coinciden solo cuando la fuente está a $T_0$.** Ejemplo: LNA con $T_{eq}=50$ K degrada **0,7 dB** en el banco ($T_0$) y **5,4 dB** con antena a cielo frío ($T_{ant}=20$ K) — el mismo LNA.
 
-> **Cómo redactarlo si un ítem cambia el ruido de entrada**: *"el ruido propio del amplificador no cambia, por lo tanto la degradación efectiva pasa de $F$ a $1+T_{eq}/T_{fuente}$"*. Con la regla del 25% mínimo, el razonamiento explícito suma.
+> **Cómo enunciar el supuesto** si cambia el ruido de entrada: *"el ruido propio del amplificador no cambia, por lo tanto la degradación efectiva pasa de $F$ a $1+T_{eq}/T_{fuente}$"*.
 
 ---
 
@@ -238,7 +238,7 @@ El dispositivo agrega ruido propio **fijo** ($N_{out}=G(N_i+N_a)$, con $N_a=kT_{
 | ● | $\dfrac{E_b}{N_0} > \ln 2 = -1{,}59$ dB | **Límite absoluto de Shannon** | Ningún esquema opera por debajo |
 | | $C_\infty = \dfrac{S}{N_0\ln2} = 1{,}44\dfrac{S}{N_0}$ | Capacidad con $B\to\infty$ | Límite **finito** aun con banda infinita |
 | | $C\approx B\log_2(S/N)$ si $S/N\gg1$ $\quad$ $C\approx1{,}44\,B\,S/N$ si $S/N\ll1$ | Los dos regímenes de Shannon | Limitado por **banda** (log) vs por **potencia** (lineal) |
-| | $\left(\dfrac{S}{N}\right)_{sal} = \left[1+\left(\dfrac{S}{N}\right)_{ent}\right]^{B_T/B}-1$ | **Sistema ideal** (piden demostrarlo) | Ver demostración abajo |
+| | $\left(\dfrac{S}{N}\right)_{sal} = \left[1+\left(\dfrac{S}{N}\right)_{ent}\right]^{B_T/B}-1$ | **Sistema ideal** | Ver demostración abajo |
 
 **Símbolo, binit y bit — tres cosas distintas** (la cátedra usa \"binits\" explícitamente):
 
@@ -286,7 +286,7 @@ $$\boxed{H = \sum_k n_k\,p_k\log_2\frac{1}{p_k}} \qquad\text{con la verificació
 
 Chequear que las probabilidades sumen 1 **antes** de calcular: si no suman, hay un grupo mal contado y todo lo que sigue arrastra el error.
 
-> ⭐ **Es el mejor ejemplo de las tres tasas conviviendo**, y por eso conviene tenerlo claro: por el cable van $R_b$ **binits/s**, que son $R_b/N_t$ **caracteres/s** (los símbolos de la fuente), que transportan $R = (R_b/N_t)\,H$ **bits/s** de información real. **Se pierde dos veces**: primero el overhead de trama ($7/N_t$), y después porque $H < \log_2(\text{alfabeto})$ al no ser los caracteres equiprobables. Con $N_t=10$ y un alfabeto de ~90 caracteres, la eficiencia total ronda el 50%.
+> **Las tres tasas conviviendo**: por el cable van $R_b$ **binits/s**, que son $R_b/N_t$ **caracteres/s** (los símbolos de la fuente), que transportan $R = (R_b/N_t)\,H$ **bits/s** de información real. **Se pierde dos veces**: primero el overhead de trama ($7/N_t$), y después porque $H < \log_2(\text{alfabeto})$ al no ser los caracteres equiprobables. Con $N_t=10$ y un alfabeto de ~90 caracteres, la eficiencia total ronda el 50%.
 
 **Demostración del sistema ideal** (un sistema ideal no pierde información, así que las capacidades a un lado y otro deben igualarse):
 
@@ -301,8 +301,6 @@ $$\underbrace{B_T\log_2\!\left[1+\left(\tfrac{S}{N}\right)_{ent}\right]}_{C\ \te
 ---
 
 ## 7 · Modulación Digital / BER
-
-> Menos frecuente que PCM o AM/FM, pero **sus fórmulas se reusan en Ruido/BER**, así que rinde doble.
 
 |  | Fórmula | Qué es | Notas |
 |---|---|---|---|
@@ -320,7 +318,7 @@ $$\underbrace{B_T\log_2\!\left[1+\left(\tfrac{S}{N}\right)_{ent}\right]}_{C\ \te
 
 > ⚠️ **Preferí siempre la ruta directa** $\frac{E_b}{N_0}=\frac{S}{R_bN_0}$: solo necesita potencia, tasa de bits y densidad de ruido — **ni ancho de banda ni SNR**. La vía SNR arrastra cualquier error previo y falla si el enunciado **cambia $N_0$ entre ítems** (que es exactamente lo que hacen a propósito).
 
-> **El error clásico en 16-QAM**: calcular $S$ con la **amplitud máxima** de la constelación, u olvidar el $/2$ del portador. Son **dos efectos distintos**: promedio sobre la constelación (factor $18/10=1{,}8$ en 16-QAM) **y** pico→RMS del portador (factor 2). **Si te dan una amplitud máxima y piden potencia, preguntate si la señal tiene amplitud constante o no.**
+> **En 16-QAM**: calcular $S$ con la **amplitud máxima** de la constelación, u olvidar el $/2$ del portador. Son **dos efectos distintos**: promedio sobre la constelación (factor $18/10=1{,}8$ en 16-QAM) **y** pico→RMS del portador (factor 2). **Ante una amplitud máxima, verificar si la señal tiene amplitud constante antes de calcular potencia.**
 
 > ⚠️ **$a$ (QAM) y $A$ (PSK) NO son lo mismo**: $a$ es la **unidad de grilla** (mitad del espaciado; **ningún símbolo vale $a$**), $A$ es el **radio** (todos los símbolos valen $A$). Puente en QPSK, que es a la vez 4-QAM y 4-PSK: $\tfrac{2(4-1)}{3}a^2 = 2a^2 = A^2 \Rightarrow A=a\sqrt2$ ✓ (los puntos $(\pm a,\pm a)$ están a distancia $a\sqrt2$ del origen).
 
@@ -334,7 +332,7 @@ $$\underbrace{B_T\log_2\!\left[1+\left(\tfrac{S}{N}\right)_{ent}\right]}_{C\ \te
 
 En **banda base** todo se divide por 2: $B_{min}=D/2$, $B=\dfrac{D}{2}(1+\alpha)$. Para **FSK** manda Carson, no Nyquist: $\ \boxed{B_{FSK}=2(\Delta f+D)}$ con $\Delta f = \dfrac{|f_1-f_0|}{2}$.
 
-**Eficiencia espectral** (la piden explícitamente): $\ \eta = \dfrac{R_b}{B}$ [bits/s/Hz] $\Rightarrow$ a $B$ mínimo pasabanda $\eta=\ell$; con roll-off $\eta=\dfrac{\ell}{1+\alpha}$; en banda base el doble.
+**Eficiencia espectral**: $\ \eta = \dfrac{R_b}{B}$ [bits/s/Hz] $\Rightarrow$ a $B$ mínimo pasabanda $\eta=\ell$; con roll-off $\eta=\dfrac{\ell}{1+\alpha}$; en banda base el doble.
 
 > **Los dos "2" distintos**: el de Nyquist ($R_s=2B$) es **2 símbolos/ciclo**, un factor de conversión con contenido físico; el de nulo a nulo ($B=2D$) son **2 lados del lóbulo**, pura simetría geométrica. Consecuencia: $B_{n\text{-}n}=2B_{min}$ en pasabanda — **el precio de usar pulsos rectangulares** en vez de sinc.
 
@@ -369,7 +367,7 @@ $$P_e = Q\!\left(\sqrt{\frac{E_d}{2N_0}}\right) = Q\!\left(\frac{d_{min}}{\sqrt{
 | **Unipolar** (NRZ, OOK) | $V,\ 0$ | $V^2T_b$ | $\dfrac{V^2}{2}$ | $2E_b$ | $Q\!\left(\sqrt{E_b/N_0}\right)$ |
 | **Ortogonal** (FSK coherente) | ortogonales | $2E_b$ | — | $2E_b$ | $Q\!\left(\sqrt{E_b/N_0}\right)$ |
 
-**Para unipolar NRZ** (el caso de banda base que piden): $\quad S = \dfrac{V^2}{2}, \qquad E_d = V^2T_b = 2S\,T_b = \dfrac{2S}{R_b}$
+**Para unipolar NRZ**: $\quad S = \dfrac{V^2}{2}, \qquad E_d = V^2T_b = 2S\,T_b = \dfrac{2S}{R_b}$
 
 > **$E_b$ vs $E_d$ — no son lo mismo, y no compiten**: $E_b=S\,T_b$ mide el **costo** energético; $E_d$ mide la **distinguibilidad**. $E_d$ es la cantidad fundamental (una sola fórmula, válida para cualquier señalización); $E_b$ funciona **una vez fijado el esquema**, porque ahí $E_d=k\,E_b$ con $k$ conocido. **Las distintas fórmulas de la tabla de BER SON los distintos $k$**: $k=4$ antipodal, $k=2$ unipolar/ortogonal — de ahí los 3 dB. La tabla se escribe en $E_b$ porque es lo que **cuesta** y permite comparar esquemas de forma justa.
 
@@ -405,7 +403,7 @@ En general, para cualquier constelación: $\ d_{min} = \min_{i\neq j}\lVert s_i-
 
 **Espaciado uniforme y simétrico respecto de cero** porque maximiza $d_{min}$ a potencia media dada, y da media nula (si no, se gastaría potencia en una continua que no lleva información).
 
-### Densidad espectral de potencia (piden "dibujar con suficiente detalle")
+### Densidad espectral de potencia
 
 $$S(f) = \frac{\sigma_a^2}{T_s}\,|P(f)|^2 \quad\Longrightarrow\quad \text{pulso rectangular} \to \operatorname{sinc}^2$$
 
@@ -567,14 +565,13 @@ $$P_{dBm} = 10\log_{10}\!\left(\frac{P}{1\ \text{mW}}\right) \qquad P_{dBW} = 10
 
 ---
 
-## 13 · Los errores que cuestan puntos (todos los temas)
+## 13 · Errores frecuentes
 
 **Transversales**
 
-1. **Olvidar el factor de cresta** al calcular potencia desde una amplitud máxima. Aparece en AM, en PCM y en QAM — **es el error más sistemático de esta cátedra.**
+1. **Olvidar el factor de cresta** al calcular potencia desde una amplitud máxima. Aparece en AM, en PCM y en QAM.
 2. **Convertir dB ↔ lineal en el momento equivocado.** Friis y Shannon-Hartley van **en lineal**; la división de $L_{TOTAL}$ entre secciones va **en dB**.
 3. **Arrastrar un error** de un ítem al siguiente. El corrector lo marca ("arrastra error") pero **descuenta igual**. Si un ítem repite un dato que ya estaba, sospechá que quiere la **ruta independiente**.
-4. **Dejar un problema en blanco** — desaprueba el examen entero. **25% desarrollado como mínimo**: plantear la fórmula aunque no se termine.
 
 **Por tema**
 

@@ -8,16 +8,16 @@ curso: Sistemas de Comunicaciones
 
 > 🖨️ **Para imprimir**: abrir `diagramas-en-bloques.html` en Chrome o Safari. **Ese HTML se genera de este archivo** con `node scripts/build-diagramas.mjs` — los bloques ```` ```diagram ```` se dibujan como SVG. Todo cambio va acá, no en el HTML.
 
-> **Los diagramas en bloques se piden seguido**, y son de lo más rápido de resolver **si los tenés memorizados** — y de lo más caro si no.
+> Diagramas de referencia: la cadena de bloques de cada sistema, con la función de cada etapa.
 
-## 1. Generador PCM ⭐
+## 1. Generador PCM
 
 ```diagram
 <Analógica> > [Filtro anti-alias;pasabajos a B] > [Muestreador S/H;a f_s ≥ 2B] > [Cuantificador;M niveles] > [Codificador;n = log_2 M] > <PCM>
 caption: Transmisor. La información se pierde en el cuantificador, no antes.
 ```
 
-**Función de cada bloque** (lo piden explícitamente):
+**Función de cada bloque**:
 
 | Bloque | Qué hace |
 |---|---|
@@ -36,21 +36,21 @@ caption: Transmisor. La información se pierde en el cuantificador, no antes.
 
 ---
 
-## 2. Transmisor PAM/TDM ⭐⭐
+## 2. Transmisor PAM/TDM
 
 ```diagram
 {<m_1(t)> | <m_2(t)> | <⋮> | <m_N(t)>} > {[LPF] | [LPF] | . | [LPF]} > [Conmutador rotativo;f_s por canal] > [LPF de salida;BW mínimo] > <PAM/TDM>
 caption: Un pasabajos por canal (anti-alias), el conmutador rota a f_s, y el filtro de salida acota el ancho de banda.
 ```
 
-**Puntos clave que evalúan:**
+**Puntos clave:**
 - Un **filtro pasabajos por canal** a la entrada (anti-alias, limita cada mensaje a $B_i$)
 - El **conmutador** (o multiplexor) rota entre los $N$ canales a $f_s$ por canal → tasa total $Nf_s$
-- **Filtro de salida** para que el ancho de banda sea mínimo (lo piden así: *"tal que el ancho de banda a la salida sea mínimo"*)
+- **Filtro de salida** para que el ancho de banda sea mínimo
 
 $$f_{s,total} = N f_s \geq 2NB \qquad B_{min} = \frac{Nf_s}{2}\ \text{(banda base)}$$
 
-**Con sincronismo** (variante frecuente): se agrega un **canal extra** para la señal de trama/sincronismo, así que $N+1$ ranuras en vez de $N$.
+**Con sincronismo** (variante con canal de sincronismo): se agrega un **canal extra** para la señal de trama/sincronismo, así que $N+1$ ranuras en vez de $N$.
 
 **Receptor**:
 
@@ -61,7 +61,7 @@ caption: Necesita sincronismo de trama para saber qué ranura corresponde a qué
 
 ---
 
-## 3. Modulador SSB por desplazamiento de fase (Hartley) ⭐
+## 3. Modulador SSB por desplazamiento de fase (Hartley)
 
 ```diagram
 <m(t)> > {~ | [−90°;Hilbert]} > {(×)v{cos(2πf_c t)} | "m̂(t)"(×)^{sen(2πf_c t)}} > (∓) > <s_{SSB}(t)>
@@ -78,7 +78,7 @@ $$s_{SSB}(t) = m(t)\cos(\omega_ct) \mp \hat m(t)\sin(\omega_ct)$$
 
 ---
 
-## 4. Modulador Armstrong (FM indirecto) ⭐
+## 4. Modulador Armstrong (FM indirecto)
 
 ```diagram
 <Osc. de cristal> > [NBFM;β ≪ 1]^{m(t)} > [× n_1;sube β] > (×)^{Osc. local f_{OL}} > [× n_2;sube β] > <WBFM>
@@ -96,7 +96,7 @@ Los multiplicadores **suben $\beta$** (que es lo que NBFM no puede dar directame
 
 ---
 
-## 5. Transmisor OFDM ⭐
+## 5. Transmisor OFDM
 
 ```diagram
 <Datos serie> > [S/P] > [Mapeo QAM] > [IFFT] > [P/S] > [+ CP] > {"x(t)"(×)v{cos(2πf_c t)} | "y(t)"(×)^{−sen(2πf_c t)}} > (+) > <v(t)>
@@ -113,7 +113,7 @@ Ver [[../espectro-expandido/ss-ofdm-formulario-examen|Formulario SS/OFDM]].
 
 ---
 
-## 6. Sección de repetición (para ejercicios de Ruido) ⭐
+## 6. Sección de repetición
 
 ```diagram
 <⋯> > [Cable;g_c = 1/L_c,  T_{amb} = T_0] > [Repetidor;g_r = L_c,  F_r] > <⋯ × n secciones>
@@ -150,14 +150,13 @@ $f_{FI} = |f_{RF} - f_{OL}|$. La **frecuencia imagen** está a $2f_{FI}$ de la d
 
 ---
 
-## Cómo dibujarlos en el examen
+## Cómo dibujarlos
 
 1. **Bloques rectangulares con el nombre adentro**, flechas indicando el sentido
 2. **Rotular las señales** en los puntos clave (entrada, salida, frecuencias intermedias)
 3. **Anotar los valores calculados** sobre cada bloque (ej. $\times500$, $f_{OL}=1{,}7$ MHz) — conecta el dibujo con la cuenta y muestra que entendés el sistema
-4. Si piden "explicar la función de cada bloque", **una línea por bloque alcanza**
+4. Para explicar la función de cada bloque, **una línea por bloque alcanza**
 
-> Con la regla del **25% mínimo por punto**, un diagrama bien hecho puede salvar un ejercicio donde las cuentas no salieron.
 
 ## Ver también
 

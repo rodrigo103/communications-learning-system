@@ -34,7 +34,7 @@ ${DIAGRAM_CSS}</style>
   </header>
 
   <div class="legend">
-    <span>Diagramas en bloques — los que conviene tener memorizados</span>
+    <span>Cadenas de bloques de los sistemas del programa</span>
     <button class="print-btn no-print" onclick="window.print()">Imprimir / Guardar PDF</button>
   </div>
 
