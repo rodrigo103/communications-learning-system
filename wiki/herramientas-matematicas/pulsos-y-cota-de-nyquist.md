@@ -58,7 +58,39 @@ Por eso el sinc no es "una buena opción": es **la única** que alcanza el lími
 
 ### Lectura complementaria: grados de libertad
 
-Un canal de ancho $B$ tiene $2B$ **grados de libertad por segundo** (es el teorema de muestreo leído sobre el canal). No se pueden meter más de $2B$ símbolos independientes por segundo. **El sinc es el pulso que usa exactamente todos, sin desperdiciar ninguno.**
+Un canal real de ancho $B$ tiene **exactamente $2B$ grados de libertad por segundo**. No se pueden meter más de $2B$ símbolos independientes por segundo, y **el sinc es el pulso que usa exactamente todos sin desperdiciar ninguno.**
+
+---
+
+## ⚠️ Los DOS teoremas de Nyquist — no son el mismo
+
+Se confunden constantemente porque comparten el nombre, el "2" y el hecho de fondo. Pero son **enunciados distintos**: [analysis]
+
+| | **Teorema de muestreo** | **Criterio de señalización** (1er criterio de Nyquist) |
+|---|---|---|
+| **Enunciado** | $f_s \geq 2B$ | $R_s \leq 2B$ |
+| **Sobre qué** | Convertir una señal continua en muestras | Transmitir símbolos discretos por un canal |
+| **Dirección** | **Análisis**: señal → números | **Síntesis**: números → señal |
+| **Unidad del "2"** | muestras/ciclo | símbolos/ciclo |
+| **Dónde se usa** | PCM (frecuencia de muestreo) | Digital, PCM (ancho de banda mínimo) |
+
+**Lo que comparten** — y la razón de que aparezca el mismo 2:
+
+> **Un canal (o señal) real de ancho de banda $B$ tiene exactamente $2B$ grados de libertad por segundo.**
+>
+> - **Muestreo** dice: *hacen falta* $2B$ números por segundo para describir la señal
+> - **Señalización** dice: se pueden *elegir libremente* $2B$ números por segundo para transmitir
+>
+> Mismo espacio de $2B$ dimensiones por segundo, leído en direcciones opuestas. **Son duales.**
+
+> **Sobre el mnemónico "pico y valle"**: se suele decir que hacen falta 2 muestras por ciclo "para ver el pico y el valle". Sirve para recordar el número, pero **no es riguroso**: muestreando una sinusoide exactamente a 2 muestras/ciclo justo en los cruces por cero se obtienen **todos ceros** y se pierde la señal. Por eso el teorema estricto pide $f_s>2B$, no $\geq$. El argumento correcto es el de **aliasing / grados de libertad**, no el de los extremos. [analysis]
+
+**Las tres apariciones del criterio de señalización en esta vault son el mismo teorema**, en distinto contexto:
+- [[../modulacion-digital/digital-formulario-examen#Los tres anchos de banda — no confundirlos|Digital — los tres anchos de banda]] (con distintas formas de pulso)
+- [[../modulacion-pulsos/pcm-formulario-examen#Justificación del paso $R_s \to B_{min}$ (criterio de Nyquist sin ISI)|PCM — justificación del paso $R_s\to B_{min}$]]
+- Esta nota (la demostración de la cota)
+
+Mientras que $f_s\geq2B$ (fórmula 1 del [[../modulacion-pulsos/pcm-formulario-examen|formulario de PCM]]) es **el otro teorema**.
 
 ---
 
