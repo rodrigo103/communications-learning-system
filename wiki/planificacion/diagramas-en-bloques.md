@@ -143,19 +143,3 @@ caption: El filtro de RF es el que rechaza la frecuencia imagen, a 2·f_{FI} de 
 ```
 
 $f_{FI} = |f_{RF} - f_{OL}|$. La **frecuencia imagen** está a $2f_{FI}$ de la deseada y la rechaza el filtro de RF.
-
----
-
-## Cómo dibujarlos
-
-1. **Bloques rectangulares con el nombre adentro**, flechas indicando el sentido
-2. **Rotular las señales** en los puntos clave (entrada, salida, frecuencias intermedias)
-3. **Anotar los valores calculados** sobre cada bloque (ej. $\times500$, $f_{OL}=1{,}7$ MHz) — conecta el dibujo con la cuenta y muestra que entendés el sistema
-4. Para explicar la función de cada bloque, **una línea por bloque alcanza**
-
-
-## Ver también
-
-- [[../modulacion-pulsos/pcm-formulario-examen|PCM]] · [[../modulacion-analogica/exponencial-formulario-examen|FM/PM]] · [[../espectro-expandido/ss-ofdm-formulario-examen|SS/OFDM]] · [[../ruido/ruido-formulario-examen|Ruido]]
-- [[../modulacion-pulsos/multiplex-tdm|Multiplexación TDM]]
-- [[../modulacion-analogica/modulador-armstrong|Modulador Armstrong]]

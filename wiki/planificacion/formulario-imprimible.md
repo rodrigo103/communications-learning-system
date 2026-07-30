@@ -485,37 +485,20 @@ $$S(f) = \frac{\sigma_a^2}{T_s}\,|P(f)|^2 \quad\Longrightarrow\quad \text{pulso 
 
 ### Decibeles — cuándo $10\log$ y cuándo $20\log$
 
-**Hay una sola regla: $10\log_{10}$ de una relación de POTENCIAS.** El 20 no es otra regla — aparece cuando **lo de adentro está al cuadrado** y el exponente sale afuera:
+**Una sola regla: $10\log_{10}$ de una relación de POTENCIAS.** El 20 no es otra regla — sale cuando lo de adentro está **al cuadrado**, sea porque la magnitud es una **amplitud** ($P\propto V^2$) o porque la fórmula ya trae un $(\cdot)^2$:
 
 $$\boxed{10\log_{10}\big(X^2\big) = 20\log_{10}(X)}$$
 
-Eso pasa por **dos motivos distintos**, y conviene no mezclarlos:
-
-| Motivo | Cuándo | Ejemplo |
-|---|---|---|
-| **1. La magnitud es una amplitud** (tensión, campo) y $P\propto V^2$ | Te dan volts y querés dB de potencia | $10\log\dfrac{V_2^2}{V_1^2} = 20\log\dfrac{V_2}{V_1}$ |
-| **2. La relación de potencias YA es un cuadrado** | La fórmula misma tiene un $(\cdot)^2$ | FSPL, $M^2$ de $SNR_Q$ |
-
-**Los cuatro lugares del programa donde aparece el 20:**
-
-| Dónde | De dónde sale el 20 |
+| Los tres lugares con 20 | De dónde sale |
 |---|---|
-| **FSPL** $=32{,}44+20\log f_{[MHz]}+20\log d_{[km]}$ | $L=(4\pi d/\lambda)^2$ — **motivo 2**, no es una amplitud |
-| **$SNR_Q$ en dB** $= 10\log\dfrac{3M^2}{F_C^2} = 1{,}76+20\log M-20\log F_C$ | El $M^2$ y el $F_C^2$ |
-| **El famoso $6{,}02\,n$** | Es literalmente eso: $20\log(2^n)=20n\log2 = 6{,}02n$. **Por eso cada bit da $+6$ dB y no $+3$** |
-| Companding $\approx20\log\mu$ | Es un rango dinámico (relación de amplitudes) |
+| $L_{FSPL}=32{,}44+20\log f_{[MHz]}+20\log d_{[km]}$ | $L=(4\pi d/\lambda)^2$ — **no** es una amplitud |
+| $SNR_Q\,[\text{dB}] = 1{,}76+20\log M-20\log F_C$ | el $M^2$ y el $F_C^2$; de ahí el $6{,}02\,n = 20\log 2^n$ — **cada bit da $+6$ dB, no $+3$** |
+| Companding $\approx20\log\mu$ | rango dinámico (relación de amplitudes) |
 
-> ⚠️ **Todo lo demás va con $10\log$, sin excepción**: $F$ (cifra de ruido), $G$, $L_c$, Friis, SNR, $\gamma$, $E_b/N_0$, $G_p$, capacidades, potencias, PEP. **El chequeo rápido**: ¿lo de adentro está al cuadrado, o me dieron **volts**? → 20. ¿Me dieron **watts** o una relación de potencias? → 10.
-
-**dBm y dBW** — siempre $10\log$, son potencias:
+> ⚠️ **Todo lo demás va con $10\log$**: $F$, $G$, $L_c$, Friis, SNR, $\gamma$, $E_b/N_0$, $G_p$, capacidades, potencias, PEP. **Chequeo**: ¿al cuadrado, o en **volts**? → 20. ¿**Watts** o relación de potencias? → 10.
 
 $$P_{dBm} = 10\log_{10}\!\left(\frac{P}{1\ \text{mW}}\right) \qquad P_{dBW} = 10\log_{10}\!\left(\frac{P}{1\ \text{W}}\right) \qquad P_{dBm} = P_{dBW}+30$$
 
-⚠️ **Ojo con el denominador de dBm: es mW, no W.** Es el error de dedo típico.
+⚠️ El denominador de dBm es **mW, no W**. Anclas: 1 mW $=0$ dBm · 1 W $=30$ dBm $=0$ dBW · $kT_0=-174$ dBm/Hz.
 
-| Potencia | dBm | Potencia | dBm |
-|---|---|---|---|
-| 1 mW | **0 dBm** | 5 µW | $10\log(5\times10^{-3}) = \mathbf{-23{,}0}$ dBm |
-| 1 W | 30 dBm ($=0$ dBW) | $kT_0$ | $-174$ dBm/Hz |
-
-> **dBm es un nivel ABSOLUTO** (referido a 1 mW); **dB es una RELACIÓN**. Por eso en el balance de enlace se mezclan sin problema — $\underbrace{P_{TX}}_{\text{dBm}} + \underbrace{G_{TX}-L_{FSPL}+G_{RX}}_{\text{dB}} = \underbrace{P_{RX}}_{\text{dBm}}$ — pero **restar dos dBm da dB**, y **sumar dos dBm no significa nada**.
+**dBm es nivel absoluto; dB es relación.** Se mezclan en el balance de enlace ($P_{TX}+G_{TX}-L_{FSPL}+G_{RX}=P_{RX}$); **restar dos dBm da dB**, y **sumar dos dBm no significa nada**.
