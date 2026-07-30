@@ -1,0 +1,11 @@
+{
+  "name": "comms-formulario-build",
+  "private": true,
+  "description": "Genera formulario-imprimible.html desde el .md, con LaTeX -> MathML nativo",
+  "scripts": {
+    "build": "node build-formulario.mjs"
+  },
+  "dependencies": {
+    "temml": "^0.13.3"
+  }
+}

@@ -74,3 +74,7 @@ secrets/
 credentials/
 *.key
 *.pem
+
+# node_modules del generador del formulario
+scripts/node_modules/
+scripts/package-lock.json
