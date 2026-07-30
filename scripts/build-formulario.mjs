@@ -36,8 +36,7 @@ const html = `<meta charset="utf-8">
 
   <div class="legend">
     <span><b style="color:var(--mem)">●</b> de memoria</span>
-    <span><b>°</b> cero apariciones en los 42 finales — baja prioridad</span>
-    <span><b>%</b> frecuencia sobre 42 finales únicos</span>
+    <span><b>°</b> tema de baja prioridad</span>
     <button class="print-btn no-print" onclick="window.print()">Imprimir / Guardar PDF</button>
   </div>
 
@@ -45,7 +44,7 @@ ${content}
 
   <footer class="end">
     <span>Fuente: wiki/planificacion/formulario-imprimible.md · generado con scripts/build-formulario.mjs</span>
-    <span>Consolidado sobre 42 finales únicos (2019-2026) + los 7 formularios por tema</span>
+    <span>Tabla de fórmulas de elaboración propia</span>
   </footer>
 </div>
 `;

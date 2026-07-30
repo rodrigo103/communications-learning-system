@@ -34,8 +34,7 @@ ${DIAGRAM_CSS}</style>
   </header>
 
   <div class="legend">
-    <span>“Dibujar el diagrama en bloques” aparece <b>~20 veces</b> en el corpus</span>
-    <span>vale <b>0,5–0,75 puntos</b> y es de lo más rápido — si lo tenés memorizado</span>
+    <span>Diagramas en bloques — los que conviene tener memorizados</span>
     <button class="print-btn no-print" onclick="window.print()">Imprimir / Guardar PDF</button>
   </div>
 
@@ -43,7 +42,7 @@ ${content}
 
   <footer class="end">
     <span>Fuente: wiki/planificacion/diagramas-en-bloques.md · generado con scripts/build-diagramas.mjs</span>
-    <span>Relevado sobre 42 finales únicos (2019-2026)</span>
+    <span>Material de elaboración propia</span>
   </footer>
 </div>
 `;

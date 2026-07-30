@@ -6,25 +6,9 @@ curso: Sistemas de Comunicaciones
 
 # Diagramas en Bloques — los que hay que tener a mano
 
-> **Last verified:** 2026-07-29 | **Verified by:** relevamiento sobre los 42 finales únicos de `exercises/finales/md/`
-
 > 🖨️ **Para imprimir**: abrir `diagramas-en-bloques.html` en Chrome o Safari. **Ese HTML se genera de este archivo** con `node scripts/build-diagramas.mjs` — los bloques ```` ```diagram ```` se dibujan como SVG. Todo cambio va acá, no en el HTML.
 
-> **"Dibujar el diagrama en bloques" aparece ~20 veces en el corpus.** Casi siempre vale entre 0,5 y 0,75 puntos, y es de lo más rápido de resolver **si lo tenés memorizado** — y de lo más caro si no.
-
-## Frecuencia real en los finales
-
-| Diagrama | Apariciones |
-|---|---|
-| **Transmisor PAM/TDM** (y su receptor) | **10** |
-| **Modulador SSB por desplazamiento de fase** | 3 |
-| **Transmisor de FM / Armstrong** | 3+ |
-| **Sección de repetición** (cable + repetidor) | 2 |
-| **Transmisor OFDM** (S/P → IFFT → P/S → cuadratura) | 2 |
-| **Generador PCM** | 1+ |
-| **Demodulador FSK binaria** | 1 |
-
----
+> **Los diagramas en bloques se piden seguido**, y son de lo más rápido de resolver **si los tenés memorizados** — y de lo más caro si no.
 
 ## 1. Generador PCM ⭐
 
@@ -52,7 +36,7 @@ caption: Transmisor. La información se pierde en el cuantificador, no antes.
 
 ---
 
-## 2. Transmisor PAM/TDM ⭐⭐ (el más pedido — 10 veces)
+## 2. Transmisor PAM/TDM ⭐⭐
 
 ```diagram
 {<m_1(t)> | <m_2(t)> | <⋮> | <m_N(t)>} > {[LPF] | [LPF] | . | [LPF]} > [Conmutador rotativo;f_s por canal] > [LPF de salida;BW mínimo] > <PAM/TDM>
@@ -66,7 +50,7 @@ caption: Un pasabajos por canal (anti-alias), el conmutador rota a f_s, y el fil
 
 $$f_{s,total} = N f_s \geq 2NB \qquad B_{min} = \frac{Nf_s}{2}\ \text{(banda base)}$$
 
-**Con sincronismo** (variante que piden 3 veces): se agrega un **canal extra** para la señal de trama/sincronismo, así que $N+1$ ranuras en vez de $N$.
+**Con sincronismo** (variante frecuente): se agrega un **canal extra** para la señal de trama/sincronismo, así que $N+1$ ranuras en vez de $N$.
 
 **Receptor**:
 
@@ -151,11 +135,11 @@ caption: No coherente: los mismos dos brazos con detector de envolvente. Más si
 
 **No coherente**: los mismos dos brazos pero con **detector de envolvente** en vez de detector coherente. Más simple, ~3 dB de penalidad.
 
-*(Y sí: un modulador FSK binaria **se puede armar con dos moduladores OOK** — uno en $f_1$ activado por los "1" y otro en $f_2$ por los "0", sumados a la salida. Es una pregunta del corpus.)*
+*(Y sí: un modulador FSK binaria **se puede armar con dos moduladores OOK** — uno en $f_1$ activado por los "1" y otro en $f_2$ por los "0", sumados a la salida.)*
 
 ---
 
-## 8. Receptor superheterodino (por si aparece)
+## 8. Receptor superheterodino
 
 ```diagram
 <Antena> > [Ampl. RF;rechaza la imagen] > (×)^{Osc. local f_{OL}} > [Ampl. FI;f_{FI} = f_{RF} − f_{OL}] > [Detector] > [Ampl. audio] > <Parlante>

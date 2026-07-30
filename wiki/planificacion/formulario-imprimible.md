@@ -7,21 +7,21 @@ curso: Sistemas de Comunicaciones
 
 ## 1 · Muestreo / PCM / Cuantificación
 
-|  | Fórmula | Qué es | Unidades — cómo se cancela | Notas |
-|---|---|---|---|---|
-| ● | $f_s \geq 2B$ | **Nyquist** — frecuencia de muestreo mínima | $\tfrac{\text{muestras}}{\text{s}} \geq \tfrac{\text{muestras}}{\text{ciclo}}\times\tfrac{\text{ciclos}}{\text{s}}$ → **muestras/s** | Evita aliasing |
-|  | $M = 2^n$ | $M$ niveles con $n$ bits/muestra | **No hay contabilidad** — $n$ es exponente, conteo puro → **niveles** | $n=\log_2M$ |
-|  | $q = \dfrac{V_{pp}}{M}$ | Paso de cuantificación | $\tfrac{\text{V}}{\text{niveles}}$ → **V**, altura de un escalón | **Error máximo $=q/2$** |
-|  | $P_q = \dfrac{q^2}{12}$ | Ruido de cuantificación | $\text{V}^2\div$ adimensional → **V²** ($=$ W con $R=1$) | El 12 es la varianza de una uniforme en $[-q/2,\,q/2]$ |
-| ● | $SNR_Q = \dfrac{3M^2}{F_C^2}$ | **SNR de cuantificación — la forma de esta cátedra** | $\tfrac{\text{conteo}^2}{(\text{V}/\text{V})^2}$ — se cancela todo, incluso el $q^2$ de la derivación → **adimensional** | $F_C=$ factor de cresta $=$ pico/RMS. Que sea adimensional **es lo que habilita el dB** |
-|  | $SNR_Q \approx 6{,}02\,n+1{,}76$ dB | Caso senoidal ($F_C=\sqrt2$) | El $6{,}02\,n$ **es** $20\log_{10}2^n$ → **dB** | **Es la misma fórmula**, no otra |
-|  | $SNR_Q = 3M^2\left\langle\left(\dfrac{m(t)}{V_p}\right)^2\right\rangle$ | Forma general | $\left\langle(m/V_p)^2\right\rangle = 1/F_C^2$, cociente de tensiones → **adimensional** | Uniforme ($F_C=\sqrt3$) $\Rightarrow SNR_Q=M^2$ |
-| ● | $R_b = n\,f_s$ | Tasa de bits | $\tfrac{\text{bits}}{\text{muestra}}\times\tfrac{\text{muestras}}{\text{s}}$ → **bits/s** | Telefonía: $n=8$, $f_s=8$k → 64 kbps |
-|  | $\left(\dfrac{S}{N}\right)_{sal} = \dfrac{SNR_Q}{1+4P_e(M^2-1)}$ | **SNR con errores de canal** | adimensional $\div$ adimensional ($P_e$ es probabilidad) → **adimensional** | "Antes del canal" $=$ numerador solo ($P_e\to0$) |
-|  | $R_s = \dfrac{R_b}{\log_2 M_{mod}}$ | Tasa de símbolos | $\tfrac{\text{bits}}{\text{s}}\div\tfrac{\text{bits}}{\text{símbolo}}$ → **símbolos/s** $=$ baudios | $M_{mod}$ = constelación, **no** los niveles del ADC |
-| ● | $B_{min}=R_s$ (pasabanda) $\quad B_{min}=R_s/2$ (banda base) | Ancho de banda mínimo | $\tfrac{\text{símbolos}}{\text{s}}\div\tfrac{\text{símbolos}}{\text{ciclo}}$ → **ciclos/s** $=$ **Hz**. En pasabanda el $\kappa=1\ \tfrac{\text{ciclo}}{\text{símbolo}}$ cancela el $\tfrac12$ | Con roll-off: $\times(1+\alpha)$ |
-| ● | $\eta = \dfrac{R_b}{B}$ | **Eficiencia espectral** | $\tfrac{\text{bits}}{\text{s}}\div\tfrac{\text{ciclos}}{\text{s}}$ → **bits/ciclo** $=$ bits/s/Hz | **La piden 7 veces.** A $B$ mínimo pasabanda: $\eta=\ell$; banda base: $\eta=2\ell$ |
-|  | $B_{pulso} = \dfrac{1}{\tau}$ | Ancho de banda de un pulso PAM | $1\div\text{s}$ → **Hz** | $\tau$ = ancho del pulso |
+|     | Fórmula                                                                 | Qué es                                               | Unidades — cómo se cancela                                                                                                                                                                     | Notas                                                                                   |
+| --- | ----------------------------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| ●   | $f_s \geq 2B$                                                           | **Nyquist** — frecuencia de muestreo mínima          | $\tfrac{\text{muestras}}{\text{s}} \geq \tfrac{\text{muestras}}{\text{ciclo}}\times\tfrac{\text{ciclos}}{\text{s}}$ → **muestras/s**                                                           | Evita aliasing                                                                          |
+|     | $M = 2^n$                                                               | $M$ niveles con $n$ bits/muestra                     | **No hay contabilidad** — $n$ es exponente, conteo puro → **niveles**                                                                                                                          | $n=\log_2M$                                                                             |
+|     | $q = \dfrac{V_{pp}}{M}$                                                 | Paso de cuantificación                               | $\tfrac{\text{V}}{\text{niveles}}$ → **V**, altura de un escalón                                                                                                                               | **Error máximo $=q/2$**                                                                 |
+|     | $P_q = \dfrac{q^2}{12}$                                                 | Ruido de cuantificación                              | $\text{V}^2\div$ adimensional → **V²** ($=$ W con $R=1$)                                                                                                                                       | El 12 es la varianza de una uniforme en $[-q/2,\,q/2]$                                  |
+| ●   | $SNR_Q = \dfrac{3M^2}{F_C^2}$                                           | **SNR de cuantificación — la forma de esta cátedra** | $\tfrac{\text{conteo}^2}{(\text{V}/\text{V})^2}$ — se cancela todo, incluso el $q^2$ de la derivación → **adimensional**                                                                       | $F_C=$ factor de cresta $=$ pico/RMS. Que sea adimensional **es lo que habilita el dB** |
+|     | $SNR_Q \approx 6{,}02\,n+1{,}76$ dB                                     | Caso senoidal ($F_C=\sqrt2$)                         | El $6{,}02\,n$ **es** $20\log_{10}2^n$ → **dB**                                                                                                                                                | **Es la misma fórmula**, no otra                                                        |
+|     | $SNR_Q = 3M^2\left\langle\left(\dfrac{m(t)}{V_p}\right)^2\right\rangle$ | Forma general                                        | $\left\langle(m/V_p)^2\right\rangle = 1/F_C^2$, cociente de tensiones → **adimensional**                                                                                                       | Uniforme ($F_C=\sqrt3$) $\Rightarrow SNR_Q=M^2$                                         |
+| ●   | $R_b = n\,f_s$                                                          | Tasa de bits                                         | $\tfrac{\text{bits}}{\text{muestra}}\times\tfrac{\text{muestras}}{\text{s}}$ → **bits/s**                                                                                                      | Telefonía: $n=8$, $f_s=8$k → 64 kbps                                                    |
+|     | $\left(\dfrac{S}{N}\right)_{sal} = \dfrac{SNR_Q}{1+4P_e(M^2-1)}$        | **SNR con errores de canal**                         | adimensional $\div$ adimensional ($P_e$ es probabilidad) → **adimensional**                                                                                                                    | "Antes del canal" $=$ numerador solo ($P_e\to0$)                                        |
+|     | $R_s = \dfrac{R_b}{\log_2 M_{mod}}$                                     | Tasa de símbolos                                     | $\tfrac{\text{bits}}{\text{s}}\div\tfrac{\text{bits}}{\text{símbolo}}$ → **símbolos/s** $=$ baudios                                                                                            | $M_{mod}$ = constelación, **no** los niveles del ADC                                    |
+| ●   | $B_{min}=R_s$ (pasabanda) $\quad B_{min}=R_s/2$ (banda base)            | Ancho de banda mínimo                                | $\tfrac{\text{símbolos}}{\text{s}}\div\tfrac{\text{símbolos}}{\text{ciclo}}$ → **ciclos/s** $=$ **Hz**. En pasabanda el $\kappa=1\ \tfrac{\text{ciclo}}{\text{símbolo}}$ cancela el $\tfrac12$ | Con roll-off: $\times(1+\alpha)$                                                        |
+| ●   | $\eta = \dfrac{R_b}{B}$                                                 | **Eficiencia espectral**                             | $\tfrac{\text{bits}}{\text{s}}\div\tfrac{\text{ciclos}}{\text{s}}$ → **bits/ciclo** $=$ bits/s/Hz                                                                                              | A $B$ mínimo pasabanda: $\eta=\ell$; banda base: $\eta=2\ell$                           |
+|     | $B_{pulso} = \dfrac{1}{\tau}$                                           | Ancho de banda de un pulso PAM                       | $1\div\text{s}$ → **Hz**                                                                                                                                                                       | $\tau$ = ancho del pulso                                                                |
 
 **Los tres factores de conversión** — todos son del mismo tipo ("cuántos X por Y") y **cambian qué se está contando sin cambiar la dimensión**:
 
@@ -35,13 +35,13 @@ curso: Sistemas de Comunicaciones
 
 $$f_s\ \left[\tfrac{\text{muestras}}{\text{s}}\right] \xrightarrow{\ \times n\ (\text{bits/muestra})\ } R_b\ [\text{bps}] \xrightarrow{\ \div\ell\ (\text{bits/símbolo})\ } D\ [\text{baudios}] \xrightarrow{\ \text{Nyquist}\ } B\ [\text{Hz}]$$
 $$f_s = 8\text{ kmuestras/s} \ \to\ R_b = 64\text{ kbps} \ \to\ R_s = 32\text{ kbaud} \ \to\ B = 32\text{ kHz}$$
-**Companding** — *apareció como ítem conceptual de 0,25 pts en el final más reciente del corpus (17/07/2025): "¿por qué se emplea Ley A o μ?" → **para equiparar la SNR en señales de baja amplitud**, típicas en voz*: $C_\mu(x)=\operatorname{sgn}(x)\dfrac{\ln(1+\mu|x/V_{max}|)}{\ln(1+\mu)}$ con $\mu=255$ (USA/Japón); A-law con $A=87{,}6$ (Europa), lineal cerca de 0 y log lejos; **no son compatibles entre sí**. Mejora de rango dinámico $\approx20\log_{10}\mu$ ($\mu=255\to\ 48$ dB). **Delta**: slope overload si $\delta f_s < \max|dx/dt|$; $R_{DM}=f_s$ (1 bit/muestra); ADM: $\delta[n]=\delta[n-1]\cdot K$ si misma dirección, $/K$ si cambia ($K\approx1{,}5$).
+**Companding** — *"¿por qué se emplea Ley A o μ?" → **para equiparar la SNR en señales de baja amplitud**, típicas en voz*: $C_\mu(x)=\operatorname{sgn}(x)\dfrac{\ln(1+\mu|x/V_{max}|)}{\ln(1+\mu)}$ con $\mu=255$ (USA/Japón); A-law con $A=87{,}6$ (Europa), lineal cerca de 0 y log lejos; **no son compatibles entre sí**. Mejora de rango dinámico $\approx20\log_{10}\mu$ ($\mu=255\to\ 48$ dB). **Delta**: slope overload si $\delta f_s < \max|dx/dt|$; $R_{DM}=f_s$ (1 bit/muestra); ADM: $\delta[n]=\delta[n-1]\cdot K$ si misma dirección, $/K$ si cambia ($K\approx1{,}5$).
 
 ---
 
 ## 2 · Modulación Lineal (AM / DSB-SC / SSB / VSB)
 
-> **Notación de la cátedra** (verificada sobre los finales): el índice es **$m$** (no $\mu$ ni $k_a$), la sensibilidad es **$k$**, la moduladora normalizada a pico 1 es **$m_n(t)$**.
+> **Notación de la cátedra**: el índice es **$m$** (no $\mu$ ni $k_a$), la sensibilidad es **$k$**, la moduladora normalizada a pico 1 es **$m_n(t)$**.
 
 |  | Fórmula | Qué es | Notas |
 |---|---|---|---|
@@ -60,7 +60,7 @@ $$f_s = 8\text{ kmuestras/s} \ \to\ R_b = 64\text{ kbps} \ \to\ R_s = 32\text{ k
 |  | $s_{SSB}(t)=\tfrac{A_c}{2}\big[m(t)\cos\omega_ct \mp \hat m(t)\sin\omega_ct\big]$ | SSB: $-$ es USB, $+$ es LSB | $\hat m$ = transformada de Hilbert |
 | ● | $BW_{AM}=BW_{DSB}=2f_m \quad BW_{SSB}=f_m \quad BW_{VSB}=f_m+f_v$ | Anchos de banda | **Multitono: $BW=2f_{m,max}$**, no la suma |
 |  | $H(f_c{+}f)+H(f_c{-}f)=1$ para $\lvert f\rvert<f_v$ | Simetría vestigial del filtro VSB | Condición de recuperación perfecta |
-|  | $P_{dBW}=10\log_{10}\!\left(\dfrac{P}{1\text{ W}}\right) \quad P_{dBm}=P_{dBW}+30$ | Conversión a dB | dBW aparece 16 veces, dBm 25 veces |
+|  | $P_{dBW}=10\log_{10}\!\left(\dfrac{P}{1\text{ W}}\right) \quad P_{dBm}=P_{dBW}+30$ | Conversión a dB | $0$ dBW $=30$ dBm |
 
 > ⚠️ **La trampa del factor 2**: las alturas de las deltas son **la mitad** de las amplitudes de los cosenos reales ($A_c$ y $A_cm/2$), porque cada coseno real se reparte en dos exponenciales complejas.
 
@@ -78,7 +78,7 @@ $$f_s = 8\text{ kmuestras/s} \ \to\ R_b = 64\text{ kbps} \ \to\ R_s = 32\text{ k
 > **Por qué DSB-SC no puede usar detector de envolvente**: la envolvente de $A_cm(t)\cos\omega_ct$ es $A_c|m(t)|$ — el **valor absoluto**, que pierde el signo en cada cruce por cero.
 > **Por qué TV usa VSB y no SSB**: el video tiene contenido hasta continua, así que las bandas laterales se tocan en $f_c$ y no hay hueco donde el filtro pueda caer.
 
-**Modulador de ley cuadrática** (aparece 3 veces): con $v_{out}=a\,v_{in}+b\,v_{in}^2$ y $v_{in}=m(t)+c(t)$,
+**Modulador de ley cuadrática**: con $v_{out}=a\,v_{in}+b\,v_{in}^2$ y $v_{in}=m(t)+c(t)$,
 
 $$v_{out} = \underbrace{a\,m}_{\text{BB}} + \underbrace{a\,c}_{f_c} + \underbrace{b\,m^2}_{\text{BB},\,2f_m} + \underbrace{2b\,m\,c}_{f_c\pm f_m} + \underbrace{b\,c^2}_{\text{DC},\,2f_c}$$
 
@@ -102,7 +102,7 @@ El **filtro pasabanda** centrado en $f_c$ con ancho $2f_m$ deja pasar $a\,c+2b\,
 
 **Clasificación**: NBFM si $\beta<0{,}3$ → $B_T\approx2f_m$ (como AM). WBFM si $\beta>1$ → $B_T\approx2\Delta f$.
 
-**FM vs PM — qué queda invariante** (piden $\Delta f$ y $\Delta\phi$ por separado, 4-6 veces):
+**FM vs PM — qué queda invariante** (se piden $\Delta f$ y $\Delta\phi$ por separado):
 
 | | FM | PM |
 |---|---|---|
@@ -112,7 +112,7 @@ El **filtro pasabanda** centrado en $f_c$ con ancho $2f_m$ deja pasar $a\,c+2b\,
 | **Si se duplica $f_m$** (con $A_m$ fijo) | $\Delta f$ **igual**, $\beta$ **a la mitad** | $\Delta\phi$ **igual**, $\Delta f$ **se duplica** |
 | Si se duplica $A_m$ | $\Delta f$ y $\beta$ se duplican | $\Delta\phi$ y $\beta$ se duplican |
 
-> 📌 **Aparece 5 veces**: *"cuando se duplica la frecuencia del tono modulante manteniendo invariable su amplitud, a la salida del modulador se observa…"* — **en FM $\beta$ cae a la mitad; en PM $\beta$ no cambia** (y por eso $\Delta f$ se duplica).
+> 📌 **Si se duplica la frecuencia del tono modulante manteniendo su amplitud**: **en FM $\beta$ cae a la mitad; en PM $\beta$ no cambia** (y por eso $\Delta f$ se duplica).
 
 **Multiplicadores y mezcladores** — el patrón más testeado:
 
@@ -132,8 +132,6 @@ $$n_{total}=n_1n_2 = \frac{\Delta f_{salida}}{\Delta f_{NBFM}} \qquad\qquad f_{O
 ---
 
 ## 4 · SNR de posdetección
-
-> 📌 *"Determinar la relación señal a ruido de **posdetección** si se utiliza modulación de amplitud con 90% de índice / banda lateral única / doble banda sin portadora / frecuencia con desvío de 75 kHz"*
 
 $$\boxed{\gamma = \frac{S_R}{N_0\,W}} \qquad \begin{array}{l} S_R = \text{potencia recibida} \\ W = \text{ancho de banda del mensaje} \\ N_0W = \text{ruido en la banda del mensaje} \end{array}$$
 
@@ -156,17 +154,17 @@ $\gamma$ es la SNR que se tendría transmitiendo el mensaje **directo en banda b
 | DSB-SC / SSB | $1$ | $0$ dB |
 | FM, $\Delta f=75$ kHz, $W=15$ kHz ($\beta=5$) | $3(25)(0{,}5)=37{,}5$ | $\mathbf{+15{,}7}$ **dB** |
 
-> **La lectura conceptual que evalúan**: **AM con detección de envolvente es peor que transmitir en banda base** (nunca supera $-4{,}8$ dB), porque gasta la mayor parte de la potencia en la portadora, que no lleva información. DSB-SC y SSB **empatan**. **Solo FM mejora**, comprando SNR con ancho de banda: la mejora va con $\beta^2$ pero el $BW$ con $(\beta+1)$ — cuadrático a favor contra lineal en contra. Notar que $(S/N)_D^{AM}=\eta_{AM}\gamma$: **la eficiencia de potencia de AM es exactamente su penalidad de SNR**.
+> 		**La lectura conceptual que evalúan**: **AM con detección de envolvente es peor que transmitir en banda base** (nunca supera $-4{,}8$ dB), porque gasta la mayor parte de la potencia en la portadora, que no lleva información. DSB-SC y SSB **empatan**. **Solo FM mejora**, comprando SNR con ancho de banda: la mejora va con $\beta^2$ pero el $BW$ con $(\beta+1)$ — cuadrático a favor contra lineal en contra. Notar que $(S/N)_D^{AM}=\eta_{AM}\gamma$: **la eficiencia de potencia de AM es exactamente su penalidad de SNR**.
 
-> ⚠️ **Variantes de la fórmula de FM**: distintos textos escriben $3\beta^2\gamma$, $3\beta^2(\beta+1)\gamma$ o $3\Delta^2x^2\gamma$. **Los finales suelen darla en el enunciado — usar la que den.**
+> ⚠️ **Variantes de la fórmula de FM**: distintos textos escriben $3\beta^2\gamma$, $3\beta^2(\beta+1)\gamma$ o $3\Delta^2x^2\gamma$. **Si el enunciado la da, usar esa.**
 
-**Umbral**: $SNR_{umbral}\approx10$ dB (AM y discriminador FM convencional); PLL ~7 dB, FMFB ~4-5 dB. Por debajo, colapso de SNR. DSB-SC y SSB coherentes **no tienen efecto umbral**. **Pre/de-énfasis** — aparece en **3 finales**, casi siempre como *"sin pre-énfasis"* en el enunciado, y en uno piden rehacer el ítem **con** y **sin**: mejora $\approx10$–$13$ dB, $\tau=75\,\mu$s (USA/Japón) o $50\,\mu$s (Europa).
+**Umbral**: $SNR_{umbral}\approx10$ dB (AM y discriminador FM convencional); PLL ~7 dB, FMFB ~4-5 dB. Por debajo, colapso de SNR. DSB-SC y SSB coherentes **no tienen efecto umbral**. **Pre/de-énfasis**: mejora $\approx10$–$13$ dB, $\tau=75\,\mu$s (USA/Japón) o $50\,\mu$s (Europa).
 
 ---
 
 ## 5 · Ruido / Friis / Enlaces
 
-> ⚠️ **"Factor de ruido" $\neq$ "cifra de ruido", y la cátedra respeta la distinción con total consistencia**: "factor de ruido 4" es **lineal**; "cifra de ruido de 6 dB" es **en dB**. ("Figura de ruido": cero apariciones.) **El vocabulario del enunciado te dice las unidades.**
+> ⚠️ **"Factor de ruido" $\neq$ "cifra de ruido"**: "factor de ruido 4" es **lineal**; "cifra de ruido de 6 dB" es **en dB**. **El vocabulario del enunciado te dice las unidades.**
 
 | | Fórmula | Qué es | Notas |
 |---|---|---|---|
@@ -209,7 +207,7 @@ $$\boxed{F_T = n\,L_c-(n-1)}\ \text{(repetidores ideales, } F_r=1) \qquad \boxed
 
 $$L_{FSPL}\big|_{dB} = 32{,}44 + 20\log_{10}\!\big(f_{[MHz]}\big) + 20\log_{10}\!\big(d_{[km]}\big)$$
 
-⚠️ **$f$ en MHz y $d$ en km** — la constante cambia con las unidades (algunos finales usan $32{,}442$, otros redondean a 33). Sale de $L=(4\pi d/\lambda)^2$. **Crece 6 dB al duplicar distancia o frecuencia.**
+⚠️ **$f$ en MHz y $d$ en km** — la constante cambia con las unidades (a veces se escribe $32{,}442$ o se redondea a 33). Sale de $L=(4\pi d/\lambda)^2$. **Crece 6 dB al duplicar distancia o frecuencia.**
 
 $$\left(\frac{S}{N}\right)_{RX} = P_{TX}+G_{TX}-L_{FSPL}-L_{otras}+G_{RX}-N \qquad\text{(todo en dB)}$$
 
@@ -242,7 +240,7 @@ El dispositivo agrega ruido propio **fijo** ($N_{out}=G(N_i+N_a)$, con $N_a=kT_{
 | | $C\approx B\log_2(S/N)$ si $S/N\gg1$ $\quad$ $C\approx1{,}44\,B\,S/N$ si $S/N\ll1$ | Los dos regímenes de Shannon | Limitado por **banda** (log) vs por **potencia** (lineal) |
 | | $\left(\dfrac{S}{N}\right)_{sal} = \left[1+\left(\dfrac{S}{N}\right)_{ent}\right]^{B_T/B}-1$ | **Sistema ideal** (piden demostrarlo) | Ver demostración abajo |
 
-**Símbolo, binit y bit — tres cosas distintas** (la cátedra usa "binits" explícitamente, 6+ apariciones):
+**Símbolo, binit y bit — tres cosas distintas** (la cátedra usa \"binits\" explícitamente):
 
 | Concepto | Qué es | Unidad |
 |---|---|---|
@@ -271,28 +269,24 @@ $$\text{Fuente} \xrightarrow{\ R=rH\ } \text{tasa de info} \xrightarrow{\ \text{
 
 $$R\left[\tfrac{\text{bits}}{\text{s}}\right] = \underbrace{\text{elementos por trama}}_{\text{conteo}} \times \underbrace{H}_{\text{bits/elemento}} \times \underbrace{\text{tramas por segundo}}_{1/\text{s}}$$
 
-### El enlace asincrónico con trama ASCII ⭐ (aparece en 3 finales, ~2,5 pts)
+### Enlace asincrónico con trama de caracteres
 
-Es donde vive el ítem del *"carácter espacio con probabilidad 1/7"*. **El enunciado es siempre el mismo**: enlace a $R_b$ bps, caracteres de $N_t$ binits totales de los cuales solo 7 son el ASCII (el resto: **1 de paridad + 1 de comienzo + 1 o 2 de parada**).
+Un enlace a $R_b$ binits/s transmite caracteres de $N_t$ binits **de trama completa**, de los cuales solo unos pocos son el dato: el ASCII son 7, y el resto es **overhead** (paridad, arranque, parada).
 
-| Ítem | Cuenta |
+| Se pide | Cómo sale |
 |---|---|
-| **a)** Caracteres por segundo | $\dfrac{R_b\ [\text{binits/s}]}{N_t\ [\text{binits/carácter}]}$ — **dividir por la trama completa, no por 7** |
-| **b)** Tiempo de una página | $\dfrac{\text{caracteres de la página}}{\text{caracteres/s}}$; contar **el espacio entre palabras** como un carácter más |
-| **c)** $H$ por carácter (y por palabra) | $H=\sum p_i\log_2\frac{1}{p_i}$; por palabra: $\times$ (caracteres/palabra **+ 1** por el espacio) |
-| **d)** Tasa de información | $R = \text{caracteres/s}\times H$ — **no** es $R_b$ |
+| Caracteres por segundo | $\dfrac{R_b\ [\text{binits/s}]}{N_t\ [\text{binits/carácter}]}$ — **dividir por la trama completa, no por los 7 del dato** |
+| Tiempo de un texto | $\dfrac{\text{caracteres del texto}}{\text{caracteres/s}}$; contar **el espacio entre palabras** como un carácter más |
+| $H$ por carácter, y por palabra | $H=\sum_i p_i\log_2\frac{1}{p_i}$; por palabra: $\times$ (caracteres/palabra **+ 1** por el espacio) |
+| Tasa de información | $R = \text{caracteres/s}\times H$ — **no** es $R_b$ |
 
-**Ejemplo verificado** ($R_b=28{,}8$ kbps, $N_t=10$, página de 600 palabras × 6 caracteres):
+**Cuando las probabilidades vienen por familias** (un grupo de $n_1$ caracteres con probabilidad $p_1$, otro de $n_2$ con $p_2$, …), la entropía se agrupa y **se calcula de una sola pasada**:
 
-$$\text{a) } \frac{28\,800}{10} = 2880\ \tfrac{\text{caract.}}{\text{s}} \qquad \text{b) } \frac{600(6{+}1)}{2880} = \frac{4200}{2880} = 1{,}46\ \text{s}$$
+$$\boxed{H = \sum_k n_k\,p_k\log_2\frac{1}{p_k}} \qquad\text{con la verificación obligatoria}\quad \sum_k n_k\,p_k = 1$$
 
-Con $p_{esp}=\tfrac17$, 10 vocales a $\tfrac{3}{56}$ y 72 caracteres a $\tfrac{1}{224}$ *(verificá que sume 1)*:
+Chequear que las probabilidades sumen 1 **antes** de calcular: si no suman, hay un grupo mal contado y todo lo que sigue arrastra el error.
 
-$$H = \tfrac17\log_27 + \tfrac{30}{56}\log_2\tfrac{56}{3} + \tfrac{72}{224}\log_2 224 = 0{,}401+2{,}262+2{,}510 = \mathbf{5{,}17}\ \tfrac{\text{bits}}{\text{caráct.}}$$
-
-$$\text{c) } 7\times5{,}17 = \mathbf{36{,}2}\ \tfrac{\text{bits}}{\text{palabra}} \qquad \text{d) } R = 2880\times5{,}17 = \mathbf{14{,}9}\ \text{kbps}$$
-
-> ⭐ **Este ejercicio es el mejor ejemplo de las tres tasas**, y por eso lo toman: se mandan **28,8 kbinits/s** por el cable, que son **2880 caracteres/s** (símbolos de la fuente), que transportan **14,9 kbits/s** de información real. Se pierde dos veces: **3 de cada 10 binits son overhead de trama** (paridad, arranque, parada) y además cada carácter lleva $H=5{,}17$ bits en vez de los $\log_2 89 \approx 6{,}5$ que llevaría si fuera equiprobable. **Eficiencia total: $14{,}9/28{,}8 = 52\%$.**
+> ⭐ **Es el mejor ejemplo de las tres tasas conviviendo**, y por eso conviene tenerlo claro: por el cable van $R_b$ **binits/s**, que son $R_b/N_t$ **caracteres/s** (los símbolos de la fuente), que transportan $R = (R_b/N_t)\,H$ **bits/s** de información real. **Se pierde dos veces**: primero el overhead de trama ($7/N_t$), y después porque $H < \log_2(\text{alfabeto})$ al no ser los caracteres equiprobables. Con $N_t=10$ y un alfabeto de ~90 caracteres, la eficiencia total ronda el 50%.
 
 **Demostración del sistema ideal** (un sistema ideal no pierde información, así que las capacidades a un lado y otro deben igualarse):
 
@@ -302,7 +296,7 @@ $$\underbrace{B_T\log_2\!\left[1+\left(\tfrac{S}{N}\right)_{ent}\right]}_{C\ \te
 
 **Derivación del límite $-1{,}59$ dB**: en $C=B\log_2(1+S/N)$ poner $S=E_bC$ (al límite $R_b=C$) y $N=N_0B$; con $\eta=C/B$ queda $\dfrac{E_b}{N_0}=\dfrac{2^\eta-1}{\eta}$, y $\lim_{\eta\to0}=\ln2$ ($\to-1{,}59$ dB).
 
-° **Codificación de fuente** (Huffman aparece en **cero** de los 42 finales): $\bar L=\sum p_il_i$; $\dfrac{H}{\log_2M}\leq\dfrac{\bar L_s}{s}<\dfrac{H}{\log_2M}+\dfrac1s$ (extensión de orden $s$); Kraft-McMillan $\sum M^{-l_i}\leq1$; $\eta=\dfrac{H}{\bar L\log_2M}$. ° **Códigos de canal**: $e_d=d_{min}-1$ detectables, $e_c=\lfloor(d_{min}-1)/2\rfloor$ corregibles, tasa $k/n$, Singleton $d_{min}\leq n-k+1$.
+° **Codificación de fuente**: $\bar L=\sum p_il_i$; $\dfrac{H}{\log_2M}\leq\dfrac{\bar L_s}{s}<\dfrac{H}{\log_2M}+\dfrac1s$ (extensión de orden $s$); Kraft-McMillan $\sum M^{-l_i}\leq1$; $\eta=\dfrac{H}{\bar L\log_2M}$. ° **Códigos de canal**: $e_d=d_{min}-1$ detectables, $e_c=\lfloor(d_{min}-1)/2\rfloor$ corregibles, tasa $k/n$, Singleton $d_{min}\leq n-k+1$.
 
 ---
 
@@ -334,7 +328,7 @@ $$\underbrace{B_T\log_2\!\left[1+\left(\tfrac{S}{N}\right)_{ent}\right]}_{C\ \te
 
 | Cuál | Fórmula | Cuándo |
 |---|---|---|
-| **Nulo a nulo** | $B = 2D$ | Pulso rectangular, lóbulo principal. **Lo piden explícitamente 4 veces** |
+| **Nulo a nulo** | $B = 2D$ | Pulso rectangular, lóbulo principal |
 | **Mínimo (Nyquist ideal)** | $B = D$ | Cuando dice "ancho de banda mínimo ideal" ($\alpha=0$) |
 | **Con roll-off** | $B = D(1+\alpha)$ | Coseno realzado real; el enunciado da $\alpha$ |
 
@@ -441,9 +435,9 @@ $$S(f) = \frac{\sigma_a^2}{T_s}\,|P(f)|^2 \quad\Longrightarrow\quad \text{pulso 
 
 **Qué significa $G_p$**: cuánto se ensancha el espectro y, equivalentemente, **cuánta ventaja se gana contra interferencia** — al despreader la señal útil se recomprime mientras el interferente se dispersa: $SNR_{out}=G_p\,SNR_{in}$.
 
-**El patrón de ejercicio (aparece 9 veces)**: dan LFSR y período → sacar $R_c$ → sacar $G_p$ y $B$ → **rediseñar para un $G_p$ objetivo** manteniendo $R_b$, despejando al revés: $\boxed{R_c = G_p\cdot R_b}$. El precio: el $BW$ crece en la misma proporción — **$G_p$ se compra con espectro**.
+**El patrón típico**: dan LFSR y período → sacar $R_c$ → sacar $G_p$ y $B$ → **rediseñar para un $G_p$ objetivo** manteniendo $R_b$, despejando al revés: $\boxed{R_c = G_p\cdot R_b}$. El precio: el $BW$ crece en la misma proporción — **$G_p$ se compra con espectro**.
 
-° **FHSS / CDMA** (cero apariciones como ejercicio; CDMA solo se menciona de paso en una resolución): $G_{p,FHSS}\approx M/k$, $P_{hit}=k/M$ ($M$ canales, $k$ interferidos); señal CDMA del usuario $k$: $s_k(t)=A_kd_k(t)c_k(t)\cos(\omega_ct+\phi_k)$.
+° **FHSS / CDMA**: $G_{p,FHSS}\approx M/k$, $P_{hit}=k/M$ ($M$ canales, $k$ interferidos); señal CDMA del usuario $k$: $s_k(t)=A_kd_k(t)c_k(t)\cos(\omega_ct+\phi_k)$.
 
 ### OFDM — las 4 fórmulas
 
@@ -461,7 +455,7 @@ $$S(f) = \frac{\sigma_a^2}{T_s}\,|P(f)|^2 \quad\Longrightarrow\quad \text{pulso 
 
 **Por qué $\Delta f=1/T_S$**: dos subportadoras son ortogonales sobre $[0,T_S]$ si $(f_1-f_2)T_S$ es entero no nulo; el espaciado **mínimo** es el entero 1. O sea: **cada subportadora completa exactamente un ciclo más que su vecina por período de símbolo**. Con ese espaciado, cada una tiene un **nulo** en la frecuencia de todas las demás → se solapan sin estorbarse.
 
-**Por qué conviene que cada subportadora sea lenta** (📌 *"ventaja versus transmitir la misma tasa con una sola portadora"* — **aparece 6 veces, tener la respuesta redactada**):
+**Por qué conviene que cada subportadora sea lenta** (la comparación contra una sola portadora a igual tasa):
 
 1. **ISI por multitrayecto — la razón central.** Un eco urbano de ~1 μs se superpone a ~2 símbolos si son de 0,625 μs (una portadora, 1024-QAM), pero es el **0,1%** de un símbolo OFDM de 1024 μs. **OFDM esquiva el problema en vez de resolverlo** — no hace falta ecualizador de arrastre.
 2. **Cada subportadora ve un canal plano.** En $\Delta f$ (~1 kHz) el canal es esencialmente constante, así que actúa como **una multiplicación compleja**, corregible con **un ecualizador de un solo tap**. Reemplaza un ecualizador temporal complejo por $N_p$ multiplicaciones triviales.
@@ -476,7 +470,7 @@ $$S(f) = \frac{\sigma_a^2}{T_s}\,|P(f)|^2 \quad\Longrightarrow\quad \text{pulso 
 
 ## 9 · La función $Q(x)$ — cómo evaluarla
 
-**$Q(x)$ no tiene forma cerrada** — es la integral de cola de la gaussiana, sin primitiva elemental. **No se calcula: se lee.** ✅ **El examen suele traer el ábaco anexado**: última página, $Q(k)$ vs $k$ en escala logarítmica, con $k$ de 0 a 7. **Si no aparece, se puede pedir al equipo docente** — el reglamento habilita consultas.
+**$Q(x)$ no tiene forma cerrada** — es la integral de cola de la gaussiana, sin primitiva elemental. **No se calcula: se lee.** **Se lee del ábaco de $Q(k)$**: última página, $Q(k)$ vs $k$ en escala logarítmica, con $k$ de 0 a 7. **Si no aparece, se puede pedir al equipo docente** — el reglamento habilita consultas.
 
 | $x$ | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
 |---|---|---|---|---|---|---|---|---|
@@ -593,11 +587,3 @@ $$P_{dBm} = 10\log_{10}\!\left(\frac{P}{1\ \text{mW}}\right) \qquad P_{dBW} = 10
 | **Digital** | Confundir los tres anchos de banda ($2D$ / $D$ / $D(1+\alpha)$) · usar la amplitud máxima en vez del promedio de constelación · olvidar el $/2$ del portador |
 | **TI** | Usar $\log_2M$ cuando **no** son equiprobables · meter la SNR en dB dentro de Shannon-Hartley · invertir la conclusión de factibilidad (**más** $BW$ que Shannon = factible) |
 | **SS/OFDM** | Olvidar el $-1$ en $N=2^L-1$ · confundir $R_c$ con $R_b$ · poner una subportadora en $f_c$ |
-
----
-
-## Ver También
-
-- [[plan-11-dias-final|Plan Intensivo — Final]] · [[diagramas-en-bloques|Diagramas en Bloques]]
-- Formularios por tema: [[../modulacion-pulsos/pcm-formulario-examen|PCM]] · [[../modulacion-analogica/lineal-formulario-examen|Lineal]] · [[../modulacion-analogica/exponencial-formulario-examen|Exponencial]] · [[../ruido/ruido-formulario-examen|Ruido]] · [[../teoria-informacion/ti-formulario-examen|TI]] · [[../modulacion-digital/digital-formulario-examen|Digital]] · [[../espectro-expandido/ss-ofdm-formulario-examen|SS/OFDM]]
-- [[../herramientas-matematicas/nyquist-de-cero|Nyquist de cero]] · [[../herramientas-matematicas/pulsos-y-cota-de-nyquist|Pulsos y la cota de Nyquist]]
