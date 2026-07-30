@@ -112,6 +112,48 @@ Otra fuente de confusión. La razón **no** es "el espectro se copia" (eso es un
 >
 > **Y eso explica de una vez por qué QPSK da el doble de bits en el mismo ancho de banda sin empeorar la BER**: no hace magia, simplemente usa casilleros que BPSK dejaba vacíos. [analysis]
 
+### ⚠️ Aclaración: ¿se puede hacer QPSK en banda base?
+
+**No.** QPSK **necesita portadora por definición**: su mecanismo *es* usar dos portadoras ortogonales ($\cos$ y $\sin$) para llevar $I$ y $Q$ simultáneamente. En banda base no hay portadora, así que no hay dos "canales" a la vez — solo una tensión en función del tiempo, **un número real por instante**.
+
+**Pero sí se pueden mandar 2 bits por símbolo en banda base**, con **4-PAM** (cuatro niveles: $\pm a,\pm3a$):
+
+| | 4-PAM (banda base) | QPSK (pasabanda) |
+|---|---|---|
+| Bits/símbolo | 2 | 2 |
+| Casilleros/símbolo | **1** | **2** |
+| Cómo consigue los 2 bits | **4 niveles** en un eje | **2 niveles** en cada uno de 2 ejes |
+
+Son **estrategias distintas para lo mismo**: 4-PAM apila niveles en una dimensión; QPSK usa dos dimensiones con menos niveles cada una.
+
+> **La comparación justa** no es 4-PAM vs QPSK sino **4-PAM vs 16-QAM**: 16-QAM pone 4 niveles en cada eje (igual que 4-PAM) pero en **dos** ejes → 4 bits/símbolo con 2 casilleros. Ambas dan **4 bits/s/Hz**. La eficiencia real es la misma; lo que cambia es cómo se reparte entre "niveles por dimensión" y "cantidad de dimensiones". [analysis]
+
+### ¿Y esto tiene correspondencia en analógico?
+
+Sí, aunque **en analógico no hay símbolos** (la señal es continua, infinitos valores posibles). Lo que sí existe son las **dimensiones**:
+
+| Analógico | Dimensiones que usa |
+|---|---|
+| **DSB-SC** | 1 — un solo mensaje sobre la portadora |
+| **QAM analógica** | **2** — dos mensajes distintos, uno en $\cos$ y otro en $\sin$ |
+| **SSB** | ~½ — elimina la banda lateral redundante |
+
+**Y QAM analógica no es teórica**: es exactamente cómo funciona el **color en TV analógica** — las dos señales de crominancia viajan en cuadratura sobre la subportadora de color, dos mensajes independientes en el mismo lugar del espectro, separados solo por estar a 90°. Ver [[../modulacion-analogica/modulacion-vsb|VSB]].
+
+**La diferencia con digital**: en analógico se cuentan **dimensiones** pero no "bits por dimensión", porque la señal no está cuantizada. En digital, además de ocupar la dimensión hay que decidir **cuántos niveles distinguibles** meter en ella — y ahí entra el ruido, que fija el límite (Shannon).
+
+### ¿Cuál es la modulación digital más simple de todas?
+
+**OOK (On-Off Keying)**, o ASK binaria:
+
+$$s(t) = \begin{cases} A\cos(2\pi f_ct) & \text{bit }1 \\ 0 & \text{bit }0\end{cases}$$
+
+**El modulador es literalmente una llave** que enciende y apaga la portadora — un transistor que conduce o no. No hay nada más simple: ni desplazar fase, ni cambiar frecuencia, ni dos ejes. Y el receptor puede ser un **detector de envolvente** (diodo + capacitor), sin recuperar portadora.
+
+En banda base, el equivalente más simple es **unipolar NRZ**: hay tensión o no hay.
+
+> **El precio de la simplicidad**: OOK usa **1 casillero de los 2** disponibles en pasabanda (desperdicia $Q$), lleva 1 bit/símbolo, y es **3 dB peor que BPSK** ($k=E_d/E_b=2$ contra 4 — ver [[../modulacion-digital/digital-formulario-examen#La forma general con filtro acoplado: energía diferencia $E_d$|Digital — energía diferencia]]). Es el caso de referencia contra el que se mide todo lo demás.
+
 ---
 
 # 6. "Nulo a nulo" no es Nyquist
