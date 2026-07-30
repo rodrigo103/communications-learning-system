@@ -2,25 +2,10 @@
 tags:
   - wiki/planificacion
 curso: Sistemas de Comunicaciones
----
-
-# Formulario Imprimible — Examen Final
-
-> **Last verified:** 2026-07-30 | **Verified by:** consolidación de los 7 formularios de tema + corpus de **42 finales únicos** (2019-2026)
-
-> Chuleta de consulta rápida (no explicativa), pensada para imprimir. La cátedra permite material propio **solo en papel** (no carpeta digital / notebook / tablet), así que esta es la versión que efectivamente entra a la mesa — no un backup.
->
-> 🖨️ **Para imprimir**: abrir `formulario-imprimible.html` en Chrome o Safari y usar Imprimir. **Ese HTML se genera de este archivo** con `node scripts/build-formulario.mjs` (convierte el LaTeX a MathML nativo) — así que **todo cambio va acá, no en el HTML**.
->
-> ⚠️ **Tabla de fórmulas de elaboración propia** — expresamente permitida por la cátedra, y en papel es el único soporte admitido. No contiene guías de problemas ni resoluciones.
-
-> **Los porcentajes son sobre los 42 finales únicos** del corpus, y las secciones están **ordenadas por frecuencia real**. El marcador ● señala fórmula que conviene tener de memoria; el resto se consulta acá directamente. El marcador ° señala contenido **no verificado en el corpus** (cero apariciones como ejercicio) — está por completitud, no es donde mirar primero.
-
-> **Reglas del examen**: 4 problemas, uno por hoja, entrega escalonada cada 30 min (19:30 / 20:00 / 20:30 / 21:00) en el orden que elijas. Aprueba con $\geq6/10$ sin redondeo **y mínimo 25% desarrollado por problema** — un problema en blanco desaprueba el examen entero. **Plantear la fórmula aunque no se termine la cuenta.** Se puede consultar al equipo docente. Los finales traen anexo el ábaco de $Q(k)$.
 
 ---
 
-## 1 · Muestreo / PCM / Cuantificación — 71,4%
+## 1 · Muestreo / PCM / Cuantificación
 
 |     | Fórmula                                                                 | Qué es                                                        | Notas                                                                               |
 | --- | ----------------------------------------------------------------------- | ------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
