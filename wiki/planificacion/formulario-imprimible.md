@@ -22,38 +22,38 @@ curso: Sistemas de Comunicaciones
 
 ## 1 · Muestreo / PCM / Cuantificación — 71,4%
 
-| | Fórmula | Qué es | Notas |
-|---|---|---|---|
-| ● | $f_s \geq 2B$ | **Nyquist** — frecuencia de muestreo mínima | Evita aliasing. $f_s$ en muestras/s |
-| | $M = 2^n$ | $M$ niveles con $n$ bits/muestra | $n=\log_2M$ |
-| | $q = \dfrac{V_{pp}}{M}$ | Paso de cuantificación [V] | **Error máximo $=q/2$** |
-| | $P_q = \dfrac{q^2}{12}$ | Ruido de cuantificación [V² $=$ W con $R=1$] | Varianza de uniforme en $[-q/2,q/2]$ |
-| ● | $SNR_Q = \dfrac{3M^2}{F_C^2}$ | **SNR de cuantificación — la forma de esta cátedra** | $F_C=$ factor de cresta $=$ pico/RMS |
-| | $SNR_Q \approx 6{,}02\,n+1{,}76$ dB | Caso senoidal ($F_C=\sqrt2$) | **Es la misma fórmula**, no otra |
-| | $SNR_Q = 3M^2\left\langle\left(\dfrac{m(t)}{V_p}\right)^2\right\rangle$ | Forma general; $\left\langle(m/V_p)^2\right\rangle = 1/F_C^2$ | Uniforme ($F_C=\sqrt3$) $\Rightarrow SNR_Q=M^2$ |
-| ● | $R_b = n\,f_s$ | Tasa de bits [bps] | Telefonía: $n=8$, $f_s=8$k → 64 kbps |
-| | $\left(\dfrac{S}{N}\right)_{sal} = \dfrac{SNR_Q}{1+4P_e(M^2-1)}$ | **SNR con errores de canal** | "Antes del canal" $=$ numerador solo ($P_e\to0$) |
-| | $R_s = \dfrac{R_b}{\log_2 M_{mod}}$ | Tasa de símbolos [baudios] | $M_{mod}$ = constelación, **no** los niveles del ADC |
-| ● | $B_{min}=R_s$ (pasabanda) $\quad B_{min}=R_s/2$ (banda base) | Ancho de banda mínimo [Hz] | Con roll-off: $\times(1+\alpha)$ |
-| ● | $\eta = \dfrac{R_b}{B}$ | **Eficiencia espectral** [bits/s/Hz] | **La piden 7 veces.** A $B$ mínimo pasabanda: $\eta=\ell$; banda base: $\eta=2\ell$ |
-| | $B_{pulso} = 1/\tau$ | Ancho de banda de un pulso PAM | $\tau$ = ancho del pulso |
+|     | Fórmula                                                                 | Qué es                                                        | Notas                                                                               |
+| --- | ----------------------------------------------------------------------- | ------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| ●   | $f_s \geq 2B$                                                           | **Nyquist** — frecuencia de muestreo mínima                   | Evita aliasing. $f_s$ en muestras/s                                                 |
+|     | $M = 2^n$                                                               | $M$ niveles con $n$ bits/muestra                              | $n=\log_2M$                                                                         |
+|     | $q = \dfrac{V_{pp}}{M}$                                                 | Paso de cuantificación [V]                                    | **Error máximo $=q/2$**                                                             |
+|     | $P_q = \dfrac{q^2}{12}$                                                 | Ruido de cuantificación [V² $=$ W con $R=1$]                  | Varianza de uniforme en $[-q/2,q/2]$                                                |
+| ●   | $SNR_Q = \dfrac{3M^2}{F_C^2}$                                           | **SNR de cuantificación — la forma de esta cátedra**          | $F_C=$ factor de cresta $=$ pico/RMS                                                |
+|     | $SNR_Q \approx 6{,}02\,n+1{,}76$ dB                                     | Caso senoidal ($F_C=\sqrt2$)                                  | **Es la misma fórmula**, no otra                                                    |
+|     | $SNR_Q = 3M^2\left\langle\left(\dfrac{m(t)}{V_p}\right)^2\right\rangle$ | Forma general; $\left\langle(m/V_p)^2\right\rangle = 1/F_C^2$ | Uniforme ($F_C=\sqrt3$) $\Rightarrow SNR_Q=M^2$                                     |
+| ●   | $R_b = n\,f_s$                                                          | Tasa de bits [bps]                                            | Telefonía: $n=8$, $f_s=8$k → 64 kbps                                                |
+|     | $\left(\dfrac{S}{N}\right)_{sal} = \dfrac{SNR_Q}{1+4P_e(M^2-1)}$        | **SNR con errores de canal**                                  | "Antes del canal" $=$ numerador solo ($P_e\to0$)                                    |
+|     | $R_s = \dfrac{R_b}{\log_2 M_{mod}}$                                     | Tasa de símbolos [baudios]                                    | $M_{mod}$ = constelación, **no** los niveles del ADC                                |
+| ●   | $B_{min}=R_s$ (pasabanda) $\quad B_{min}=R_s/2$ (banda base)            | Ancho de banda mínimo [Hz]                                    | Con roll-off: $\times(1+\alpha)$                                                    |
+| ●   | $\eta = \dfrac{R_b}{B}$                                                 | **Eficiencia espectral** [bits/s/Hz]                          | **La piden 7 veces.** A $B$ mínimo pasabanda: $\eta=\ell$; banda base: $\eta=2\ell$ |
+|     | $B_{pulso} = 1/\tau$                                                    | Ancho de banda de un pulso PAM                                | $\tau$ = ancho del pulso                                                            |
 
 ### Contabilidad de unidades, fórmula por fórmula
 
-| Fórmula | Cómo se cancela | Queda |
-|---|---|---|
-| $f_s \geq 2B$ | $\tfrac{\text{muestras}}{\text{s}} \geq \tfrac{\text{muestras}}{\text{ciclo}}\times\tfrac{\text{ciclos}}{\text{s}}$ | **muestras/s** |
-| $M = 2^n$ | **No hay contabilidad** — $n$ es exponente, o sea conteo puro | **niveles** (conteo) |
-| $q = \dfrac{V_{pp}}{M}$ | $\tfrac{\text{V}}{\text{niveles}}$ | **V** — altura de un escalón |
-| $P_q = \dfrac{q^2}{12}$ | $\text{V}^2\div$ adimensional (el 12 es la varianza de una uniforme) | **V²** ($=$ W con $R=1$) |
-| $SNR_Q = \dfrac{3M^2}{F_C^2}$ | $\tfrac{\text{conteo}^2}{(\text{V}/\text{V})^2}$ — **se cancela todo** (incluso el $q^2$ en la derivación) | **adimensional** → por eso admite dB |
-| $R_b = n\,f_s$ | $\tfrac{\text{bits}}{\text{muestra}}\times\tfrac{\text{muestras}}{\text{s}}$ | **bits/s** |
-| $\dfrac{SNR_Q}{1+4P_e(M^2-1)}$ | adimensional $\div$ adimensional ($P_e$ es probabilidad) | **adimensional** |
-| $R_s = \dfrac{R_b}{\log_2M_{mod}}$ | $\tfrac{\text{bits}}{\text{s}}\div\tfrac{\text{bits}}{\text{símbolo}}$ | **símbolos/s** $=$ baudios |
-| $B_{min} = \dfrac{R_s}{2}$ (banda base) | $\tfrac{\text{símbolos}}{\text{s}}\div\tfrac{\text{símbolos}}{\text{ciclo}}$ | **ciclos/s** $=$ Hz |
-| $B_{min} = R_s$ (pasabanda) | $\tfrac{\text{símbolos}}{\text{s}}\times\kappa$, con $\kappa=1\ \tfrac{\text{ciclo}}{\text{símbolo}}$ | **Hz** |
-| $\eta = \dfrac{R_b}{B}$ | $\tfrac{\text{bits}}{\text{s}}\div\tfrac{\text{ciclos}}{\text{s}}$ | **bits/ciclo** $=$ bits/s/Hz |
-| $B_{pulso} = \dfrac{1}{\tau}$ | $1\div\text{s}$ | **Hz** |
+| Fórmula                                 | Cómo se cancela                                                                                                     | Queda                                |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| $f_s \geq 2B$                           | $\tfrac{\text{muestras}}{\text{s}} \geq \tfrac{\text{muestras}}{\text{ciclo}}\times\tfrac{\text{ciclos}}{\text{s}}$ | **muestras/s**                       |
+| $M = 2^n$                               | **No hay contabilidad** — $n$ es exponente, o sea conteo puro                                                       | **niveles** (conteo)                 |
+| $q = \dfrac{V_{pp}}{M}$                 | $\tfrac{\text{V}}{\text{niveles}}$                                                                                  | **V** — altura de un escalón         |
+| $P_q = \dfrac{q^2}{12}$                 | $\text{V}^2\div$ adimensional (el 12 es la varianza de una uniforme)                                                | **V²** ($=$ W con $R=1$)             |
+| $SNR_Q = \dfrac{3M^2}{F_C^2}$           | $\tfrac{\text{conteo}^2}{(\text{V}/\text{V})^2}$ — **se cancela todo** (incluso el $q^2$ en la derivación)          | **adimensional** → por eso admite dB |
+| $R_b = n\,f_s$                          | $\tfrac{\text{bits}}{\text{muestra}}\times\tfrac{\text{muestras}}{\text{s}}$                                        | **bits/s**                           |
+| $\dfrac{SNR_Q}{1+4P_e(M^2-1)}$          | adimensional $\div$ adimensional ($P_e$ es probabilidad)                                                            | **adimensional**                     |
+| $R_s = \dfrac{R_b}{\log_2M_{mod}}$      | $\tfrac{\text{bits}}{\text{s}}\div\tfrac{\text{bits}}{\text{símbolo}}$                                              | **símbolos/s** $=$ baudios           |
+| $B_{min} = \dfrac{R_s}{2}$ (banda base) | $\tfrac{\text{símbolos}}{\text{s}}\div\tfrac{\text{símbolos}}{\text{ciclo}}$                                        | **ciclos/s** $=$ Hz                  |
+| $B_{min} = R_s$ (pasabanda)             | $\tfrac{\text{símbolos}}{\text{s}}\times\kappa$, con $\kappa=1\ \tfrac{\text{ciclo}}{\text{símbolo}}$               | **Hz**                               |
+| $\eta = \dfrac{R_b}{B}$                 | $\tfrac{\text{bits}}{\text{s}}\div\tfrac{\text{ciclos}}{\text{s}}$                                                  | **bits/ciclo** $=$ bits/s/Hz         |
+| $B_{pulso} = \dfrac{1}{\tau}$           | $1\div\text{s}$                                                                                                     | **Hz**                               |
 
 > ⚠️ **Lo incómodo primero**: dimensionalmente **todo esto es $1/\text{s}$ y nada más**. "Bit", "símbolo", "ciclo" y "muestra" **no son dimensiones físicas** — son etiquetas de conteo. O sea que esto es contabilidad **semántica**, no análisis dimensional: una convención. Pero es la convención que atrapa los dos errores más caros del tema, así que conviene sostenerla.
 
@@ -539,6 +539,43 @@ $$S(f) = \frac{\sigma_a^2}{T_s}\,|P(f)|^2 \quad\Longrightarrow\quad \text{pulso 
 | $X_{lineal} = 10^{X_{dB}/10}$ | dB → lineal (para Friis, Shannon, todo) |
 
 **Criterio de Nyquist sin ISI**: por un canal pasabajos de ancho $B$ se pueden mandar como máximo $2B$ símbolos independientes por segundo ($R_s\leq2B \Rightarrow B_{min}=R_s/2$). **Es el teorema de muestreo dado vuelta**: un canal de ancho $B$ tiene **$2B$ grados de libertad por segundo**, y no se pueden especificar más números independientes que eso. Los dos "2" son duales: uno para **muestrear** ($f_s\geq2B$, muestras/ciclo), otro para **transmitir** ($R_s\leq2B$, símbolos/ciclo).
+
+### Decibeles — cuándo $10\log$ y cuándo $20\log$
+
+**Hay una sola regla: $10\log_{10}$ de una relación de POTENCIAS.** El 20 no es otra regla — aparece cuando **lo de adentro está al cuadrado** y el exponente sale afuera:
+
+$$\boxed{10\log_{10}\big(X^2\big) = 20\log_{10}(X)}$$
+
+Eso pasa por **dos motivos distintos**, y conviene no mezclarlos:
+
+| Motivo | Cuándo | Ejemplo |
+|---|---|---|
+| **1. La magnitud es una amplitud** (tensión, campo) y $P\propto V^2$ | Te dan volts y querés dB de potencia | $10\log\dfrac{V_2^2}{V_1^2} = 20\log\dfrac{V_2}{V_1}$ |
+| **2. La relación de potencias YA es un cuadrado** | La fórmula misma tiene un $(\cdot)^2$ | FSPL, $M^2$ de $SNR_Q$ |
+
+**Los cuatro lugares del programa donde aparece el 20:**
+
+| Dónde | De dónde sale el 20 |
+|---|---|
+| **FSPL** $=32{,}44+20\log f_{[MHz]}+20\log d_{[km]}$ | $L=(4\pi d/\lambda)^2$ — **motivo 2**, no es una amplitud |
+| **$SNR_Q$ en dB** $= 10\log\dfrac{3M^2}{F_C^2} = 1{,}76+20\log M-20\log F_C$ | El $M^2$ y el $F_C^2$ |
+| **El famoso $6{,}02\,n$** | Es literalmente eso: $20\log(2^n)=20n\log2 = 6{,}02n$. **Por eso cada bit da $+6$ dB y no $+3$** |
+| ° Companding $\approx20\log\mu$ | Es un rango dinámico (relación de amplitudes) |
+
+> ⚠️ **Todo lo demás va con $10\log$, sin excepción**: $F$ (cifra de ruido), $G$, $L_c$, Friis, SNR, $\gamma$, $E_b/N_0$, $G_p$, capacidades, potencias, PEP. **El chequeo rápido**: ¿lo de adentro está al cuadrado, o me dieron **volts**? → 20. ¿Me dieron **watts** o una relación de potencias? → 10.
+
+**dBm y dBW** — siempre $10\log$, son potencias:
+
+$$P_{dBm} = 10\log_{10}\!\left(\frac{P}{1\ \text{mW}}\right) \qquad P_{dBW} = 10\log_{10}\!\left(\frac{P}{1\ \text{W}}\right) \qquad P_{dBm} = P_{dBW}+30$$
+
+⚠️ **Ojo con el denominador de dBm: es mW, no W.** Es el error de dedo típico.
+
+| Potencia | dBm | | Potencia | dBm |
+|---|---|---|---|---|
+| 1 mW | **0 dBm** | | 5 µW | $10\log(5\times10^{-3}) = \mathbf{-23{,}0}$ dBm |
+| 1 W | 30 dBm ($=0$ dBW) | | $kT_0$ | $-174$ dBm/Hz |
+
+> **dBm es un nivel ABSOLUTO** (referido a 1 mW); **dB es una RELACIÓN**. Por eso en el balance de enlace se mezclan sin problema — $\underbrace{P_{TX}}_{\text{dBm}} + \underbrace{G_{TX}-L_{FSPL}+G_{RX}}_{\text{dB}} = \underbrace{P_{RX}}_{\text{dBm}}$ — pero **restar dos dBm da dB**, y **sumar dos dBm no significa nada**.
 
 ---
 
