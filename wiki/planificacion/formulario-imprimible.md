@@ -23,43 +23,23 @@ curso: Sistemas de Comunicaciones
 | ● | $\eta = \dfrac{R_b}{B}$ | **Eficiencia espectral** | $\tfrac{\text{bits}}{\text{s}}\div\tfrac{\text{ciclos}}{\text{s}}$ → **bits/ciclo** $=$ bits/s/Hz | **La piden 7 veces.** A $B$ mínimo pasabanda: $\eta=\ell$; banda base: $\eta=2\ell$ |
 |  | $B_{pulso} = \dfrac{1}{\tau}$ | Ancho de banda de un pulso PAM | $1\div\text{s}$ → **Hz** | $\tau$ = ancho del pulso |
 
-### Contabilidad de unidades — cómo funciona
-
-> ⚠️ **Lo incómodo primero**: dimensionalmente **todo esto es $1/\text{s}$ y nada más**. "Bit", "símbolo", "ciclo" y "muestra" **no son dimensiones físicas** — son etiquetas de conteo. O sea que esto es contabilidad **semántica**, no análisis dimensional: una convención. Pero es la convención que atrapa los dos errores más caros del tema, así que conviene sostenerla.
-
 **Los tres factores de conversión** — todos son del mismo tipo ("cuántos X por Y") y **cambian qué se está contando sin cambiar la dimensión**:
 
-| Factor | Unidad | Dónde vive |
-|---|---|---|
-| $n = \log_2M$ | bits/**muestra** | digitalización (fuente) |
-| $\ell = \log_2M_{mod}$ | bits/**símbolo** | transmisión |
-| $2$ (Nyquist) | muestras/ciclo *o* símbolos/ciclo | muestrear *o* señalizar — son duales |
-
-> **Por qué $M=2^n$ queda afuera de la contabilidad, y eso es informativo**: la contabilidad **solo funciona con multiplicación y división**, que es donde las etiquetas cancelan; con exponentes no hay nada que cancelar. Y rige la regla dura: **el argumento de toda función trascendente debe ser adimensional**. Que $2^n$ sea legal *confirma* que $n$ es un número puro — si "bit" fuera una dimensión física de verdad, $2^n$ no tendría sentido. $M=2^n$ no es una conversión sino un **cambio de representación**: $M$ = cuántos niveles hay; $n$ = cuántos dígitos binarios hacen falta para etiquetarlos.
->
-> **Y $n$ cumple dos roles distintos según dónde aparece**: en $M=2^n$ es **exponente** (conteo puro, ninguna etiqueta tiene sentido); en $R_b=n\,f_s$ es **factor de conversión** (bits/muestra). Mismo número, dos papeles — la etiqueta se le pone *cuando multiplica*, porque ahí es útil.
-
-> **Tasa vs ancho — la distinción de tipo que sí importa**: $f_s$ y $R_s$ son **tasas de eventos**, y hay un reloj oscilando de verdad (el reloj de muestreo a 8 kHz *es* una señal de 8 kHz, medible con osciloscopio — escribirlo en Hz no es licencia, es literal). $B$ en cambio es el **ancho de un intervalo** del eje de frecuencias, $B=f_{max}-f_{min}$: una resta, **no es tasa de nada**. Por eso escribir $f_s$ en Hz está perfecto, pero **igualar $f_s$ con un ancho de banda sería un error de tipo**, aunque los números y las dimensiones lo permitan.
+| Factor                 | Unidad                            | Dónde vive                           |
+| ---------------------- | --------------------------------- | ------------------------------------ |
+| $n = \log_2M$          | bits/**muestra**                  | digitalización (fuente)              |
+| $\ell = \log_2M_{mod}$ | bits/**símbolo**                  | transmisión                          |
+| $2$ (Nyquist)          | muestras/ciclo *o* símbolos/ciclo | muestrear *o* señalizar — son duales |
 
 **La cadena completa** (la composición de los tres factores, y donde se cometen los dos errores más caros):
 
 $$f_s\ \left[\tfrac{\text{muestras}}{\text{s}}\right] \xrightarrow{\ \times n\ (\text{bits/muestra})\ } R_b\ [\text{bps}] \xrightarrow{\ \div\ell\ (\text{bits/símbolo})\ } D\ [\text{baudios}] \xrightarrow{\ \text{Nyquist}\ } B\ [\text{Hz}]$$
-
-**El hábito para el examen**: escribir la etiqueta al lado de cada resultado intermedio — no cuentas dimensionales, solo la etiqueta. Cuatro números, cuatro etiquetas:
-
 $$f_s = 8\text{ kmuestras/s} \ \to\ R_b = 64\text{ kbps} \ \to\ R_s = 32\text{ kbaud} \ \to\ B = 32\text{ kHz}$$
-
-> **Los dos errores**: (1) confundir $R_b$ con $R_s$ — dividir o no por $\log_2M_{mod}$; (2) confundir $R_s$ con $B$ — el factor 2 de banda base vs pasabanda. **El hábito**: escribir la etiqueta al lado de cada resultado intermedio. Si piden "ancho de banda" y el último número quedó en kbps, hay alarma.
-
-> **$M$ vs $M_{mod}$** aparecen los dos en el mismo ejercicio: $M$ = niveles del ADC (define $n$ bits/**muestra**); $M_{mod}$ = puntos de constelación (define $\ell$ bits/**símbolo**). Son independientes: un ADC de 16 bits puede alimentar un QPSK ($\ell=2$).
-
-**Lo que más piden** (relevamiento sobre el corpus): ancho de banda mínimo (7), tasa de información en bps (7), eficiencia espectral a $B$ mínimo (7), **diagrama en bloques de transmisor PAM/TDM (6)**, ventaja vs otro esquema a igual tasa (6).
-
-° **Companding** (no verificado en el corpus): $C_\mu(x)=\operatorname{sgn}(x)\dfrac{\ln(1+\mu|x/V_{max}|)}{\ln(1+\mu)}$ con $\mu=255$ (USA/Japón); A-law con $A=87{,}6$ (Europa), lineal cerca de 0 y log lejos; **no son compatibles entre sí**. Mejora de rango dinámico $\approx20\log_{10}\mu$ ($\mu=255\to\ 48$ dB). **Delta**: slope overload si $\delta f_s < \max|dx/dt|$; $R_{DM}=f_s$ (1 bit/muestra); ADM: $\delta[n]=\delta[n-1]\cdot K$ si misma dirección, $/K$ si cambia ($K\approx1{,}5$).
+**Companding** — *apareció como ítem conceptual de 0,25 pts en el final más reciente del corpus (17/07/2025): "¿por qué se emplea Ley A o μ?" → **para equiparar la SNR en señales de baja amplitud**, típicas en voz*: $C_\mu(x)=\operatorname{sgn}(x)\dfrac{\ln(1+\mu|x/V_{max}|)}{\ln(1+\mu)}$ con $\mu=255$ (USA/Japón); A-law con $A=87{,}6$ (Europa), lineal cerca de 0 y log lejos; **no son compatibles entre sí**. Mejora de rango dinámico $\approx20\log_{10}\mu$ ($\mu=255\to\ 48$ dB). **Delta**: slope overload si $\delta f_s < \max|dx/dt|$; $R_{DM}=f_s$ (1 bit/muestra); ADM: $\delta[n]=\delta[n-1]\cdot K$ si misma dirección, $/K$ si cambia ($K\approx1{,}5$).
 
 ---
 
-## 2 · Modulación Lineal (AM / DSB-SC / SSB / VSB) — 61,9%
+## 2 · Modulación Lineal (AM / DSB-SC / SSB / VSB)
 
 > **Notación de la cátedra** (verificada sobre los finales): el índice es **$m$** (no $\mu$ ni $k_a$), la sensibilidad es **$k$**, la moduladora normalizada a pico 1 es **$m_n(t)$**.
 
@@ -106,7 +86,7 @@ El **filtro pasabanda** centrado en $f_c$ con ancho $2f_m$ deja pasar $a\,c+2b\,
 
 ---
 
-## 3 · Modulación Exponencial (FM / PM) — 61,9%
+## 3 · Modulación Exponencial (FM / PM)
 
 | | Fórmula | Qué es | Notas |
 |---|---|---|---|
@@ -151,7 +131,7 @@ $$n_{total}=n_1n_2 = \frac{\Delta f_{salida}}{\Delta f_{NBFM}} \qquad\qquad f_{O
 
 ---
 
-## 4 · SNR de posdetección ⭐ el ítem MÁS frecuente del corpus — 8 apariciones
+## 4 · SNR de posdetección
 
 > 📌 *"Determinar la relación señal a ruido de **posdetección** si se utiliza modulación de amplitud con 90% de índice / banda lateral única / doble banda sin portadora / frecuencia con desvío de 75 kHz"*
 
@@ -180,11 +160,11 @@ $\gamma$ es la SNR que se tendría transmitiendo el mensaje **directo en banda b
 
 > ⚠️ **Variantes de la fórmula de FM**: distintos textos escriben $3\beta^2\gamma$, $3\beta^2(\beta+1)\gamma$ o $3\Delta^2x^2\gamma$. **Los finales suelen darla en el enunciado — usar la que den.**
 
-**Umbral**: $SNR_{umbral}\approx10$ dB (AM y discriminador FM convencional); PLL ~7 dB, FMFB ~4-5 dB. Por debajo, colapso de SNR. DSB-SC y SSB coherentes **no tienen efecto umbral**. ° Mejora por pre/de-énfasis $\approx10$–$13$ dB ($\tau=75\,\mu$s USA/Japón, $50\,\mu$s Europa).
+**Umbral**: $SNR_{umbral}\approx10$ dB (AM y discriminador FM convencional); PLL ~7 dB, FMFB ~4-5 dB. Por debajo, colapso de SNR. DSB-SC y SSB coherentes **no tienen efecto umbral**. **Pre/de-énfasis** — aparece en **3 finales**, casi siempre como *"sin pre-énfasis"* en el enunciado, y en uno piden rehacer el ítem **con** y **sin**: mejora $\approx10$–$13$ dB, $\tau=75\,\mu$s (USA/Japón) o $50\,\mu$s (Europa).
 
 ---
 
-## 5 · Ruido / Friis / Enlaces — 52,4%
+## 5 · Ruido / Friis / Enlaces
 
 > ⚠️ **"Factor de ruido" $\neq$ "cifra de ruido", y la cátedra respeta la distinción con total consistencia**: "factor de ruido 4" es **lineal**; "cifra de ruido de 6 dB" es **en dB**. ("Figura de ruido": cero apariciones.) **El vocabulario del enunciado te dice las unidades.**
 
@@ -245,7 +225,7 @@ El dispositivo agrega ruido propio **fijo** ($N_{out}=G(N_i+N_a)$, con $N_a=kT_{
 
 ---
 
-## 6 · Teoría de la Información — 52,4%
+## 6 · Teoría de la Información
 
 > Casi siempre **combinada con Modulación Digital**: se calcula una tasa de información y después se pregunta si tal modulación puede transportarla.
 
@@ -291,6 +271,29 @@ $$\text{Fuente} \xrightarrow{\ R=rH\ } \text{tasa de info} \xrightarrow{\ \text{
 
 $$R\left[\tfrac{\text{bits}}{\text{s}}\right] = \underbrace{\text{elementos por trama}}_{\text{conteo}} \times \underbrace{H}_{\text{bits/elemento}} \times \underbrace{\text{tramas por segundo}}_{1/\text{s}}$$
 
+### El enlace asincrónico con trama ASCII ⭐ (aparece en 3 finales, ~2,5 pts)
+
+Es donde vive el ítem del *"carácter espacio con probabilidad 1/7"*. **El enunciado es siempre el mismo**: enlace a $R_b$ bps, caracteres de $N_t$ binits totales de los cuales solo 7 son el ASCII (el resto: **1 de paridad + 1 de comienzo + 1 o 2 de parada**).
+
+| Ítem | Cuenta |
+|---|---|
+| **a)** Caracteres por segundo | $\dfrac{R_b\ [\text{binits/s}]}{N_t\ [\text{binits/carácter}]}$ — **dividir por la trama completa, no por 7** |
+| **b)** Tiempo de una página | $\dfrac{\text{caracteres de la página}}{\text{caracteres/s}}$; contar **el espacio entre palabras** como un carácter más |
+| **c)** $H$ por carácter (y por palabra) | $H=\sum p_i\log_2\frac{1}{p_i}$; por palabra: $\times$ (caracteres/palabra **+ 1** por el espacio) |
+| **d)** Tasa de información | $R = \text{caracteres/s}\times H$ — **no** es $R_b$ |
+
+**Ejemplo verificado** ($R_b=28{,}8$ kbps, $N_t=10$, página de 600 palabras × 6 caracteres):
+
+$$\text{a) } \frac{28\,800}{10} = 2880\ \tfrac{\text{caract.}}{\text{s}} \qquad \text{b) } \frac{600(6{+}1)}{2880} = \frac{4200}{2880} = 1{,}46\ \text{s}$$
+
+Con $p_{esp}=\tfrac17$, 10 vocales a $\tfrac{3}{56}$ y 72 caracteres a $\tfrac{1}{224}$ *(verificá que sume 1)*:
+
+$$H = \tfrac17\log_27 + \tfrac{30}{56}\log_2\tfrac{56}{3} + \tfrac{72}{224}\log_2 224 = 0{,}401+2{,}262+2{,}510 = \mathbf{5{,}17}\ \tfrac{\text{bits}}{\text{caráct.}}$$
+
+$$\text{c) } 7\times5{,}17 = \mathbf{36{,}2}\ \tfrac{\text{bits}}{\text{palabra}} \qquad \text{d) } R = 2880\times5{,}17 = \mathbf{14{,}9}\ \text{kbps}$$
+
+> ⭐ **Este ejercicio es el mejor ejemplo de las tres tasas**, y por eso lo toman: se mandan **28,8 kbinits/s** por el cable, que son **2880 caracteres/s** (símbolos de la fuente), que transportan **14,9 kbits/s** de información real. Se pierde dos veces: **3 de cada 10 binits son overhead de trama** (paridad, arranque, parada) y además cada carácter lleva $H=5{,}17$ bits en vez de los $\log_2 89 \approx 6{,}5$ que llevaría si fuera equiprobable. **Eficiencia total: $14{,}9/28{,}8 = 52\%$.**
+
 **Demostración del sistema ideal** (un sistema ideal no pierde información, así que las capacidades a un lado y otro deben igualarse):
 
 $$\underbrace{B_T\log_2\!\left[1+\left(\tfrac{S}{N}\right)_{ent}\right]}_{C\ \text{del canal de transmisión}} = \underbrace{B\log_2\!\left[1+\left(\tfrac{S}{N}\right)_{sal}\right]}_{C\ \text{en banda base}} \ \Longrightarrow\ 1+\left(\tfrac{S}{N}\right)_{sal} = \left[1+\left(\tfrac{S}{N}\right)_{ent}\right]^{B_T/B}$$
@@ -303,7 +306,7 @@ $$\underbrace{B_T\log_2\!\left[1+\left(\tfrac{S}{N}\right)_{ent}\right]}_{C\ \te
 
 ---
 
-## 7 · Modulación Digital / BER — 40,5%
+## 7 · Modulación Digital / BER
 
 > Menos frecuente que PCM o AM/FM, pero **sus fórmulas se reusan en Ruido/BER**, así que rinde doble.
 
@@ -423,7 +426,7 @@ $$S(f) = \frac{\sigma_a^2}{T_s}\,|P(f)|^2 \quad\Longrightarrow\quad \text{pulso 
 
 ---
 
-## 8 · Espectro Expandido / OFDM — 57,1%
+## 8 · Espectro Expandido / OFDM
 
 **Son dos sub-temas casi independientes.** DSSS: ganancia de procesamiento. OFDM: subportadoras ortogonales.
 
@@ -440,7 +443,7 @@ $$S(f) = \frac{\sigma_a^2}{T_s}\,|P(f)|^2 \quad\Longrightarrow\quad \text{pulso 
 
 **El patrón de ejercicio (aparece 9 veces)**: dan LFSR y período → sacar $R_c$ → sacar $G_p$ y $B$ → **rediseñar para un $G_p$ objetivo** manteniendo $R_b$, despejando al revés: $\boxed{R_c = G_p\cdot R_b}$. El precio: el $BW$ crece en la misma proporción — **$G_p$ se compra con espectro**.
 
-° **FHSS / CDMA** (no verificado en el corpus): $G_{p,FHSS}\approx M/k$, $P_{hit}=k/M$ ($M$ canales, $k$ interferidos); señal CDMA del usuario $k$: $s_k(t)=A_kd_k(t)c_k(t)\cos(\omega_ct+\phi_k)$.
+° **FHSS / CDMA** (cero apariciones como ejercicio; CDMA solo se menciona de paso en una resolución): $G_{p,FHSS}\approx M/k$, $P_{hit}=k/M$ ($M$ canales, $k$ interferidos); señal CDMA del usuario $k$: $s_k(t)=A_kd_k(t)c_k(t)\cos(\omega_ct+\phi_k)$.
 
 ### OFDM — las 4 fórmulas
 
@@ -530,7 +533,7 @@ Eso pasa por **dos motivos distintos**, y conviene no mezclarlos:
 | **FSPL** $=32{,}44+20\log f_{[MHz]}+20\log d_{[km]}$ | $L=(4\pi d/\lambda)^2$ — **motivo 2**, no es una amplitud |
 | **$SNR_Q$ en dB** $= 10\log\dfrac{3M^2}{F_C^2} = 1{,}76+20\log M-20\log F_C$ | El $M^2$ y el $F_C^2$ |
 | **El famoso $6{,}02\,n$** | Es literalmente eso: $20\log(2^n)=20n\log2 = 6{,}02n$. **Por eso cada bit da $+6$ dB y no $+3$** |
-| ° Companding $\approx20\log\mu$ | Es un rango dinámico (relación de amplitudes) |
+| Companding $\approx20\log\mu$ | Es un rango dinámico (relación de amplitudes) |
 
 > ⚠️ **Todo lo demás va con $10\log$, sin excepción**: $F$ (cifra de ruido), $G$, $L_c$, Friis, SNR, $\gamma$, $E_b/N_0$, $G_p$, capacidades, potencias, PEP. **El chequeo rápido**: ¿lo de adentro está al cuadrado, o me dieron **volts**? → 20. ¿Me dieron **watts** o una relación de potencias? → 10.
 
@@ -546,25 +549,6 @@ $$P_{dBm} = 10\log_{10}\!\left(\frac{P}{1\ \text{mW}}\right) \qquad P_{dBW} = 10
 | 1 W | 30 dBm ($=0$ dBW) | $kT_0$ | $-174$ dBm/Hz |
 
 > **dBm es un nivel ABSOLUTO** (referido a 1 mW); **dB es una RELACIÓN**. Por eso en el balance de enlace se mezclan sin problema — $\underbrace{P_{TX}}_{\text{dBm}} + \underbrace{G_{TX}-L_{FSPL}+G_{RX}}_{\text{dB}} = \underbrace{P_{RX}}_{\text{dBm}}$ — pero **restar dos dBm da dB**, y **sumar dos dBm no significa nada**.
-
----
-
-## 11 · Diagramas en bloques — checklist
-
-**Nunca los estudiamos en profundidad y los piden mucho.** Frecuencia real en el corpus:
-
-| Diagrama | Apariciones | Cadena de bloques |
-|---|---|---|
-| **Transmisor PAM/TDM** (y su receptor) | **10** | Filtro antialias → S/H por canal → **conmutador TDM** → cuantificador → codificador → línea |
-| **Modulador SSB por desplazamiento de fase** (Hartley) | 3 | $m(t)$ y su Hilbert ($-90°$) → dos mezcladores en cuadratura → sumador/restador |
-| **Transmisor de FM / Armstrong** | 3+ | NBFM → $\times n_1$ → mezclador ($f_{OL}$) → $\times n_2$ → potencia |
-| **Sección de repetición** (cable + repetidor) | 2 | $\ldots$ → cable ($L_c$) → repetidor ($G=L_c$) → cable → $\ldots$ |
-| **Transmisor OFDM** | 2 | S/P → mapeo QAM → **IFFT** → P/S → prefijo cíclico → cuadratura ($I\cos-Q\sin$) |
-| **Generador PCM** | 1+ | Filtro antialias → muestreador (S/H) → cuantificador → codificador |
-| **Demodulador FSK binaria** | 1 | Dos filtros pasabanda ($f_1$, $f_0$) → detectores de envolvente → comparador |
-| **Receptor superheterodino** | — | RF → mezclador ($f_{OL}$) → FI → detector → audio. $f_{IF}=\lvert f_{RF}-f_{OL}\rvert$; imagen en $f_{RF}\pm2f_{IF}$ |
-
-**Cómo dibujarlos**: rectángulos con el nombre adentro, flechas de señal, **y etiquetar cada punto con la magnitud que lleva** (Hz, bps, baudios). Etiquetar es lo que demuestra que se entendió la cadena.
 
 ---
 
@@ -585,7 +569,7 @@ $$P_{dBm} = 10\log_{10}\!\left(\frac{P}{1\ \text{mW}}\right) \qquad P_{dBW} = 10
 | FM broadcast: $\Delta f=75$ kHz, $f_m=15$ kHz, $\beta=5$, $B_T=200$ kHz | Valores estándar de radio FM |
 | PCM telefonía: $f_s=8$ kHz, $n=8$ bits, $R_b=64$ kbps | Estándar G.711 |
 | CD audio: $f_s=44{,}1$ kHz, $n=16$ bits, estéreo | $R_b = 1{,}41$ Mbps |
-| $\mu=255$ (USA/Japón), $A=87{,}6$ (Europa) | ° Companding |
+| $\mu=255$ (USA/Japón), $A=87{,}6$ (Europa) | Companding (Ley μ / Ley A) |
 
 ---
 

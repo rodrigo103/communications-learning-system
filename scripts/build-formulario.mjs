@@ -36,7 +36,7 @@ const html = `<meta charset="utf-8">
 
   <div class="legend">
     <span><b style="color:var(--mem)">●</b> de memoria</span>
-    <span><b>°</b> cero apariciones en el corpus — baja prioridad</span>
+    <span><b>°</b> cero apariciones en los 42 finales — baja prioridad</span>
     <span><b>%</b> frecuencia sobre 42 finales únicos</span>
     <button class="print-btn no-print" onclick="window.print()">Imprimir / Guardar PDF</button>
   </div>
