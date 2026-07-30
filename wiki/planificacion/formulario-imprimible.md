@@ -7,21 +7,21 @@ curso: Sistemas de Comunicaciones
 
 ## 1 · Muestreo / PCM / Cuantificación
 
-| Fórmula | Qué es | Unidades — cómo se cancela | Notas |
-|---|---|---|---|
-| $f_s \geq 2B$ | **Nyquist** — frecuencia de muestreo mínima | $\tfrac{\text{muestras}}{\text{s}} \geq \tfrac{\text{muestras}}{\text{ciclo}}\times\tfrac{\text{ciclos}}{\text{s}}$ → **muestras/s** | Evita aliasing |
-| $M = 2^n$ | $M$ niveles con $n$ bits/muestra | **No hay contabilidad** — $n$ es exponente, conteo puro → **niveles** | $n=\log_2M$ |
-| $q = \dfrac{V_{pp}}{M}$ | Paso de cuantificación | $\tfrac{\text{V}}{\text{niveles}}$ → **V**, altura de un escalón | **Error máximo $=q/2$** |
-| $P_q = \dfrac{q^2}{12}$ | Ruido de cuantificación | $\text{V}^2\div$ adimensional → **V²** ($=$ W con $R=1$) | El 12 es la varianza de una uniforme en $[-q/2,\,q/2]$ |
-| $SNR_Q = \dfrac{3M^2}{F_C^2}$ | **SNR de cuantificación — la forma de esta cátedra** | $\tfrac{\text{conteo}^2}{(\text{V}/\text{V})^2}$ — se cancela todo, incluso el $q^2$ de la derivación → **adimensional** | $F_C=$ factor de cresta $=$ pico/RMS. Que sea adimensional **es lo que habilita el dB** |
-| $SNR_Q \approx 6{,}02\,n+1{,}76$ dB | Caso senoidal ($F_C=\sqrt2$) | El $6{,}02\,n$ **es** $20\log_{10}2^n$ → **dB** | Es la misma fórmula, no otra |
-| $SNR_Q = 3M^2\left\langle\left(\dfrac{m(t)}{V_p}\right)^2\right\rangle$ | Forma general | $\left\langle(m/V_p)^2\right\rangle = 1/F_C^2$, cociente de tensiones → **adimensional** | Uniforme ($F_C=\sqrt3$) $\Rightarrow SNR_Q=M^2$ |
-| $R_b = n\,f_s$ | Tasa de bits | $\tfrac{\text{bits}}{\text{muestra}}\times\tfrac{\text{muestras}}{\text{s}}$ → **bits/s** | Telefonía: $n=8$, $f_s=8$k → 64 kbps |
-| $\left(\dfrac{S}{N}\right)_{sal} = \dfrac{SNR_Q}{1+4P_e(M^2-1)}$ | **SNR con errores de canal** | adimensional $\div$ adimensional ($P_e$ es probabilidad) → **adimensional** | "Antes del canal" $=$ numerador solo ($P_e\to0$) |
-| $R_s = \dfrac{R_b}{\log_2 M_{mod}}$ | Tasa de símbolos | $\tfrac{\text{bits}}{\text{s}}\div\tfrac{\text{bits}}{\text{símbolo}}$ → **símbolos/s** $=$ baudios | $M_{mod}$ = constelación, **no** los niveles del ADC |
-| $B_{min}=R_s$ (pasabanda) $\quad B_{min}=R_s/2$ (banda base) | Ancho de banda mínimo | $\tfrac{\text{símbolos}}{\text{s}}\div\tfrac{\text{símbolos}}{\text{ciclo}}$ → **ciclos/s** $=$ **Hz**. En pasabanda el $\kappa=1\ \tfrac{\text{ciclo}}{\text{símbolo}}$ cancela el $\tfrac12$ | Con roll-off: $\times(1+\alpha)$ |
-| $\eta = \dfrac{R_b}{B}$ | **Eficiencia espectral** | $\tfrac{\text{bits}}{\text{s}}\div\tfrac{\text{ciclos}}{\text{s}}$ → **bits/ciclo** $=$ bits/s/Hz | A $B$ mínimo pasabanda: $\eta=\ell$; banda base: $\eta=2\ell$ |
-| $B_{pulso} = \dfrac{1}{\tau}$ | Ancho de banda de un pulso PAM | $1\div\text{s}$ → **Hz** | $\tau$ = ancho del pulso |
+| Fórmula                                                                 | Qué es                                               | Unidades — cómo se cancela                                                                                                                                                                     | Notas                                                                                   |
+| ----------------------------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| $f_s \geq 2B$                                                           | **Nyquist** — frecuencia de muestreo mínima          | $\tfrac{\text{muestras}}{\text{s}} \geq \tfrac{\text{muestras}}{\text{ciclo}}\times\tfrac{\text{ciclos}}{\text{s}}$ → **muestras/s**                                                           | Evita aliasing                                                                          |
+| $M = 2^n$                                                               | $M$ niveles con $n$ bits/muestra                     | **No hay contabilidad** — $n$ es exponente, conteo puro → **niveles**                                                                                                                          | $n=\log_2M$                                                                             |
+| $q = \dfrac{V_{pp}}{M}$                                                 | Paso de cuantificación                               | $\tfrac{\text{V}}{\text{niveles}}$ → **V**, altura de un escalón                                                                                                                               | **Error máximo $=q/2$**                                                                 |
+| $P_q = \dfrac{q^2}{12}$                                                 | Ruido de cuantificación                              | $\text{V}^2\div$ adimensional → **V²** ($=$ W con $R=1$)                                                                                                                                       | El 12 es la varianza de una uniforme en $[-q/2,\,q/2]$                                  |
+| $SNR_Q = \dfrac{3M^2}{F_C^2}$                                           | **SNR de cuantificación — la forma de esta cátedra** | $\tfrac{\text{conteo}^2}{(\text{V}/\text{V})^2}$ — se cancela todo, incluso el $q^2$ de la derivación → **adimensional**                                                                       | $F_C=$ factor de cresta $=$ pico/RMS. Que sea adimensional **es lo que habilita el dB** |
+| $SNR_Q \approx 6{,}02\,n+1{,}76$ dB                                     | Caso senoidal ($F_C=\sqrt2$)                         | El $6{,}02\,n$ **es** $20\log_{10}2^n$ → **dB**                                                                                                                                                | Es la misma fórmula, no otra                                                            |
+| $SNR_Q = 3M^2\left\langle\left(\dfrac{m(t)}{V_p}\right)^2\right\rangle$ | Forma general                                        | $\left\langle(m/V_p)^2\right\rangle = 1/F_C^2$, cociente de tensiones → **adimensional**                                                                                                       | Uniforme ($F_C=\sqrt3$) $\Rightarrow SNR_Q=M^2$                                         |
+| $R_b = n\,f_s$                                                          | Tasa de bits                                         | $\tfrac{\text{bits}}{\text{muestra}}\times\tfrac{\text{muestras}}{\text{s}}$ → **bits/s**                                                                                                      | Telefonía: $n=8$, $f_s=8$k → 64 kbps                                                    |
+| $\left(\dfrac{S}{N}\right)_{sal} = \dfrac{SNR_Q}{1+4P_e(M^2-1)}$        | **SNR con errores de canal**                         | adimensional $\div$ adimensional ($P_e$ es probabilidad) → **adimensional**                                                                                                                    | "Antes del canal" $=$ numerador solo ($P_e\to0$)                                        |
+| $R_s = \dfrac{R_b}{\log_2 M_{mod}}$                                     | Tasa de símbolos                                     | $\tfrac{\text{bits}}{\text{s}}\div\tfrac{\text{bits}}{\text{símbolo}}$ → **símbolos/s** $=$ baudios                                                                                            | $M_{mod}$ = constelación, **no** los niveles del ADC                                    |
+| $B_{min}=R_s$ (pasabanda) $\quad B_{min}=R_s/2$ (banda base)            | Ancho de banda mínimo                                | $\tfrac{\text{símbolos}}{\text{s}}\div\tfrac{\text{símbolos}}{\text{ciclo}}$ → **ciclos/s** $=$ **Hz**. En pasabanda el $\kappa=1\ \tfrac{\text{ciclo}}{\text{símbolo}}$ cancela el $\tfrac12$ | Con roll-off: $\times(1+\alpha)$                                                        |
+| $\eta = \dfrac{R_b}{B}$                                                 | **Eficiencia espectral**                             | $\tfrac{\text{bits}}{\text{s}}\div\tfrac{\text{ciclos}}{\text{s}}$ → **bits/ciclo** $=$ bits/s/Hz                                                                                              | A $B$ mínimo pasabanda: $\eta=\ell$; banda base: $\eta=2\ell$                           |
+| $B_{pulso} = \dfrac{1}{\tau}$                                           | Ancho de banda de un pulso PAM                       | $1\div\text{s}$ → **Hz**                                                                                                                                                                       | $\tau$ = ancho del pulso                                                                |
 
 **Los tres factores de conversión** — todos son del mismo tipo ("cuántos X por Y") y **cambian qué se está contando sin cambiar la dimensión**:
 
@@ -216,7 +216,7 @@ $$\boxed{N_{dBm} = -174 + 10\log_{10}B_{[Hz]} + F_{[dB]}} \qquad (kT_0 = 4\times
 
 $$F_{spec} = 1+\frac{T_{eq}}{T_0}\ \text{(catálogo, fijo)} \qquad\qquad \text{Degradación} = 1+\frac{T_{eq}}{T_{fuente}}\ \text{(situación concreta)}$$
 
-El dispositivo agrega ruido propio **fijo** ($N_{out}=G(N_i+N_a)$, con $N_a=kT_{eq}B$): si $N_i$ sube, ese aporte **pesa proporcionalmente menos** → degrada menos. La norma fija la referencia en $T_0=290$ K para que $F$ sirva como especificación. **Coinciden solo cuando la fuente está a $T_0$.** Ejemplo: LNA con $T_{eq}=50$ K degrada **0,7 dB** en el banco ($T_0$) y **5,4 dB** con antena a cielo frío ($T_{ant}=20$ K) — el mismo LNA.
+El dispositivo agrega ruido propio **fijo** ($N_{out}=G(N_i+N_a)$, con $N_a=kT_{eq}B$): si $N_i$ sube, ese aporte **pesa proporcionalmente menos** → degrada menos. La norma fija la referencia en $T_0=290$ K para que $F$ sirva como especificación. **Coinciden solo cuando la fuente está a $T_0$.** Un LNA con $T_{eq}=50$ K degrada **0,7 dB** en el banco ($T_0$) y **5,4 dB** con antena a cielo frío ($T_{ant}=20$ K) — el mismo LNA.
 
 > **Cómo enunciar el supuesto** si cambia el ruido de entrada: *"el ruido propio del amplificador no cambia, por lo tanto la degradación efectiva pasa de $F$ a $1+T_{eq}/T_{fuente}$"*.
 
@@ -299,19 +299,19 @@ $$\underbrace{B_T\log_2\!\left[1+\left(\tfrac{S}{N}\right)_{ent}\right]}_{C\ \te
 
 ## 7 · Modulación Digital / BER
 
-| Fórmula | Qué es | Notas |
-|---|---|---|
-| $\ell = \log_2 M$ | Bits por símbolo | QPSK → 2; 16-QAM → 4; 64-QAM → 6 |
-| $D = \dfrac{R_b}{\ell}$ | Tasa de símbolos [baudios] | **Es lo que fija el ancho de banda**, no $R_b$ |
-| $s_{QAM}(t) = I\cos(2\pi f_ct) - Q\sin(2\pi f_ct) = \lvert s\rvert\cos(2\pi f_ct+\phi)$ | **Señal QAM** — dos portadoras en cuadratura | $\lvert s\rvert=\sqrt{I^2+Q^2}$, $\phi=\arctan(Q/I)$: cartesianas → polares |
-| $S = \dfrac{\langle\lvert s\rvert^2\rangle}{2}$ | **Potencia media transmitida** | El $/2$ es pico→RMS del **portador** |
-| $\langle\lvert s\rvert^2\rangle = \dfrac{2(M-1)}{3}a^2$ ($M$-QAM) $\ \to\ S=\dfrac{(M-1)a^2}{3}$ | Potencia de QAM cuadrada | Niveles $\pm a,\pm3a,\ldots$ |
-| $\langle\lvert s\rvert^2\rangle = A^2$ ($M$-PSK) $\ \to\ S=\dfrac{A^2}{2}$ | Potencia de PSK | Envolvente constante |
-| $N = N_0\,B_N$ | Potencia de ruido en la banda | $N_0$ es **densidad** [W/Hz $\equiv$ J] |
-| $E_b = \dfrac{S}{R_b} = S\,T_b$ | Energía por bit [J/bit] | $T_b=1/R_b$ |
-| $\dfrac{E_b}{N_0} = \dfrac{S}{R_b\,N_0}$ *(directa)* $\qquad \dfrac{E_b}{N_0} = SNR\cdot\dfrac{B}{R_b}$ *(vía SNR)* | La métrica que entra en el BER | **Preferí la directa** |
-| $\dfrac{E_s}{N_0} = \dfrac{E_b}{N_0}\log_2M$ | Energía por **símbolo** | $E_s = \ell\,E_b$: el símbolo lleva $\ell$ bits |
-| $BER \approx \dfrac{SER}{\log_2M}$ | Puente BER ↔ SER con **mapeo Gray** | Gray hace que 1 error de símbolo $\approx$ 1 bit errado |
+| Fórmula                                                                                                             | Qué es                                       | Notas                                                                       |
+| ------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- | --------------------------------------------------------------------------- |
+| $\ell = \log_2 M$                                                                                                   | Bits por símbolo                             | QPSK → 2; 16-QAM → 4; 64-QAM → 6                                            |
+| $D = \dfrac{R_b}{\ell}$                                                                                             | Tasa de símbolos [baudios]                   | **Es lo que fija el ancho de banda**, no $R_b$                              |
+| $s_{QAM}(t) = I\cos(2\pi f_ct) - Q\sin(2\pi f_ct) = \lvert s\rvert\cos(2\pi f_ct+\phi)$                             | **Señal QAM** — dos portadoras en cuadratura | $\lvert s\rvert=\sqrt{I^2+Q^2}$, $\phi=\arctan(Q/I)$: cartesianas → polares |
+| $S = \dfrac{\langle\lvert s\rvert^2\rangle}{2}$                                                                     | **Potencia media transmitida**               | El $/2$ es pico→RMS del **portador**                                        |
+| $\langle\lvert s\rvert^2\rangle = \dfrac{2(M-1)}{3}a^2$ ($M$-QAM) $\ \to\ S=\dfrac{(M-1)a^2}{3}$                    | Potencia de QAM cuadrada                     | Niveles $\pm a,\pm3a,\ldots$                                                |
+| $\langle\lvert s\rvert^2\rangle = A^2$ ($M$-PSK) $\ \to\ S=\dfrac{A^2}{2}$                                          | Potencia de PSK                              | Envolvente constante                                                        |
+| $N = N_0\,B_N$                                                                                                      | Potencia de ruido en la banda                | $N_0$ es **densidad** [W/Hz $\equiv$ J]                                     |
+| $E_b = \dfrac{S}{R_b} = S\,T_b$                                                                                     | Energía por bit [J/bit]                      | $T_b=1/R_b$                                                                 |
+| $\dfrac{E_b}{N_0} = \dfrac{S}{R_b\,N_0}$ *(directa)* $\qquad \dfrac{E_b}{N_0} = SNR\cdot\dfrac{B}{R_b}$ *(vía SNR)* | La métrica que entra en el BER               | **Preferí la directa**                                                      |
+| $\dfrac{E_s}{N_0} = \dfrac{E_b}{N_0}\log_2M$                                                                        | Energía por **símbolo**                      | $E_s = \ell\,E_b$: el símbolo lleva $\ell$ bits                             |
+| $BER \approx \dfrac{SER}{\log_2M}$                                                                                  | Puente BER ↔ SER con **mapeo Gray**          | Gray hace que 1 error de símbolo $\approx$ 1 bit errado                     |
 
 > ⚠️ **Preferí siempre la ruta directa** $\frac{E_b}{N_0}=\frac{S}{R_bN_0}$: solo necesita potencia, tasa de bits y densidad de ruido — **ni ancho de banda ni SNR**. La vía SNR arrastra cualquier error previo y falla si el enunciado **cambia $N_0$ entre ítems** (que es exactamente lo que hacen a propósito).
 
@@ -354,7 +354,7 @@ En **banda base** todo se divide por 2: $B_{min}=D/2$, $B=\dfrac{D}{2}(1+\alpha)
 
 $$\boxed{P_e = Q\!\left(\sqrt{\frac{E_d}{2N_0}}\right)} \qquad \boxed{E_d = \int_0^{T_b}\big|s_1(t)-s_0(t)\big|^2dt = d_{min}^2}$$
 
-**Es la forma que dan los enunciados** en los ejercicios de banda base con NRZ. Y unifica todo:
+**Es la forma general para señalización en banda base con NRZ.** Y unifica todo:
 
 $$P_e = Q\!\left(\sqrt{\frac{E_d}{2N_0}}\right) = Q\!\left(\frac{d_{min}}{\sqrt{2N_0}}\right) = Q\!\left(\frac{d_{min}}{2\sigma}\right), \qquad \sigma^2 = \frac{N_0}{2}$$
 
@@ -375,7 +375,7 @@ $$P_e = Q\!\left(\sqrt{\frac{E_d}{2N_0}}\right) = Q\!\left(\frac{d_{min}}{\sqrt{
 3. $k = E_d/E_b$
 4. $P_e = Q\!\left(\sqrt{\dfrac{k\,E_b}{2N_0}}\right)$
 
-**Ejemplo — polar RZ** (pulso solo en la primera mitad, $\pm V$ y luego 0): $E_d = (2V)^2\tfrac{T_b}{2} = 2V^2T_b$, $E_b = \tfrac{V^2T_b}{2}$, $k=4$ → **mismo BER que BPSK**. Acortar el pulso **no empeora la BER a igual $E_b$**, solo duplica el ancho de banda. El precio de RZ es espectral, no de error.
+**Polar RZ** (pulso solo en la primera mitad, $\pm V$ y luego 0): $E_d = (2V)^2\tfrac{T_b}{2} = 2V^2T_b$, $E_b = \tfrac{V^2T_b}{2}$, $k=4$ → **mismo BER que BPSK**. Acortar el pulso **no empeora la BER a igual $E_b$**, solo duplica el ancho de banda. El precio de RZ es espectral, no de error.
 
 ### Cómo se arman las constelaciones (de dónde salen las coordenadas)
 
