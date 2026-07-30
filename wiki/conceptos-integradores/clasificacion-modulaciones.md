@@ -191,8 +191,8 @@ Espectro banda base           Espectro paso-banda
 
 ASK, FSK y PSK son las versiones **digitales** de AM, FM y PM. La diferencia es que el parametro modulado ya no varia continuamente segun $m(t)$, sino que solo toma **valores discretos** determinados por los bits:
 
-| Analogica | Digital | Que cambia |
-|-----------|---------|-------------|
+| Analogica | Digital |
+|-----------|---------|
 | **AM**: amplitud varia con $m(t)$ continua | **ASK**: amplitud toma valores discretos (ej: 0 o $A_c$) |
 | **FM**: frecuencia varia con $m(t)$ continua | **FSK**: frecuencia salta entre $f_0$ y $f_1$ |
 | **PM**: fase varia con $m(t)$ continua | **PSK**: fase salta entre valores fijos (ej: $0^\circ$, $180^\circ$) |
