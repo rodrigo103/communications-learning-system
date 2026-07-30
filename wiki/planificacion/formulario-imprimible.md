@@ -93,24 +93,24 @@ $$f_s = 8\text{ kmuestras/s} \ \to\ R_b = 64\text{ kbps} \ \to\ R_s = 32\text{ k
 
 > **Notación de la cátedra** (verificada sobre los finales): el índice es **$m$** (no $\mu$ ni $k_a$), la sensibilidad es **$k$**, la moduladora normalizada a pico 1 es **$m_n(t)$**.
 
-|  | Fórmula | Qué es | Notas |  |  |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ | -------------------------------------------------- | --------------------------------- | ---------------------------------- |
-| ● | $s_{AM}(t) = A_c\big[1+m\,m_n(t)\big]\cos(2\pi f_ct)$ | **Señal AM** | Un tono: $m_n(t)=\cos(2\pi f_mt)$ |  |  |
-|  | $S_{AM}(f)=\tfrac{A_c}{2}\delta(f{\mp}f_c) + \tfrac{A_c\,m}{4}\delta(f{\mp}f_c{\mp}f_m) + \tfrac{A_c\,m}{4}\delta(f{\mp}f_c{\pm}f_m)$ | **Espectro: 6 deltas** | 2 de portadora ($A_c/2$) + 4 laterales ($A_c m/4$) |  |  |
-| ● | $m = \dfrac{k\,A_m}{A_c} \qquad m = \dfrac{A_{max}-A_{min}}{A_{max}+A_{min}}$ | Índice de modulación | La 2ª cuando dan medidas de envolvente |  |  |
-| ● | $P_c = \dfrac{A_c^2}{2R}$ | Potencia de portadora | $R=1\,\Omega$ si no dan dato (normalizada) |  |  |
-|  | $P_{SB} = \dfrac{A_c^2m^2}{8R} = \dfrac{P_c\,m^2}{4}$ | Potencia de **cada** banda lateral | Piden "cada banda lateral en dBW" seguido |  |  |
-| ● | $P_{total} = P_c\left(1+\dfrac{m^2}{2}\right)$ | **Potencia total, un tono** | De memoria |  |  |
-|  | $P_{total} = P_c\left[1+m^2\langle m_n^2\rangle\right] = P_c\left[1+\dfrac{m^2}{F_C^2}\right]$ | Forma general / con factor de cresta | Tono: $\langle m_n^2\rangle=\tfrac12$ |  |  |
-|  | $P_{total} = P_c\left(1+\dfrac{\sum_i m_i^2}{2}\right)$ | **AM multitono** | Sumar $m_i^2/2$ de cada tono |  |  |
-| ● | $PEP = \dfrac{A_{max}^2}{2R} = P_c(1+m)^2$ | Potencia pico de envolvente | Pico, **no** promedio. Muy frecuente |  |  |
-|  | $\eta_{AM} = \dfrac{m^2}{2+m^2}$ | Eficiencia de potencia | Máx $33{,}3\%$ en $m=1$. DSB/SSB: $100\%$ |  |  |
-|  | $\sum_i m_i \leq 1$ | **Sobremodulación en multitono** | El criterio es sobre la **suma**, no cada $m_i$ |  |  |
-|  | $s_{DSB}(t)=A_c\,m(t)\cos(2\pi f_ct)$ | DSB-SC | $S_{DSB}(f)=\tfrac{A_c}{2}[M(f{-}f_c)+M(f{+}f_c)]$ |  |  |
-|  | $s_{SSB}(t)=\tfrac{A_c}{2}\big[m(t)\cos\omega_ct \mp \hat m(t)\sin\omega_ct\big]$ | SSB: $-$ es USB, $+$ es LSB | $\hat m$ = transformada de Hilbert |  |  |
-| ● | $BW_{AM}=BW_{DSB}=2f_m \quad BW_{SSB}=f_m \quad BW_{VSB}=f_m+f_v$ | Anchos de banda | **Multitono: $BW=2f_{m,max}$**, no la suma |  |  |
-|  | $H(f_c{+}f)+H(f_c{-}f)=1$ para $\lvert f\rvert<f_v$ | Simetría vestigial del filtro VSB | Condición de recuperación perfecta |  |  |
-|  | $P_{dBW}=10\log_{10}\!\left(\dfrac{P}{1\text{ W}}\right) \quad P_{dBm}=P_{dBW}+30$ | Conversión a dB | dBW aparece 16 veces, dBm 25 veces |  |  |
+|  | Fórmula | Qué es | Notas |
+|---|---|---|---|
+| ● | $s_{AM}(t) = A_c\big[1+m\,m_n(t)\big]\cos(2\pi f_ct)$ | **Señal AM** | Un tono: $m_n(t)=\cos(2\pi f_mt)$ |
+|  | $S_{AM}(f)=\tfrac{A_c}{2}\delta(f{\mp}f_c) + \tfrac{A_c\,m}{4}\delta(f{\mp}f_c{\mp}f_m) + \tfrac{A_c\,m}{4}\delta(f{\mp}f_c{\pm}f_m)$ | **Espectro: 6 deltas** | 2 de portadora ($A_c/2$) + 4 laterales ($A_c m/4$) |
+| ● | $m = \dfrac{k\,A_m}{A_c} \qquad m = \dfrac{A_{max}-A_{min}}{A_{max}+A_{min}}$ | Índice de modulación | La 2ª cuando dan medidas de envolvente |
+| ● | $P_c = \dfrac{A_c^2}{2R}$ | Potencia de portadora | $R=1\,\Omega$ si no dan dato (normalizada) |
+|  | $P_{SB} = \dfrac{A_c^2m^2}{8R} = \dfrac{P_c\,m^2}{4}$ | Potencia de **cada** banda lateral | Piden "cada banda lateral en dBW" seguido |
+| ● | $P_{total} = P_c\left(1+\dfrac{m^2}{2}\right)$ | **Potencia total, un tono** | De memoria |
+|  | $P_{total} = P_c\left[1+m^2\langle m_n^2\rangle\right] = P_c\left[1+\dfrac{m^2}{F_C^2}\right]$ | Forma general / con factor de cresta | Tono: $\langle m_n^2\rangle=\tfrac12$ |
+|  | $P_{total} = P_c\left(1+\dfrac{\sum_i m_i^2}{2}\right)$ | **AM multitono** | Sumar $m_i^2/2$ de cada tono |
+| ● | $PEP = \dfrac{A_{max}^2}{2R} = P_c(1+m)^2$ | Potencia pico de envolvente | Pico, **no** promedio. Muy frecuente |
+|  | $\eta_{AM} = \dfrac{m^2}{2+m^2}$ | Eficiencia de potencia | Máx $33{,}3\%$ en $m=1$. DSB/SSB: $100\%$ |
+|  | $\sum_i m_i \leq 1$ | **Sobremodulación en multitono** | El criterio es sobre la **suma**, no cada $m_i$ |
+|  | $s_{DSB}(t)=A_c\,m(t)\cos(2\pi f_ct)$ | DSB-SC | $S_{DSB}(f)=\tfrac{A_c}{2}[M(f{-}f_c)+M(f{+}f_c)]$ |
+|  | $s_{SSB}(t)=\tfrac{A_c}{2}\big[m(t)\cos\omega_ct \mp \hat m(t)\sin\omega_ct\big]$ | SSB: $-$ es USB, $+$ es LSB | $\hat m$ = transformada de Hilbert |
+| ● | $BW_{AM}=BW_{DSB}=2f_m \quad BW_{SSB}=f_m \quad BW_{VSB}=f_m+f_v$ | Anchos de banda | **Multitono: $BW=2f_{m,max}$**, no la suma |
+|  | $H(f_c{+}f)+H(f_c{-}f)=1$ para $\lvert f\rvert<f_v$ | Simetría vestigial del filtro VSB | Condición de recuperación perfecta |
+|  | $P_{dBW}=10\log_{10}\!\left(\dfrac{P}{1\text{ W}}\right) \quad P_{dBm}=P_{dBW}+30$ | Conversión a dB | dBW aparece 16 veces, dBm 25 veces |
 
 > ⚠️ **La trampa del factor 2**: las alturas de las deltas son **la mitad** de las amplitudes de los cosenos reales ($A_c$ y $A_cm/2$), porque cada coseno real se reparte en dos exponenciales complejas.
 
@@ -337,19 +337,19 @@ $$\underbrace{B_T\log_2\!\left[1+\left(\tfrac{S}{N}\right)_{ent}\right]}_{C\ \te
 
 > Menos frecuente que PCM o AM/FM, pero **sus fórmulas se reusan en Ruido/BER**, así que rinde doble.
 
-|  | Fórmula | Qué es | Notas |  |  |  |  |
-| --- | ------------------------------------------------------------------------------------------------------------------- | ----------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------- | ------------------------------------ | --- | ------------------------------------------------------------ |
-| ● | $\ell = \log_2 M$ | Bits por símbolo | QPSK → 2; 16-QAM → 4; 64-QAM → 6 |  |  |  |  |
-| ● | $D = \dfrac{R_b}{\ell}$ | Tasa de símbolos [baudios] | **Es lo que fija el ancho de banda**, no $R_b$ |  |  |  |  |
-|  | $s_{QAM}(t) = I\cos(2\pi f_ct) - Q\sin(2\pi f_ct) = \lvert s\rvert\cos(2\pi f_ct+\phi)$ | **Señal QAM** — dos portadoras en cuadratura | $\lvert s\rvert=\sqrt{I^2+Q^2}$, $\phi=\arctan(Q/I)$: cartesianas → polares |  |  |  |  |
-| ● | $S = \dfrac{\langle\lvert s\rvert^2\rangle}{2}$ | **Potencia media transmitida** | El $/2$ es pico→RMS del **portador** |  |  |  |  |
-|  | $\langle\lvert s\rvert^2\rangle = \dfrac{2(M-1)}{3}a^2$ ($M$-QAM) $\ \to\ S=\dfrac{(M-1)a^2}{3}$ | Potencia de QAM cuadrada | Niveles $\pm a,\pm3a,\ldots$ |  |  |  |  |
-|  | $\langle\lvert s\rvert^2\rangle = A^2$ ($M$-PSK) $\ \to\ S=\dfrac{A^2}{2}$ | Potencia de PSK | Envolvente constante |  |  |  |  |
-|  | $N = N_0\,B_N$ | Potencia de ruido en la banda | $N_0$ es **densidad** [W/Hz $\equiv$ J] |  |  |  |  |
-| ● | $E_b = \dfrac{S}{R_b} = S\,T_b$ | Energía por bit [J/bit] | $T_b=1/R_b$ |  |  |  |  |
-| ● | $\dfrac{E_b}{N_0} = \dfrac{S}{R_b\,N_0}$ *(directa)* $\qquad \dfrac{E_b}{N_0} = SNR\cdot\dfrac{B}{R_b}$ *(vía SNR)* | La métrica que entra en el BER | **Preferí la directa** |  |  |  |  |
-|  | $\dfrac{E_s}{N_0} = \dfrac{E_b}{N_0}\log_2M$ | Energía por **símbolo** | $E_s = \ell\,E_b$: el símbolo lleva $\ell$ bits |  |  |  |  |
-|  | $BER \approx \dfrac{SER}{\log_2M}$ | Puente BER ↔ SER con **mapeo Gray** | Gray hace que 1 error de símbolo $\approx$ 1 bit errado |  |  |  |  |
+|  | Fórmula | Qué es | Notas |
+|---|---|---|---|
+| ● | $\ell = \log_2 M$ | Bits por símbolo | QPSK → 2; 16-QAM → 4; 64-QAM → 6 |
+| ● | $D = \dfrac{R_b}{\ell}$ | Tasa de símbolos [baudios] | **Es lo que fija el ancho de banda**, no $R_b$ |
+|  | $s_{QAM}(t) = I\cos(2\pi f_ct) - Q\sin(2\pi f_ct) = \lvert s\rvert\cos(2\pi f_ct+\phi)$ | **Señal QAM** — dos portadoras en cuadratura | $\lvert s\rvert=\sqrt{I^2+Q^2}$, $\phi=\arctan(Q/I)$: cartesianas → polares |
+| ● | $S = \dfrac{\langle\lvert s\rvert^2\rangle}{2}$ | **Potencia media transmitida** | El $/2$ es pico→RMS del **portador** |
+|  | $\langle\lvert s\rvert^2\rangle = \dfrac{2(M-1)}{3}a^2$ ($M$-QAM) $\ \to\ S=\dfrac{(M-1)a^2}{3}$ | Potencia de QAM cuadrada | Niveles $\pm a,\pm3a,\ldots$ |
+|  | $\langle\lvert s\rvert^2\rangle = A^2$ ($M$-PSK) $\ \to\ S=\dfrac{A^2}{2}$ | Potencia de PSK | Envolvente constante |
+|  | $N = N_0\,B_N$ | Potencia de ruido en la banda | $N_0$ es **densidad** [W/Hz $\equiv$ J] |
+| ● | $E_b = \dfrac{S}{R_b} = S\,T_b$ | Energía por bit [J/bit] | $T_b=1/R_b$ |
+| ● | $\dfrac{E_b}{N_0} = \dfrac{S}{R_b\,N_0}$ *(directa)* $\qquad \dfrac{E_b}{N_0} = SNR\cdot\dfrac{B}{R_b}$ *(vía SNR)* | La métrica que entra en el BER | **Preferí la directa** |
+|  | $\dfrac{E_s}{N_0} = \dfrac{E_b}{N_0}\log_2M$ | Energía por **símbolo** | $E_s = \ell\,E_b$: el símbolo lleva $\ell$ bits |
+|  | $BER \approx \dfrac{SER}{\log_2M}$ | Puente BER ↔ SER con **mapeo Gray** | Gray hace que 1 error de símbolo $\approx$ 1 bit errado |
 
 > ⚠️ **Preferí siempre la ruta directa** $\frac{E_b}{N_0}=\frac{S}{R_bN_0}$: solo necesita potencia, tasa de bits y densidad de ruido — **ni ancho de banda ni SNR**. La vía SNR arrastra cualquier error previo y falla si el enunciado **cambia $N_0$ entre ítems** (que es exactamente lo que hacen a propósito).
 
@@ -570,10 +570,10 @@ $$P_{dBm} = 10\log_{10}\!\left(\frac{P}{1\ \text{mW}}\right) \qquad P_{dBW} = 10
 
 ⚠️ **Ojo con el denominador de dBm: es mW, no W.** Es el error de dedo típico.
 
-| Potencia | dBm | | Potencia | dBm |
-|---|---|---|---|---|
-| 1 mW | **0 dBm** | | 5 µW | $10\log(5\times10^{-3}) = \mathbf{-23{,}0}$ dBm |
-| 1 W | 30 dBm ($=0$ dBW) | | $kT_0$ | $-174$ dBm/Hz |
+| Potencia | dBm | Potencia | dBm |
+|---|---|---|---|
+| 1 mW | **0 dBm** | 5 µW | $10\log(5\times10^{-3}) = \mathbf{-23{,}0}$ dBm |
+| 1 W | 30 dBm ($=0$ dBW) | $kT_0$ | $-174$ dBm/Hz |
 
 > **dBm es un nivel ABSOLUTO** (referido a 1 mW); **dB es una RELACIÓN**. Por eso en el balance de enlace se mezclan sin problema — $\underbrace{P_{TX}}_{\text{dBm}} + \underbrace{G_{TX}-L_{FSPL}+G_{RX}}_{\text{dB}} = \underbrace{P_{RX}}_{\text{dBm}}$ — pero **restar dos dBm da dB**, y **sumar dos dBm no significa nada**.
 
@@ -583,16 +583,16 @@ $$P_{dBm} = 10\log_{10}\!\left(\frac{P}{1\ \text{mW}}\right) \qquad P_{dBW} = 10
 
 **Nunca los estudiamos en profundidad y los piden mucho.** Frecuencia real en el corpus:
 
-| Diagrama | Apariciones | Cadena de bloques |  |  |
-| ------------------------------------------------------ | ----------- | ------------------------------------------------------------------------------------------- | ------------- | ------------------------------- |
-| **Transmisor PAM/TDM** (y su receptor) | **10** | Filtro antialias → S/H por canal → **conmutador TDM** → cuantificador → codificador → línea |  |  |
-| **Modulador SSB por desplazamiento de fase** (Hartley) | 3 | $m(t)$ y su Hilbert ($-90°$) → dos mezcladores en cuadratura → sumador/restador |  |  |
-| **Transmisor de FM / Armstrong** | 3+ | NBFM → $\times n_1$ → mezclador ($f_{OL}$) → $\times n_2$ → potencia |  |  |
-| **Sección de repetición** (cable + repetidor) | 2 | $\ldots$ → cable ($L_c$) → repetidor ($G=L_c$) → cable → $\ldots$ |  |  |
-| **Transmisor OFDM** | 2 | S/P → mapeo QAM → **IFFT** → P/S → prefijo cíclico → cuadratura ($I\cos-Q\sin$) |  |  |
-| **Generador PCM** | 1+ | Filtro antialias → muestreador (S/H) → cuantificador → codificador |  |  |
-| **Demodulador FSK binaria** | 1 | Dos filtros pasabanda ($f_1$, $f_0$) → detectores de envolvente → comparador |  |  |
-| **Receptor superheterodino** | — | RF → mezclador ($f_{OL}$) → FI → detector → audio. $f_{IF}=\lvert f_{RF}-f_{OL}\rvert$; imagen en $f_{RF}\pm2f_{IF}$ |  |  |
+| Diagrama | Apariciones | Cadena de bloques |
+|---|---|---|
+| **Transmisor PAM/TDM** (y su receptor) | **10** | Filtro antialias → S/H por canal → **conmutador TDM** → cuantificador → codificador → línea |
+| **Modulador SSB por desplazamiento de fase** (Hartley) | 3 | $m(t)$ y su Hilbert ($-90°$) → dos mezcladores en cuadratura → sumador/restador |
+| **Transmisor de FM / Armstrong** | 3+ | NBFM → $\times n_1$ → mezclador ($f_{OL}$) → $\times n_2$ → potencia |
+| **Sección de repetición** (cable + repetidor) | 2 | $\ldots$ → cable ($L_c$) → repetidor ($G=L_c$) → cable → $\ldots$ |
+| **Transmisor OFDM** | 2 | S/P → mapeo QAM → **IFFT** → P/S → prefijo cíclico → cuadratura ($I\cos-Q\sin$) |
+| **Generador PCM** | 1+ | Filtro antialias → muestreador (S/H) → cuantificador → codificador |
+| **Demodulador FSK binaria** | 1 | Dos filtros pasabanda ($f_1$, $f_0$) → detectores de envolvente → comparador |
+| **Receptor superheterodino** | — | RF → mezclador ($f_{OL}$) → FI → detector → audio. $f_{IF}=\lvert f_{RF}-f_{OL}\rvert$; imagen en $f_{RF}\pm2f_{IF}$ |
 
 **Cómo dibujarlos**: rectángulos con el nombre adentro, flechas de señal, **y etiquetar cada punto con la magnitud que lleva** (Hz, bps, baudios). Etiquetar es lo que demuestra que se entendió la cadena.
 
