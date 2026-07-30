@@ -1,0 +1,634 @@
+<meta charset="utf-8">
+<title>Diagramas en Bloques — Sistemas de Comunicaciones</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+/*
+Temml.woff2 is a clone of KaTeX_Script-Regular, except that the code points
+have been changed from ASCII to Unicode Mathematical Alphanumeric Symbols Script capitals,
+Unicode range 1D49C to 1D4B5.
+*/
+
+
+
+math {
+  font-family: "Cambria Math", 'STIXTwoMath-Regular', 'NotoSansMath-Regular', math;
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size-adjust: none;
+  text-indent: 0;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  direction: ltr;
+  /* Prevent Firefox from omitting the dot on i or j. */
+  font-feature-settings: "dtls" off;
+}
+
+math * {
+  border-color: currentColor;
+}
+
+/* display: block is necessary in Firefox and Safari.
+ * Not in Chromium, which recognizes display: "block math" written inline. */
+ math.tml-display {
+  display: block;
+  width: 100%;
+}
+
+*.mathcal {
+  /* NotoSans */
+  font-feature-settings: 'ss01';
+}
+
+math .mathscr {
+  font-family: "Temml";
+}
+
+mo.tml-prime {
+  font-family: Temml;
+}
+
+/* Cramped superscripts in WebKit */
+mfrac > :nth-child(2),
+msqrt,
+mover > :first-child {
+  math-shift: compact
+}
+
+.menclose {
+  display: inline-block;
+  position: relative;
+  padding: 0.5ex 0ex;
+}
+.tml-cancelto {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.5ex 0ex;
+  background-color: currentColor;
+  /* Use the SVG as an alpha mask (painted by background-color) */
+  -webkit-mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><defs><marker id='a' markerHeight='5' markerUnits='strokeWidth' markerWidth='7' orient='auto' refX='7' refY='2.5'><path fill='black' d='m0 0 7 2.5L0 5z'/></marker></defs><line x2='100%25' y1='100%25' stroke='black' stroke-width='.06em' marker-end='url(%23a)' vector-effect='non-scaling-stroke'/></svg>");
+          mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><defs><marker id='a' markerHeight='5' markerUnits='strokeWidth' markerWidth='7' orient='auto' refX='7' refY='2.5'><path fill='black' d='m0 0 7 2.5L0 5z'/></marker></defs><line x2='100%25' y1='100%25' stroke='black' stroke-width='.06em' marker-end='url(%23a)' vector-effect='non-scaling-stroke'/></svg>");
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+          mask-size: 100% 100%;
+  -webkit-mask-position: 0 0;
+          mask-position: 0 0;
+}
+
+@supports (-moz-appearance: none) {
+  /* \vec w/o italic correction for Firefox */
+  .tml-vec {
+    transform: scale(0.75)
+  }
+  /* Fix \cancelto in Firefox */
+  .ff-narrow {
+    width: 0em;
+  }
+  .ff-nudge-left {
+    margin-left: -0.2em;
+  }
+  /* Squash hidden mrows in \bordermatrix. Messes with centering, but necessary to squash. */
+  .ff-squash mtd {
+    display: block;
+    height: 0;
+  }
+}
+
+@supports (not (-moz-appearance: none)) {
+  /* Chromium and WebKit */
+  /* prime vertical alignment */
+  mo.tml-prime {
+    font-family: Temml;
+  }
+  /* Italic correction on superscripts */
+  .tml-sml-pad {
+    padding-left: 0.05em;
+  }
+  .tml-med-pad {
+    padding-left: 0.10em;
+  }
+  .tml-lrg-pad {
+    padding-left: 0.15em;
+  }
+}
+
+@supports (-webkit-backdrop-filter: blur(1px)) {
+  /* WebKit vertical & italic correction on accents */
+  .wbk-acc {
+    /* lower by x-height distance */
+    transform: translate(0em, 0.431em);
+  }
+  .wbk-sml {
+    transform: translate(0.07em, 0);
+  }
+  .wbk-sml-acc {
+    transform: translate(0.07em, 0.431em);
+  }
+  .wbk-sml-vec {
+    transform: scale(0.75) translate(0.07em, 0);
+  }
+  .wbk-med {
+    transform: translate(0.14em, 0);
+  }
+  .wbk-med-acc {
+    transform: translate(0.14em, 0.431em);
+  }
+  .wbk-med-vec {
+    transform: scale(0.75) translate(0.14em, 0);
+  }
+  .wbk-lrg {
+    transform: translate(0.21em, 0);
+  }
+  .wbk-lrg-acc {
+    transform: translate(0.21em, 0.431em);
+  }
+  .wbk-lrg-vec {
+    transform: scale(0.75) translate(0.21em, 0);
+  }
+}
+
+/* \cancel & \phase use background images. Get them to print. */
+menclose {
+  -webkit-print-color-adjust: exact;  /* Chrome & Edge */
+          print-color-adjust: exact;
+}
+
+/* Array cell justification in Firefox & WebKit */
+.tml-right {
+  text-align: right;
+}
+.tml-left {
+  text-align: left;
+}
+
+/* For CD labels that grow to the left in Firefox and WebKit */
+.tml-shift-left { margin-left:-200% }
+
+/* Styles for Chromium only */
+@supports (not (-webkit-backdrop-filter: blur(1px))) and (not (-moz-appearance: none)) {
+  /* Italic correction on accents */
+  .chr-sml {
+    transform: translate(0.07em, 0)
+  }
+  .chr-sml-vec {
+    transform: scale(0.75) translate(0.07em, 0)
+  }
+  .chr-med {
+    transform: translate(0.14em, 0)
+  }
+  .chr-med-vec {
+    transform: scale(0.75) translate(0.14em, 0)
+  }
+  .chr-lrg {
+    transform: translate(0.21em, 0)
+  }
+  .chr-lrg-vec {
+    transform: scale(0.75) translate(0.21em, 0)
+  }
+
+  /* For CD labels that grow to the left */
+  .tml-shift-left { margin-left:-100% }
+
+  /* MathML Core & Chromium do not support the MathML 3.0 element <menclose> attributes. */
+  /* So use styles. */
+  menclose {
+    position: relative;
+    padding: 0.5ex 0ex;
+  }
+  
+    .tml-overline {
+    padding: 0.1em 0 0 0;
+    border-top: 0.065em solid;
+  }
+
+  .tml-underline {
+    padding: 0 0 0.1em 0;
+    border-bottom: 0.065em solid;
+  }
+
+  .tml-cancel {
+    display: inline-block;
+    position: absolute;
+    left: 0.5px;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: currentColor;
+  }
+  .upstrike {
+    clip-path: polygon(0.05em 100%, 0em calc(100% - 0.05em), calc(100% - 0.05em) 0em, 100% 0.05em);
+  }
+  .downstrike {
+    clip-path: polygon(0em 0.05em, 0.05em 0em, 100% calc(100% - 0.05em), calc(100% - 0.05em) 100%);
+  }
+  .sout {
+    clip-path: polygon(0em calc(55% + 0.0333em), 0em calc(55% - 0.0333em), 100% calc(55% - 0.0333em), 100% calc(55% + 0.0333em));
+  }
+  .tml-xcancel {
+    clip-path: polygon(0.05em 0em, 0em 0.05em, calc(50% - 0.05em) 50%, 0em calc(100% - 0.05em), 0.05em 100%, 50% calc(50% + 0.05em), calc(100% - 0.05em) 100%, 100% calc(100% - 0.05em), calc(50% + 0.05em) 50%, 100% 0.05em, calc(100% - 0.05em) 0%, 50% calc(50% - 0.05em));
+  }
+
+  .longdiv-top {
+    border-top: 0.067em solid;
+    padding: 0.1em 0.2em 0.2em 0.433em;
+  }
+  .longdiv-arc {
+    position: absolute;
+    top: 0;
+    bottom: 0.1em;
+    left: -0.4em;
+    width: 0.7em;
+    border: 0.067em solid;
+    transform: translateY(-0.067em);
+    border-radius: 70%;
+    clip-path: inset(0 0 0 0.4em);
+    box-sizing: border-box;}
+    .menclose {display: inline-block;
+    text-align: left;
+    position: relative;
+  }
+  
+  .phasor-bottom {
+    border-bottom: 0.067em solid;
+    padding: 0.2em 0.2em 0.1em 0.6em;
+  }
+  .phasor-angle {
+    display: inline-block;
+    position: absolute;
+    left: 0.5px;
+    bottom: -0.04em;
+    height: 100%;
+    aspect-ratio: 0.5;
+    background-color: currentColor;
+    clip-path: polygon(0.05em 100%, 0em calc(100% - 0.05em), calc(100% - 0.05em) 0em, 100% 0.05em);
+  }
+
+  .tml-fbox {
+    padding: 3pt;
+    border: 1px solid;
+  }
+
+  .circle-pad {
+    padding: 0.267em;
+  }
+  .textcircle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    border: 0.067em solid;
+    border-radius: 50%;
+   }
+
+   .actuarial {
+    padding: 0.03889em 0.03889em 0 0.03889em;
+    border-width: 0.08em 0.08em 0em 0em;
+    border-style: solid;
+    margin-right: 0.03889em;
+   }
+
+   /* Stretch \widetilde */
+  .tml-crooked-2 {
+    transform: scale(2.0, 1.1)
+  }
+  .tml-crooked-3 {
+    transform: scale(3.0, 1.3)
+  }
+  .tml-crooked-4 {
+    transform: scale(4.0, 1.4)
+  }
+  /* set array cell justification */
+  .tml-right {
+    text-align: -webkit-right;
+  }
+  .tml-left {
+    text-align: -webkit-left;
+  }
+}
+
+.special-fraction {
+  font-family: 'STIX TWO', 'Times New Roman', Times, Tinos, serif;
+}
+
+/* flex-wrap for line-breaking in Chromium */
+math {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+math > mrow {
+  padding: 0.5ex 0ex;
+}
+
+/* Default mtd top padding is 0.5ex per MathML-Core and user-agent CSS */
+/* We adjust for jot and small */
+mtable.tml-jot mtd {
+  padding-top: 0.7ex;
+  padding-bottom: 0.7ex;
+}
+mtable.tml-small mtd {
+  padding-top: 0.35ex;
+  padding-bottom: 0.35ex;
+}
+
+/* Firefox */
+@-moz-document url-prefix() {
+  /* Avoid flex-wrap */
+  math { display: inline; }
+  math > mrow { padding: 0 }
+  /* Adjust Firefox spacing between array rows */
+  mtd, mtable.tml-small mtd { padding-top: 0; padding-bottom: 0; }
+  mtable.tml-jot mtd { padding-top: 0.2ex; padding-bottom: 0.ex; }
+}
+
+/* AMS environment auto-numbering via CSS counter. */
+.tml-eqn::before {
+  counter-increment: tmlEqnNo;
+  content: "(" counter(tmlEqnNo) ")";
+}
+
+body {
+  counter-reset: tmlEqnNo;
+}
+
+
+:root{
+  --paper:#fff; --ink:#151d1c; --muted:#4c6360; --rule:#c9d8d5;
+  --accent:#0b6b55; --accent-soft:#0b6b5512; --mem:#9c5c12; --mem-soft:#9c5c120f;
+  --mono: ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --sans: -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0d1615; --ink:#e0eae8; --muted:#8fa7a3; --rule:#26433e;
+    --accent:#52d8ad; --accent-soft:#52d8ad14; --mem:#e9a95e; --mem-soft:#e9a95e14;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0d1615; --ink:#e0eae8; --muted:#8fa7a3; --rule:#26433e;
+  --accent:#52d8ad; --accent-soft:#52d8ad14; --mem:#e9a95e; --mem-soft:#e9a95e14;
+}
+
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:var(--sans); font-size:14px; line-height:1.42;
+  -webkit-text-size-adjust:100%;
+}
+.sheet{max-width:1000px;margin:0 auto;padding:26px 22px 64px;}
+
+header.top{
+  display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;
+  gap:6px 22px;border-bottom:2.5px solid var(--ink);padding-bottom:11px;
+}
+header.top h1{font-weight:800;font-size:1.42rem;margin:0;letter-spacing:-.01em;}
+header.top .tag{
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--accent);border:1px solid var(--accent);border-radius:2px;
+  padding:3px 7px;white-space:nowrap;
+}
+
+.legend{
+  display:flex;gap:16px;flex-wrap:wrap;align-items:center;
+  font-family:var(--mono);font-size:.7rem;color:var(--muted);
+  margin:10px 0 4px;
+}
+.legend b{color:var(--ink);}
+.print-btn{
+  font-family:var(--sans);font-size:.72rem;padding:5px 11px;cursor:pointer;
+  background:var(--accent);color:var(--paper);border:0;border-radius:3px;font-weight:600;
+}
+
+section.block{
+  margin-top:24px;padding-top:4px;
+  border-top:1px solid var(--rule);
+}
+section.block:first-of-type{border-top:0;}
+h2{
+  font-size:1.04rem;font-weight:750;margin:12px 0 8px;
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:9px;
+  break-after:avoid;page-break-after:avoid;
+}
+h2 .freq{
+  font-family:var(--mono);font-size:.66rem;font-weight:600;letter-spacing:.04em;
+  color:var(--accent);background:var(--accent-soft);
+  border:1px solid var(--accent);border-radius:2px;padding:2px 6px;white-space:nowrap;
+}
+h3{
+  font-size:.86rem;font-weight:700;margin:16px 0 6px;color:var(--accent);
+  break-after:avoid;page-break-after:avoid;
+}
+p{margin:7px 0;}
+ul,ol{margin:7px 0 7px 1.15em;padding:0;}
+li{margin:3px 0;}
+code{
+  font-family:var(--mono);font-size:.86em;
+  background:var(--accent-soft);padding:1px 4px;border-radius:2px;
+}
+code.bad-math{background:#ffdddd;color:#900;}
+
+.tw{overflow-x:auto;margin:8px 0 10px;}
+table{border-collapse:collapse;width:100%;font-size:.84rem;}
+th,td{
+  text-align:left;vertical-align:top;padding:4.5px 8px 4.5px 0;
+  border-bottom:1px solid var(--rule);
+}
+th{
+  font-family:var(--mono);font-size:.63rem;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;border-bottom:1.5px solid var(--ink);
+  padding-bottom:3px;
+}
+/* Los encabezados van en mono chico, pero el math ahí adentro queda ilegible. */
+th math{font-size:1.28em;}
+td:first-child{padding-left:0;}
+th.mk,td.mk{width:1.5em;padding-right:4px;text-align:center;}
+tr.mem-row{background:var(--mem-soft);}
+tr.mem-row td.mk{color:var(--mem);font-weight:700;}
+tr.low-row{color:var(--muted);}
+tbody tr:last-child td{border-bottom:0;}
+
+.eq{
+  margin:10px 0;padding:2px 0;overflow-x:auto;overflow-y:hidden;
+  text-align:center;
+}
+.eq math{font-size:1.04em;}
+
+.note{
+  margin:10px 0;padding:8px 12px;
+  border-left:2.5px solid var(--accent);background:var(--accent-soft);
+  font-size:.87rem;border-radius:0 3px 3px 0;
+}
+.note p{margin:5px 0;}
+.note p.li{margin:3px 0 3px 2px;}
+.note .eq{margin:7px 0;}
+
+footer.end{
+  margin-top:36px;padding-top:11px;border-top:1px solid var(--rule);
+  display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 18px;
+  font-family:var(--mono);font-size:.66rem;color:var(--muted);
+}
+
+@media print{
+  @page{margin:11mm 10mm;}
+  :root{
+    --paper:#fff;--ink:#000;--muted:#444;--rule:#bbb;
+    --accent:#0b5744;--accent-soft:#00000008;--mem:#7a4708;--mem-soft:#00000010;
+  }
+  body{font-size:9pt;line-height:1.32;}
+  .sheet{max-width:none;padding:0;}
+  .no-print{display:none !important;}
+  table{font-size:8.4pt;}
+  th{font-size:6.6pt;}
+  .note{font-size:8.5pt;padding:5px 8px;}
+  h2{font-size:10.4pt;margin:9px 0 5px;}
+  h3{font-size:8.9pt;margin:10px 0 4px;}
+  section.block{margin-top:12px;break-inside:auto;}
+  tr,.eq,.note,h2,h3{break-inside:avoid;page-break-inside:avoid;}
+  a{text-decoration:none;color:inherit;}
+}
+
+
+.dia{margin:14px 0 16px;text-align:center;}
+.dia svg{max-width:100%;height:auto;}
+.dia figcaption{
+  font-size:.76rem;color:var(--muted);margin-top:4px;font-style:italic;
+}
+.dia .bx{fill:var(--accent-soft);stroke:var(--ink);stroke-width:1.3;}
+.dia .op{fill:var(--paper);stroke:var(--ink);stroke-width:1.3;}
+.dia .ln{stroke:var(--ink);stroke-width:1.3;fill:none;}
+.dia polygon{fill:var(--ink);}
+.dia text{fill:var(--ink);font-family:var(--sans);}
+.dia .t-main{font-weight:600;}
+.dia .t-sub{fill:var(--muted);}
+.dia .t-term{font-style:italic;}
+.dia .t-dots{fill:var(--muted);}
+.dia .t-drop{fill:var(--muted);}
+.dia .t-wire{fill:var(--muted);}
+.dia .t-op{font-weight:700;}
+@media print{
+  .dia{break-inside:avoid;page-break-inside:avoid;margin:9px 0 11px;}
+  .dia .bx{fill:#f2f2f2;stroke:#000;}
+  .dia .op{fill:#fff;stroke:#000;}
+  .dia .ln{stroke:#000;}
+  .dia polygon{fill:#000;}
+  .dia text{fill:#000;}
+  .dia .t-sub,.dia .t-drop,.dia .t-wire{fill:#333;}
+  .dia figcaption{font-size:7.6pt;color:#333;}
+}
+</style>
+
+<div class="sheet">
+  <header class="top">
+    <h1>Diagramas en Bloques — Sistemas de Comunicaciones</h1>
+    <span class="tag">Final 30/07/2026 · 19:00 hs</span>
+  </header>
+
+  <div class="legend">
+    <span>“Dibujar el diagrama en bloques” aparece <b>~20 veces</b> en el corpus</span>
+    <span>vale <b>0,5–0,75 puntos</b> y es de lo más rápido — si lo tenés memorizado</span>
+    <button class="print-btn no-print" onclick="window.print()">Imprimir / Guardar PDF</button>
+  </div>
+
+<div class="note"><p><strong>Last verified:</strong> 2026-07-29 | <strong>Verified by:</strong> relevamiento sobre los 42 finales únicos de <code>exercises/finales/md/</code></p></div>
+<div class="note"><p>🖨️ <strong>Para imprimir</strong>: abrir <code>diagramas-en-bloques.html</code> en Chrome o Safari. <strong>Ese HTML se genera de este archivo</strong> con <code>node scripts/build-diagramas.mjs</code> — los bloques ```<code> </code>`<code>diagram </code>``` se dibujan como SVG. Todo cambio va acá, no en el HTML.</p></div>
+<div class="note"><p><strong>"Dibujar el diagrama en bloques" aparece ~20 veces en el corpus.</strong> Casi siempre vale entre 0,5 y 0,75 puntos, y es de lo más rápido de resolver <strong>si lo tenés memorizado</strong> — y de lo más caro si no.</p></div>
+<section class="block">
+<h2>Frecuencia real en los finales</h2>
+<div class="tw"><table><thead><tr><th>Diagrama</th><th>Apariciones</th></tr></thead><tbody>
+<tr><td><strong>Transmisor PAM/TDM</strong> (y su receptor)</td><td><strong>10</strong></td></tr>
+<tr><td><strong>Modulador SSB por desplazamiento de fase</strong></td><td>3</td></tr>
+<tr><td><strong>Transmisor de FM / Armstrong</strong></td><td>3+</td></tr>
+<tr><td><strong>Sección de repetición</strong> (cable + repetidor)</td><td>2</td></tr>
+<tr><td><strong>Transmisor OFDM</strong> (S/P → IFFT → P/S → cuadratura)</td><td>2</td></tr>
+<tr><td><strong>Generador PCM</strong></td><td>1+</td></tr>
+<tr><td><strong>Demodulador FSK binaria</strong></td><td>1</td></tr>
+</tbody></table></div>
+</section>
+<section class="block">
+<h2>1. Generador PCM ⭐</h2>
+<figure class="dia"><svg viewBox="0 0 747 84" width="747" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img"><text x="41.6875" y="53.5" font-size="12.5" text-anchor="middle" class="t-term"><tspan dy="0.000em">Analógica</tspan></text><rect x="113.4" y="26.0" width="114.9" height="46" rx="3" class="bx"/><text x="170.8125" y="48" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">Filtro anti-alias</tspan></text><text x="170.8125" y="62" font-size="10" text-anchor="middle" class="t-sub"><tspan dy="0.000em">pasabajos a B</tspan></text><rect x="268.3" y="26.0" width="120.9" height="46" rx="3" class="bx"/><text x="328.6875" y="48" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">Muestreador S/H</tspan></text><text x="328.6875" y="62" font-size="10" text-anchor="middle" class="t-sub"><tspan dy="0.000em">a f</tspan><tspan dy="0.300em" font-size="0.72em">s</tspan><tspan dy="-0.300em"> ≥ 2B</tspan></text><rect x="429.1" y="26.0" width="101.0" height="46" rx="3" class="bx"/><text x="479.625" y="48" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">Cuantificador</tspan></text><text x="479.625" y="62" font-size="10" text-anchor="middle" class="t-sub"><tspan dy="0.000em">M niveles</tspan></text><rect x="570.1" y="26.0" width="90.6" height="46" rx="3" class="bx"/><text x="615.4375" y="48" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">Codificador</tspan></text><text x="615.4375" y="62" font-size="10" text-anchor="middle" class="t-sub"><tspan dy="0.000em">n = log</tspan><tspan dy="0.300em" font-size="0.72em">2</tspan><tspan dy="-0.300em"> M</tspan></text><text x="718.625" y="53.5" font-size="12.5" text-anchor="middle" class="t-term"><tspan dy="0.000em">PCM</tspan></text><line x1="73.4" y1="49" x2="108.4" y2="49" class="ln"/><polygon points="113.375,49 107.875,45.6 107.875,52.4"/><line x1="228.3" y1="49" x2="263.3" y2="49" class="ln"/><polygon points="268.25,49 262.75,45.6 262.75,52.4"/><line x1="389.1" y1="49" x2="424.1" y2="49" class="ln"/><polygon points="429.125,49 423.625,45.6 423.625,52.4"/><line x1="530.1" y1="49" x2="565.1" y2="49" class="ln"/><polygon points="570.125,49 564.625,45.6 564.625,52.4"/><line x1="660.8" y1="49" x2="695.8" y2="49" class="ln"/><polygon points="700.75,49 695.25,45.6 695.25,52.4"/></svg><figcaption>Transmisor. La información se pierde en el cuantificador, no antes.</figcaption></figure>
+<p><strong>Función de cada bloque</strong> (lo piden explícitamente):</p>
+<div class="tw"><table><thead><tr><th>Bloque</th><th>Qué hace</th></tr></thead><tbody>
+<tr><td><strong>Filtro anti-alias</strong> (pasabajos)</td><td>Limita la señal a <math><mi>B</mi></math> para que <math><mrow><msub><mi>f</mi><mi>s</mi></msub><mo>≥</mo><mn>2</mn><mi>B</mi></mrow></math> sea suficiente. <strong>Sin él hay aliasing</strong></td></tr>
+<tr><td><strong>Muestreador (S/H)</strong></td><td>Toma muestras a <math><msub><mi>f</mi><mi>s</mi></msub></math> y las <strong>retiene</strong> durante el tiempo de conversión</td></tr>
+<tr><td><strong>Cuantificador</strong></td><td>Asigna cada muestra a uno de <math><mi>M</mi></math> niveles. <strong>Acá se pierde información</strong> (error de cuantificación)</td></tr>
+<tr><td><strong>Codificador</strong></td><td>Convierte cada nivel en <math><mrow><mi>n</mi><mo>=</mo><msub><mi>log</mi><mn>2</mn></msub><mo>⁡</mo><mspace width="0.1667em"></mspace><mi>M</mi></mrow></math> binits</td></tr>
+</tbody></table></div>
+<p><em>(Si el sistema usa companding, va un <strong>compresor</strong> entre muestreador y cuantificador, y el <strong>expansor</strong> en el receptor.)</em></p>
+<p><strong>Receptor</strong> — el inverso exacto:</p>
+<figure class="dia"><svg viewBox="0 0 582 84" width="582" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img"><text x="27.875" y="53.5" font-size="12.5" text-anchor="middle" class="t-term"><tspan dy="0.000em">PCM</tspan></text><rect x="85.8" y="32.0" width="103.9" height="34" rx="3" class="bx"/><text x="137.6875" y="53.5" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">Decodificador</tspan></text><rect x="229.6" y="32.0" width="82.3" height="34" rx="3" class="bx"/><text x="270.75" y="53.5" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">Retenedor</tspan></text><rect x="351.9" y="26.0" width="116.9" height="46" rx="3" class="bx"/><text x="410.3125" y="48" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">Filtro pasabajos</tspan></text><text x="410.3125" y="62" font-size="10" text-anchor="middle" class="t-sub"><tspan dy="0.000em">reconstruye</tspan></text><text x="540.4375" y="53.5" font-size="12.5" text-anchor="middle" class="t-term"><tspan dy="0.000em">Analógica</tspan></text><line x1="45.8" y1="49" x2="80.8" y2="49" class="ln"/><polygon points="85.75,49 80.25,45.6 80.25,52.4"/><line x1="189.6" y1="49" x2="224.6" y2="49" class="ln"/><polygon points="229.625,49 224.125,45.6 224.125,52.4"/><line x1="311.9" y1="49" x2="346.9" y2="49" class="ln"/><polygon points="351.875,49 346.375,45.6 346.375,52.4"/><line x1="468.8" y1="49" x2="503.8" y2="49" class="ln"/><polygon points="508.75,49 503.25,45.6 503.25,52.4"/></svg></figure>
+</section>
+<section class="block">
+<h2>2. Transmisor PAM/TDM ⭐⭐ (el más pedido — 10 veces)</h2>
+<figure class="dia"><svg viewBox="0 0 589 306" width="589" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img"><text x="28.2375" y="53.5" font-size="12.5" text-anchor="middle" class="t-term"><tspan dy="0.000em">m</tspan><tspan dy="0.300em" font-size="0.72em">1</tspan><tspan dy="-0.300em">(t)</tspan></text><text x="28.2375" y="127.5" font-size="12.5" text-anchor="middle" class="t-term"><tspan dy="0.000em">m</tspan><tspan dy="0.300em" font-size="0.72em">2</tspan><tspan dy="-0.300em">(t)</tspan></text><text x="28.2375" y="204" font-size="21" text-anchor="middle" class="t-dots"><tspan dy="0.000em">⋮</tspan></text><text x="28.2375" y="275.5" font-size="12.5" text-anchor="middle" class="t-term"><tspan dy="0.000em">m</tspan><tspan dy="0.300em" font-size="0.72em">N</tspan><tspan dy="-0.300em">(t)</tspan></text><rect x="86.5" y="32.0" width="62.0" height="34" rx="3" class="bx"/><text x="117.475" y="53.5" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">LPF</tspan></text><rect x="86.5" y="106.0" width="62.0" height="34" rx="3" class="bx"/><text x="117.475" y="127.5" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">LPF</tspan></text><rect x="86.5" y="254.0" width="62.0" height="34" rx="3" class="bx"/><text x="117.475" y="275.5" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">LPF</tspan></text><rect x="188.5" y="137.0" width="138.5" height="46" rx="3" class="bx"/><text x="257.725" y="159" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">Conmutador rotativo</tspan></text><text x="257.725" y="173" font-size="10" text-anchor="middle" class="t-sub"><tspan dy="0.000em">f</tspan><tspan dy="0.300em" font-size="0.72em">s</tspan><tspan dy="-0.300em"> por canal</tspan></text><rect x="367.0" y="137.0" width="104.6" height="46" rx="3" class="bx"/><text x="419.2875" y="159" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">LPF de salida</tspan></text><text x="419.2875" y="173" font-size="10" text-anchor="middle" class="t-sub"><tspan dy="0.000em">BW mínimo</tspan></text><text x="545.475" y="164.5" font-size="12.5" text-anchor="middle" class="t-term"><tspan dy="0.000em">PAM/TDM</tspan></text><line x1="46.0" y1="49" x2="81.5" y2="49" class="ln"/><polygon points="86.475,49 80.975,45.6 80.975,52.4"/><line x1="46.0" y1="123" x2="81.5" y2="123" class="ln"/><polygon points="86.475,123 80.975,119.6 80.975,126.4"/><line x1="46.5" y1="271" x2="81.5" y2="271" class="ln"/><polygon points="86.475,271 80.975,267.6 80.975,274.4"/><line x1="168.5" y1="49" x2="168.5" y2="271" class="ln"/><line x1="148.5" y1="49" x2="168.5" y2="49" class="ln"/><line x1="148.5" y1="123" x2="168.5" y2="123" class="ln"/><line x1="148.5" y1="271" x2="168.5" y2="271" class="ln"/><line x1="168.5" y1="160" x2="183.5" y2="160" class="ln"/><polygon points="188.47500000000002,160 182.97500000000002,156.6 182.97500000000002,163.4"/><line x1="327.0" y1="160" x2="362.0" y2="160" class="ln"/><polygon points="366.975,160 361.475,156.6 361.475,163.4"/><line x1="471.6" y1="160" x2="506.6" y2="160" class="ln"/><polygon points="511.6,160 506.1,156.6 506.1,163.4"/></svg><figcaption>Un pasabajos por canal (anti-alias), el conmutador rota a f<sub>s</sub>, y el filtro de salida acota el ancho de banda.</figcaption></figure>
+<p><strong>Puntos clave que evalúan:</strong></p>
+<ul><li>Un <strong>filtro pasabajos por canal</strong> a la entrada (anti-alias, limita cada mensaje a <math><msub><mi>B</mi><mi>i</mi></msub></math>)</li><li>El <strong>conmutador</strong> (o multiplexor) rota entre los <math><mi>N</mi></math> canales a <math><msub><mi>f</mi><mi>s</mi></msub></math> por canal → tasa total <math><mrow><mi>N</mi><msub><mi>f</mi><mi>s</mi></msub></mrow></math></li><li><strong>Filtro de salida</strong> para que el ancho de banda sea mínimo (lo piden así: <em>"tal que el ancho de banda a la salida sea mínimo"</em>)</li></ul>
+<div class="eq"><math display="block" class="tml-display" style="display:block math;"><mrow><msub><mi>f</mi><mrow><mi>s</mi><mo separator="true">,</mo><mi>t</mi><mi>o</mi><mi>t</mi><mi>a</mi><mi>l</mi></mrow></msub><mo>=</mo><mi>N</mi><msub><mi>f</mi><mi>s</mi></msub><mo>≥</mo><mn>2</mn><mi>N</mi><mi>B</mi><mspace width="2em"></mspace><msub><mi>B</mi><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub><mo>=</mo><mfrac><mrow><mi>N</mi><msub><mi>f</mi><mi>s</mi></msub></mrow><mn>2</mn></mfrac><mtext> </mtext><mtext>(banda base)</mtext></mrow></math></div>
+<p><strong>Con sincronismo</strong> (variante que piden 3 veces): se agrega un <strong>canal extra</strong> para la señal de trama/sincronismo, así que <math><mrow><mi>N</mi><mo>+</mo><mn>1</mn></mrow></math> ranuras en vez de <math><mi>N</mi></math>.</p>
+<p><strong>Receptor</strong>:</p>
+<figure class="dia"><svg viewBox="0 0 474 306" width="474" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img"><text x="43.875" y="164.5" font-size="12.5" text-anchor="middle" class="t-term"><tspan dy="0.000em">PAM/TDM</tspan></text><rect x="117.8" y="137.0" width="167.9" height="46" rx="3" class="bx"/><text x="201.6875" y="159" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">Conmutador sincronizado</tspan></text><text x="201.6875" y="173" font-size="10" text-anchor="middle" class="t-sub"><tspan dy="0.000em">misma f</tspan><tspan dy="0.300em" font-size="0.72em">s</tspan><tspan dy="-0.300em"> </tspan></text><rect x="325.6" y="32.0" width="62.0" height="34" rx="3" class="bx"/><text x="356.625" y="53.5" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">LPF</tspan></text><rect x="325.6" y="106.0" width="62.0" height="34" rx="3" class="bx"/><text x="356.625" y="127.5" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">LPF</tspan></text><rect x="325.6" y="254.0" width="62.0" height="34" rx="3" class="bx"/><text x="356.625" y="275.5" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">LPF</tspan></text><text x="445.8625" y="53.5" font-size="12.5" text-anchor="middle" class="t-term"><tspan dy="0.000em">m</tspan><tspan dy="0.300em" font-size="0.72em">1</tspan><tspan dy="-0.300em">(t)</tspan></text><text x="445.8625" y="127.5" font-size="12.5" text-anchor="middle" class="t-term"><tspan dy="0.000em">m</tspan><tspan dy="0.300em" font-size="0.72em">2</tspan><tspan dy="-0.300em">(t)</tspan></text><text x="445.8625" y="204" font-size="21" text-anchor="middle" class="t-dots"><tspan dy="0.000em">⋮</tspan></text><text x="445.8625" y="275.5" font-size="12.5" text-anchor="middle" class="t-term"><tspan dy="0.000em">m</tspan><tspan dy="0.300em" font-size="0.72em">N</tspan><tspan dy="-0.300em">(t)</tspan></text><line x1="77.8" y1="160" x2="112.8" y2="160" class="ln"/><polygon points="117.75,160 112.25,156.6 112.25,163.4"/><line x1="305.6" y1="49" x2="305.6" y2="271" class="ln"/><line x1="285.6" y1="160" x2="305.6" y2="160" class="ln"/><line x1="305.6" y1="49" x2="320.6" y2="49" class="ln"/><polygon points="325.625,49 320.125,45.6 320.125,52.4"/><line x1="305.6" y1="123" x2="320.6" y2="123" class="ln"/><polygon points="325.625,123 320.125,119.6 320.125,126.4"/><line x1="305.6" y1="271" x2="320.6" y2="271" class="ln"/><polygon points="325.625,271 320.125,267.6 320.125,274.4"/><line x1="387.6" y1="49" x2="423.1" y2="49" class="ln"/><polygon points="428.075,49 422.575,45.6 422.575,52.4"/><line x1="387.6" y1="123" x2="423.1" y2="123" class="ln"/><polygon points="428.075,123 422.575,119.6 422.575,126.4"/><line x1="387.6" y1="271" x2="422.6" y2="271" class="ln"/><polygon points="427.625,271 422.125,267.6 422.125,274.4"/></svg><figcaption>Necesita sincronismo de trama para saber qué ranura corresponde a qué canal.</figcaption></figure>
+</section>
+<section class="block">
+<h2>3. Modulador SSB por desplazamiento de fase (Hartley) ⭐</h2>
+<figure class="dia"><svg viewBox="0 0 377 240" width="377" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img"><text x="25.3125" y="132.5" font-size="12.5" text-anchor="middle" class="t-term"><tspan dy="0.000em">m(t)</tspan></text><rect x="80.6" y="142.0" width="62.0" height="46" rx="3" class="bx"/><text x="111.625" y="164" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">−90°</tspan></text><text x="111.625" y="178" font-size="10" text-anchor="middle" class="t-sub"><tspan dy="0.000em">Hilbert</tspan></text><circle cx="197.625" cy="91" r="15" class="op"/><text x="197.625" y="97" font-size="17" text-anchor="middle" class="t-op"><tspan dy="0.000em">×</tspan></text><line x1="197.625" y1="42" x2="197.625" y2="75" class="ln"/><polygon points="197.625,76 194.225,70.5 201.025,70.5"/><text x="197.625" y="37" font-size="10.5" text-anchor="middle" class="t-drop"><tspan dy="0.000em">cos(2πf</tspan><tspan dy="0.300em" font-size="0.72em">c</tspan><tspan dy="-0.300em"> t)</tspan></text><circle cx="197.625" cy="165" r="15" class="op"/><text x="197.625" y="171" font-size="17" text-anchor="middle" class="t-op"><tspan dy="0.000em">×</tspan></text><line x1="197.625" y1="214" x2="197.625" y2="181" class="ln"/><polygon points="197.625,180 194.225,185.5 201.025,185.5"/><text x="197.625" y="226" font-size="10.5" text-anchor="middle" class="t-drop"><tspan dy="0.000em">sen(2πf</tspan><tspan dy="0.300em" font-size="0.72em">c</tspan><tspan dy="-0.300em"> t)</tspan></text><circle cx="267.625" cy="128" r="15" class="op"/><text x="267.625" y="134" font-size="17" text-anchor="middle" class="t-op"><tspan dy="0.000em">∓</tspan></text><text x="344.8375" y="132.5" font-size="12.5" text-anchor="middle" class="t-term"><tspan dy="0.000em">s</tspan><tspan dy="0.300em" font-size="0.72em">SSB</tspan><tspan dy="-0.300em">(t)</tspan></text><line x1="60.6" y1="91" x2="60.6" y2="165" class="ln"/><line x1="40.6" y1="128" x2="60.6" y2="128" class="ln"/><line x1="60.6" y1="91" x2="124.6" y2="91" class="ln"/><line x1="60.6" y1="165" x2="75.6" y2="165" class="ln"/><polygon points="80.625,165 75.125,161.6 75.125,168.4"/><line x1="124.6" y1="91" x2="177.6" y2="91" class="ln"/><polygon points="182.625,91 177.125,87.6 177.125,94.4"/><line x1="142.6" y1="165" x2="177.6" y2="165" class="ln"/><polygon points="182.625,165 177.125,161.6 177.125,168.4"/><text x="162.625" y="158" font-size="10" text-anchor="middle" class="t-wire"><tspan dy="0.000em">m̂(t)</tspan></text><line x1="232.6" y1="91" x2="232.6" y2="165" class="ln"/><line x1="212.6" y1="91" x2="232.6" y2="91" class="ln"/><line x1="212.6" y1="165" x2="232.6" y2="165" class="ln"/><line x1="232.6" y1="128" x2="247.6" y2="128" class="ln"/><polygon points="252.625,128 247.125,124.6 247.125,131.4"/><line x1="282.6" y1="128" x2="317.6" y2="128" class="ln"/><polygon points="322.625,128 317.125,124.6 317.125,131.4"/></svg><figcaption>Dos desfasajes de 90°: uno a la moduladora (Hilbert) y otro a la portadora (cos → sen).</figcaption></figure>
+<div class="eq"><math display="block" class="tml-display" style="display:block math;"><mrow><msub><mi>s</mi><mrow><mi>S</mi><mi>S</mi><mi>B</mi></mrow></msub><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>t</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo>=</mo><mi>m</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>t</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mrow><mi>cos</mi><mo>⁡</mo></mrow><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><msub><mi>ω</mi><mi>c</mi></msub><mi>t</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo>∓</mo><mover><mi>m</mi><mo stretchy="false" class="wbk-acc" style="math-depth:0;">^</mo></mover><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>t</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mrow><mi>sin</mi><mo>⁡</mo></mrow><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><msub><mi>ω</mi><mi>c</mi></msub><mi>t</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></math></div>
+<p><strong><math><mo form="prefix" stretchy="false" lspace="0em" rspace="0em">−</mo></math> para banda lateral superior (USB), <math><mo form="prefix" stretchy="false" lspace="0em" rspace="0em">+</mo></math> para inferior (LSB).</strong></p>
+<p><strong>Los dos bloques de <math><mrow><mo form="prefix" stretchy="false">−</mo><mn>90</mn><mi>°</mi></mrow></math></strong>: uno desplaza la <strong>moduladora</strong> (transformada de Hilbert, <math><mrow><mover><mi>m</mi><mo stretchy="false" class="wbk-acc" style="math-depth:0;">^</mo></mover><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>t</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></math>) y otro desplaza la <strong>portadora</strong> (<math><mrow><mrow><mi>cos</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mo>→</mo><mrow><mi>sin</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow></mrow></math>). Ver Transformada de Hilbert.</p>
+<p><em>(Alternativa: <strong>método del filtrado</strong> — <math><mrow><mrow scriptlevel="0" displaystyle="true" style="padding:3pt;border:1px solid;"><mtext>Modulador balanceado</mtext></mrow><mo>→</mo><mrow scriptlevel="0" displaystyle="true" style="padding:3pt;border:1px solid;"><mtext>Filtro lateral</mtext></mrow></mrow></math>. Más simple pero exige filtro muy abrupto.)</em></p>
+</section>
+<section class="block">
+<h2>4. Modulador Armstrong (FM indirecto) ⭐</h2>
+<figure class="dia"><svg viewBox="0 0 572 124" width="572" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img"><text x="54.5625" y="53.5" font-size="12.5" text-anchor="middle" class="t-term"><tspan dy="0.000em">Osc. de cristal</tspan></text><rect x="139.1" y="26.0" width="62.0" height="46" rx="3" class="bx"/><text x="170.125" y="48" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">NBFM</tspan></text><text x="170.125" y="62" font-size="10" text-anchor="middle" class="t-sub"><tspan dy="0.000em">β ≪ 1</tspan></text><line x1="170.125" y1="106" x2="170.125" y2="73" class="ln"/><polygon points="170.125,72 166.725,77.5 173.525,77.5"/><text x="170.125" y="118" font-size="10.5" text-anchor="middle" class="t-drop"><tspan dy="0.000em">m(t)</tspan></text><rect x="241.1" y="26.0" width="62.0" height="46" rx="3" class="bx"/><text x="272.125" y="48" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">× n</tspan><tspan dy="0.300em" font-size="0.72em">1</tspan><tspan dy="-0.300em"> </tspan></text><text x="272.125" y="62" font-size="10" text-anchor="middle" class="t-sub"><tspan dy="0.000em">sube β</tspan></text><circle cx="358.125" cy="49" r="15" class="op"/><text x="358.125" y="55" font-size="17" text-anchor="middle" class="t-op"><tspan dy="0.000em">×</tspan></text><line x1="358.125" y1="98" x2="358.125" y2="65" class="ln"/><polygon points="358.125,64 354.725,69.5 361.525,69.5"/><text x="358.125" y="110" font-size="10.5" text-anchor="middle" class="t-drop"><tspan dy="0.000em">Osc. local f</tspan><tspan dy="0.300em" font-size="0.72em">OL</tspan><tspan dy="-0.300em"> </tspan></text><rect x="413.1" y="26.0" width="62.0" height="46" rx="3" class="bx"/><text x="444.125" y="48" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">× n</tspan><tspan dy="0.300em" font-size="0.72em">2</tspan><tspan dy="-0.300em"> </tspan></text><text x="444.125" y="62" font-size="10" text-anchor="middle" class="t-sub"><tspan dy="0.000em">sube β</tspan></text><text x="538.75" y="53.5" font-size="12.5" text-anchor="middle" class="t-term"><tspan dy="0.000em">WBFM</tspan></text><line x1="99.1" y1="49" x2="134.1" y2="49" class="ln"/><polygon points="139.125,49 133.625,45.6 133.625,52.4"/><line x1="201.1" y1="49" x2="236.1" y2="49" class="ln"/><polygon points="241.125,49 235.625,45.6 235.625,52.4"/><line x1="303.1" y1="49" x2="338.1" y2="49" class="ln"/><polygon points="343.125,49 337.625,45.6 337.625,52.4"/><line x1="373.1" y1="49" x2="408.1" y2="49" class="ln"/><polygon points="413.125,49 407.625,45.6 407.625,52.4"/><line x1="475.1" y1="49" x2="510.1" y2="49" class="ln"/><polygon points="515.125,49 509.625,45.6 509.625,52.4"/></svg><figcaption>Los multiplicadores suben β; el mezclador ubica la portadora sin tocar Δf.</figcaption></figure>
+<p><strong>Por qué esa estructura</strong> (ver Derivación de FM):</p>
+<div class="tw"><table><thead><tr><th>Bloque</th><th><math><msub><mi>f</mi><mi>c</mi></msub></math></th><th><math><mrow><mrow><mi mathvariant="normal">Δ</mi><mspace></mspace></mrow><mi>f</mi></mrow></math></th></tr></thead><tbody>
+<tr><td><strong>Multiplicador <math><mrow><mo form="prefix" stretchy="false">×</mo><mi>n</mi></mrow></math></strong></td><td><math><mrow><mo form="prefix" stretchy="false">×</mo><mi>n</mi></mrow></math></td><td><math><mrow><mo form="prefix" stretchy="false">×</mo><mi>n</mi></mrow></math></td></tr>
+<tr><td><strong>Mezclador</strong></td><td><math><mrow><mo form="prefix" stretchy="false">±</mo><msub><mi>f</mi><mrow><mi>O</mi><mi>L</mi></mrow></msub></mrow></math></td><td><strong>sin cambio</strong></td></tr>
+</tbody></table></div>
+<p>Los multiplicadores <strong>suben <math><mi>β</mi></math></strong> (que es lo que NBFM no puede dar directamente) y el mezclador <strong>ubica la portadora final</strong> sin arruinar la desviación conseguida.</p>
+</section>
+<section class="block">
+<h2>5. Transmisor OFDM ⭐</h2>
+<figure class="dia"><svg viewBox="0 0 842 240" width="842" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img"><text x="45.75" y="132.5" font-size="12.5" text-anchor="middle" class="t-term"><tspan dy="0.000em">Datos serie</tspan></text><rect x="121.5" y="111.0" width="62.0" height="34" rx="3" class="bx"/><text x="152.5" y="132.5" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">S/P</tspan></text><rect x="223.5" y="111.0" width="95.3" height="34" rx="3" class="bx"/><text x="271.125" y="132.5" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">Mapeo QAM</tspan></text><rect x="358.8" y="111.0" width="62.0" height="34" rx="3" class="bx"/><text x="389.75" y="132.5" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">IFFT</tspan></text><rect x="460.8" y="111.0" width="62.0" height="34" rx="3" class="bx"/><text x="491.75" y="132.5" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">P/S</tspan></text><rect x="562.8" y="111.0" width="62.0" height="34" rx="3" class="bx"/><text x="593.75" y="132.5" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">+ CP</tspan></text><circle cx="679.75" cy="91" r="15" class="op"/><text x="679.75" y="97" font-size="17" text-anchor="middle" class="t-op"><tspan dy="0.000em">×</tspan></text><line x1="679.75" y1="42" x2="679.75" y2="75" class="ln"/><polygon points="679.75,76 676.35,70.5 683.15,70.5"/><text x="679.75" y="37" font-size="10.5" text-anchor="middle" class="t-drop"><tspan dy="0.000em">cos(2πf</tspan><tspan dy="0.300em" font-size="0.72em">c</tspan><tspan dy="-0.300em"> t)</tspan></text><circle cx="679.75" cy="165" r="15" class="op"/><text x="679.75" y="171" font-size="17" text-anchor="middle" class="t-op"><tspan dy="0.000em">×</tspan></text><line x1="679.75" y1="214" x2="679.75" y2="181" class="ln"/><polygon points="679.75,180 676.35,185.5 683.15,185.5"/><text x="679.75" y="226" font-size="10.5" text-anchor="middle" class="t-drop"><tspan dy="0.000em">−sen(2πf</tspan><tspan dy="0.300em" font-size="0.72em">c</tspan><tspan dy="-0.300em"> t)</tspan></text><circle cx="749.75" cy="128" r="15" class="op"/><text x="749.75" y="134" font-size="17" text-anchor="middle" class="t-op"><tspan dy="0.000em">+</tspan></text><text x="818.1875" y="132.5" font-size="12.5" text-anchor="middle" class="t-term"><tspan dy="0.000em">v(t)</tspan></text><line x1="81.5" y1="128" x2="116.5" y2="128" class="ln"/><polygon points="121.5,128 116,124.6 116,131.4"/><line x1="183.5" y1="128" x2="218.5" y2="128" class="ln"/><polygon points="223.5,128 218,124.6 218,131.4"/><line x1="318.8" y1="128" x2="353.8" y2="128" class="ln"/><polygon points="358.75,128 353.25,124.6 353.25,131.4"/><line x1="420.8" y1="128" x2="455.8" y2="128" class="ln"/><polygon points="460.75,128 455.25,124.6 455.25,131.4"/><line x1="522.8" y1="128" x2="557.8" y2="128" class="ln"/><polygon points="562.75,128 557.25,124.6 557.25,131.4"/><line x1="644.8" y1="91" x2="644.8" y2="165" class="ln"/><line x1="624.8" y1="128" x2="644.8" y2="128" class="ln"/><line x1="644.8" y1="91" x2="659.8" y2="91" class="ln"/><polygon points="664.75,91 659.25,87.6 659.25,94.4"/><text x="654.75" y="84" font-size="10" text-anchor="middle" class="t-wire"><tspan dy="0.000em">x(t)</tspan></text><line x1="644.8" y1="165" x2="659.8" y2="165" class="ln"/><polygon points="664.75,165 659.25,161.6 659.25,168.4"/><text x="654.75" y="158" font-size="10" text-anchor="middle" class="t-wire"><tspan dy="0.000em">y(t)</tspan></text><line x1="714.8" y1="91" x2="714.8" y2="165" class="ln"/><line x1="694.8" y1="91" x2="714.8" y2="91" class="ln"/><line x1="694.8" y1="165" x2="714.8" y2="165" class="ln"/><line x1="714.8" y1="128" x2="729.8" y2="128" class="ln"/><polygon points="734.75,128 729.25,124.6 729.25,131.4"/><line x1="764.8" y1="128" x2="799.8" y2="128" class="ln"/><polygon points="804.75,128 799.25,124.6 799.25,131.4"/></svg><figcaption>x(t) = Re{s̃(t)}, y(t) = Im{s̃(t)}. El receptor es el inverso exacto, con FFT en vez de IFFT.</figcaption></figure>
+<div class="eq"><math display="block" class="tml-display" style="display:block math;"><mrow><mi>v</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>t</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo>=</mo><mi>x</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>t</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mrow><mi>cos</mi><mo>⁡</mo></mrow><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><msub><mi>ω</mi><mi>c</mi></msub><mi>t</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo>−</mo><mi>y</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>t</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mspace width="0.1667em"></mspace><mtext>sen</mtext><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><msub><mi>ω</mi><mi>c</mi></msub><mi>t</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></math></div>
+<p>con <math><mrow><mi>x</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>t</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo>=</mo><mtext>Re</mtext><mrow><mo fence="true" form="prefix" stretchy="false">{</mo><mover><mi>s</mi><mo stretchy="false" class="chr-sml wbk-sml" style="math-depth:0;">~</mo></mover><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>t</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo fence="true" form="postfix" stretchy="false">}</mo></mrow></mrow></math>, <math><mrow><mi>y</mi><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>t</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo>=</mo><mtext>Im</mtext><mrow><mo fence="true" form="prefix" stretchy="false">{</mo><mover><mi>s</mi><mo stretchy="false" class="chr-sml wbk-sml" style="math-depth:0;">~</mo></mover><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>t</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo fence="true" form="postfix" stretchy="false">}</mo></mrow></mrow></math>.</p>
+<p><strong>Receptor</strong>: inverso exacto — cuadratura → quitar CP → S/P → <strong>FFT</strong> → demapeo → P/S.</p>
+<p>Ver Formulario SS/OFDM.</p>
+</section>
+<section class="block">
+<h2>6. Sección de repetición (para ejercicios de Ruido) ⭐</h2>
+<figure class="dia"><svg viewBox="0 0 444 84" width="444" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img"><text x="17.3125" y="56" font-size="21" text-anchor="middle" class="t-dots"><tspan dy="0.000em">⋯</tspan></text><rect x="64.6" y="26.0" width="115.3" height="46" rx="3" class="bx"/><text x="122.27499999999999" y="48" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">Cable</tspan></text><text x="122.27499999999999" y="62" font-size="10" text-anchor="middle" class="t-sub"><tspan dy="0.000em">g</tspan><tspan dy="0.300em" font-size="0.72em">c</tspan><tspan dy="-0.300em"> = 1/L</tspan><tspan dy="0.300em" font-size="0.72em">c</tspan><tspan dy="-0.300em">,  T</tspan><tspan dy="0.300em" font-size="0.72em">amb</tspan><tspan dy="-0.300em"> = T</tspan><tspan dy="0.300em" font-size="0.72em">0</tspan><tspan dy="-0.300em"> </tspan></text><rect x="219.9" y="26.0" width="79.4" height="46" rx="3" class="bx"/><text x="259.61249999999995" y="48" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">Repetidor</tspan></text><text x="259.61249999999995" y="62" font-size="10" text-anchor="middle" class="t-sub"><tspan dy="0.000em">g</tspan><tspan dy="0.300em" font-size="0.72em">r</tspan><tspan dy="-0.300em"> = L</tspan><tspan dy="0.300em" font-size="0.72em">c</tspan><tspan dy="-0.300em">,  F</tspan><tspan dy="0.300em" font-size="0.72em">r</tspan><tspan dy="-0.300em"> </tspan></text><text x="386.86249999999995" y="53.5" font-size="12.5" text-anchor="middle" class="t-term"><tspan dy="0.000em">⋯ × n secciones</tspan></text><line x1="24.6" y1="49" x2="59.6" y2="49" class="ln"/><polygon points="64.625,49 59.125,45.6 59.125,52.4"/><line x1="179.9" y1="49" x2="214.9" y2="49" class="ln"/><polygon points="219.92499999999995,49 214.42499999999995,45.6 214.42499999999995,52.4"/><line x1="299.3" y1="49" x2="334.3" y2="49" class="ln"/><polygon points="339.29999999999995,49 333.79999999999995,45.6 333.79999999999995,52.4"/></svg><figcaption>El repetidor compensa exactamente la atenuación del tramo previo.</figcaption></figure>
+<p><strong>Se repite <math><mi>n</mi></math> veces.</strong> El repetidor compensa exactamente la atenuación del tramo previo. Ver Formulario de Ruido.</p>
+</section>
+<section class="block">
+<h2>7. Demodulador FSK binaria</h2>
+<p><strong>Coherente</strong> (dos filtros acoplados):</p>
+<figure class="dia"><svg viewBox="0 0 463 158" width="463" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img"><text x="22.4375" y="90.5" font-size="12.5" text-anchor="middle" class="t-term"><tspan dy="0.000em">r(t)</tspan></text><rect x="74.9" y="32.0" width="63.5" height="34" rx="3" class="bx"/><text x="106.6" y="53.5" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">BPF f</tspan><tspan dy="0.300em" font-size="0.72em">1</tspan><tspan dy="-0.300em"> </tspan></text><rect x="74.9" y="106.0" width="63.5" height="34" rx="3" class="bx"/><text x="106.6" y="127.5" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">BPF f</tspan><tspan dy="0.300em" font-size="0.72em">0</tspan><tspan dy="-0.300em"> </tspan></text><rect x="178.3" y="32.0" width="72.8" height="34" rx="3" class="bx"/><text x="214.7" y="53.5" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">Detector</tspan></text><rect x="178.3" y="106.0" width="72.8" height="34" rx="3" class="bx"/><text x="214.7" y="127.5" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">Detector</tspan></text><rect x="291.1" y="63.0" width="93.5" height="46" rx="3" class="bx"/><text x="337.825" y="85" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">Comparador</tspan></text><text x="337.825" y="99" font-size="10" text-anchor="middle" class="t-sub"><tspan dy="0.000em">decide 1 / 0</tspan></text><text x="438.95" y="90.5" font-size="12.5" text-anchor="middle" class="t-term"><tspan dy="0.000em">bits</tspan></text><line x1="54.9" y1="49" x2="54.9" y2="123" class="ln"/><line x1="34.9" y1="86" x2="54.9" y2="86" class="ln"/><line x1="54.9" y1="49" x2="69.9" y2="49" class="ln"/><polygon points="74.875,49 69.375,45.6 69.375,52.4"/><line x1="54.9" y1="123" x2="69.9" y2="123" class="ln"/><polygon points="74.875,123 69.375,119.6 69.375,126.4"/><line x1="138.3" y1="49" x2="173.3" y2="49" class="ln"/><polygon points="178.325,49 172.825,45.6 172.825,52.4"/><line x1="138.3" y1="123" x2="173.3" y2="123" class="ln"/><polygon points="178.325,123 172.825,119.6 172.825,126.4"/><line x1="271.1" y1="49" x2="271.1" y2="123" class="ln"/><line x1="251.1" y1="49" x2="271.1" y2="49" class="ln"/><line x1="251.1" y1="123" x2="271.1" y2="123" class="ln"/><line x1="271.1" y1="86" x2="286.1" y2="86" class="ln"/><polygon points="291.075,86 285.575,82.6 285.575,89.4"/><line x1="384.6" y1="86" x2="419.6" y2="86" class="ln"/><polygon points="424.575,86 419.075,82.6 419.075,89.4"/></svg><figcaption>No coherente: los mismos dos brazos con detector de envolvente. Más simple, ~3 dB de penalidad.</figcaption></figure>
+<p><strong>No coherente</strong>: los mismos dos brazos pero con <strong>detector de envolvente</strong> en vez de detector coherente. Más simple, ~3 dB de penalidad.</p>
+<p><em>(Y sí: un modulador FSK binaria <strong>se puede armar con dos moduladores OOK</strong> — uno en <math><msub><mi>f</mi><mn>1</mn></msub></math> activado por los "1" y otro en <math><msub><mi>f</mi><mn>2</mn></msub></math> por los "0", sumados a la salida. Es una pregunta del corpus.)</em></p>
+</section>
+<section class="block">
+<h2>8. Receptor superheterodino (por si aparece)</h2>
+<figure class="dia"><svg viewBox="0 0 751 124" width="751" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img"><text x="33.1875" y="53.5" font-size="12.5" text-anchor="middle" class="t-term"><tspan dy="0.000em">Antena</tspan></text><rect x="96.4" y="26.0" width="107.9" height="46" rx="3" class="bx"/><text x="150.325" y="48" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">Ampl. RF</tspan></text><text x="150.325" y="62" font-size="10" text-anchor="middle" class="t-sub"><tspan dy="0.000em">rechaza la imagen</tspan></text><circle cx="259.275" cy="49" r="15" class="op"/><text x="259.275" y="55" font-size="17" text-anchor="middle" class="t-op"><tspan dy="0.000em">×</tspan></text><line x1="259.275" y1="98" x2="259.275" y2="65" class="ln"/><polygon points="259.275,64 255.87499999999997,69.5 262.67499999999995,69.5"/><text x="259.275" y="110" font-size="10.5" text-anchor="middle" class="t-drop"><tspan dy="0.000em">Osc. local f</tspan><tspan dy="0.300em" font-size="0.72em">OL</tspan><tspan dy="-0.300em"> </tspan></text><rect x="314.3" y="26.0" width="87.0" height="46" rx="3" class="bx"/><text x="357.765" y="48" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">Ampl. FI</tspan></text><text x="357.765" y="62" font-size="10" text-anchor="middle" class="t-sub"><tspan dy="0.000em">f</tspan><tspan dy="0.300em" font-size="0.72em">FI</tspan><tspan dy="-0.300em"> = f</tspan><tspan dy="0.300em" font-size="0.72em">RF</tspan><tspan dy="-0.300em"> − f</tspan><tspan dy="0.300em" font-size="0.72em">OL</tspan><tspan dy="-0.300em"> </tspan></text><rect x="441.3" y="32.0" width="72.8" height="34" rx="3" class="bx"/><text x="477.63" y="53.5" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">Detector</tspan></text><rect x="554.0" y="32.0" width="92.4" height="34" rx="3" class="bx"/><text x="600.1925" y="53.5" font-size="12.5" text-anchor="middle" class="t-main"><tspan dy="0.000em">Ampl. audio</tspan></text><text x="713.755" y="53.5" font-size="12.5" text-anchor="middle" class="t-term"><tspan dy="0.000em">Parlante</tspan></text><line x1="56.4" y1="49" x2="91.4" y2="49" class="ln"/><polygon points="96.375,49 90.875,45.6 90.875,52.4"/><line x1="204.3" y1="49" x2="239.3" y2="49" class="ln"/><polygon points="244.27499999999998,49 238.77499999999998,45.6 238.77499999999998,52.4"/><line x1="274.3" y1="49" x2="309.3" y2="49" class="ln"/><polygon points="314.275,49 308.775,45.6 308.775,52.4"/><line x1="401.3" y1="49" x2="436.3" y2="49" class="ln"/><polygon points="441.255,49 435.755,45.6 435.755,52.4"/><line x1="514.0" y1="49" x2="549.0" y2="49" class="ln"/><polygon points="554.005,49 548.505,45.6 548.505,52.4"/><line x1="646.4" y1="49" x2="681.4" y2="49" class="ln"/><polygon points="686.38,49 680.88,45.6 680.88,52.4"/></svg><figcaption>El filtro de RF es el que rechaza la frecuencia imagen, a 2·f<sub>FI</sub> de la deseada.</figcaption></figure>
+<p><math><mrow><msub><mi>f</mi><mrow><mi>F</mi><mi>I</mi></mrow></msub><mo>=</mo><mi>|</mi><msub><mi>f</mi><mrow><mi>R</mi><mi>F</mi></mrow></msub><mo>−</mo><msub><mi>f</mi><mrow><mi>O</mi><mi>L</mi></mrow></msub><mi>|</mi></mrow></math>. La <strong>frecuencia imagen</strong> está a <math><mrow><mn>2</mn><msub><mi>f</mi><mrow><mi>F</mi><mi>I</mi></mrow></msub></mrow></math> de la deseada y la rechaza el filtro de RF.</p>
+</section>
+<section class="block">
+<h2>Cómo dibujarlos en el examen</h2>
+<ol><li><strong>Bloques rectangulares con el nombre adentro</strong>, flechas indicando el sentido</li><li><strong>Rotular las señales</strong> en los puntos clave (entrada, salida, frecuencias intermedias)</li><li><strong>Anotar los valores calculados</strong> sobre cada bloque (ej. <math><mrow><mo form="prefix" stretchy="false">×</mo><mn>500</mn></mrow></math>, <math><mrow><msub><mi>f</mi><mrow><mi>O</mi><mi>L</mi></mrow></msub><mo>=</mo><mn>1,7</mn></mrow></math> MHz) — conecta el dibujo con la cuenta y muestra que entendés el sistema</li><li>Si piden "explicar la función de cada bloque", <strong>una línea por bloque alcanza</strong></li></ol>
+<div class="note"><p>Con la regla del <strong>25% mínimo por punto</strong>, un diagrama bien hecho puede salvar un ejercicio donde las cuentas no salieron.</p></div>
+</section>
+<section class="block">
+<h2>Ver también</h2>
+<ul><li>PCM · FM/PM · SS/OFDM · Ruido</li><li>Multiplexación TDM</li><li>Modulador Armstrong</li></ul>
+</section>
+
+  <footer class="end">
+    <span>Fuente: wiki/planificacion/diagramas-en-bloques.md · generado con scripts/build-diagramas.mjs</span>
+    <span>Relevado sobre 42 finales únicos (2019-2026)</span>
+  </footer>
+</div>

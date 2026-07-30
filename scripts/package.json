@@ -3,7 +3,9 @@
   "private": true,
   "description": "Genera formulario-imprimible.html desde el .md, con LaTeX -> MathML nativo",
   "scripts": {
-    "build": "node build-formulario.mjs"
+    "build": "node build-formulario.mjs && node build-diagramas.mjs",
+    "build:formulario": "node build-formulario.mjs",
+    "build:diagramas": "node build-diagramas.mjs"
   },
   "dependencies": {
     "temml": "^0.13.3"

@@ -8,6 +8,8 @@ curso: Sistemas de Comunicaciones
 
 > **Last verified:** 2026-07-29 | **Verified by:** relevamiento sobre los 42 finales únicos de `exercises/finales/md/`
 
+> 🖨️ **Para imprimir**: abrir `diagramas-en-bloques.html` en Chrome o Safari. **Ese HTML se genera de este archivo** con `node scripts/build-diagramas.mjs` — los bloques ```` ```diagram ```` se dibujan como SVG. Todo cambio va acá, no en el HTML.
+
 > **"Dibujar el diagrama en bloques" aparece ~20 veces en el corpus.** Casi siempre vale entre 0,5 y 0,75 puntos, y es de lo más rápido de resolver **si lo tenés memorizado** — y de lo más caro si no.
 
 ## Frecuencia real en los finales
@@ -26,7 +28,10 @@ curso: Sistemas de Comunicaciones
 
 ## 1. Generador PCM ⭐
 
-$$\text{Analógica} \to \boxed{\text{Filtro anti-alias}} \to \boxed{\text{Muestreador S/H}} \to \boxed{\text{Cuantificador}} \to \boxed{\text{Codificador}} \to \text{PCM}$$
+```diagram
+<Analógica> > [Filtro anti-alias;pasabajos a B] > [Muestreador S/H;a f_s ≥ 2B] > [Cuantificador;M niveles] > [Codificador;n = log_2 M] > <PCM>
+caption: Transmisor. La información se pierde en el cuantificador, no antes.
+```
 
 **Función de cada bloque** (lo piden explícitamente):
 
@@ -39,19 +44,20 @@ $$\text{Analógica} \to \boxed{\text{Filtro anti-alias}} \to \boxed{\text{Muestr
 
 *(Si el sistema usa companding, va un **compresor** entre muestreador y cuantificador, y el **expansor** en el receptor.)*
 
-**Receptor**: $\text{PCM} \to \boxed{\text{Decodificador}} \to \boxed{\text{Retenedor}} \to \boxed{\text{Filtro pasabajos}} \to$ analógica
+**Receptor** — el inverso exacto:
+
+```diagram
+<PCM> > [Decodificador] > [Retenedor] > [Filtro pasabajos;reconstruye] > <Analógica>
+```
 
 ---
 
 ## 2. Transmisor PAM/TDM ⭐⭐ (el más pedido — 10 veces)
 
-$$\begin{array}{c}
-m_1(t) \to \boxed{\text{LPF}} \to \\
-m_2(t) \to \boxed{\text{LPF}} \to \\
-\vdots \\
-m_N(t) \to \boxed{\text{LPF}} \to
-\end{array}
-\Bigg\} \to \boxed{\text{Conmutador rotativo}} \to \boxed{\text{LPF de salida}} \to \text{PAM/TDM}$$
+```diagram
+{<m_1(t)> | <m_2(t)> | <⋮> | <m_N(t)>} > {[LPF] | [LPF] | . | [LPF]} > [Conmutador rotativo;f_s por canal] > [LPF de salida;BW mínimo] > <PAM/TDM>
+caption: Un pasabajos por canal (anti-alias), el conmutador rota a f_s, y el filtro de salida acota el ancho de banda.
+```
 
 **Puntos clave que evalúan:**
 - Un **filtro pasabajos por canal** a la entrada (anti-alias, limita cada mensaje a $B_i$)
@@ -62,18 +68,21 @@ $$f_{s,total} = N f_s \geq 2NB \qquad B_{min} = \frac{Nf_s}{2}\ \text{(banda bas
 
 **Con sincronismo** (variante que piden 3 veces): se agrega un **canal extra** para la señal de trama/sincronismo, así que $N+1$ ranuras en vez de $N$.
 
-**Receptor**: $\to \boxed{\text{Conmutador sincronizado}} \to$ cada canal $\to \boxed{\text{LPF}} \to m_i(t)$
-El receptor necesita **sincronismo de trama** para saber qué ranura corresponde a qué canal.
+**Receptor**:
+
+```diagram
+<PAM/TDM> > [Conmutador sincronizado;misma f_s] > {[LPF] | [LPF] | . | [LPF]} > {<m_1(t)> | <m_2(t)> | <⋮> | <m_N(t)>}
+caption: Necesita sincronismo de trama para saber qué ranura corresponde a qué canal.
+```
 
 ---
 
 ## 3. Modulador SSB por desplazamiento de fase (Hartley) ⭐
 
-$$\begin{array}{ccc}
-m(t) &\to \boxed{\times}\ \leftarrow \cos(\omega_ct) & \searrow \\
-&& \boxed{\pm} \to s_{SSB}(t) \\
-m(t) \to \boxed{-90°} \to \hat m(t) &\to \boxed{\times}\ \leftarrow \sin(\omega_ct) & \nearrow
-\end{array}$$
+```diagram
+<m(t)> > {~ | [−90°;Hilbert]} > {(×)v{cos(2πf_c t)} | "m̂(t)"(×)^{sen(2πf_c t)}} > (∓) > <s_{SSB}(t)>
+caption: Dos desfasajes de 90°: uno a la moduladora (Hilbert) y otro a la portadora (cos → sen).
+```
 
 $$s_{SSB}(t) = m(t)\cos(\omega_ct) \mp \hat m(t)\sin(\omega_ct)$$
 
@@ -87,9 +96,10 @@ $$s_{SSB}(t) = m(t)\cos(\omega_ct) \mp \hat m(t)\sin(\omega_ct)$$
 
 ## 4. Modulador Armstrong (FM indirecto) ⭐
 
-$$\text{Oscilador} \to \boxed{\text{NBFM}} \to \boxed{\times n_1} \to \boxed{\text{Mezclador}} \to \boxed{\times n_2} \to \text{WBFM}$$
-$$\uparrow \qquad\qquad\qquad\qquad \uparrow$$
-$$m(t) \qquad\qquad\qquad \text{Oscilador local } f_{OL}$$
+```diagram
+<Osc. de cristal> > [NBFM;β ≪ 1]^{m(t)} > [× n_1;sube β] > (×)^{Osc. local f_{OL}} > [× n_2;sube β] > <WBFM>
+caption: Los multiplicadores suben β; el mezclador ubica la portadora sin tocar Δf.
+```
 
 **Por qué esa estructura** (ver [[../derivaciones/modulacion-fm-carson#Multiplicador vs mezclador: una sola operación, dos segundas entradas|Derivación de FM]]):
 
@@ -104,7 +114,10 @@ Los multiplicadores **suben $\beta$** (que es lo que NBFM no puede dar directame
 
 ## 5. Transmisor OFDM ⭐
 
-$$\text{Datos serie} \to \boxed{S/P} \to \boxed{\text{Mapeo QAM}} \to \boxed{\text{IFFT}} \to \boxed{P/S} \to \boxed{+\text{CP}} \to \begin{array}{c}\boxed{\times}\leftarrow\cos\omega_ct \\ \boxed{\times}\leftarrow-\sin\omega_ct\end{array} \to \boxed{+} \to v(t)$$
+```diagram
+<Datos serie> > [S/P] > [Mapeo QAM] > [IFFT] > [P/S] > [+ CP] > {"x(t)"(×)v{cos(2πf_c t)} | "y(t)"(×)^{−sen(2πf_c t)}} > (+) > <v(t)>
+caption: x(t) = Re{s̃(t)}, y(t) = Im{s̃(t)}. El receptor es el inverso exacto, con FFT en vez de IFFT.
+```
 
 $$v(t) = x(t)\cos(\omega_ct) - y(t)\,\text{sen}(\omega_ct)$$
 
@@ -118,7 +131,10 @@ Ver [[../espectro-expandido/ss-ofdm-formulario-examen|Formulario SS/OFDM]].
 
 ## 6. Sección de repetición (para ejercicios de Ruido) ⭐
 
-$$\to \boxed{\text{Cable } g_c = 1/L_c,\ T_{amb}=T_0} \to \boxed{\triangleright\ \text{Repetidor } g_r = L_c,\ F_r} \to$$
+```diagram
+<⋯> > [Cable;g_c = 1/L_c,  T_{amb} = T_0] > [Repetidor;g_r = L_c,  F_r] > <⋯ × n secciones>
+caption: El repetidor compensa exactamente la atenuación del tramo previo.
+```
 
 **Se repite $n$ veces.** El repetidor compensa exactamente la atenuación del tramo previo. Ver [[../ruido/ruido-formulario-examen#El patrón estrella: cascada de repetidores|Formulario de Ruido]].
 
@@ -128,7 +144,10 @@ $$\to \boxed{\text{Cable } g_c = 1/L_c,\ T_{amb}=T_0} \to \boxed{\triangleright\
 
 **Coherente** (dos filtros acoplados):
 
-$$r(t) \to \begin{array}{c}\boxed{\text{BPF } f_1} \to \boxed{\text{Detector}} \\ \boxed{\text{BPF } f_2} \to \boxed{\text{Detector}}\end{array} \to \boxed{\text{Comparador}} \to \text{bits}$$
+```diagram
+<r(t)> > {[BPF f_1] | [BPF f_0]} > {[Detector] | [Detector]} > [Comparador;decide 1 / 0] > <bits>
+caption: No coherente: los mismos dos brazos con detector de envolvente. Más simple, ~3 dB de penalidad.
+```
 
 **No coherente**: los mismos dos brazos pero con **detector de envolvente** en vez de detector coherente. Más simple, ~3 dB de penalidad.
 
@@ -138,9 +157,10 @@ $$r(t) \to \begin{array}{c}\boxed{\text{BPF } f_1} \to \boxed{\text{Detector}} \
 
 ## 8. Receptor superheterodino (por si aparece)
 
-$$\text{Antena} \to \boxed{\text{RF}} \to \boxed{\text{Mezclador}} \to \boxed{\text{FI}} \to \boxed{\text{Detector}} \to \boxed{\text{Audio}}$$
-$$\uparrow$$
-$$\text{Oscilador local}$$
+```diagram
+<Antena> > [Ampl. RF;rechaza la imagen] > (×)^{Osc. local f_{OL}} > [Ampl. FI;f_{FI} = f_{RF} − f_{OL}] > [Detector] > [Ampl. audio] > <Parlante>
+caption: El filtro de RF es el que rechaza la frecuencia imagen, a 2·f_{FI} de la deseada.
+```
 
 $f_{FI} = |f_{RF} - f_{OL}|$. La **frecuencia imagen** está a $2f_{FI}$ de la deseada y la rechaza el filtro de RF.
 
