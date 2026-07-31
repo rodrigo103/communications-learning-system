@@ -62,6 +62,32 @@ $$f_s = 8\text{ kmuestras/s} \ \to\ R_b = 64\text{ kbps} \ \to\ R_s = 32\text{ k
 | $H(f_c{+}f)+H(f_c{-}f)=1$ para $\lvert f\rvert<f_v$ | Simetría vestigial del filtro VSB | Condición de recuperación perfecta |
 | $P_{dBW}=10\log_{10}\!\left(\dfrac{P}{1\text{ W}}\right) \quad P_{dBm}=P_{dBW}+30$ | Conversión a dB | $0$ dBW $=30$ dBm |
 
+### El índice en multitono — de dónde salen los $m_i$
+
+Cuando el enunciado da el índice **referido al valor pico del mensaje compuesto**, ese índice total se reparte entre los tonos **en proporción a sus amplitudes**:
+
+$$\lvert m\rvert_{max} = \sum_i A_i \qquad\Longrightarrow\qquad \boxed{m_i = m_{tot}\cdot\frac{A_i}{\sum_j A_j}} \qquad\text{con}\qquad \sum_i m_i = m_{tot}$$
+
+> ⚠️ **Verificación obligatoria antes de seguir**: los $m_i$ tienen que sumar $m_{tot}$. Si no suman, el reparto está mal y **todos** los ítems posteriores arrastran el error — potencias, espectro, eficiencia y PEP dependen de los $m_i$.
+>
+> Los dos repartos incorrectos habituales: normalizar por el **tono mayor**, o tomar los coeficientes crudos del enunciado como si fueran los índices.
+
+Con los $m_i$ salen todos los ítems típicos:
+
+| Se pide | Con qué |
+|---|---|
+| Potencia total | $P_c\left(1+\tfrac12\sum m_i^2\right)$ |
+| Cada raya lateral del espectro | $P_c\,m_i^2/4$ — o directamente $A_i^2/8$ normalizada |
+| Potencia total en **una** banda lateral | $\tfrac{P_c}{4}\sum m_i^2$ |
+| Eficiencia | $\eta = \dfrac{\tfrac12\sum m_i^2}{1+\tfrac12\sum m_i^2}$ |
+| PEP | $P_c(1+m_{tot})^2$ — con el índice **total** |
+
+**Factor de cresta del mensaje compuesto**:
+
+$$F_C = \frac{\lvert m\rvert_{max}}{m_{rms}} = \frac{\sum_i A_i}{\sqrt{\tfrac12\sum_i A_i^2}} \qquad\Longrightarrow\qquad P_{total} = P_c\left[1+\frac{m_{tot}^2}{F_C^2}\right]$$
+
+que es la misma potencia total escrita con el factor de cresta en vez de con los $m_i$ — sirve de chequeo cruzado.
+
 > ⚠️ **La trampa del factor 2**: las alturas de las deltas son **la mitad** de las amplitudes de los cosenos reales ($A_c$ y $A_cm/2$), porque cada coseno real se reparte en dos exponenciales complejas.
 
 **Tabla comparativa**:
@@ -252,6 +278,24 @@ $$\underbrace{D\ [\text{símbolos/s}]}_{\text{fija el ancho de banda}} \xrightar
 $$R_{\text{información}} = r\,H \ \leq\ R_{\text{binario}} = \ell\,D \qquad \text{(con igualdad solo si todo es equiprobable)}$$
 
 Un binit transporta 1 bit **solo si los dos valores son equiprobables**: con $p=\{0{,}9;\,0{,}1\}$, $H=0{,}469$ bits/binit — el resto es redundancia. **El ancho de banda depende de la tasa de símbolos, no de la de bits** (todo el negocio de QAM).
+
+### Codificación de fuente
+
+Asignar a cada símbolo una palabra binaria de longitud $l_i$ — más corta cuanto más probable el símbolo.
+
+$$\bar L = \sum_i p_i\,l_i \ \left[\tfrac{\text{binits}}{\text{símbolo}}\right] \qquad \boxed{H \leq \bar L < H+1} \qquad \eta = \frac{H}{\bar L} \qquad R_b = r\,\bar L$$
+
+**Huffman** — construcción: combinar repetidamente los **dos símbolos de menor probabilidad** en un nodo con la suma de ambas, hasta llegar a 1. La profundidad de cada hoja en el árbol resultante es su $l_i$; las ramas se etiquetan 0 y 1.
+
+**Kraft-McMillan**: $\ \sum_i 2^{-l_i}\leq1\ $ es la condición para que exista un código de **prefijo** con esas longitudes. Con **igualdad** el código es completo (no sobra ninguna rama del árbol).
+
+> **El caso que sale redondo**: si todas las $p_i$ son **potencias exactas de $\tfrac12$**, entonces $l_i = \log_2(1/p_i)$ y $\bar L = H$ — **eficiencia 100%** y Kraft con igualdad. Ej.: $p=\{\tfrac14,\tfrac14,\tfrac18,\tfrac18,\tfrac18,\tfrac18\}$ → longitudes $2,2,3,3,3,3$ y $\bar L = H = 2{,}5$.
+
+**Si las $p_i$ no son potencias de $\tfrac12$**, $\bar L > H$ porque $l_i$ debe ser entero. Se acerca agrupando de a $s$ símbolos (**extensión de orden $s$**), donde el $+1$ de la cota queda dividido por $s$:
+
+$$\frac{H(S)}{\log_2 M} \ \leq\ \frac{\bar L_s}{s} \ <\ \frac{H(S)}{\log_2 M}+\frac{1}{s}$$
+
+**El encadenamiento típico**: calcular $H$ → verificar $R=rH$ contra $C$ → proponer el código → dar $R_b = r\bar L$ y confirmar que entra en el canal.
 
 ### El patrón dominante: ¿es factible esta modulación?
 
