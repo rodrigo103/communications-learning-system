@@ -170,7 +170,7 @@
           "type": "file",
           "ctime": 1785293265993,
           "path": "wiki/ruido/ruido-formulario-examen.md"
-        },        
+        },
         {
           "type": "file",
           "ctime": 1785293265993,
@@ -233,6 +233,93 @@
         }
       ],
       "title": "Día 5"
+    },
+    {
+      "type": "group",
+      "ctime": 1785946023035,
+      "items": [
+        {
+          "type": "file",
+          "ctime": 1785946031818,
+          "path": "wiki/espectro-expandido/ss-ofdm-formulario-examen.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785946031818,
+          "path": "wiki/modulacion-pulsos/pcm-formulario-examen.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785946031818,
+          "path": "wiki/ruido/ruido-formulario-examen.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785946031818,
+          "path": "wiki/modulacion-analogica/exponencial-formulario-examen.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785946031818,
+          "path": "wiki/planificacion/diagramas-en-bloques.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785946031818,
+          "path": "wiki/derivaciones/modulacion-fm-carson.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785946031818,
+          "path": "wiki/modulacion-digital/digital-formulario-examen.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785946031818,
+          "path": "wiki/modulacion-pulsos/pcm-formulario-examen.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785946031818,
+          "path": "wiki/teoria-informacion/ti-formulario-examen.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785946031818,
+          "path": "wiki/modulacion-digital/digital-formulario-examen.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785946031818,
+          "path": "wiki/modulacion-pulsos/pcm-formulario-examen.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785946031818,
+          "path": "wiki/herramientas-matematicas/nyquist-de-cero.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785946031818,
+          "path": "exercises/finales/md/F_Comu_2026-07-30_miFinal.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785946031818,
+          "path": "wiki/modulacion-analogica/exponencial-formulario-examen.md"
+        },
+        {
+          "type": "file",
+          "ctime": 1785946044202,
+          "path": "exercises/finales/F_Comu_2026-07-30_miFinal.pdf"
+        },
+        {
+          "type": "file",
+          "ctime": 1785946044202,
+          "path": "wiki/planificacion/diagramas-en-bloques.md"
+        }
+      ],
+      "title": "Día 6"
     }
   ]
 }
