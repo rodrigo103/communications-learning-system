@@ -1,7 +1,7 @@
 import { Plugin } from "@opencode/plugin/tui"
 
 const NUDGE =
-  "Evaluar si esta sesión generó conocimiento que deba compilarse al wiki de Sistemas de Comunicaciones. Derivaciones, resoluciones o estrategias de examen van al wiki."
+  "Evaluar si esta sesión generó conocimiento para el wiki de Sistemas de Comunicaciones (wiki/). Procesos, explicaciones de conceptos, resoluciones o estrategias de examen van al wiki. Revisá la sección 'LLM Wiki' en AGENTS.md; si aplica, corré /wiki ingest."
 
 export default Plugin.define({
   id: "wiki-nudge.tui",
@@ -20,7 +20,7 @@ export default Plugin.define({
       context.ui.toast.show({
         title: "wiki-nudge",
         message: NUDGE,
-        duration: 8000,
+        duration: 12000,
       })
     })
     return () => stop()
