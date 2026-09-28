@@ -22,7 +22,7 @@ unidad: 3
 | $m$ | **Índice de modulación** ⚠️ *sin argumento* | adimensional, $\leq1$ |
 | $m(t)$ | Moduladora **cruda** (con su amplitud $A_m$ adentro) | V |
 | $m_n(t)$ | Moduladora **normalizada a pico 1** | adimensional |
-| $k$ | Sensibilidad del modulador | 1/V |
+| $k$ | Sensibilidad del modulador | adimensional (V/V) — sale de $A(t)=A_c+k\,m(t)$ |
 | $R$ | Impedancia de carga | Ω (normalizada: $R=1$) |
 | $CF$ | Factor de cresta $=$ pico/RMS | adimensional |
 | $A_{max}, A_{min}$ | Máximo y mínimo de la **envolvente** | V |
