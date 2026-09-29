@@ -314,6 +314,7 @@ El dispositivo agrega ruido propio **fijo** ($N_{out}=G(N_i+N_a)$, con $N_a=kT_{
 | $H = -\sum_i p_i\log_2 p_i = \sum_i p_i\log_2\dfrac{1}{p_i}$ | **Entropía** [bits/símbolo] | **Para calcular a mano usar la del recíproco**: todos los términos salen positivos |
 | $H_{max} = \log_2 M$ | Entropía máxima | **Solo si son equiprobables** |
 | $R = r\,H$ | **Tasa de información** [bits/s] | $r$ = símbolos/s $\times$ $H$ = bits/símbolo |
+| $R \leq C$ | **Condición de transmisión** | Teorema de codificación de canal: con $R\leq C$ existe un código con error arbitrariamente chico; con $R>C$ es **imposible**. $R$ y $C$ en bits/s de información |
 | $C = B\log_2\!\left(1+\dfrac{S}{N}\right)$ | **Shannon-Hartley** [bits/s] | $S/N$ **LINEAL**, no dB. 20 dB → 100 |
 | $\text{Red} = 1-\dfrac{H}{H_{max}}$ | Redundancia ($\eta=H/H_{max}$) | Cuánto se puede comprimir sin perder |
 | $\dfrac{E_b}{N_0} > \ln 2 = -1{,}59$ dB | **Límite absoluto de Shannon** | Ningún esquema opera por debajo |
