@@ -541,8 +541,7 @@ $$S(f) = \frac{\sigma_a^2}{T_s}\,|P(f)|^2 \quad\Longrightarrow\quad \text{pulso 
 | $\Delta f = \dfrac{1}{T_S}$ | **Espaciado — es la condición de ortogonalidad**, no una elección |
 | $B_T = N_p\cdot\Delta f$ | Ancho de banda total. También $N_p = B_T/\Delta f$ |
 | $f_k = f_c\pm\left(k+\tfrac12\right)\Delta f$, $\ k=0\ldots\tfrac{N_p}{2}-1$ | Posición de subportadoras ($N_p$ par). **Ninguna exactamente en $f_c$** |
-| $Y_k = H(f_k)X_k+N_k \ \Rightarrow\ \hat X_k = \dfrac{Y_k}{H(f_k)}$ | **Ecualización por subportadora**: una división compleja, trivial con CP |
-
+| $Y_k = H(f_k)\,X_k+N_k \ \Rightarrow\ \hat X_k = \dfrac{Y_k}{H(f_k)} = X_k+\dfrac{N_k}{H(f_k)}$ | **Ecualización por subportadora**: el canal solo escala y rota cada subportadora ($H(f_k)$ complejo); una división lo deshace. El ruido **no desaparece**: queda amplificado donde $\lvert H(f_k)\rvert$ es chico. Requiere **CP** (*prefijo cíclico*, copia del final del símbolo puesta al principio) más largo que el eco más largo |
 **La cadena**: $R_b$ serie $\xrightarrow{S/P} N_p$ grupos de $\ell$ bits $\xrightarrow{\text{mapeo QAM}} N_p$ símbolos $\xrightarrow{\textbf{IFFT}}$ muestras $\xrightarrow{P/S}$ señal. En recepción: bajada a banda base → **FFT** sobre un período de símbolo → $N_p$ valores complejos → demapeo → P/S. El orden de los bits es **convención previa** (el índice $k$ *es* la posición) — no se transmite info extra. **Por eso el sincronismo es crítico**: errar la ventana o correrse una subportadora arruina el bloque entero.
 
 **Por qué $\Delta f=1/T_S$**: dos subportadoras son ortogonales sobre $[0,T_S]$ si $(f_1-f_2)T_S$ es entero no nulo; el espaciado **mínimo** es el entero 1. O sea: **cada subportadora completa exactamente un ciclo más que su vecina por período de símbolo**. Con ese espaciado, cada una tiene un **nulo** en la frecuencia de todas las demás → se solapan sin estorbarse.
