@@ -43,10 +43,23 @@ $$f_s = 8\text{ kmuestras/s} \ \to\ R_b = 64\text{ kbps} \ \to\ R_s = 32\text{ k
 
 > **Notación de la cátedra**: el índice es **$m$** (no $\mu$ ni $k_a$), la sensibilidad es **$k$**, la moduladora normalizada a pico 1 es **$m_n(t)$**.
 
+**Qué es cada parte de $s_{AM}(t)$.** La forma general vale para cualquier moduladora:
+
+$$s_{AM}(t) = \underbrace{A_c}_{\substack{\text{amplitud de la}\\\text{portadora [V]}}}\Big[\,1 + \underbrace{m}_{\substack{\text{índice}\\\text{(número)}}}\;\underbrace{m_n(t)}_{\substack{\text{forma del mensaje}\\\text{(pico 1, sin unidad)}}}\Big]\cos(2\pi f_ct)$$
+
+- **El corchete no tiene unidades.** El $1$ es la portadora sola, y $m\,m_n(t)$ es cuánto se aparta la envolvente **como fracción de $A_c$**. La única amplitud en volts es $A_c$.
+- **La amplitud del mensaje está metida dentro de $m$**, no aparece suelta: $m(t) = A_m\,m_n(t)$ y $m = \dfrac{k\,A_m}{A_c}$, así que $m\,m_n(t) = \dfrac{k}{A_c}\,m(t)$.
+- **La misma señal sin normalizar** es $s_{AM}(t) = \big[A_c + k\,m(t)\big]\cos(2\pi f_ct)$: portadora más mensaje escalado. Factorizando $A_c$ se llega a la forma de arriba.
+- **Con un tono, la envolvente va de $A_c(1-m)$ a $A_c(1+m)$.** De ahí salen $A_{min}$, $A_{max}$ y la fórmula de $m$ por envolvente; el máximo $A_c(1+m)$ es el de la PEP.
+
+> ⚠️ **$m\,m_n(t) \neq m(t)$.** Misma letra, cosas distintas: $m$ es un número y $m(t)$ está en volts.
+
 | Fórmula | Qué es | Notas |
 |---|---|---|
-| $s_{AM}(t) = A_c\big[1+m\,m_n(t)\big]\cos(2\pi f_ct)$ | **Señal AM** | Un tono: $m_n(t)=\cos(2\pi f_mt)$ |
+| $s_{AM}(t) = A_c\big[1+m\cos(2\pi f_mt)\big]\cos(2\pi f_ct)$ | **Señal AM, un tono** | $m_n(t)=\cos(2\pi f_mt)$ · todo el índice en un solo tono |
 | $S_{AM}(f)=\tfrac{A_c}{2}\delta(f{\mp}f_c) + \tfrac{A_c\,m}{4}\delta(f{\mp}f_c{\mp}f_m) + \tfrac{A_c\,m}{4}\delta(f{\mp}f_c{\pm}f_m)$ | **Espectro: 6 deltas** | 2 de portadora ($A_c/2$) + 4 laterales ($A_c m/4$) |
+| $s_{AM}(t) = A_c\Big[1+\sum_i m_i\cos(2\pi f_it)\Big]\cos(2\pi f_ct)$ | **Señal AM, multitono** | $m_n(t)=\dfrac{\sum_i A_i\cos(2\pi f_it)}{\sum_j A_j}$ · $m_i = m\,\dfrac{A_i}{\sum_j A_j}$: el índice total se reparte entre los tonos |
+| $S_{AM}(f)=\tfrac{A_c}{2}\delta(f{\mp}f_c) + \sum_i\tfrac{A_c\,m_i}{4}\big[\delta(f{\mp}f_c{\mp}f_i)+\delta(f{\mp}f_c{\pm}f_i)\big]$ | **Espectro multitono: $2+4N$ deltas** | Con $N$ tonos: 2 de portadora ($A_c/2$) + 4 laterales por tono ($A_c m_i/4$) |
 | $m = \dfrac{k\,A_m}{A_c} \qquad m = \dfrac{A_{max}-A_{min}}{A_{max}+A_{min}}$ | Índice de modulación | La 2ª cuando dan medidas de envolvente |
 | $P_c = \dfrac{A_c^2}{2R}$ | Potencia de portadora | $R=1\,\Omega$ si no dan dato (normalizada) |
 | $P_{SB} = \dfrac{A_c^2m^2}{8R} = \dfrac{P_c\,m^2}{4}$ | Potencia de **cada** banda lateral | En dBW: $10\log_{10}(P_{SB}/1\text{W})$ |
