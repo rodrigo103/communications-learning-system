@@ -52,7 +52,7 @@ $$P_{BLS} = \frac{P_c}{4}\sum m_i^2 = \frac{225{,}78}{4}(0{,}23253) = \boxed{13{
 
 ### c) Densidad espectral de potencia (solo frecuencias positivas)
 
-Siete rayas en total, pero en frecuencias positivas se ven **cuatro**: portadora y tres pares de laterales. Cada raya lateral vale $P_cm_i^2/4 = A_i^2/8$:
+El espectro bilateral tiene $2+4N = 14$ deltas; en frecuencias positivas quedan **siete** rayas: la portadora y tres pares de laterales (la tabla agrupa cada par $\pm$). Cada raya lateral vale $P_cm_i^2/4 = (kA_i)^2/8$, con $kA_1 = 5$ V:
 
 | Frecuencia | Potencia |
 |---|---|
@@ -63,7 +63,9 @@ Siete rayas en total, pero en frecuencias positivas se ven **cuatro**: portadora
 
 $$\text{Verificación: } 225{,}78 + 2(3{,}125+2+8) = 252{,}03\ \text{W} \ ✓$$
 
-⚠️ Un analizador de espectro muestra **potencia por raya**, no densidad continua: la señal es de espectro discreto. Y el enunciado pide "sólo frecuencias positivas", así que las rayas van con su potencia completa, sin repartir en $\pm f_c$.
+⚠️ Un analizador de espectro muestra **potencia por raya**, no densidad continua: la señal es de espectro discreto. Y el enunciado pide "sólo frecuencias positivas", así que va el espectro **unilateral**, $G_1(f) = 2\,G(f)$ para $f>0$: cada raya lleva la potencia completa de su coseno, sin repartir en $\pm f_c$.
+>
+> **Por qué no $P_c/2$:** $P_c/2$ es lo que lleva la delta en $+f_c$ del espectro **bilateral**. Si se grafica eso cortado en $f>0$, las rayas suman $112{,}89 + 2(1{,}5625+1+4) = 126$ W, la mitad de $P_{total}$. Un transmisor de 252 W no se ve como 126 W en un analizador. Conviene escribir en la hoja qué convención se usa: "unilateral, $G_1(f)=2G(f)$".
 
 ### d) Eficiencia energética
 
@@ -75,7 +77,7 @@ Muy por debajo del 33% máximo de AM, porque el índice total es 0,8 pero **repa
 
 $$m_{rms} = A_1\sqrt{\frac{1+0{,}64+2{,}56}{2}} = A_1\sqrt{2{,}1} = 1{,}4491\,A_1$$
 
-$$F_C = \frac{\lvert m\rvert_{max}}{m_{rms}} = \frac{3{,}4}{1{,}4491} = \boxed{2{,}346}$$
+$$F_C = \frac{A_m}{m_{rms}} = \frac{3{,}4}{1{,}4491} = \boxed{2{,}346}$$
 
 *(Coherente con todo lo anterior: $P_{total}=P_c[1+m^2/F_C^2] = P_c[1+0{,}64/5{,}505]$ ✓)*
 
