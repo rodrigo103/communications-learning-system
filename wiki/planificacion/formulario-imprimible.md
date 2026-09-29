@@ -61,7 +61,7 @@ $$\begin{aligned} s_{AM}(t) &= \Big[\,\underbrace{A_c}_{\substack{\text{portador
 
 - **El corchete no tiene unidades.** El $1$ es la portadora sola, y $m\,m_n(t)$ es cuánto se aparta la envolvente **como fracción de $A_c$**. La única amplitud en volts es $A_c$.
 - **$A_m$ es el pico del mensaje, en volts:** $A_m = \max\lvert m(t)\rvert$. Con un tono es su amplitud; con varios cosenos es $\sum_i A_i$, porque en $t=0$ valen todos 1 a la vez. Con esa definición, $m = \dfrac{k\,A_m}{A_c}$ y $m_n(t) = \dfrac{m(t)}{A_m}$ valen igual para uno o varios tonos. La amplitud del mensaje queda metida dentro de $m$; no aparece suelta.
-- **$k$ es un dato del modulador y no vale 1 por defecto.** $k\,A_m = A_c\,m$ es cuánto se aparta la envolvente, en volts. Si se conocen $A_m$ y la envolvente: $k = \dfrac{A_c\,m}{A_m}$ (ej.: $A_m=5$ V con $A_c=45$ V y $m=\tfrac13$ da $k=3$). Potencias, $\eta$, PEP y espectro dependen solo de $A_c$ y $m$; $k$ hace falta únicamente para pasar de $m$ a los volts del mensaje.
+- **$k$ es un dato del modulador y no vale 1 por defecto.** $k\,A_m = A_c\,m$ es cuánto se aparta la envolvente, en volts. Si se conocen $A_m$ y la envolvente: $k = \dfrac{A_c\,m}{A_m}$ (ej.: $A_m=2$ V con $A_c=10$ V y $m=0{,}4$ da $k=2$). Potencias, $\eta$, PEP y espectro dependen solo de $A_c$ y $m$; $k$ hace falta únicamente para pasar de $m$ a los volts del mensaje.
 - **Con un tono, la envolvente va de $A_c(1-m)$ a $A_c(1+m)$.** De ahí salen $A_{min}$, $A_{max}$ y la fórmula de $m$ por envolvente; el máximo $A_c(1+m)$ es el de la PEP.
 
 > ⚠️ **$m(t) = A_m\,m_n(t)$, no $m\,m_n(t)$.** Misma letra, cosas distintas: $m$ es un número; $m(t)$ y $A_m$ están en volts.
@@ -345,13 +345,15 @@ $$\bar L = \sum_i p_i\,l_i \ \left[\tfrac{\text{binits}}{\text{símbolo}}\right]
 
 **Kraft-McMillan**: $\ \sum_i 2^{-l_i}\leq1\ $ es la condición para que exista un código de **prefijo** con esas longitudes. Con **igualdad** el código es completo (no sobra ninguna rama del árbol).
 
-> **El caso que sale redondo**: si todas las $p_i$ son **potencias exactas de $\tfrac12$**, entonces $l_i = \log_2(1/p_i)$ y $\bar L = H$ — **eficiencia 100%** y Kraft con igualdad. Ej.: $p=\{\tfrac14,\tfrac14,\tfrac18,\tfrac18,\tfrac18,\tfrac18\}$ → longitudes $2,2,3,3,3,3$ y $\bar L = H = 2{,}5$.
+> **El caso que sale redondo**: si todas las $p_i$ son **potencias exactas de $\tfrac12$**, entonces $l_i = \log_2(1/p_i)$ y $\bar L = H$ — **eficiencia 100%** y Kraft con igualdad. Ej.: $p=\{\tfrac12,\tfrac14,\tfrac18,\tfrac18\}$ → longitudes $1,2,3,3$ y $\bar L = H = 1{,}75$.
 
 **Si las $p_i$ no son potencias de $\tfrac12$**, $\bar L > H$ porque $l_i$ debe ser entero. Se acerca agrupando de a $s$ símbolos (**extensión de orden $s$**), donde el $+1$ de la cota queda dividido por $s$:
 
 $$\frac{H(S)}{\log_2 M} \ \leq\ \frac{\bar L_s}{s} \ <\ \frac{H(S)}{\log_2 M}+\frac{1}{s}$$
 
 **El encadenamiento típico**: calcular $H$ → verificar $R=rH$ contra $C$ → proponer el código → dar $R_b = r\bar L$ y confirmar que entra en el canal.
+
+**Teorema de codificación de canal**: si $R \leq C$, existe una codificación que transmite con probabilidad de error arbitrariamente chica; si $R > C$, es **imposible**.
 
 ### El patrón dominante: ¿es factible esta modulación?
 
@@ -367,6 +369,8 @@ $$\text{Fuente} \xrightarrow{\ R=rH\ } \text{tasa de info} \xrightarrow{\ \text{
 **Fuentes compuestas** (imagen → líneas → puntos → niveles): multiplicar en cadena hasta bits/s.
 
 $$R\left[\tfrac{\text{bits}}{\text{s}}\right] = \underbrace{\text{elementos por trama}}_{\text{conteo}} \times \underbrace{H}_{\text{bits/elemento}} \times \underbrace{\text{tramas por segundo}}_{1/\text{s}}$$
+
+Tramas por segundo $= 1/T_{trama}$, con $T_{trama}$ la duración **total**, **incluido el sincronismo**: ocupa tiempo pero no aporta información (es determinístico), así que entra en el denominador y no en el conteo.
 
 ### Enlace asincrónico con trama de caracteres
 
@@ -548,9 +552,9 @@ $$S(f) = \frac{\sigma_a^2}{T_s}\,|P(f)|^2 \quad\Longrightarrow\quad \text{pulso 
 
 **Por qué conviene que cada subportadora sea lenta** (la comparación contra una sola portadora a igual tasa):
 
-1. **ISI por multitrayecto — la razón central.** Un eco urbano de ~1 μs se superpone a ~2 símbolos si son de 0,625 μs (una portadora, 1024-QAM), pero es el **0,1%** de un símbolo OFDM de 1024 μs. **OFDM esquiva el problema en vez de resolverlo** — no hace falta ecualizador de arrastre.
+1. **ISI por multitrayecto — la razón central.** Un eco urbano de ~1 μs se superpone a ~2 símbolos si son de 0,5 μs (una sola portadora rápida), pero es el **0,1%** de un símbolo OFDM de 1 ms. **OFDM esquiva el problema en vez de resolverlo** — no hace falta ecualizador de arrastre.
 2. **Cada subportadora ve un canal plano.** En $\Delta f$ (~1 kHz) el canal es esencialmente constante, así que actúa como **una multiplicación compleja**, corregible con **un ecualizador de un solo tap**. Reemplaza un ecualizador temporal complejo por $N_p$ multiplicaciones triviales.
-3. **El prefijo cíclico sale barato**: una guarda de 10 μs cuesta ~1% sobre 1024 μs, y 1600% sobre 0,625 μs.
+3. **El prefijo cíclico sale barato**: una guarda de 10 μs cuesta ~1% sobre 1 ms, y 2000% sobre 0,5 μs.
 4. **Bit loading adaptativo** (water-filling, como ADSL) y **rechazo de interferencia de banda angosta** (mata unas pocas subportadoras, el resto sobrevive).
 
 **El precio**: **PAPR alto** (suma coherente de muchas subportadoras; PAPR $= F_C^2$, ver §2), **sensibilidad a error de frecuencia** (rompe la ortogonalidad → ICI), **latencia**.
