@@ -54,26 +54,26 @@ $$\begin{aligned} s_{AM}(t) &= \Big[\,\underbrace{A_c}_{\substack{\text{portador
 
 > ⚠️ **$m(t) = A_m\,m_n(t)$, no $m\,m_n(t)$.** Misma letra, cosas distintas: $m$ es un número; $m(t)$ y $A_m$ están en volts.
 
-| Fórmula | Qué es | Notas |
-|---|---|---|
-| $s_{AM}(t) = A_c\big[1+m\cos(2\pi f_mt)\big]\cos(2\pi f_ct)$ | **Señal AM, un tono** | $A_m$ = amplitud del tono · $m_n(t)=\cos(2\pi f_mt)$ · todo el índice en un solo tono |
-| $S_{AM}(f)=\tfrac{A_c}{2}\delta(f{\mp}f_c) + \tfrac{A_c\,m}{4}\delta(f{\mp}f_c{\mp}f_m) + \tfrac{A_c\,m}{4}\delta(f{\mp}f_c{\pm}f_m)$ | **Espectro: 6 deltas** | 2 de portadora ($A_c/2$) + 4 laterales ($A_c m/4$) |
-| $s_{AM}(t) = A_c\Big[1+\sum_i m_i\cos(2\pi f_it)\Big]\cos(2\pi f_ct)$ | **Señal AM, multitono** | $A_m=\sum_j A_j$ · $m_n(t)=\dfrac{\sum_i A_i\cos(2\pi f_it)}{A_m}$ · $m_i = m\,\dfrac{A_i}{A_m} = \dfrac{k\,A_i}{A_c}$: el índice total se reparte entre los tonos |
-| $S_{AM}(f)=\tfrac{A_c}{2}\delta(f{\mp}f_c) + \sum_i\tfrac{A_c\,m_i}{4}\big[\delta(f{\mp}f_c{\mp}f_i)+\delta(f{\mp}f_c{\pm}f_i)\big]$ | **Espectro multitono: $2+4N$ deltas** | Con $N$ tonos: 2 de portadora ($A_c/2$) + 4 laterales por tono ($A_c m_i/4$) |
-| $m = \dfrac{k\,A_m}{A_c} \qquad m = \dfrac{A_{max}-A_{min}}{A_{max}+A_{min}}$ | Índice de modulación | $A_m$ = pico del mensaje. La 2ª cuando dan medidas de envolvente |
-| $P_c = \dfrac{A_c^2}{2R}$ | Potencia de portadora | $R=1\,\Omega$ si no dan dato (normalizada) |
-| $P_{SB} = \dfrac{A_c^2m^2}{8R} = \dfrac{P_c\,m^2}{4}$ | Potencia de **cada** banda lateral | En dBW: $10\log_{10}(P_{SB}/1\text{W})$ |
-| $P_{total} = P_c\left(1+\dfrac{m^2}{2}\right)$ | **Potencia total, un tono** | De memoria |
-| $P_{total} = P_c\left[1+m^2\langle m_n^2\rangle\right] = P_c\left[1+\dfrac{m^2}{F_C^2}\right]$ | Forma general / con factor de cresta | Tono: $\langle m_n^2\rangle=\tfrac12$ |
-| $P_{total} = P_c\left(1+\dfrac{\sum_i m_i^2}{2}\right)$ | **AM multitono** | Sumar $m_i^2/2$ de cada tono |
-| $PEP = \dfrac{A_{max}^2}{2R} = P_c(1+m)^2$ | Potencia pico de envolvente | Pico, **no** promedio |
-| $\eta_{AM} = \dfrac{m^2}{2+m^2}$ | Eficiencia de potencia | Máx $33{,}3\%$ en $m=1$. DSB/SSB: $100\%$ |
-| $\sum_i m_i \leq 1$ | **Sobremodulación en multitono** | El criterio es sobre la **suma**, no cada $m_i$ |
-| $s_{DSB}(t)=A_c\,m(t)\cos(2\pi f_ct)$ | DSB-SC | $S_{DSB}(f)=\tfrac{A_c}{2}[M(f{-}f_c)+M(f{+}f_c)]$ |
-| $s_{SSB}(t)=\tfrac{A_c}{2}\big[m(t)\cos\omega_ct \mp \hat m(t)\sin\omega_ct\big]$ | SSB: $-$ es USB, $+$ es LSB | $\hat m$ = transformada de Hilbert |
-| $BW_{AM}=BW_{DSB}=2f_m \quad BW_{SSB}=f_m \quad BW_{VSB}=f_m+f_v$ | Anchos de banda | **Multitono: $BW=2f_{m,max}$**, no la suma |
-| $H(f_c{+}f)+H(f_c{-}f)=1$ para $\lvert f\rvert<f_v$ | Simetría vestigial del filtro VSB | Condición de recuperación perfecta |
-| $P_{dBW}=10\log_{10}\!\left(\dfrac{P}{1\text{ W}}\right) \quad P_{dBm}=P_{dBW}+30$ | Conversión a dB | $0$ dBW $=30$ dBm |
+| Fórmula                                                                                                                               | Qué es                                | Notas                                                                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| $s_{AM}(t) = A_c\big[1+m\cos(2\pi f_mt)\big]\cos(2\pi f_ct)$                                                                          | **Señal AM, un tono**                 | $A_m$ = amplitud del tono · $m_n(t)=\cos(2\pi f_mt)$ · todo el índice en un solo tono                                                                              |
+| $S_{AM}(f)=\tfrac{A_c}{2}\delta(f{\mp}f_c) + \tfrac{A_c\,m}{4}\delta(f{\mp}f_c{\mp}f_m) + \tfrac{A_c\,m}{4}\delta(f{\mp}f_c{\pm}f_m)$ | **Espectro: 6 deltas**                | 2 de portadora ($A_c/2$) + 4 laterales ($A_c m/4$)                                                                                                                 |
+| $s_{AM}(t) = A_c\Big[1+\sum_i m_i\cos(2\pi f_it)\Big]\cos(2\pi f_ct)$                                                                 | **Señal AM, multitono**               | $A_m=\sum_j A_j$ · $m_n(t)=\dfrac{\sum_i A_i\cos(2\pi f_it)}{A_m}$ · $m_i = m\,\dfrac{A_i}{A_m} = \dfrac{k\,A_i}{A_c}$: el índice total se reparte entre los tonos |
+| $S_{AM}(f)=\tfrac{A_c}{2}\delta(f{\mp}f_c) + \sum_i\tfrac{A_c\,m_i}{4}\big[\delta(f{\mp}f_c{\mp}f_i)+\delta(f{\mp}f_c{\pm}f_i)\big]$  | **Espectro multitono: $2+4N$ deltas** | Con $N$ tonos: 2 de portadora ($A_c/2$) + 4 laterales por tono ($A_c m_i/4$)                                                                                       |
+| $m = \dfrac{k\,A_m}{A_c} \qquad m = \dfrac{A_{max}-A_{min}}{A_{max}+A_{min}}$                                                         | Índice de modulación                  | $A_m$ = pico del mensaje. La 2ª cuando dan medidas de envolvente                                                                                                   |
+| $P_c = \dfrac{A_c^2}{2R}$                                                                                                             | Potencia de portadora                 | $R=1\,\Omega$ si no dan dato (normalizada)                                                                                                                         |
+| $P_{SB} = \dfrac{A_c^2m^2}{8R} = \dfrac{P_c\,m^2}{4}$                                                                                 | Potencia de **cada** banda lateral    | En dBW: $10\log_{10}(P_{SB}/1\text{W})$                                                                                                                            |
+| $P_{total} = P_c\left(1+\dfrac{m^2}{2}\right)$                                                                                        | **Potencia total, un tono**           | De memoria                                                                                                                                                         |
+| $P_{total} = P_c\left[1+m^2\langle m_n^2\rangle\right] = P_c\left[1+\dfrac{m^2}{F_C^2}\right]$                                        | Forma general / con factor de cresta  | Tono: $\langle m_n^2\rangle=\tfrac12$                                                                                                                              |
+| $P_{total} = P_c\left(1+\dfrac{\sum_i m_i^2}{2}\right)$                                                                               | **AM multitono**                      | Sumar $m_i^2/2$ de cada tono                                                                                                                                       |
+| $PEP = \dfrac{A_{max}^2}{2R} = P_c(1+m)^2$                                                                                            | Potencia pico de envolvente           | Pico, **no** promedio                                                                                                                                              |
+| $\eta_{AM} = \dfrac{m^2}{2+m^2}$                                                                                                      | Eficiencia de potencia                | Máx $33{,}3\%$ en $m=1$. DSB/SSB: $100\%$                                                                                                                          |
+| $\sum_i m_i \leq 1$                                                                                                                   | **Sobremodulación en multitono**      | El criterio es sobre la **suma**, no cada $m_i$                                                                                                                    |
+| $s_{DSB}(t)=A_c\,m(t)\cos(2\pi f_ct)$                                                                                                 | DSB-SC                                | $S_{DSB}(f)=\tfrac{A_c}{2}[M(f{-}f_c)+M(f{+}f_c)]$                                                                                                                 |
+| $s_{SSB}(t)=\tfrac{A_c}{2}\big[m(t)\cos\omega_ct \mp \hat m(t)\sin\omega_ct\big]$                                                     | SSB: $-$ es USB, $+$ es LSB           | $\hat m$ = transformada de Hilbert                                                                                                                                 |
+| $BW_{AM}=BW_{DSB}=2f_m \quad BW_{SSB}=f_m \quad BW_{VSB}=f_m+f_v$                                                                     | Anchos de banda                       | **Multitono: $BW=2f_{m,max}$**, no la suma                                                                                                                         |
+| $H(f_c{+}f)+H(f_c{-}f)=1$ para $\lvert f\rvert<f_v$                                                                                   | Simetría vestigial del filtro VSB     | Condición de recuperación perfecta                                                                                                                                 |
+| $P_{dBW}=10\log_{10}\!\left(\dfrac{P}{1\text{ W}}\right) \quad P_{dBm}=P_{dBW}+30$                                                    | Conversión a dB                       | $0$ dBW $=30$ dBm                                                                                                                                                  |
 
 ### El índice en multitono — de dónde salen los $m_i$
 
@@ -90,7 +90,7 @@ Con los $m_i$ salen todos los ítems típicos:
 | Se pide | Con qué |
 |---|---|
 | Potencia total | $P_c\left(1+\tfrac12\sum m_i^2\right)$ |
-| Cada raya lateral del espectro | $P_c\,m_i^2/4 = (k\,A_i)^2/8$ normalizada — $A_i^2/8$ solo si $k=1$ |
+| Cada raya lateral del espectro (unilateral) | $P_c\,m_i^2/4 = (k\,A_i)^2/8$ normalizada — $A_i^2/8$ solo si $k=1$ |
 | Potencia total en **una** banda lateral | $\tfrac{P_c}{4}\sum m_i^2$ |
 | Eficiencia | $\eta = \dfrac{\tfrac12\sum m_i^2}{1+\tfrac12\sum m_i^2}$ |
 | PEP | $P_c(1+m_{tot})^2$ — con el índice **total** |
@@ -102,6 +102,26 @@ $$F_C = \frac{A_m}{m_{rms}} = \frac{\sum_i A_i}{\sqrt{\tfrac12\sum_i A_i^2}} \qq
 que es la misma potencia total escrita con el factor de cresta en vez de con los $m_i$ — sirve de chequeo cruzado.
 
 > ⚠️ **La trampa del factor 2**: las alturas de las deltas son **la mitad** de las amplitudes de los cosenos reales ($A_c$ y $A_cm/2$), porque cada coseno real se reparte en dos exponenciales complejas.
+
+**Espectro de potencia: bilateral o unilateral (plegado).** Un coseno real $A\cos(2\pi f_0t)$ tiene potencia $A^2/2$ (con $R=1$). En el espectro **bilateral** esa potencia se reparte en dos deltas, y cada una lleva el cuadrado de su coeficiente:
+
+$$A\cos(2\pi f_0t) = \tfrac{A}{2}e^{j2\pi f_0t} + \tfrac{A}{2}e^{-j2\pi f_0t} \;\Longrightarrow\; G(f) = \tfrac{A^2}{4}\,\delta(f-f_0) + \tfrac{A^2}{4}\,\delta(f+f_0)$$
+
+El **unilateral** pliega la mitad negativa sobre la positiva: no se corta, se suma.
+
+$$G_1(f) = 2\,G(f)\ \ \text{para } f>0 \;\Longrightarrow\; G_1(f) = \tfrac{A^2}{2}\,\delta(f-f_0)$$
+
+| Raya | Bilateral $G(f)$, en $\pm f$ | Unilateral $G_1(f)$, solo $f>0$ |
+|---|---|---|
+| Portadora | $P_c/2$ en $-f_c$ y en $+f_c$ | $P_c$ en $f_c$ |
+| Cada lateral del tono $i$ | $P_c\,m_i^2/8$ en cada una de sus 4 deltas | $P_c\,m_i^2/4$ en $f_c-f_i$ y en $f_c+f_i$ |
+| Cantidad | $2+4N$ deltas | $1+2N$ rayas |
+| Suma de todas | $P_{total}$ | $P_{total}$ |
+
+- **Las potencias bilaterales son las alturas en amplitud al cuadrado:** $(A_c/2)^2 = P_c/2$ y $(A_c m_i/4)^2 = P_c m_i^2/8$.
+- **Un analizador de espectro muestra el unilateral:** cada raya con la potencia completa de su coseno.
+- **Chequeo:** en los dos, la suma de todas las rayas da $P_{total}$. Si el unilateral suma $P_{total}/2$, se cortó el bilateral en vez de plegarlo.
+- Una raya en $f=0$ (continua) no se duplica: no tiene pareja negativa.
 
 **Tabla comparativa**:
 

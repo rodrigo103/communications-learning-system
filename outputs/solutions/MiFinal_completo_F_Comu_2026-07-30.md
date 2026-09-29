@@ -52,20 +52,30 @@ $$P_{BLS} = \frac{P_c}{4}\sum m_i^2 = \frac{225{,}78}{4}(0{,}23253) = \boxed{13{
 
 ### c) Densidad espectral de potencia (solo frecuencias positivas)
 
-El espectro bilateral tiene $2+4N = 14$ deltas; en frecuencias positivas quedan **siete** rayas: la portadora y tres pares de laterales (la tabla agrupa cada par $\pm$). Cada raya lateral vale $P_cm_i^2/4 = (kA_i)^2/8$, con $kA_1 = 5$ V:
+"Sólo frecuencias positivas, como se vería en un analizador" pide el espectro **unilateral**. Se arma en dos pasos: primero el bilateral y después se pliega.
 
-| Frecuencia | Potencia |
-|---|---|
-| $f_c$ | $225{,}78$ W |
-| $f_c \pm f_1$ | $3{,}125$ W |
-| $f_c \pm f_2$ | $2{,}00$ W |
-| $f_c \pm f_3$ | $8{,}00$ W |
+**1. Bilateral.** Cada coseno real se reparte en dos deltas, en $+f$ y en $-f$, y cada una lleva la mitad de su potencia (el cuadrado de su coeficiente):
 
-$$\text{Verificación: } 225{,}78 + 2(3{,}125+2+8) = 252{,}03\ \text{W} \ ✓$$
+$$A\cos(2\pi f_0t) = \tfrac{A}{2}e^{j2\pi f_0t} + \tfrac{A}{2}e^{-j2\pi f_0t} \;\Longrightarrow\; \tfrac{A^2}{4}\ \text{en } {+f_0}\ \ \text{y}\ \ \tfrac{A^2}{4}\ \text{en } {-f_0}$$
 
-⚠️ Un analizador de espectro muestra **potencia por raya**, no densidad continua: la señal es de espectro discreto. Y el enunciado pide "sólo frecuencias positivas", así que va el espectro **unilateral**, $G_1(f) = 2\,G(f)$ para $f>0$: cada raya lleva la potencia completa de su coseno, sin repartir en $\pm f_c$.
+Son $2+4N = 14$ deltas: la portadora con $P_c/2$ en $\pm f_c$, y cada lateral con $P_c m_i^2/8$ en $\pm(f_c \pm f_i)$.
+
+**2. Plegado.** La mitad negativa se **suma** sobre la positiva, no se corta: $G_1(f) = 2\,G(f)$ para $f>0$. Cada raya queda con la potencia completa de su coseno, y quedan $1+2N = 7$ rayas (la tabla agrupa cada par $f_c \pm f_i$ en una fila):
+
+| Frecuencia | Bilateral: cada delta, en $+f$ y en $-f$ | Unilateral: plegado, solo $f>0$ |
+|---|---|---|
+| $f_c$ | $112{,}89$ W | $\mathbf{225{,}78}$ **W** |
+| $f_c \pm f_1$ | $1{,}5625$ W | $\mathbf{3{,}125}$ **W** |
+| $f_c \pm f_2$ | $1{,}00$ W | $\mathbf{2{,}00}$ **W** |
+| $f_c \pm f_3$ | $4{,}00$ W | $\mathbf{8{,}00}$ **W** |
+
+Cada raya lateral unilateral vale $P_cm_i^2/4 = (kA_i)^2/8$, con $kA_1 = 5$ V.
+
+$$\text{Verificación: } 225{,}78 + 2(3{,}125+2+8) = 252{,}03\ \text{W} = P_{total} \ ✓$$
+
+> ⚠️ **Por qué no $P_c/2$:** $P_c/2$ es la delta en $+f_c$ del **bilateral**. Si se grafica el bilateral cortado en $f>0$, sin plegar, las rayas suman $112{,}89 + 2(1{,}5625+1+4) = 126$ W, la mitad de $P_{total}$. Un transmisor de 252 W no se ve como 126 W en un analizador.
 >
-> **Por qué no $P_c/2$:** $P_c/2$ es lo que lleva la delta en $+f_c$ del espectro **bilateral**. Si se grafica eso cortado en $f>0$, las rayas suman $112{,}89 + 2(1{,}5625+1+4) = 126$ W, la mitad de $P_{total}$. Un transmisor de 252 W no se ve como 126 W en un analizador. Conviene escribir en la hoja qué convención se usa: "unilateral, $G_1(f)=2G(f)$".
+> Un analizador muestra **potencia por raya**, no densidad continua, porque la señal tiene espectro discreto. Conviene anotar en la hoja la convención: "unilateral, $G_1(f)=2G(f)$".
 
 ### d) Eficiencia energética
 
