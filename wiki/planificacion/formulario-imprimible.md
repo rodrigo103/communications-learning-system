@@ -22,7 +22,7 @@ curso: Sistemas de Comunicaciones
 | Fórmula                                                                 | Qué es                                               | Unidades — cómo se cancela                                                                                                                                                                     | Notas                                                                                   |
 | ----------------------------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | $f_s \geq 2B$                                                           | **Nyquist** — frecuencia de muestreo mínima          | $\tfrac{\text{muestras}}{\text{s}} \geq \tfrac{\text{muestras}}{\text{ciclo}}\times\tfrac{\text{ciclos}}{\text{s}}$ → **muestras/s**                                                           | Evita aliasing                                                                          |
-| $M = 2^n$                                                               | $M$ niveles con $n$ bits/muestra                     | **No hay contabilidad** — $n$ es exponente, conteo puro → **niveles**                                                                                                                          | $n=\log_2M$                                                                             |
+| $M = 2^n$                                                               | $M$ niveles con $n$ binits/muestra                     | **No hay contabilidad** — $n$ es exponente, conteo puro → **niveles**                                                                                                                          | $n=\log_2M$                                                                             |
 | $q = \dfrac{V_{pp}}{M}$                                                 | Paso de cuantificación                               | $\tfrac{\text{V}}{\text{niveles}}$ → **V**, altura de un escalón                                                                                                                               | **Error máximo $=q/2$**                                                                 |
 | $P_q = \dfrac{q^2}{12}$                                                 | Ruido de cuantificación                              | $\text{V}^2\div$ adimensional → **V²** ($=$ W con $R=1$)                                                                                                                                       | El 12 es la varianza de una uniforme en $[-q/2,\,q/2]$                                  |
 | $SNR_Q = \dfrac{3M^2}{F_C^2}$                                           | **SNR de cuantificación — la forma de esta cátedra** | $\tfrac{\text{conteo}^2}{(\text{V}/\text{V})^2}$ — se cancela todo, incluso el $q^2$ de la derivación → **adimensional**                                                                       | $F_C=$ factor de cresta $=$ pico/RMS. Que sea adimensional **es lo que habilita el dB**. Es el mismo $F_C$ de AM (§2) |
@@ -39,13 +39,13 @@ curso: Sistemas de Comunicaciones
 
 | Factor                 | Unidad                            | Dónde vive                           |
 | ---------------------- | --------------------------------- | ------------------------------------ |
-| $n = \log_2M$          | bits/**muestra**                  | digitalización (fuente)              |
-| $\ell = \log_2M_{mod}$ | bits/**símbolo**                  | transmisión                          |
+| $n = \log_2M$          | binits/**muestra**                  | digitalización (fuente)              |
+| $\ell = \log_2M_{mod}$ | binits/**símbolo**                  | transmisión                          |
 | $2$ (Nyquist)          | muestras/ciclo *o* símbolos/ciclo | muestrear *o* señalizar — son duales |
 
 **La cadena completa** (la composición de los tres factores, y donde se cometen los dos errores más caros):
 
-$$f_s\ \left[\tfrac{\text{muestras}}{\text{s}}\right] \xrightarrow{\ \times n\ (\text{bits/muestra})\ } R_b\ [\text{bps}] \xrightarrow{\ \div\ell\ (\text{bits/símbolo})\ } D\ [\text{baudios}] \xrightarrow{\ \text{Nyquist}\ } B\ [\text{Hz}]$$
+$$f_s\ \left[\tfrac{\text{muestras}}{\text{s}}\right] \xrightarrow{\ \times n\ (\text{binits/muestra})\ } R_b\ [\text{binits/s}] \xrightarrow{\ \div\ell\ (\text{binits/símbolo})\ } D\ [\text{baudios}] \xrightarrow{\ \text{Nyquist}\ } B\ [\text{Hz}]$$
 $$f_s = 8\text{ kmuestras/s} \ \to\ R_b = 64\text{ kbps} \ \to\ R_s = 32\text{ kbaud} \ \to\ B = 32\text{ kHz}$$
 **Companding** — *"¿por qué se emplea Ley A o μ?" → **para equiparar la SNR en señales de baja amplitud**, típicas en voz*: $C_\mu(x)=\operatorname{sgn}(x)\dfrac{\ln(1+\mu|x/V_{max}|)}{\ln(1+\mu)}$ con $\mu=255$ (USA/Japón); A-law con $A=87{,}6$ (Europa), lineal cerca de 0 y log lejos; **no son compatibles entre sí**. Mejora de rango dinámico $\approx20\log_{10}\mu$ ($\mu=255\to\ 48$ dB).
 
@@ -321,7 +321,7 @@ El dispositivo agrega ruido propio **fijo** ($N_{out}=G(N_i+N_a)$, con $N_a=kT_{
 | $C\approx B\log_2(S/N)$ si $S/N\gg1$ $\quad$ $C\approx1{,}44\,B\,S/N$ si $S/N\ll1$ | Los dos regímenes de Shannon | Limitado por **banda** (log) vs por **potencia** (lineal) |
 | $\left(\dfrac{S}{N}\right)_{sal} = \left[1+\left(\dfrac{S}{N}\right)_{ent}\right]^{B_T/B}-1$ | **Sistema ideal** | Ver demostración abajo |
 
-**Símbolo, binit y bit — tres cosas distintas** (la cátedra usa \"binits\" explícitamente):
+**Símbolo, binit y bit — tres cosas distintas** (la cátedra usa "binits" explícitamente):
 
 | Concepto | Qué es | Unidad |
 |---|---|---|
@@ -401,7 +401,7 @@ $$\underbrace{B_T\log_2\!\left[1+\left(\tfrac{S}{N}\right)_{ent}\right]}_{C\ \te
 
 | Fórmula                                                                                                             | Qué es                                       | Notas                                                                       |
 | ------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- | --------------------------------------------------------------------------- |
-| $\ell = \log_2 M$                                                                                                   | Bits por símbolo                             | QPSK → 2; 16-QAM → 4; 64-QAM → 6                                            |
+| $\ell = \log_2 M$                                                                                                   | Binits por símbolo                             | QPSK → 2; 16-QAM → 4; 64-QAM → 6                                            |
 | $D = \dfrac{R_b}{\ell}$                                                                                             | Tasa de símbolos [baudios]                   | **Es lo que fija el ancho de banda**, no $R_b$                              |
 | $s_{QAM}(t) = I\cos(2\pi f_ct) - Q\sin(2\pi f_ct) = \lvert s\rvert\cos(2\pi f_ct+\phi)$                             | **Señal QAM** — dos portadoras en cuadratura | $\lvert s\rvert=\sqrt{I^2+Q^2}$, $\phi=\arctan(Q/I)$: cartesianas → polares |
 | $S = \dfrac{\langle\lvert s\rvert^2\rangle}{2}$                                                                     | **Potencia media transmitida**               | El $/2$ es pico→RMS del **portador**                                        |
@@ -536,7 +536,7 @@ $$S(f) = \frac{\sigma_a^2}{T_s}\,|P(f)|^2 \quad\Longrightarrow\quad \text{pulso 
 
 | Fórmula | Notas |
 |---|---|
-| $\text{bits/símbolo OFDM} = N_p\cdot\ell$ | Todas las subportadoras transmiten **en paralelo** |
+| $\text{binits/símbolo OFDM} = N_p\cdot\ell$ | Todas las subportadoras transmiten **en paralelo** |
 | $T_S = \dfrac{N_p\,\ell}{R_b}$ | Tiempo de símbolo OFDM. **No es libre: la fija el caudal** |
 | $\Delta f = \dfrac{1}{T_S}$ | **Espaciado — es la condición de ortogonalidad**, no una elección |
 | $B_T = N_p\cdot\Delta f$ | Ancho de banda total. También $N_p = B_T/\Delta f$ |
