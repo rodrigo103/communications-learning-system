@@ -158,8 +158,10 @@ El **filtro pasabanda** centrado en $f_c$ con ancho $2f_m$ deja pasar $a\,c+2b\,
 
 | Fórmula | Qué es | Notas |
 |---|---|---|
-| $s_{FM}(t)=A_c\cos\big(2\pi f_ct+\beta\sin(2\pi f_mt)\big)$ | **Señal FM**, tono único | General: $2\pi k_f\!\int\! m(\tau)d\tau$ en la fase |
-| $s_{PM}(t)=A_c\cos\big(2\pi f_ct+k_p\,m(t)\big)$ | Señal PM | $\Delta\phi = k_pA_m$ |
+| $s_{FM}(t)=A_c\cos\Big(2\pi f_ct+2\pi k_f\!\int\! m(\tau)\,d\tau\Big)$ | **Señal FM**, general | $k_f$ en Hz/V: el $2\pi$ pasa la desviación de Hz a rad/s y la integral la lleva a fase |
+| $s_{FM}(t)=A_c\cos\big(2\pi f_ct+\beta\sin(2\pi f_mt)\big)$ | **FM, un tono** $m(t)=A_m\cos(2\pi f_mt)$ | $\beta=\dfrac{k_fA_m}{f_m}$: **depende de $f_m$** (la integral trae el $1/2\pi f_m$) |
+| $s_{PM}(t)=A_c\cos\big(2\pi f_ct+k_p\,m(t)\big)$ | **Señal PM**, general | $k_p$ en rad/V: $k_p\,m(t)$ ya está en radianes, **sin $2\pi$** |
+| $s_{PM}(t)=A_c\cos\big(2\pi f_ct+\beta\cos(2\pi f_mt)\big)$ | **PM, un tono** $m(t)=A_m\cos(2\pi f_mt)$ | $\beta=\Delta\phi=k_pA_m$: **no depende de $f_m$**. Con un tono, FM y PM tienen la misma forma |
 | $f_i(t)=f_c+k_f\,m(t)$; con un tono: $f_c+\Delta f\cos(2\pi f_mt)$ | Frecuencia instantánea $=\dfrac{1}{2\pi}\dfrac{d\phi}{dt}$ | En PM: $\phi_i = 2\pi f_ct+k_pm(t)$ |
 | $\text{FM}[m(t)] \equiv \text{PM}\!\left[\int m\,dt\right]$ | **Dualidad FM↔PM** | La base de los moduladores indirectos: integrar antes de un modulador de fase da FM |
 | $\Delta f = k_f A_m = \beta f_m$ | Desviación máxima de frecuencia | $k_f$ en Hz/V |
