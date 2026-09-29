@@ -95,7 +95,7 @@ Con los $m_i$ salen todos los ítems típicos:
 | Eficiencia | $\eta = \dfrac{\tfrac12\sum m_i^2}{1+\tfrac12\sum m_i^2}$ |
 | PEP | $P_c(1+m_{tot})^2$ — con el índice **total** |
 
-**Factor de cresta $=$ pico / RMS**: relación de **tensiones** (V/V, un número $\geq 1$). **Al cuadrado es de potencias**: $F_C^2 = P_{pico}/P_{media} =$ PAPR, así que $F_C\,[\text{dB}] = 20\log F_C = 10\log F_C^2 =$ PAPR [dB]. Es **el mismo de PCM**: en los dos casos la señal se divide por su pico, y la potencia que queda es $1/F_C^2$.
+**Factor de cresta $=$ pico / RMS**: relación de **tensiones** (V/V, un número $\geq 1$). **Al cuadrado es de potencias**: $F_C^2 = P_{pico}/P_{media} =$ **PAPR** (*peak-to-average power ratio*: potencia pico sobre potencia media), así que $F_C\,[\text{dB}] = 20\log F_C = 10\log F_C^2 =$ PAPR [dB]. Es **el mismo de PCM**: en los dos casos la señal se divide por su pico, y la potencia que queda es $1/F_C^2$.
 
 | | Pico con el que se normaliza | Potencia de la señal normalizada |
 |---|---|---|
