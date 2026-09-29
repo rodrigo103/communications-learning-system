@@ -95,14 +95,14 @@ Con los $m_i$ salen todos los ítems típicos:
 | Eficiencia | $\eta = \dfrac{\tfrac12\sum m_i^2}{1+\tfrac12\sum m_i^2}$ |
 | PEP | $P_c(1+m_{tot})^2$ — con el índice **total** |
 
-**Factor de cresta $=$ pico / RMS** (un número, $\geq 1$). Es **el mismo de PCM**: en los dos casos la señal se divide por su pico, y la potencia que queda es $1/F_C^2$.
+**Factor de cresta $=$ pico / RMS**: relación de **tensiones** (V/V, un número $\geq 1$). **Al cuadrado es de potencias**: $F_C^2 = P_{pico}/P_{media} =$ PAPR, así que $F_C\,[\text{dB}] = 20\log F_C = 10\log F_C^2 =$ PAPR [dB]. Es **el mismo de PCM**: en los dos casos la señal se divide por su pico, y la potencia que queda es $1/F_C^2$.
 
 | | Pico con el que se normaliza | Potencia de la señal normalizada |
 |---|---|---|
 | PCM | $V_p$ (rango del cuantificador) | $\big\langle(m/V_p)^2\big\rangle = 1/F_C^2 \;\Rightarrow\; SNR_Q = 3M^2/F_C^2$ |
 | AM | $A_m$ (fija el índice) | $\langle m_n^2\rangle = 1/F_C^2 \;\Rightarrow\; P_{total} = P_c\big[1+m^2/F_C^2\big]$ |
 
-A igual pico, **más $F_C$ es menos potencia útil**. Senoide $\sqrt2$, uniforme $\sqrt3$, cuadrada $1$.
+A igual pico, **más $F_C$ es menos potencia útil**. Senoide $\sqrt2$ (3 dB), uniforme $\sqrt3$ (4,8 dB), cuadrada $1$ (0 dB).
 
 En multitono **el pico suma amplitudes y el RMS suma potencias**:
 
@@ -540,7 +540,7 @@ $$S(f) = \frac{\sigma_a^2}{T_s}\,|P(f)|^2 \quad\Longrightarrow\quad \text{pulso 
 3. **El prefijo cíclico sale barato**: una guarda de 10 μs cuesta ~1% sobre 1024 μs, y 1600% sobre 0,625 μs.
 4. **Bit loading adaptativo** (water-filling, como ADSL) y **rechazo de interferencia de banda angosta** (mata unas pocas subportadoras, el resto sobrevive).
 
-**El precio**: **PAPR alto** (suma coherente de muchas subportadoras), **sensibilidad a error de frecuencia** (rompe la ortogonalidad → ICI), **latencia**.
+**El precio**: **PAPR alto** (suma coherente de muchas subportadoras; PAPR $= F_C^2$, ver §2), **sensibilidad a error de frecuencia** (rompe la ortogonalidad → ICI), **latencia**.
 
 ---
 
