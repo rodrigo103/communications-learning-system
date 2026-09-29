@@ -43,13 +43,16 @@ $$f_s = 8\text{ kmuestras/s} \ \to\ R_b = 64\text{ kbps} \ \to\ R_s = 32\text{ k
 
 > **Notación de la cátedra**: el índice es **$m$** (no $\mu$ ni $k_a$), la sensibilidad es **$k$**, la moduladora normalizada a pico 1 es **$m_n(t)$**.
 
-**Qué es cada parte de $s_{AM}(t)$.** La forma general vale para cualquier moduladora:
+**Qué es cada parte de $s_{AM}(t)$.** Vale para cualquier moduladora. Se arma con el mensaje crudo:
+
+$$s_{AM}(t) = \Big[\,\underbrace{A_c}_{\substack{\text{portadora}\\\text{[V]}}} + \underbrace{k\,m(t)}_{\substack{\text{mensaje escalado}\\\text{[V]}}}\,\Big]\cos(2\pi f_ct)$$
+
+y sacando $A_c$ factor común aparecen el índice y la forma normalizada:
 
 $$s_{AM}(t) = \underbrace{A_c}_{\substack{\text{amplitud de la}\\\text{portadora [V]}}}\Big[\,1 + \underbrace{m}_{\substack{\text{índice}\\\text{(número)}}}\;\underbrace{m_n(t)}_{\substack{\text{forma del mensaje}\\\text{(pico 1, sin unidad)}}}\Big]\cos(2\pi f_ct)$$
 
 - **El corchete no tiene unidades.** El $1$ es la portadora sola, y $m\,m_n(t)$ es cuánto se aparta la envolvente **como fracción de $A_c$**. La única amplitud en volts es $A_c$.
 - **La amplitud del mensaje está metida dentro de $m$**, no aparece suelta: $m(t) = A_m\,m_n(t)$ y $m = \dfrac{k\,A_m}{A_c}$, así que $m\,m_n(t) = \dfrac{k}{A_c}\,m(t)$.
-- **La misma señal sin normalizar** es $s_{AM}(t) = \big[A_c + k\,m(t)\big]\cos(2\pi f_ct)$: portadora más mensaje escalado. Factorizando $A_c$ se llega a la forma de arriba.
 - **$k$ es un dato del modulador y no vale 1 por defecto.** $k\,A_m = A_c\,m$ es cuánto se aparta la envolvente, en volts. Si se conocen $A_m$ y la envolvente: $k = \dfrac{A_c\,m}{A_m}$ (ej.: $A_m=5$ V con $A_c=45$ V y $m=\tfrac13$ da $k=3$). Potencias, $\eta$, PEP y espectro dependen solo de $A_c$ y $m$; $k$ hace falta únicamente para pasar de $m$ a los volts del mensaje.
 - **Con un tono, la envolvente va de $A_c(1-m)$ a $A_c(1+m)$.** De ahí salen $A_{min}$, $A_{max}$ y la fórmula de $m$ por envolvente; el máximo $A_c(1+m)$ es el de la PEP.
 
