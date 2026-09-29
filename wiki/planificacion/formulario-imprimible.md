@@ -43,28 +43,24 @@ $$f_s = 8\text{ kmuestras/s} \ \to\ R_b = 64\text{ kbps} \ \to\ R_s = 32\text{ k
 
 > **Notación de la cátedra**: el índice es **$m$** (no $\mu$ ni $k_a$), la sensibilidad es **$k$**, la moduladora normalizada a pico 1 es **$m_n(t)$**.
 
-**Qué es cada parte de $s_{AM}(t)$.** Vale para cualquier moduladora. Se arma con el mensaje crudo:
+**Qué es cada parte de $s_{AM}(t)$.** Vale para cualquier moduladora. Se arma con el mensaje crudo y se saca $A_c$ factor común:
 
-$$s_{AM}(t) = \Big[\,\underbrace{A_c}_{\substack{\text{portadora}\\\text{[V]}}} + \underbrace{k\,m(t)}_{\substack{\text{mensaje escalado}\\\text{[V]}}}\,\Big]\cos(2\pi f_ct)$$
-
-y sacando $A_c$ factor común aparecen el índice y la forma normalizada:
-
-$$s_{AM}(t) = \underbrace{A_c}_{\substack{\text{amplitud de la}\\\text{portadora [V]}}}\Big[\,1 + \underbrace{m}_{\substack{\text{índice}\\\text{(número)}}}\;\underbrace{m_n(t)}_{\substack{\text{forma del mensaje}\\\text{(pico 1, sin unidad)}}}\Big]\cos(2\pi f_ct)$$
+$$\begin{aligned} s_{AM}(t) &= \Big[\,\underbrace{A_c}_{\substack{\text{portadora}\\\text{[V]}}} + \underbrace{k\,m(t)}_{\substack{\text{mensaje escalado}\\\text{[V]}}}\,\Big]\cos(2\pi f_ct) \\ &= A_c\Big[1 + \frac{k}{A_c}\,m(t)\Big]\cos(2\pi f_ct) \\ &= A_c\Big[1 + \underbrace{\frac{k\,A_m}{A_c}}_{\equiv\,m}\,m_n(t)\Big]\cos(2\pi f_ct) \qquad \text{porque } m(t) = A_m\,m_n(t) \\ &= \underbrace{A_c}_{\substack{\text{amplitud de la}\\\text{portadora [V]}}}\Big[\,1 + \underbrace{m}_{\substack{\text{índice}\\\text{(número)}}}\;\underbrace{m_n(t)}_{\substack{\text{forma del mensaje}\\\text{(pico 1, sin unidad)}}}\Big]\cos(2\pi f_ct) \end{aligned}$$
 
 - **El corchete no tiene unidades.** El $1$ es la portadora sola, y $m\,m_n(t)$ es cuánto se aparta la envolvente **como fracción de $A_c$**. La única amplitud en volts es $A_c$.
-- **La amplitud del mensaje está metida dentro de $m$**, no aparece suelta: $m(t) = A_m\,m_n(t)$ y $m = \dfrac{k\,A_m}{A_c}$, así que $m\,m_n(t) = \dfrac{k}{A_c}\,m(t)$.
+- **$A_m$ es el pico del mensaje, en volts:** $A_m = \max\lvert m(t)\rvert$. Con un tono es su amplitud; con varios cosenos es $\sum_i A_i$, porque en $t=0$ valen todos 1 a la vez. Con esa definición, $m = \dfrac{k\,A_m}{A_c}$ y $m_n(t) = \dfrac{m(t)}{A_m}$ valen igual para uno o varios tonos. La amplitud del mensaje queda metida dentro de $m$; no aparece suelta.
 - **$k$ es un dato del modulador y no vale 1 por defecto.** $k\,A_m = A_c\,m$ es cuánto se aparta la envolvente, en volts. Si se conocen $A_m$ y la envolvente: $k = \dfrac{A_c\,m}{A_m}$ (ej.: $A_m=5$ V con $A_c=45$ V y $m=\tfrac13$ da $k=3$). Potencias, $\eta$, PEP y espectro dependen solo de $A_c$ y $m$; $k$ hace falta únicamente para pasar de $m$ a los volts del mensaje.
 - **Con un tono, la envolvente va de $A_c(1-m)$ a $A_c(1+m)$.** De ahí salen $A_{min}$, $A_{max}$ y la fórmula de $m$ por envolvente; el máximo $A_c(1+m)$ es el de la PEP.
 
-> ⚠️ **$m\,m_n(t) \neq m(t)$.** Misma letra, cosas distintas: $m$ es un número y $m(t)$ está en volts.
+> ⚠️ **$m(t) = A_m\,m_n(t)$, no $m\,m_n(t)$.** Misma letra, cosas distintas: $m$ es un número; $m(t)$ y $A_m$ están en volts.
 
 | Fórmula | Qué es | Notas |
 |---|---|---|
-| $s_{AM}(t) = A_c\big[1+m\cos(2\pi f_mt)\big]\cos(2\pi f_ct)$ | **Señal AM, un tono** | $m_n(t)=\cos(2\pi f_mt)$ · todo el índice en un solo tono |
+| $s_{AM}(t) = A_c\big[1+m\cos(2\pi f_mt)\big]\cos(2\pi f_ct)$ | **Señal AM, un tono** | $A_m$ = amplitud del tono · $m_n(t)=\cos(2\pi f_mt)$ · todo el índice en un solo tono |
 | $S_{AM}(f)=\tfrac{A_c}{2}\delta(f{\mp}f_c) + \tfrac{A_c\,m}{4}\delta(f{\mp}f_c{\mp}f_m) + \tfrac{A_c\,m}{4}\delta(f{\mp}f_c{\pm}f_m)$ | **Espectro: 6 deltas** | 2 de portadora ($A_c/2$) + 4 laterales ($A_c m/4$) |
-| $s_{AM}(t) = A_c\Big[1+\sum_i m_i\cos(2\pi f_it)\Big]\cos(2\pi f_ct)$ | **Señal AM, multitono** | $m_n(t)=\dfrac{\sum_i A_i\cos(2\pi f_it)}{\sum_j A_j}$ · $m_i = m\,\dfrac{A_i}{\sum_j A_j}$: el índice total se reparte entre los tonos |
+| $s_{AM}(t) = A_c\Big[1+\sum_i m_i\cos(2\pi f_it)\Big]\cos(2\pi f_ct)$ | **Señal AM, multitono** | $A_m=\sum_j A_j$ · $m_n(t)=\dfrac{\sum_i A_i\cos(2\pi f_it)}{A_m}$ · $m_i = m\,\dfrac{A_i}{A_m} = \dfrac{k\,A_i}{A_c}$: el índice total se reparte entre los tonos |
 | $S_{AM}(f)=\tfrac{A_c}{2}\delta(f{\mp}f_c) + \sum_i\tfrac{A_c\,m_i}{4}\big[\delta(f{\mp}f_c{\mp}f_i)+\delta(f{\mp}f_c{\pm}f_i)\big]$ | **Espectro multitono: $2+4N$ deltas** | Con $N$ tonos: 2 de portadora ($A_c/2$) + 4 laterales por tono ($A_c m_i/4$) |
-| $m = \dfrac{k\,A_m}{A_c} \qquad m = \dfrac{A_{max}-A_{min}}{A_{max}+A_{min}}$ | Índice de modulación | La 2ª cuando dan medidas de envolvente |
+| $m = \dfrac{k\,A_m}{A_c} \qquad m = \dfrac{A_{max}-A_{min}}{A_{max}+A_{min}}$ | Índice de modulación | $A_m$ = pico del mensaje. La 2ª cuando dan medidas de envolvente |
 | $P_c = \dfrac{A_c^2}{2R}$ | Potencia de portadora | $R=1\,\Omega$ si no dan dato (normalizada) |
 | $P_{SB} = \dfrac{A_c^2m^2}{8R} = \dfrac{P_c\,m^2}{4}$ | Potencia de **cada** banda lateral | En dBW: $10\log_{10}(P_{SB}/1\text{W})$ |
 | $P_{total} = P_c\left(1+\dfrac{m^2}{2}\right)$ | **Potencia total, un tono** | De memoria |
@@ -83,7 +79,7 @@ $$s_{AM}(t) = \underbrace{A_c}_{\substack{\text{amplitud de la}\\\text{portadora
 
 Cuando el enunciado da el índice **referido al valor pico del mensaje compuesto**, ese índice total se reparte entre los tonos **en proporción a sus amplitudes**:
 
-$$\lvert m\rvert_{max} = \sum_i A_i \qquad\Longrightarrow\qquad \boxed{m_i = m_{tot}\cdot\frac{A_i}{\sum_j A_j}} \qquad\text{con}\qquad \sum_i m_i = m_{tot}$$
+$$A_m = \max\lvert m(t)\rvert = \sum_i A_i \qquad\Longrightarrow\qquad \boxed{m_i = m_{tot}\cdot\frac{A_i}{A_m}} \qquad\text{con}\qquad \sum_i m_i = m_{tot}$$
 
 > ⚠️ **Verificación obligatoria antes de seguir**: los $m_i$ tienen que sumar $m_{tot}$. Si no suman, el reparto está mal y **todos** los ítems posteriores arrastran el error — potencias, espectro, eficiencia y PEP dependen de los $m_i$.
 >
@@ -101,7 +97,7 @@ Con los $m_i$ salen todos los ítems típicos:
 
 **Factor de cresta del mensaje compuesto**:
 
-$$F_C = \frac{\lvert m\rvert_{max}}{m_{rms}} = \frac{\sum_i A_i}{\sqrt{\tfrac12\sum_i A_i^2}} \qquad\Longrightarrow\qquad P_{total} = P_c\left[1+\frac{m_{tot}^2}{F_C^2}\right]$$
+$$F_C = \frac{A_m}{m_{rms}} = \frac{\sum_i A_i}{\sqrt{\tfrac12\sum_i A_i^2}} \qquad\Longrightarrow\qquad P_{total} = P_c\left[1+\frac{m_{tot}^2}{F_C^2}\right]$$
 
 que es la misma potencia total escrita con el factor de cresta en vez de con los $m_i$ — sirve de chequeo cruzado.
 
