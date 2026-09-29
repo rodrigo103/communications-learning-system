@@ -50,6 +50,7 @@ $$s_{AM}(t) = \underbrace{A_c}_{\substack{\text{amplitud de la}\\\text{portadora
 - **El corchete no tiene unidades.** El $1$ es la portadora sola, y $m\,m_n(t)$ es cuánto se aparta la envolvente **como fracción de $A_c$**. La única amplitud en volts es $A_c$.
 - **La amplitud del mensaje está metida dentro de $m$**, no aparece suelta: $m(t) = A_m\,m_n(t)$ y $m = \dfrac{k\,A_m}{A_c}$, así que $m\,m_n(t) = \dfrac{k}{A_c}\,m(t)$.
 - **La misma señal sin normalizar** es $s_{AM}(t) = \big[A_c + k\,m(t)\big]\cos(2\pi f_ct)$: portadora más mensaje escalado. Factorizando $A_c$ se llega a la forma de arriba.
+- **$k$ es un dato del modulador y no vale 1 por defecto.** $k\,A_m = A_c\,m$ es cuánto se aparta la envolvente, en volts. Si se conocen $A_m$ y la envolvente: $k = \dfrac{A_c\,m}{A_m}$ (ej.: $A_m=5$ V con $A_c=45$ V y $m=\tfrac13$ da $k=3$). Potencias, $\eta$, PEP y espectro dependen solo de $A_c$ y $m$; $k$ hace falta únicamente para pasar de $m$ a los volts del mensaje.
 - **Con un tono, la envolvente va de $A_c(1-m)$ a $A_c(1+m)$.** De ahí salen $A_{min}$, $A_{max}$ y la fórmula de $m$ por envolvente; el máximo $A_c(1+m)$ es el de la PEP.
 
 > ⚠️ **$m\,m_n(t) \neq m(t)$.** Misma letra, cosas distintas: $m$ es un número y $m(t)$ está en volts.
@@ -90,7 +91,7 @@ Con los $m_i$ salen todos los ítems típicos:
 | Se pide | Con qué |
 |---|---|
 | Potencia total | $P_c\left(1+\tfrac12\sum m_i^2\right)$ |
-| Cada raya lateral del espectro | $P_c\,m_i^2/4$ — o directamente $A_i^2/8$ normalizada |
+| Cada raya lateral del espectro | $P_c\,m_i^2/4 = (k\,A_i)^2/8$ normalizada — $A_i^2/8$ solo si $k=1$ |
 | Potencia total en **una** banda lateral | $\tfrac{P_c}{4}\sum m_i^2$ |
 | Eficiencia | $\eta = \dfrac{\tfrac12\sum m_i^2}{1+\tfrac12\sum m_i^2}$ |
 | PEP | $P_c(1+m_{tot})^2$ — con el índice **total** |
