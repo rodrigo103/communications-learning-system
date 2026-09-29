@@ -122,7 +122,7 @@ $$F_C = \frac{A_m}{m_{rms}} = \frac{\sum_i A_i}{\sqrt{\tfrac12\sum_i A_i^2}} \qq
 
 que es la misma potencia total escrita con el factor de cresta en vez de con los $m_i$ — sirve de chequeo cruzado.
 
-> ⚠️ **La trampa del factor 2**: las alturas de las deltas son **la mitad** de las amplitudes de los cosenos reales ($A_c$ y $A_cm/2$), porque cada coseno real se reparte en dos exponenciales complejas.
+> ⚠️ **El factor 2**: las alturas de las deltas son **la mitad** de las amplitudes de los cosenos reales ($A_c$ y $A_cm/2$), porque cada coseno real se reparte en dos exponenciales complejas.
 
 **Espectro de potencia: bilateral o unilateral (plegado).** Un coseno real $A\cos(2\pi f_0t)$ tiene potencia $A^2/2$ (con $R=1$). En el espectro **bilateral** esa potencia se reparte en dos deltas, y cada una lleva el cuadrado de su coeficiente:
 
@@ -179,7 +179,7 @@ El **filtro pasabanda** centrado en $f_c$ con ancho $2f_m$ deja pasar $a\,c+2b\,
 | $\Delta f = k_f A_m = \beta f_m$ | Desviación máxima de frecuencia | $k_f$ en Hz/V |
 | $\beta = \dfrac{\Delta f}{f_m}$ | Índice de modulación FM | En PM: $\beta = \Delta\phi = k_pA_m$ |
 | $B_T = 2(\Delta f+f_m) = 2f_m(\beta+1)$ | **Regla de Carson** | ~98% de la potencia |
-| $P = \dfrac{A_c^2}{2R}$ | **Potencia — CONSTANTE, no depende de la modulación** | La trampa #1 del tema |
+| $P = \dfrac{A_c^2}{2R}$ | **Potencia media, constante** | Envolvente constante: no depende de $\beta$ ni de $m(t)$. La modulación reparte la potencia entre portadora y laterales; la total no cambia |
 
 **Clasificación**: NBFM si $\beta<0{,}3$ → $B_T\approx2f_m$ (como AM). WBFM si $\beta>1$ → $B_T\approx2\Delta f$.
 
