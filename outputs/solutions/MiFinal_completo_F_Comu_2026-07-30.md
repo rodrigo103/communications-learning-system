@@ -192,11 +192,19 @@ Cada subportadora queda como un **tono puro sin modular**. La DEP de una señal 
 
 ### e) Valor de $f_c$ para centrar en 3,9 GHz ❌
 
-Las subportadoras **no quedan centradas en el oscilador**. Con la indexación que produce una IFFT de $N_p$ puntos ($k=-N_p/2$ a $N_p/2-1$), el conjunto ocupa desde $f_c - 4096\Delta f$ hasta $f_c + 4095\Delta f$: es **asimétrico por una subportadora**, y su centro real cae medio espaciado corrido respecto de $f_c$.
+Se resuelve en tres pasos.
 
-$$\lvert\text{corrimiento}\rvert = \frac{\Delta f}{2} = \boxed{244{,}14\ \text{Hz}} \quad\Rightarrow\quad f_c = 3{,}9\ \text{GHz} \pm 244{,}14\ \text{Hz}$$
+**1. El oscilador siempre cae sobre una subportadora.** La IFFT arma las subportadoras en banda base, en $k\,\Delta f$. La de $k=0$ es continua (frecuencia cero). El mezclador corre todo el espectro en $f_c$, así que la subportadora $k=0$ termina **exactamente en $f_c$**.
 
-⚠️ **El signo depende de la convención de indexación de la IFFT.** Lo que evalúa el ítem es la **magnitud** (medio espaciado) y la justificación. En el examen conviene **escribir explícitamente qué convención se usa** y justificar el corrimiento, para que el corrector vea el razonamiento aunque el signo dependa del criterio.
+**2. En el centro de la banda no hay ninguna subportadora.** Por c), con $N_p = 8192$ (par) las subportadoras quedan simétricas respecto de la frecuencia central, y las dos más próximas están a $\pm\Delta f/2 = \pm 244{,}14$ Hz. Justo en el centro no hay ninguna.
+
+**3. Entonces $f_c$ no puede ser 3,9 GHz.** Si lo fuera, habría una subportadora en 3,9 GHz y todo el conjunto quedaría corrido medio espaciado. $f_c$ tiene que coincidir con una de las dos subportadoras centrales:
+
+$$f_c = 3{,}9\ \text{GHz} - \frac{\Delta f}{2} = 3{,}9\ \text{GHz} - 244{,}14\ \text{Hz} = \boxed{3\,899\,999\,755{,}86\ \text{Hz}}$$
+
+**Por qué el signo menos:** es la central inferior, la que usa la resolución de la cátedra del mismo problema con 4096 subportadoras (F_Comu_2022-07-21: "3,9 GHz − 488,28 Hz", que es medio espaciado de ese caso). El signo depende de cómo se numeren los índices de la IFFT, es decir, si la subportadora que sobra (8192 es par) queda arriba o abajo. Tomando la central superior, $+244{,}14$ Hz, el razonamiento es el mismo. Lo que se evalúa es el **medio espaciado** y la **justificación**, así que conviene escribir los tres pasos.
+
+> ⚠️ Responder $f_c = 3{,}9$ GHz está mal: en F_Comu_2023-02-23 esa respuesta está marcada "NO". Es suponer que el oscilador queda en el centro de la banda, y eso solo pasa con una cantidad impar de subportadoras.
 
 ### f) Tiempo de símbolo con una sola portadora en 1024-QAM
 
