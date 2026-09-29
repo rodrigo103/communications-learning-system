@@ -313,7 +313,7 @@ El dispositivo agrega ruido propio **fijo** ($N_{out}=G(N_i+N_a)$, con $N_a=kT_{
 | $I_i = \log_2\dfrac{1}{p_i} = -\log_2 p_i$ | Información de un símbolo [bits] | Menos probable → más información |
 | $H = -\sum_i p_i\log_2 p_i = \sum_i p_i\log_2\dfrac{1}{p_i}$ | **Entropía** [bits/símbolo] | **Para calcular a mano usar la del recíproco**: todos los términos salen positivos |
 | $H_{max} = \log_2 M$ | Entropía máxima | **Solo si son equiprobables** |
-| $R = r\,H$ | **Tasa de información** [bits/s] | $r$ = símbolos/s $\times$ $H$ = bits/símbolo |
+| $R = r\,H$ | **Tasa de información** [bits/s] | $r$ = símbolos **de la fuente** por segundo (no los de la modulación, $D$) $\times$ $H$ = bits/símbolo |
 | $R \leq C$ | **Condición de transmisión** | Teorema de codificación de canal: con $R\leq C$ existe un código con error arbitrariamente chico; con $R>C$ es **imposible**. $R$ y $C$ en bits/s de información |
 | $C = B\log_2\!\left(1+\dfrac{S}{N}\right)$ | **Shannon-Hartley** [bits/s] | $S/N$ **LINEAL**, no dB. 20 dB → 100 |
 | $\text{Red} = 1-\dfrac{H}{H_{max}}$ | Redundancia ($\eta=H/H_{max}$) | Cuánto se puede comprimir sin perder |
@@ -322,13 +322,14 @@ El dispositivo agrega ruido propio **fijo** ($N_{out}=G(N_i+N_a)$, con $N_a=kT_{
 | $C\approx B\log_2(S/N)$ si $S/N\gg1$ $\quad$ $C\approx1{,}44\,B\,S/N$ si $S/N\ll1$ | Los dos regímenes de Shannon | Limitado por **banda** (log) vs por **potencia** (lineal) |
 | $\left(\dfrac{S}{N}\right)_{sal} = \left[1+\left(\dfrac{S}{N}\right)_{ent}\right]^{B_T/B}-1$ | **Sistema ideal** | Ver demostración abajo |
 
-**Símbolo, binit y bit — tres cosas distintas** (la cátedra usa "binits" explícitamente):
+**Símbolo, binit y bit — cosas distintas** (la cátedra usa "binits" explícitamente):
 
-| Concepto | Qué es | Unidad |
+| Concepto | Qué es | Tasa |
 |---|---|---|
-| **Símbolo** | Una **forma de onda** transmitida, sostenida durante $T_s$ (un punto de constelación) | símbolos/s $=$ **baudios** |
-| **Binit** | Un **0 o un 1** — un valor lógico | binits/s |
-| **Bit** (Shannon) | Unidad de **información** — cuánto reduce la incertidumbre | bits/s |
+| **Símbolo de la fuente** | Lo que emite la fuente: un carácter, una muestra, un nivel | $r$ [símbolos/s] — caracteres/s en un enlace de texto; $f_s$ si la fuente es un ADC |
+| **Símbolo de la modulación** | Una **forma de onda** transmitida, sostenida durante $T_s$ (un punto de constelación) | $D$ o $R_s$ [**baudios**] |
+| **Binit** | Un **0 o un 1** — un valor lógico | $R_b$ [binits/s] |
+| **Bit** (Shannon) | Unidad de **información** — cuánto reduce la incertidumbre | $R = rH$ [bits/s] |
 
 $$\underbrace{D\ [\text{símbolos/s}]}_{\text{fija el ancho de banda}} \xrightarrow{\ \times\ell\ } \underbrace{R_b\ [\text{binits/s}]}_{\text{flujo en el canal}} \xrightarrow{\ \times H/\ell\ } \underbrace{R\ [\text{bits/s}]}_{\text{información real}}$$
 
