@@ -495,6 +495,14 @@ footer.end{
 </style>
 
 <div class="sheet">
+<p><strong>Anchos de banda: qué es cada símbolo.</strong> La <math><mi>T</mi></math> de <math><msub><mi>B</mi><mi>T</mi></msub></math> es de <em>transmisión</em>. Los del mensaje nunca llevan el 2 de las dos bandas laterales.</p>
+<div class="tw"><table><thead><tr><th>Ancho de banda de…</th><th>Símbolos</th><th>Dónde aparece acá</th></tr></thead><tbody>
+<tr><td><strong>Mensaje</strong> (banda base, de 0 a su frecuencia máxima)</td><td><math><mi>W</mi></math>, <math><mi>B</mi></math>, <math><msub><mi>f</mi><mi>m</mi></msub></math> (un tono), <math><msub><mi>f</mi><mrow><mi>m</mi><mo separator="true">,</mo><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub></math> (varios)</td><td><math><mi>B</mi></math> en Nyquist, <math><mi>W</mi></math> en SNR de posdetección, <math><msub><mi>f</mi><mi>m</mi></msub></math> en AM y FM</td></tr>
+<tr><td><strong>Señal modulada</strong> (la que se transmite)</td><td><math><msub><mi>B</mi><mi>T</mi></msub></math>, <math><mrow><mi>B</mi><mi>W</mi></mrow></math></td><td><math><msub><mi>B</mi><mi>T</mi></msub></math> en Carson, <math><mrow><mi>B</mi><msub><mi>W</mi><mrow><mi>A</mi><mi>M</mi></mrow></msub><mo>=</mo><mn>2</mn><msub><mi>f</mi><mi>m</mi></msub></mrow></math></td></tr>
+<tr><td><strong>Digital</strong>: mínimo o de nulo a nulo</td><td><math><msub><mi>B</mi><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub></math>, <math><msub><mi>B</mi><mrow><mi>n</mi><mi>n</mi></mrow></msub></math></td><td><math><mrow><msub><mi>B</mi><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub><mo>=</mo><msub><mi>R</mi><mi>s</mi></msub></mrow></math> en pasabanda</td></tr>
+<tr><td><strong>Ruido</strong></td><td><math><msub><mi>B</mi><mi>N</mi></msub></math>, <math><msub><mi>B</mi><mrow><mi>e</mi><mi>q</mi></mrow></msub></math></td><td>Ancho de banda equivalente de ruido</td></tr>
+<tr><td><strong>Canal</strong> (Shannon)</td><td><math><mi>B</mi></math></td><td><math><mrow><mi>C</mi><mo>=</mo><mi>B</mi><mspace width="0.1667em"></mspace><msub><mi>log</mi><mn>2</mn></msub><mo>⁡</mo><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>S</mi><mi>/</mi><mi>N</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></math></td></tr>
+</tbody></table></div>
 <section class="block">
 <h2>1 · Muestreo / PCM / Cuantificación</h2>
 <div class="tw"><table><thead><tr><th>Fórmula</th><th>Qué es</th><th>Unidades — cómo se cancela</th><th>Notas</th></tr></thead><tbody>

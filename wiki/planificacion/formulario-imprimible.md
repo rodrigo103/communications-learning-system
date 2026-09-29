@@ -5,6 +5,18 @@ curso: Sistemas de Comunicaciones
 
 ---
 
+**Anchos de banda: qué es cada símbolo.** La $T$ de $B_T$ es de *transmisión*. Los del mensaje nunca llevan el 2 de las dos bandas laterales.
+
+| Ancho de banda de… | Símbolos | Dónde aparece acá |
+|---|---|---|
+| **Mensaje** (banda base, de 0 a su frecuencia máxima) | $W$, $B$, $f_m$ (un tono), $f_{m,max}$ (varios) | $B$ en Nyquist, $W$ en SNR de posdetección, $f_m$ en AM y FM |
+| **Señal modulada** (la que se transmite) | $B_T$, $BW$ | $B_T$ en Carson, $BW_{AM}=2f_m$ |
+| **Digital**: mínimo o de nulo a nulo | $B_{min}$, $B_{nn}$ | $B_{min}=R_s$ en pasabanda |
+| **Ruido** | $B_N$, $B_{eq}$ | Ancho de banda equivalente de ruido |
+| **Canal** (Shannon) | $B$ | $C = B\log_2(1+S/N)$ |
+
+---
+
 ## 1 · Muestreo / PCM / Cuantificación
 
 | Fórmula                                                                 | Qué es                                               | Unidades — cómo se cancela                                                                                                                                                                     | Notas                                                                                   |
