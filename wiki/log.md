@@ -115,3 +115,9 @@ Registro cronologico de todas las actualizaciones al wiki de Sistemas de Comunic
 ### SS/OFDM Q&A
 
 - **Nueva pagina wiki**: `espectro-expandido/ss-ofdm-preguntas-respuestas.md` — 6 preguntas de sesion de estudio: ¿OFDM paga con ancho de banda? (no), ¿por que el eco aparece recien en OFDM? (canal AWGN antes, OFDM existe para combatirlo), ISI por multitrayecto explicado (comparacion $T_S$), 4 beneficios adicionales (canal plano, CP barato, bit loading, rechazo interferencia), ¿5G usa OFDM? (si, afinado con numerologia flexible y mini-slots), ¿que es PAPR? (pico vs media, peor caso $N_p$).
+
+## 2026-09-29
+
+### Los tres "2" de la cadena PCM → modulación
+- **Sección nueva** en `conceptos-integradores/pcm-vs-modulacion-digital.md`: los tres factores 2 (muestreo, Nyquist de señalización, pulso rectangular / pasabanda) se multiplican; tabla sinc vs rectangular × banda base vs pasabanda; caso PCM con NRZ $B = 2f_m n$; ejemplo de voz a 64 kbps. Duda de sesión de estudio.
+- Enlace desde `herramientas-matematicas/ancho-de-banda.md`.

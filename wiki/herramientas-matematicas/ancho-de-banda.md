@@ -83,6 +83,7 @@ Ver [[../modulacion-analogica/ancho-banda-carson|Ancho de Banda de Carson]] (Dia
 
 ## Ver tambien
 
+- [[../conceptos-integradores/pcm-vs-modulacion-digital#Los tres factores 2 de la cadena y el ancho de banda final|Los tres "2" de la cadena]] — de $f_m$ al ancho de banda final, con pulsos sinc o rectangulares, en banda base o pasabanda
 - [[../herramientas-matematicas/densidad-espectral-potencia|Densidad Espectral de Potencia]]
 - [[../conceptos-integradores/aportes-nyquist|Aportes de Nyquist]]
 - [[../modulacion-analogica/ancho-banda-carson|Ancho de Banda de Carson]]

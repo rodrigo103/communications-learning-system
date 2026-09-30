@@ -48,6 +48,49 @@ PCM produce los bits  ──>  Digital los transmite
 
 El **punto de union es $R_b$**: PCM entrega bits por segundo; la modulacion digital agarra esos bits y los empaqueta en simbolos para el canal [analysis].
 
+## Los tres factores 2 de la cadena y el ancho de banda final
+
+En la cadena aparecen tres "2" distintos. **Se multiplican**, porque actúan en etapas distintas [analysis]:
+
+| # | El "2" | Dónde actúa | Qué es |
+|---|---|---|---|
+| 1 | $f_s \geq 2f_m$ | Muestreo | 2 muestras por ciclo del mensaje |
+| 2 | Nyquist de señalización | Transmisión | Con pulsos sinc ideales, $D$ símbolos/s entran en $D/2$ Hz de banda base |
+| 3 | Rectangular vs sinc, y banda base vs pasabanda | Transmisión | Cada uno duplica el ancho de banda |
+
+Desde un mensaje de ancho de banda $f_m$:
+
+$$f_m \xrightarrow{\times 2} f_s \xrightarrow{\times n} R_b \xrightarrow{\div \ell} D = \frac{2f_m\,n}{\ell} \xrightarrow{\text{según pulso y banda}} B$$
+
+El último paso depende del pulso y de si la señal va en banda base o modulada:
+
+| | Pulsos sinc (mínimo de Nyquist) | Pulsos rectangulares (lóbulo principal) |
+|---|---|---|
+| **Banda base** | $D/2$ | $D$ (hasta el primer nulo) |
+| **Pasabanda** | $D$ | $2D$ (de nulo a nulo) |
+
+Rectangular en vez de sinc duplica, y pasabanda en vez de banda base duplica otra vez: rectangular en pasabanda es **4 veces** el mínimo en banda base. Con roll-off queda en el medio: $\tfrac{D}{2}(1+\alpha)$ en banda base y $D(1+\alpha)$ en pasabanda.
+
+**PCM binario con pulsos rectangulares (NRZ en banda base), $\ell = 1$:**
+
+$$B = D = R_b = 2f_m\,n$$
+
+Modulado después en pasabanda con pulsos rectangulares (BPSK, de nulo a nulo): $B = 2D = 4f_m\,n$.
+
+**Ejemplo** — voz de $f_m = 4$ kHz con $n = 8$ → $R_b = 64$ kbps:
+
+| Caso | $B$ |
+|---|---|
+| Banda base, sinc | 32 kHz |
+| Banda base, NRZ rectangular | 64 kHz |
+| BPSK, mínimo | 64 kHz |
+| BPSK rectangular, nulo a nulo | 128 kHz |
+| Con QPSK ($\ell = 2$) | todo lo anterior dividido por 2 |
+
+> Si el mensaje en sí ocupa una banda pasante (de $f_L$ a $f_H$), en el muestreo va $f_s \geq 2f_{max}$, no el ancho de la banda. Existe el muestreo pasabanda, que permite menos, pero no aparece en el corpus.
+
+En el [[../planificacion/formulario-imprimible|formulario imprimible]], "Los dos '2' distintos" (§7) son el 2 y el 3 de la tabla de arriba; el 1 está en la §1, como "2 (Nyquist): muestras/ciclo o símbolos/ciclo".
+
 ## $n$ y $\ell$ son independientes
 
 Misma formula ($\log_2$ de un conteo), conceptos **distintos** [analysis]:
