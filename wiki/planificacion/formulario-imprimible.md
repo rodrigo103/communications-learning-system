@@ -597,7 +597,7 @@ $$\boxed{10\log_{10}\big(X^2\big) = 20\log_{10}(X)}$$
 | Los tres lugares con 20 | De dónde sale |
 |---|---|
 | $L_{FSPL}=32{,}44+20\log f_{[MHz]}+20\log d_{[km]}$ | $L=(4\pi d/\lambda)^2$ — **no** es una amplitud |
-| $SNR_Q\,[\text{dB}] = 1{,}76+20\log M-20\log F_C$ | el $M^2$ y el $F_C^2$; de ahí el $6{,}02\,n = 20\log 2^n$ — **cada bit da $+6$ dB, no $+3$** |
+| $SNR_Q\,[\text{dB}] = 10\log\dfrac{3M^2}{F_C^2} = 4{,}77+20\log M-20\log F_C$ | El 20 es de $M$ y de $F_C$ **por separado**, porque vienen al cuadrado; de ahí el $6{,}02\,n = 20\log 2^n$ — **cada bit da $+6$ dB, no $+3$**. $SNR_Q$ entera es relación de **potencias**: $10\log$ |
 | Companding $\approx20\log\mu$ | rango dinámico (relación de amplitudes) |
 
 > ⚠️ **Todo lo demás va con $10\log$**: $F$, $G$, $L_c$, Friis, SNR, $\gamma$, $E_b/N_0$, $G_p$, capacidades, potencias, PEP. **Chequeo**: ¿al cuadrado, o en **volts**? → 20. ¿**Watts** o relación de potencias? → 10.

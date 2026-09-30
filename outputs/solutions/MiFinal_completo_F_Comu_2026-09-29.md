@@ -74,7 +74,17 @@ En NRZ (banda base), el mínimo ideal de Nyquist es la mitad de la tasa de pulso
 
 $$B_{min} = \frac{R_b}{2} = \boxed{225\ \text{MHz}}$$
 
-⚠️ **Lo que pasó**: se informó $R_b = 112{,}5$ Mbps, la tasa de **una** señal, y el ×4 se aplicó recién en el ancho de banda. El ancho de banda quedó bien, pero el bit-rate informado no era el pedido: es el caso de entregar un resultado intermedio en vez de la cantidad pedida.
+⚠️ **Lo que pasó**: se informó $R_b = 112{,}5$ Mbps, la tasa de **una** señal, y el ×4 se aplicó recién en el ancho de banda (225 MHz, bien).
+
+**El enunciado es ambiguo**, pero tres cosas indican que se pedía el de las cuatro:
+
+1. **La introducción define qué es "la señal codificada"**: "Cuatro señales de video [...] se muestrean, cuantifican y codifican para obtener **una señal PCM/TDM**". Es una sola señal que resulta de las cuatro; "la señal codificada" de c), en singular, es esa.
+2. **El ítem e) la usa así**: "La señal cuantificada y codificada **determinada en c)** se transmite por un servicio de 472,5 Mbps [...] que permita enviar **las cuatro señales** y el sincronismo". Para comparar contra 472,5 Mbps hace falta el total, 450 Mbps.
+3. **El corrector escribió "×4"** al lado de los 112,5 Mbinits/s.
+
+Lo que apoya la otra lectura es la **negrita** en "**las cuatro señales**", que aparece solo en la parte del ancho de banda: se puede leer como contraste (bit-rate de cada una, ancho de banda de las cuatro). La marca fue "R" y no ✗, o sea puntaje parcial: probablemente por el ancho de banda correcto, y quizás también por la ambigüedad.
+
+**Frente a un ítem ambiguo, escribir las dos cosas con su nombre**: "112,5 Mbps por señal; **450 Mbps la señal PCM/TDM**". Cuesta un renglón y cubre las dos lecturas.
 
 ### d) SNR de cuantificación mínima — ⚠️ (parcial)
 
@@ -88,7 +98,15 @@ El **rango dinámico de 3 dB** significa que el nivel de la señal varía 3 dB. 
 
 $$SNR_{Q,min} = 52{,}94 - 3 = \boxed{49{,}94\ \text{dB}}$$
 
-⚠️ **Lo que pasó**: la cuenta lineal ($196\,608$) estaba bien, pero se pasó a dB con $20\log$ (105,87 dB, tachado): $SNR_Q$ es una relación de **potencias**, va con $10\log$. Tampoco se descontaron los 3 dB del rango dinámico.
+⚠️ **Lo que pasó**: la cuenta lineal ($196\,608$) estaba bien, pero se pasó a dB con $20\log$ (105,87 dB, tachado). Tampoco se descontaron los 3 dB del rango dinámico.
+
+**Por qué va $10\log$ aunque en PCM "haya 20"**: $SNR_Q$ es potencia de señal sobre potencia de ruido de cuantificación ($q^2/12$ es una potencia), así que es una relación de **potencias**. Lo que es "de tensiones" son $M$ (cuántos escalones $q$ entran en $V_{pp}$) y $F_C$ (pico sobre RMS), y por eso **vienen al cuadrado** dentro de $3M^2/F_C^2$. El 20 aparece solo si se desarma la fórmula:
+
+$$10\log\frac{3M^2}{F_C^2} = \underbrace{10\log3}_{4{,}77} + \underbrace{20\log M}_{60{,}21} - \underbrace{20\log F_C}_{12{,}04} = 52{,}94\ \text{dB}$$
+
+Aplicar $20\log$ al número entero cuenta el cuadrado **dos veces**: $105{,}87 = 2\times52{,}94$. Chequeo rápido: son unos 6 dB por bit, así que con 10 bits la SNR ronda los 60 dB; 105,87 dB serían más de 10 dB por bit.
+
+> **El formulario inducía este error**: en la tabla de decibeles, $SNR_Q$ figuraba entre "los tres lugares con 20", y además con la constante mal (1,76, que es la del caso senoidal, en vez de 4,77). Se corrigió el 30/09: ahora dice que el 20 es de $M$ y $F_C$ por separado y que $SNR_Q$ entera va con $10\log$.
 
 > La lectura "mínima = máxima − rango dinámico" es la interpretación física del enunciado; en el corpus no hay otro ítem con "rango dinámico" en dB de la señal para contrastarla.
 
@@ -242,13 +260,13 @@ Con una sola portadora, el símbolo dura $T_s = 1/250\ \text{kbaud} = 4\ \mu$s; 
 
 | Ítem | Perdido (aprox.) | Tipo de error |
 |---|---|---|
-| P2 c) | parte de 0,5 | Resultado **intermedio** (una señal) en vez del pedido (cuatro) |
-| P2 d) | parte de 0,75 | **dB con $20\log$** en una relación de potencias; sin los −3 dB |
+| P2 c) | parte de 0,5 | Bit-rate de una señal; el enunciado admitía las dos lecturas: **dar los dos valores** |
+| P2 d) | parte de 0,75 | **$20\log$ sobre una relación de potencias** (el formulario lo inducía); sin los −3 dB |
 | P2 e) | 0,75 | Sin sistema propuesto; **prefijo** mal copiado (G por M) |
 | P3 e) | 0,5 | **Umbral de FM** sin verificar |
 | P3 f) | 0,25 | El mismo umbral, arrastrado |
 | P4 c), d) | 0,30 | Bits por símbolo OFDM; descuento menor |
 
-Los tres primeros son exactamente el modo de falla documentado desde julio: entregar el intermedio en vez de lo pedido, errores de dB y de prefijos. El cuarto es nuevo: en FM, **toda SNR de posdetección se valida contra el umbral antes de informarla**.
+Dos descuentos tienen parte de explicación externa: el enunciado ambiguo en P2 c) y el formulario en P2 d). Los que quedan como modo de falla propio son el **prefijo** (G por M, el mismo tipo de error que mV² en julio) y el **umbral de FM sin verificar**: en FM, toda SNR de posdetección se valida contra el umbral antes de informarla.
 
 Ver también: [[../../wiki/planificacion/formulario-imprimible|Formulario]] · [[MiFinal_completo_F_Comu_2026-07-30|Resolución del final de julio]] · [[../../exercises/finales/md/F_Comu_2026-09-29_miFinal|Enunciado con las correcciones]]

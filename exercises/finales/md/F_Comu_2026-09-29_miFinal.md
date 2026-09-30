@@ -140,4 +140,4 @@ f) Indicar la ventaja de emplear la señal descrita en el enunciado versus trans
 
 **El Ejercicio 1 d) es AM multitono con el índice total repartido entre los tonos**: con dos tonos de igual amplitud, $m_1 = m_2 = m_{tot}/2 = 0{,}4$. Salió bien.
 
-**Los puntos perdidos se concentran en ejecución, no en fórmulas**: en el 2 c) se informó el bit-rate de **una** señal cuando el ítem pedía el de las cuatro (el corrector anota "×4"); en el 2 d) el paso a dB se hizo con $20\log$ en vez de $10\log$; en el 3 e) y f) no se verificó el umbral de FM.
+**Los puntos perdidos se concentran en ejecución, no en fórmulas**: en el 2 c) se informó el bit-rate de **una** señal y la corrección esperaba el de las cuatro (el corrector anota "×4"; el enunciado admite las dos lecturas); en el 2 d) el paso a dB se hizo con $20\log$ en vez de $10\log$ (el formulario listaba $SNR_Q$ entre los casos con 20); en el 3 e) y f) no se verificó el umbral de FM.
