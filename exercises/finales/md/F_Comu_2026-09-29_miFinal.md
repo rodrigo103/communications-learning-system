@@ -2,9 +2,9 @@
 
 *Fuente: `exercises/finales/F_Comu_2026-09-29_miFinal.pdf` (fotos de las hojas de enunciado) y `exercises/finales/miFinal_2026-09-29/` (enunciados + hojas de resolución, fotografiadas al finalizar)*
 
-> ⚠️ **Este es el final que rindió Rodrigo (Videla, Rodrigo). APROBADO con 8 (ocho).** Las cuatro hojas de enunciado tienen las **marcas de corrección** del equipo docente. A diferencia de julio, también están fotografiadas las hojas de resolución de los problemas 1, 2 y 3 (la del 4 no). Se transcriben las marcas visibles junto a cada ítem y lo escrito en cada hoja.
+> ⚠️ **Este es el final que rindió Rodrigo (Videla, Rodrigo). APROBADO con 8 (ocho).** Las cuatro hojas de enunciado tienen las **marcas de corrección** del equipo docente. A diferencia de julio, también están fotografiadas las hojas de resolución de los cuatro problemas. Se transcriben las marcas visibles junto a cada ítem y lo escrito en cada hoja.
 
-**Datos de la mesa:** 29/09/2026, hora de finalización 21 Hs. N° de hojas entregadas: 4 (hojas de resolución numeradas 1/4 y 2/4; la del problema 3 sigue en una hoja adicional). Cada hoja de enunciado lleva impreso "25/09/2026 - 19:54" (fecha de generación del documento).
+**Datos de la mesa:** 29/09/2026, hora de finalización 21 Hs. N° de hojas entregadas: 4 (hojas de resolución numeradas 1/4 y 2/4; las de los problemas 3 y 4 sin número, y el 3 sigue en una hoja adicional). Cada hoja de enunciado lleva impreso "25/09/2026 - 19:54" (fecha de generación del documento).
 
 **Requisitos para rendir el final:** Tener aprobadas: Electrónica Aplicada I, Medios de Enlace, Análisis de Señales y Sistemas y Probabilidad y Estadísticas. Están exceptuados aquellos que regularizaron la materia en el último ciclo lectivo.
 
@@ -126,7 +126,17 @@ e) Calcular el ancho de banda mínimo si en vez de transmitir la señal OFDM se 
 
 f) Indicar la ventaja de emplear la señal descrita en el enunciado versus transmitir la misma tasa de información (calculada en a) ) pero en una sola portadora modulada en 16-QAM. [0,5 puntos] — **B**
 
-> Las marcas de este problema son letras: **B** (bien), **B−** (bien con descuento), **M** (mal). Son consistentes con el 2,20: todo bien salvo c) (0 de 0,25) y un descuento de 0,05 en d). La hoja de resolución de este problema no está fotografiada.
+> Las marcas de este problema son letras: **B** (bien), **B−** (bien con descuento), **M** (mal). Son consistentes con el 2,20: todo bien salvo c) (0 de 0,25) y un descuento de 0,05 en d).
+
+**Resolución entregada (hoja sin número, `20260929_211606.jpg`; marcas de la hoja en rojo y correcciones en rosa):**
+
+- Datos: $N_p = 24$; 16 QAM; $T_s = 96\ \mu$seg.
+- a) $\ell = \log_2 M = \log_2 16 = 4$ binits/símbolo ✓; $T_s = \dfrac{N_p\,\ell}{R_b} \Rightarrow R_b = \dfrac{N_p\,\ell}{T_s} = \dfrac{24\cdot 4\ \text{binits/símbolo}}{96\ \mu\text{seg}} =$ **1 Mbits/seg** ✓
+- b) $B_T = N_p\cdot\dfrac{1}{T_s} = \dfrac{24}{96\ \mu\text{seg}} =$ **250 kHz** ✓
+- c) $\ell = \log_2 M = \log_2 16 = 4$ binits/símbolo $=$ **4 bits/símbolo** — el corrector tacha "símbolo" y escribe "**port.**" (4 binits por portadora), tacha el resultado recuadrado y anota al margen "**96 bits/símb**".
+- d) $\eta = \dfrac{R_b}{B} = \dfrac{1\ \text{Mbit/seg}}{250\ \text{kHz}} =$ **4 bits/símbolo** — al margen, el corrector anota "**4 bits/Hz**" (las unidades).
+- e) $B_T = \dfrac{1}{T_s} = \dfrac{1}{\ell/R_b} = \dfrac{R_b}{\ell} = \dfrac{1\ \text{Mbits/seg}}{4\ \text{bits/símbolo}} =$ **250 kHz**, "es igual" ✓
+- f) "La ventaja es que OFDM reduce la ISI (interferencia inter-símbolo) debido a que sus tiempos de símbolo son más largos y, en consecuencia, se reduce el solapamiento. En particular es de interés reducir la ISI por multitrayecto, que predomina en entornos urbanos por los rebotes de las señales en edificios." ✓ "Para 16-QAM, $T_s = 4\ \mu$seg, que está en el mismo orden de magnitud que los ecos urbanos de aprox. $1\ \mu$seg, imposibilitando la transmisión. OFDM, con $T_s$ mucho mayor, esquiva el problema." ✓
 
 ---
 
@@ -140,4 +150,4 @@ f) Indicar la ventaja de emplear la señal descrita en el enunciado versus trans
 
 **El Ejercicio 1 d) es AM multitono con el índice total repartido entre los tonos**: con dos tonos de igual amplitud, $m_1 = m_2 = m_{tot}/2 = 0{,}4$. Salió bien.
 
-**Los puntos perdidos se concentran en ejecución, no en fórmulas**: en el 2 c) se informó el bit-rate de **una** señal y la corrección esperaba el de las cuatro (el corrector anota "×4"; el enunciado admite las dos lecturas); en el 2 d) el paso a dB se hizo con $20\log$ en vez de $10\log$ (el formulario listaba $SNR_Q$ entre los casos con 20); en el 3 e) y f) no se verificó el umbral de FM.
+**Los puntos perdidos se concentran en ejecución, no en fórmulas**: en el 2 c) se informó el bit-rate de **una** señal y la corrección esperaba el de las cuatro (el corrector anota "×4"; el enunciado admite las dos lecturas); en el 2 d) el paso a dB se hizo con $20\log$ en vez de $10\log$ (el formulario listaba $SNR_Q$ entre los casos con 20); en el 3 e) y f) no se verificó el umbral de FM; en el 4 c) se dieron los bits de una subportadora (4) en vez de los del símbolo OFDM (96), y en el 4 d) la eficiencia quedó con unidades de bits/símbolo.

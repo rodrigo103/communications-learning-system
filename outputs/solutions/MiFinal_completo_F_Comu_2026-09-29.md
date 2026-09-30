@@ -14,7 +14,7 @@ fecha: 2026-09-29
 | 1 | Modulación lineal | 2,5 / 2,5 | — |
 | 2 | PCM | 1,3 / 2,5 | Bit-rate de **una** señal en vez de las cuatro; dB con $20\log$; sistema con sincronismo |
 | 3 | Ruido | 1,75 / 2,5 | **Umbral de FM** sin verificar (e y f) |
-| 4 | OFDM | 2,20 / 2,5 | Bits por símbolo OFDM (c) y un descuento menor en d) |
+| 4 | OFDM | 2,20 / 2,5 | Bits de **una subportadora** en vez del símbolo OFDM (c); unidades de $\eta$ (d) |
 
 ---
 
@@ -230,13 +230,17 @@ $$\Delta f = \frac{1}{T_S} = 10{,}417\ \text{kHz} \qquad B = N_p\,\Delta f = 24\
 
 $$N_p\cdot\ell = 24\cdot4 = \boxed{96\ \text{bits/símbolo OFDM}}$$
 
-Es el número intermedio de a): cada símbolo OFDM lleva un símbolo 16-QAM (4 bits) **en cada una** de las 24 subportadoras, en paralelo. (La hoja de este problema no está fotografiada, así que no se sabe qué se respondió.)
+Es el número intermedio de a): cada símbolo OFDM lleva un símbolo 16-QAM (4 bits) **en cada una** de las 24 subportadoras, en paralelo.
+
+❌ **Lo que pasó**: se respondió $\ell = 4$ bits/símbolo, que es lo que lleva **una subportadora**. El corrector tachó "símbolo", escribió "port." (4 binits por portadora) y anotó "96 bits/símb". El ítem dice "en cada símbolo **OFDM**", y el 96 ya estaba calculado en a), dentro de $R_b = 24\cdot4/96\ \mu$s. Es el mismo patrón que P2 c): el valor de una parte en vez del total, pero acá el enunciado no era ambiguo.
 
 ### d) Eficiencia espectral a ancho de banda mínimo — (B−)
 
 $$\eta = \frac{R}{B} = \frac{1\ \text{Mbps}}{250\ \text{kHz}} = \boxed{4\ \text{bit/s/Hz}}$$
 
 Igual a $\ell$: OFDM con subportadoras ortogonales no pierde eficiencia respecto de la modulación de cada subportadora.
+
+⚠️ **Lo que pasó**: el número estaba bien (4), pero con unidades "bits/símbolo". El corrector anotó "4 bits/Hz": la eficiencia espectral es bits **por segundo por hertz**, $\dfrac{\text{bits/s}}{\text{Hz}}$. Que dé igual a $\ell$ es una coincidencia numérica del ancho de banda mínimo, no las mismas unidades.
 
 ### e) Una sola portadora 16-QAM
 
@@ -265,8 +269,8 @@ Con una sola portadora, el símbolo dura $T_s = 1/250\ \text{kbaud} = 4\ \mu$s; 
 | P2 e) | 0,75 | Sin sistema propuesto; **prefijo** mal copiado (G por M) |
 | P3 e) | 0,5 | **Umbral de FM** sin verificar |
 | P3 f) | 0,25 | El mismo umbral, arrastrado |
-| P4 c), d) | 0,30 | Bits por símbolo OFDM; descuento menor |
+| P4 c), d) | 0,30 | Bits de **una subportadora** (4) en vez del símbolo OFDM (96); unidades de $\eta$ |
 
-Dos descuentos tienen parte de explicación externa: el enunciado ambiguo en P2 c) y el formulario en P2 d). Los que quedan como modo de falla propio son el **prefijo** (G por M, el mismo tipo de error que mV² en julio) y el **umbral de FM sin verificar**: en FM, toda SNR de posdetección se valida contra el umbral antes de informarla.
+Dos descuentos tienen parte de explicación externa: el enunciado ambiguo en P2 c) y el formulario en P2 d). Los que quedan como modo de falla propio son **la parte en vez del total** en P4 c) (una subportadora en vez del símbolo OFDM, con el 96 ya calculado en a), el **prefijo** en P2 e) (G por M, el mismo tipo de error que mV² en julio), las **unidades** de $\eta$ en P4 d) y el **umbral de FM sin verificar**: en FM, toda SNR de posdetección se valida contra el umbral antes de informarla.
 
 Ver también: [[../../wiki/planificacion/formulario-imprimible|Formulario]] · [[MiFinal_completo_F_Comu_2026-07-30|Resolución del final de julio]] · [[../../exercises/finales/md/F_Comu_2026-09-29_miFinal|Enunciado con las correcciones]]
